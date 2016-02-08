@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<rule_miner xml:space="preserve">
+	<logfile>src/main/config/DefaultLog4j.properties</logfile>
+	<naive>
+		<runtime>
+			<num_threads>200</num_threads>
+			<threshold>1</threshold>
+			<max_rule_lenght>3</max_rule_lenght>
+		</runtime>
+		<sparql>
+			<class>asu.edu.neg_rule_miner.sparql.rdf3x.QueryRDF3XStore</class>
+			<parameters>
+				<db_location>/home/stefano/Downloads/Dataset/RDF3x_dataset/DBPedia/dbpedia</db_location>
+				<executable>/home/stefano/Downloads/rdf3x-0.3.7/bin/rdf3xquery</executable>
+			</parameters>
+			<class>asu.edu.neg_rule_miner.sparql.virtuoso.QuerySparqlVirtuosoEndpoint</class>
+			<parameters>
+				<sparql_endpoint>http://localhost:8890/sparql</sparql_endpoint>
+			</parameters>
+			<class>asu.edu.neg_rule_miner.sparql.jena.QueryJenaRDFAPI</class>
+			<parameters>
+				<directory>/home/stefano/Downloads/Dataset/RDF3x_dataset/DBPedia/dbpedia</directory>
+			</parameters>
+			<graph_iri>ciao</graph_iri>
+			<!-- see how to include prefixes here, maybe a map name uri? -->
+			<relation_prefix>
+				<prefix>miao</prefix>
+				<prefix>ciao</prefix>
+			</relation_prefix>
+			<relation_target_prefix>
+				<prefix>http://dbpedia.org/</prefix>
+			</relation_target_prefix>
+		</sparql>
+	</naive>
+</rule_miner>

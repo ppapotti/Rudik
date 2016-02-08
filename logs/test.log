@@ -1,0 +1,5 @@
+2016-02-08 05:00:24 edu.neg_rule_miner.naive.OneExampleRuleDiscovery [ERROR] Error while trying to read the numbuer of threads configuration parameter. Set to 1.
+2016-02-08 05:00:31 edu.neg_rule_miner.naive.OneExampleRuleDiscovery [ERROR] Error while trying to read the threshold configuration parameter. Set to 0.
+2016-02-08 05:00:35 edu.neg_rule_miner.naive.OneExampleRuleDiscovery [ERROR] Error while trying to read the maximum rule length configuration parameter. Set to 3.
+2016-02-08 05:11:41 org.apache.jena.info [ERROR] Does not exist: /Users/ortona/Documents/ASU_Collaboration/Developing/Data/jena_database/amie_dpediba_2.8/
+2016-02-08 05:40:26 edu.neg_rule_miner.naive.OneExampleRuleDiscovery [ERROR] Error while instantiang the sparql executor enginge.
