@@ -4,11 +4,14 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
 
 import org.apache.commons.configuration.Configuration;
+import org.apache.commons.configuration.HierarchicalConfiguration;
 import org.apache.commons.lang3.tuple.Pair;
 import org.apache.jena.rdf.model.RDFNode;
 import org.slf4j.Logger;
@@ -39,11 +42,21 @@ public abstract class SparqlExecutor {
 	@SuppressWarnings("unchecked")
 	public SparqlExecutor(Configuration config){
 
-		if(config.containsKey("relation_prefix")){
+		if(config.containsKey("relation_prefix.prefix")){
 			this.prefixQuery = Sets.newHashSet();
-			List<String> objects = (List<String>) config.getList("relation_prefix.prefix");
-			for(String object:objects){
-				this.prefixQuery.add(object);
+			try{
+				HierarchicalConfiguration hierarchicalConfig = (HierarchicalConfiguration) config;
+				List<HierarchicalConfiguration> prefixes = hierarchicalConfig.configurationsAt("relation_prefix.prefix");
+				for(HierarchicalConfiguration prefix:prefixes){
+					String name = prefix.getString("name");
+					String uri = prefix.getString("uri");
+					if(name!=null&&name.length()>0&&uri!=null&&uri.length()>0)
+						prefixQuery.add("PREFIX "+name+": <"+uri+">");
+				}
+
+			}
+			catch(Exception e){
+				LOGGER.error("Error while reading relation_prefix.prefix parameter from the configuration file.",e);
 			}
 		}
 
@@ -55,8 +68,8 @@ public abstract class SparqlExecutor {
 			}
 		}
 
-		if(config.containsKey("graph_iri")){
-			this.graphIri = config.getString("graph_iri");
+		if(config.containsKey("graph_iri")&&config.getString("graph_iri").length()>0){
+			this.graphIri = "<"+config.getString("graph_iri")+">";
 		}
 	}
 
@@ -101,7 +114,7 @@ public abstract class SparqlExecutor {
 		negativeCandidateQuery +=
 				"SELECT DISTINCT ?subject ?otherRelation ?object ";
 		if(this.graphIri!=null&&graphIri.length()>0)
-			negativeCandidateQuery+="FROM ";
+			negativeCandidateQuery+="FROM "+this.graphIri;
 
 		negativeCandidateQuery+=" WHERE " +
 				"{ ?object rdf:type <" + typeObject + ">." +
@@ -166,6 +179,99 @@ public abstract class SparqlExecutor {
 		return negativeExamples;
 
 
+	}
+
+	/**
+	 * If the entity is literal compare it with all others literals
+	 * @param entity
+	 * @return
+	 */
+	protected void compareLiterals(RDFNode literal, Set<Graph<RDFNode>> graphs){
+
+		for(Graph<RDFNode> g:graphs){
+			for(RDFNode node:g.nodes){
+				if(node.equals(literal)||!node.isLiteral())
+					continue;
+				String relation = this.compareLiteral(literal, node);
+				if(relation!=null)
+					g.addEdge(literal, node, relation, true);
+			}
+
+		}
+
+	}
+
+	private String compareLiteral(RDFNode literalOne, RDFNode literalTwo){
+		String stringLiteralOne = literalOne.asLiteral().getLexicalForm();
+		String stringLiteralTwo = literalTwo.asLiteral().getLexicalForm();
+
+		//compare them as integer
+		Double firstDouble = null;
+		try{
+			firstDouble = Double.parseDouble(stringLiteralOne);
+		}
+		catch(Exception e){
+			//just continue
+		}
+		Double secondDouble = null;
+		try{
+			secondDouble = Double.parseDouble(stringLiteralTwo);
+			if(firstDouble==null)
+				return null;
+			if(firstDouble==secondDouble)
+				return "equal";
+			if(firstDouble<secondDouble)
+				return "lessOrEqual";
+			return "greaterOrEqual";
+		}
+		catch(Exception e){
+			if(firstDouble!=null)
+				return null;
+		}
+
+		//compare them as date
+		DateTimeFormatter formatter = DateTimeFormatter.ISO_DATE;
+		DateTimeFormatter formatterTime = DateTimeFormatter.ISO_DATE_TIME;
+		LocalDate firstDate = null;
+		try{
+			firstDate = LocalDate.parse(stringLiteralOne, formatter);
+		}
+		catch(Exception e){
+			try {
+				firstDate = LocalDate.parse(stringLiteralOne, formatterTime);
+			} catch (Exception e1) {
+				//just continue
+			}
+		}
+		LocalDate secondDate = null;
+		try{
+			secondDate = LocalDate.parse(stringLiteralTwo, formatter);
+			if(firstDate==null)
+				return null;
+		}
+		catch(Exception e){
+			try {
+				secondDate = LocalDate.parse(stringLiteralTwo, formatterTime);
+				if(firstDate==null)
+					return null;
+			} 
+			catch (Exception e1) {
+				if(firstDate!=null)
+					return null;
+			}	
+		}
+		if(firstDate!=null&&secondDate!=null){
+			if(firstDate.compareTo(secondDate)==0)
+				return "equal";
+			if(firstDate.compareTo(secondDate)<0)
+				return "lessOrEqual";
+			return "greaterOrEqual";
+		}
+
+		//compare them as a string
+		if(stringLiteralOne.equals(stringLiteralTwo))
+			return "equals";
+		return null;
 	}
 
 }

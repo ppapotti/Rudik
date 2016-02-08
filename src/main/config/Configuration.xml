@@ -2,33 +2,48 @@
 <rule_miner xml:space="preserve">
 	<logfile>src/main/config/DefaultLog4j.properties</logfile>
 	<naive>
+	    <!-- specify here runtime parameters of the rule generation algorithms -->
 		<runtime>
 			<num_threads>200</num_threads>
+			<!-- min number of negative examples to support a rule to be in output -->
 			<threshold>1</threshold>
+			<!-- max number of atoms in the output rule -->
 			<max_rule_lenght>3</max_rule_lenght>
 		</runtime>
+		<!-- sparql engine endpoint specific parameters -->
 		<sparql>
-			<class>asu.edu.neg_rule_miner.sparql.rdf3x.QueryRDF3XStore</class>
+<!-- 			<class>asu.edu.neg_rule_miner.sparql.rdf3x.QueryRDF3XStore</class> -->
+<!-- 			<parameters> -->
+<!-- 				<db_location>/home/stefano/Downloads/Dataset/RDF3x_dataset/DBPedia/dbpedia</db_location> -->
+<!-- 				<executable>/home/stefano/Downloads/rdf3x-0.3.7/bin/rdf3xquery</executable> -->
+<!-- 			</parameters> -->
+<!-- 			<class>asu.edu.neg_rule_miner.sparql.jena.QuerySparqlRemoteEndpoint</class> -->
+<!-- 			<parameters> -->
+<!-- 				<sparql_endpoint>http://localhost:8890/sparql</sparql_endpoint> -->
+<!-- 			</parameters> -->
+			<class>asu.edu.neg_rule_miner.sparql.jena.tbd.QueryJenaRDFAPI</class>
 			<parameters>
-				<db_location>/home/stefano/Downloads/Dataset/RDF3x_dataset/DBPedia/dbpedia</db_location>
-				<executable>/home/stefano/Downloads/rdf3x-0.3.7/bin/rdf3xquery</executable>
+				<directory>/Users/ortona/Documents/ASU_Collaboration/Developing/Data/jena_database/amie_dpediba_2.8</directory>
 			</parameters>
-			<class>asu.edu.neg_rule_miner.sparql.virtuoso.QuerySparqlVirtuosoEndpoint</class>
-			<parameters>
-				<sparql_endpoint>http://localhost:8890/sparql</sparql_endpoint>
-			</parameters>
-			<class>asu.edu.neg_rule_miner.sparql.jena.QueryJenaRDFAPI</class>
-			<parameters>
-				<directory>/home/stefano/Downloads/Dataset/RDF3x_dataset/DBPedia/dbpedia</directory>
-			</parameters>
-			<graph_iri>ciao</graph_iri>
-			<!-- see how to include prefixes here, maybe a map name uri? -->
+			<graph_iri></graph_iri>
+			<!-- prefix to be specified in the sparql query -->
 			<relation_prefix>
-				<prefix>miao</prefix>
-				<prefix>ciao</prefix>
+				<prefix>
+					<name>rdf</name>
+					<uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#</uri>
+				</prefix>
+				<prefix>
+					<name>dbp</name>
+					<uri>http://dbpedia.org/property/</uri>
+				</prefix>
+				<prefix>
+					<name>dbo</name>
+					<uri>http://dbpedia.org/ontology/</uri>
+				</prefix>
 			</relation_prefix>
+			<!-- target relation prefix. Only relations starting with prefixes specified here will be induced in rules -->
 			<relation_target_prefix>
-				<prefix>http://dbpedia.org/</prefix>
+				<prefix></prefix>
 			</relation_target_prefix>
 		</sparql>
 	</naive>

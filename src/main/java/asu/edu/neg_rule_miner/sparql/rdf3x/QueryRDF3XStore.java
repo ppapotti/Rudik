@@ -7,7 +7,6 @@ import java.util.Set;
 
 import org.apache.commons.configuration.Configuration;
 import org.apache.commons.lang3.tuple.Pair;
-import org.apache.jena.ext.com.google.common.collect.Sets;
 import org.apache.jena.rdf.model.RDFNode;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -52,8 +51,7 @@ public class QueryRDF3XStore extends SparqlExecutor{
 
 		//different query if the entity is a literal
 		if(!entity.toString().startsWith("http")){
-			//			dbPediaQuery = "SELECT DISTINCT ?rel ?sub WHERE {?sub ?rel ?obj. "
-			//					+ "FILTER(?obj="+entity.toString()+")}";
+			this.compareLiterals(entity, inputGraphs);
 			return;
 		}
 
@@ -171,73 +169,15 @@ public class QueryRDF3XStore extends SparqlExecutor{
 	}
 
 
+	/**
+	 * RDF3XStore does not support query with filters, impossible to create negative examples automatically.
+	 * Read it from an input file 
+	 */
 	@Override
 	public Set<Pair<RDFNode, RDFNode>> generateNegativeExamples(
 			Set<String> relations, String typeObject, String typeSubject,
 			Set<String> subjectFilters, Set<String> objectFilters) {
-
-		String negativeCandidateQuery = super.generateNegativeExampleQuery(relations, typeSubject, typeObject, subjectFilters, objectFilters);	
-		Set<Pair<RDFNode, RDFNode>> negativeExamples = Sets.newHashSet();
-		if(negativeCandidateQuery==null)
-			return negativeExamples;
-
-		long startTime = System.currentTimeMillis();
-		LOGGER.debug("Executing negative candidate query selection on Sparql Endpoint...",negativeCandidateQuery);
-
-		String line;
-		Process p;
-		try {
-			ProcessBuilder pb = new ProcessBuilder(this.rdf3xExecutable, 
-					this.dbLocation,negativeCandidateQuery);
-			p = pb.start();
-		} catch (IOException e) {
-			LOGGER.error("Error while starting the external process to execute '{}' executable file.",this.rdf3xExecutable,e);
-			return negativeExamples;
-		}
-
-		BufferedReader in = new BufferedReader(
-				new InputStreamReader(p.getInputStream()) );
-
-		try {
-			line = in.readLine();
-		} catch (IOException e) {
-			LOGGER.error("Error while reading the output from the external process.",e);
-			return negativeExamples;
-		}
-		if(line == null)
-			LOGGER.debug("Query '{}' returned an empty result!",negativeCandidateQuery);
-
-		while (line != null) {
-
-			String[] oneResult = line.split(" ");
-
-			if(oneResult.length!=2)
-				continue;
-
-			RDFNode subject = new RDFSimpleNodeResourceImplementation(oneResult[0].replaceAll("[<|>]", ""));
-			RDFNode object = new RDFSimpleNodeResourceImplementation(oneResult[1].replaceAll("[<|>]", ""));
-
-			negativeExamples.add(Pair.of(subject, object));
-			try {
-				line = in.readLine();
-			} catch (IOException e) {
-				LOGGER.error("Error while reading further lines from the external process output, " +
-						"returning only current negative examples: '{}'.",negativeExamples,e);
-				return negativeExamples;
-			}
-		}
-
-		try {
-			in.close();
-			p.destroy();
-		} catch (IOException e) {
-			LOGGER.error("Error while trying to destroy the process executing the '{}' executable file.",e);
-		}
-
-		LOGGER.debug("Query executed in {} seconds.",(System.currentTimeMillis()-startTime)/1000.0);
-		LOGGER.debug("{} negative examples retrieved.",negativeExamples.size());
-
-		return negativeExamples;
+		return null;
 	}
 
 
@@ -245,7 +185,6 @@ public class QueryRDF3XStore extends SparqlExecutor{
 	public Set<Pair<RDFNode, RDFNode>> generateFilteredNegativeExamples(
 			Set<String> relations, String typeSubject, String typeObject,
 			Set<String> subjectFilters, Set<String> objectFilters) {
-		// TODO Auto-generated method stub
 		return null;
 	}
 

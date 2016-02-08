@@ -271,44 +271,29 @@ public class NaiveRuleDiscovery {
 
 	}
 
-
-	//gotta read it from conf file
+	/**
+	 * Read the sparql executor from configuration file
+	 * @return
+	 */
 	private SparqlExecutor getSparqlExecutor(){
-//		String sparqlEndpoint = "http://localhost:8890/sparql";
-//		Set<String> prefixRelation = Sets.newHashSet();
-//		prefixRelation.add("PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>");
-//		prefixRelation.add("PREFIX dbo: <http://dbpedia.org/ontology/>");
-//		prefixRelation.add("PREFIX dbp: <http://dbpedia.org/property/>");
-//		Set<String> targetPrefix = Sets.newHashSet();
-//		targetPrefix.add("http://dbpedia.org/");
-//		QuerySparqlVirtuosoEndpoint endpoint = new QuerySparqlVirtuosoEndpoint(prefixRelation,
-//				null, sparqlEndpoint);
-//
-//		String dbLocation = "/home/stefano/Downloads/Dataset/RDF3x_dataset/DBPedia/dbpedia";
-//		String rdf3xExecutable = "/home/stefano/Downloads/rdf3x-0.3.7/bin/rdf3xquery";
-//		//		QueryRDF3XStore endpoint = new QueryRDF3XStore(prefixRelation, targetPrefix, dbLocation, rdf3xExecutable);
-//
-//		String directory = "/Users/ortona/Documents/ASU_Collaboration/Developing/Data/jena_database/amie_dpediba_2.8";
-//		Dataset dataset = TDBFactory.createDataset(directory) ;
-//		//		QueryJenaRDFAPI endpoint = new QueryJenaRDFAPI(prefixRelation, null, dataset);
 
 		if(!ConfigurationFacility.getConfiguration().containsKey(Constant.CONF_SPARQL_ENGINE))
 			throw new RuleMinerException("Sparql engine parameters not found in the configuration file.", 
 					LOGGER);
-		
+
 		Configuration subConf = ConfigurationFacility.getConfiguration().subset(Constant.CONF_SPARQL_ENGINE);
-		
+
 		if(!subConf.containsKey("class"))
 			throw new RuleMinerException("Need to specify the class implementing the Sparql engine "
 					+ "in the configuration file under parameter 'class'.", LOGGER);
-		
+
 		SparqlExecutor endpoint;
 		try{
-		Constructor<?> c = Class.forName(subConf.getString("class")).
-				getDeclaredConstructor(Configuration.class);
-		c.setAccessible(true);
-		endpoint = (SparqlExecutor) 
-				c.newInstance(new Object[] {subConf});
+			Constructor<?> c = Class.forName(subConf.getString("class")).
+					getDeclaredConstructor(Configuration.class);
+			c.setAccessible(true);
+			endpoint = (SparqlExecutor) 
+					c.newInstance(new Object[] {subConf});
 		}
 		catch(Exception e){
 			throw new RuleMinerException("Error while instantiang the sparql executor enginge.", e,LOGGER);

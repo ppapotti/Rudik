@@ -37,16 +37,16 @@ public class App
 
 		NaiveRuleDiscovery naive = new NaiveRuleDiscovery();
 
-		File negativeExampleFile = new File("examples");
+		File negativeExampleFile = new File("dbpedia_founder_neg_examples");
 
 
-		//		Set<Pair<RDFNode,RDFNode>> negativeExamples =naive.generateNegativeExamples(relations,"http://dbpedia.org/ontology/Organisation",
-		//				"http://dbpedia.org/ontology/Person",subjectFilters,objectFilters,false);
+		Set<Pair<RDFNode,RDFNode>> negativeExamples =naive.generateNegativeExamples(relations,"http://dbpedia.org/ontology/Organisation",
+				"http://dbpedia.org/ontology/Person",subjectFilters,objectFilters,false);
 
-		Set<Pair<RDFNode,RDFNode>> negativeExamples =
-				naive.generateNegativeExamples(negativeExampleFile);
+		//		Set<Pair<RDFNode,RDFNode>> negativeExamples =
+		//				naive.generateNegativeExamples(negativeExampleFile);
 
 
-		//naive.discoverHornRules(negativeExamples);
+		naive.discoverHornRules(negativeExamples);
 	}
 }

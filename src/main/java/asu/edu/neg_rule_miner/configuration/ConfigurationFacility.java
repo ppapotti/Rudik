@@ -3,7 +3,9 @@ package asu.edu.neg_rule_miner.configuration;
 import org.apache.commons.configuration.Configuration;
 import org.apache.commons.configuration.ConfigurationException;
 import org.apache.commons.configuration.XMLConfiguration;
+import org.apache.log4j.BasicConfigurator;
 import org.apache.log4j.PropertyConfigurator;
+import org.apache.log4j.varia.NullAppender;
 
 import asu.edu.neg_rule_miner.RuleMinerException;
 
@@ -15,6 +17,7 @@ public class ConfigurationFacility {
 	public synchronized static Configuration getConfiguration(){
 
 		if(instance == null){
+			BasicConfigurator.configure(new NullAppender());
 
 			Configuration config = null;
 			try {
