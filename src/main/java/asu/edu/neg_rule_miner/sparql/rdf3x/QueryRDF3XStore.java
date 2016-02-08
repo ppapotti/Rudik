@@ -51,7 +51,7 @@ public class QueryRDF3XStore extends SparqlExecutor{
 
 		//different query if the entity is a literal
 		if(!entity.toString().startsWith("http")){
-			this.compareLiterals(entity, inputGraphs);
+			//this.compareLiterals(entity, inputGraphs);
 			return;
 		}
 
