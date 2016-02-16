@@ -68,7 +68,7 @@ public class Graph<T>{
 		this.neighbours.put(label, neighbors);
 
 	}
-	
+
 	public Set<T> getNodes(){
 		return this.nodes;
 	}
@@ -92,20 +92,21 @@ public class Graph<T>{
 
 		T source = edge.getNodeSource();
 		Set<Edge<T>> neighbours = this.neighbours.get(source);
-		
+
 		neighbours.add(edge);
-		this.neighbours.put(source, neighbours);
 		this.edge2artificial.put(edge, false);
 
 		if(bidirectional){
 			T end = edge.getNodeEnd();
 			Edge<T> inverseEdge = new Edge<T>(end, source, edge.getLabel());
 			neighbours = this.neighbours.get(end);
-			neighbours.add(inverseEdge);
-			this.neighbours.put(end, neighbours);
-			this.edge2artificial.put(inverseEdge, true);
+			//do not add if inverse edge has been already added
+			if(!neighbours.contains(inverseEdge)){
+				neighbours.add(inverseEdge);
+				this.edge2artificial.put(inverseEdge, true);
+			}
 		}
-		
+
 		return true;
 	}
 

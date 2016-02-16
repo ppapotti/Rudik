@@ -9,7 +9,6 @@ import org.apache.jena.ext.com.google.common.collect.Sets;
 
 import asu.edu.neg_rule_miner.model.rdf.graph.Edge;
 import asu.edu.neg_rule_miner.model.rdf.graph.Graph;
-
 /**
  * Class to model a HornRule representation.
  * A HornRule contains a set of RuleAtom, and it is supported by a set of graphs.
@@ -20,14 +19,16 @@ import asu.edu.neg_rule_miner.model.rdf.graph.Graph;
  */
 public class HornRule<T> {
 
-	private static final String START_NODE = "start";
-	private static final String END_NODE = "end";
+	public static final String START_NODE = "subject";
+	public static final String END_NODE = "object";
 
-	private Map<Graph<T>,Set<T>> currentNodes;
+	private Graph<T> graph;
+
+	private Set<T> currentNodes;
 
 	private Set<RuleAtom> rules;
 
-	private Map<Graph<T>,Map<T,String>> graph2instanceVariable;
+	private Map<T,String> instance2Variable;
 
 	int variableCount = 0;
 
@@ -37,7 +38,7 @@ public class HornRule<T> {
 	 * For each supported graph, get the set of current nodes identified by the rule
 	 * @return
 	 */
-	public Map<Graph<T>,Set<T>> getCurrentNodes(){
+	public Set<T> getCurrentNodes(){
 		return this.currentNodes;
 	}
 
@@ -46,8 +47,8 @@ public class HornRule<T> {
 	 * @param threshold
 	 * @return
 	 */
-	public Map<RuleAtom,Map<Graph<T>,Set<Edge<T>>>> nextPlausibleRules(int threshold,boolean isLast){
-		Map<RuleAtom,Map<Graph<T>,Set<Edge<T>>>> thresholdRule2graphEdge = Maps.newHashMap();
+	public Map<RuleAtom,Set<Edge<T>>> nextPlausibleRules(boolean isLast){
+		Map<RuleAtom,Set<Edge<T>>> rule2edges = Maps.newHashMap();
 		String obligedVariable = null;
 		if(isLast){
 			boolean containsStart = false;
@@ -60,7 +61,7 @@ public class HornRule<T> {
 			}
 
 			if(!containsStart&&!containsEnd)
-				return thresholdRule2graphEdge;
+				return rule2edges;
 			if(!containsStart)
 				obligedVariable = START_NODE;
 			if(!containsEnd)
@@ -69,50 +70,42 @@ public class HornRule<T> {
 		}
 
 
-		Map<RuleAtom,Map<Graph<T>,Set<Edge<T>>>> rule2graphEdge = Maps.newHashMap();
-		for(Graph<T> g:currentNodes.keySet()){
-			Map<T,String> currentVariables = this.graph2instanceVariable.get(g);
-			for(T currentNode:currentNodes.get(g)){
-				String variable = this.graph2instanceVariable.get(g).get(currentNode);
-				Set<Edge<T>> neighbors = g.getNeighbours(currentNode);
-				for(Edge<T> e:neighbors){
-					boolean isArtifical = g.isArtifical(e);
-					String newVariable = currentVariables.get(e.getNodeEnd());
-					if(newVariable==null){
-						if(isLast)
-							continue;
-						newVariable = "v"+variableCount;
-					}
-					if(obligedVariable!=null && !newVariable.equals(obligedVariable))
+		for(T currentNode:this.currentNodes){
+			String variable = this.instance2Variable.get(currentNode);
+			Set<Edge<T>> neighbors = this.graph.getNeighbours(currentNode);
+			for(Edge<T> e:neighbors){
+				boolean isArtifical = graph.isArtifical(e);
+				String newVariable = this.instance2Variable.get(e.getNodeEnd());
+				if(newVariable==null){
+					if(isLast)
 						continue;
-					RuleAtom newRule = null;
-					if(isArtifical)
-						newRule= new RuleAtom(newVariable, e.getLabel(), variable);
-					else
-						newRule= new RuleAtom(variable, e.getLabel(), newVariable);
-					if(rules.contains(newRule))
-						continue;
-
-					Map<Graph<T>,Set<Edge<T>>> currentGraphSupport = rule2graphEdge.get(newRule);
-					if(currentGraphSupport==null){
-						currentGraphSupport=Maps.newHashMap();
-						rule2graphEdge.put(newRule, currentGraphSupport);
-					}
-
-					Set<Edge<T>> currentEdges = currentGraphSupport.get(g);
-					if(currentEdges==null){
-						currentEdges = Sets.newHashSet();
-						currentGraphSupport.put(g, currentEdges);
-					}
-					currentEdges.add(e);
-
-					if(currentGraphSupport.size()>=threshold)
-						thresholdRule2graphEdge.put(newRule, currentGraphSupport);
+					newVariable = "v"+variableCount;
 				}
+				if(obligedVariable!=null && !newVariable.equals(obligedVariable))
+					continue;
+				RuleAtom newRule = null;
+				if(isArtifical)
+					newRule= new RuleAtom(newVariable, e.getLabel(), variable);
+				else
+					newRule= new RuleAtom(variable, e.getLabel(), newVariable);
+				if(rules.contains(newRule))
+					continue;
+
+				//TO DO: different check
+				if(variable.equals(newVariable)&&!(e.getNodeEnd().equals(e.getNodeSource())))
+					continue;
+
+
+				Set<Edge<T>> currentEdges = rule2edges.get(newRule);
+				if(currentEdges==null){
+					currentEdges = Sets.newHashSet();
+					rule2edges.put(newRule, currentEdges);
+				}
+				currentEdges.add(e);
 			}
 		}
 
-		return thresholdRule2graphEdge;
+		return rule2edges;
 	}
 
 	/**
@@ -120,75 +113,60 @@ public class HornRule<T> {
 	 * @param rule
 	 * @param graph2EdgeSupport
 	 */
-	public void addRuleAtom(RuleAtom rule, Map<Graph<T>,Set<Edge<T>>> graph2EdgeSupport){
+	public void addRuleAtom(RuleAtom rule, Set<Edge<T>> edgeSupport){
 
 		if(rules.contains(rule))
+			return;
+		if(edgeSupport.size()==0)
 			return;
 		rules.add(rule);
 		boolean newVariable = false;
 
-		//to remove all the graph that do not respect the rule anymore
-		Set<Graph<T>> graphToRemove = Sets.newHashSet();
-		graphToRemove.addAll(this.currentNodes.keySet());
-		graphToRemove.removeAll(graph2EdgeSupport.keySet());
-
 		this.currentNodes.clear();
 
-		for(Graph<T> g:graph2EdgeSupport.keySet()){
-			Set<T> currentNewNodes = Sets.newHashSet();
 
-			Map<T,String> instance2variable = this.graph2instanceVariable.get(g);
-			for(Edge<T> supportEdge:graph2EdgeSupport.get(g)){
-
-				T endingNode = supportEdge.getNodeEnd();
-				currentNewNodes.add(endingNode);
-				String variableEnding = instance2variable.get(endingNode);
-				if(variableEnding==null){
-					variableEnding = "v"+variableCount;
-					instance2variable.put(endingNode, variableEnding);
-					newVariable = true;
-				}
-				currentVariable = variableEnding;
+		this.currentNodes.clear();
+		for(Edge<T> supportEdge:edgeSupport){
+			T endingNode = supportEdge.getNodeEnd();
+			this.currentNodes.add(endingNode);
+			String variableEnding = this.instance2Variable.get(endingNode);
+			if(variableEnding==null){
+				variableEnding = "v"+variableCount;
+				this.instance2Variable.put(endingNode, variableEnding);
+				newVariable = true;
 			}
-			this.currentNodes.put(g, currentNewNodes);
-
+			currentVariable = variableEnding;
 		}
+
 		if(newVariable){
 			variableCount++;
 		}
 
-		if(graphToRemove.size()==0)
-			return;
-
-		this.graph2instanceVariable.keySet().retainAll(graph2EdgeSupport.keySet());
 	}
 
 	/**
 	 * Initialise a Horn rule by giving a map containing a pair start-node as a key, and the corresponding graph as a value
 	 * @param example2graph
 	 */
-	public HornRule(Map<Pair<T,T>,Graph<T>> example2graph){
+	public HornRule(Pair<T,T> startingNode,Graph<T> graph){
 		this();
 
-		for(Pair<T,T> example:example2graph.keySet()){
-			Graph<T> g = example2graph.get(example);
-			Set<T> graphCurrentNodes = Sets.newHashSet();
-			graphCurrentNodes.add(example.getLeft());
-			graphCurrentNodes.add(example.getRight());
-			this.currentNodes.put(g, graphCurrentNodes);
+		this.graph=graph;
 
-			Map<T,String> currentInstanceVariable = Maps.newHashMap();
-			currentInstanceVariable.put(example.getLeft(), START_NODE);
-			currentInstanceVariable.put(example.getRight(), END_NODE);
-			this.graph2instanceVariable.put(g, currentInstanceVariable);
-		}
+		this.currentNodes.add(startingNode.getLeft());
+		this.currentNodes.add(startingNode.getRight());
+
+		this.instance2Variable.put(startingNode.getLeft(), START_NODE);
+		this.instance2Variable.put(startingNode.getRight(), END_NODE);
+
+		//TO DO: check
 		this.currentVariable = START_NODE;
 	}
 
 	private HornRule(){
-		this.currentNodes = Maps.newHashMap();
+		this.currentNodes = Sets.newHashSet();
 		this.rules = Sets.newHashSet();
-		this.graph2instanceVariable = Maps.newHashMap();
+		this.instance2Variable = Maps.newHashMap();
 		this.variableCount = 0;
 		this.currentVariable = null;
 	}
@@ -199,18 +177,13 @@ public class HornRule<T> {
 	 */
 	public HornRule<T> duplicateRule(){
 		HornRule<T> newRule = new HornRule<T>();
-		Map<Graph<T>,Set<T>> currentNodes = Maps.newHashMap();
-		Map<Graph<T>,Map<T,String>> graph2instanceVariable = Maps.newHashMap();
-		for(Graph<T> g:this.currentNodes.keySet()){
-			Set<T> graphCurrentNodes = Sets.newHashSet(this.currentNodes.get(g));
-			currentNodes.put(g, graphCurrentNodes);
+		Set<T> currentNewNodes = Sets.newHashSet(this.currentNodes);
+		Map<T,String> newInstance2variable = Maps.newHashMap(this.instance2Variable);
 
-			Map<T,String> currentGraph2instanceVariable = Maps.newHashMap(this.graph2instanceVariable.get(g));
-			graph2instanceVariable.put(g, currentGraph2instanceVariable);
+		newRule.currentNodes = currentNewNodes;
+		newRule.instance2Variable = newInstance2variable;
 
-		}
-		newRule.currentNodes = currentNodes;
-		newRule.graph2instanceVariable = graph2instanceVariable;
+		newRule.graph = this.graph;
 
 		Set<RuleAtom> rules = Sets.newHashSet(this.rules);
 		newRule.rules = rules;
@@ -247,14 +220,6 @@ public class HornRule<T> {
 		} else if (!rules.equals(other.rules))
 			return false;
 		return true;
-	}
-
-	/**
-	 * Get the number of graphs supporting the rule
-	 * @return
-	 */
-	public int getSupport(){
-		return this.currentNodes.size();
 	}
 
 	/**
@@ -328,6 +293,9 @@ public class HornRule<T> {
 		if(this.getLen()<maxAtomLen)
 			return true;
 		return false;
+	}
+	public Map<T,String> getInstance2Variable(){
+		return this.instance2Variable;
 	}
 
 }

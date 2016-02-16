@@ -7,11 +7,14 @@ import java.util.Set;
 
 import org.apache.commons.configuration.Configuration;
 import org.apache.commons.lang3.tuple.Pair;
+import org.apache.jena.ext.com.google.common.collect.Sets;
 import org.apache.jena.rdf.model.RDFNode;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import asu.edu.neg_rule_miner.RuleMinerException;
+import asu.edu.neg_rule_miner.model.HornRule;
+import asu.edu.neg_rule_miner.model.RuleAtom;
 import asu.edu.neg_rule_miner.model.rdf.graph.Edge;
 import asu.edu.neg_rule_miner.model.rdf.graph.Graph;
 import asu.edu.neg_rule_miner.sparql.RDFSimpleNodeResourceImplementation;
@@ -40,9 +43,11 @@ public class QueryRDF3XStore extends SparqlExecutor{
 
 
 	@Override
-	public void executeQuery(RDFNode entity, Set<Graph<RDFNode>> inputGraphs) {
+	public Set<Edge<RDFNode>> executeQuery(RDFNode entity, 
+			Graph<RDFNode> inputGraph) {
 		long startTime = System.currentTimeMillis();
 
+		Set<Edge<RDFNode>> neighbours = Sets.newHashSet();
 		String dbPediaQuery = "SELECT DISTINCT ?sub ?rel ?obj";
 		if(this.graphIri!=null&&this.graphIri.length()>0)
 			dbPediaQuery+=" FROM "+this.graphIri;
@@ -52,7 +57,7 @@ public class QueryRDF3XStore extends SparqlExecutor{
 		//different query if the entity is a literal
 		if(!entity.toString().startsWith("http")){
 			//this.compareLiterals(entity, inputGraphs);
-			return;
+			return neighbours;
 		}
 
 		String line;
@@ -63,7 +68,7 @@ public class QueryRDF3XStore extends SparqlExecutor{
 			p = pb.start();
 		} catch (IOException e) {
 			LOGGER.error("Error while starting the external process to execute '{}' executable file.",this.rdf3xExecutable,e);
-			return;
+			return neighbours;
 		}
 
 		BufferedReader in = new BufferedReader(
@@ -73,7 +78,7 @@ public class QueryRDF3XStore extends SparqlExecutor{
 			line = in.readLine();
 		} catch (IOException e) {
 			LOGGER.error("Error while reading the output from the external process.",e);
-			return;
+			return neighbours;
 		}
 		if(line == null)
 			LOGGER.debug("Query '{}' returned an empty result!",dbPediaQuery);
@@ -85,6 +90,9 @@ public class QueryRDF3XStore extends SparqlExecutor{
 			if(oneResult.length==2)
 				relation = oneResult[0];
 			relation = relation.replaceAll("[<|>]", "");
+
+			if(this.relationToAvoid!=null&&this.relationToAvoid.contains(relation))
+				continue;
 
 			boolean isTargetRelation = this.targetPrefix == null;
 			if(this.targetPrefix!=null&&this.targetPrefix.size()>0){
@@ -99,7 +107,7 @@ public class QueryRDF3XStore extends SparqlExecutor{
 					line = in.readLine();
 				} catch (IOException e) {
 					LOGGER.error("Error while reading further lines from the external process output.",e);
-					return;
+					return neighbours;
 				}
 				continue;
 			}
@@ -143,15 +151,14 @@ public class QueryRDF3XStore extends SparqlExecutor{
 				}
 			}
 
-			for(Graph<RDFNode> g:inputGraphs){
-				g.addNode(newNode);
-				g.addEdge(edgeToAdd, true);
-			}
+			neighbours.add(edgeToAdd);
+			inputGraph.addNode(newNode);
+			inputGraph.addEdge(edgeToAdd, true);
 			try {
 				line = in.readLine();
 			} catch (IOException e) {
 				LOGGER.error("Error while reading further lines from the external process output.",e);
-				return;
+				return neighbours;
 			}
 		}
 
@@ -165,6 +172,7 @@ public class QueryRDF3XStore extends SparqlExecutor{
 		long totalTime = System.currentTimeMillis() - startTime;
 		if(totalTime>50000)
 			LOGGER.debug("Query '{}' took {} seconds to complete.",dbPediaQuery, totalTime/1000.);
+		return neighbours;
 
 	}
 
@@ -175,17 +183,37 @@ public class QueryRDF3XStore extends SparqlExecutor{
 	 */
 	@Override
 	public Set<Pair<RDFNode, RDFNode>> generateNegativeExamples(
-			Set<String> relations, String typeObject, String typeSubject,
-			Set<String> subjectFilters, Set<String> objectFilters) {
+			Set<String> relations, String typeSubject, String typeObject) {
 		return null;
 	}
 
 
 	@Override
 	public Set<Pair<RDFNode, RDFNode>> generateFilteredNegativeExamples(
-			Set<String> relations, String typeSubject, String typeObject,
-			Set<String> subjectFilters, Set<String> objectFilters) {
+			Set<String> relations, String typeSubject, String typeObject, int totalNumberExample) {
 		return null;
+	}
+
+
+
+	/**
+	 * TO BE IMPLEMENTED
+	 */
+	@Override
+	public int getTotalCoveredExample(HornRule<RDFNode> rule, String typeSubject, String typeObject) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+
+	/**
+	 * TO BE IMPLEMENTED
+	 */
+	@Override
+	public int getSupportivePositiveExamples(Set<RuleAtom> rules,
+			Set<String> relations, String typeSubject, String typeObject) {
+		// TODO Auto-generated method stub
+		return 0;
 	}
 
 }
