@@ -19,6 +19,10 @@ import org.slf4j.LoggerFactory;
 
 import com.google.common.collect.Sets;
 
+import asu.edu.neg_rule_miner.configuration.Constant;
+import asu.edu.neg_rule_miner.model.HornRule;
+import asu.edu.neg_rule_miner.model.RuleAtom;
+import asu.edu.neg_rule_miner.model.rdf.graph.Edge;
 import asu.edu.neg_rule_miner.model.rdf.graph.Graph;
 
 /**
@@ -36,6 +40,8 @@ public abstract class SparqlExecutor {
 	protected Set<String> prefixQuery;
 
 	protected Set<String> targetPrefix;
+
+	protected Set<String> relationToAvoid;
 
 	protected String graphIri;
 
@@ -60,7 +66,7 @@ public abstract class SparqlExecutor {
 			}
 		}
 
-		if(config.containsKey("relation_target_prefix")){
+		if(config.containsKey("relation_target_prefix.prefix")){
 			this.targetPrefix = Sets.newHashSet();
 			List<String> objects = (List<String>) config.getList("relation_target_prefix.prefix");
 			for(String object:objects){
@@ -71,19 +77,26 @@ public abstract class SparqlExecutor {
 		if(config.containsKey("graph_iri")&&config.getString("graph_iri").length()>0){
 			this.graphIri = "<"+config.getString("graph_iri")+">";
 		}
+
+		this.relationToAvoid = Sets.newHashSet();
+		if(config.containsKey("relation_to_avoid.relation")){
+			List<String> objects = (List<String>) config.getList("relation_to_avoid.relation");
+			for(String object:objects){
+				this.relationToAvoid.add(object);
+			}
+		}
 	}
 
-	public abstract void executeQuery(RDFNode entity,Set<Graph<RDFNode>> inputGraphs);
+	public abstract Set<Edge<RDFNode>> executeQuery(RDFNode entity,
+			Graph<RDFNode> inputGraphs);
 
-	public abstract Set<Pair<RDFNode,RDFNode>> generateNegativeExamples(Set<String> relations, String typeObject, 
-			String typeSubject, Set<String> subjectFilters, Set<String> objectFilters);
+	public abstract Set<Pair<RDFNode,RDFNode>> generateNegativeExamples(Set<String> relations, String typeSubject, 
+			String typeObject);
 
 	public abstract Set<Pair<RDFNode, RDFNode>> generateFilteredNegativeExamples(
-			Set<String> relations, String typeSubject, String typeObject,
-			Set<String> subjectFilters, Set<String> objectFilters);
+			Set<String> relations, String typeSubject, String typeObject, int totalNumberExample);
 
-	public String generateNegativeExampleQuery(Set<String> relations, String typeSubject, String typeObject, Set<String> subjectFilters,
-			Set<String> objectFilters){
+	public String generateNegativeExampleQuery(Set<String> relations, String typeSubject, String typeObject){
 		if(relations==null||relations.size()==0)
 			return null;
 
@@ -114,7 +127,7 @@ public abstract class SparqlExecutor {
 		negativeCandidateQuery +=
 				"SELECT DISTINCT ?subject ?otherRelation ?object ";
 		if(this.graphIri!=null&&graphIri.length()>0)
-			negativeCandidateQuery+="FROM "+this.graphIri;
+			negativeCandidateQuery+=" FROM "+this.graphIri;
 
 		negativeCandidateQuery+=" WHERE " +
 				"{ ?object rdf:type <" + typeObject + ">." +
@@ -125,35 +138,98 @@ public abstract class SparqlExecutor {
 				"  FILTER (" + filterNotRelation.toString() + ") " +
 				"  FILTER (?object != ?realObject) " +
 				differentRelation.toString();
-		if(objectFilters!=null && objectFilters.size()>0)
-		{
-			negativeCandidateQuery+="FILTER(";
-			Iterator<String> filterObject = objectFilters.iterator();
-			while(filterObject.hasNext()){
-				negativeCandidateQuery+="?object = <"+filterObject.next()+">";
-				if(filterObject.hasNext()){
-					negativeCandidateQuery+=" || ";
-				}
-			}	
-			negativeCandidateQuery+=") ";
-		}
-
-		if(subjectFilters!=null && subjectFilters.size()>0)
-		{
-			negativeCandidateQuery+="FILTER(";
-			Iterator<String> filterSubject = subjectFilters.iterator();
-			while(filterSubject.hasNext()){
-				negativeCandidateQuery+="?subject = <"+filterSubject.next()+">";
-				if(filterSubject.hasNext()){
-					negativeCandidateQuery+=" || ";
-				}
-			}	
-			negativeCandidateQuery+=")";
-
-		}
+		
 		negativeCandidateQuery+="}";
 
 		return negativeCandidateQuery;
+	}
+
+	public abstract int getSupportivePositiveExamples(Set<RuleAtom> rules,Set<String> relations, String typeSubject, String typeObject);
+
+	public abstract int getTotalCoveredExample(HornRule<RDFNode> rule, String typeSubject, String typeObject);
+
+	public String generatePositiveExampleCountQuery(Set<RuleAtom> rules, Set<String> relations, String typeSubject, 
+			String typeObject){
+		if(relations==null||relations.size()==0)
+			return null;
+
+		if(!(rules.size()>0))
+			return null;
+		//create the RDF 
+		StringBuilder query = new StringBuilder();
+
+		Iterator<String> relationIterator = relations.iterator();
+		StringBuilder filterRelation = new StringBuilder();
+		while(relationIterator.hasNext()){
+			String currentRelation = relationIterator.next();
+			filterRelation.append("?targetRelation = <"+currentRelation+">");
+			if(relationIterator.hasNext()){
+				filterRelation.append(" || ");
+			}
+		}
+
+		if(this.prefixQuery!=null&&this.prefixQuery.size()>0){
+			for(String prefix:this.prefixQuery){
+				query.append(prefix+" ");
+			}
+		}
+		query.append("SELECT (COUNT(*) as ?count) WHERE{SELECT DISTINCT ?subject ?object");
+
+		/**
+		 * Jena does not work with count and nested query with from
+		 */
+		//if(this.graphIri!=null&&graphIri.length()>0)
+		//query.append(" FROM "+this.graphIri);
+
+		query.append(" WHERE {");
+		for(RuleAtom atom:rules){
+			if(atom.getRelation().equals("<=") || atom.getRelation().equals(">=") || atom.getRelation().equals("="))
+				query.append("FILTER (?"+atom.getSubject()+atom.getRelation()+"?"+atom.getObject()+") ");
+			else
+				query.append("?"+atom.getSubject()+" <"+atom.getRelation()+"> ?"+atom.getObject()+". ");
+		}
+		query.append("?object rdf:type <" + typeObject + ">." +
+				"  ?subject rdf:type <"+ typeSubject + ">." +
+				"  ?subject ?targetRelation ?object. " +
+				"  FILTER (" + filterRelation.toString() + ") ");
+		query.append("}}");
+
+		return query.toString();
+	}
+
+	public String generateTotalExampleCountQuery(HornRule<RDFNode> rule, String typeSubject, 
+			String typeObject){
+
+		if(!(rule.getRules().size()>0))
+			return null;
+		//create the RDF 
+		StringBuilder query = new StringBuilder();
+
+		if(this.prefixQuery!=null&&this.prefixQuery.size()>0){
+			for(String prefix:this.prefixQuery){
+				query.append(prefix+" ");
+			}
+		}
+		query.append("SELECT (COUNT(*) as ?count) WHERE{SELECT DISTINCT ?subject ?object");
+
+		/**
+		 * Jena does not work with count and nested query with from
+		 */
+		//if(this.graphIri!=null&&graphIri.length()>0)
+		//query.append(" FROM "+this.graphIri);
+
+		query.append(" WHERE {");
+		for(RuleAtom atom:rule.getRules()){
+			if(atom.getRelation().equals("<=") || atom.getRelation().equals(">=") || atom.getRelation().equals("="))
+				query.append("FILTER (?"+atom.getObject()+atom.getRelation()+"?"+atom.getObject()+")");
+			else
+				query.append("?"+atom.getSubject()+" <"+atom.getRelation()+"> ?"+atom.getObject()+". ");
+		}
+		query.append("?object rdf:type <" + typeObject + ">." +
+				"  ?subject rdf:type <"+ typeSubject + ">.");
+		query.append("}}");
+
+		return query.toString();
 	}
 
 	/**
@@ -186,18 +262,16 @@ public abstract class SparqlExecutor {
 	 * @param entity
 	 * @return
 	 */
-	protected void compareLiterals(RDFNode literal, Set<Graph<RDFNode>> graphs){
+	protected void compareLiterals(RDFNode literal, Graph<RDFNode> graph){
 
-		for(Graph<RDFNode> g:graphs){
-			for(RDFNode node:g.nodes){
-				if(node.equals(literal)||!node.isLiteral())
-					continue;
-				String relation = this.compareLiteral(literal, node);
-				if(relation!=null)
-					g.addEdge(literal, node, relation, true);
-			}
-
+		for(RDFNode node:graph.nodes){
+			if(node.equals(literal)||!node.isLiteral())
+				continue;
+			String relation = this.compareLiteral(literal, node);
+			if(relation!=null)
+				graph.addEdge(literal, node, relation, true);
 		}
+
 
 	}
 
@@ -219,10 +293,10 @@ public abstract class SparqlExecutor {
 			if(firstDouble==null)
 				return null;
 			if(firstDouble==secondDouble)
-				return "equal";
+				return Constant.EQUAL_REL;
 			if(firstDouble<secondDouble)
-				return "lessOrEqual";
-			return "greaterOrEqual";
+				return Constant.LESS_EQUAL_REL;
+			return Constant.GREATER_EQUAL_REL;
 		}
 		catch(Exception e){
 			if(firstDouble!=null)
@@ -262,15 +336,15 @@ public abstract class SparqlExecutor {
 		}
 		if(firstDate!=null&&secondDate!=null){
 			if(firstDate.compareTo(secondDate)==0)
-				return "equal";
+				return Constant.EQUAL_REL;
 			if(firstDate.compareTo(secondDate)<0)
-				return "lessOrEqual";
-			return "greaterOrEqual";
+				return Constant.LESS_EQUAL_REL;
+			return Constant.GREATER_EQUAL_REL;
 		}
 
 		//compare them as a string
 		if(stringLiteralOne.equals(stringLiteralTwo))
-			return "equals";
+			return Constant.EQUAL_REL;
 		return null;
 	}
 
