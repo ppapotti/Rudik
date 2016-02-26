@@ -6,6 +6,7 @@ import java.util.Set;
 import org.apache.commons.lang3.tuple.Pair;
 import org.apache.jena.ext.com.google.common.collect.Maps;
 import org.apache.jena.ext.com.google.common.collect.Sets;
+import org.apache.jena.rdf.model.RDFNode;
 
 import asu.edu.neg_rule_miner.model.rdf.graph.Edge;
 import asu.edu.neg_rule_miner.model.rdf.graph.Graph;
@@ -32,7 +33,7 @@ public class HornRule<T> {
 
 	int variableCount = 0;
 
-	String currentVariable;
+	private String currentVariable;
 
 	/**
 	 * For each supported graph, get the set of current nodes identified by the rule
@@ -154,7 +155,7 @@ public class HornRule<T> {
 		this.graph=graph;
 
 		this.currentNodes.add(startingNode.getLeft());
-		this.currentNodes.add(startingNode.getRight());
+		//this.currentNodes.add(startingNode.getRight());
 
 		this.instance2Variable.put(startingNode.getLeft(), START_NODE);
 		this.instance2Variable.put(startingNode.getRight(), END_NODE);
@@ -296,6 +297,21 @@ public class HornRule<T> {
 	}
 	public Map<T,String> getInstance2Variable(){
 		return this.instance2Variable;
+	}
+	
+	public String getCurrentVariable(){
+		return this.currentVariable;
+	}
+	
+	public Set<String> getBoundVariables(String variable){
+		Set<String> boundVariables = Sets.newHashSet();
+		for(RuleAtom rule:this.rules){
+			if(rule.getSubject().equals(variable))
+				boundVariables.add(rule.getObject());
+			if(rule.getObject().equals(variable))
+				boundVariables.add(rule.getSubject());
+		}
+		return boundVariables;
 	}
 
 }

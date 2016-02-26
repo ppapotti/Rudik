@@ -93,8 +93,45 @@ public abstract class SparqlExecutor {
 	public abstract Set<Pair<RDFNode,RDFNode>> generateNegativeExamples(Set<String> relations, String typeSubject, 
 			String typeObject);
 
+	public abstract Set<Pair<RDFNode,RDFNode>> getKBExamples(String query,String subject,String object);
+
 	public abstract Set<Pair<RDFNode, RDFNode>> generateFilteredNegativeExamples(
 			Set<String> relations, String typeSubject, String typeObject, int totalNumberExample);
+
+	public abstract Set<Pair<RDFNode,RDFNode>> generatePositiveExamples(Set<String >relations,String typeSubject,String typeObject);
+
+	public String generatePositiveExampleQuery(Set<String >relations,String typeSubject,String typeObject){
+
+		Iterator<String> relationIterator = relations.iterator();
+		StringBuilder filterRelation = new StringBuilder();
+		while(relationIterator.hasNext()){
+			String currentRelation = relationIterator.next();
+			filterRelation.append("?targetRelation = <"+currentRelation+">");
+			if(relationIterator.hasNext()){
+				filterRelation.append(" || ");
+			}
+		}
+
+		String positiveCandidateQuery = "";
+		if(this.prefixQuery!=null&&this.prefixQuery.size()>0){
+			for(String prefix:this.prefixQuery){
+				positiveCandidateQuery+=prefix+" ";
+			}
+		}
+
+		positiveCandidateQuery +=
+				"SELECT DISTINCT ?subject ?object ";
+		if(this.graphIri!=null&&graphIri.length()>0)
+			positiveCandidateQuery+=" FROM "+this.graphIri;
+
+		positiveCandidateQuery+=" WHERE " +
+				"{ ?object rdf:type <" + typeObject + ">." +
+				"  ?subject rdf:type <"+ typeSubject + ">." +
+				"  ?subject ?targetRelation ?object. " +
+				"  FILTER (" + filterRelation.toString() + ") }";
+
+		return positiveCandidateQuery;
+	}
 
 	public String generateNegativeExampleQuery(Set<String> relations, String typeSubject, String typeObject){
 		if(relations==null||relations.size()==0)
@@ -138,18 +175,22 @@ public abstract class SparqlExecutor {
 				"  FILTER (" + filterNotRelation.toString() + ") " +
 				"  FILTER (?object != ?realObject) " +
 				differentRelation.toString();
-		
+
 		negativeCandidateQuery+="}";
 
 		return negativeCandidateQuery;
 	}
 
-	public abstract int getSupportivePositiveExamples(Set<RuleAtom> rules,Set<String> relations, String typeSubject, String typeObject);
+	public abstract int getSupportivePositiveExamples(Set<RuleAtom> rules,Set<String> relations, String typeSubject, String typeObject,
+			String subjectCostant, String objectConstant);
+
+	public abstract int getRelativeSupportivePositiveExamples(Set<RuleAtom> rules,Set<String> relations, String typeSubject, String typeObject,
+			String subjectCostant, String objectConstant);
 
 	public abstract int getTotalCoveredExample(HornRule<RDFNode> rule, String typeSubject, String typeObject);
 
 	public String generatePositiveExampleCountQuery(Set<RuleAtom> rules, Set<String> relations, String typeSubject, 
-			String typeObject){
+			String typeObject, String subjectConstant, String objectConstant){
 		if(relations==null||relations.size()==0)
 			return null;
 
@@ -183,7 +224,8 @@ public abstract class SparqlExecutor {
 
 		query.append(" WHERE {");
 		for(RuleAtom atom:rules){
-			if(atom.getRelation().equals("<=") || atom.getRelation().equals(">=") || atom.getRelation().equals("="))
+			if(atom.getRelation().equals("<=") || atom.getRelation().equals(">=") 
+					|| atom.getRelation().equals("=") || atom.getRelation().equals("!="))
 				query.append("FILTER (?"+atom.getSubject()+atom.getRelation()+"?"+atom.getObject()+") ");
 			else
 				query.append("?"+atom.getSubject()+" <"+atom.getRelation()+"> ?"+atom.getObject()+". ");
@@ -192,6 +234,79 @@ public abstract class SparqlExecutor {
 				"  ?subject rdf:type <"+ typeSubject + ">." +
 				"  ?subject ?targetRelation ?object. " +
 				"  FILTER (" + filterRelation.toString() + ") ");
+		if(subjectConstant!=null)
+			query.append("FILTER (?subject = <"+subjectConstant+">)");
+		if(objectConstant!=null)
+			query.append("FILTER (?object = <"+objectConstant+">)");
+		query.append("}}");
+
+		return query.toString();
+	}
+
+	public String generateRelativePositiveExampleCountQuery(Set<RuleAtom> rules, 
+			Set<String> relations, String typeSubject, String typeObject, String subjectConstant, String objectConstant){
+		if(relations==null||relations.size()==0)
+			return null;
+
+		if(!(rules.size()>0))
+			return null;
+		//create the RDF 
+		StringBuilder query = new StringBuilder();
+
+		Iterator<String> relationIterator = relations.iterator();
+		StringBuilder filterRelation = new StringBuilder();
+		while(relationIterator.hasNext()){
+			String currentRelation = relationIterator.next();
+			filterRelation.append("?targetRelation = <"+currentRelation+">");
+			if(relationIterator.hasNext()){
+				filterRelation.append(" || ");
+			}
+		}
+
+		if(this.prefixQuery!=null&&this.prefixQuery.size()>0){
+			for(String prefix:this.prefixQuery){
+				query.append(prefix+" ");
+			}
+		}
+		query.append("SELECT (COUNT(*) as ?count) WHERE{SELECT DISTINCT ?subject ?object");
+
+		/**
+		 * Jena does not work with count and nested query with from
+		 */
+		//if(this.graphIri!=null&&graphIri.length()>0)
+		//query.append(" FROM "+this.graphIri);
+
+		query.append(" WHERE {");
+
+		int variableCount=0;
+		for(RuleAtom atom:rules){
+			if(atom.getSubject().equals(HornRule.START_NODE)||atom.getSubject().equals(HornRule.END_NODE)){
+				RuleAtom newAtom = new RuleAtom(atom.getSubject(),atom.getRelation(),"v"+variableCount);
+				variableCount++;
+				if(newAtom.getRelation().equals("<=") || newAtom.getRelation().equals(">=") 
+						|| newAtom.getRelation().equals("=") || newAtom.getRelation().equals("!="))
+					query.append("FILTER (?"+newAtom.getSubject()+newAtom.getRelation()+"?"+newAtom.getObject()+") ");
+				else
+					query.append("?"+newAtom.getSubject()+" <"+newAtom.getRelation()+"> ?"+newAtom.getObject()+". ");
+			}
+			if(atom.getObject().equals(HornRule.START_NODE)||atom.getObject().equals(HornRule.END_NODE)){
+				RuleAtom newAtom = new RuleAtom("v"+variableCount,atom.getRelation(),atom.getObject());
+				variableCount++;
+				if(newAtom.getRelation().equals("<=") || newAtom.getRelation().equals(">=") 
+						|| newAtom.getRelation().equals("=") || newAtom.getRelation().equals("!="))
+					query.append("FILTER (?"+newAtom.getSubject()+newAtom.getRelation()+"?"+newAtom.getObject()+") ");
+				else
+					query.append("?"+newAtom.getSubject()+" <"+newAtom.getRelation()+"> ?"+newAtom.getObject()+". ");
+			}
+		}
+		query.append("?object rdf:type <" + typeObject + ">." +
+				"  ?subject rdf:type <"+ typeSubject + ">." +
+				"  ?subject ?targetRelation ?object. " +
+				"  FILTER (" + filterRelation.toString() + ") ");
+		if(subjectConstant!=null)
+			query.append("FILTER (?subject = <"+subjectConstant+">)");
+		if(objectConstant!=null)
+			query.append("FILTER (?object = <"+objectConstant+">)");
 		query.append("}}");
 
 		return query.toString();
@@ -233,7 +348,7 @@ public abstract class SparqlExecutor {
 	}
 
 	/**
-	 * Negative examples must be separated with a tab
+	 * Negative examples must be separated with a tab, still need to query the sparql endpoint
 	 * @return
 	 * @throws IOException 
 	 */
@@ -253,8 +368,6 @@ public abstract class SparqlExecutor {
 		reader.close();
 		LOGGER.debug("Read {} negative examples from input file.",negativeExamples.size());
 		return negativeExamples;
-
-
 	}
 
 	/**

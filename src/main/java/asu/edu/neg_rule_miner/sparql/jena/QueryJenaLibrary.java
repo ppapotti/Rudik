@@ -1,5 +1,7 @@
 package asu.edu.neg_rule_miner.sparql.jena;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.Set;
@@ -140,6 +142,35 @@ public abstract class QueryJenaLibrary extends SparqlExecutor {
 		return negativeExamples;
 	}
 
+
+	@Override
+	public Set<Pair<RDFNode, RDFNode>> generatePositiveExamples(
+			Set<String> relations, String typeSubject, String typeObject) {
+		String positiveCandidateQuery = super.generatePositiveExampleQuery(relations, typeSubject, typeObject);
+		Set<Pair<RDFNode,RDFNode>> positiveExamples = Sets.newHashSet();
+		if(positiveCandidateQuery==null)
+			return positiveExamples;
+
+		LOGGER.debug("Executing positive candidate query selection '{}' on Sparql Endpoint...",positiveCandidateQuery);
+		long startTime = System.currentTimeMillis();
+		if(this.openResource!=null)
+			this.openResource.close();
+		ResultSet results = this.executeQuery(positiveCandidateQuery);
+		LOGGER.debug("Query executed in {} seconds.",(System.currentTimeMillis()-startTime)/1000.0);
+
+		while(results.hasNext()){
+			QuerySolution oneResult = results.next();
+			Pair<RDFNode,RDFNode> positiveExample = 
+					Pair.of(oneResult.get("subject"), oneResult.get("object"));
+			positiveExamples.add(positiveExample);
+		}
+
+		this.closeResources();
+		LOGGER.debug("{} positive examples retrieved.",positiveExamples.size());
+
+		return positiveExamples;
+	}
+
 	@Override
 	public Set<Pair<RDFNode, RDFNode>> generateFilteredNegativeExamples(
 			Set<String> relations, String typeSubject, String typeObject, int numberExampleOutput) {
@@ -244,6 +275,79 @@ public abstract class QueryJenaLibrary extends SparqlExecutor {
 		return negativeExamples;
 	}
 
+	@Override
+	public Set<Pair<RDFNode,RDFNode>> readNegativeExamplesFromFile(File inputFile) throws IOException{
+		Set<Pair<RDFNode,RDFNode>> plainNegativeExamples = super.readNegativeExamplesFromFile(inputFile);
+		if(plainNegativeExamples==null||plainNegativeExamples.size()==0)
+			return plainNegativeExamples;
+
+		StringBuilder subjectFilters = new StringBuilder();
+		subjectFilters.append("FILTER(");
+		StringBuilder objectFilters = new StringBuilder();
+		objectFilters.append("FILTER(");
+		Iterator<Pair<RDFNode,RDFNode>> examplesIterator = plainNegativeExamples.iterator();
+		while(examplesIterator.hasNext()){
+			Pair<RDFNode,RDFNode> example = examplesIterator.next();
+			subjectFilters.append("?subject=<"+example.getLeft()+">");
+			objectFilters.append("?object=<"+example.getRight()+">");
+			if(examplesIterator.hasNext()){
+				subjectFilters.append(" || ");
+				objectFilters.append(" || ");
+			}
+			else{
+				subjectFilters.append(")");
+				objectFilters.append(")");
+			}
+		}
+
+		String query = "SELECT DISTINCT ?subject ?relation ?object WHERE {?subject ?relation ?object. "+subjectFilters+" "
+				+objectFilters+"}";
+
+		LOGGER.debug("Executing negative candidate query selection '{}' on Sparql Endpoint...",query);
+		long startTime = System.currentTimeMillis();
+		if(this.openResource!=null)
+			this.openResource.close();
+		ResultSet results = this.executeQuery(query);
+		LOGGER.debug("Query executed in {} seconds.",(System.currentTimeMillis()-startTime)/1000.0);
+
+		Set<Pair<RDFNode,RDFNode>> negativeExamples = Sets.newHashSet();
+		while(results.hasNext()){
+			QuerySolution oneResult = results.next();
+			Pair<RDFNode,RDFNode> negativeExample = 
+					Pair.of(oneResult.get("subject"), oneResult.get("object"));
+			negativeExamples.add(negativeExample);
+		}
+
+		this.closeResources();
+		LOGGER.debug("{} negative examples retrieved.",negativeExamples.size());
+
+		return negativeExamples;
+	}
+
+	@Override
+	public Set<Pair<RDFNode,RDFNode>> getKBExamples(String query,String subject,String object){
+
+		LOGGER.debug("Executing negative candidate query selection '{}' on Sparql Endpoint...",query);
+		long startTime = System.currentTimeMillis();
+		if(this.openResource!=null)
+			this.openResource.close();
+		ResultSet results = this.executeQuery(query);
+		LOGGER.debug("Query executed in {} seconds.",(System.currentTimeMillis()-startTime)/1000.0);
+
+		Set<Pair<RDFNode,RDFNode>> negativeExamples = Sets.newHashSet();
+		while(results.hasNext()){
+			QuerySolution oneResult = results.next();
+			Pair<RDFNode,RDFNode> negativeExample = 
+					Pair.of(oneResult.get(subject), oneResult.get(object));
+			negativeExamples.add(negativeExample);
+		}
+
+		this.closeResources();
+		LOGGER.debug("{} negative examples retrieved.",negativeExamples.size());
+
+		return negativeExamples;
+	}
+
 	public abstract ResultSet executeQuery(String sparqlQuery);
 
 	public void closeResources(){
@@ -254,13 +358,14 @@ public abstract class QueryJenaLibrary extends SparqlExecutor {
 	}
 
 	@Override
-	public int getSupportivePositiveExamples(Set<RuleAtom> rules,Set<String> relations, String typeSubject, String typeObject) {
+	public int getSupportivePositiveExamples(Set<RuleAtom> rules,Set<String> relations, String typeSubject, String typeObject, String subjectConstant,
+			String objectConstant) {
 
 
 		if(rules.size()==0)
 			return 0;
 		String positiveExamplesCountQuery = super.generatePositiveExampleCountQuery(rules, 
-				relations, typeSubject, typeObject);
+				relations, typeSubject, typeObject, subjectConstant, objectConstant);
 		if(positiveExamplesCountQuery==null)
 			return 0;
 
@@ -270,6 +375,44 @@ public abstract class QueryJenaLibrary extends SparqlExecutor {
 		if(this.openResource!=null)
 			this.openResource.close();
 		ResultSet results = this.executeQuery(positiveExamplesCountQuery);
+		LOGGER.debug("Query executed in {} seconds.",(System.currentTimeMillis()-startTime)/1000.0);
+
+		int coverage = 0;
+		if(results.hasNext()){
+			QuerySolution oneResult = results.next();
+			String varName = oneResult.varNames().next();
+			try{
+				coverage = oneResult.get(varName).asLiteral().getInt();
+			}
+			catch(Exception e){
+				LOGGER.debug("Error while reading result from the positive example count query.",e);
+			}
+		}
+		this.closeResources();
+
+		return coverage;
+
+	}
+	
+	@Override
+	public int getRelativeSupportivePositiveExamples
+	(Set<RuleAtom> rules,Set<String> relations, String typeSubject, String typeObject,String subjectConstant,
+			String objectConstant) {
+
+
+		if(rules.size()==0)
+			return 0;
+		String relativePositiveExamplesCountQuery = super.generateRelativePositiveExampleCountQuery(rules, 
+				relations, typeSubject, typeObject, subjectConstant, objectConstant);
+		if(relativePositiveExamplesCountQuery==null)
+			return 0;
+
+
+		LOGGER.debug("Executing positive examples coverage rule query '{}' on Sparql Endpoint...",relativePositiveExamplesCountQuery);
+		long startTime = System.currentTimeMillis();
+		if(this.openResource!=null)
+			this.openResource.close();
+		ResultSet results = this.executeQuery(relativePositiveExamplesCountQuery);
 		LOGGER.debug("Query executed in {} seconds.",(System.currentTimeMillis()-startTime)/1000.0);
 
 		int coverage = 0;
