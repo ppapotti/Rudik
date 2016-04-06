@@ -301,8 +301,9 @@ public abstract class SparqlExecutor {
 		StringBuilder atomFilterBuilder = new StringBuilder();
 		RuleAtom inequalityAtom = null;
 		for(RuleAtom atom:rules){
-			if(atom.getRelation().equals("<=") || atom.getRelation().equals(">=") 
-					|| atom.getRelation().equals("=")){
+			if(atom.getRelation().equals(Constant.GREATER_EQUAL_REL) || atom.getRelation().equals(Constant.LESS_EQUAL_REL) 
+					|| atom.getRelation().equals(Constant.GREATER_REL) || atom.getRelation().equals(Constant.LESS_REL)
+					|| atom.getRelation().equals(Constant.EQUAL_REL)){
 				atomFilterBuilder.append("FILTER (?"+atom.getSubject()+atom.getRelation()+"?"+atom.getObject()+") ");
 				continue;
 			}
@@ -354,8 +355,9 @@ public abstract class SparqlExecutor {
 			}
 
 
-			if(atom.getRelation().equals("<=") || atom.getRelation().equals(">=") 
-					|| atom.getRelation().equals("=")){
+			if(atom.getRelation().equals(Constant.GREATER_EQUAL_REL) || atom.getRelation().equals(Constant.LESS_EQUAL_REL) 
+					|| atom.getRelation().equals(Constant.GREATER_REL) || atom.getRelation().equals(Constant.LESS_REL)
+					|| atom.getRelation().equals(Constant.EQUAL_REL)){
 				inequalityFilter.append("FILTER (?"+subject+atom.getRelation()+"?"+object+") ");
 				continue;
 			}
