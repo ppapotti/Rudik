@@ -14,6 +14,7 @@ import org.apache.jena.rdf.model.RDFNode;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import asu.edu.neg_rule_miner.model.MultipleGraphHornRule;
 import asu.edu.neg_rule_miner.model.RuleAtom;
 import asu.edu.neg_rule_miner.model.rdf.graph.Edge;
 import asu.edu.neg_rule_miner.model.rdf.graph.Graph;
@@ -77,7 +78,7 @@ public abstract class QueryJenaLibrary extends SparqlExecutor {
 			if(relation.equals(this.typePrefix)&&
 					oneResult.get("obj")!=null&&
 					!this.topTypes.contains(oneResult.get("obj").toString())){
-				//graph.addType(entity, oneResult.get("obj").toString());
+				graph.addType(entity, oneResult.get("obj").toString());
 			}
 
 			if(this.relationToAvoid!=null&&this.relationToAvoid.contains(relation))
@@ -347,9 +348,62 @@ public abstract class QueryJenaLibrary extends SparqlExecutor {
 	public Set<Pair<String,String>> executeHornRuleQuery(Set<RuleAtom> rules, String typeSubject, String typeObject){
 		if(rules.size()==0)
 			return Sets.newHashSet();
-		String positiveExamplesCountQuery = super.generateHornRuleQuery(rules, typeSubject, typeObject);
+		String hornRuleQuery = super.generateHornRuleQuery(rules, typeSubject, typeObject);
 
-		return executeSubjectObjectQuery(positiveExamplesCountQuery,null);
+		return executeSubjectObjectQuery(hornRuleQuery,null);
+
+	}
+
+	public Set<Pair<String,String>> executeExpensiveHornRuleQuery(Set<RuleAtom> rules, String typeSubject, String typeObject){
+		if(rules.size()==0)
+			return Sets.newHashSet();
+
+		//first retrieve only subjects
+		Set<RuleAtom> onlySubjectAtoms = Sets.newHashSet();
+		for(RuleAtom oneAtom:rules){
+			if(oneAtom.getSubject().equals(MultipleGraphHornRule.START_NODE)||oneAtom.getObject().equals(MultipleGraphHornRule.START_NODE))
+				onlySubjectAtoms.add(oneAtom);
+		}
+		String subjectQuery = super.generateHornRuleQuery(onlySubjectAtoms, typeSubject, null);
+
+		LOGGER.debug("Executing sparql rule query '{}' on Sparql Endpoint...",subjectQuery);
+		long startTime = System.currentTimeMillis();
+		if(this.openResource!=null)
+			this.openResource.close();
+		ResultSet results = this.executeQuery(subjectQuery);
+		LOGGER.debug("Query executed in {} seconds.",(System.currentTimeMillis()-startTime)/1000.0);
+
+		Set<String> subjectInstances = Sets.newHashSet();
+
+		while(results.hasNext()){
+			QuerySolution oneResult = results.next();
+			String subject = oneResult.get("subject").toString();
+			if(subject!=null){
+				subjectInstances.add(subject);
+			}
+		}
+		this.closeResources();
+
+		//for each subject, execute a query with a 5000 limit
+		Set<Pair<String,String>> totalExamples = Sets.newHashSet();
+		int count=0;
+		for(String subject:subjectInstances){
+			count++;
+			if(count%1000==0)
+				LOGGER.debug("Executing query for {}th example out of {}.",count,subjectInstances.size());
+			String hornRuleQuery = super.generateHornRuleQuery(rules, typeSubject, typeObject);
+			//add a new filter 
+			hornRuleQuery = hornRuleQuery.substring(0, hornRuleQuery.length()-1) + "FILTER (?subject = <"+subject+">) } LIMIT 5000";
+			//if there is an exception executing one subject, just ignore it and continue
+			try{
+				totalExamples.addAll(executeSubjectObjectQuery(hornRuleQuery,null));
+			}
+			catch(Exception e){
+				//continue
+			}
+		}
+
+		return totalExamples;
 
 	}
 

@@ -207,6 +207,8 @@ public abstract class SparqlExecutor {
 
 	public abstract Set<Pair<String,String>> executeHornRuleQuery(Set<RuleAtom> rules, String typeSubject, String typeObject);
 
+	public abstract Set<Pair<String,String>> executeExpensiveHornRuleQuery(Set<RuleAtom> rules, String typeSubject, String typeObject);
+
 	public String generatePositiveExampleCountQuery(Set<RuleAtom> rules, Set<String> relations, String typeSubject, 
 			String typeObject){
 		if(relations==null||relations.size()==0)
@@ -284,7 +286,10 @@ public abstract class SparqlExecutor {
 				query.append(prefix+" ");
 			}
 		}
-		query.append("SELECT DISTINCT ?subject ?object");
+
+		String subject = typeSubject!=null ? "?subject" : "";
+		String object = typeObject!=null ? "?object" : "";
+		query.append("SELECT DISTINCT "+subject+" "+object);
 
 		/**
 		 * Jena does not work with count and nested query with from
@@ -293,8 +298,10 @@ public abstract class SparqlExecutor {
 			query.append(" FROM "+this.graphIri);
 
 		query.append(" WHERE {");
-		query.append("?object <"+typePrefix+"> <" + typeObject + ">." +
-				"  ?subject <"+typePrefix+"> <"+ typeSubject + ">. ");
+		if(subject.length()>0)
+			query.append(subject+" <"+typePrefix+"> <"+ typeSubject + ">. ");
+		if(object.length()>0)
+			query.append(object+" <"+typePrefix+"> <"+ typeObject + ">. ");
 
 		//check if the query contains an inequality
 
