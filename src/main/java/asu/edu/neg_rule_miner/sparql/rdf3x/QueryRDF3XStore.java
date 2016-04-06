@@ -211,7 +211,35 @@ public class QueryRDF3XStore extends SparqlExecutor{
 	 */
 	@Override
 	public int getSupportivePositiveExamples(Set<RuleAtom> rules,
+			Set<String> relations, String typeSubject, String typeObject, String subjectConstant, String objectConstant) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	/**
+	 * TO BE IMPLEMENTED
+	 */
+	@Override
+	public Set<Pair<RDFNode, RDFNode>> getKBExamples(String query,
+			String subject, String object) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	/**
+	 * TO BE IMPLEMENTED
+	 */
+	@Override
+	public Set<Pair<RDFNode, RDFNode>> generatePositiveExamples(
 			Set<String> relations, String typeSubject, String typeObject) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+
+	@Override
+	public int getRelativeSupportivePositiveExamples(Set<RuleAtom> rules,
+			Set<String> relations, String typeSubject, String typeObject, String subjectConstant, String objectConstant) {
 		// TODO Auto-generated method stub
 		return 0;
 	}

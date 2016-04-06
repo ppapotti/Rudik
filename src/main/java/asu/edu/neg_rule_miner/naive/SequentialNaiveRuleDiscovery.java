@@ -76,7 +76,16 @@ public class SequentialNaiveRuleDiscovery {
 	}
 
 	public Map<Set<RuleAtom>,Set<Pair<RDFNode,RDFNode>>> 
-	discoverHornRules(Set<Pair<RDFNode,RDFNode>> negativeExamples){
+	discoverHornRules(Set<Pair<RDFNode,RDFNode>> negativeExamples, 
+			Set<Pair<RDFNode,RDFNode>> positiveExamples){
+
+		//check constant among positive examples
+		InputPositiveProcess positive = new InputPositiveProcess();
+		Pair<RDFNode,RDFNode> subjectObjectConstants = 
+				positive.analysePositiveExamples(positiveExamples);
+		RDFNode subjectConstant = subjectObjectConstants.getLeft();
+		RDFNode objectConstant = subjectObjectConstants.getRight();
+		boolean isConstant = subjectConstant!=null || objectConstant!=null;
 
 		long start = System.currentTimeMillis();
 
@@ -156,9 +165,10 @@ public class SequentialNaiveRuleDiscovery {
 						nodeToAnalyse.add(node);
 					}
 
-					//LOGGER.debug("Expanding the graph querying for {} nodes...",nodeToAnalyse.size());
+					LOGGER.debug("Expanding the graph querying for {} nodes with rule {}...",
+							nodeToAnalyse.size(),currentRule.toString());
 					expandGraphs(nodeToAnalyse, graph,node2neighbours, numThreads);
-					//LOGGER.debug("Graph expansions completed.");
+					LOGGER.debug("Graph expansions completed.");
 				}
 
 				Map<RuleAtom,Set<Edge<RDFNode>>> nextPaths = 
@@ -169,6 +179,48 @@ public class SequentialNaiveRuleDiscovery {
 					Set<Edge<RDFNode>> copySet= Sets.newHashSet(nextPaths.get(rule));
 					newRule.addRuleAtom(rule, copySet);
 					rulesToDiscover.add(newRule);
+
+					/**
+					 * TO DO: can be improved: create inequality only with concept that are of the same type of the constant
+					 */
+					//add disequal relation to constant subject and/or object
+					if(isConstant&&newRule.getLen()<maxRuleLen){
+						boolean artificial = graph.isArtifical(nextPaths.get(rule).iterator().next());
+						String variable = rule.getObject();
+						if(artificial)
+							variable = rule.getSubject();
+						if(subjectConstant!=null&&!newRule.getBoundVariables(variable).contains(HornRule.START_NODE)){
+							RuleAtom artificialRule = new RuleAtom(rule.getSubject(),rule.getRelation(),HornRule.START_NODE);
+							if(artificial)
+								artificialRule = new RuleAtom(HornRule.START_NODE,rule.getRelation(),rule.getObject());
+							if(!nextPaths.containsKey(artificialRule)){
+								newRule = newRule.duplicateRule();
+								Edge<RDFNode> fakeEdge = new Edge<RDFNode>(null,subjectConstant,"!=");
+								copySet.clear();
+								copySet.add(fakeEdge);
+								newRule.addRuleAtom(new 
+										RuleAtom(variable, "!=", HornRule.START_NODE), copySet);
+								rulesToDiscover.add(newRule);
+
+							}
+						}
+
+						if(objectConstant!=null&&!newRule.getBoundVariables(variable).contains(HornRule.END_NODE)){
+							RuleAtom artificialRule = new RuleAtom(rule.getSubject(),rule.getRelation(),HornRule.END_NODE);
+							if(artificial)
+								artificialRule = new RuleAtom(HornRule.END_NODE,rule.getRelation(),rule.getObject());
+							if(!nextPaths.containsKey(artificialRule)){
+								newRule = newRule.duplicateRule();
+								Edge<RDFNode> fakeEdge = new Edge<RDFNode>(null,objectConstant,"!=");
+								copySet.clear();
+								copySet.add(fakeEdge);
+								newRule.addRuleAtom(new 
+										RuleAtom(variable, "!=", HornRule.END_NODE), copySet);
+								rulesToDiscover.add(newRule);
+
+							}
+						}
+					}
 				}
 
 			}
@@ -193,11 +245,14 @@ public class SequentialNaiveRuleDiscovery {
 	 */
 	public void printRulesStatistics(Map<Set<RuleAtom>,Set<Pair<RDFNode,RDFNode>>> rules, 
 			Set<String>relations, String typeSubject, 
-			String typeObject, File outputFile) throws IOException{
+			String typeObject, int totalNegativeExamples, int totalPositiveExamples, File outputFile,
+			String subjectConstant, String objectConstant) throws IOException{
 		LOGGER.debug("Ordering rules and computing positive examples coverage for output.");
 		long start = System.currentTimeMillis();
 		BufferedWriter outputWriter = new BufferedWriter(new FileWriter(outputFile)); 
-		outputWriter.write("\"Id\",\"Rule\",\"Negative Examples Coverage\",\"Positive Examples Coverage\",\"Total Coverage\",\"Covered Negatve Examples\"\n");
+		outputWriter.write("\"Id\",\"Rule\",\"Negative Examples Coverage\",\"Positive Examples Coverage\"," +
+				"\"Negative Fraction\",\"Positive Fraction\"," +
+				"\"Positive Relative Fraction\",\"score\",\"Covered Negative Examples\"\n");
 		Map<Pair<RDFNode,RDFNode>,String> example2id = Maps.newHashMap();
 		int exampleCount=0;
 
@@ -227,8 +282,8 @@ public class SequentialNaiveRuleDiscovery {
 				rules.remove(bestRule);
 				continue;
 			}
-			
-			//addd this rule and the equivalent rule to avoid rules duplicate
+
+			//add this rule and the equivalent rule to avoid rules duplicate
 			seenRules.add(bestRule);
 			Set<RuleAtom> equivalentRule = Sets.newHashSet();
 			Set<String> variables = Sets.newHashSet();
@@ -260,16 +315,25 @@ public class SequentialNaiveRuleDiscovery {
 			String ruleId = "r_"+ruleCount;
 			ruleCount++;
 
+			String coveredExamplesString = "[";
+
+			int i=0;
 			for(Pair<RDFNode,RDFNode> coveredExample:coveredExamples){
+				if(i>4100){
+					coveredExamplesString+="..., ";
+					break;
+				}
 				String currentExample = example2id.get(coveredExample);
 				if(currentExample==null){
 					currentExample="e"+exampleCount;
 					example2id.put(coveredExample, currentExample);
 					exampleCount++;
 				}
+				coveredExamplesString+=currentExample+", ";
 			}
+			coveredExamplesString=
+					coveredExamplesString.substring(0,coveredExamplesString.length()-2)+"]";
 
-			String coveredExamplesString = coveredExamples+"";
 			boolean isSubset=false;
 			//check if the covered examples are subset of something else
 			for(String otherRule:rule2coverage.keySet()){
@@ -283,16 +347,30 @@ public class SequentialNaiveRuleDiscovery {
 			if(!isSubset)
 				rule2coverage.put(ruleId,coveredExamples);
 
-
-			int positiveExampleSupport = -1;
+			int relativePositiveExampleSupport = -1;
 			try{
-				positiveExampleSupport = this.getSparqlExecutor().
-						getSupportivePositiveExamples(bestRule, 
-								relations, typeObject, typeSubject);
+				relativePositiveExampleSupport = this.getSparqlExecutor().
+						getRelativeSupportivePositiveExamples(bestRule, 
+								relations, typeObject, typeSubject,subjectConstant,objectConstant);
 			}
 			catch(Exception e){
 				//continue
 			}
+
+
+			int positiveExampleSupport = -1;
+			if(relativePositiveExampleSupport!=0){
+				try{
+					positiveExampleSupport = this.getSparqlExecutor().
+							getSupportivePositiveExamples(bestRule, 
+									relations, typeObject, typeSubject,subjectConstant,objectConstant);
+				}
+				catch(Exception e){
+					//continue
+				}
+			}
+			else
+				positiveExampleSupport = 0;
 			int totalSupport = -1;
 			//do not count total coverage, takes too long
 			//			try{
@@ -301,8 +379,21 @@ public class SequentialNaiveRuleDiscovery {
 			//			catch(Exception e){
 			//				//continue
 			//			}
+			String relativePositveExampleFraction = "-";
+			if(relativePositiveExampleSupport>0&&positiveExampleSupport!=-1){
+				relativePositveExampleFraction = ""+((positiveExampleSupport+0.)/relativePositiveExampleSupport);
+			}
+
+			double score = 1-(coveredExamples.size()/(totalNegativeExamples+0.));
+			if(relativePositiveExampleSupport>0&&positiveExampleSupport!=-1)
+				score+=(positiveExampleSupport+0.)/relativePositiveExampleSupport;
+			else
+				score=3;
 			outputWriter.write("\""+ruleId+"\",\""+bestRule+"\",\""+coveredExamples.size()+
-					"\",\""+positiveExampleSupport+"\",\""+totalSupport+"\",\""+coveredExamplesString+"\"\n");
+					"\",\""+positiveExampleSupport+" (out of "+relativePositiveExampleSupport+")\"" +
+					",\""+coveredExamples.size()/(totalNegativeExamples+0.)+
+					"\",\""+positiveExampleSupport/(totalPositiveExamples+0.)+"\"," +
+					"\""+relativePositveExampleFraction+"\",\""+score+"\",\""+coveredExamplesString+"\"\n");
 
 		}
 		outputWriter.write("\nExamples Id Mappings:\n");
@@ -370,6 +461,12 @@ public class SequentialNaiveRuleDiscovery {
 		return outputThreads;
 	}
 
+	public Set<Pair<RDFNode,RDFNode>> generatePositiveExamples(
+			Set<String> relations, String typeSubject, String typeObject){
+		return this.getSparqlExecutor().generatePositiveExamples(relations, typeSubject, typeObject);
+
+	}
+
 	/**
 	 * Generate negative examples for the input relations
 	 * @param relations
@@ -382,8 +479,8 @@ public class SequentialNaiveRuleDiscovery {
 	 * 			decide whether returns only a subset of the negative examples, one for each relation
 	 * @return
 	 */
-	public Set<Pair<RDFNode,RDFNode>> generateNegativeExamples(Set<String> relations, String typeSubject, 
-			String typeObject){
+	public Set<Pair<RDFNode,RDFNode>> generateNegativeExamples(
+			Set<String> relations, String typeSubject, String typeObject){
 
 
 		int totalNumberExample = -1;
@@ -406,6 +503,11 @@ public class SequentialNaiveRuleDiscovery {
 			return this.getSparqlExecutor().generateNegativeExamples(relations, 
 					typeSubject, typeObject);
 
+	}
+
+	public Set<Pair<RDFNode,RDFNode>> getKBExamples(String query, String subject, 
+			String object){
+		return this.getSparqlExecutor().getKBExamples(query, subject, object);
 	}
 
 	/**

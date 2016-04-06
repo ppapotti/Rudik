@@ -8,19 +8,20 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 import org.apache.commons.configuration.Configuration;
 import org.apache.commons.configuration.HierarchicalConfiguration;
 import org.apache.commons.lang3.tuple.Pair;
-import org.apache.jena.rdf.model.RDFNode;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.google.common.collect.Sets;
 
+import asu.edu.neg_rule_miner.RuleMinerException;
 import asu.edu.neg_rule_miner.configuration.Constant;
-import asu.edu.neg_rule_miner.model.HornRule;
+import asu.edu.neg_rule_miner.model.MultipleGraphHornRule;
 import asu.edu.neg_rule_miner.model.RuleAtom;
 import asu.edu.neg_rule_miner.model.rdf.graph.Edge;
 import asu.edu.neg_rule_miner.model.rdf.graph.Graph;
@@ -43,7 +44,11 @@ public abstract class SparqlExecutor {
 
 	protected Set<String> relationToAvoid;
 
+	protected Set<String> topTypes;
+
 	protected String graphIri;
+
+	protected String typePrefix;
 
 	@SuppressWarnings("unchecked")
 	public SparqlExecutor(Configuration config){
@@ -63,6 +68,19 @@ public abstract class SparqlExecutor {
 			}
 			catch(Exception e){
 				LOGGER.error("Error while reading relation_prefix.prefix parameter from the configuration file.",e);
+			}
+		}
+
+		if(!config.containsKey("types.type_prefix")||config.getString("types.type_prefix").length()==0)
+			throw new RuleMinerException("No type_prefix specific in the Configuration file.",LOGGER);
+		typePrefix = config.getString("types.type_prefix");
+
+		this.topTypes=Sets.newHashSet();
+
+		if(config.containsKey("types.top_type")){
+			List<String> objects = (List<String>) config.getList("types.top_type");
+			for(String object:objects){
+				this.topTypes.add(object);
 			}
 		}
 
@@ -87,14 +105,48 @@ public abstract class SparqlExecutor {
 		}
 	}
 
-	public abstract Set<Edge<RDFNode>> executeQuery(RDFNode entity,
-			Graph<RDFNode> inputGraphs);
+	public abstract Map<Edge<String>,String> executeQuery(String entity,
+			Graph<String> inputGraphs, Map<String,Set<String>> entity2types);
 
-	public abstract Set<Pair<RDFNode,RDFNode>> generateNegativeExamples(Set<String> relations, String typeSubject, 
+	public abstract Set<Pair<String,String>> generateNegativeExamples(Set<String> relations, String typeSubject, 
 			String typeObject);
 
-	public abstract Set<Pair<RDFNode, RDFNode>> generateFilteredNegativeExamples(
-			Set<String> relations, String typeSubject, String typeObject, int totalNumberExample);
+	public abstract Set<Pair<String,String>> generatePositiveExamples(Set<String >relations,String typeSubject,String typeObject);
+
+	public abstract Set<Pair<String,String>> getKBExamples(String query,String subject,String object);
+
+	public String generatePositiveExampleQuery(Set<String> relations,String typeSubject,String typeObject){
+
+		Iterator<String> relationIterator = relations.iterator();
+		StringBuilder filterRelation = new StringBuilder();
+		while(relationIterator.hasNext()){
+			String currentRelation = relationIterator.next();
+			filterRelation.append("?targetRelation = <"+currentRelation+">");
+			if(relationIterator.hasNext()){
+				filterRelation.append(" || ");
+			}
+		}
+
+		String positiveCandidateQuery = "";
+		if(this.prefixQuery!=null&&this.prefixQuery.size()>0){
+			for(String prefix:this.prefixQuery){
+				positiveCandidateQuery+=prefix+" ";
+			}
+		}
+
+		positiveCandidateQuery +=
+				"SELECT DISTINCT ?subject ?object ";
+		if(this.graphIri!=null&&graphIri.length()>0)
+			positiveCandidateQuery+=" FROM "+this.graphIri;
+
+		positiveCandidateQuery+=" WHERE " +
+				"{ ?object <"+typePrefix+"> <" + typeObject + ">." +
+				"  ?subject <"+typePrefix+"> <"+ typeSubject + ">." +
+				"  ?subject ?targetRelation ?object. " +
+				"  FILTER (" + filterRelation.toString() + ") }";
+
+		return positiveCandidateQuery;
+	}
 
 	public String generateNegativeExampleQuery(Set<String> relations, String typeSubject, String typeObject){
 		if(relations==null||relations.size()==0)
@@ -130,23 +182,30 @@ public abstract class SparqlExecutor {
 			negativeCandidateQuery+=" FROM "+this.graphIri;
 
 		negativeCandidateQuery+=" WHERE " +
-				"{ ?object rdf:type <" + typeObject + ">." +
-				"  ?subject rdf:type <"+ typeSubject + ">." +
+				"{ ?object <"+typePrefix+"> <" + typeObject + ">." +
+				"  ?subject <"+typePrefix+"> <"+ typeSubject + ">." +
 				"  ?subject ?targetRelation ?realObject. " +
 				"  ?subject ?otherRelation ?object. " +
 				"  FILTER (" + filterRelation.toString() + ") " +
 				"  FILTER (" + filterNotRelation.toString() + ") " +
 				"  FILTER (?object != ?realObject) " +
 				differentRelation.toString();
-		
+
 		negativeCandidateQuery+="}";
 
 		return negativeCandidateQuery;
 	}
 
-	public abstract int getSupportivePositiveExamples(Set<RuleAtom> rules,Set<String> relations, String typeSubject, String typeObject);
+	public abstract int getSupportivePositiveExamples(Set<RuleAtom> rules,Set<String> relations, String typeSubject, String typeObject,
+			Set<Pair<String,String>> subject2objectConstant);
 
-	public abstract int getTotalCoveredExample(HornRule<RDFNode> rule, String typeSubject, String typeObject);
+	public abstract Set<Pair<String,String>> getMatchingPositiveExamples(Set<RuleAtom> rules,Set<String> relations, String typeSubject, String typeObject,
+			Set<Pair<String,String>> positiveExamples);
+
+
+	public abstract Map<String,Set<Pair<String,String>>> getRulePositiveSupport(Set<Pair<String,String>> positiveExamples);
+
+	public abstract Set<Pair<String,String>> executeHornRuleQuery(Set<RuleAtom> rules, String typeSubject, String typeObject);
 
 	public String generatePositiveExampleCountQuery(Set<RuleAtom> rules, Set<String> relations, String typeSubject, 
 			String typeObject){
@@ -173,7 +232,7 @@ public abstract class SparqlExecutor {
 				query.append(prefix+" ");
 			}
 		}
-		query.append("SELECT (COUNT(*) as ?count) WHERE{SELECT DISTINCT ?subject ?object");
+		query.append("SELECT DISTINCT ?subject ?object");
 
 		/**
 		 * Jena does not work with count and nested query with from
@@ -182,25 +241,40 @@ public abstract class SparqlExecutor {
 		//query.append(" FROM "+this.graphIri);
 
 		query.append(" WHERE {");
-		for(RuleAtom atom:rules){
-			if(atom.getRelation().equals("<=") || atom.getRelation().equals(">=") || atom.getRelation().equals("="))
-				query.append("FILTER (?"+atom.getSubject()+atom.getRelation()+"?"+atom.getObject()+") ");
-			else
-				query.append("?"+atom.getSubject()+" <"+atom.getRelation()+"> ?"+atom.getObject()+". ");
-		}
-		query.append("?object rdf:type <" + typeObject + ">." +
-				"  ?subject rdf:type <"+ typeSubject + ">." +
+		query.append("?object <"+typePrefix+"> <" + typeObject + ">." +
+				"  ?subject <"+typePrefix+"> <"+ typeSubject + ">." +
 				"  ?subject ?targetRelation ?object. " +
 				"  FILTER (" + filterRelation.toString() + ") ");
-		query.append("}}");
+
+		//check if the query contains an inequality
+
+		StringBuilder atomFilterBuilder = new StringBuilder();
+		RuleAtom inequalityAtom = null;
+		for(RuleAtom atom:rules){
+			if(atom.getRelation().equals(Constant.GREATER_EQUAL_REL) || atom.getRelation().equals(Constant.LESS_EQUAL_REL) 
+					|| atom.getRelation().equals(Constant.GREATER_REL) || atom.getRelation().equals(Constant.LESS_REL)
+					|| atom.getRelation().equals(Constant.EQUAL_REL)){
+				atomFilterBuilder.append("FILTER (?"+atom.getSubject()+atom.getRelation()+"?"+atom.getObject()+") ");
+				continue;
+			}
+			if(atom.getRelation().equals("!=")){
+				inequalityAtom = atom;
+				continue;
+			}
+			atomFilterBuilder.append("?"+atom.getSubject()+" <"+atom.getRelation()+"> ?"+atom.getObject()+". ");
+		}
+		query.append(atomFilterBuilder.toString());
+		if(inequalityAtom != null)
+			query.append(this.inequalityFilter(rules, inequalityAtom));
+		query.append("}");
 
 		return query.toString();
 	}
 
-	public String generateTotalExampleCountQuery(HornRule<RDFNode> rule, String typeSubject, 
+	public String generateHornRuleQuery(Set<RuleAtom> rules, String typeSubject, 
 			String typeObject){
 
-		if(!(rule.getRules().size()>0))
+		if(!(rules.size()>0))
 			return null;
 		//create the RDF 
 		StringBuilder query = new StringBuilder();
@@ -210,51 +284,111 @@ public abstract class SparqlExecutor {
 				query.append(prefix+" ");
 			}
 		}
-		query.append("SELECT (COUNT(*) as ?count) WHERE{SELECT DISTINCT ?subject ?object");
+		query.append("SELECT DISTINCT ?subject ?object");
 
 		/**
 		 * Jena does not work with count and nested query with from
 		 */
-		//if(this.graphIri!=null&&graphIri.length()>0)
-		//query.append(" FROM "+this.graphIri);
+		if(this.graphIri!=null&&graphIri.length()>0)
+			query.append(" FROM "+this.graphIri);
 
 		query.append(" WHERE {");
-		for(RuleAtom atom:rule.getRules()){
-			if(atom.getRelation().equals("<=") || atom.getRelation().equals(">=") || atom.getRelation().equals("="))
-				query.append("FILTER (?"+atom.getObject()+atom.getRelation()+"?"+atom.getObject()+")");
-			else
-				query.append("?"+atom.getSubject()+" <"+atom.getRelation()+"> ?"+atom.getObject()+". ");
+		query.append("?object <"+typePrefix+"> <" + typeObject + ">." +
+				"  ?subject <"+typePrefix+"> <"+ typeSubject + ">. ");
+
+		//check if the query contains an inequality
+
+		StringBuilder atomFilterBuilder = new StringBuilder();
+		RuleAtom inequalityAtom = null;
+		for(RuleAtom atom:rules){
+			if(atom.getRelation().equals("<=") || atom.getRelation().equals(">=") 
+					|| atom.getRelation().equals("=")){
+				atomFilterBuilder.append("FILTER (?"+atom.getSubject()+atom.getRelation()+"?"+atom.getObject()+") ");
+				continue;
+			}
+			if(atom.getRelation().equals("!=")){
+				inequalityAtom = atom;
+				continue;
+			}
+			atomFilterBuilder.append("?"+atom.getSubject()+" <"+atom.getRelation()+"> ?"+atom.getObject()+". ");
 		}
-		query.append("?object rdf:type <" + typeObject + ">." +
-				"  ?subject rdf:type <"+ typeSubject + ">.");
-		query.append("}}");
+		query.append(atomFilterBuilder.toString());
+		if(inequalityAtom != null)
+			query.append(this.inequalityFilter(rules, inequalityAtom));
+		query.append("}");
 
 		return query.toString();
 	}
+
+	private String inequalityFilter(Set<RuleAtom> rules, RuleAtom inequalityAtom){
+		StringBuilder inequalityFilter = new StringBuilder();
+		inequalityFilter.append("FILTER NOT EXISTS {");
+		String variableToSubstitue = inequalityAtom.getSubject();
+		String replacementVariable = inequalityAtom.getObject();
+		if(variableToSubstitue.equals(MultipleGraphHornRule.START_NODE) || variableToSubstitue.equals(MultipleGraphHornRule.END_NODE)){
+			variableToSubstitue = inequalityAtom.getObject();
+			replacementVariable = inequalityAtom.getSubject();
+		}
+
+		if(!replacementVariable.equals(MultipleGraphHornRule.START_NODE)&&!replacementVariable.equals(MultipleGraphHornRule.END_NODE))
+			replacementVariable = "other"+replacementVariable;
+
+		for(RuleAtom atom:rules){
+			if(atom.equals(inequalityAtom))
+				continue;
+
+			String subject = atom.getSubject();
+			if(subject.equals(variableToSubstitue))
+				subject = replacementVariable;
+			else{
+				if(!subject.equals(MultipleGraphHornRule.START_NODE) &&!subject.equals(MultipleGraphHornRule.END_NODE))
+					subject = "other"+subject;
+			}
+
+			String object = atom.getObject();
+			if(object.equals(variableToSubstitue))
+				object = replacementVariable;
+			else{
+				if(!object.equals(MultipleGraphHornRule.START_NODE) &&!object.equals(MultipleGraphHornRule.END_NODE))
+					object = "other"+object;
+			}
+
+
+			if(atom.getRelation().equals("<=") || atom.getRelation().equals(">=") 
+					|| atom.getRelation().equals("=")){
+				inequalityFilter.append("FILTER (?"+subject+atom.getRelation()+"?"+object+") ");
+				continue;
+			}
+			inequalityFilter.append("?"+subject+" <"+atom.getRelation()+"> ?"+object+". ");
+		}
+		inequalityFilter.append("}");
+
+		return inequalityFilter.toString();
+	}
+
 
 	/**
 	 * Negative examples must be separated with a tab
 	 * @return
 	 * @throws IOException 
 	 */
-	public Set<Pair<RDFNode,RDFNode>> readNegativeExamplesFromFile(File inputFile) throws IOException{
-		Set<Pair<RDFNode,RDFNode>> negativeExamples = Sets.newHashSet();
+	public Set<Pair<String,String>> readExamplesFromFile(File inputFile) throws IOException{
+		Set<Pair<String,String>> examples = Sets.newHashSet();
 		BufferedReader reader = new BufferedReader(new FileReader(inputFile));
 
 		String line = reader.readLine();
 		while(line!=null){
-			RDFNode firstNode = new RDFSimpleNodeResourceImplementation(line.split("\t")[0]);
-			RDFNode secondNode = new RDFSimpleNodeResourceImplementation(line.split("\t")[1]);
-			Pair<RDFNode,RDFNode> negativeExample = Pair.of(firstNode,secondNode);
-			negativeExamples.add(negativeExample);
+			String firstNode = line.split("\t")[0];
+			String secondNode = line.split("\t")[1];
+			Pair<String,String> example = Pair.of(firstNode,secondNode);
+			if(!examples.contains(Pair.of(secondNode, firstNode)))
+				examples.add(example);
 			line=reader.readLine();
 		}
 
 		reader.close();
-		LOGGER.debug("Read {} negative examples from input file.",negativeExamples.size());
-		return negativeExamples;
-
-
+		LOGGER.debug("Read {} negative examples from input file.",examples.size());
+		return examples;
 	}
 
 	/**
@@ -262,22 +396,34 @@ public abstract class SparqlExecutor {
 	 * @param entity
 	 * @return
 	 */
-	protected void compareLiterals(RDFNode literal, Graph<RDFNode> graph){
+	protected void compareLiterals(String literal, Graph<String> graph){
 
-		for(RDFNode node:graph.nodes){
-			if(node.equals(literal)||!node.isLiteral())
+		String literalLexicalForm = graph.getLexicalForm(literal);
+		//get only the literals that belong to the same example. It returns all literals if entity covers a null set of examples
+		Set<String> otherLiterals = graph.getLiteralNodes();
+
+		for(String node:otherLiterals){
+			if(node.equals(literal) )
 				continue;
-			String relation = this.compareLiteral(literal, node);
-			if(relation!=null)
-				graph.addEdge(literal, node, relation, true);
+			Set<String> outputRelations = compareLiteral(literalLexicalForm, graph.getLexicalForm(node));
+			if(outputRelations!=null){
+				for(String relation : outputRelations){
+					if(!graph.containsEdge(node, literal, getInverseRelation(relation)))
+						graph.addEdge(literal, node, relation, true);
+				}
+			}
 		}
 
 
 	}
 
-	private String compareLiteral(RDFNode literalOne, RDFNode literalTwo){
-		String stringLiteralOne = literalOne.asLiteral().getLexicalForm();
-		String stringLiteralTwo = literalTwo.asLiteral().getLexicalForm();
+	public static Set<String> compareLiteral(String stringLiteralOne, String stringLiteralTwo){
+
+		Set<String> outputRelations = Sets.newHashSet();
+
+		if(stringLiteralOne==null||
+				stringLiteralTwo==null)
+			return null;
 
 		//compare them as integer
 		Double firstDouble = null;
@@ -292,11 +438,17 @@ public abstract class SparqlExecutor {
 			secondDouble = Double.parseDouble(stringLiteralTwo);
 			if(firstDouble==null)
 				return null;
-			if(firstDouble==secondDouble)
-				return Constant.EQUAL_REL;
+			if(firstDouble==secondDouble){
+				outputRelations.add(Constant.EQUAL_REL);
+				outputRelations.add(Constant.LESS_EQUAL_REL);
+				outputRelations.add(Constant.GREATER_EQUAL_REL);
+				return outputRelations;
+			}
 			if(firstDouble<secondDouble)
-				return Constant.LESS_EQUAL_REL;
-			return Constant.GREATER_EQUAL_REL;
+				outputRelations.add(Constant.LESS_REL);
+			else
+				outputRelations.add(Constant.GREATER_REL);
+			return outputRelations;
 		}
 		catch(Exception e){
 			if(firstDouble!=null)
@@ -335,17 +487,45 @@ public abstract class SparqlExecutor {
 			}	
 		}
 		if(firstDate!=null&&secondDate!=null){
-			if(firstDate.compareTo(secondDate)==0)
-				return Constant.EQUAL_REL;
+			if(firstDate.compareTo(secondDate)==0){
+				outputRelations.add(Constant.EQUAL_REL);
+				outputRelations.add(Constant.LESS_EQUAL_REL);
+				outputRelations.add(Constant.GREATER_EQUAL_REL);
+				return outputRelations;
+			}
 			if(firstDate.compareTo(secondDate)<0)
-				return Constant.LESS_EQUAL_REL;
-			return Constant.GREATER_EQUAL_REL;
+				outputRelations.add(Constant.LESS_REL);
+			else
+				outputRelations.add(Constant.GREATER_REL);
+			return outputRelations;
 		}
 
 		//compare them as a string
-		if(stringLiteralOne.equals(stringLiteralTwo))
-			return Constant.EQUAL_REL;
+		if(stringLiteralOne.equals(stringLiteralTwo)){
+			outputRelations.add(Constant.EQUAL_REL);
+			return outputRelations;
+		}
 		return null;
+	}
+
+	public static String getInverseRelation(String rel){
+		if(rel.equals(Constant.GREATER_EQUAL_REL))
+			return Constant.LESS_EQUAL_REL;
+
+		if(rel.equals(Constant.LESS_EQUAL_REL))
+			return Constant.GREATER_EQUAL_REL;
+
+		if(rel.equals(Constant.GREATER_REL))
+			return Constant.LESS_REL;
+
+		if(rel.equals(Constant.LESS_REL))
+			return Constant.GREATER_REL;
+
+		if(rel.equals(Constant.EQUAL_REL))
+			return rel;
+
+		return "Unknown Relation";
+
 	}
 
 }

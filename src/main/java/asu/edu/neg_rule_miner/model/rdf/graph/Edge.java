@@ -11,7 +11,7 @@ package asu.edu.neg_rule_miner.model.rdf.graph;
  */
 public class Edge <T> {
 	public T nodeSource;
-		
+
 	public Edge(T source, T end, String label){
 		this.label=label;
 		this.nodeSource = source;
@@ -79,12 +79,14 @@ public class Edge <T> {
 	}
 
 	public T nodeEnd;
-	
+
 	public String label;
-	
+
 	public String toString() {
-		return this.nodeSource.toString()+"-"+this.label.toString()+"->"+this.nodeEnd.toString();
+		return (this.nodeSource!=null ? this.nodeSource.toString() : "") +
+				(this.label!=null ? this.label.toString() : "") +
+				(this.nodeEnd!=null ? this.nodeEnd.toString() : "");
 	}
-	
+
 
 }
