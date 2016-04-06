@@ -3,22 +3,22 @@ package asu.edu.neg_rule_miner.sparql.rdf3x;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.Map;
 import java.util.Set;
 
 import org.apache.commons.configuration.Configuration;
 import org.apache.commons.lang3.tuple.Pair;
-import org.apache.jena.ext.com.google.common.collect.Sets;
-import org.apache.jena.rdf.model.RDFNode;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import com.google.common.collect.Maps;
+
 import asu.edu.neg_rule_miner.RuleMinerException;
-import asu.edu.neg_rule_miner.model.HornRule;
 import asu.edu.neg_rule_miner.model.RuleAtom;
 import asu.edu.neg_rule_miner.model.rdf.graph.Edge;
 import asu.edu.neg_rule_miner.model.rdf.graph.Graph;
-import asu.edu.neg_rule_miner.sparql.RDFSimpleNodeResourceImplementation;
 import asu.edu.neg_rule_miner.sparql.SparqlExecutor;
+import asu.edu.neg_rule_miner.sparql.literal.utils.LiteralFactory;
 
 public class QueryRDF3XStore extends SparqlExecutor{
 
@@ -43,11 +43,11 @@ public class QueryRDF3XStore extends SparqlExecutor{
 
 
 	@Override
-	public Set<Edge<RDFNode>> executeQuery(RDFNode entity, 
-			Graph<RDFNode> inputGraph) {
+	public Map<Edge<String>,String> executeQuery(String entity, 
+			Graph<String> inputGraph,Map<String,Set<String>> entity2types) {
 		long startTime = System.currentTimeMillis();
 
-		Set<Edge<RDFNode>> neighbours = Sets.newHashSet();
+		Map<Edge<String>,String> neighbours = Maps.newHashMap();
 		String dbPediaQuery = "SELECT DISTINCT ?sub ?rel ?obj";
 		if(this.graphIri!=null&&this.graphIri.length()>0)
 			dbPediaQuery+=" FROM "+this.graphIri;
@@ -112,8 +112,9 @@ public class QueryRDF3XStore extends SparqlExecutor{
 				continue;
 			}
 
-			Edge<RDFNode> edgeToAdd = null;
-			RDFSimpleNodeResourceImplementation newNode = null;
+			Edge<String> edgeToAdd = null;
+			String newNode = null;
+			String lexicalForm = null;
 
 			String subject = null;
 			String object = null;
@@ -133,26 +134,28 @@ public class QueryRDF3XStore extends SparqlExecutor{
 
 			if(subject!=null){
 				subject = subject.replaceAll("[<|>]", "");
-				newNode = new RDFSimpleNodeResourceImplementation(subject);
-				edgeToAdd = new Edge<RDFNode>(newNode, entity, relation);
+				newNode = subject;
+				edgeToAdd = new Edge<String>(newNode, entity, relation);
 			}
 			else{
 				if(object != null){
-					boolean isLiteral = true;
 					if(object.startsWith("<")){
 						object = object.replaceAll("[<|>]", "");
-						isLiteral = false;
-					}
-					newNode = new RDFSimpleNodeResourceImplementation(object);
-					newNode.setIsLiteral(isLiteral);
+					}else
+						lexicalForm = LiteralFactory.getLiteralForm(object);
 
-					edgeToAdd = new Edge<RDFNode>(entity, newNode, 
+					newNode = object;
+
+					edgeToAdd = new Edge<String>(entity, newNode, 
 							relation);
 				}
 			}
 
-			neighbours.add(edgeToAdd);
-			inputGraph.addNode(newNode);
+			neighbours.put(edgeToAdd,lexicalForm);
+			if(lexicalForm==null)
+				inputGraph.addNode(newNode);
+			else
+				inputGraph.addLiteralNode(newNode, lexicalForm);
 			inputGraph.addEdge(edgeToAdd, true);
 			try {
 				line = in.readLine();
@@ -182,27 +185,9 @@ public class QueryRDF3XStore extends SparqlExecutor{
 	 * Read it from an input file 
 	 */
 	@Override
-	public Set<Pair<RDFNode, RDFNode>> generateNegativeExamples(
+	public Set<Pair<String, String>> generateNegativeExamples(
 			Set<String> relations, String typeSubject, String typeObject) {
 		return null;
-	}
-
-
-	@Override
-	public Set<Pair<RDFNode, RDFNode>> generateFilteredNegativeExamples(
-			Set<String> relations, String typeSubject, String typeObject, int totalNumberExample) {
-		return null;
-	}
-
-
-
-	/**
-	 * TO BE IMPLEMENTED
-	 */
-	@Override
-	public int getTotalCoveredExample(HornRule<RDFNode> rule, String typeSubject, String typeObject) {
-		// TODO Auto-generated method stub
-		return 0;
 	}
 
 
@@ -211,7 +196,7 @@ public class QueryRDF3XStore extends SparqlExecutor{
 	 */
 	@Override
 	public int getSupportivePositiveExamples(Set<RuleAtom> rules,
-			Set<String> relations, String typeSubject, String typeObject, String subjectConstant, String objectConstant) {
+			Set<String> relations, String typeSubject, String typeObject, Set<Pair<String,String>> subject2objectConstant) {
 		// TODO Auto-generated method stub
 		return 0;
 	}
@@ -220,7 +205,7 @@ public class QueryRDF3XStore extends SparqlExecutor{
 	 * TO BE IMPLEMENTED
 	 */
 	@Override
-	public Set<Pair<RDFNode, RDFNode>> getKBExamples(String query,
+	public Set<Pair<String, String>> getKBExamples(String query,
 			String subject, String object) {
 		// TODO Auto-generated method stub
 		return null;
@@ -230,7 +215,7 @@ public class QueryRDF3XStore extends SparqlExecutor{
 	 * TO BE IMPLEMENTED
 	 */
 	@Override
-	public Set<Pair<RDFNode, RDFNode>> generatePositiveExamples(
+	public Set<Pair<String, String>> generatePositiveExamples(
 			Set<String> relations, String typeSubject, String typeObject) {
 		// TODO Auto-generated method stub
 		return null;
@@ -238,10 +223,24 @@ public class QueryRDF3XStore extends SparqlExecutor{
 
 
 	@Override
-	public int getRelativeSupportivePositiveExamples(Set<RuleAtom> rules,
-			Set<String> relations, String typeSubject, String typeObject, String subjectConstant, String objectConstant) {
+	public Map<String, Set<Pair<String,String>>> getRulePositiveSupport(Set<Pair<String, String>> positiveExamples) {
 		// TODO Auto-generated method stub
-		return 0;
+		return null;
+	}
+
+
+	@Override
+	public Set<Pair<String, String>> getMatchingPositiveExamples(Set<RuleAtom> rules, Set<String> relations,
+			String typeSubject, String typeObject, Set<Pair<String, String>> positiveExamples) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+
+	@Override
+	public Set<Pair<String, String>> executeHornRuleQuery(Set<RuleAtom> rules, String typeSubject, String typeObject) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

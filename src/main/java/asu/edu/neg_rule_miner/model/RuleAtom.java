@@ -1,6 +1,13 @@
 package asu.edu.neg_rule_miner.model;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import asu.edu.neg_rule_miner.RuleMinerException;
+
 public class RuleAtom {
+
+	private final static Logger LOGGER = LoggerFactory.getLogger(RuleAtom.class.getName());
 
 	private String subject;
 	private String object;
@@ -76,6 +83,20 @@ public class RuleAtom {
 
 	public String toString(){
 		return relation+"("+subject+","+object+")";
+	}
+
+	public static RuleAtom readRuleAtom(String ruleAtomString){
+		String ruleAtomStringCopy = ruleAtomString;
+		if(!ruleAtomStringCopy.contains("("))
+			throw new RuleMinerException("The rule '"+ruleAtomString+"' cannot be parsed as rule atom",LOGGER);
+		String relation = ruleAtomStringCopy.substring(0,ruleAtomStringCopy.indexOf("("));
+		ruleAtomStringCopy=ruleAtomStringCopy.substring(relation.length()+1,ruleAtomStringCopy.length()-1);
+		if(ruleAtomStringCopy.contains("(")||ruleAtomStringCopy.contains(")")||!ruleAtomStringCopy.contains(",")){
+			throw new RuleMinerException("The rule '"+ruleAtomString+"' cannot be parsed as rule atom",LOGGER);
+		}
+		String subject = ruleAtomStringCopy.split(",")[0];
+		String object = ruleAtomStringCopy.split(",")[1];
+		return new RuleAtom(subject, relation, object);
 	}
 
 }
