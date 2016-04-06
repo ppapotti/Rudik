@@ -3,7 +3,6 @@ package asu.edu.neg_rule_miner.naive;
 import java.util.Map;
 import java.util.Set;
 
-import org.apache.jena.rdf.model.RDFNode;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -22,29 +21,33 @@ public class OneExampleRuleDiscovery implements Runnable{
 
 	private final static Logger LOGGER = LoggerFactory.getLogger(OneExampleRuleDiscovery.class.getName());
 
-	private Set<RDFNode> input;
+	private Set<String> input;
 
 	private SparqlExecutor queryEndpoint;
 
-	Map<RDFNode,Set<Edge<RDFNode>>> node2neigbours;
+	Map<String,Map<Edge<String>,String>> node2neigbours;
 	
-	Graph<RDFNode> graph;
+	Graph<String> graph;
+	
+	Map<String,Set<String>> entity2types;
 
 
-	public OneExampleRuleDiscovery(Set<RDFNode> input,Graph<RDFNode> graph,SparqlExecutor queryEndpoint,
-			Map<RDFNode,Set<Edge<RDFNode>>> node2neigbours){
+	public OneExampleRuleDiscovery(Set<String> input,Graph<String> graph,SparqlExecutor queryEndpoint,
+			Map<String,Map<Edge<String>,String>> node2neigbours,Map<String,Set<String>> entity2types){
 		this.input = input;
 		this.queryEndpoint = queryEndpoint;
 		this.node2neigbours = node2neigbours;
 		this.graph=graph;
+		this.entity2types=entity2types;
 	}
 
 	public void run(){
-		for(RDFNode entity:input){
+		for(String entity:input){
 			try{
-				Set<Edge<RDFNode>> currentNeighbours= 
-						this.queryEndpoint.executeQuery(entity,this.graph);
-				if(currentNeighbours!=null&&currentNeighbours.size()>0)
+				Map<Edge<String>,String> currentNeighbours= 
+						this.queryEndpoint.executeQuery(entity,this.graph,this.entity2types);
+				if(currentNeighbours!=null&&currentNeighbours.size()>0
+						&&this.node2neigbours!=null)
 					this.node2neigbours.put(entity, currentNeighbours);
 
 			}

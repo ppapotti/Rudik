@@ -33,8 +33,11 @@ package asu.edu.neg_rule_miner.model.rdf.graph;
 import java.util.Map;
 import java.util.Set;
 
+import org.apache.commons.lang3.tuple.Pair;
 import org.apache.jena.ext.com.google.common.collect.Maps;
 import org.apache.jena.ext.com.google.common.collect.Sets;
+
+import asu.edu.neg_rule_miner.configuration.Constant;
 
 /**
  * 
@@ -49,33 +52,42 @@ import org.apache.jena.ext.com.google.common.collect.Sets;
 public class Graph<T>{
 
 	public Graph(){
-		this.nodes=Sets.newConcurrentHashSet();
 		this.neighbours=Maps.newConcurrentMap();
 		this.edge2artificial = Maps.newConcurrentMap();
+		this.literal2lexicalForm = Maps.newHashMap();
+		this.examples = Sets.newHashSet();
+		this.node2types = Maps.newHashMap();
 	}
-
-	public Set<T> nodes;
-
 	public Map<T,Set<Edge<T>>> neighbours;
 
 	public Map<Edge<T>,Boolean> edge2artificial;
 
+	public Map<T,String> literal2lexicalForm;
+
+	private Set<Pair<T,T>> examples;
+
+	private Map<T,Set<String>> node2types;
+
 	public void addNode(T label){
-		if(this.nodes.contains(label))
+		if(this.neighbours.containsKey(label))
 			return;
-		this.nodes.add(label);
 		Set<Edge<T>> neighbors = Sets.newHashSet();
 		this.neighbours.put(label, neighbors);
 
 	}
 
-	public Set<T> getNodes(){
-		return this.nodes;
+	public void addLiteralNode(T label,String lexicalForm){
+		if(this.neighbours.containsKey(label))
+			return;
+		Set<Edge<T>> neighbors = Sets.newHashSet();
+		this.neighbours.put(label, neighbors);
+		this.literal2lexicalForm.put(label, lexicalForm);
+
 	}
 
-	public void addEdge(T source, T end, String label, boolean bidirectional){
+	public boolean addEdge(T source, T end, String label, boolean bidirectional){
 		Edge<T> edge = new Edge<T>(source, end, label);
-		this.addEdge(edge, bidirectional);
+		return this.addEdge(edge, bidirectional);
 	}
 
 	/**
@@ -86,7 +98,7 @@ public class Graph<T>{
 	 */
 	public boolean addEdge(Edge<T> edge,boolean bidirectional){
 		//cannot add an edge if neither node source nor source edge are in the graph
-		if(!this.nodes.contains(edge.getNodeSource())||!this.nodes.contains(edge.getNodeEnd())){
+		if(!this.neighbours.containsKey(edge.getNodeSource())||!this.neighbours.containsKey(edge.getNodeEnd())){
 			return false;
 		}
 
@@ -114,6 +126,10 @@ public class Graph<T>{
 		return this.neighbours.get(node);
 	}
 
+	public Set<T> getNodes(){
+		return Sets.newHashSet(this.neighbours.keySet());
+	}
+
 
 	public boolean isArtifical(Edge<T> e){
 		Boolean isArtifical = this.edge2artificial.get(e);
@@ -121,6 +137,177 @@ public class Graph<T>{
 
 	}
 
+	public boolean isLiteral(T label){
+		return this.literal2lexicalForm.containsKey(label);
+	}
 
+	public String getLexicalForm(T node){
+		return this.literal2lexicalForm.get(node);
+	}
 
+	public Set<T> getLiteralNodes(){
+		return this.literal2lexicalForm.keySet();
+	}
+
+	public Set<Pair<T,T>> getExamples(){
+		return this.examples;
+	}
+
+	public void addExamples(Set<Pair<T,T>> examples){
+		this.examples.addAll(examples);
+	}
+
+	public boolean containsEdge(T nodeSource, T nodeEnd, String label){
+		Edge<T> tempEdge = new Edge<T>(nodeSource,nodeEnd,label);
+		return this.neighbours.containsKey(nodeSource) && 
+				this.neighbours.get(nodeSource).contains(tempEdge);
+	}
+
+	public Set<T> getLiteralsExamples(Set<Pair<T,T>> examples){
+		Set<T> analysedNodes = Sets.newHashSet();
+		Set<T> nodesToAnalyse = Sets.newHashSet();
+		for(Pair<T,T> oneExample:examples){
+			nodesToAnalyse.add(oneExample.getLeft());
+			nodesToAnalyse.add(oneExample.getRight());
+		}
+
+		Set<T> literalOutputNodes = Sets.newHashSet();
+		while(nodesToAnalyse.size()>0){
+			T currentNode = nodesToAnalyse.iterator().next();
+			analysedNodes.add(currentNode);
+			nodesToAnalyse.remove(currentNode);
+
+			//if it is not a literal analyse all its neighbours
+			Set<Edge<T>> neighbours = this.getNeighbours(currentNode);
+			for(Edge<T> oneNeighbour:neighbours){
+				T endNode = oneNeighbour.getNodeEnd();
+				if(this.isLiteral(endNode)){
+					literalOutputNodes.add(endNode);
+					continue;
+				}
+				if(!analysedNodes.contains(endNode))
+					nodesToAnalyse.add(endNode);
+			}
+
+		}
+
+		return literalOutputNodes;
+	}
+
+	/**
+	 * Return all literal nodes that are at most distance from at least one of the starting nodes
+	 * @param startingNodes
+	 * @param distance
+	 * @return
+	 */
+	public Set<T> getLiterals(Set<T> startingNodes, int distance){
+
+		Set<T> outputLiterals = Sets.newHashSet();
+		Set<T> toAnalyse = Sets.newHashSet();
+		Set<T> analysedNodes = Sets.newHashSet();
+		for(T oneStartingNode:startingNodes){
+			analysedNodes.clear();
+			if(this.isLiteral(oneStartingNode))
+				outputLiterals.add(oneStartingNode);
+			analysedNodes.add(oneStartingNode);
+			toAnalyse.add(oneStartingNode);
+			for(int i=0;i<distance;i++){
+				Set<T> nextNeighboursToAnalyse = Sets.newHashSet();
+				for(T nodeToAnalyse:toAnalyse){
+					analysedNodes.add(nodeToAnalyse);
+					Set<Edge<T>> oneHopEdges = this.getNeighbours(nodeToAnalyse);
+					for(Edge<T> currentOneHopEdge:oneHopEdges){
+						T endingNode = currentOneHopEdge.getNodeEnd();
+						if(this.isLiteral(endingNode)){
+							outputLiterals.add(endingNode);
+							continue;
+						}
+						if(!analysedNodes.contains(endingNode) && i+1 <distance)
+							nextNeighboursToAnalyse.add(endingNode);
+					}
+				}
+				toAnalyse.clear();
+				toAnalyse.addAll(nextNeighboursToAnalyse);
+			}
+		}
+
+		return outputLiterals;
+	}
+
+	public void addType(T node, String type){
+		if(!this.neighbours.containsKey(node))
+			return;
+
+		Set<String> previousType = this.node2types.get(node);
+		if(previousType==null){
+			previousType = Sets.newHashSet();
+			this.node2types.put(node, previousType);
+		}
+		previousType.add(type);
+	}
+
+	public Set<String> getTypes(T node){
+		Set<String> returningTypes = Sets.newHashSet();
+		if(!node2types.containsKey(node) || node2types.get(node)==null)
+			return returningTypes;
+		returningTypes.addAll(this.node2types.get(node));
+		return returningTypes;
+	}
+
+	/**
+	 * Get set of nodes at distance <= maxDistance from one of the startingNodes that have at least 2 types in common with inputTypes
+	 * @param types
+	 * @param startingNodes
+	 * @param distance
+	 * @return
+	 */
+	public Set<T> getSameTypesNodes(Set<String> inputTypes, Set<T> startingNodes, int maxDistance){
+
+		Set<T> outputNodes = Sets.newHashSet();
+		if(inputTypes==null || inputTypes.size()==0)
+			return outputNodes;
+
+		Set<T> toAnalyse = Sets.newHashSet();
+		Set<T> analysedNodes = Sets.newHashSet();
+		Set<String> otherNodeTypes;
+
+		for(T oneStartingNode:startingNodes){
+
+			otherNodeTypes = this.getTypes(oneStartingNode);
+			otherNodeTypes.retainAll(inputTypes);
+			if(otherNodeTypes.equals(inputTypes))
+				outputNodes.add(oneStartingNode);
+
+			analysedNodes.add(oneStartingNode);
+			toAnalyse.add(oneStartingNode);
+
+			for(int i=0;i<maxDistance;i++){
+				Set<T> nextNeighboursToAnalyse = Sets.newHashSet();
+				for(T nodeToAnalyse:toAnalyse){
+					analysedNodes.add(nodeToAnalyse);
+					Set<Edge<T>> oneHopEdges = this.getNeighbours(nodeToAnalyse);
+					for(Edge<T> currentOneHopEdge:oneHopEdges){
+						//avoid != relation
+						if(currentOneHopEdge.getLabel().equals(Constant.DIFF_REL))
+							continue;
+						T endingNode = currentOneHopEdge.getNodeEnd();
+						//avoid literals
+						if(this.isLiteral(endingNode))
+							continue;
+						otherNodeTypes = this.getTypes(endingNode);
+						otherNodeTypes.retainAll(inputTypes);
+						if(otherNodeTypes.equals(inputTypes))
+							outputNodes.add(endingNode);
+
+						if(!analysedNodes.contains(endingNode) && i+1 <maxDistance)
+							nextNeighboursToAnalyse.add(endingNode);
+					}
+				}
+				toAnalyse.clear();
+				toAnalyse.addAll(nextNeighboursToAnalyse);
+			}
+		}
+
+		return outputNodes;
+	}
 }

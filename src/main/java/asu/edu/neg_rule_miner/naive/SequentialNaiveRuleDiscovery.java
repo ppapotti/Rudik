@@ -14,13 +14,13 @@ import org.apache.commons.lang3.tuple.Pair;
 import org.apache.jena.ext.com.google.common.collect.Lists;
 import org.apache.jena.ext.com.google.common.collect.Maps;
 import org.apache.jena.ext.com.google.common.collect.Sets;
-import org.apache.jena.rdf.model.RDFNode;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import asu.edu.neg_rule_miner.RuleMinerException;
 import asu.edu.neg_rule_miner.configuration.ConfigurationFacility;
 import asu.edu.neg_rule_miner.configuration.Constant;
+import asu.edu.neg_rule_miner.model.GraphHornRule;
 import asu.edu.neg_rule_miner.model.HornRule;
 import asu.edu.neg_rule_miner.model.RuleAtom;
 import asu.edu.neg_rule_miner.model.rdf.graph.Edge;
@@ -29,11 +29,11 @@ import asu.edu.neg_rule_miner.sparql.SparqlExecutor;
 
 public class SequentialNaiveRuleDiscovery {
 
-	private int numThreads = 1;
+	protected int numThreads = 1;
 
-	private int threshold = 0;
+	protected int threshold = 0;
 
-	private int maxRuleLen = 3;
+	protected int maxRuleLen = 3;
 
 	private final static Logger LOGGER = 
 			LoggerFactory.getLogger(OneExampleRuleDiscovery.class.getName());
@@ -75,35 +75,35 @@ public class SequentialNaiveRuleDiscovery {
 
 	}
 
-	public Map<Set<RuleAtom>,Set<Pair<RDFNode,RDFNode>>> 
-	discoverHornRules(Set<Pair<RDFNode,RDFNode>> negativeExamples, 
-			Set<Pair<RDFNode,RDFNode>> positiveExamples){
-
-		//check constant among positive examples
-		InputPositiveProcess positive = new InputPositiveProcess();
-		Pair<RDFNode,RDFNode> subjectObjectConstants = 
-				positive.analysePositiveExamples(positiveExamples);
-		RDFNode subjectConstant = subjectObjectConstants.getLeft();
-		RDFNode objectConstant = subjectObjectConstants.getRight();
-		boolean isConstant = subjectConstant!=null || objectConstant!=null;
+	/**
+	 * This has to be completed with an ILP solver
+	 * @param negativeExamples
+	 * @param positiveExamples
+	 * @return
+	 */
+	public Map<Set<RuleAtom>,Set<Pair<String,String>>> partiallyDiscoverHornRules(Set<Pair<String,String>> negativeExamples, 
+			Set<Pair<String,String>> positiveExamples){
 
 		long start = System.currentTimeMillis();
 
-		Map<Set<RuleAtom>,Set<Pair<RDFNode,RDFNode>>> finalRules = Maps.newHashMap();
+		Map<Set<RuleAtom>,Set<Pair<String,String>>> finalRules = Maps.newHashMap();
 
-		Graph<RDFNode> graph;
-		List<HornRule<RDFNode>> rulesToDiscover = Lists.newLinkedList();
-		Set<HornRule<RDFNode>> discoveredRules = Sets.newHashSet();
-		Map<Pair<RDFNode,RDFNode>,Graph<RDFNode>> example2graph = Maps.newHashMap();
-		Set<RDFNode> nodeToAnalyse = Sets.newHashSet();
+		Graph<String> graph;
+		List<GraphHornRule<String>> rulesToDiscover = Lists.newLinkedList();
+		Set<GraphHornRule<String>> discoveredRules = Sets.newHashSet();
+		Map<Pair<String,String>,Graph<String>> example2graph = Maps.newHashMap();
+		Set<String> nodeToAnalyse = Sets.newHashSet();
 		Set<String> analysedNodes = Sets.newHashSet();
-		Map<RDFNode,Set<Edge<RDFNode>>> node2neighbours = Maps.newHashMap();
+		Map<String,Map<Edge<String>,String>> node2neighbours = Maps.newHashMap();
+
+		//record for each node its types
+		Map<String,Set<String>> entity2types = Maps.newHashMap();
 		int totalExample = negativeExamples.size();
 		int currentExample =0;
-		for(Pair<RDFNode,RDFNode> negativeExample:negativeExamples){
+		for(Pair<String,String> negativeExample:negativeExamples){
 			currentExample++;
 			LOGGER.debug("Considering example {} ({} out of {})",negativeExample,currentExample,totalExample);
-			graph = new Graph<RDFNode>();
+			graph = new Graph<String>();
 			graph.addNode(negativeExample.getRight());
 			graph.addNode(negativeExample.getLeft());
 
@@ -112,11 +112,11 @@ public class SequentialNaiveRuleDiscovery {
 
 			example2graph.clear();
 			example2graph.put(negativeExample, graph);
-			rulesToDiscover.add(new HornRule<RDFNode>(negativeExample,graph));
+			rulesToDiscover.add(new GraphHornRule<String>(negativeExample,graph));
 
 			analysedNodes.clear();
 
-			HornRule<RDFNode> currentRule;
+			GraphHornRule<String> currentRule;
 			while(rulesToDiscover.size()>0){
 				currentRule = rulesToDiscover.get(0);
 				rulesToDiscover.remove(0);
@@ -125,7 +125,7 @@ public class SequentialNaiveRuleDiscovery {
 				discoveredRules.add(currentRule);
 
 				if(currentRule.isValid()){
-					Set<Pair<RDFNode,RDFNode>> supportedExamples = finalRules.get(currentRule.getRules());
+					Set<Pair<String,String>> supportedExamples = finalRules.get(currentRule.getRules());
 					if(supportedExamples==null){
 						supportedExamples = Sets.newHashSet();
 					}
@@ -145,82 +145,30 @@ public class SequentialNaiveRuleDiscovery {
 
 				//since last step has to end either in the ending nodes or in an already seen nodes, no need to expand
 				if(currentRule.getLen()<maxRuleLen-1){
-					Set<RDFNode> toAnalyse = currentRule.getCurrentNodes();
+					Set<String> toAnalyse = currentRule.getCurrentNodes();
 
-					for(RDFNode node:toAnalyse){
+					for(String node:toAnalyse){
 						if(analysedNodes.contains(node.toString()))
 							continue;
-						//check if the entity has been already expanded
-						if(node2neighbours.containsKey(node)){
-							for(Edge<RDFNode> edge:node2neighbours.get(node)){
-								RDFNode toAdd = edge.getNodeSource();
-								if(node.equals(toAdd))
-									toAdd = edge.getNodeEnd();
-								graph.addNode(toAdd);
-								graph.addEdge(edge, true);
-							}
-							continue;
-						}
+
 						analysedNodes.add(node.toString());
 						nodeToAnalyse.add(node);
 					}
 
 					LOGGER.debug("Expanding the graph querying for {} nodes with rule {}...",
 							nodeToAnalyse.size(),currentRule.toString());
-					expandGraphs(nodeToAnalyse, graph,node2neighbours, numThreads);
+					expandGraphs(nodeToAnalyse, graph,node2neighbours, entity2types,numThreads);
 					LOGGER.debug("Graph expansions completed.");
 				}
 
-				Map<RuleAtom,Set<Edge<RDFNode>>> nextPaths = 
+				Map<RuleAtom,Set<Edge<String>>> nextPaths = 
 						currentRule.nextPlausibleRules(currentRule.getLen()==maxRuleLen-1);
 
 				for(RuleAtom rule:nextPaths.keySet()){
-					HornRule<RDFNode> newRule = currentRule.duplicateRule();
-					Set<Edge<RDFNode>> copySet= Sets.newHashSet(nextPaths.get(rule));
+					GraphHornRule<String> newRule = currentRule.duplicateRule();
+					Set<Edge<String>> copySet= Sets.newHashSet(nextPaths.get(rule));
 					newRule.addRuleAtom(rule, copySet);
 					rulesToDiscover.add(newRule);
-
-					/**
-					 * TO DO: can be improved: create inequality only with concept that are of the same type of the constant
-					 */
-					//add disequal relation to constant subject and/or object
-					if(isConstant&&newRule.getLen()<maxRuleLen){
-						boolean artificial = graph.isArtifical(nextPaths.get(rule).iterator().next());
-						String variable = rule.getObject();
-						if(artificial)
-							variable = rule.getSubject();
-						if(subjectConstant!=null&&!newRule.getBoundVariables(variable).contains(HornRule.START_NODE)){
-							RuleAtom artificialRule = new RuleAtom(rule.getSubject(),rule.getRelation(),HornRule.START_NODE);
-							if(artificial)
-								artificialRule = new RuleAtom(HornRule.START_NODE,rule.getRelation(),rule.getObject());
-							if(!nextPaths.containsKey(artificialRule)){
-								newRule = newRule.duplicateRule();
-								Edge<RDFNode> fakeEdge = new Edge<RDFNode>(null,subjectConstant,"!=");
-								copySet.clear();
-								copySet.add(fakeEdge);
-								newRule.addRuleAtom(new 
-										RuleAtom(variable, "!=", HornRule.START_NODE), copySet);
-								rulesToDiscover.add(newRule);
-
-							}
-						}
-
-						if(objectConstant!=null&&!newRule.getBoundVariables(variable).contains(HornRule.END_NODE)){
-							RuleAtom artificialRule = new RuleAtom(rule.getSubject(),rule.getRelation(),HornRule.END_NODE);
-							if(artificial)
-								artificialRule = new RuleAtom(HornRule.END_NODE,rule.getRelation(),rule.getObject());
-							if(!nextPaths.containsKey(artificialRule)){
-								newRule = newRule.duplicateRule();
-								Edge<RDFNode> fakeEdge = new Edge<RDFNode>(null,objectConstant,"!=");
-								copySet.clear();
-								copySet.add(fakeEdge);
-								newRule.addRuleAtom(new 
-										RuleAtom(variable, "!=", HornRule.END_NODE), copySet);
-								rulesToDiscover.add(newRule);
-
-							}
-						}
-					}
 				}
 
 			}
@@ -243,26 +191,34 @@ public class SequentialNaiveRuleDiscovery {
 	 * @param outputFile
 	 * @throws IOException
 	 */
-	public void printRulesStatistics(Map<Set<RuleAtom>,Set<Pair<RDFNode,RDFNode>>> rules, 
+	public void printRulesStatistics(Map<Set<RuleAtom>,Set<Pair<String,String>>> rules, 
 			Set<String>relations, String typeSubject, 
-			String typeObject, int totalNegativeExamples, int totalPositiveExamples, File outputFile,
-			String subjectConstant, String objectConstant) throws IOException{
+			String typeObject, int totalNegativeExamples, Set<Pair<String,String>> positiveExamples, File outputFile) throws IOException{
 		LOGGER.debug("Ordering rules and computing positive examples coverage for output.");
 		long start = System.currentTimeMillis();
 		BufferedWriter outputWriter = new BufferedWriter(new FileWriter(outputFile)); 
-		outputWriter.write("\"Id\",\"Rule\",\"Negative Examples Coverage\",\"Positive Examples Coverage\"," +
-				"\"Negative Fraction\",\"Positive Fraction\"," +
-				"\"Positive Relative Fraction\",\"score\",\"Covered Negative Examples\"\n");
-		Map<Pair<RDFNode,RDFNode>,String> example2id = Maps.newHashMap();
+		outputWriter.write("\"Id\",\"Rule\",\"Tot. Neg.\",\"Neg. Coverage\",\"Neg. Fraction\"," +
+				"\"Tot. Pos.\",\"Pos. Coverage\"," +
+				"\"Pos. Fraction\",\"Rel. Pos. Coverage\",\"Rel. Pos. Fraction\",\"Score\",\"Weitghted Score\",\"Covered Negative Examples\"\n");
+		Map<Pair<String,String>,String> example2id = Maps.newHashMap();
 		int exampleCount=0;
 
-		Map<String,Set<Pair<RDFNode,RDFNode>>> rule2coverage = Maps.newHashMap();
+		Map<String,Set<Pair<String,String>>> rule2coverage = Maps.newHashMap();
 		int ruleCount = 0;
 		int previousCount = -1;
 		Set<RuleAtom> bestRule = null;
 
 		Set<Set<RuleAtom>> seenRules = Sets.newHashSet();
+
+		int totalPositiveExamples = positiveExamples.size();
+		Map<String,Set<Pair<String,String>>> predicate2support = this.getSparqlExecutor().getRulePositiveSupport(positiveExamples);
+
+		int currentRule=0;
+		int totalRule = rules.size();
+		BufferedWriter writerNegExamplesCovered = new BufferedWriter(new FileWriter(new File("negative_examples_coverage")));
 		while(rules.size()>0){
+			currentRule++;
+			LOGGER.debug("Considering rule {} out of {}",currentRule,totalRule);
 			//get the most covered rule
 			int mostCover = -1;
 			for(Set<RuleAtom> rule:rules.keySet()){
@@ -307,7 +263,8 @@ public class SequentialNaiveRuleDiscovery {
 			}
 
 			//read the examples covered
-			Set<Pair<RDFNode,RDFNode>> coveredExamples = rules.get(bestRule);
+			Set<Pair<String,String>> coveredExamples = rules.get(bestRule);
+			writerNegExamplesCovered.write(coveredExamples+"\n");
 
 			rules.remove(bestRule);
 			previousCount = mostCover;
@@ -318,8 +275,8 @@ public class SequentialNaiveRuleDiscovery {
 			String coveredExamplesString = "[";
 
 			int i=0;
-			for(Pair<RDFNode,RDFNode> coveredExample:coveredExamples){
-				if(i>4100){
+			for(Pair<String,String> coveredExample:coveredExamples){
+				if(i>2500){
 					coveredExamplesString+="..., ";
 					break;
 				}
@@ -337,7 +294,7 @@ public class SequentialNaiveRuleDiscovery {
 			boolean isSubset=false;
 			//check if the covered examples are subset of something else
 			for(String otherRule:rule2coverage.keySet()){
-				Set<Pair<RDFNode,RDFNode>> otherRuleCoverage = rule2coverage.get(otherRule);
+				Set<Pair<String,String>> otherRuleCoverage = rule2coverage.get(otherRule);
 				if(otherRuleCoverage.containsAll(coveredExamples)){
 					coveredExamplesString="subset of "+otherRule+" - "+coveredExamplesString;
 					isSubset=true;
@@ -347,30 +304,71 @@ public class SequentialNaiveRuleDiscovery {
 			if(!isSubset)
 				rule2coverage.put(ruleId,coveredExamples);
 
-			int relativePositiveExampleSupport = -1;
-			try{
-				relativePositiveExampleSupport = this.getSparqlExecutor().
-						getRelativeSupportivePositiveExamples(bestRule, 
-								relations, typeObject, typeSubject,subjectConstant,objectConstant);
+			Set<Pair<String,String>> totalCoveredExamples = Sets.newHashSet();
+			totalCoveredExamples.addAll(positiveExamples);
+			for(RuleAtom oneRule:bestRule){
+				//do not consider literals
+				if(oneRule.getRelation().equals(">=")||oneRule.getRelation().equals("<=")||oneRule.getRelation().equals("=")||
+						oneRule.getRelation().equals("!=")){
+					continue;
+				}
+				Set<Pair<String,String>> currentRuleCoveredExamples;
+				if(oneRule.getSubject().equals(HornRule.START_NODE)){
+					currentRuleCoveredExamples = predicate2support.get(oneRule.getRelation()+"(subject,_)");
+					if(currentRuleCoveredExamples==null||currentRuleCoveredExamples.size()==0){
+						totalCoveredExamples.clear();
+						break;	
+					}
+					else
+						totalCoveredExamples.retainAll(currentRuleCoveredExamples);
+				}
+				if(oneRule.getObject().equals(HornRule.START_NODE)){
+					currentRuleCoveredExamples = predicate2support.get(oneRule.getRelation()+"(_,subject)");
+					if(currentRuleCoveredExamples==null||currentRuleCoveredExamples.size()==0){
+						totalCoveredExamples.clear();
+						break;	
+					}
+					else
+						totalCoveredExamples.retainAll(currentRuleCoveredExamples);
+				}
+
+				if(oneRule.getSubject().equals(HornRule.END_NODE)){
+					currentRuleCoveredExamples = predicate2support.get(oneRule.getRelation()+"(object,_)");
+					if(currentRuleCoveredExamples==null||currentRuleCoveredExamples.size()==0){
+						totalCoveredExamples.clear();
+						break;	
+					}
+					else
+						totalCoveredExamples.retainAll(currentRuleCoveredExamples);
+				}
+
+				if(oneRule.getObject().equals(HornRule.END_NODE)){
+					currentRuleCoveredExamples = predicate2support.get(oneRule.getRelation()+"(_,object)");
+					if(currentRuleCoveredExamples==null||currentRuleCoveredExamples.size()==0){
+						totalCoveredExamples.clear();
+						break;	
+					}
+					else
+						totalCoveredExamples.retainAll(currentRuleCoveredExamples);
+				}
 			}
-			catch(Exception e){
-				//continue
-			}
+			int relativePosCoverage = totalCoveredExamples.size();
 
 
-			int positiveExampleSupport = -1;
-			if(relativePositiveExampleSupport!=0){
+			int posCoverage = -1;
+			if(relativePosCoverage!=0){
 				try{
-					positiveExampleSupport = this.getSparqlExecutor().
+
+					posCoverage = this.getSparqlExecutor().
 							getSupportivePositiveExamples(bestRule, 
-									relations, typeObject, typeSubject,subjectConstant,objectConstant);
+									relations, typeObject, typeSubject,positiveExamples);
 				}
 				catch(Exception e){
 					//continue
 				}
 			}
 			else
-				positiveExampleSupport = 0;
+				posCoverage = 0;
 			int totalSupport = -1;
 			//do not count total coverage, takes too long
 			//			try{
@@ -379,44 +377,81 @@ public class SequentialNaiveRuleDiscovery {
 			//			catch(Exception e){
 			//				//continue
 			//			}
-			String relativePositveExampleFraction = "-";
-			if(relativePositiveExampleSupport>0&&positiveExampleSupport!=-1){
-				relativePositveExampleFraction = ""+((positiveExampleSupport+0.)/relativePositiveExampleSupport);
+
+			int negCoverage = coveredExamples.size();
+			double negFraction = (negCoverage+.0)/totalNegativeExamples;
+			double posFraction = -1;
+			if(posCoverage!=-1)
+				posFraction = (posCoverage+0.)/totalPositiveExamples;
+			double relPosFraction = -1;
+			if(posCoverage!=-1)
+				relPosFraction = (posCoverage+0.)/relativePosCoverage;
+
+			double score = 1.1;
+			if(posCoverage!=-1&&relativePosCoverage!=0){
+				score = 0.33*(1-negFraction) + 0.33*relPosFraction + 0.33*(1-relativePosCoverage/(totalPositiveExamples+0.));
+			}
+			double weightedScore = score;
+			if(weightedScore!=1.1){
+				weightedScore = 0.4*(1-negFraction) + 0.5*relPosFraction + 0.1*(1-relativePosCoverage/(totalPositiveExamples+0.));
 			}
 
-			double score = 1-(coveredExamples.size()/(totalNegativeExamples+0.));
-			if(relativePositiveExampleSupport>0&&positiveExampleSupport!=-1)
-				score+=(positiveExampleSupport+0.)/relativePositiveExampleSupport;
-			else
-				score=3;
-			outputWriter.write("\""+ruleId+"\",\""+bestRule+"\",\""+coveredExamples.size()+
-					"\",\""+positiveExampleSupport+" (out of "+relativePositiveExampleSupport+")\"" +
-					",\""+coveredExamples.size()/(totalNegativeExamples+0.)+
-					"\",\""+positiveExampleSupport/(totalPositiveExamples+0.)+"\"," +
-					"\""+relativePositveExampleFraction+"\",\""+score+"\",\""+coveredExamplesString+"\"\n");
+
+			outputWriter.write("\""+ruleId+"\",\""+bestRule+"\",\""+totalNegativeExamples+"\",\""+negCoverage+"\",\""+
+					negFraction+"\",\""+totalPositiveExamples+"\",\""+posCoverage+"\",\""+posFraction+"\",\""+relativePosCoverage+"\",\""+relPosFraction+"\",\""
+					+score+"\",\""+weightedScore+"\",\""+coveredExamplesString+"\"\n");
 
 		}
+		writerNegExamplesCovered.close();
 		outputWriter.write("\nExamples Id Mappings:\n");
-		for(Pair<RDFNode,RDFNode> example:example2id.keySet()){
+		for(Pair<String,String> example:example2id.keySet()){
 			outputWriter.write("\""+example+"\",\""+example2id.get(example)+"\"\n");
 		}
 		outputWriter.close();
 		LOGGER.debug("Final report writeen in '{}' in {} seconds.",(System.currentTimeMillis()-start)/1000.);
 	}
 
-	private void expandGraphs(Set<RDFNode> toAnalyse, Graph<RDFNode> graph,Map<RDFNode,Set<Edge<RDFNode>>> node2neghbours,
+	protected void expandGraphs(Set<String> toAnalyse, Graph<String> graph,
+			Map<String,Map<Edge<String>,String>> node2neghbours,Map<String,Set<String>> entity2types,
 			int numThreads){
 
+		//remove already expanded nodes
+		Set<String> filteredToAnalyse = Sets.newHashSet();
+		filteredToAnalyse.addAll(toAnalyse);
+		if(node2neghbours!=null){
+			for(String currentNode:toAnalyse){
+				if(node2neghbours.containsKey(currentNode)){
+					Map<Edge<String>,String> edge2literalForm = node2neghbours.get(currentNode);
+					for(Edge<String> edge:edge2literalForm.keySet()){
+						String lexicalForm = edge2literalForm.get(edge);
+						String toAdd = edge.getNodeSource();
+						if(currentNode.equals(toAdd))
+							toAdd = edge.getNodeEnd();
+						if(lexicalForm==null)
+							graph.addNode(toAdd);
+						else
+							graph.addLiteralNode(toAdd, lexicalForm);
+						graph.addEdge(edge, true);
+					}
+					filteredToAnalyse.remove(currentNode);
+				}
+			}
+		}
+
+		if(filteredToAnalyse.size()==0)
+			return;
+
 		List<Thread> activeThreads = Lists.newLinkedList();
-		List<Set<RDFNode>> currentInputs = 
-				this.splitNodesThreads(toAnalyse, numThreads);
+		List<Set<String>> currentInputs = 
+				this.splitNodesThreads(filteredToAnalyse, numThreads);
 
 		int i=0;
-		for(Set<RDFNode> currentInput:currentInputs){
+		for(Set<String> currentInput:currentInputs){
+
 			i++;
 			// Create the thread and add it to the list
 			final Thread current_thread = new Thread(new OneExampleRuleDiscovery(currentInput,graph,
-					this.getSparqlExecutor(),node2neghbours), "Thread"+i);
+					this.getSparqlExecutor(),node2neghbours,entity2types), "Thread"+i);
 			activeThreads.add(current_thread);
 
 			// start the thread and querydbpedia
@@ -443,25 +478,26 @@ public class SequentialNaiveRuleDiscovery {
 		}
 	}
 
-	private List<Set<RDFNode>> splitNodesThreads(Set<RDFNode> input, int numThread){
-		List<Set<RDFNode>> outputThreads = Lists.newLinkedList();
+	private List<Set<String>> splitNodesThreads(Set<String> input, int numThread){
+		List<Set<String>> outputThreads = Lists.newLinkedList();
 
 		int i=0;
-		for(RDFNode currentNode:input){
+		for(String currentNode:input){
 			if(i==numThread)
 				i=0;
 			if(i>=outputThreads.size()){
-				Set<RDFNode> currentSet = Sets.newHashSet();
+				Set<String> currentSet = Sets.newHashSet();
 				outputThreads.add(currentSet);
 			}
-			Set<RDFNode> currentSet = outputThreads.get(i);
+			Set<String> currentSet = outputThreads.get(i);
 			currentSet.add(currentNode);
 			i++;
 		}
 		return outputThreads;
 	}
 
-	public Set<Pair<RDFNode,RDFNode>> generatePositiveExamples(
+
+	public Set<Pair<String,String>> generatePositiveExamples(
 			Set<String> relations, String typeSubject, String typeObject){
 		return this.getSparqlExecutor().generatePositiveExamples(relations, typeSubject, typeObject);
 
@@ -479,33 +515,14 @@ public class SequentialNaiveRuleDiscovery {
 	 * 			decide whether returns only a subset of the negative examples, one for each relation
 	 * @return
 	 */
-	public Set<Pair<RDFNode,RDFNode>> generateNegativeExamples(
+	public Set<Pair<String,String>> generateNegativeExamples(
 			Set<String> relations, String typeSubject, String typeObject){
-
-
-		int totalNumberExample = -1;
-
-		try{
-			//read total number examples from configuration file
-			Configuration config = ConfigurationFacility.getConfiguration();
-			if(config.containsKey(Constant.CONF_NUM_EXAMPLE)){
-				totalNumberExample = config.getInt(Constant.CONF_NUM_EXAMPLE);
-			}
-		}
-		catch(Exception e){
-			LOGGER.error("Not able to read the total number examples parameter from configuration file.",e);
-		}
-		if(totalNumberExample>=0){
-			return this.getSparqlExecutor().generateFilteredNegativeExamples(relations, 
-					typeSubject, typeObject,totalNumberExample);
-		}
-		else
-			return this.getSparqlExecutor().generateNegativeExamples(relations, 
-					typeSubject, typeObject);
+		return this.getSparqlExecutor().generateNegativeExamples(relations, 
+				typeSubject, typeObject);
 
 	}
 
-	public Set<Pair<RDFNode,RDFNode>> getKBExamples(String query, String subject, 
+	public Set<Pair<String,String>> getKBExamples(String query, String subject, 
 			String object){
 		return this.getSparqlExecutor().getKBExamples(query, subject, object);
 	}
@@ -516,9 +533,9 @@ public class SequentialNaiveRuleDiscovery {
 	 * @param inputFile
 	 * @return
 	 */
-	public Set<Pair<RDFNode,RDFNode>> generateNegativeExamples(File inputFile){
+	public Set<Pair<String,String>> generateNegativeExamples(File inputFile){
 		try{
-			return this.getSparqlExecutor().readNegativeExamplesFromFile(inputFile);
+			return this.getSparqlExecutor().readExamplesFromFile(inputFile);
 		}
 		catch(IOException e){
 			LOGGER.error("Error while reading the input negative examples file '{}'",
@@ -532,7 +549,7 @@ public class SequentialNaiveRuleDiscovery {
 	 * Read the sparql executor from configuration file
 	 * @return
 	 */
-	private SparqlExecutor getSparqlExecutor(){
+	protected SparqlExecutor getSparqlExecutor(){
 
 		if(!ConfigurationFacility.getConfiguration().containsKey(Constant.CONF_SPARQL_ENGINE))
 			throw new RuleMinerException("Sparql engine parameters not found in the configuration file.", 

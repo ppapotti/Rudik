@@ -6,13 +6,16 @@ import org.apache.jena.rdf.model.Model;
 import org.apache.jena.rdf.model.RDFNode;
 import org.apache.jena.rdf.model.RDFVisitor;
 import org.apache.jena.rdf.model.Resource;
+import org.apache.jena.rdf.model.ResourceFactory;
 
 public class RDFSimpleNodeResourceImplementation implements RDFNode{
-	
+
 	private String nodeName;
-	
+
 	private boolean isLiteral;
-	
+
+	private Literal literalForm=null;
+
 	public RDFSimpleNodeResourceImplementation(String name){
 		this.nodeName = name;
 		isLiteral = false;
@@ -32,9 +35,19 @@ public class RDFSimpleNodeResourceImplementation implements RDFNode{
 				+ ((nodeName == null) ? 0 : nodeName.hashCode());
 		return result;
 	}
-	
+
 	public void setIsLiteral(boolean isLiteral){
 		this.isLiteral = isLiteral;
+		if(this.isLiteral){
+			String literal = this.toString();
+			if(literal.startsWith("\"")&&literal.contains("\"^^<"))
+				literal = literal.substring(1, literal.lastIndexOf("\"^^<"));
+			if(literal.startsWith("\"")&&literal.contains("\""))
+				literal = literal.substring(1,literal.lastIndexOf("\""));
+			if(literal.contains("^^<")&&literal.endsWith(">"))
+				literal=literal.substring(0,literal.indexOf("^^<"));
+			literalForm = ResourceFactory.createPlainLiteral(literal);
+		}
 	}
 
 	@Override
@@ -62,8 +75,7 @@ public class RDFSimpleNodeResourceImplementation implements RDFNode{
 
 	@Override
 	public Literal asLiteral() {
-		// TODO Auto-generated method stub
-		return null;
+		return this.literalForm;
 	}
 
 	@Override
@@ -76,12 +88,6 @@ public class RDFSimpleNodeResourceImplementation implements RDFNode{
 	public <T extends RDFNode> boolean canAs(Class<T> arg0) {
 		// TODO Auto-generated method stub
 		return false;
-	}
-
-	@Override
-	public Model getModel() {
-		// TODO Auto-generated method stub
-		return null;
 	}
 
 	@Override
@@ -117,9 +123,15 @@ public class RDFSimpleNodeResourceImplementation implements RDFNode{
 		// TODO Auto-generated method stub
 		return null;
 	}
-	
+
 	public String toString(){
 		return this.nodeName;
+	}
+
+	@Override
+	public Model getModel() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }
