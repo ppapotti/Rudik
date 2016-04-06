@@ -43,7 +43,7 @@ public class ConfigurationFacility {
 
 	}
 	
-	public SparqlExecutor getSparqlExecutor(){
+	public static SparqlExecutor getSparqlExecutor(){
 
 		if(!ConfigurationFacility.getConfiguration().containsKey(Constant.CONF_SPARQL_ENGINE))
 			throw new RuleMinerException("Sparql engine parameters not found in the configuration file.", 
