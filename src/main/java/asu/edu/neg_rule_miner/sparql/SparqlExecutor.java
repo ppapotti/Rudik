@@ -205,6 +205,8 @@ public abstract class SparqlExecutor {
 
 	public abstract Map<String,Set<Pair<String,String>>> getRulePositiveSupport(Set<Pair<String,String>> positiveExamples);
 
+	public abstract Set<Pair<String,String>> executeHornRuleQuery(Set<RuleAtom> rules, String typeSubject, String typeObject);
+
 	public String generatePositiveExampleCountQuery(Set<RuleAtom> rules, Set<String> relations, String typeSubject, 
 			String typeObject){
 		if(relations==null||relations.size()==0)
@@ -249,6 +251,56 @@ public abstract class SparqlExecutor {
 		StringBuilder atomFilterBuilder = new StringBuilder();
 		RuleAtom inequalityAtom = null;
 		for(RuleAtom atom:rules){
+			if(atom.getRelation().equals(Constant.GREATER_EQUAL_REL) || atom.getRelation().equals(Constant.LESS_EQUAL_REL) 
+					|| atom.getRelation().equals(Constant.GREATER_REL) || atom.getRelation().equals(Constant.LESS_REL)
+					|| atom.getRelation().equals(Constant.EQUAL_REL)){
+				atomFilterBuilder.append("FILTER (?"+atom.getSubject()+atom.getRelation()+"?"+atom.getObject()+") ");
+				continue;
+			}
+			if(atom.getRelation().equals("!=")){
+				inequalityAtom = atom;
+				continue;
+			}
+			atomFilterBuilder.append("?"+atom.getSubject()+" <"+atom.getRelation()+"> ?"+atom.getObject()+". ");
+		}
+		query.append(atomFilterBuilder.toString());
+		if(inequalityAtom != null)
+			query.append(this.inequalityFilter(rules, inequalityAtom));
+		query.append("}");
+
+		return query.toString();
+	}
+
+	public String generateHornRuleQuery(Set<RuleAtom> rules, String typeSubject, 
+			String typeObject){
+
+		if(!(rules.size()>0))
+			return null;
+		//create the RDF 
+		StringBuilder query = new StringBuilder();
+
+		if(this.prefixQuery!=null&&this.prefixQuery.size()>0){
+			for(String prefix:this.prefixQuery){
+				query.append(prefix+" ");
+			}
+		}
+		query.append("SELECT DISTINCT ?subject ?object");
+
+		/**
+		 * Jena does not work with count and nested query with from
+		 */
+		if(this.graphIri!=null&&graphIri.length()>0)
+			query.append(" FROM "+this.graphIri);
+
+		query.append(" WHERE {");
+		query.append("?object <"+typePrefix+"> <" + typeObject + ">." +
+				"  ?subject <"+typePrefix+"> <"+ typeSubject + ">. ");
+
+		//check if the query contains an inequality
+
+		StringBuilder atomFilterBuilder = new StringBuilder();
+		RuleAtom inequalityAtom = null;
+		for(RuleAtom atom:rules){
 			if(atom.getRelation().equals("<=") || atom.getRelation().equals(">=") 
 					|| atom.getRelation().equals("=")){
 				atomFilterBuilder.append("FILTER (?"+atom.getSubject()+atom.getRelation()+"?"+atom.getObject()+") ");
@@ -267,7 +319,6 @@ public abstract class SparqlExecutor {
 
 		return query.toString();
 	}
-
 
 	private String inequalityFilter(Set<RuleAtom> rules, RuleAtom inequalityAtom){
 		StringBuilder inequalityFilter = new StringBuilder();
@@ -354,15 +405,21 @@ public abstract class SparqlExecutor {
 		for(String node:otherLiterals){
 			if(node.equals(literal) )
 				continue;
-			String relation = compareLiteral(literalLexicalForm, graph.getLexicalForm(node));
-			if(relation!=null && !graph.containsEdge(node, literal, getInverseRelation(relation)))
-				graph.addEdge(literal, node, relation, true);
+			Set<String> outputRelations = compareLiteral(literalLexicalForm, graph.getLexicalForm(node));
+			if(outputRelations!=null){
+				for(String relation : outputRelations){
+					if(!graph.containsEdge(node, literal, getInverseRelation(relation)))
+						graph.addEdge(literal, node, relation, true);
+				}
+			}
 		}
 
 
 	}
 
-	public static String compareLiteral(String stringLiteralOne, String stringLiteralTwo){
+	public static Set<String> compareLiteral(String stringLiteralOne, String stringLiteralTwo){
+
+		Set<String> outputRelations = Sets.newHashSet();
 
 		if(stringLiteralOne==null||
 				stringLiteralTwo==null)
@@ -381,11 +438,17 @@ public abstract class SparqlExecutor {
 			secondDouble = Double.parseDouble(stringLiteralTwo);
 			if(firstDouble==null)
 				return null;
-			if(firstDouble==secondDouble)
-				return Constant.EQUAL_REL;
+			if(firstDouble==secondDouble){
+				outputRelations.add(Constant.EQUAL_REL);
+				outputRelations.add(Constant.LESS_EQUAL_REL);
+				outputRelations.add(Constant.GREATER_EQUAL_REL);
+				return outputRelations;
+			}
 			if(firstDouble<secondDouble)
-				return Constant.LESS_EQUAL_REL;
-			return Constant.GREATER_EQUAL_REL;
+				outputRelations.add(Constant.LESS_REL);
+			else
+				outputRelations.add(Constant.GREATER_REL);
+			return outputRelations;
 		}
 		catch(Exception e){
 			if(firstDouble!=null)
@@ -424,16 +487,24 @@ public abstract class SparqlExecutor {
 			}	
 		}
 		if(firstDate!=null&&secondDate!=null){
-			if(firstDate.compareTo(secondDate)==0)
-				return Constant.EQUAL_REL;
+			if(firstDate.compareTo(secondDate)==0){
+				outputRelations.add(Constant.EQUAL_REL);
+				outputRelations.add(Constant.LESS_EQUAL_REL);
+				outputRelations.add(Constant.GREATER_EQUAL_REL);
+				return outputRelations;
+			}
 			if(firstDate.compareTo(secondDate)<0)
-				return Constant.LESS_EQUAL_REL;
-			return Constant.GREATER_EQUAL_REL;
+				outputRelations.add(Constant.LESS_REL);
+			else
+				outputRelations.add(Constant.GREATER_REL);
+			return outputRelations;
 		}
 
 		//compare them as a string
-		if(stringLiteralOne.equals(stringLiteralTwo))
-			return Constant.EQUAL_REL;
+		if(stringLiteralOne.equals(stringLiteralTwo)){
+			outputRelations.add(Constant.EQUAL_REL);
+			return outputRelations;
+		}
 		return null;
 	}
 
@@ -444,7 +515,16 @@ public abstract class SparqlExecutor {
 		if(rel.equals(Constant.LESS_EQUAL_REL))
 			return Constant.GREATER_EQUAL_REL;
 
-		return rel;
+		if(rel.equals(Constant.GREATER_REL))
+			return Constant.LESS_REL;
+
+		if(rel.equals(Constant.LESS_REL))
+			return Constant.GREATER_REL;
+
+		if(rel.equals(Constant.EQUAL_REL))
+			return rel;
+
+		return "Unknown Relation";
 
 	}
 
