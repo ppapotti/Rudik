@@ -44,8 +44,6 @@ public abstract class SparqlExecutor {
 
 	protected Set<String> relationToAvoid;
 
-	protected Set<String> topTypes;
-
 	protected String graphIri;
 
 	protected String typePrefix;
@@ -74,15 +72,6 @@ public abstract class SparqlExecutor {
 		if(!config.containsKey("types.type_prefix")||config.getString("types.type_prefix").length()==0)
 			throw new RuleMinerException("No type_prefix specific in the Configuration file.",LOGGER);
 		typePrefix = config.getString("types.type_prefix");
-
-		this.topTypes=Sets.newHashSet();
-
-		if(config.containsKey("types.top_type")){
-			List<String> objects = (List<String>) config.getList("types.top_type");
-			for(String object:objects){
-				this.topTypes.add(object);
-			}
-		}
 
 		if(config.containsKey("relation_target_prefix.prefix")){
 			this.targetPrefix = Sets.newHashSet();
@@ -533,7 +522,7 @@ public abstract class SparqlExecutor {
 		if(rel.equals(Constant.EQUAL_REL))
 			return rel;
 
-		return "Unknown Relation";
+		return null;
 
 	}
 

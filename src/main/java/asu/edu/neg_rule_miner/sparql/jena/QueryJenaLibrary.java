@@ -76,8 +76,7 @@ public abstract class QueryJenaLibrary extends SparqlExecutor {
 
 			//check the relation is a type relation
 			if(relation.equals(this.typePrefix)&&
-					oneResult.get("obj")!=null&&
-					!this.topTypes.contains(oneResult.get("obj").toString())){
+					oneResult.get("obj")!=null){
 				graph.addType(entity, oneResult.get("obj").toString());
 			}
 
@@ -393,7 +392,7 @@ public abstract class QueryJenaLibrary extends SparqlExecutor {
 				LOGGER.debug("Executing query for {}th example out of {}.",count,subjectInstances.size());
 			String hornRuleQuery = super.generateHornRuleQuery(rules, typeSubject, typeObject);
 			//add a new filter 
-			hornRuleQuery = hornRuleQuery.substring(0, hornRuleQuery.length()-1) + "FILTER (?subject = <"+subject+">) } LIMIT 5000";
+			hornRuleQuery = hornRuleQuery.substring(0, hornRuleQuery.length()-1) + "FILTER (?subject = <"+subject+">) } LIMIT 100";
 			//if there is an exception executing one subject, just ignore it and continue
 			try{
 				totalExamples.addAll(executeSubjectObjectQuery(hornRuleQuery,null));

@@ -80,10 +80,11 @@
 				<type_prefix>http://www.w3.org/1999/02/22-rdf-syntax-ns#type</type_prefix>
 <!-- 					<type_prefix>http://www.wikidata.org/prop/direct/P31</type_prefix> -->
 			</types>
-<!-- 			<types> -->
-<!--  			Not using this for now because the two entities are of the same types only if they match all of the types they have -->
-<!-- 				<top_type>http://www.w3.org/2002/07/owl#Thing</top_type> -->
-<!-- 			</types> -->
 		</sparql>
+		<disequality_relation>
+				<!-- number of types two entities must have in common to be considered of the same type. 
+					 0=all types, -1=two different entities are never considered of the same types. -1 implies rules != will never induced -->
+				<equality_types_number>0</equality_types_number>
+		</disequality_relation>
 	</naive>
 </rule_miner>
