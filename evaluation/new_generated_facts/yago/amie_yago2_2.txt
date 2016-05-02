@@ -1,6 +1,6 @@
 Unknown facts for relation 'isPoliticianOf':
 Rule 'diedIn(subject,f) & hasCapital(object,f)' produced:
-<Saint_Telemachus>	<isPoliticianOf>	<Roman_Republic> .
+<Saint_Telemachus>	<isPoliticianOf>	<Roman_Republic> .	false
 <Franz_Hermann_Schulze-Delitzsch>	<isPoliticianOf>	<Province_of_Brandenburg> .
 <Otto_Gieseke>	<isPoliticianOf>	<Province_of_Hanover> .
 <Sarath_Munasinghe>	<isPoliticianOf>	<Dutch_period_in_Ceylon> .
@@ -12,8 +12,8 @@ Rule 'diedIn(subject,f) & hasCapital(object,f)' produced:
 <Emmanuel_Célestin_Suhard>	<isPoliticianOf>	<Bourbon_Restoration> .
 <Nils_Ahrén>	<isPoliticianOf>	<Sweden> .
 <Pope_Miltiades>	<isPoliticianOf>	<Papal_States> .
-<Silvio_Clementelli>	<isPoliticianOf>	<Roman_Republic> .
-<Ernst_Kummer>	<isPoliticianOf>	<Germany> .
+<Silvio_Clementelli>	<isPoliticianOf>	<Roman_Republic> .	false
+<Ernst_Kummer>	<isPoliticianOf>	<Germany> .	false
 <Patrick_McLaughlin_(churchman)>	<isPoliticianOf>	<United_Kingdom> .
 <Amedeo_Modigliani>	<isPoliticianOf>	<France> .
 <Marjorie_Lynette_Sigley>	<isPoliticianOf>	<Kingdom_of_Essex> .
@@ -23,7 +23,7 @@ Rule 'diedIn(subject,f) & hasCapital(object,f)' produced:
 <Bernhard_Minetti>	<isPoliticianOf>	<Allied-occupied_Germany> .
 <Andreas_Londos>	<isPoliticianOf>	<Duchy_of_Athens> .
 <Karl_Schwarzschild>	<isPoliticianOf>	<Province_of_Brandenburg> .
-<Subramaniyam_Sugirdharajan>	<isPoliticianOf>	<Eastern_Province,_Sri_Lanka> .
+<Subramaniyam_Sugirdharajan>	<isPoliticianOf>	<Eastern_Province,_Sri_Lanka> .	false
 <Clara_Southmayd_Ludlow>	<isPoliticianOf>	<United_States> .
 <Theodoor_Galle>	<isPoliticianOf>	<Antwerp_(province)> .
 <Khan_Mohammad>	<isPoliticianOf>	<United_Kingdom> .
@@ -38,7 +38,7 @@ Rule 'diedIn(subject,f) & hasCapital(object,f)' produced:
 <George_Davis_(editor)>	<isPoliticianOf>	<Germany> .
 <Meary_James_Thurairajah_Tambimuttu>	<isPoliticianOf>	<British_America> .
 <Ivan_Yakubovsky>	<isPoliticianOf>	<Russia> .
-<Heinz_Finke>	<isPoliticianOf>	<Upper_Bavaria> .
+<Heinz_Finke>	<isPoliticianOf>	<Upper_Bavaria> .	false
 <Abu_Sayeed_Chowdhury>	<isPoliticianOf>	<British_America> .
 <Albert_Stanley,_1st_Baron_Ashfield>	<isPoliticianOf>	<British_America> .
 <Charles_Humbert>	<isPoliticianOf>	<France> .
@@ -48,14 +48,14 @@ Rule 'diedIn(subject,f) & hasCapital(object,f)' produced:
 <Pierre-Joseph_Redouté>	<isPoliticianOf>	<France> .
 <George_F._Elliott>	<isPoliticianOf>	<United_States> .
 <Cecil_Francis_Kilner>	<isPoliticianOf>	<United_Kingdom> .
-<Pope_Clement_X>	<isPoliticianOf>	<Papal_States> .
+<Pope_Clement_X>	<isPoliticianOf>	<Papal_States> .	true
 <Colin_Blakely>	<isPoliticianOf>	<England> .
 <Patrick_Magee_(actor)>	<isPoliticianOf>	<United_Kingdom> .
 <Andreas_Londos>	<isPoliticianOf>	<Greece> .
 <Mitsuteru_Yokoyama>	<isPoliticianOf>	<Occupation_of_Japan> .
 <Valentin_Galochkin>	<isPoliticianOf>	<Tsardom_of_Russia> .
 <Stanislaus_of_Szczepanów>	<isPoliticianOf>	<Polish–Lithuanian_Commonwealth> .
-<Gjuro_Baglivi>	<isPoliticianOf>	<Italy> .
+<Gjuro_Baglivi>	<isPoliticianOf>	<Italy> .	false
 <Ernest_zu_Hohenlohe>	<isPoliticianOf>	<Ditadura_Nacional> .
 <Joseph_Louis_Gay-Lussac>	<isPoliticianOf>	<France> .
 <Teófilo_Braga>	<isPoliticianOf>	<Estado_Novo_(Portugal)> .
@@ -73,9 +73,9 @@ Rule 'diedIn(subject,f) & hasCapital(object,f)' produced:
 <Tony_Kett>	<isPoliticianOf>	<Southern_Ireland> .
 <Erno_Crisa>	<isPoliticianOf>	<Roman_Republic> .
 <Matthew_Flinders>	<isPoliticianOf>	<British_America> .
-<Dino_Risi>	<isPoliticianOf>	<Papal_States> .
+<Dino_Risi>	<isPoliticianOf>	<Papal_States> .	false
 <Mortimer_Wheeler>	<isPoliticianOf>	<England> .
-<Lucjan_Wolanowski>	<isPoliticianOf>	<Poland> .
+<Lucjan_Wolanowski>	<isPoliticianOf>	<Poland> .	false
 <Jan_Kurnakowicz>	<isPoliticianOf>	<Polish_National_Government_(January_Uprising)> .
 <Christoforos_Nezer_(d._1996)>	<isPoliticianOf>	<Greece> .
 <Saint_Telemachus>	<isPoliticianOf>	<Roman_Empire> .
@@ -100,22 +100,22 @@ Rule 'diedIn(subject,f) & hasCapital(object,f)' produced:
 <Iwane_Matsui>	<isPoliticianOf>	<Occupation_of_Japan> .
 <Kurt_Eisner>	<isPoliticianOf>	<Upper_Bavaria> .
 <Gjuro_Baglivi>	<isPoliticianOf>	<Roman_Republic> .
-<Sotiris_Moustakas>	<isPoliticianOf>	<Athens_Prefecture> .
+<Sotiris_Moustakas>	<isPoliticianOf>	<Athens_Prefecture> .	false
 <Subroto_Mukerjee>	<isPoliticianOf>	<Japan> .
 <Helen_Haye>	<isPoliticianOf>	<England> .
 <Howie_Epstein>	<isPoliticianOf>	<New_Mexico_Territory> .
-<Syed_Mahmood_Naqvi>	<isPoliticianOf>	<Andhra_Pradesh> .
+<Syed_Mahmood_Naqvi>	<isPoliticianOf>	<Andhra_Pradesh> .	false
 <Rusudan_of_Georgia>	<isPoliticianOf>	<Transcaucasian_Socialist_Federative_Soviet_Republic> .
 <André_Zeller>	<isPoliticianOf>	<West_Francia> .
 <Giorgos_Gavriilidis>	<isPoliticianOf>	<Duchy_of_Athens> .
 <Ion_Filotti_Cantacuzino>	<isPoliticianOf>	<Kingdom_of_Romania> .
-<Shōzō_Sakurai>	<isPoliticianOf>	<Occupation_of_Japan> .
+<Shōzō_Sakurai>	<isPoliticianOf>	<Occupation_of_Japan> .	false
 <Richard_Budworth>	<isPoliticianOf>	<Kingdom_of_Essex> .
 <Mariano_Rumor>	<isPoliticianOf>	<Roman_Empire> .
 <Ignat_Bednarik>	<isPoliticianOf>	<Kingdom_of_Romania> .
 <Eva_Bartok>	<isPoliticianOf>	<England> .
 <T._N._Srikantaiah>	<isPoliticianOf>	<West_Bengal> .
-<Margo_Lion_(cabaret_singer)>	<isPoliticianOf>	<France> .
+<Margo_Lion_(cabaret_singer)>	<isPoliticianOf>	<France> .	false
 <Guillaume_Apollinaire>	<isPoliticianOf>	<France> .
 <Frank_Beyer>	<isPoliticianOf>	<Germany> .
 <Augustus_Case>	<isPoliticianOf>	<United_States> .
@@ -129,8 +129,8 @@ Rule 'diedIn(subject,f) & hasCapital(object,f)' produced:
 <Mija_Aleksić>	<isPoliticianOf>	<Socialist_Republic_of_Serbia> .
 <Merch_Bradt_Stewart>	<isPoliticianOf>	<Spanish_Florida> .
 <Mario_Fucini>	<isPoliticianOf>	<Roman_Empire> .
-<Evgenia_Baykova>	<isPoliticianOf>	<Russian_Soviet_Federative_Socialist_Republic> .
-<Peter_Bourgade>	<isPoliticianOf>	<New_Mexico_Territory> .
+<Evgenia_Baykova>	<isPoliticianOf>	<Russian_Soviet_Federative_Socialist_Republic> .	false
+<Peter_Bourgade>	<isPoliticianOf>	<New_Mexico_Territory> .	false
 <Martina_of_Rome>	<isPoliticianOf>	<Roman_Empire> .
 <Clement_of_Ancyra>	<isPoliticianOf>	<Roman_Republic> .
 <Irmtraud_Morgner>	<isPoliticianOf>	<Nazi_Germany> .
@@ -347,7 +347,7 @@ Rule 'diedIn(subject,f) & hasCapital(object,f)' produced:
 <Charles_Fernley_Fawcett>	<isPoliticianOf>	<England> .
 <Jerzy_Zawieyski>	<isPoliticianOf>	<Poland> .
 <Tamara_Makarova>	<isPoliticianOf>	<Tsardom_of_Russia> .
-<Gustav_Ludwig_Hertz>	<isPoliticianOf>	<Nazi_Germany> .
+<Gustav_Ludwig_Hertz>	<isPoliticianOf>	<Nazi_Germany> .	false
 <Adolf_Fierla>	<isPoliticianOf>	<Kingdom_of_Essex> .
 <Roberto_Balado>	<isPoliticianOf>	<Cuba> .
 <Natalija_Konstantinović>	<isPoliticianOf>	<France> .
@@ -412,7 +412,7 @@ Rule 'diedIn(subject,f) & hasCapital(object,f)' produced:
 <Wilhelm_Rediess>	<isPoliticianOf>	<Norway> .
 <John_Arthur_Phillips>	<isPoliticianOf>	<England> .
 <Aldo_De_Benedetti>	<isPoliticianOf>	<Italy> .
-<Fausto_Tozzi>	<isPoliticianOf>	<Roman_Republic> .
+<Fausto_Tozzi>	<isPoliticianOf>	<Roman_Republic> .	false
 <Barbara_Lott>	<isPoliticianOf>	<British_America> .
 <Dinko_Šakić>	<isPoliticianOf>	<Kingdom_of_Croatia_(Habsburg)> .
 <Boris_Vannikov>	<isPoliticianOf>	<Reichskommissariat_Moskowien> .
@@ -429,7 +429,7 @@ Rule 'diedIn(subject,f) & hasCapital(object,f)' produced:
 <Titos_Vandis>	<isPoliticianOf>	<Classical_Athens> .
 <George_Percy_Badger>	<isPoliticianOf>	<Kingdom_of_Essex> .
 <Peter_P._Dubrovsky>	<isPoliticianOf>	<Russian_Soviet_Federative_Socialist_Republic> .
-<Emlyn_Williams>	<isPoliticianOf>	<Kingdom_of_Essex> .
+<Emlyn_Williams>	<isPoliticianOf>	<Kingdom_of_Essex> .	false
 <Lyndon_Brook>	<isPoliticianOf>	<United_Kingdom> .
 <Gusztáv_Hennyey>	<isPoliticianOf>	<Upper_Bavaria> .
 <Lev_Orekhov>	<isPoliticianOf>	<Russian_Soviet_Federative_Socialist_Republic> .
@@ -531,7 +531,7 @@ Rule 'diedIn(subject,f) & hasCapital(object,f)' produced:
 <Algernon_Charles_Swinburne>	<isPoliticianOf>	<British_America> .
 <Alexandru_Plămădeală>	<isPoliticianOf>	<Moldova> .
 <Michael_Graf_von_Matuschka>	<isPoliticianOf>	<Nazi_Germany> .
-<Pierre-Joseph_van_Beneden>	<isPoliticianOf>	<Flemish_Brabant> .
+<Pierre-Joseph_van_Beneden>	<isPoliticianOf>	<Flemish_Brabant> .	false
 <Witold_Pilecki>	<isPoliticianOf>	<Second_Polish_Republic> .
 <Rudolf_Fernau>	<isPoliticianOf>	<Munich_(district)> .
 <Eugene_K._Bird>	<isPoliticianOf>	<Germany> .
@@ -808,7 +808,7 @@ Rule 'diedIn(subject,f) & hasCapital(object,f)' produced:
 <Henri_Gouraud_(French_Army_officer)>	<isPoliticianOf>	<France> .
 <Fedor_Tokarev>	<isPoliticianOf>	<Reichskommissariat_Moskowien> .
 <Wolfgang_Fürstner>	<isPoliticianOf>	<Kingdom_of_Prussia> .
-<Mutesa_II_of_Buganda>	<isPoliticianOf>	<England> .
+<Mutesa_II_of_Buganda>	<isPoliticianOf>	<England> .	true
 <Étienne_Marie_Antoine_Champion_de_Nansouty>	<isPoliticianOf>	<West_Francia> .
 <Cornelius_Laco>	<isPoliticianOf>	<Papal_States> .
 <Vasil_Adzhalarski>	<isPoliticianOf>	<Serbian_Empire> .
@@ -855,7 +855,7 @@ Rule 'diedIn(subject,f) & hasCapital(object,f)' produced:
 <Pope_Clement_XII>	<isPoliticianOf>	<Italy> .
 <K._K._Srinivasan>	<isPoliticianOf>	<Karnataka> .
 <Wincenty_Witos>	<isPoliticianOf>	<General_Government> .
-<Ion_Cazacliu>	<isPoliticianOf>	<Moldavian_Soviet_Socialist_Republic> .
+<Ion_Cazacliu>	<isPoliticianOf>	<Moldavian_Soviet_Socialist_Republic> .	true
 <Jacob_Meir>	<isPoliticianOf>	<Kingdom_of_Judah> .
 <Edwin_Power>	<isPoliticianOf>	<British_America> .
 <Robert_Koldewey>	<isPoliticianOf>	<Allied-occupied_Germany> .
@@ -893,7 +893,7 @@ Rule 'diedIn(subject,f) & hasCapital(object,f)' produced:
 <María_Félix>	<isPoliticianOf>	<Viceroyalty_of_New_Spain> .
 <Yevno_Azef>	<isPoliticianOf>	<Nazi_Germany> .
 <Živojin_Mišić>	<isPoliticianOf>	<Serbia> .
-<Peter_Frantz>	<isPoliticianOf>	<Gallic_Empire> .
+<Peter_Frantz>	<isPoliticianOf>	<Gallic_Empire> .	false
 <Leonid_Baratov>	<isPoliticianOf>	<Soviet_Union> .
 <Anna_Magnani>	<isPoliticianOf>	<Italy> .
 <Masaccio>	<isPoliticianOf>	<Italy> .
@@ -911,7 +911,7 @@ Rule 'diedIn(subject,f) & hasCapital(object,f)' produced:
 <John_Maynard_Woodworth>	<isPoliticianOf>	<United_States> .
 <Hadi_Mirmiran>	<isPoliticianOf>	<Kingdom_of_Prussia> .
 <Kamāmalu>	<isPoliticianOf>	<England> .
-<Lazarus_Fuchs>	<isPoliticianOf>	<Kingdom_of_Prussia> .
+<Lazarus_Fuchs>	<isPoliticianOf>	<Kingdom_of_Prussia> .	false
 <António_Granjo>	<isPoliticianOf>	<Ditadura_Nacional> .
 <Robert_Stephenson>	<isPoliticianOf>	<England> .
 <Enrico_Gras>	<isPoliticianOf>	<Italy> .
@@ -942,7 +942,7 @@ Rule 'diedIn(subject,f) & hasCapital(object,f)' produced:
 <Carlos_Alvarado_Lang>	<isPoliticianOf>	<Viceroyalty_of_New_Spain> .
 <Ion_Gheorghe_Maurer>	<isPoliticianOf>	<Romania> .
 <Johannes_Hoffmann>	<isPoliticianOf>	<Allied-occupied_Germany> .
-<Marcello_Mastroianni>	<isPoliticianOf>	<Bourbon_Restoration> .
+<Marcello_Mastroianni>	<isPoliticianOf>	<Bourbon_Restoration> .	false
 <Alexandre_Lacoste>	<isPoliticianOf>	<Aerican_Empire> .
 <Piotr_Litvinsky>	<isPoliticianOf>	<Russia> .
 <Eliot_Hodgkin>	<isPoliticianOf>	<British_America> .
@@ -1717,7 +1717,7 @@ Rule 'diedIn(subject,f) & hasCapital(object,f)' produced:
 <Axel_Gustav_Adlercreutz>	<isPoliticianOf>	<Sweden> .
 <Szolem_Mandelbrojt>	<isPoliticianOf>	<West_Francia> .
 <Pierre_Boulle>	<isPoliticianOf>	<Bourbon_Restoration> .
-<Ceferino_Namuncurá>	<isPoliticianOf>	<Roman_Republic> .
+<Ceferino_Namuncurá>	<isPoliticianOf>	<Roman_Republic> .	false
 <Victor_Dyomin>	<isPoliticianOf>	<Soviet_Union> .
 <Errico_Malatesta>	<isPoliticianOf>	<Italy> .
 <Ivan_Yefimovich_Petrov>	<isPoliticianOf>	<Soviet_Union> .
@@ -1732,7 +1732,7 @@ Rule 'diedIn(subject,f) & hasCapital(object,f)' produced:
 <Pope_Lucius_II>	<isPoliticianOf>	<Papal_States> .
 <Fernando_Soler>	<isPoliticianOf>	<Viceroyalty_of_New_Spain> .
 <Liva_Weel>	<isPoliticianOf>	<Denmark> .
-<Franco_Sensi>	<isPoliticianOf>	<Roman_Republic> .
+<Franco_Sensi>	<isPoliticianOf>	<Roman_Republic> .	false
 <Georg_Hackenschmidt>	<isPoliticianOf>	<United_Kingdom> .
 <Nazim_al-Kudsi>	<isPoliticianOf>	<Jordan> .
 <Hans_Gabrielsen>	<isPoliticianOf>	<Oppland> .
@@ -2429,7 +2429,7 @@ Rule 'diedIn(subject,f) & hasCapital(object,f)' produced:
 <Henning_Holck-Larsen>	<isPoliticianOf>	<Maharashtra> .
 <Nora_Swinburne>	<isPoliticianOf>	<United_Kingdom> .
 <Baltzar_von_Platen_(statesman)>	<isPoliticianOf>	<Akershus> .
-<Raymond_Borderie>	<isPoliticianOf>	<France> .
+<Raymond_Borderie>	<isPoliticianOf>	<France> .	false
 <Henri_Decoin>	<isPoliticianOf>	<Bourbon_Restoration> .
 <Morrison_Waite>	<isPoliticianOf>	<United_States> .
 <Gerhard_Lamprecht>	<isPoliticianOf>	<Allied-occupied_Germany> .
@@ -2619,7 +2619,7 @@ Rule 'diedIn(subject,f) & hasCapital(object,f)' produced:
 <Hans_Unger>	<isPoliticianOf>	<Electorate_of_Saxony> .
 <Alex_Benno>	<isPoliticianOf>	<North_Holland> .
 <Shūgorō_Yamamoto>	<isPoliticianOf>	<Kanagawa_Prefecture> .
-<Walter_Hörnlein>	<isPoliticianOf>	<Electorate_of_Cologne> .
+<Walter_Hörnlein>	<isPoliticianOf>	<Electorate_of_Cologne> .	false
 <Reginald_Talbot>	<isPoliticianOf>	<Kingdom_of_Essex> .
 <Maxima_of_Rome>	<isPoliticianOf>	<Roman_Empire> .
 <Botho_zu_Eulenburg>	<isPoliticianOf>	<Kingdom_of_Prussia> .
@@ -2665,7 +2665,7 @@ Rule 'diedIn(subject,f) & hasCapital(object,f)' produced:
 <Sven_Lindberg>	<isPoliticianOf>	<Swedish_Empire> .
 <Joel_E._Siegel>	<isPoliticianOf>	<United_States> .
 <Cato_Maximilian_Guldberg>	<isPoliticianOf>	<Akershus_County_Municipality> .
-<Jaque_Catelain>	<isPoliticianOf>	<France> .
+<Jaque_Catelain>	<isPoliticianOf>	<France> .	false
 <Rodolfo_Sonego>	<isPoliticianOf>	<Roman_Republic> .
 <Douglas_Hyde>	<isPoliticianOf>	<Southern_Ireland> .
 <Anton_Pann>	<isPoliticianOf>	<Kingdom_of_Romania> .
@@ -3044,7 +3044,7 @@ Rule 'diedIn(subject,f) & hasCapital(object,f)' produced:
 <Tjalie_Robinson>	<isPoliticianOf>	<South_Holland> .
 <Petar_Atsev>	<isPoliticianOf>	<Plovdiv_Province> .
 <Urraca_of_Castile,_Queen_of_Portugal>	<isPoliticianOf>	<Coimbra_District> .
-<Alexandru_Proca>	<isPoliticianOf>	<Bourbon_Restoration> .
+<Alexandru_Proca>	<isPoliticianOf>	<Bourbon_Restoration> .	false
 <Aleksandar_Sekulović>	<isPoliticianOf>	<Serbia> .
 <António_de_Oliveira_Salazar>	<isPoliticianOf>	<Estado_Novo_(Portugal)> .
 <Caleb_Althin>	<isPoliticianOf>	<Stockholm_Municipality> .
