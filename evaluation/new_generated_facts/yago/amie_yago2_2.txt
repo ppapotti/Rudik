@@ -1,6 +1,6 @@
 Unknown facts for relation 'isPoliticianOf':
 Rule 'diedIn(subject,f) & hasCapital(object,f)' produced:
-<Saint_Telemachus>	<isPoliticianOf>	<Roman_Republic> .
+<Saint_Telemachus>	<isPoliticianOf>	<Roman_Republic> .	false
 <Franz_Hermann_Schulze-Delitzsch>	<isPoliticianOf>	<Province_of_Brandenburg> .
 <Otto_Gieseke>	<isPoliticianOf>	<Province_of_Hanover> .
 <Sarath_Munasinghe>	<isPoliticianOf>	<Dutch_period_in_Ceylon> .
@@ -12,8 +12,8 @@ Rule 'diedIn(subject,f) & hasCapital(object,f)' produced:
 <Emmanuel_Célestin_Suhard>	<isPoliticianOf>	<Bourbon_Restoration> .
 <Nils_Ahrén>	<isPoliticianOf>	<Sweden> .
 <Pope_Miltiades>	<isPoliticianOf>	<Papal_States> .
-<Silvio_Clementelli>	<isPoliticianOf>	<Roman_Republic> .
-<Ernst_Kummer>	<isPoliticianOf>	<Germany> .
+<Silvio_Clementelli>	<isPoliticianOf>	<Roman_Republic> .	false
+<Ernst_Kummer>	<isPoliticianOf>	<Germany> .	false
 <Patrick_McLaughlin_(churchman)>	<isPoliticianOf>	<United_Kingdom> .
 <Amedeo_Modigliani>	<isPoliticianOf>	<France> .
 <Marjorie_Lynette_Sigley>	<isPoliticianOf>	<Kingdom_of_Essex> .
@@ -23,7 +23,7 @@ Rule 'diedIn(subject,f) & hasCapital(object,f)' produced:
 <Bernhard_Minetti>	<isPoliticianOf>	<Allied-occupied_Germany> .
 <Andreas_Londos>	<isPoliticianOf>	<Duchy_of_Athens> .
 <Karl_Schwarzschild>	<isPoliticianOf>	<Province_of_Brandenburg> .
-<Subramaniyam_Sugirdharajan>	<isPoliticianOf>	<Eastern_Province,_Sri_Lanka> .
+<Subramaniyam_Sugirdharajan>	<isPoliticianOf>	<Eastern_Province,_Sri_Lanka> .	false
 <Clara_Southmayd_Ludlow>	<isPoliticianOf>	<United_States> .
 <Theodoor_Galle>	<isPoliticianOf>	<Antwerp_(province)> .
 <Khan_Mohammad>	<isPoliticianOf>	<United_Kingdom> .
@@ -38,7 +38,7 @@ Rule 'diedIn(subject,f) & hasCapital(object,f)' produced:
 <George_Davis_(editor)>	<isPoliticianOf>	<Germany> .
 <Meary_James_Thurairajah_Tambimuttu>	<isPoliticianOf>	<British_America> .
 <Ivan_Yakubovsky>	<isPoliticianOf>	<Russia> .
-<Heinz_Finke>	<isPoliticianOf>	<Upper_Bavaria> .
+<Heinz_Finke>	<isPoliticianOf>	<Upper_Bavaria> .	false
 <Abu_Sayeed_Chowdhury>	<isPoliticianOf>	<British_America> .
 <Albert_Stanley,_1st_Baron_Ashfield>	<isPoliticianOf>	<British_America> .
 <Charles_Humbert>	<isPoliticianOf>	<France> .
@@ -48,14 +48,14 @@ Rule 'diedIn(subject,f) & hasCapital(object,f)' produced:
 <Pierre-Joseph_Redouté>	<isPoliticianOf>	<France> .
 <George_F._Elliott>	<isPoliticianOf>	<United_States> .
 <Cecil_Francis_Kilner>	<isPoliticianOf>	<United_Kingdom> .
-<Pope_Clement_X>	<isPoliticianOf>	<Papal_States> .
+<Pope_Clement_X>	<isPoliticianOf>	<Papal_States> .	true
 <Colin_Blakely>	<isPoliticianOf>	<England> .
 <Patrick_Magee_(actor)>	<isPoliticianOf>	<United_Kingdom> .
 <Andreas_Londos>	<isPoliticianOf>	<Greece> .
 <Mitsuteru_Yokoyama>	<isPoliticianOf>	<Occupation_of_Japan> .
 <Valentin_Galochkin>	<isPoliticianOf>	<Tsardom_of_Russia> .
 <Stanislaus_of_Szczepanów>	<isPoliticianOf>	<Polish–Lithuanian_Commonwealth> .
-<Gjuro_Baglivi>	<isPoliticianOf>	<Italy> .
+<Gjuro_Baglivi>	<isPoliticianOf>	<Italy> .	false
 <Ernest_zu_Hohenlohe>	<isPoliticianOf>	<Ditadura_Nacional> .
 <Joseph_Louis_Gay-Lussac>	<isPoliticianOf>	<France> .
 <Teófilo_Braga>	<isPoliticianOf>	<Estado_Novo_(Portugal)> .
@@ -73,9 +73,9 @@ Rule 'diedIn(subject,f) & hasCapital(object,f)' produced:
 <Tony_Kett>	<isPoliticianOf>	<Southern_Ireland> .
 <Erno_Crisa>	<isPoliticianOf>	<Roman_Republic> .
 <Matthew_Flinders>	<isPoliticianOf>	<British_America> .
-<Dino_Risi>	<isPoliticianOf>	<Papal_States> .
+<Dino_Risi>	<isPoliticianOf>	<Papal_States> .	false
 <Mortimer_Wheeler>	<isPoliticianOf>	<England> .
-<Lucjan_Wolanowski>	<isPoliticianOf>	<Poland> .
+<Lucjan_Wolanowski>	<isPoliticianOf>	<Poland> .	false
 <Jan_Kurnakowicz>	<isPoliticianOf>	<Polish_National_Government_(January_Uprising)> .
 <Christoforos_Nezer_(d._1996)>	<isPoliticianOf>	<Greece> .
 <Saint_Telemachus>	<isPoliticianOf>	<Roman_Empire> .
@@ -100,22 +100,22 @@ Rule 'diedIn(subject,f) & hasCapital(object,f)' produced:
 <Iwane_Matsui>	<isPoliticianOf>	<Occupation_of_Japan> .
 <Kurt_Eisner>	<isPoliticianOf>	<Upper_Bavaria> .
 <Gjuro_Baglivi>	<isPoliticianOf>	<Roman_Republic> .
-<Sotiris_Moustakas>	<isPoliticianOf>	<Athens_Prefecture> .
+<Sotiris_Moustakas>	<isPoliticianOf>	<Athens_Prefecture> .	false
 <Subroto_Mukerjee>	<isPoliticianOf>	<Japan> .
 <Helen_Haye>	<isPoliticianOf>	<England> .
 <Howie_Epstein>	<isPoliticianOf>	<New_Mexico_Territory> .
-<Syed_Mahmood_Naqvi>	<isPoliticianOf>	<Andhra_Pradesh> .
+<Syed_Mahmood_Naqvi>	<isPoliticianOf>	<Andhra_Pradesh> .	false
 <Rusudan_of_Georgia>	<isPoliticianOf>	<Transcaucasian_Socialist_Federative_Soviet_Republic> .
 <André_Zeller>	<isPoliticianOf>	<West_Francia> .
 <Giorgos_Gavriilidis>	<isPoliticianOf>	<Duchy_of_Athens> .
 <Ion_Filotti_Cantacuzino>	<isPoliticianOf>	<Kingdom_of_Romania> .
-<Shōzō_Sakurai>	<isPoliticianOf>	<Occupation_of_Japan> .
+<Shōzō_Sakurai>	<isPoliticianOf>	<Occupation_of_Japan> .	false
 <Richard_Budworth>	<isPoliticianOf>	<Kingdom_of_Essex> .
 <Mariano_Rumor>	<isPoliticianOf>	<Roman_Empire> .
 <Ignat_Bednarik>	<isPoliticianOf>	<Kingdom_of_Romania> .
 <Eva_Bartok>	<isPoliticianOf>	<England> .
 <T._N._Srikantaiah>	<isPoliticianOf>	<West_Bengal> .
-<Margo_Lion_(cabaret_singer)>	<isPoliticianOf>	<France> .
+<Margo_Lion_(cabaret_singer)>	<isPoliticianOf>	<France> .	false
 <Guillaume_Apollinaire>	<isPoliticianOf>	<France> .
 <Frank_Beyer>	<isPoliticianOf>	<Germany> .
 <Augustus_Case>	<isPoliticianOf>	<United_States> .
@@ -129,8 +129,8 @@ Rule 'diedIn(subject,f) & hasCapital(object,f)' produced:
 <Mija_Aleksić>	<isPoliticianOf>	<Socialist_Republic_of_Serbia> .
 <Merch_Bradt_Stewart>	<isPoliticianOf>	<Spanish_Florida> .
 <Mario_Fucini>	<isPoliticianOf>	<Roman_Empire> .
-<Evgenia_Baykova>	<isPoliticianOf>	<Russian_Soviet_Federative_Socialist_Republic> .
-<Peter_Bourgade>	<isPoliticianOf>	<New_Mexico_Territory> .
+<Evgenia_Baykova>	<isPoliticianOf>	<Russian_Soviet_Federative_Socialist_Republic> .	false
+<Peter_Bourgade>	<isPoliticianOf>	<New_Mexico_Territory> .	false
 <Martina_of_Rome>	<isPoliticianOf>	<Roman_Empire> .
 <Clement_of_Ancyra>	<isPoliticianOf>	<Roman_Republic> .
 <Irmtraud_Morgner>	<isPoliticianOf>	<Nazi_Germany> .
@@ -347,7 +347,7 @@ Rule 'diedIn(subject,f) & hasCapital(object,f)' produced:
 <Charles_Fernley_Fawcett>	<isPoliticianOf>	<England> .
 <Jerzy_Zawieyski>	<isPoliticianOf>	<Poland> .
 <Tamara_Makarova>	<isPoliticianOf>	<Tsardom_of_Russia> .
-<Gustav_Ludwig_Hertz>	<isPoliticianOf>	<Nazi_Germany> .
+<Gustav_Ludwig_Hertz>	<isPoliticianOf>	<Nazi_Germany> .	false
 <Adolf_Fierla>	<isPoliticianOf>	<Kingdom_of_Essex> .
 <Roberto_Balado>	<isPoliticianOf>	<Cuba> .
 <Natalija_Konstantinović>	<isPoliticianOf>	<France> .
@@ -412,7 +412,7 @@ Rule 'diedIn(subject,f) & hasCapital(object,f)' produced:
 <Wilhelm_Rediess>	<isPoliticianOf>	<Norway> .
 <John_Arthur_Phillips>	<isPoliticianOf>	<England> .
 <Aldo_De_Benedetti>	<isPoliticianOf>	<Italy> .
-<Fausto_Tozzi>	<isPoliticianOf>	<Roman_Republic> .
+<Fausto_Tozzi>	<isPoliticianOf>	<Roman_Republic> .	false
 <Barbara_Lott>	<isPoliticianOf>	<British_America> .
 <Dinko_Šakić>	<isPoliticianOf>	<Kingdom_of_Croatia_(Habsburg)> .
 <Boris_Vannikov>	<isPoliticianOf>	<Reichskommissariat_Moskowien> .
@@ -429,7 +429,7 @@ Rule 'diedIn(subject,f) & hasCapital(object,f)' produced:
 <Titos_Vandis>	<isPoliticianOf>	<Classical_Athens> .
 <George_Percy_Badger>	<isPoliticianOf>	<Kingdom_of_Essex> .
 <Peter_P._Dubrovsky>	<isPoliticianOf>	<Russian_Soviet_Federative_Socialist_Republic> .
-<Emlyn_Williams>	<isPoliticianOf>	<Kingdom_of_Essex> .
+<Emlyn_Williams>	<isPoliticianOf>	<Kingdom_of_Essex> .	false
 <Lyndon_Brook>	<isPoliticianOf>	<United_Kingdom> .
 <Gusztáv_Hennyey>	<isPoliticianOf>	<Upper_Bavaria> .
 <Lev_Orekhov>	<isPoliticianOf>	<Russian_Soviet_Federative_Socialist_Republic> .
@@ -531,7 +531,7 @@ Rule 'diedIn(subject,f) & hasCapital(object,f)' produced:
 <Algernon_Charles_Swinburne>	<isPoliticianOf>	<British_America> .
 <Alexandru_Plămădeală>	<isPoliticianOf>	<Moldova> .
 <Michael_Graf_von_Matuschka>	<isPoliticianOf>	<Nazi_Germany> .
-<Pierre-Joseph_van_Beneden>	<isPoliticianOf>	<Flemish_Brabant> .
+<Pierre-Joseph_van_Beneden>	<isPoliticianOf>	<Flemish_Brabant> .	false
 <Witold_Pilecki>	<isPoliticianOf>	<Second_Polish_Republic> .
 <Rudolf_Fernau>	<isPoliticianOf>	<Munich_(district)> .
 <Eugene_K._Bird>	<isPoliticianOf>	<Germany> .
@@ -808,7 +808,7 @@ Rule 'diedIn(subject,f) & hasCapital(object,f)' produced:
 <Henri_Gouraud_(French_Army_officer)>	<isPoliticianOf>	<France> .
 <Fedor_Tokarev>	<isPoliticianOf>	<Reichskommissariat_Moskowien> .
 <Wolfgang_Fürstner>	<isPoliticianOf>	<Kingdom_of_Prussia> .
-<Mutesa_II_of_Buganda>	<isPoliticianOf>	<England> .
+<Mutesa_II_of_Buganda>	<isPoliticianOf>	<England> .	true
 <Étienne_Marie_Antoine_Champion_de_Nansouty>	<isPoliticianOf>	<West_Francia> .
 <Cornelius_Laco>	<isPoliticianOf>	<Papal_States> .
 <Vasil_Adzhalarski>	<isPoliticianOf>	<Serbian_Empire> .
@@ -855,7 +855,7 @@ Rule 'diedIn(subject,f) & hasCapital(object,f)' produced:
 <Pope_Clement_XII>	<isPoliticianOf>	<Italy> .
 <K._K._Srinivasan>	<isPoliticianOf>	<Karnataka> .
 <Wincenty_Witos>	<isPoliticianOf>	<General_Government> .
-<Ion_Cazacliu>	<isPoliticianOf>	<Moldavian_Soviet_Socialist_Republic> .
+<Ion_Cazacliu>	<isPoliticianOf>	<Moldavian_Soviet_Socialist_Republic> .	true
 <Jacob_Meir>	<isPoliticianOf>	<Kingdom_of_Judah> .
 <Edwin_Power>	<isPoliticianOf>	<British_America> .
 <Robert_Koldewey>	<isPoliticianOf>	<Allied-occupied_Germany> .
@@ -893,7 +893,7 @@ Rule 'diedIn(subject,f) & hasCapital(object,f)' produced:
 <María_Félix>	<isPoliticianOf>	<Viceroyalty_of_New_Spain> .
 <Yevno_Azef>	<isPoliticianOf>	<Nazi_Germany> .
 <Živojin_Mišić>	<isPoliticianOf>	<Serbia> .
-<Peter_Frantz>	<isPoliticianOf>	<Gallic_Empire> .
+<Peter_Frantz>	<isPoliticianOf>	<Gallic_Empire> .	false
 <Leonid_Baratov>	<isPoliticianOf>	<Soviet_Union> .
 <Anna_Magnani>	<isPoliticianOf>	<Italy> .
 <Masaccio>	<isPoliticianOf>	<Italy> .
@@ -911,7 +911,7 @@ Rule 'diedIn(subject,f) & hasCapital(object,f)' produced:
 <John_Maynard_Woodworth>	<isPoliticianOf>	<United_States> .
 <Hadi_Mirmiran>	<isPoliticianOf>	<Kingdom_of_Prussia> .
 <Kamāmalu>	<isPoliticianOf>	<England> .
-<Lazarus_Fuchs>	<isPoliticianOf>	<Kingdom_of_Prussia> .
+<Lazarus_Fuchs>	<isPoliticianOf>	<Kingdom_of_Prussia> .	false
 <António_Granjo>	<isPoliticianOf>	<Ditadura_Nacional> .
 <Robert_Stephenson>	<isPoliticianOf>	<England> .
 <Enrico_Gras>	<isPoliticianOf>	<Italy> .
@@ -942,7 +942,7 @@ Rule 'diedIn(subject,f) & hasCapital(object,f)' produced:
 <Carlos_Alvarado_Lang>	<isPoliticianOf>	<Viceroyalty_of_New_Spain> .
 <Ion_Gheorghe_Maurer>	<isPoliticianOf>	<Romania> .
 <Johannes_Hoffmann>	<isPoliticianOf>	<Allied-occupied_Germany> .
-<Marcello_Mastroianni>	<isPoliticianOf>	<Bourbon_Restoration> .
+<Marcello_Mastroianni>	<isPoliticianOf>	<Bourbon_Restoration> .	false
 <Alexandre_Lacoste>	<isPoliticianOf>	<Aerican_Empire> .
 <Piotr_Litvinsky>	<isPoliticianOf>	<Russia> .
 <Eliot_Hodgkin>	<isPoliticianOf>	<British_America> .
@@ -1717,7 +1717,7 @@ Rule 'diedIn(subject,f) & hasCapital(object,f)' produced:
 <Axel_Gustav_Adlercreutz>	<isPoliticianOf>	<Sweden> .
 <Szolem_Mandelbrojt>	<isPoliticianOf>	<West_Francia> .
 <Pierre_Boulle>	<isPoliticianOf>	<Bourbon_Restoration> .
-<Ceferino_Namuncurá>	<isPoliticianOf>	<Roman_Republic> .
+<Ceferino_Namuncurá>	<isPoliticianOf>	<Roman_Republic> .	false
 <Victor_Dyomin>	<isPoliticianOf>	<Soviet_Union> .
 <Errico_Malatesta>	<isPoliticianOf>	<Italy> .
 <Ivan_Yefimovich_Petrov>	<isPoliticianOf>	<Soviet_Union> .
@@ -1732,7 +1732,7 @@ Rule 'diedIn(subject,f) & hasCapital(object,f)' produced:
 <Pope_Lucius_II>	<isPoliticianOf>	<Papal_States> .
 <Fernando_Soler>	<isPoliticianOf>	<Viceroyalty_of_New_Spain> .
 <Liva_Weel>	<isPoliticianOf>	<Denmark> .
-<Franco_Sensi>	<isPoliticianOf>	<Roman_Republic> .
+<Franco_Sensi>	<isPoliticianOf>	<Roman_Republic> .	false
 <Georg_Hackenschmidt>	<isPoliticianOf>	<United_Kingdom> .
 <Nazim_al-Kudsi>	<isPoliticianOf>	<Jordan> .
 <Hans_Gabrielsen>	<isPoliticianOf>	<Oppland> .
@@ -2429,7 +2429,7 @@ Rule 'diedIn(subject,f) & hasCapital(object,f)' produced:
 <Henning_Holck-Larsen>	<isPoliticianOf>	<Maharashtra> .
 <Nora_Swinburne>	<isPoliticianOf>	<United_Kingdom> .
 <Baltzar_von_Platen_(statesman)>	<isPoliticianOf>	<Akershus> .
-<Raymond_Borderie>	<isPoliticianOf>	<France> .
+<Raymond_Borderie>	<isPoliticianOf>	<France> .	false
 <Henri_Decoin>	<isPoliticianOf>	<Bourbon_Restoration> .
 <Morrison_Waite>	<isPoliticianOf>	<United_States> .
 <Gerhard_Lamprecht>	<isPoliticianOf>	<Allied-occupied_Germany> .
@@ -2619,7 +2619,7 @@ Rule 'diedIn(subject,f) & hasCapital(object,f)' produced:
 <Hans_Unger>	<isPoliticianOf>	<Electorate_of_Saxony> .
 <Alex_Benno>	<isPoliticianOf>	<North_Holland> .
 <Shūgorō_Yamamoto>	<isPoliticianOf>	<Kanagawa_Prefecture> .
-<Walter_Hörnlein>	<isPoliticianOf>	<Electorate_of_Cologne> .
+<Walter_Hörnlein>	<isPoliticianOf>	<Electorate_of_Cologne> .	false
 <Reginald_Talbot>	<isPoliticianOf>	<Kingdom_of_Essex> .
 <Maxima_of_Rome>	<isPoliticianOf>	<Roman_Empire> .
 <Botho_zu_Eulenburg>	<isPoliticianOf>	<Kingdom_of_Prussia> .
@@ -2665,7 +2665,7 @@ Rule 'diedIn(subject,f) & hasCapital(object,f)' produced:
 <Sven_Lindberg>	<isPoliticianOf>	<Swedish_Empire> .
 <Joel_E._Siegel>	<isPoliticianOf>	<United_States> .
 <Cato_Maximilian_Guldberg>	<isPoliticianOf>	<Akershus_County_Municipality> .
-<Jaque_Catelain>	<isPoliticianOf>	<France> .
+<Jaque_Catelain>	<isPoliticianOf>	<France> .	false
 <Rodolfo_Sonego>	<isPoliticianOf>	<Roman_Republic> .
 <Douglas_Hyde>	<isPoliticianOf>	<Southern_Ireland> .
 <Anton_Pann>	<isPoliticianOf>	<Kingdom_of_Romania> .
@@ -3044,7 +3044,7 @@ Rule 'diedIn(subject,f) & hasCapital(object,f)' produced:
 <Tjalie_Robinson>	<isPoliticianOf>	<South_Holland> .
 <Petar_Atsev>	<isPoliticianOf>	<Plovdiv_Province> .
 <Urraca_of_Castile,_Queen_of_Portugal>	<isPoliticianOf>	<Coimbra_District> .
-<Alexandru_Proca>	<isPoliticianOf>	<Bourbon_Restoration> .
+<Alexandru_Proca>	<isPoliticianOf>	<Bourbon_Restoration> .	false
 <Aleksandar_Sekulović>	<isPoliticianOf>	<Serbia> .
 <António_de_Oliveira_Salazar>	<isPoliticianOf>	<Estado_Novo_(Portugal)> .
 <Caleb_Althin>	<isPoliticianOf>	<Stockholm_Municipality> .
@@ -57970,7 +57970,7 @@ Unknown facts for relation 'produced':
 Rule 'created(subject,object) & directed(subject,object)' produced:
 <Vicente_Aranda>	<produced>	<The_Naked_Eye_(1998_film)> .
 <Charles_Binamé>	<produced>	<Streetheart> .
-<Todd_Solondz>	<produced>	<Life_During_Wartime_(film)> .
+<Todd_Solondz>	<produced>	<Life_During_Wartime_(film)> .	false
 <Paul_Andrew_Williams>	<produced>	<London_to_Brighton> .
 <Douglas_Heyes>	<produced>	<The_French_Atlantic_Affair> .
 <Ingmar_Bergman>	<produced>	<Wild_Strawberries_(film)> .
@@ -57983,7 +57983,7 @@ Rule 'created(subject,object) & directed(subject,object)' produced:
 <Alan_Alda>	<produced>	<Sweet_Liberty> .
 <Gianni_Puccini>	<produced>	<My_Wife's_Enemy> .
 <Tobe_Hooper>	<produced>	<Spontaneous_Combustion_(film)> .
-<Jahnu_Barua>	<produced>	<Papori> .
+<Jahnu_Barua>	<produced>	<Papori> .	false
 <Jean-Luc_Godard>	<produced>	<Joy_of_Learning> .
 <Yüksel_Yavuz>	<produced>	<Kleine_Freiheit> .
 <Eric_Forsberg>	<produced>	<Alien_Abduction_(film)> .
@@ -58006,7 +58006,7 @@ Rule 'created(subject,object) & directed(subject,object)' produced:
 <Barry_Levinson>	<produced>	<Avalon_(1990_film)> .
 <John_D._Hancock>	<produced>	<Weeds_(film)> .
 <Luigi_Zampa>	<produced>	<Be_Sick..._It's_Free> .
-<Billy_Wilder>	<produced>	<The_Spirit_of_St._Louis_(film)> .
+<Billy_Wilder>	<produced>	<The_Spirit_of_St._Louis_(film)> .	false
 <Mamoru_Oshii>	<produced>	<The_Red_Spectacles> .
 <Wes_Craven>	<produced>	<Deadly_Blessing> .
 <Lionel_Jeffries>	<produced>	<The_Water_Babies_(film)> .
@@ -58029,10 +58029,10 @@ Rule 'created(subject,object) & directed(subject,object)' produced:
 <Nick_Love>	<produced>	<The_Firm_(2009_film)> .
 <Alan_James>	<produced>	<Phantom_Thunderbolt> .
 <Lucio_Fulci>	<produced>	<A_Cat_in_the_Brain> .
-<Michel_Houellebecq>	<produced>	<La_Possibilité_d'une_île_(film)> .
+<Michel_Houellebecq>	<produced>	<La_Possibilité_d'une_île_(film)> .	false
 <Finn_Taylor>	<produced>	<Dream_with_the_Fishes> .
 <Jahnu_Barua>	<produced>	<Firingoti> .
-<Andrew_Niccol>	<produced>	<Gattaca> .
+<Andrew_Niccol>	<produced>	<Gattaca> .	false
 <Benoît_Jacquot>	<produced>	<The_Wings_of_the_Dove_(1981_film)> .
 <D._W._Griffith>	<produced>	<Money_Mad_(1908_film)> .
 <Herbert_Vesely>	<produced>	<The_Bread_of_Those_Early_Years> .
@@ -58077,7 +58077,7 @@ Rule 'created(subject,object) & directed(subject,object)' produced:
 <Temístocles_López>	<produced>	<Chain_of_Desire> .
 <Roberto_Benigni>	<produced>	<Pinocchio_(2002_film)> .
 <Brian_Gibson_(director)>	<produced>	<Breaking_Glass> .
-<Abderrahmane_Sissako>	<produced>	<La_Vie_Sur_Terre> .
+<Abderrahmane_Sissako>	<produced>	<La_Vie_Sur_Terre> .	true
 <George_A._Romero>	<produced>	<Two_Evil_Eyes> .
 <John_Huston>	<produced>	<The_African_Queen_(film)> .
 <Bong_Joon-ho>	<produced>	<Memories_of_Murder> .
@@ -58085,14 +58085,14 @@ Rule 'created(subject,object) & directed(subject,object)' produced:
 <Vladimir_Basov>	<produced>	<The_Blizzard_(1964_film)> .
 <Robert_N._Bradbury>	<produced>	<Riders_of_Destiny> .
 <Colin_Nutley>	<produced>	<Sista_dansen> .
-<Manuel_Antín>	<produced>	<The_Venerable_Ones> .
+<Manuel_Antín>	<produced>	<The_Venerable_Ones> .	false
 <Manuel_Romero>	<produced>	<Radio_Bar> .
 <Maija_DiGiorgio>	<produced>	<Bitter_Jester> .
-<Wang_Xiaoshuai>	<produced>	<Beijing_Bicycle> .
+<Wang_Xiaoshuai>	<produced>	<Beijing_Bicycle> .	false
 <Bharathan>	<produced>	<Kathodu_Kathoram> .
 <Louis_Malle>	<produced>	<A_Very_Private_Affair> .
 <Věra_Chytilová>	<produced>	<Daisies_(film)> .
-<Edward_F._Cline>	<produced>	<The_Boat_(film)> .
+<Edward_F._Cline>	<produced>	<The_Boat_(film)> .	false
 <Farah_Khan>	<produced>	<Main_Hoon_Na> .
 <Rajasenan>	<produced>	<Aadyathe_Kanmani> .
 <Jacobo_Morales>	<produced>	<Lo_que_le_Pasó_a_Santiago> .
@@ -58135,19 +58135,19 @@ Rule 'created(subject,object) & directed(subject,object)' produced:
 <Todd_Field>	<produced>	<The_Dog_(film)> .
 <Katherine_Brooks>	<produced>	<Waking_Madison> .
 <Federico_Fellini>	<produced>	<And_the_Ship_Sails_On> .
-<John_McArdle>	<produced>	<The_Duke_(short_film)> .
+<John_McArdle>	<produced>	<The_Duke_(short_film)> .	false
 <Mathieu_Kassovitz>	<produced>	<The_Crimson_Rivers> .
 <Vicente_Aranda>	<produced>	<Tirant_lo_Blanc_(film)> .
 <Susan_Cohen>	<produced>	<Open_Your_Eyes_(2008_film)> .
 <Ted_Nicolaou>	<produced>	<Dragonworld> .
-<Edmond_Keosayan>	<produced>	<The_Elusive_Avengers> .
+<Edmond_Keosayan>	<produced>	<The_Elusive_Avengers> .	false
 <Ken_Ghosh>	<produced>	<Ishq_Vishk> .
 <Mia_Hansen-Løve>	<produced>	<The_Father_of_My_Children> .
 <Robert_A._Dillon>	<produced>	<The_Santa_Fe_Trail_(1923_film)> .
 <Margarethe_von_Trotta>	<produced>	<Rosenstrasse_(film)> .
 <Juan_José_Jusid>	<produced>	<Apasionados> .
 <Hari_(director)>	<produced>	<Arul> .
-<Cheick_Oumar_Sissoko>	<produced>	<Guimba_the_Tyrant> .
+<Cheick_Oumar_Sissoko>	<produced>	<Guimba_the_Tyrant> .	false
 <Brian_De_Palma>	<produced>	<Hi,_Mom!> .
 <Charles_Marquis_Warren>	<produced>	<Arrowhead_(film)> .
 <Lloyd_Kaufman>	<produced>	<The_Girl_Who_Returned> .
@@ -58166,10 +58166,10 @@ Rule 'created(subject,object) & directed(subject,object)' produced:
 <Dave_Thomas_(actor)>	<produced>	<Intern_Academy> .
 <Shoaib_Mansoor>	<produced>	<Bol_(film)> .
 <Karim_Dridi>	<produced>	<Bye-Bye_(film)> .
-<Jan_Švankmajer>	<produced>	<Jabberwocky_(1971_film)> .
+<Jan_Švankmajer>	<produced>	<Jabberwocky_(1971_film)> .	false
 <Stefan_Ruzowitzky>	<produced>	<The_Counterfeiters_(film)> .
 <Hal_Barwood>	<produced>	<Warning_Sign_(film)> .
-<Val_Guest>	<produced>	<Hell_Is_a_City> .
+<Val_Guest>	<produced>	<Hell_Is_a_City> .	false
 <Francisco_Rovira_Beleta>	<produced>	<The_Robbers_(film)> .
 <Jerzy_Zarzycki>	<produced>	<Unvanquished_City> .
 <Annelise_Hovmand>	<produced>	<Krudt_og_klunker> .
@@ -58200,7 +58200,7 @@ Rule 'created(subject,object) & directed(subject,object)' produced:
 <Nancy_Savoca>	<produced>	<Household_Saints> .
 <Alan_Rudolph>	<produced>	<Trouble_in_Mind_(film)> .
 <Peter_Weir>	<produced>	<Gallipoli_(1981_film)> .
-<Robert_Boris>	<produced>	<Oxford_Blues> .
+<Robert_Boris>	<produced>	<Oxford_Blues> .	false
 <Yung_Chang>	<produced>	<Up_the_Yangtze> .
 <Roscoe_Arbuckle>	<produced>	<Up_a_Tree_(film)> .
 <Finn_Henriksen>	<produced>	<Fængslende_feriedage> .
@@ -58212,7 +58212,7 @@ Rule 'created(subject,object) & directed(subject,object)' produced:
 <Ion_Popescu-Gopo>	<produced>	<A_Bomb_Was_Stolen> .
 <Fred_Niblo>	<produced>	<Get-Rich-Quick_Wallingford_(1916_film)> .
 <Robert_A._McGowan>	<produced>	<School_Begins> .
-<Werner_Herzog>	<produced>	<Bells_from_the_Deep> .
+<Werner_Herzog>	<produced>	<Bells_from_the_Deep> .	false
 <Serge_Gainsbourg>	<produced>	<Équateur_(film)> .
 <Trey_Parker>	<produced>	<Imaginationland_Episode_I> .
 <Walter_Salles>	<produced>	<Foreign_Land> .
@@ -58258,7 +58258,7 @@ Rule 'created(subject,object) & directed(subject,object)' produced:
 <Roscoe_Arbuckle>	<produced>	<Curses!> .
 <Claude_Miller>	<produced>	<The_Little_Thief> .
 <Pavel_Lungin>	<produced>	<The_Wedding_(2000_film)> .
-<Masoud_Dehnamaki>	<produced>	<Ekhrajiha> .
+<Masoud_Dehnamaki>	<produced>	<Ekhrajiha> .	false
 <P._Ramlee>	<produced>	<Ahmad_Albab> .
 <Bill_Gunn_(writer)>	<produced>	<Ganja_&_Hess> .
 <Agustí_Villaronga>	<produced>	<Tras_el_cristal> .
@@ -58282,7 +58282,7 @@ Rule 'created(subject,object) & directed(subject,object)' produced:
 <Marcel_Carné>	<produced>	<Juliette,_or_Key_of_Dreams> .
 <Joe_Cheung>	<produced>	<Return_Engagement_(1990_film)> .
 <Per_Fly>	<produced>	<Manslaughter_(2005_film)> .
-<Zhang_Yang_(director)>	<produced>	<Quitting> .
+<Zhang_Yang_(director)>	<produced>	<Quitting> .	false
 <Albert_Uderzo>	<produced>	<The_Twelve_Tasks_of_Asterix> .
 <Alex_Benno>	<produced>	<Artistenrevue> .
 <Hal_Hartley>	<produced>	<Simple_Men> .
@@ -58292,12 +58292,12 @@ Rule 'created(subject,object) & directed(subject,object)' produced:
 <Patrice_Chéreau>	<produced>	<La_Reine_Margot_(1994_film)> .
 <Bernhard_Wicki>	<produced>	<Die_Brücke_(film)> .
 <Richard_Eyre>	<produced>	<Iris_(film)> .
-<Abbas_Fahdel>	<produced>	<Dawn_of_the_World> .
+<Abbas_Fahdel>	<produced>	<Dawn_of_the_World> .	false
 <Hype_Williams>	<produced>	<Belly_(film)> .
 <Nagisa_Oshima>	<produced>	<Merry_Christmas,_Mr._Lawrence> .
 <Gilles_Marchand>	<produced>	<Who_Killed_Bambi?_(2003_film)> .
 <Adam_Bernstein>	<produced>	<Six_Ways_to_Sunday> .
-<Curtis_Hanson>	<produced>	<The_Bedroom_Window> .
+<Curtis_Hanson>	<produced>	<The_Bedroom_Window> .	false
 <Ivan_Sen>	<produced>	<Beneath_Clouds> .
 <Tom_Topor>	<produced>	<Judgment_(film)> .
 <Lev_Arnshtam>	<produced>	<Five_Days,_Five_Nights_(1960_film)> .
@@ -58306,16 +58306,16 @@ Rule 'created(subject,object) & directed(subject,object)' produced:
 <Jane_Campion>	<produced>	<A_Girl's_Own_Story> .
 <Herschell_Gordon_Lewis>	<produced>	<Blast-Off_Girls> .
 <Terry_Gilliam>	<produced>	<Tideland_(film)> .
-<Frederik_Du_Chau>	<produced>	<Racing_Stripes> .
+<Frederik_Du_Chau>	<produced>	<Racing_Stripes> .	false
 <King_Vidor>	<produced>	<Poor_Relations> .
 <Jean_Girault>	<produced>	<Le_gendarme_en_balade> .
 <Joe_Carnahan>	<produced>	<The_Hire> .
 <Adolfo_Aristarain>	<produced>	<Tiempo_de_Revancha> .
-<Federico_Fellini>	<produced>	<Orchestra_Rehearsal> .
+<Federico_Fellini>	<produced>	<Orchestra_Rehearsal> .	false
 <Peter_Greenaway>	<produced>	<The_Baby_of_Mâcon> .
-<Tracey_Moffatt>	<produced>	<Bedevil> .
+<Tracey_Moffatt>	<produced>	<Bedevil> .	false
 <Rowdy_Herrington>	<produced>	<Jack's_Back> .
-<Marianna_Palka>	<produced>	<Good_Dick> .
+<Marianna_Palka>	<produced>	<Good_Dick> .	false
 <Priyadarshan>	<produced>	<Yeh_Teraa_Ghar_Yeh_Meraa_Ghar> .
 <Fridrikh_Ermler>	<produced>	<The_Great_Citizen> .
 <John_Duigan>	<produced>	<The_Year_My_Voice_Broke> .
@@ -58365,7 +58365,7 @@ Rule 'created(subject,object) & directed(subject,object)' produced:
 <Grigori_Kozintsev>	<produced>	<The_Return_of_Maxim> .
 <Jamshed_Usmonov>	<produced>	<To_Get_to_Heaven,_First_You_Have_to_Die> .
 <David_Howard_(director)>	<produced>	<The_Mystery_Squadron> .
-<Saran_(director)>	<produced>	<Aasal> .
+<Saran_(director)>	<produced>	<Aasal> .	false
 <Claude_Berri>	<produced>	<Jean_de_Florette> .
 <Mario_Camerini>	<produced>	<What_Scoundrels_Men_Are!> .
 <Samuel_Fuller>	<produced>	<White_Dog> .
@@ -58374,7 +58374,7 @@ Rule 'created(subject,object) & directed(subject,object)' produced:
 <James_W._Horne>	<produced>	<Bull's_Eye_(serial)> .
 <Rajkumar_Santoshi>	<produced>	<Ghayal_(1990_film)> .
 <Stephen_Chow>	<produced>	<From_Beijing_with_Love> .
-<Jan_Tománek>	<produced>	<Goat_Story> .
+<Jan_Tománek>	<produced>	<Goat_Story> .	true
 <Carlo_Vanzina>	<produced>	<Via_Montenapoleone_(film)> .
 <Charlie_Chaplin>	<produced>	<A_Jitney_Elopement> .
 <Ken_Russell>	<produced>	<Whore_(1991_film)> .
@@ -58386,11 +58386,11 @@ Rule 'created(subject,object) & directed(subject,object)' produced:
 <Robert_Z._Leonard>	<produced>	<Danger,_Go_Slow> .
 <Christine_Lipinska>	<produced>	<I_Am_Pierre_Riviere> .
 <Ken_Cameron>	<produced>	<Bangkok_Hilton> .
-<Muzaffar_Ali>	<produced>	<Umrao_Jaan> .
+<Muzaffar_Ali>	<produced>	<Umrao_Jaan> .	true
 <Lee_Cheol-ha>	<produced>	<Stray_Cats_(film)> .
 <Chen_Kaige>	<produced>	<Together_(2002_film)> .
 <Ray_Cooney>	<produced>	<Not_Now,_Darling_(film)> .
-<Hou_Hsiao-Hsien>	<produced>	<Café_Lumière> .
+<Hou_Hsiao-Hsien>	<produced>	<Café_Lumière> .	false
 <Pål_Løkkeberg>	<produced>	<Liv_(film)> .
 <William_Beaudine>	<produced>	<Follow_the_Leader_(film)> .
 <Abel_Gance>	<produced>	<The_Mask_of_Horror> .
@@ -58776,9 +58776,9 @@ Rule 'created(subject,object) & directed(subject,object)' produced:
 <Ying_Liang>	<produced>	<Taking_Father_Home> .
 <Tzang_Merwyn_Tong>	<produced>	<A_Wicked_Tale> .
 <Lau_Lauritzen,_Jr.>	<produced>	<Blaavand_melder_storm> .
-<Maurice_Pialat>	<produced>	<Le_Garçu> .
+<Maurice_Pialat>	<produced>	<Le_Garçu> .	false
 <Krzysztof_Kieślowski>	<produced>	<The_Double_Life_of_Véronique> .
-<Stuart_Gordon>	<produced>	<Robot_Jox> .
+<Stuart_Gordon>	<produced>	<Robot_Jox> .	false
 <Florian_Henckel_von_Donnersmarck>	<produced>	<The_Lives_of_Others> .
 <Nevill_Coghill>	<produced>	<Doctor_Faustus_(1967_film)> .
 <Juan_Antonio_Bardem>	<produced>	<The_Uninhibited> .
@@ -64146,11 +64146,11 @@ Rule 'hasCapital(f,object) & isCitizenOf(subject,f)' produced:
 <Theodor_V._Ionescu>	<diedIn>	<Bucharest> .
 <Ertha_Pascal-Trouillot>	<diedIn>	<Port-au-Prince> .
 <Hans_van_Baalen>	<diedIn>	<Amsterdam> .
-<Roberto_Cassinelli>	<diedIn>	<Rome> .
+<Roberto_Cassinelli>	<diedIn>	<Rome> .	false
 <Takaaki_Nakagami>	<diedIn>	<Tokyo> .
 <John_Richardson_(naturalist)>	<diedIn>	<Edinburgh> .
 <Valery_Ryumin>	<diedIn>	<Moscow> .
-<Adam_Maxwell>	<diedIn>	<London> .
+<Adam_Maxwell>	<diedIn>	<London> .	false
 <Dominic_Treadwell-Collins>	<diedIn>	<London> .
 <Cha_Katō>	<diedIn>	<Tokyo> .
 <Thomas_John_Hussey>	<diedIn>	<London> .
@@ -64169,14 +64169,14 @@ Rule 'hasCapital(f,object) & isCitizenOf(subject,f)' produced:
 <Giorgio_Morandi>	<diedIn>	<Rome> .
 <Jean-Baptiste_Chappe_d'Auteroche>	<diedIn>	<Paris> .
 <Emma_Bonney>	<diedIn>	<London> .
-<Dick_Roche>	<diedIn>	<Dublin> .
+<Dick_Roche>	<diedIn>	<Dublin> .	false
 <Mitsuo_Itoh>	<diedIn>	<Tokyo> .
 <Seán_Sherlock>	<diedIn>	<Dublin> .
 <Rudolf_Wolf>	<diedIn>	<Bern> .
 <Paolo_Vidoz>	<diedIn>	<Rome> .
 <Mohammad_Ali_Mojtahedi>	<diedIn>	<Tehran> .
 <Jügderdemidiin_Gürragchaa>	<diedIn>	<Ulan_Bator> .
-<Francesco_Storace>	<diedIn>	<Rome> .
+<Francesco_Storace>	<diedIn>	<Rome> .	false
 <Abraham_Wald>	<diedIn>	<Budapest> .
 <Niccolò_Canepa>	<diedIn>	<Rome> .
 <M._John_Harrison>	<diedIn>	<London> .
@@ -64205,7 +64205,7 @@ Rule 'hasCapital(f,object) & isCitizenOf(subject,f)' produced:
 <Kunio_Hiramatsu>	<diedIn>	<Tokyo> .
 <Josh_Auty>	<diedIn>	<London> .
 <Diana_Eccles,_Viscountess_Eccles>	<diedIn>	<London> .
-<Malcolm_Harbour>	<diedIn>	<London> .
+<Malcolm_Harbour>	<diedIn>	<London> .	false
 <Laure_Conan>	<diedIn>	<Ottawa> .
 <Ricardo_van_den_Bos>	<diedIn>	<Amsterdam> .
 <Joseph_Vazhackan>	<diedIn>	<New_Delhi> .
@@ -64297,7 +64297,7 @@ Rule 'hasCapital(f,object) & isCitizenOf(subject,f)' produced:
 <Bernard_Ashley_(businessman)>	<diedIn>	<London> .
 <Charles_Walker_(British_politician)>	<diedIn>	<London> .
 <Colin_Chapman>	<diedIn>	<London> .
-<Elizabeth_Witmer>	<diedIn>	<Ottawa> .
+<Elizabeth_Witmer>	<diedIn>	<Ottawa> .	false
 <Francesca_Halsall>	<diedIn>	<London> .
 <Barry_Madlener>	<diedIn>	<Amsterdam> .
 <Netta_Muskett>	<diedIn>	<London> .
@@ -64331,7 +64331,7 @@ Rule 'hasCapital(f,object) & isCitizenOf(subject,f)' produced:
 <Richard_Gordon_(English_author)>	<diedIn>	<London> .
 <Robert_Peston>	<diedIn>	<London> .
 <Francis_Egerton,_3rd_Duke_of_Bridgewater>	<diedIn>	<London> .
-<William_Christie_(astronomer)>	<diedIn>	<London> .
+<William_Christie_(astronomer)>	<diedIn>	<London> .	false
 <Mércio_Pereira_Gomes>	<diedIn>	<Brasília> .
 <Pascal_Wollach>	<diedIn>	<Ottawa> .
 <Virginijus_Praškevičius>	<diedIn>	<Vilnius> .
@@ -64388,7 +64388,7 @@ Rule 'hasCapital(f,object) & isCitizenOf(subject,f)' produced:
 <Mark_Lathrop>	<diedIn>	<Ottawa> .
 <Wolfgang_Sachs>	<diedIn>	<Berlin> .
 <Eric_C._Williams>	<diedIn>	<London> .
-<Wang_Dulu>	<diedIn>	<Beijing> .
+<Wang_Dulu>	<diedIn>	<Beijing> .	false
 <Shona_McIsaac>	<diedIn>	<London> .
 <Ruben_Boumtje-Boumtje>	<diedIn>	<Yaoundé> .
 <Evanthia_Maltsi>	<diedIn>	<Athens> .
@@ -64399,30 +64399,30 @@ Rule 'hasCapital(f,object) & isCitizenOf(subject,f)' produced:
 <Wilhelm_Wundt>	<diedIn>	<Berlin> .
 <Mark_Field>	<diedIn>	<London> .
 <Scott_Nicholls>	<diedIn>	<London> .
-<Pierfrancesco_Chili>	<diedIn>	<Rome> .
+<Pierfrancesco_Chili>	<diedIn>	<Rome> .	false
 <Uvis_Helmanis>	<diedIn>	<Riga> .
 <Beba_Lončar>	<diedIn>	<Belgrade> .
 <Corrie_Sanders>	<diedIn>	<Pretoria> .
-<Fiona_Mactaggart>	<diedIn>	<London> .
+<Fiona_Mactaggart>	<diedIn>	<London> .	false
 <Wang_Zhizhi>	<diedIn>	<Beijing> .
 <Patrick_Hastings>	<diedIn>	<London> .
 <Tércio_Pacitti>	<diedIn>	<Brasília> .
 <Chen_Jianghua>	<diedIn>	<Beijing> .
 <Guillermo_Rigondeaux>	<diedIn>	<Havana> .
 <Charles_Comfort>	<diedIn>	<Ottawa> .
-<Sam_Gyimah>	<diedIn>	<London> .
+<Sam_Gyimah>	<diedIn>	<London> .	false
 <Radu_Berceanu>	<diedIn>	<Bucharest> .
 <Jayson_Vemoa>	<diedIn>	<Wellington> .
 <Mary_Anne_Rawson>	<diedIn>	<London> .
 <Francis_Knollys,_1st_Viscount_Knollys>	<diedIn>	<London> .
 <Sami_Khiyami>	<diedIn>	<Damascus> .
 <Marten_Toonder>	<diedIn>	<Amsterdam> .
-<Roald_Hoffmann>	<diedIn>	<Warsaw> .
+<Roald_Hoffmann>	<diedIn>	<Warsaw> .	false
 <Jan_Huberts>	<diedIn>	<Amsterdam> .
 <Mykhailo_Yalovy>	<diedIn>	<Kiev> .
 <Adolf_Dietrich>	<diedIn>	<Bern> .
 <Jeff_Spek>	<diedIn>	<Ottawa> .
-<Niall_Mackenzie>	<diedIn>	<London> .
+<Niall_Mackenzie>	<diedIn>	<London> .	false
 <Per_Inge_Torkelsen>	<diedIn>	<Oslo> .
 <Yelena_Leuchanka>	<diedIn>	<Minsk> .
 <David_Winnick>	<diedIn>	<London> .
@@ -64436,13 +64436,13 @@ Rule 'hasCapital(f,object) & isCitizenOf(subject,f)' produced:
 <Ulay>	<diedIn>	<Berlin> .
 <Johanna_Brandt>	<diedIn>	<Pretoria> .
 <Fiennes_Cornwallis,_1st_Baron_Cornwallis>	<diedIn>	<London> .
-<N._H._Gouda>	<diedIn>	<New_Delhi> .
+<N._H._Gouda>	<diedIn>	<New_Delhi> .	false
 <Eduard_Rüppell>	<diedIn>	<Berlin> .
 <Joan_Walmsley,_Baroness_Walmsley>	<diedIn>	<London> .
 <Fritz_Schäffer>	<diedIn>	<Berlin> .
 <Lucius_Richard_O'Brien>	<diedIn>	<Ottawa> .
 <Kristian_Meldgaard>	<diedIn>	<Copenhagen> .
-<Tomás_Harris>	<diedIn>	<London> .
+<Tomás_Harris>	<diedIn>	<London> .	false
 <Amos_Tversky>	<diedIn>	<Jerusalem> .
 <Steponas_Babrauskas>	<diedIn>	<Vilnius> .
 <Harper_Allen>	<diedIn>	<Ottawa> .
@@ -64451,25 +64451,25 @@ Rule 'hasCapital(f,object) & isCitizenOf(subject,f)' produced:
 <Ioannis_Kalampokis>	<diedIn>	<Athens> .
 <Norman_Foster,_Baron_Foster_of_Thames_Bank>	<diedIn>	<London> .
 <Carl_Menger>	<diedIn>	<Vienna> .
-<Dale_Smith_(writer)>	<diedIn>	<London> .
+<Dale_Smith_(writer)>	<diedIn>	<London> .	false
 <Nobuatsu_Aoki>	<diedIn>	<Tokyo> .
 <Jackie_Lawrence_(politician)>	<diedIn>	<London> .
 <Tatsuhiko_Takimoto>	<diedIn>	<Tokyo> .
 <Ronald_Wright>	<diedIn>	<Ottawa> .
-<Sammy_Wilson>	<diedIn>	<London> .
+<Sammy_Wilson>	<diedIn>	<London> .	false
 <Tim_Brooke-Taylor>	<diedIn>	<London> .
 <Mohammad_Sarwar>	<diedIn>	<London> .
 <Nicolas_Louis_de_Lacaille>	<diedIn>	<Paris> .
-<Andy_Hopper>	<diedIn>	<London> .
+<Andy_Hopper>	<diedIn>	<London> .	false
 <Olivier_Jacque>	<diedIn>	<Paris> .
 <John_Elliotson>	<diedIn>	<London> .
 <Esham_Pickering>	<diedIn>	<London> .
-<Alex_Debón>	<diedIn>	<Madrid> .
+<Alex_Debón>	<diedIn>	<Madrid> .	false
 <Granville_Bradshaw>	<diedIn>	<London> .
 <Walter_Zeller_(motorcyclist)>	<diedIn>	<Berlin> .
 <Pierre-Auguste_Renoir>	<diedIn>	<Paris> .
 <Charles_Wood,_2nd_Viscount_Halifax>	<diedIn>	<London> .
-<Monica_Furlong>	<diedIn>	<London> .
+<Monica_Furlong>	<diedIn>	<London> .	false
 <Cheikh_Tidiane_Gaye>	<diedIn>	<Dakar> .
 <Antonio_Sicurezza>	<diedIn>	<Rome> .
 <Bernard_Peyrilhe>	<diedIn>	<Paris> .
@@ -64480,12 +64480,12 @@ Rule 'hasCapital(f,object) & isCitizenOf(subject,f)' produced:
 <George_Freeman_(comics)>	<diedIn>	<Ottawa> .
 <Tyla_Rattray>	<diedIn>	<Pretoria> .
 <Harold_Munro_Fox>	<diedIn>	<London> .
-<Emma_O'Driscoll>	<diedIn>	<Dublin> .
+<Emma_O'Driscoll>	<diedIn>	<Dublin> .	false
 <Sir_Francis_Baring,_1st_Baronet>	<diedIn>	<London> .
 <Henry_Christy>	<diedIn>	<London> .
-<Jamie_Arthur>	<diedIn>	<London> .
+<Jamie_Arthur>	<diedIn>	<London> .	false
 <Joan_Burton>	<diedIn>	<Dublin> .
-<Miki_Tori>	<diedIn>	<Tokyo> .
+<Miki_Tori>	<diedIn>	<Tokyo> .	false
 <Gedaliah_Alon>	<diedIn>	<Jerusalem> .
 <Sean_Pierson>	<diedIn>	<Ottawa> .
 <Pola_Uddin,_Baroness_Uddin>	<diedIn>	<London> .
@@ -64495,7 +64495,7 @@ Rule 'hasCapital(f,object) & isCitizenOf(subject,f)' produced:
 <Stephen_Byrne_(broadcaster)>	<diedIn>	<Dublin> .
 <Didier_Julia>	<diedIn>	<Paris> .
 <Luc_Mbah_a_Moute>	<diedIn>	<Yaoundé> .
-<Kosta_Gouliamos>	<diedIn>	<Nicosia> .
+<Kosta_Gouliamos>	<diedIn>	<Nicosia> .	false
 <Stefano_Zoff>	<diedIn>	<Rome> .
 <Ali_Al-Naimi>	<diedIn>	<Riyadh> .
 <Lydia_Cabrera>	<diedIn>	<Havana> .
@@ -64508,7 +64508,7 @@ Rule 'hasCapital(f,object) & isCitizenOf(subject,f)' produced:
 <Simon_Krogh>	<diedIn>	<Copenhagen> .
 <Tsuyoshi_Fujita>	<diedIn>	<Tokyo> .
 <Hans_Teeuwen>	<diedIn>	<Amsterdam> .
-<Christopher_Rose_(judge)>	<diedIn>	<London> .
+<Christopher_Rose_(judge)>	<diedIn>	<London> .	false
 <Chandet_Sorpantrey>	<diedIn>	<Bangkok> .
 <Bertil_Lindblad>	<diedIn>	<Stockholm> .
 <Immanuel_Jakobovits,_Baron_Jakobovits>	<diedIn>	<London> .
@@ -64681,7 +64681,7 @@ Rule 'hasCapital(f,object) & isCitizenOf(subject,f)' produced:
 <Jimmy_Robertson_(snooker_player)>	<diedIn>	<London> .
 <Paul_Stinchcombe>	<diedIn>	<London> .
 <William_John_Locke>	<diedIn>	<London> .
-<Erland_Nordenskiöld>	<diedIn>	<Stockholm> .
+<Erland_Nordenskiöld>	<diedIn>	<Stockholm> .	false
 <Ivo_Tijardović>	<diedIn>	<Zagreb> .
 <William_Garrow>	<diedIn>	<London> .
 <Dennis_Ireland>	<diedIn>	<Wellington> .
@@ -64789,7 +64789,7 @@ Rule 'hasCapital(f,object) & isCitizenOf(subject,f)' produced:
 <Arthur_Philemon_Coleman>	<diedIn>	<Ottawa> .
 <Billy_Bales>	<diedIn>	<London> .
 <Joji_Takeuchi>	<diedIn>	<Tokyo> .
-<Adèle_Geras>	<diedIn>	<London> .
+<Adèle_Geras>	<diedIn>	<London> .	false
 <Charlie_Brooker>	<diedIn>	<London> .
 <Bernard_Amadei>	<diedIn>	<Paris> .
 <George_Wallace,_Baron_Wallace_of_Coslany>	<diedIn>	<London> .
@@ -64799,16 +64799,16 @@ Rule 'hasCapital(f,object) & isCitizenOf(subject,f)' produced:
 <James_Simpson_(engineer)>	<diedIn>	<London> .
 <Jan-Olof_Ekholm>	<diedIn>	<Stockholm> .
 <Rolf_Blatter>	<diedIn>	<Bern> .
-<Ulbo_de_Sitter>	<diedIn>	<Amsterdam> .
+<Ulbo_de_Sitter>	<diedIn>	<Amsterdam> .	false
 <Thomas_Shapter>	<diedIn>	<London> .
 <Annette_Lovemore>	<diedIn>	<Pretoria> .
 <Yoginder_Sikand>	<diedIn>	<New_Delhi> .
 <Chartchai_Chionoi>	<diedIn>	<Bangkok> .
 <Auguste_Michel-Lévy>	<diedIn>	<Paris> .
 <Robert_Thirsk>	<diedIn>	<Ottawa> .
-<August_Krogh>	<diedIn>	<Copenhagen> .
+<August_Krogh>	<diedIn>	<Copenhagen> .	false
 <Leo_Esaki>	<diedIn>	<Tokyo> .
-<John_Vlismas>	<diedIn>	<Pretoria> .
+<John_Vlismas>	<diedIn>	<Pretoria> .	false
 <Michael_Ring>	<diedIn>	<Dublin> .
 <Gunnar_Heiberg>	<diedIn>	<Oslo> .
 <David_Bishop>	<diedIn>	<Wellington> .
@@ -73177,12 +73177,12 @@ Rule 'hasChild(f,object) & isMarriedTo(subject,f)' produced:
 <Sunandha_Kumariratana>	<hasChild>	<Anusara_Siriprasadh> .
 <George_Osmond>	<hasChild>	<Alan_Osmond> .
 <John_Spencer-Churchill,_11th_Duke_of_Marlborough>	<hasChild>	<Christina_Onassis> .
-<Hugh_Capet>	<hasChild>	<Robert_II_of_France> .
+<Hugh_Capet>	<hasChild>	<Robert_II_of_France> .	true
 <Anne_Boleyn>	<hasChild>	<Mary_I_of_England> .
 <Princess_Marie_of_Orléans_(1865–1909)>	<hasChild>	<Prince_Axel_of_Denmark> .
 <Savang_Vadhana>	<hasChild>	<Anusara_Siriprasadh> .
 <Eleanor_of_Castile>	<hasChild>	<Edmund_of_Woodstock,_1st_Earl_of_Kent> .
-<Sukhumala_Marasri>	<hasChild>	<Isariyabhorn> .
+<Sukhumala_Marasri>	<hasChild>	<Isariyabhorn> .	false
 <Blanche_of_Lancaster>	<hasChild>	<John_Beaufort,_1st_Earl_of_Somerset> .
 <Margaret_Leighton>	<hasChild>	<Domino_Harvey> .
 <Hector_Anagnostou>	<hasChild>	<Antigoni_Douka> .
@@ -73192,7 +73192,7 @@ Rule 'hasChild(f,object) & isMarriedTo(subject,f)' produced:
 <Lý_Chiêu_Hoàng>	<hasChild>	<Trần_Thánh_Tông> .
 <Hercule_Mériadec,_Duke_of_Rohan-Rohan>	<hasChild>	<Louise_de_Rohan> .
 <Margaret_of_Valois>	<hasChild>	<César,_Duke_of_Vendôme> .
-<Jiang_Qing>	<hasChild>	<Mao_Anying> .
+<Jiang_Qing>	<hasChild>	<Mao_Anying> .	false
 <Mary_of_Modena>	<hasChild>	<Anne_of_Great_Britain> .
 <Bertha_of_Holland>	<hasChild>	<Cecile_of_France> .
 <Louise_Henriette_Françoise_de_Lorraine>	<hasChild>	<Frédéric_Maurice_Casimir_de_La_Tour_d'Auvergne> .
@@ -73220,7 +73220,7 @@ Rule 'hasChild(f,object) & isMarriedTo(subject,f)' produced:
 <Mary_of_Hungary,_Queen_of_Naples>	<hasChild>	<John,_Duke_of_Durazzo> .
 <Nāhienaena>	<hasChild>	<Kamehameha_IV> .
 <Noble_Consort_Ying>	<hasChild>	<Jiaqing_Emperor> .
-<Savang_Vadhana>	<hasChild>	<Nibha_Nobhadol> .
+<Savang_Vadhana>	<hasChild>	<Nibha_Nobhadol> .	false
 <Joan_Beaufort,_Queen_of_Scots>	<hasChild>	<Margaret_Stewart,_Dauphine_of_France> .
 <Meritites_I>	<hasChild>	<Nefertiabet> .
 <Eleanor_of_Castile_(died_1244)>	<hasChild>	<Isabella_of_Aragon> .
@@ -73247,7 +73247,7 @@ Rule 'hasChild(f,object) & isMarriedTo(subject,f)' produced:
 <Viveca_Lindfors>	<hasChild>	<Kristoffer_Tabori> .
 <John_II,_Duke_of_Saxe-Weimar>	<hasChild>	<Albert_IV,_Duke_of_Saxe-Eisenach> .
 <Margaret_of_Valois>	<hasChild>	<Louis_XIII_of_France> .
-<Sam_Marx>	<hasChild>	<Harpo_Marx> .
+<Sam_Marx>	<hasChild>	<Harpo_Marx> .	true
 <Duchess_Elisabeth_of_Württemberg>	<hasChild>	<Marie_Louise,_Duchess_of_Parma> .
 <Sukhumala_Marasri>	<hasChild>	<Lavad_Voraong> .
 <Joan_de_Geneville,_2nd_Baroness_Geneville>	<hasChild>	<Katherine_Mortimer,_Countess_of_Warwick> .
@@ -73270,7 +73270,7 @@ Rule 'hasChild(f,object) & isMarriedTo(subject,f)' produced:
 <Izabela_Czartoryska>	<hasChild>	<Konstanty_Adam_Czartoryski> .
 <Savang_Vadhana>	<hasChild>	<Ajrabarni_Rajkanya> .
 <Princess_Anna_of_Saxony_(1836–1859)>	<hasChild>	<Archduke_Peter_Ferdinand_of_Austria> .
-<Józef_Piłsudski>	<hasChild>	<Wanda_Piłsudska> .
+<Józef_Piłsudski>	<hasChild>	<Wanda_Piłsudska> .	true
 <Princess_Augusta_Reuss_of_Köstritz>	<hasChild>	<Duke_John_Albert_of_Mecklenburg> .
 <Eudoxia_Lopukhina>	<hasChild>	<Grand_Duchess_Anna_Petrovna_of_Russia> .
 <Archduchess_Maria_Theresa_of_Austria_(1862–1933)>	<hasChild>	<Archduke_Wilhelm_of_Austria> .
@@ -73293,7 +73293,7 @@ Rule 'hasChild(f,object) & isMarriedTo(subject,f)' produced:
 <Grand_Duchess_Maria_Pavlovna_of_Russia_(1786–1859)>	<hasChild>	<Charles_Alexander,_Grand_Duke_of_Saxe-Weimar-Eisenach> .
 <Grand_Duchess_Elizabeth_Mikhailovna_of_Russia>	<hasChild>	<Princess_Hilda_of_Nassau> .
 <Princess_Sophie_of_Saxony>	<hasChild>	<Duchess_Marie_Gabrielle_in_Bavaria> .
-<Juliana_Maria_of_Brunswick-Wolfenbüttel>	<hasChild>	<Sophia_Magdalena_of_Denmark> .
+<Juliana_Maria_of_Brunswick-Wolfenbüttel>	<hasChild>	<Sophia_Magdalena_of_Denmark> .	false
 <Jane_Lahilahi>	<hasChild>	<Peter_Kaeo> .
 <Sophie_of_Thuringia,_Duchess_of_Brabant>	<hasChild>	<Henry_III,_Duke_of_Brabant> .
 <Joan_de_Bohun,_Countess_of_Hereford>	<hasChild>	<Mary_de_Bohun> .
@@ -73303,7 +73303,7 @@ Rule 'hasChild(f,object) & isMarriedTo(subject,f)' produced:
 <Nefertiti>	<hasChild>	<Setepenre_(princess)> .
 <Raine_Spencer,_Countess_Spencer>	<hasChild>	<Charles_Spencer,_9th_Earl_Spencer> .
 <Mercedes,_Princess_of_Asturias>	<hasChild>	<Princess_Maria_de_los_Dolores_of_Bourbon-Two_Sicilies> .
-<Elsa_Einstein>	<hasChild>	<Hans_Albert_Einstein> .
+<Elsa_Einstein>	<hasChild>	<Hans_Albert_Einstein> .	false
 <Eleanor_of_Austria>	<hasChild>	<Madeleine_of_Valois> .
 <Maria_Theresa_of_Spain>	<hasChild>	<Louise_Marie_Anne_de_Bourbon> .
 <David_Kawānanakoa>	<hasChild>	<Lydia_Liliuokalani_Kawānanakoa> .
@@ -73315,13 +73315,13 @@ Rule 'hasChild(f,object) & isMarriedTo(subject,f)' produced:
 <Savang_Vadhana>	<hasChild>	<Bismai_Bimalasataya> .
 <Anne_Hyde>	<hasChild>	<James_Francis_Edward_Stuart> .
 <Caroline_Augusta_of_Bavaria>	<hasChild>	<Maria_Leopoldina_of_Austria> .
-<Boki_(Hawaiian_chief)>	<hasChild>	<Jane_Loeau> .
-<Bona_of_Savoy>	<hasChild>	<Caterina_Sforza> .
+<Boki_(Hawaiian_chief)>	<hasChild>	<Jane_Loeau> .	false
+<Bona_of_Savoy>	<hasChild>	<Caterina_Sforza> .	false
 <Sukhumala_Marasri>	<hasChild>	<Vichitra_Chiraprabha> .
 <Maria_d'Este>	<hasChild>	<Margherita_Maria_Farnese> .
 <Prince_Gabriel_of_Bourbon-Two_Sicilies>	<hasChild>	<Prince_Antoine_of_Bourbon-Two_Sicilies> .
-<Constance_of_Hungary>	<hasChild>	<Dagmar_of_Bohemia> .
-<Roy_Castle>	<hasChild>	<Ben_Castle> .
+<Constance_of_Hungary>	<hasChild>	<Dagmar_of_Bohemia> .	false
+<Roy_Castle>	<hasChild>	<Ben_Castle> .	true
 <Natalia_Alexeievna_of_Russia>	<hasChild>	<Grand_Duchess_Elena_Pavlovna_of_Russia> .
 <Archduke_Otto_of_Austria_(1865–1906)>	<hasChild>	<Charles_I_of_Austria> .
 <Nancy_Reagan>	<hasChild>	<Michael_Reagan> .
@@ -73344,7 +73344,7 @@ Rule 'hasChild(f,object) & isMarriedTo(subject,f)' produced:
 <Amélie_of_Orléans>	<hasChild>	<Manuel_II_of_Portugal> .
 <Judith_of_Swabia>	<hasChild>	<Bolesław_III_Wrymouth> .
 <Ellen_Axson_Wilson>	<hasChild>	<Jessie_Woodrow_Wilson_Sayre> .
-<Roberto_Rossellini>	<hasChild>	<Pia_Lindström> .
+<Roberto_Rossellini>	<hasChild>	<Pia_Lindström> .	false
 <Robert_Nathan>	<hasChild>	<Venetia_Stevenson> .
 <Mi_Saw_U>	<hasChild>	<Sawhnit> .
 <Madeleine_of_Valois>	<hasChild>	<Mary,_Queen_of_Scots> .
@@ -73369,7 +73369,7 @@ Rule 'hasChild(f,object) & isMarriedTo(subject,f)' produced:
 <Sunandha_Kumariratana>	<hasChild>	<Suvabaktra_Vilayabanna> .
 <Hugh_Despenser_the_Younger>	<hasChild>	<Isabel_le_Despenser,_Countess_of_Arundel> .
 <Maria_Luisa_of_Spain>	<hasChild>	<Archduke_Charles,_Duke_of_Teschen> .
-<Jelena_Nelipčić>	<hasChild>	<Stephen_Thomas_of_Bosnia> .
+<Jelena_Nelipčić>	<hasChild>	<Stephen_Thomas_of_Bosnia> .	false
 <Emperor_Taishō>	<hasChild>	<Prince_Takamatsu> .
 <Lý_Chiêu_Hoàng>	<hasChild>	<Trần_Nhật_Duật> .
 <Constance_of_Castile,_Duchess_of_Lancaster>	<hasChild>	<Thomas_Beaufort,_Duke_of_Exeter> .
@@ -73388,7 +73388,7 @@ Rule 'hasChild(f,object) & isMarriedTo(subject,f)' produced:
 <Pannarai>	<hasChild>	<Sukhumala_Marasri> .
 <Dara_Rasmi>	<hasChild>	<Orabindu_Benyabhak> .
 <Countess_Palatine_Anne_Christine_of_Sulzbach>	<hasChild>	<Princess_Eleonora_of_Savoy> .
-<Elfriede_Geiringer>	<hasChild>	<Anne_Frank> .
+<Elfriede_Geiringer>	<hasChild>	<Anne_Frank> .	false
 <Lady_Catherine_Grey>	<hasChild>	<William_Herbert,_3rd_Earl_of_Pembroke> .
 <Sukhumala_Marasri>	<hasChild>	<Prajadhipok> .
 <Gilukhipa>	<hasChild>	<Sitamun> .
@@ -73414,7 +73414,7 @@ Rule 'hasChild(f,object) & isMarriedTo(subject,f)' produced:
 <John_II,_Duke_of_Saxe-Weimar>	<hasChild>	<Bernard_of_Saxe-Weimar> .
 <Theresa_Lopez-Fitzgerald_Crane>	<hasChild>	<Vincent_Clarkson> .
 <Elizabeth_Trentham,_Countess_of_Oxford>	<hasChild>	<Susan_de_Vere,_Countess_of_Montgomery> .
-<Blanche_of_Lancaster>	<hasChild>	<Henry_Beaufort> .
+<Blanche_of_Lancaster>	<hasChild>	<Henry_Beaufort> .	false
 <Sunandha_Kumariratana>	<hasChild>	<Vajirunhis> .
 <Sidonie_of_Poděbrady>	<hasChild>	<George,_Duke_of_Saxony> .
 <Sunandha_Kumariratana>	<hasChild>	<Khajera_Chirapradidha> .
@@ -73442,7 +73442,7 @@ Rule 'hasChild(f,object) & isMarriedTo(subject,f)' produced:
 <Eleanor_of_Sicily>	<hasChild>	<Isabella_of_Aragon_(1380–1424)> .
 <Louise_Mountbatten>	<hasChild>	<Prince_Bertil,_Duke_of_Halland> .
 <Sunandha_Kumariratana>	<hasChild>	<Yaovabha_Bongsanid> .
-<Louis_Bonaparte>	<hasChild>	<Napoleon_III> .
+<Louis_Bonaparte>	<hasChild>	<Napoleon_III> .	false
 <Caroline_Augusta_of_Bavaria>	<hasChild>	<Archduchess_Clementina_of_Austria> .
 <Catherine_Howard>	<hasChild>	<Elizabeth_I_of_England> .
 <Concubine_Qi>	<hasChild>	<Emperor_Hui_of_Han> .
@@ -73473,7 +73473,7 @@ Rule 'hasChild(f,object) & isMarriedTo(subject,f)' produced:
 <Beatrice_of_Castile_(1293–1359)>	<hasChild>	<Peter_I_of_Portugal> .
 <Dara_Rasmi>	<hasChild>	<Abbhantripaja> .
 <Anna_von_Schweidnitz>	<hasChild>	<Anne_of_Bohemia> .
-<Catherine_Howard>	<hasChild>	<Catherine_Carey> .
+<Catherine_Howard>	<hasChild>	<Catherine_Carey> .	false
 <Sunandha_Kumariratana>	<hasChild>	<Nabhanka_Nibandhabongs> .
 <Mary_of_Hungary,_Queen_of_Naples>	<hasChild>	<Raymond_Berengar_of_Andria> .
 <Catherine_of_Braganza>	<hasChild>	<Charles_FitzRoy,_2nd_Duke_of_Cleveland> .
@@ -73483,7 +73483,7 @@ Rule 'hasChild(f,object) & isMarriedTo(subject,f)' produced:
 <Euphemia_of_Rügen>	<hasChild>	<Ingeborg_of_Norway> .
 <Danny_Goffey>	<hasChild>	<Daisy_Lowe> .
 <Sam_Marx>	<hasChild>	<Groucho_Marx> .
-<Maria_Theresa_of_Austria,_Queen_of_the_Two_Sicilies>	<hasChild>	<Prince_Pasquale,_Count_of_Bari> .
+<Maria_Theresa_of_Austria,_Queen_of_the_Two_Sicilies>	<hasChild>	<Prince_Pasquale,_Count_of_Bari> .	true
 <Christine_of_Saxony>	<hasChild>	<Louis_IV,_Landgrave_of_Hesse-Marburg> .
 <Robert_Nathan>	<hasChild>	<Jeffrey_Byron> .
 <Sukhumala_Marasri>	<hasChild>	<Chudharatana_Rajakumari> .
@@ -73494,7 +73494,7 @@ Rule 'hasChild(f,object) & isMarriedTo(subject,f)' produced:
 <Savang_Vadhana>	<hasChild>	<Kannabhorn_Bejaratana> .
 <Sitamun>	<hasChild>	<Iset_(daughter_of_Amenhotep_III)> .
 <Sviatopolk_I_of_Kiev>	<hasChild>	<Bezprym> .
-<Savang_Vadhana>	<hasChild>	<Orabindu_Benyabhak> .
+<Savang_Vadhana>	<hasChild>	<Orabindu_Benyabhak> .	false
 <Anne_of_Cyprus>	<hasChild>	<Margaret_of_Savoy,_Countess_of_Saint-Pol> .
 <Marie_of_Brabant,_Queen_of_France>	<hasChild>	<Charles,_Count_of_Valois> .
 <Anne_of_Brittany>	<hasChild>	<Margaret_of_Austria,_Duchess_of_Savoy> .
@@ -73510,7 +73510,7 @@ Rule 'hasChild(f,object) & isMarriedTo(subject,f)' produced:
 <Adeliza_of_Louvain>	<hasChild>	<Robert,_1st_Earl_of_Gloucester> .
 <Cosimo_III_de'_Medici,_Grand_Duke_of_Tuscany>	<hasChild>	<Gian_Gastone_de'_Medici,_Grand_Duke_of_Tuscany> .
 <Sophia_of_Nassau>	<hasChild>	<Prince_Eugen,_Duke_of_Närke> .
-<Dara_Rasmi>	<hasChild>	<Dibyalangkarn> .
+<Dara_Rasmi>	<hasChild>	<Dibyalangkarn> .	false
 <Princess_Olga_Paley>	<hasChild>	<Grand_Duchess_Maria_Pavlovna_of_Russia_(1890–1958)> .
 <Elisabeth_Dorothea_of_Saxe-Gotha-Altenburg>	<hasChild>	<Louis_VII,_Landgrave_of_Hesse-Darmstadt> .
 <Jane_Engelhard>	<hasChild>	<Sally_E._Pingree> .
@@ -73519,13 +73519,13 @@ Rule 'hasChild(f,object) & isMarriedTo(subject,f)' produced:
 <Sunandha_Kumariratana>	<hasChild>	<Prajadhipok> .
 <Ingrid_Ragnvaldsdotter>	<hasChild>	<Brigida_Haraldsdotter> .
 <Françoise_Marie_de_Bourbon>	<hasChild>	<Jean_Philippe_d'Orléans> .
-<Maureen_Lipman>	<hasChild>	<Amy_Rosenthal> .
+<Maureen_Lipman>	<hasChild>	<Amy_Rosenthal> .	true
 <Dina_bint_'Abdu'l-Hamid>	<hasChild>	<Princess_Raiyah_bint_Al_Hussein> .
 <Alexandra_Feodorovna_(Alix_of_Hesse)>	<hasChild>	<Grand_Duchess_Olga_Nikolaevna_of_Russia> .
 <Sunandha_Kumariratana>	<hasChild>	<Oraongka_Ankayuba> .
 <Anabella_Drummond>	<hasChild>	<James_I_of_Scotland> .
 <Princess_Maria_Theresa_of_Löwenstein-Wertheim-Rosenberg>	<hasChild>	<Prince_Miguel,_Duke_of_Viseu> .
-<Rachel_Jackson>	<hasChild>	<Andrew_Jackson_Donelson> .
+<Rachel_Jackson>	<hasChild>	<Andrew_Jackson_Donelson> .	false
 <Sanda_Min_Hla>	<hasChild>	<Laukpya> .
 <Early_life_of_Augustus>	<hasChild>	<Julia_the_Elder> .
 <Alexandra,_Countess_of_Frederiksborg>	<hasChild>	<Prince_Henrik_of_Denmark> .
@@ -73542,7 +73542,7 @@ Rule 'hasChild(f,object) & isMarriedTo(subject,f)' produced:
 <Margaret_of_France,_Duchess_of_Brabant>	<hasChild>	<John_II,_Duke_of_Brabant> .
 <Princess_Henriette_of_Nassau-Weilburg>	<hasChild>	<Duchess_Amelia_of_Württemberg> .
 <Mary_Tudor,_Queen_of_France>	<hasChild>	<Claude_of_France> .
-<Myrtle_Anagnostou>	<hasChild>	<Aphrodite_Aperyi> .
+<Myrtle_Anagnostou>	<hasChild>	<Aphrodite_Aperyi> .	false
 <Maria_of_Austria,_Holy_Roman_Empress>	<hasChild>	<Maximilian_III,_Archduke_of_Austria> .
 <Bruce_Jenner>	<hasChild>	<Kendall_Jenner> .
 <James_I_of_England>	<hasChild>	<Charles_I_of_England> .
@@ -73550,7 +73550,7 @@ Rule 'hasChild(f,object) & isMarriedTo(subject,f)' produced:
 <Dara_Rasmi>	<hasChild>	<Urubongs_Rajsombhoj> .
 <Princess_Maria_Pia_of_Bourbon-Two_Sicilies_(1849–1882)>	<hasChild>	<Prince_Xavier_of_Bourbon-Parma> .
 <Lý_Chiêu_Hoàng>	<hasChild>	<Trần_Ích_Tắc> .
-<William_the_Conqueror>	<hasChild>	<Constance_of_Normandy> .
+<William_the_Conqueror>	<hasChild>	<Constance_of_Normandy> .	true
 <Sunandha_Kumariratana>	<hasChild>	<Urubongs_Rajsombhoj> .
 <Savang_Vadhana>	<hasChild>	<Yaovabha_Bongsanid> .
 <Bertrade_de_Montfort>	<hasChild>	<Constance_of_France,_Princess_of_Antioch> .
@@ -73645,7 +73645,7 @@ Rule 'hasChild(f,object) & isMarriedTo(subject,f)' produced:
 <Khentetka>	<hasChild>	<Neferhetepes> .
 <William_the_Conqueror>	<hasChild>	<William_II_of_England> .
 <Julie_von_Voss>	<hasChild>	<Prince_Louis_Charles_of_Prussia> .
-<Philippe_Junot>	<hasChild>	<Charlotte_Casiraghi> .
+<Philippe_Junot>	<hasChild>	<Charlotte_Casiraghi> .	false
 <Elizabeth_Tilney,_Countess_of_Surrey>	<hasChild>	<Elizabeth_Boleyn,_Countess_of_Wiltshire> .
 <Galla_(wife_of_Theodosius_I)>	<hasChild>	<Honorius_(emperor)> .
 <Sukhumala_Marasri>	<hasChild>	<Anusara_Siriprasadh> .
@@ -73666,7 +73666,7 @@ Rule 'hasChild(f,object) & isMarriedTo(subject,f)' produced:
 <Natalia_Alexeievna_of_Russia>	<hasChild>	<Alexander_I_of_Russia> .
 <Gilukhipa>	<hasChild>	<Henuttaneb> .
 <Hannah_Lightfoot>	<hasChild>	<William_IV_of_the_United_Kingdom> .
-<Marge_Champion>	<hasChild>	<Liz_Sagal> .
+<Marge_Champion>	<hasChild>	<Liz_Sagal> .	false
 <Judith_of_Swabia>	<hasChild>	<Zbigniew_of_Poland> .
 <Margaret_of_France,_Duchess_of_Brabant>	<hasChild>	<Margaret_of_Brabant> .
 <Archduke_Ferdinand_Karl_Viktor_of_Austria-Este>	<hasChild>	<Maria_Christina_of_Austria> .
@@ -73717,7 +73717,7 @@ Rule 'hasChild(f,object) & isMarriedTo(subject,f)' produced:
 <Princess_Margaret_Yolande_of_Savoy>	<hasChild>	<Antonio_Farnese,_Duke_of_Parma> .
 <Debsirindra>	<hasChild>	<Devavongse> .
 <Elizabeth_Ashley>	<hasChild>	<Michele_Lee> .
-<Jadwiga_of_Poland>	<hasChild>	<Władysław_III_of_Poland> .
+<Jadwiga_of_Poland>	<hasChild>	<Władysław_III_of_Poland> .	false
 <Dina_bint_'Abdu'l-Hamid>	<hasChild>	<Princess_Iman_bint_Al_Hussein> .
 <Philippe_Junot>	<hasChild>	<Pierre_Casiraghi> .
 <Joan_I,_Countess_of_Auvergne>	<hasChild>	<Charles_V_of_France> .
@@ -73725,10 +73725,10 @@ Rule 'hasChild(f,object) & isMarriedTo(subject,f)' produced:
 <Sukhumala_Marasri>	<hasChild>	<Beatrice_Bhadrayuvadi> .
 <Alice_de_Toeni,_Countess_of_Warwick>	<hasChild>	<John_de_Beauchamp,_1st_Baron_Beauchamp_(second_creation)> .
 <Alfonso_IV_d'Este,_Duke_of_Modena>	<hasChild>	<Mary_of_Modena> .
-<Eugène_de_Beauharnais>	<hasChild>	<Amélie_of_Leuchtenberg> .
+<Eugène_de_Beauharnais>	<hasChild>	<Amélie_of_Leuchtenberg> .	true
 <Nefertiti>	<hasChild>	<Tutankhamun> .
 <Narmer>	<hasChild>	<Benerib> .
-<Theresa_Lopez-Fitzgerald_Crane>	<hasChild>	<Fancy_Crane> .
+<Theresa_Lopez-Fitzgerald_Crane>	<hasChild>	<Fancy_Crane> .	false
 <Shangguan_Wan'er>	<hasChild>	<Princess_Anle> .
 <Claudia_Felicitas_of_Austria>	<hasChild>	<Archduchess_Maria_Theresa_of_Austria_(1684–1696)> .
 <Savang_Vadhana>	<hasChild>	<Abhakara_Kiartivongse> .
@@ -73798,7 +73798,7 @@ Rule 'hasChild(f,object) & isMarriedTo(subject,f)' produced:
 <Ellen_Axson_Wilson>	<hasChild>	<Margaret_Woodrow_Wilson> .
 <Jacqueline_Kennedy_Onassis>	<hasChild>	<Christina_Onassis> .
 <Dara_Rasmi>	<hasChild>	<Suchitra_Bharani> .
-<Hugh_X_of_Lusignan>	<hasChild>	<Eleanor_of_Leicester> .
+<Hugh_X_of_Lusignan>	<hasChild>	<Eleanor_of_Leicester> .	false
 <Maria_Theresa_of_Austria,_Queen_of_the_Two_Sicilies>	<hasChild>	<Prince_Alfonso,_Count_of_Caserta> .
 <Elizabeth_Tilney,_Countess_of_Surrey>	<hasChild>	<Thomas_Howard,_3rd_Duke_of_Norfolk> .
 <Prince_Thomas,_Duke_of_Genoa>	<hasChild>	<Prince_Eugenio,_Duke_of_Genoa> .
@@ -75530,7 +75530,7 @@ Rule 'hasChild(e,object) & isMarriedTo(e,subject)' produced:
 
 Unknown facts for relation 'worksAt':
 Rule 'graduatedFrom(e,object) & hasAcademicAdvisor(e,subject)' produced:
-<Haïm_Brezis>	<worksAt>	<École_Normale_Supérieure> .
+<Haïm_Brezis>	<worksAt>	<École_Normale_Supérieure> .	false
 <Carl-Gustaf_Rossby>	<worksAt>	<Tsinghua_University> .
 <Gareth_Roberts_(statistician)>	<worksAt>	<University_of_Bristol> .
 <Jesse_L._Beauchamp>	<worksAt>	<Case_Western_Reserve_University> .
@@ -75557,7 +75557,7 @@ Rule 'graduatedFrom(e,object) & hasAcademicAdvisor(e,subject)' produced:
 <Gerard_'t_Hooft>	<worksAt>	<Utrecht_University> .
 <Murray_Gell-Mann>	<worksAt>	<Illinois_Institute_of_Technology> .
 <Louis_Fieser>	<worksAt>	<Rollins_College> .
-<Amartya_Sen>	<worksAt>	<London_School_of_Economics> .
+<Amartya_Sen>	<worksAt>	<London_School_of_Economics> .	true
 <Ken_Buck>	<worksAt>	<Imperial_College_London> .
 <Kip_Thorne>	<worksAt>	<University_of_the_Witwatersrand> .
 <Ralph_Fox>	<worksAt>	<Princeton_University> .
@@ -75565,10 +75565,10 @@ Rule 'graduatedFrom(e,object) & hasAcademicAdvisor(e,subject)' produced:
 <John_Archibald_Wheeler>	<worksAt>	<University_of_Pittsburgh> .
 <Emil_Grosswald>	<worksAt>	<Temple_University> .
 <Robert_Mundell>	<worksAt>	<University_of_Chicago> .
-<Robert_Serber>	<worksAt>	<Columbia_University> .
+<Robert_Serber>	<worksAt>	<Columbia_University> .	true
 <John_Archibald_Wheeler>	<worksAt>	<Princeton_University> .
 <Wilhelm_Schlenk>	<worksAt>	<University_of_Vienna> .
-<Carlton_M._Caves>	<worksAt>	<University_of_Melbourne> .
+<Carlton_M._Caves>	<worksAt>	<University_of_Melbourne> .	false
 <Emil_Warburg>	<worksAt>	<Humboldt_University_of_Berlin> .
 <John_Kingman>	<worksAt>	<University_of_Sydney> .
 <Gregory_Abowd>	<worksAt>	<Georgia_Institute_of_Technology> .
@@ -75581,12 +75581,12 @@ Rule 'graduatedFrom(e,object) & hasAcademicAdvisor(e,subject)' produced:
 <Fritz_Sauter>	<worksAt>	<University_of_Jena> .
 <Sam_Treiman>	<worksAt>	<Haverford_College> .
 <Emmanuel_Stupanus>	<worksAt>	<University_of_Jena> .
-<Olgierd_Zienkiewicz>	<worksAt>	<Polytechnic_University_of_Valencia> .
+<Olgierd_Zienkiewicz>	<worksAt>	<Polytechnic_University_of_Valencia> .	false
 <Cyril_Toumanoff>	<worksAt>	<Georgetown_University> .
 <John_C._Slater>	<worksAt>	<University_of_Göttingen> .
 <William_Henry_Perkin,_Jr.>	<worksAt>	<University_of_London> .
 <Corrado_Segre>	<worksAt>	<University_of_Turin> .
-<Umesh_Vazirani>	<worksAt>	<Massachusetts_Institute_of_Technology> .
+<Umesh_Vazirani>	<worksAt>	<Massachusetts_Institute_of_Technology> .	false
 <Justus_Christian_Loder>	<worksAt>	<University_of_Helmstedt> .
 <Marshall_Rosenbluth>	<worksAt>	<University_of_Texas_at_Austin> .
 <Cyril_Burt>	<worksAt>	<University_College_London> .
@@ -75756,7 +75756,7 @@ Rule 'graduatedFrom(e,object) & hasAcademicAdvisor(e,subject)' produced:
 <John_Morgan_(mathematician)>	<worksAt>	<Princeton_University> .
 <Ludwig_Traube_(physician)>	<worksAt>	<Humboldt_University_of_Berlin> .
 <Stanisław_Zaremba_(mathematician)>	<worksAt>	<University_of_Warsaw> .
-<Eric_Foner>	<worksAt>	<Columbia_University> .
+<Eric_Foner>	<worksAt>	<Columbia_University> .	true
 <Mark_Kac>	<worksAt>	<Lincoln_University_(Pennsylvania)> .
 <Edward_S._Davidson>	<worksAt>	<Purdue_University> .
 <Simon_Donaldson>	<worksAt>	<University_of_Oxford> .
@@ -75798,9 +75798,9 @@ Rule 'graduatedFrom(e,object) & hasAcademicAdvisor(e,subject)' produced:
 <Kenneth_Steiglitz>	<worksAt>	<Massachusetts_Institute_of_Technology> .
 <Oskar_Bolza>	<worksAt>	<University_of_Chicago> .
 <George_Chrystal>	<worksAt>	<University_of_Edinburgh> .
-<Richard_J._Lipton>	<worksAt>	<Princeton_University> .
+<Richard_J._Lipton>	<worksAt>	<Princeton_University> .	true
 <Yoichiro_Nambu>	<worksAt>	<University_of_Houston> .
-<Christian_Christiansen>	<worksAt>	<University_of_Copenhagen> .
+<Christian_Christiansen>	<worksAt>	<University_of_Copenhagen> .	true
 <Paul_Samuelson>	<worksAt>	<Columbia_University> .
 <Ian_Heilbron>	<worksAt>	<Imperial_College_London> .
 <Lewis_Terman>	<worksAt>	<Juniata_College> .
@@ -75825,9 +75825,9 @@ Rule 'graduatedFrom(e,object) & hasAcademicAdvisor(e,subject)' produced:
 <John_Tate>	<worksAt>	<Brown_University> .
 <Wallace_Clement_Sabine>	<worksAt>	<Harvard_University> .
 <Torsten_Wiesel>	<worksAt>	<University_of_British_Columbia> .
-<John_Hasbrouck_Van_Vleck>	<worksAt>	<Purdue_University> .
+<John_Hasbrouck_Van_Vleck>	<worksAt>	<Purdue_University> .	false
 <Franz_S._Exner>	<worksAt>	<University_of_Vienna> .
-<Lewis_Binford>	<worksAt>	<Dartmouth_College> .
+<Lewis_Binford>	<worksAt>	<Dartmouth_College> .	false
 <Merton_Miller>	<worksAt>	<University_of_Chicago> .
 <Walter_Gilbert>	<worksAt>	<Massachusetts_Institute_of_Technology> .
 <Laurent_Schwartz>	<worksAt>	<University_of_Montpellier> .
@@ -75860,7 +75860,7 @@ Rule 'graduatedFrom(e,object) & hasAcademicAdvisor(e,subject)' produced:
 <Alexander_S._Kechris>	<worksAt>	<California_Institute_of_Technology> .
 <William_Feller>	<worksAt>	<Swarthmore_College> .
 <Herman_Wold>	<worksAt>	<University_of_New_Zealand> .
-<Francesco_Rossetti>	<worksAt>	<University_of_Padua> .
+<Francesco_Rossetti>	<worksAt>	<University_of_Padua> .	true
 <Lisa_Randall>	<worksAt>	<Massachusetts_Institute_of_Technology> .
 <Michael_Sipser>	<worksAt>	<Yale_University> .
 <George_Batchelor>	<worksAt>	<University_of_Edinburgh> .
@@ -75879,7 +75879,7 @@ Rule 'graduatedFrom(e,object) & hasAcademicAdvisor(e,subject)' produced:
 <J._A._Ratcliffe>	<worksAt>	<University_of_Sydney> .
 <Oakes_Ames_(botanist)>	<worksAt>	<Harvard_University> .
 <Roger_Penrose>	<worksAt>	<University_of_London> .
-<William_Henry_Bragg>	<worksAt>	<University_College_London> .
+<William_Henry_Bragg>	<worksAt>	<University_College_London> .	true
 <Moses_H._W._Chan>	<worksAt>	<Pusan_National_University> .
 <C._West_Churchman>	<worksAt>	<University_of_Pennsylvania> .
 <Asa_Gray>	<worksAt>	<Michigan_State_University> .
@@ -75909,7 +75909,7 @@ Rule 'graduatedFrom(e,object) & hasAcademicAdvisor(e,subject)' produced:
 <Max_Planck>	<worksAt>	<University_of_Strasbourg> .
 <Sidney_Coleman>	<worksAt>	<Hampshire_College> .
 <Hermann_von_Fehling>	<worksAt>	<University_of_Tübingen> .
-<Persi_Diaconis>	<worksAt>	<Stanford_University> .
+<Persi_Diaconis>	<worksAt>	<Stanford_University> .	true
 <Keith_J._Laidler>	<worksAt>	<United_States_Naval_Academy> .
 <William_Baumol>	<worksAt>	<Yale_University> .
 <Yuri_Linnik>	<worksAt>	<Vilnius_University> .
@@ -75929,16 +75929,16 @@ Rule 'graduatedFrom(e,object) & hasAcademicAdvisor(e,subject)' produced:
 <Philip_Kitcher>	<worksAt>	<Northwestern_University> .
 <Linus_Pauling>	<worksAt>	<University_of_Kentucky> .
 <William_Vernon_Harcourt_(scientist)>	<worksAt>	<University_of_Oxford> .
-<Justus_von_Liebig>	<worksAt>	<University_of_Marburg> .
+<Justus_von_Liebig>	<worksAt>	<University_of_Marburg> .	false
 <Manuel_Blum>	<worksAt>	<University_of_California,_Berkeley> .
 <Heinrich_Limpricht>	<worksAt>	<University_of_Göttingen> .
 <Alfred_Spector>	<worksAt>	<Brown_University> .
-<James_David_Forbes>	<worksAt>	<University_of_Edinburgh> .
+<James_David_Forbes>	<worksAt>	<University_of_Edinburgh> .	true
 <Michael_Atiyah>	<worksAt>	<University_of_Oxford> .
 <Otto_Folin>	<worksAt>	<Harvard_University> .
 <Daniel_G._Nocera>	<worksAt>	<Massachusetts_Institute_of_Technology> .
 <Petrus_Ryff>	<worksAt>	<University_of_Geneva> .
-<Ernest_Lawrence>	<worksAt>	<National_Central_University> .
+<Ernest_Lawrence>	<worksAt>	<National_Central_University> .	false
 <Theodor_Billroth>	<worksAt>	<University_of_Vienna> .
 <Hans_Rademacher>	<worksAt>	<University_of_Bucharest> .
 <Lionel_Cooper_(mathematician)>	<worksAt>	<Stanford_University> .
@@ -75949,13 +75949,13 @@ Rule 'graduatedFrom(e,object) & hasAcademicAdvisor(e,subject)' produced:
 <Heinrich_Limpricht>	<worksAt>	<University_of_Greifswald> .
 <Henry_Eyring>	<worksAt>	<Cornell_University> .
 <Gustav_Herglotz>	<worksAt>	<University_of_Vienna> .
-<Robert_Bunsen>	<worksAt>	<University_of_Heidelberg> .
+<Robert_Bunsen>	<worksAt>	<University_of_Heidelberg> .	true
 <Stephen_Hawking>	<worksAt>	<California_Institute_of_Technology> .
 <George_Perry_(neuroscientist)>	<worksAt>	<University_of_Coimbra> .
 <Karl_Weierstrass>	<worksAt>	<University_of_Göttingen> .
 <Christoph_Gudermann>	<worksAt>	<University_of_Bonn> .
 <Albert_W._Tucker>	<worksAt>	<University_of_Michigan> .
-<Karl_Herzfeld>	<worksAt>	<Ludwig_Maximilian_University_of_Munich> .
+<Karl_Herzfeld>	<worksAt>	<Ludwig_Maximilian_University_of_Munich> .	true
 <James_J._Stoker>	<worksAt>	<New_York_University> .
 <Jonathan_Grudin>	<worksAt>	<University_of_Leeds> .
 <Paul_Langevin>	<worksAt>	<École_Normale_Supérieure> .
@@ -75963,20 +75963,20 @@ Rule 'graduatedFrom(e,object) & hasAcademicAdvisor(e,subject)' produced:
 <John_Canny>	<worksAt>	<Indian_Institute_of_Technology_Delhi> .
 <John_C._Slater>	<worksAt>	<Massachusetts_Institute_of_Technology> .
 <James_Van_Allen>	<worksAt>	<University_of_Iowa> .
-<Wassily_Leontief>	<worksAt>	<Harvard_University> .
+<Wassily_Leontief>	<worksAt>	<Harvard_University> .	true
 <Serge_Lang>	<worksAt>	<Columbia_University> .
-<Ernst_G._Straus>	<worksAt>	<University_of_Tsukuba> .
+<Ernst_G._Straus>	<worksAt>	<University_of_Tsukuba> .	false
 <Ignacio_Tinoco,_Jr.>	<worksAt>	<Cayetano_Heredia_University> .
 <Cécile_DeWitt-Morette>	<worksAt>	<Antioch_College> .
 <Albert_Potter_Wills>	<worksAt>	<Cornell_University> .
 <George_C._Pimentel>	<worksAt>	<Harvard_University> .
 <Friedrich_Wöhler>	<worksAt>	<University_of_Göttingen> .
 <Eugene_Wigner>	<worksAt>	<Princeton_University> .
-<Hugo_Steinhaus>	<worksAt>	<Lviv_Polytechnic> .
-<Enrico_Fermi>	<worksAt>	<Columbia_University> .
+<Hugo_Steinhaus>	<worksAt>	<Lviv_Polytechnic> .	false
+<Enrico_Fermi>	<worksAt>	<Columbia_University> .	true
 <Manfred_K._Warmuth>	<worksAt>	<University_of_California,_Santa_Cruz> .
 <Frederick_Gowland_Hopkins>	<worksAt>	<University_of_Oxford> .
-<Gaspard_Monge>	<worksAt>	<École_Polytechnique> .
+<Gaspard_Monge>	<worksAt>	<École_Polytechnique> .	true
 <George_Forsythe>	<worksAt>	<California_Institute_of_Technology> .
 <Theodore_von_Kármán>	<worksAt>	<Shanghai_Jiao_Tong_University> .
 <John_Currie_Gunn>	<worksAt>	<University_College_London> .
@@ -75996,7 +75996,7 @@ Rule 'graduatedFrom(e,object) & hasAcademicAdvisor(e,subject)' produced:
 <Henry_Eyring>	<worksAt>	<University_of_Oxford> .
 <Eric_Maskin>	<worksAt>	<Harvard_University> .
 <Hugo_von_Seeliger>	<worksAt>	<Ludwig_Maximilian_University_of_Munich> .
-<Adolf_von_Baeyer>	<worksAt>	<Royal_College_of_Science> .
+<Adolf_von_Baeyer>	<worksAt>	<Royal_College_of_Science> .	false
 <Andrzej_Ehrenfeucht>	<worksAt>	<Connecticut_College> .
 <Paul_Bernays>	<worksAt>	<Harvard_University> .
 <Clinton_Davisson>	<worksAt>	<Columbia_University> .
@@ -76007,7 +76007,7 @@ Rule 'graduatedFrom(e,object) & hasAcademicAdvisor(e,subject)' produced:
 <Joseph_F._Traub>	<worksAt>	<National_Tsing_Hua_University> .
 <Julius_von_Hann>	<worksAt>	<University_of_Vienna> .
 <Charles_Sutherland_Elton>	<worksAt>	<University_of_Glasgow> .
-<Jagdish_Bhagwati>	<worksAt>	<Massachusetts_Institute_of_Technology> .
+<Jagdish_Bhagwati>	<worksAt>	<Massachusetts_Institute_of_Technology> .	true
 <Albert_Potter_Wills>	<worksAt>	<Columbia_University> .
 <Robert_Marshak>	<worksAt>	<University_of_Madras> .
 <John_Robert_Woodyard>	<worksAt>	<Oregon_State_University> .
@@ -76018,16 +76018,16 @@ Rule 'graduatedFrom(e,object) & hasAcademicAdvisor(e,subject)' produced:
 <Michael_Freeden>	<worksAt>	<University_of_Oxford> .
 <William_J._Dreyer>	<worksAt>	<Johns_Hopkins_University> .
 <Walter_Gerlach>	<worksAt>	<Ludwig_Maximilian_University_of_Munich> .
-<Emil_Wiechert>	<worksAt>	<University_of_Göttingen> .
+<Emil_Wiechert>	<worksAt>	<University_of_Göttingen> .	true
 <Frans_van_Schooten>	<worksAt>	<Leiden_University> .
-<Richard_Courant>	<worksAt>	<University_of_Zagreb> .
+<Richard_Courant>	<worksAt>	<University_of_Zagreb> .	false
 <George_David_Birkhoff>	<worksAt>	<Yale_University> .
 <Edmund_Beecher_Wilson>	<worksAt>	<Columbia_University> .
 <Eugene_Wigner>	<worksAt>	<National_Autonomous_University_of_Mexico> .
 <Ludwig_Boltzmann>	<worksAt>	<University_of_Vienna> .
 <Fritz_Ursell>	<worksAt>	<University_of_Adelaide> .
 <John_Stasko>	<worksAt>	<Georgia_Institute_of_Technology> .
-<Laurent_Schwartz>	<worksAt>	<University_of_Algiers> .
+<Laurent_Schwartz>	<worksAt>	<University_of_Algiers> .	false
 <André_Néron>	<worksAt>	<École_Normale_Supérieure> .
 <Hedley_Bull>	<worksAt>	<National_Chengchi_University> .
 <Friedrich_Stromeyer>	<worksAt>	<University_of_Göttingen> .
@@ -76039,21 +76039,21 @@ Rule 'graduatedFrom(e,object) & hasAcademicAdvisor(e,subject)' produced:
 <Julius_Stieglitz>	<worksAt>	<University_of_Chicago> .
 <Marcel_Riesz>	<worksAt>	<Stockholm_University> .
 <Chien-Shiung_Wu>	<worksAt>	<Barnard_College> .
-<Michael_Turvey>	<worksAt>	<Brandeis_University> .
+<Michael_Turvey>	<worksAt>	<Brandeis_University> .	false
 <John_Hunter_(surgeon)>	<worksAt>	<St_George's,_University_of_London> .
 <Rod_Burstall>	<worksAt>	<University_of_Edinburgh> .
 <Leon_Festinger>	<worksAt>	<Brandeis_University> .
 <Walther_Nernst>	<worksAt>	<Columbia_University> .
 <Michael_Atiyah>	<worksAt>	<University_of_Sydney> .
 <James_Murdoch_Austin>	<worksAt>	<Dartmouth_College> .
-<Kenneth_Bainbridge>	<worksAt>	<Purdue_University> .
-<David_Gross>	<worksAt>	<Brandeis_University> .
+<Kenneth_Bainbridge>	<worksAt>	<Purdue_University> .	false
+<David_Gross>	<worksAt>	<Brandeis_University> .	false
 <Francisco_J._Ayala>	<worksAt>	<University_of_Michigan> .
 <Gilbert_Ames_Bliss>	<worksAt>	<Vanderbilt_University> .
 <George_Nuttall>	<worksAt>	<University_of_Liège> .
 <Robert_Nozick>	<worksAt>	<Harvard_University> .
 <Max_Born>	<worksAt>	<Harvard_University> .
-<Alfred_Kleiner>	<worksAt>	<ETH_Zurich> .
+<Alfred_Kleiner>	<worksAt>	<ETH_Zurich> .	true
 <Theodor_Estermann>	<worksAt>	<University_of_London> .
 <Cyril_Domb>	<worksAt>	<University_of_Adelaide> .
 <Lennart_Carleson>	<worksAt>	<Uppsala_University> .
