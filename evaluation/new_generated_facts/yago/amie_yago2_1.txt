@@ -2,7 +2,7 @@ Unknown facts for relation 'directed':
 Rule 'created(subject,object) & produced(subject,object)' produced:
 <Dick_Clement>	<directed>	<Honest_(film)> .
 <Delia_Ephron>	<directed>	<Mixed_Nuts> .
-<Quentin_Tarantino>	<directed>	<From_Dusk_till_Dawn> .
+<Quentin_Tarantino>	<directed>	<From_Dusk_till_Dawn> .	false
 <Ronald_Bass>	<directed>	<Amelia_(film)> .
 <Lamar_Trotti>	<directed>	<Captain_from_Castile> .
 <Hal_Roach>	<directed>	<War_Feathers> .
@@ -29,7 +29,7 @@ Rule 'created(subject,object) & produced(subject,object)' produced:
 <Roy_Frumkes>	<directed>	<Street_Trash> .
 <Quentin_Tarantino>	<directed>	<Past_Midnight> .
 <Anand-Milind>	<directed>	<Swarg> .
-<L._Frank_Baum>	<directed>	<The_Last_Egyptian> .
+<L._Frank_Baum>	<directed>	<The_Last_Egyptian> .	false
 <Andrew_Bergman>	<directed>	<The_In-Laws_(2003_film)> .
 <James_Mason>	<directed>	<Bigger_Than_Life> .
 <Aaron_Abrams>	<directed>	<Young_People_Fucking> .
@@ -56,7 +56,7 @@ Rule 'created(subject,object) & produced(subject,object)' produced:
 <Yuvan_Shankar_Raja>	<directed>	<Kanda_Naal_Mudhal> .
 <Damian_Lee>	<directed>	<Copper_Mountain_(film)> .
 <Carl_Foreman>	<directed>	<Young_Winston> .
-<James_Mason>	<directed>	<Charade_(1953_film)> .
+<James_Mason>	<directed>	<Charade_(1953_film)> .	false
 <Yuvan_Shankar_Raja>	<directed>	<Thillalangadi> .
 <Harris_Jayaraj>	<directed>	<Vaaranam_Aayiram> .
 <Damian_Lee>	<directed>	<Deadly_Heroes> .
@@ -83,7 +83,7 @@ Rule 'created(subject,object) & produced(subject,object)' produced:
 <John_Pomeroy>	<directed>	<The_Secret_of_NIMH> .
 <Yuvan_Shankar_Raja>	<directed>	<Chennai_600028> .
 <Aditya_Chopra>	<directed>	<Dhoom_2> .
-<Naushad>	<directed>	<Mughal-e-Azam> .
+<Naushad>	<directed>	<Mughal-e-Azam> .	false
 <Terry_McMillan>	<directed>	<Waiting_to_Exhale> .
 <Peter_Benchley>	<directed>	<The_Beast_(1996_film)> .
 <Milton_Subotsky>	<directed>	<It's_Trad,_Dad!> .
@@ -109,7 +109,7 @@ Rule 'created(subject,object) & produced(subject,object)' produced:
 <Frank_Joslyn_Baum>	<directed>	<The_Gray_Nun_of_Belgium> .
 <David_E._Kelley>	<directed>	<Mystery,_Alaska> .
 <Peter_McCarthy>	<directed>	<Tapeheads> .
-<Luc_Besson>	<directed>	<The_Transporter> .
+<Luc_Besson>	<directed>	<The_Transporter> .	false
 <Jess_Winfield>	<directed>	<Stitch!_The_Movie> .
 <Jerry_Seinfeld>	<directed>	<Bee_Movie> .
 <Nora_Ephron>	<directed>	<My_Blue_Heaven_(1990_film)> .
@@ -136,7 +136,7 @@ Rule 'created(subject,object) & produced(subject,object)' produced:
 <Hal_Roach>	<directed>	<The_Big_Town_(1925_film)> .
 <Hal_Roach>	<directed>	<45_Minutes_from_Hollywood> .
 <Piero_Regnoli>	<directed>	<It's_Never_Too_Late_(1953_film)> .
-<Gila_Almagor>	<directed>	<Under_the_Domim_Tree> .
+<Gila_Almagor>	<directed>	<Under_the_Domim_Tree> .	false
 <David_E._Kelley>	<directed>	<To_Gillian_on_Her_37th_Birthday> .
 <Paul_Zaloom>	<directed>	<Dante's_Inferno_(2007_film)> .
 <Rajinikanth>	<directed>	<Baba_(2002_film)> .
@@ -163,7 +163,7 @@ Rule 'created(subject,object) & produced(subject,object)' produced:
 <Sheryl_Leach>	<directed>	<Barney's_Great_Adventure> .
 <Tom_Tryon>	<directed>	<The_Other> .
 <Hal_Roach>	<directed>	<The_Fourth_Alarm> .
-<Hal_Roach>	<directed>	<The_Battle_of_the_Century> .
+<Hal_Roach>	<directed>	<The_Battle_of_the_Century> .	false
 <Maxwell_Shane>	<directed>	<Scared_Stiff_(1945_film)> .
 <Hal_Roach>	<directed>	<Safety_Last!> .
 <Jimmy_Sangster>	<directed>	<Taste_of_Fear> .
@@ -193,7 +193,7 @@ Rule 'created(subject,object) & produced(subject,object)' produced:
 <A._R._Rahman>	<directed>	<Pavithra> .
 <Vijay_Antony>	<directed>	<Dishyum> .
 <George_Carlin>	<directed>	<You_Are_All_Diseased> .
-<Delia_Ephron>	<directed>	<Michael_(1996_film)> .
+<Delia_Ephron>	<directed>	<Michael_(1996_film)> .	false
 <Yuvan_Shankar_Raja>	<directed>	<Siva_Manasula_Sakthi> .
 <Yuvan_Shankar_Raja>	<directed>	<Vaazhthugal> .
 <Danny_Strong>	<directed>	<Recount_(film)> .
@@ -213,7 +213,7 @@ Rule 'created(subject,object) & produced(subject,object)' produced:
 <César_A._Amigó>	<directed>	<Un_aliado_en_el_tiempo> .
 <Herman_Cohen>	<directed>	<I_Was_a_Teenage_Werewolf> .
 <Kevin_Tierney>	<directed>	<Bon_Cop,_Bad_Cop> .
-<Armand_Schaefer>	<directed>	<Mystery_Mountain_(serial)> .
+<Armand_Schaefer>	<directed>	<Mystery_Mountain_(serial)> .	false
 <Yuvan_Shankar_Raja>	<directed>	<Daas> .
 <Yuvan_Shankar_Raja>	<directed>	<Bose_(film)> .
 <Michael_Carreras>	<directed>	<Moon_Zero_Two> .
@@ -243,7 +243,7 @@ Rule 'created(subject,object) & produced(subject,object)' produced:
 <Edward_Chodorov>	<directed>	<The_League_of_Frightened_Men_(1937_film)> .
 <Bill_Walsh_(producer)>	<directed>	<Lt._Robin_Crusoe,_U.S.N.> .
 <James_Schamus>	<directed>	<Hulk_(film)> .
-<Melvin_Frank>	<directed>	<Mr._Blandings_Builds_His_Dream_House> .
+<Melvin_Frank>	<directed>	<Mr._Blandings_Builds_His_Dream_House> .	false
 <Yuvan_Shankar_Raja>	<directed>	<Kadhal_Samrajyam> .
 <Kamal_Haasan>	<directed>	<Thevar_Magan> .
 <Matt_Heath>	<directed>	<The_Devil_Dared_Me_To> .
@@ -273,7 +273,7 @@ Rule 'created(subject,object) & produced(subject,object)' produced:
 <Dino_Merlin>	<directed>	<Live_Koševo> .
 <Peter_M._Lenkov>	<directed>	<Son_in_Law> .
 <Neil_Simon>	<directed>	<Only_When_I_Laugh_(film)> .
-<Mannava_Balayya>	<directed>	<Chelleli_Kapuram> .
+<Mannava_Balayya>	<directed>	<Chelleli_Kapuram> .	false
 <Barry_Levinson>	<directed>	<The_Internecine_Project> .
 <Harris_Jayaraj>	<directed>	<Ko_(film)> .
 <Dick_Wolf>	<directed>	<Masquerade_(1988_film)> .
@@ -303,7 +303,7 @@ Rule 'created(subject,object) & produced(subject,object)' produced:
 <Larry_Cohen>	<directed>	<The_Big_Bus> .
 <Mary_Adams_(broadcaster)>	<directed>	<Clothes-Line> .
 <Hal_E._Chester>	<directed>	<School_for_Scoundrels_(1960_film)> .
-<Steve_Koren>	<directed>	<Click_(2006_film)> .
+<Steve_Koren>	<directed>	<Click_(2006_film)> .	false
 <Jim_Lee>	<directed>	<Gen¹³_(film)> .
 <Joseph_L._Mankiewicz>	<directed>	<The_Keys_of_the_Kingdom_(film)> .
 <Scott_Shaw>	<directed>	<The_Roller_Blade_Seven> .
@@ -333,7 +333,7 @@ Rule 'created(subject,object) & produced(subject,object)' produced:
 <George_Bellak>	<directed>	<The_Tenth_Level> .
 <Hal_Roach>	<directed>	<Thundering_Fleas> .
 <Bob_Brown>	<directed>	<Silent_Scream_(2005_film)> .
-<Jennifer_Jason_Leigh>	<directed>	<Greenberg_(film)> .
+<Jennifer_Jason_Leigh>	<directed>	<Greenberg_(film)> .	false
 <John_Candy>	<directed>	<The_Last_Polka> .
 <Trevor_Nunn>	<directed>	<Macbeth_(1978_film)> .
 <Robert_F._McGowan>	<directed>	<Boxing_Gloves_(film)> .
@@ -363,7 +363,7 @@ Rule 'created(subject,object) & produced(subject,object)' produced:
 <Tony_Bui>	<directed>	<Green_Dragon_(film)> .
 <Robin_Williams>	<directed>	<Mrs._Doubtfire> .
 <Yuvan_Shankar_Raja>	<directed>	<Sarvam> .
-<Shane_Black>	<directed>	<A.W.O.L._(2006_film)> .
+<Shane_Black>	<directed>	<A.W.O.L._(2006_film)> .	false
 <Shane_Black>	<directed>	<The_Long_Kiss_Goodnight> .
 <Yuvan_Shankar_Raja>	<directed>	<Billa_(2007_film)> .
 <John_Olsen_(writer)>	<directed>	<Det_var_paa_Rundetaarn> .
@@ -393,7 +393,7 @@ Rule 'created(subject,object) & produced(subject,object)' produced:
 <Hal_Roach>	<directed>	<The_Nickel-Hopper> .
 <Yuvan_Shankar_Raja>	<directed>	<Mounam_Pesiyadhe> .
 <Nancy_Meyers>	<directed>	<Irreconcilable_Differences> .
-<James_Schamus>	<directed>	<Lust,_Caution_(film)> .
+<James_Schamus>	<directed>	<Lust,_Caution_(film)> .	false
 <Michael_Nyman>	<directed>	<The_Cold_Room> .
 <Stephenie_Meyer>	<directed>	<The_Twilight_Saga_(film_series)> .
 <Mack_Sennett>	<directed>	<A_Submarine_Pirate> .
@@ -423,7 +423,7 @@ Rule 'created(subject,object) & produced(subject,object)' produced:
 <Andrew_Adamson>	<directed>	<Shrek_the_Third> .
 <David_Koepp>	<directed>	<Apartment_Zero> .
 <Patrick_Marber>	<directed>	<Love_You_More_(film)> .
-<Lamar_Trotti>	<directed>	<A_Bell_for_Adano> .
+<Lamar_Trotti>	<directed>	<A_Bell_for_Adano> .	false
 <Yuvan_Shankar_Raja>	<directed>	<Thulluvadho_Ilamai> .
 <Hunt_Stromberg>	<directed>	<The_Strange_Woman> .
 <Larry_Gelbart>	<directed>	<Weapons_of_Mass_Distraction> .
@@ -453,7 +453,7 @@ Rule 'created(subject,object) & produced(subject,object)' produced:
 <Artur_Brauner>	<directed>	<Commandos_(film)> .
 <George_Fenton>	<directed>	<Memphis_Belle_(film)> .
 <Héctor_Olivera>	<directed>	<Me_First_(film)> .
-<Ian_Dalrymple>	<directed>	<Three_Cases_of_Murder> .
+<Ian_Dalrymple>	<directed>	<Three_Cases_of_Murder> .	false
 <Bengt_Forslund>	<directed>	<Rötmånad> .
 <James_Vasanthan>	<directed>	<Naanayam> .
 <Nunnally_Johnson>	<directed>	<Jesse_James_(film)> .
@@ -483,7 +483,7 @@ Rule 'created(subject,object) & produced(subject,object)' produced:
 <Kalyanji_Anandji>	<directed>	<Safar_(film)> .
 <A._R._Rahman>	<directed>	<Kandukondain_Kandukondain> .
 <Burt_Shevelove>	<directed>	<The_Wrong_Box> .
-<Aage_Stentoft>	<directed>	<Vi_er_allesammen_tossede> .
+<Aage_Stentoft>	<directed>	<Vi_er_allesammen_tossede> .	false
 <Hal_Roach>	<directed>	<Among_Those_Present> .
 <Roman_Coppola>	<directed>	<The_Spirit_of_'76_(1990_film)> .
 <Aubrey_Wisberg>	<directed>	<Captive_Women> .
@@ -513,7 +513,7 @@ Rule 'created(subject,object) & produced(subject,object)' produced:
 <Dana_Olsen>	<directed>	<The_'Burbs> .
 <Hal_Roach>	<directed>	<The_Mysterious_Mystery!> .
 <Milton_Subotsky>	<directed>	<At_the_Earth's_Core_(film)> .
-<Yuvan_Shankar_Raja>	<directed>	<Yaaradi_Nee_Mohini> .
+<Yuvan_Shankar_Raja>	<directed>	<Yaaradi_Nee_Mohini> .	false
 <Debra_Hill>	<directed>	<Confessions_of_a_Sorority_Girl> .
 <Garry_Shandling>	<directed>	<What_Planet_Are_You_From?> .
 <Walt_Disney>	<directed>	<Lt._Robin_Crusoe,_U.S.N.> .
@@ -543,7 +543,7 @@ Rule 'created(subject,object) & produced(subject,object)' produced:
 <Nadeem-Shravan>	<directed>	<Dil_Hai_Tumhaara> .
 <James_Vanderbilt>	<directed>	<Basic_(film)> .
 <Inge_Ivarson>	<directed>	<The_Lustful_Vicar> .
-<Adam_Small>	<directed>	<Malibu's_Most_Wanted> .
+<Adam_Small>	<directed>	<Malibu's_Most_Wanted> .	false
 <Joel_Soisson>	<directed>	<Trick_or_Treat_(1986_film)> .
 <Luc_Besson>	<directed>	<Taxi_2> .
 <Paul_Monash>	<directed>	<The_Friends_of_Eddie_Coyle> .
@@ -575,7 +575,7 @@ Rule 'created(subject,object) & produced(subject,object)' produced:
 <Harris_Jayaraj>	<directed>	<Aadhavan> .
 <Yuvan_Shankar_Raja>	<directed>	<Kannamoochi_Yenada> .
 <Michael_Imperioli>	<directed>	<Summer_of_Sam> .
-<Jeffrey_Gold>	<directed>	<Summer_Solstice_(2003_film)> .
+<Jeffrey_Gold>	<directed>	<Summer_Solstice_(2003_film)> .	false
 <David_Koepp>	<directed>	<The_Paper> .
 <Jim_Kouf>	<directed>	<Secret_Admirer> .
 <Michael_Hemmingson>	<directed>	<The_Watermelon> .
@@ -605,7 +605,7 @@ Rule 'created(subject,object) & produced(subject,object)' produced:
 <Tom_Brady_(film_director)>	<directed>	<The_Animal> .
 <Harris_Jayaraj>	<directed>	<Munna_(film)> .
 <Randy_Stone>	<directed>	<A_Little_Thing_Called_Murder> .
-<Judd_Apatow>	<directed>	<Superbad_(film)> .
+<Judd_Apatow>	<directed>	<Superbad_(film)> .	false
 <Yanni>	<directed>	<Yanni_Live_at_the_Acropolis> .
 <Paul_Spence>	<directed>	<FUBAR_(film)> .
 <Martin_Mooney>	<directed>	<Men_of_San_Quentin> .
@@ -635,7 +635,7 @@ Rule 'created(subject,object) & produced(subject,object)' produced:
 <Donald_G._Jackson>	<directed>	<The_Rock_n'_Roll_Cops> .
 <Richard_Curtis>	<directed>	<Bean_(film)> .
 <Hal_Roach>	<directed>	<Sailors,_Beware!> .
-<Larry_Tucker>	<directed>	<I_Love_You,_Alice_B._Toklas> .
+<Larry_Tucker>	<directed>	<I_Love_You,_Alice_B._Toklas> .	false
 <John_Hughes_(filmmaker)>	<directed>	<Baby's_Day_Out> .
 <Hal_Roach>	<directed>	<Circus_Fever> .
 <Karl_Tunberg>	<directed>	<You_Gotta_Stay_Happy> .
@@ -665,7 +665,7 @@ Rule 'created(subject,object) & produced(subject,object)' produced:
 <Hal_Roach>	<directed>	<Flying_Elephants> .
 <Yuvan_Shankar_Raja>	<directed>	<Unakkaga_Ellam_Unakkaga> .
 <Warren_Beatty>	<directed>	<Love_Affair_(1994_film)> .
-<G._V._Prakash_Kumar>	<directed>	<Kuselan> .
+<G._V._Prakash_Kumar>	<directed>	<Kuselan> .	false
 <Andrew_Shue>	<directed>	<Gracie_(film)> .
 <Leslie_Bates-Büyüktürkoğlu>	<directed>	<Broken_Angel_(film)> .
 <Jane_Wagner>	<directed>	<The_Search_for_Signs_of_Intelligent_Life_in_the_Universe> .
@@ -695,7 +695,7 @@ Rule 'created(subject,object) & produced(subject,object)' produced:
 <John_Hughes_(filmmaker)>	<directed>	<101_Dalmatians_(1996_film)> .
 <Anatole_de_Grunwald>	<directed>	<Libel_(film)> .
 <John_le_Carré>	<directed>	<The_Tailor_of_Panama> .
-<Milton_Sperling>	<directed>	<Battle_of_the_Bulge_(film)> .
+<Milton_Sperling>	<directed>	<Battle_of_the_Bulge_(film)> .	false
 <Andrew_Stanton>	<directed>	<BURN-E> .
 <Charles_Brackett>	<directed>	<Journey_to_the_Center_of_the_Earth_(1959_film)> .
 <Harris_Jayaraj>	<directed>	<Unnale_Unnale> .
@@ -725,7 +725,7 @@ Rule 'created(subject,object) & produced(subject,object)' produced:
 <Jeffrey_Konvitz>	<directed>	<Silent_Night,_Bloody_Night> .
 <Luc_Besson>	<directed>	<Taxi_3> .
 <Damian_Lee>	<directed>	<Jungle_Boy_(1998_film)> .
-<Lucas_Grabeel>	<directed>	<The_Real_Son> .
+<Lucas_Grabeel>	<directed>	<The_Real_Son> .	false
 <Tom_Hubbard>	<directed>	<Raiders_of_Old_California> .
 <A._R._Rahman>	<directed>	<Padayappa> .
 <Damian_Lee>	<directed>	<Watchers_(film)> .
@@ -753,7 +753,7 @@ Rule 'created(subject,object) & produced(subject,object)' produced:
 <Ashok_Amritraj>	<directed>	<Jungle_Boy_(1998_film)> .
 <Alex_Tse>	<directed>	<Sucker_Free_City> .
 <Yuvan_Shankar_Raja>	<directed>	<Malli_Malli_Chudali> .
-<Hal_Roach>	<directed>	<Why_Girls_Love_Sailors> .
+<Hal_Roach>	<directed>	<Why_Girls_Love_Sailors> .	false
 <Guillermo_del_Toro>	<directed>	<Don't_Be_Afraid_of_the_Dark_(2011_film)> .
 <Yuvan_Shankar_Raja>	<directed>	<Perazhagan> .
 <Collier_Young>	<directed>	<The_Hitch-Hiker> .
@@ -765,7 +765,7 @@ Rule 'created(subject,object) & produced(subject,object)' produced:
 <Mahesh_Bhatt>	<directed>	<Footpath_(2003_film)> .
 <Alan_Mruvka>	<directed>	<The_Legend_of_Gator_Face> .
 <Charles_Brackett>	<directed>	<The_Lost_Weekend_(film)> .
-<Marc_Norman>	<directed>	<Shakespeare_in_Love> .
+<Marc_Norman>	<directed>	<Shakespeare_in_Love> .	false
 <Brian_Yuzna>	<directed>	<From_Beyond_(film)> .
 <John_Hughes_(filmmaker)>	<directed>	<National_Lampoon's_Christmas_Vacation> .
 <Hal_Roach>	<directed>	<A_Sailor-Made_Man> .
@@ -796,7 +796,7 @@ Rule 'created(subject,object) & produced(subject,object)' produced:
 <Hal_Roach>	<directed>	<Do_Detectives_Think?> .
 <Roy_Boulter>	<directed>	<Under_the_Mud> .
 <Yuvan_Shankar_Raja>	<directed>	<Silambattam_(film)> .
-<Upi_Avianto>	<directed>	<Coklat_Stroberi> .
+<Upi_Avianto>	<directed>	<Coklat_Stroberi> .	false
 <Hal_Roach>	<directed>	<Leave_'Em_Laughing> .
 <Johnny_Knoxville>	<directed>	<Jackass_Number_Two> .
 <Erik_Balling>	<directed>	<På_tro_og_love> .
@@ -826,7 +826,7 @@ Rule 'created(subject,object) & produced(subject,object)' produced:
 <Holly_Goldberg_Sloan>	<directed>	<Angels_in_the_Infield> .
 <Milton_Subotsky>	<directed>	<The_Vault_of_Horror_(film)> .
 <John_Huston>	<directed>	<Mr._North> .
-<Ian_La_Frenais>	<directed>	<Honest_(film)> .
+<Ian_La_Frenais>	<directed>	<Honest_(film)> .	false
 <Yuvan_Shankar_Raja>	<directed>	<Aegan> .
 <Paul_Hogan>	<directed>	<Almost_an_Angel> .
 <John_Fusco>	<directed>	<Thunderheart> .
@@ -856,7 +856,7 @@ Rule 'created(subject,object) & produced(subject,object)' produced:
 <Stephen_Kendrick>	<directed>	<Courageous_(film)> .
 <Nunnally_Johnson>	<directed>	<The_Prisoner_of_Shark_Island> .
 <Walter_Ulbrich>	<directed>	<Seven_Years_in_Tibet_(1956_film)> .
-<James_Keach>	<directed>	<The_Long_Riders> .
+<James_Keach>	<directed>	<The_Long_Riders> .	false
 <Nunnally_Johnson>	<directed>	<Casanova_Brown> .
 <Yuvan_Shankar_Raja>	<directed>	<Kurumbu> .
 <Ronald_Bass>	<directed>	<Passion_of_Mind> .
@@ -875,7 +875,7 @@ Rule 'actedIn(subject,object) & created(subject,object)' produced:
 <Eleonora_Duse>	<directed>	<Cenere> .
 <Andrew_Bujalski>	<directed>	<Hannah_Takes_the_Stairs> .
 <Michael_Palin>	<directed>	<American_Friends> .
-<Silvio_Muccino>	<directed>	<But_Forever_in_My_Mind> .
+<Silvio_Muccino>	<directed>	<But_Forever_in_My_Mind> .	false
 <Jeffrey_Falcon>	<directed>	<Six-String_Samurai> .
 <Stan_Laurel>	<directed>	<What's_the_World_Coming_To?> .
 <Steve_Martin>	<directed>	<Three_Amigos> .
@@ -886,10 +886,10 @@ Rule 'actedIn(subject,object) & created(subject,object)' produced:
 <Billy_Bob_Thornton>	<directed>	<One_False_Move> .
 <Shalva_Dadiani>	<directed>	<The_Exile_(1922_film)> .
 <Sylvia_Chang>	<directed>	<All_About_Ah-Long> .
-<Agata_Gotova>	<directed>	<Say_It_in_Russian> .
+<Agata_Gotova>	<directed>	<Say_It_in_Russian> .	false
 <Mary_Elizabeth_Ellis>	<directed>	<A_Quiet_Little_Marriage> .
 <Marianne_Denicourt>	<directed>	<Up,_Down,_Fragile> .
-<Mary_Pickford>	<directed>	<Hearts_Adrift> .
+<Mary_Pickford>	<directed>	<Hearts_Adrift> .	false
 <Bhisham_Sahni>	<directed>	<Tamas_(film)> .
 <Vibeke_Løkkeberg>	<directed>	<Liv_(film)> .
 <Connie_Francis>	<directed>	<Where_the_Boys_Are> .
@@ -902,7 +902,7 @@ Rule 'actedIn(subject,object) & created(subject,object)' produced:
 <Eugene_Levy>	<directed>	<For_Your_Consideration_(film)> .
 <Charles_Hutchison>	<directed>	<Hurricane_Hutch> .
 <Adam_Sandler>	<directed>	<Billy_Madison> .
-<Ben_Affleck>	<directed>	<Good_Will_Hunting> .
+<Ben_Affleck>	<directed>	<Good_Will_Hunting> .	false
 <Ted_Healy>	<directed>	<Nertsery_Rhymes> .
 <Andrew_Miller_(actor)>	<directed>	<Nothing_(film)> .
 <David_Haig>	<directed>	<My_Boy_Jack_(film)> .
@@ -917,7 +917,7 @@ Rule 'actedIn(subject,object) & created(subject,object)' produced:
 <Greta_Gerwig>	<directed>	<Hannah_Takes_the_Stairs> .
 <Harry_Shearer>	<directed>	<This_Is_Spinal_Tap> .
 <Don_Keith_Opper>	<directed>	<Critters_(film)> .
-<Jón_Gnarr>	<directed>	<Bjarnfreðarson> .
+<Jón_Gnarr>	<directed>	<Bjarnfreðarson> .	false
 <Karen_Black>	<directed>	<Charades_(film)> .
 <Woody_Allen>	<directed>	<What's_New_Pussycat?> .
 <Paul_Hogan>	<directed>	<Lightning_Jack> .
@@ -931,7 +931,7 @@ Rule 'actedIn(subject,object) & created(subject,object)' produced:
 <John_Cleese>	<directed>	<Wine_for_the_Confused> .
 <Montgomery_Clift>	<directed>	<The_Search> .
 <Ehren_McGhehey>	<directed>	<Jackass_Number_Two> .
-<Joel_Edgerton>	<directed>	<The_Square_(2008_film)> .
+<Joel_Edgerton>	<directed>	<The_Square_(2008_film)> .	false
 <Aldo_Fabrizi>	<directed>	<To_Live_in_Peace> .
 <Sam_Shepard>	<directed>	<Don't_Come_Knocking> .
 <Elvis_Presley>	<directed>	<Tickle_Me> .
@@ -945,7 +945,7 @@ Rule 'actedIn(subject,object) & created(subject,object)' produced:
 <Geraldine_Chaplin>	<directed>	<Honeycomb_(film)> .
 <Andy_Griffith>	<directed>	<Return_to_Mayberry> .
 <Jacquetta_May>	<directed>	<In_Love_with_Barbara> .
-<Wilfred_Lucas>	<directed>	<The_Transformation_of_Mike> .
+<Wilfred_Lucas>	<directed>	<The_Transformation_of_Mike> .	false
 <Jia_Hongsheng>	<directed>	<Quitting> .
 <Paul_Naschy>	<directed>	<Horror_Rises_from_the_Tomb> .
 <Tim_Meadows>	<directed>	<The_Ladies_Man_(2000_film)> .
@@ -959,7 +959,7 @@ Rule 'actedIn(subject,object) & created(subject,object)' produced:
 <Salman_Khan>	<directed>	<Veer_(film)> .
 <Sacha_Baron_Cohen>	<directed>	<Ali_G,_Aiii> .
 <Gene_Kelly>	<directed>	<Take_Me_Out_to_the_Ball_Game_(film)> .
-<Francesco_Nuti>	<directed>	<The_Pool_Hustlers> .
+<Francesco_Nuti>	<directed>	<The_Pool_Hustlers> .	false
 <William_Gillette>	<directed>	<Sherlock_Holmes_(1916_film)> .
 <Patrick_Bauchau>	<directed>	<La_Collectionneuse> .
 <Mae_Murray>	<directed>	<Danger,_Go_Slow> .
@@ -973,7 +973,7 @@ Rule 'actedIn(subject,object) & created(subject,object)' produced:
 <Michel_Blanc>	<directed>	<The_Monster_(1994_film)> .
 <Michael_McKean>	<directed>	<This_Is_Spinal_Tap> .
 <Alex_O'Loughlin>	<directed>	<Feed_(film)> .
-<Ted_Healy>	<directed>	<The_Big_Idea_(1934_film)> .
+<Ted_Healy>	<directed>	<The_Big_Idea_(1934_film)> .	false
 <Eugene_Levy>	<directed>	<A_Mighty_Wind> .
 <Peter_Ustinov>	<directed>	<Hot_Millions> .
 <Lucky_McKee>	<directed>	<Roman_(film)> .
@@ -987,7 +987,7 @@ Rule 'actedIn(subject,object) & created(subject,object)' produced:
 <Selena_Gomez>	<directed>	<Another_Cinderella_Story> .
 <Cheech_Marin>	<directed>	<Up_in_Smoke> .
 <M._Prabhakar_Reddy>	<directed>	<Karthika_Deepam_(film)> .
-<Grace_Cunard>	<directed>	<The_Broken_Coin> .
+<Grace_Cunard>	<directed>	<The_Broken_Coin> .	false
 <Christian_Clavier>	<directed>	<Les_Visiteurs> .
 <Dan_Aykroyd>	<directed>	<Coneheads_(film)> .
 <Paul_Hogan>	<directed>	<"Crocodile"_Dundee> .
@@ -1001,7 +1001,7 @@ Rule 'actedIn(subject,object) & created(subject,object)' produced:
 <Leon_Schuster>	<directed>	<Mr_Bones> .
 <Preston_Lacy>	<directed>	<Jackass_3D> .
 <Jon_Heder>	<directed>	<Napoleon_Dynamite> .
-<Sreenivasan_(actor)>	<directed>	<Mukunthetta_Sumitra_Vilikkunnu> .
+<Sreenivasan_(actor)>	<directed>	<Mukunthetta_Sumitra_Vilikkunnu> .	false
 <Jennifer_Westfeldt>	<directed>	<Kissing_Jessica_Stein> .
 <Gabe_Kaplan>	<directed>	<Tulips_(film)> .
 <Roberto_Benigni>	<directed>	<Seeking_Asylum_(film)> .
@@ -1015,7 +1015,7 @@ Rule 'actedIn(subject,object) & created(subject,object)' produced:
 <Seth_Rogen>	<directed>	<The_Green_Hornet_(2011_film)> .
 <Toby_Keith>	<directed>	<Beer_for_My_Horses_(film)> .
 <Stormy_Daniels>	<directed>	<Camp_Cuddly_Pines_Powertool_Massacre> .
-<Mirjami_Kuosmanen>	<directed>	<The_White_Reindeer> .
+<Mirjami_Kuosmanen>	<directed>	<The_White_Reindeer> .	false
 <Gösta_Ekman>	<directed>	<The_Adventures_of_Picasso> .
 <Miroslav_Horníček>	<directed>	<Kinoautomat> .
 <Bobby_Clark_(comedian)>	<directed>	<Scratch-As-Catch-Can> .
@@ -1029,7 +1029,7 @@ Rule 'actedIn(subject,object) & created(subject,object)' produced:
 <Joey_Boy>	<directed>	<The_Possible> .
 <Tamer_Hosny>	<directed>	<Noor_Eieny> .
 <Max_Linder>	<directed>	<Au_Secours!> .
-<Rodney_Carrington>	<directed>	<Beer_for_My_Horses_(film)> .
+<Rodney_Carrington>	<directed>	<Beer_for_My_Horses_(film)> .	false
 <Gene_Gauntier>	<directed>	<A_Lad_from_Old_Ireland> .
 <Grace_Cunard>	<directed>	<Lucille_Love,_Girl_of_Mystery> .
 <Chris_Pontius>	<directed>	<Jackass_Number_Two> .
@@ -1043,7 +1043,7 @@ Rule 'actedIn(subject,object) & created(subject,object)' produced:
 <Aamir_Khan>	<directed>	<Hum_Hain_Rahi_Pyar_Ke> .
 <George_Eastman_(actor)>	<directed>	<Absurd_(film)> .
 <Ken_Marino>	<directed>	<Diggers_(film)> .
-<Peter_Sellers>	<directed>	<The_Magic_Christian_(film)> .
+<Peter_Sellers>	<directed>	<The_Magic_Christian_(film)> .	false
 <Lachy_Hulme>	<directed>	<Let's_Get_Skase> .
 <Jason_Segel>	<directed>	<Forgetting_Sarah_Marshall> .
 <Martin_Mull>	<directed>	<Rented_Lips> .
@@ -1057,7 +1057,7 @@ Rule 'actedIn(subject,object) & created(subject,object)' produced:
 <Terry_Jones>	<directed>	<And_Now_for_Something_Completely_Different> .
 <Mike_Nawrocki>	<directed>	<God_Wants_Me_to_Forgive_Them!?!> .
 <Jean-Claude_Van_Damme>	<directed>	<The_Order_(2001_film)> .
-<Mithun_Chakraborty>	<directed>	<Satyameba_Jayate> .
+<Mithun_Chakraborty>	<directed>	<Satyameba_Jayate> .	false
 <Don_McKellar>	<directed>	<The_Red_Violin> .
 <Neil_Jackson>	<directed>	<The_Passage_(2007_film)> .
 <Cem_Yılmaz>	<directed>	<G.O.R.A.> .
@@ -1071,7 +1071,7 @@ Rule 'actedIn(subject,object) & created(subject,object)' produced:
 <Brian_Bloom>	<directed>	<The_A-Team_(film)> .
 <Eddie_Murphy>	<directed>	<Another_48_Hrs.> .
 <Rudy_Ray_Moore>	<directed>	<Shaolin_Dolemite> .
-<Walter_Macken>	<directed>	<Home_Is_the_Hero> .
+<Walter_Macken>	<directed>	<Home_Is_the_Hero> .	false
 <Don_Knotts>	<directed>	<How_to_Frame_a_Figg> .
 <Mae_West>	<directed>	<She_Done_Him_Wrong> .
 <Orson_Welles>	<directed>	<Man_in_the_Shadow> .
@@ -1085,7 +1085,7 @@ Rule 'actedIn(subject,object) & created(subject,object)' produced:
 <Paulette_Goddard>	<directed>	<Modern_Times_(film)> .
 <David_Spade>	<directed>	<Lost_&_Found_(1999_film)> .
 <Aldo_Fabrizi>	<directed>	<Flesh_Will_Surrender> .
-<David_Hewlett>	<directed>	<Nothing_(film)> .
+<David_Hewlett>	<directed>	<Nothing_(film)> .	false
 <Birgit_Tengroth>	<directed>	<Thirst_(1949_film)> .
 <Bruce_McCulloch>	<directed>	<Brain_Candy> .
 <Paul_Fusco>	<directed>	<Project_ALF> .
@@ -1099,7 +1099,7 @@ Rule 'actedIn(subject,object) & created(subject,object)' produced:
 <Rousy_Chanev>	<directed>	<Advantage_(film)> .
 <Emma_Thompson>	<directed>	<Wit_(film)> .
 <Elvis_Presley>	<directed>	<Follow_That_Dream> .
-<Kader_Khan>	<directed>	<Muqaddar_Ka_Sikandar> .
+<Kader_Khan>	<directed>	<Muqaddar_Ka_Sikandar> .	false
 <Zdeněk_Svěrák>	<directed>	<Accumulator_1> .
 <Jean-Pierre_Bacri>	<directed>	<Look_at_Me_(film)> .
 <Edwin_Neal>	<directed>	<Future-Kill> .
@@ -1113,7 +1113,7 @@ Rule 'actedIn(subject,object) & created(subject,object)' produced:
 <Michael_Palin>	<directed>	<And_Now_for_Something_Completely_Different> .
 <Eddie_Murphy>	<directed>	<Coming_to_America> .
 <Errol_Flynn>	<directed>	<Cuban_Rebel_Girls> .
-<Grace_Cunard>	<directed>	<The_Adventures_of_Peg_o'_the_Ring> .
+<Grace_Cunard>	<directed>	<The_Adventures_of_Peg_o'_the_Ring> .	false
 <Barry_Wong>	<directed>	<Fight_Back_to_School> .
 <Leon_Schuster>	<directed>	<There's_a_Zulu_On_My_Stoep> .
 <Jean-Claude_Van_Damme>	<directed>	<Lionheart_(1990_film)> .
@@ -1127,7 +1127,7 @@ Rule 'actedIn(subject,object) & created(subject,object)' produced:
 <Ben_F._Wilson>	<directed>	<The_Twelfth_Juror> .
 <Sylvester_Stallone>	<directed>	<Rhinestone_(film)> .
 <Kader_Khan>	<directed>	<Suhaag_(1979_film)> .
-<Mark_McKinney>	<directed>	<Brain_Candy> .
+<Mark_McKinney>	<directed>	<Brain_Candy> .	false
 <Paul_Rudd>	<directed>	<Role_Models> .
 <Ehren_McGhehey>	<directed>	<Jackass_3D> .
 <Jackie_Chan>	<directed>	<Gorgeous_(film)> .
@@ -1141,7 +1141,7 @@ Rule 'actedIn(subject,object) & created(subject,object)' produced:
 <Graham_Chapman>	<directed>	<The_Odd_Job> .
 <Bob_Monkhouse>	<directed>	<Dentist_on_the_Job> .
 <Will_Forte>	<directed>	<MacGruber_(film)> .
-<Malcolm_McDowell>	<directed>	<Caligula_(film)> .
+<Malcolm_McDowell>	<directed>	<Caligula_(film)> .	false
 <Jean_Dujardin>	<directed>	<Brice_de_Nice> .
 <Kevin_Smith>	<directed>	<Live_Free_or_Die_Hard> .
 <John_Travolta>	<directed>	<Chains_of_Gold> .
@@ -1155,7 +1155,7 @@ Rule 'actedIn(subject,object) & created(subject,object)' produced:
 <Eduardo_De_Filippo>	<directed>	<Non_ti_pago!> .
 <Anne_Carlisle>	<directed>	<Liquid_Sky> .
 <Dan_Aykroyd>	<directed>	<Ghostbusters> .
-<Simon_Pegg>	<directed>	<Run_Fatboy_Run> .
+<Simon_Pegg>	<directed>	<Run_Fatboy_Run> .	false
 <Russ_Tamblyn>	<directed>	<Human_Highway> .
 <Pat_Morita>	<directed>	<Captive_Hearts_(film)> .
 <Stan_Laurel>	<directed>	<On_the_Front_Page> .
@@ -1169,7 +1169,7 @@ Rule 'actedIn(subject,object) & created(subject,object)' produced:
 <Wong_Jing>	<directed>	<Slim_till_Dead> .
 <Allen_Garfield>	<directed>	<Cry_Uncle!> .
 <W._C._Fields>	<directed>	<The_Old_Fashioned_Way_(film)> .
-<Michael_Jackson>	<directed>	<Michael_Jackson's_Thriller> .
+<Michael_Jackson>	<directed>	<Michael_Jackson's_Thriller> .	false
 <Harold_Ramis>	<directed>	<Stripes_(film)> .
 <Saurabh_Shukla>	<directed>	<Raghu_Romeo> .
 <Simon_Lui>	<directed>	<Last_Ghost_Standing> .
@@ -1183,7 +1183,7 @@ Rule 'actedIn(subject,object) & created(subject,object)' produced:
 <Mahesh_Manjrekar>	<directed>	<Me_Shivajiraje_Bhosale_Boltoy> .
 <Preston_Lacy>	<directed>	<Jackass_Number_Two> .
 <Tom_McGrath_(animator)>	<directed>	<Merry_Madagascar> .
-<Matthew_Bright>	<directed>	<Forbidden_Zone> .
+<Matthew_Bright>	<directed>	<Forbidden_Zone> .	false
 <Jack_Nicholson>	<directed>	<Flight_to_Fury> .
 <Elvis_Presley>	<directed>	<Easy_Come,_Easy_Go_(film)> .
 <Dirk_Bogarde>	<directed>	<I_Could_Go_On_Singing> .
@@ -1197,7 +1197,7 @@ Rule 'actedIn(subject,object) & created(subject,object)' produced:
 <Björn_Gustafson>	<directed>	<Jönssonligan_spelar_högt> .
 <Charles_Hutchison>	<directed>	<Speed_(serial)> .
 <Stan_Laurel>	<directed>	<Hog_Wild_(1930_film)> .
-<Bruce_Willis>	<directed>	<Live_Free_or_Die_Hard> .
+<Bruce_Willis>	<directed>	<Live_Free_or_Die_Hard> .	false
 <Prince_(musician)>	<directed>	<Live_at_the_Aladdin_Las_Vegas> .
 <Natalia_Oreiro>	<directed>	<Un_Argentino_en_New_York> .
 <Barry_Humphries>	<directed>	<Barry_McKenzie_Holds_His_Own> .
@@ -1211,7 +1211,7 @@ Rule 'actedIn(subject,object) & created(subject,object)' produced:
 <Paul_Naschy>	<directed>	<Vengeance_of_the_Zombies> .
 <Eric_Idle>	<directed>	<Splitting_Heirs> .
 <Leon_Schuster>	<directed>	<You_Must_Be_Joking!_(1986_film)> .
-<Elvis_Presley>	<directed>	<Kid_Galahad> .
+<Elvis_Presley>	<directed>	<Kid_Galahad> .	false
 <François_Bégaudeau>	<directed>	<The_Class_(2008_film)> .
 <Tom_Cruise>	<directed>	<Days_of_Thunder> .
 <Will_Hay>	<directed>	<Windbag_the_Sailor> .
@@ -1225,7 +1225,7 @@ Rule 'actedIn(subject,object) & created(subject,object)' produced:
 <Oscar_Kightley>	<directed>	<Sione's_Wedding> .
 <Nathalie_Richard>	<directed>	<Up,_Down,_Fragile> .
 <Robert_Downey,_Jr.>	<directed>	<The_Last_Party_(film)> .
-<Edgar_Selwyn>	<directed>	<The_Arab_(1915_film)> .
+<Edgar_Selwyn>	<directed>	<The_Arab_(1915_film)> .	false
 <Mario_Almada_(actor)>	<directed>	<Puerto_Maldito> .
 <Dick_Rude>	<directed>	<Straight_to_Hell_(film)> .
 <Graham_Chapman>	<directed>	<Yellowbeard> .
@@ -1239,7 +1239,7 @@ Rule 'actedIn(subject,object) & created(subject,object)' produced:
 <Paul_Reiser>	<directed>	<The_Thing_About_My_Folks> .
 <Samuel_Hui>	<directed>	<Security_Unlimited> .
 <Tony_Anthony_(actor)>	<directed>	<Treasure_of_the_Four_Crowns> .
-<Mark_Miller_(actor)>	<directed>	<Savannah_Smiles> .
+<Mark_Miller_(actor)>	<directed>	<Savannah_Smiles> .	false
 <Namrata_Singh_Gujral>	<directed>	<Americanizing_Shelley> .
 <Chazz_Palminteri>	<directed>	<A_Bronx_Tale> .
 <Eric_Bogosian>	<directed>	<Talk_Radio_(film)> .
@@ -1253,7 +1253,7 @@ Rule 'actedIn(subject,object) & created(subject,object)' produced:
 <Stanisław_Tym>	<directed>	<What_Will_You_Do_When_You_Catch_Me?> .
 <Leon_Schuster>	<directed>	<Sweet_'n_Short> .
 <Vittorio_De_Sica>	<directed>	<Lost_in_the_Dark_(1947_film)> .
-<Werner_Herzog>	<directed>	<Werner_Herzog_Eats_His_Shoe> .
+<Werner_Herzog>	<directed>	<Werner_Herzog_Eats_His_Shoe> .	false
 <Spalding_Gray>	<directed>	<Swimming_to_Cambodia> .
 <Osvald_Helmuth>	<directed>	<En_fuldendt_gentleman> .
 <Nick_Cave>	<directed>	<Ghosts…_of_the_Civil_Dead> .
@@ -1267,7 +1267,7 @@ Rule 'actedIn(subject,object) & created(subject,object)' produced:
 <Peter_Cook>	<directed>	<Yellowbeard> .
 <Norma_Aleandro>	<directed>	<The_Inheritors_(1970_film)> .
 <Aldo_Fabrizi>	<directed>	<A_Dog's_Life_(1950_film)> .
-<Ryuichi_Sakamoto>	<directed>	<Merry_Christmas,_Mr._Lawrence> .
+<Ryuichi_Sakamoto>	<directed>	<Merry_Christmas,_Mr._Lawrence> .	false
 <Christopher_Guest>	<directed>	<This_Is_Spinal_Tap> .
 <Matt_Damon>	<directed>	<Good_Will_Hunting> .
 <Thomas_Gottschalk>	<directed>	<Die_Supernasen> .
@@ -1282,7 +1282,7 @@ Rule 'actedIn(subject,object) & created(subject,object)' produced:
 <Kader_Khan>	<directed>	<Mr._Natwarlal> .
 <Vasco_Santana>	<directed>	<O_Pátio_das_Cantigas> .
 <Elvis_Presley>	<directed>	<Viva_Las_Vegas> .
-<Steven_Wright>	<directed>	<The_Appointments_of_Dennis_Jennings> .
+<Steven_Wright>	<directed>	<The_Appointments_of_Dennis_Jennings> .	false
 <Bud_Spencer>	<directed>	<Banana_Joe_(film)> .
 <Jayce_Bartok>	<directed>	<The_Cake_Eaters> .
 <Harold_Ramis>	<directed>	<Ghostbusters> .
@@ -1295,7 +1295,7 @@ Rule 'actedIn(subject,object) & created(subject,object)' produced:
 <Winston_Hibler>	<directed>	<Nature's_Half_Acre> .
 <Katie_Wright>	<directed>	<Hairshirt_(film)> .
 <Monte_Collins>	<directed>	<Matri-Phony> .
-<Kamal_Haasan>	<directed>	<Dasavathaaram> .
+<Kamal_Haasan>	<directed>	<Dasavathaaram> .	false
 <Drake_Bell>	<directed>	<Superhero_Movie> .
 <Aldo_Fabrizi>	<directed>	<Prepotenti_più_di_prima> .
 <Jenő_Janovics>	<directed>	<Bánk_Bán_(film)> .
@@ -1306,7 +1306,7 @@ Rule 'actedIn(subject,object) & created(subject,object)' produced:
 
 Unknown facts for relation 'isCitizenOf':
 Rule 'livesIn(subject,object)' produced:
-<Sultan_Ahmed_(politician)>	<isCitizenOf>	<Kolkata> .
+<Sultan_Ahmed_(politician)>	<isCitizenOf>	<Kolkata> .	true
 <Arjun_Atwal>	<isCitizenOf>	<Kolkata> .
 <Ivan_Pavlov>	<isCitizenOf>	<Soviet_Union> .
 <John_Hudson_(golfer)>	<isCitizenOf>	<Wickham_Bishops> .
@@ -1688,7 +1688,7 @@ Rule 'livesIn(subject,object)' produced:
 <Jeff_Watson_(politician)>	<isCitizenOf>	<Essex,_Ontario> .
 <Maurice_K._Goddard>	<isCitizenOf>	<Camp_Hill,_Pennsylvania> .
 <Scott_Brister>	<isCitizenOf>	<Georgetown,_Texas> .
-<Rebiya_Kadeer>	<isCitizenOf>	<Virginia> .
+<Rebiya_Kadeer>	<isCitizenOf>	<Virginia> .	true
 <David_J_Russell>	<isCitizenOf>	<North_Berwick> .
 <Neal_Lancaster>	<isCitizenOf>	<Smithfield,_North_Carolina> .
 <Igor_Macypura>	<isCitizenOf>	<Artesia,_California> .
@@ -2070,7 +2070,7 @@ Rule 'livesIn(subject,object)' produced:
 <Peter_Finke>	<isCitizenOf>	<Islamabad> .
 <Teodora_Mirčić>	<isCitizenOf>	<Sarasota,_Florida> .
 <Lucian_Piane>	<isCitizenOf>	<California> .
-<Helena_Suková>	<isCitizenOf>	<Monaco> .
+<Helena_Suková>	<isCitizenOf>	<Monaco> .	true
 <Mervyn_Silva>	<isCitizenOf>	<Colombo> .
 <Per_Bak>	<isCitizenOf>	<Denmark> .
 <Ian_Dunbar>	<isCitizenOf>	<California> .
@@ -2452,7 +2452,7 @@ Rule 'livesIn(subject,object)' produced:
 <Christina_Kim>	<isCitizenOf>	<Orlando,_Florida> .
 <Yves_Leterme>	<isCitizenOf>	<Belgium> .
 <Claude_S._Fischer>	<isCitizenOf>	<Berkeley,_California> .
-<Cristina_Mendonsa>	<isCitizenOf>	<Folsom,_California> .
+<Cristina_Mendonsa>	<isCitizenOf>	<Folsom,_California> .	true
 <Charles_Humphrey_Atherton>	<isCitizenOf>	<Amherst,_New_Hampshire> .
 <Samuel_Wescott>	<isCitizenOf>	<Jersey_City,_New_Jersey> .
 <Sajjan_Jindal>	<isCitizenOf>	<Mumbai> .
@@ -2834,7 +2834,7 @@ Rule 'livesIn(subject,object)' produced:
 <Jessica_Holmes_(television_presenter)>	<isCitizenOf>	<Los_Angeles> .
 <Takuji_Yamada>	<isCitizenOf>	<Tokyo> .
 <Patricia_Todd>	<isCitizenOf>	<Birmingham,_Alabama> .
-<Suresh_Vaswani>	<isCitizenOf>	<Bangalore> .
+<Suresh_Vaswani>	<isCitizenOf>	<Bangalore> .	true
 <André_Arthur>	<isCitizenOf>	<Quebec> .
 <Abel_Nathaniel_Bankole_Stronge>	<isCitizenOf>	<Freetown> .
 <Malcolm_Allen_(politician)>	<isCitizenOf>	<Ontario> .
@@ -3216,7 +3216,7 @@ Rule 'livesIn(subject,object)' produced:
 <Judi_Longfield>	<isCitizenOf>	<Whitby,_Ontario> .
 <Clarence_Chant>	<isCitizenOf>	<Canada> .
 <Fred_Couples>	<isCitizenOf>	<La_Quinta,_California> .
-<Jean_Jacques_Machado>	<isCitizenOf>	<California> .
+<Jean_Jacques_Machado>	<isCitizenOf>	<California> .	true
 <Wong_Chung-Yoh>	<isCitizenOf>	<Fuzhou> .
 <Sylvia_Allen>	<isCitizenOf>	<Snowflake,_Arizona> .
 <Robert_Layton>	<isCitizenOf>	<Quebec> .
@@ -3598,7 +3598,7 @@ Rule 'livesIn(subject,object)' produced:
 <Shaher_Abdulhak>	<isCitizenOf>	<Yemen> .
 <Paul_Davis_(Kansas_politician)>	<isCitizenOf>	<Lawrence,_Kansas> .
 <David_Carter_(golfer)>	<isCitizenOf>	<Prague> .
-<Thomas_Merton>	<isCitizenOf>	<Kentucky> .
+<Thomas_Merton>	<isCitizenOf>	<Kentucky> .	true
 <Mariëtte_Hamer>	<isCitizenOf>	<Maassluis> .
 <C._R._Vyas>	<isCitizenOf>	<India> .
 <Farahnaz_Ispahani>	<isCitizenOf>	<Karachi> .
@@ -3980,7 +3980,7 @@ Rule 'livesIn(subject,object)' produced:
 <Ralph_Randles_Stewart>	<isCitizenOf>	<Islamabad> .
 <Alexander_Waske>	<isCitizenOf>	<Germany> .
 <Kevin_Granata>	<isCitizenOf>	<Blacksburg,_Virginia> .
-<Bram_Cohen>	<isCitizenOf>	<San_Francisco_Bay_Area> .
+<Bram_Cohen>	<isCitizenOf>	<San_Francisco_Bay_Area> .	true
 <Julian_Sidney_Rumsey>	<isCitizenOf>	<Illinois> .
 <Lucy_Kibaki>	<isCitizenOf>	<Kenya> .
 <Kenneth_Ferrie>	<isCitizenOf>	<England> .
@@ -4362,7 +4362,7 @@ Rule 'livesIn(subject,object)' produced:
 <Rosalia_Nghidinwa>	<isCitizenOf>	<Windhoek> .
 <Laurent_Nottale>	<isCitizenOf>	<France> .
 <Per_Enflo>	<isCitizenOf>	<Kent,_Ohio> .
-<Dave_Rible>	<isCitizenOf>	<Wall_Township,_New_Jersey> .
+<Dave_Rible>	<isCitizenOf>	<Wall_Township,_New_Jersey> .	true
 <Neil_Brailsford,_Lord_Brailsford>	<isCitizenOf>	<Edinburgh> .
 <Ben_Croshaw>	<isCitizenOf>	<Brisbane> .
 <Steven_Levitsky>	<isCitizenOf>	<Brookline,_Massachusetts> .
@@ -4744,7 +4744,7 @@ Rule 'livesIn(subject,object)' produced:
 <Sandra_Perković>	<isCitizenOf>	<Croatia> .
 <Vasile_Lucaciu>	<isCitizenOf>	<Austria> .
 <Peter_Rodosovich>	<isCitizenOf>	<Faribault,_Minnesota> .
-<Maret_Ani>	<isCitizenOf>	<Rakvere> .
+<Maret_Ani>	<isCitizenOf>	<Rakvere> .	true
 <Albert_Masland>	<isCitizenOf>	<Carlisle,_Pennsylvania> .
 <Edward_C._Sullivan>	<isCitizenOf>	<New_York_City> .
 <Janko_Tipsarević>	<isCitizenOf>	<Serbia> .
@@ -5126,7 +5126,7 @@ Rule 'livesIn(subject,object)' produced:
 <Aoibhinn_Ní_Shúilleabháin>	<isCitizenOf>	<Dublin> .
 <Emelyn_Starr>	<isCitizenOf>	<Tamworth,_New_South_Wales> .
 <Jacob_Stout>	<isCitizenOf>	<Kent_County,_Delaware> .
-<Cornelia_Adair>	<isCitizenOf>	<Texas_Panhandle> .
+<Cornelia_Adair>	<isCitizenOf>	<Texas_Panhandle> .	true
 <Thomas_F._Bayard>	<isCitizenOf>	<Wilmington,_Delaware> .
 <J._George_Stewart>	<isCitizenOf>	<Washington,_D.C.> .
 <Hasan_Tahsini>	<isCitizenOf>	<Paris> .
@@ -5508,7 +5508,7 @@ Rule 'livesIn(subject,object)' produced:
 <Benigno_Aquino,_Sr.>	<isCitizenOf>	<Concepcion,_Tarlac> .
 <Dick_Hess>	<isCitizenOf>	<Bedford,_Pennsylvania> .
 <Benjamin_Yudin>	<isCitizenOf>	<Fair_Lawn,_New_Jersey> .
-<Richard_Wilkins_(TV_presenter)>	<isCitizenOf>	<Sydney> .
+<Richard_Wilkins_(TV_presenter)>	<isCitizenOf>	<Sydney> .	true
 <Marion_Boyd>	<isCitizenOf>	<Ontario> .
 <Dave_Mulder>	<isCitizenOf>	<Sioux_Center,_Iowa> .
 <William_H._Wells>	<isCitizenOf>	<Dagsboro,_Delaware> .
@@ -5890,7 +5890,7 @@ Rule 'livesIn(subject,object)' produced:
 <Shirley_Huffman>	<isCitizenOf>	<Hillsboro,_Oregon> .
 <Sinclair_Stevens>	<isCitizenOf>	<King,_Ontario> .
 <Ted_Hayes>	<isCitizenOf>	<Dome_Village> .
-<Gurbanguly_Berdimuhamedow>	<isCitizenOf>	<Turkmenistan> .
+<Gurbanguly_Berdimuhamedow>	<isCitizenOf>	<Turkmenistan> .	true
 <Kevin_Dundon>	<isCitizenOf>	<County_Wexford> .
 <R._Bowen_Loftin>	<isCitizenOf>	<College_Station,_Texas> .
 <Henry_A._du_Pont>	<isCitizenOf>	<Greenville,_Delaware> .
@@ -6272,7 +6272,7 @@ Rule 'livesIn(subject,object)' produced:
 <Erik_Prince>	<isCitizenOf>	<McLean,_Virginia> .
 <Cory_T._Williams>	<isCitizenOf>	<Stillwater,_Oklahoma> .
 <Sarah_Borwell>	<isCitizenOf>	<North_Yorkshire> .
-<Moustapha_Kassem>	<isCitizenOf>	<Denmark> .
+<Moustapha_Kassem>	<isCitizenOf>	<Denmark> .	true
 <Thomas_Levet>	<isCitizenOf>	<Palm_Beach_Gardens,_Florida> .
 <Brian_Lenihan,_Jnr>	<isCitizenOf>	<Castleknock> .
 <Jerry_Covington>	<isCitizenOf>	<Woodward,_Oklahoma> .
@@ -6654,7 +6654,7 @@ Rule 'livesIn(subject,object)' produced:
 <Michelle_Thorne_(Creative_Commons)>	<isCitizenOf>	<Germany> .
 <Nikola_Tesla>	<isCitizenOf>	<France> .
 <Katarzyna_Jaszczolt>	<isCitizenOf>	<England> .
-<John_Bloom_(businessman)>	<isCitizenOf>	<Spain> .
+<John_Bloom_(businessman)>	<isCitizenOf>	<Spain> .	true
 <Adam_Liaw>	<isCitizenOf>	<Glenunga,_South_Australia> .
 <John_Ben_Shepperd>	<isCitizenOf>	<Odessa,_Texas> .
 <Ann_Livermore>	<isCitizenOf>	<California> .
@@ -7036,7 +7036,7 @@ Rule 'livesIn(subject,object)' produced:
 <Michael_Kleen>	<isCitizenOf>	<Rockford,_Illinois> .
 <Bill_Stoltze>	<isCitizenOf>	<Anchorage,_Alaska> .
 <Bob_Rae>	<isCitizenOf>	<Toronto> .
-<Boris_Georgiev>	<isCitizenOf>	<Luton> .
+<Boris_Georgiev>	<isCitizenOf>	<Luton> .	true
 <Ibrahim_Ben_Kargbo>	<isCitizenOf>	<Freetown> .
 <Richard_McEvoy>	<isCitizenOf>	<Shoeburyness> .
 <Melanie_Oudin>	<isCitizenOf>	<Marietta,_Georgia> .
@@ -7418,7 +7418,7 @@ Rule 'livesIn(subject,object)' produced:
 <Shaukat_Hameed_Khan>	<isCitizenOf>	<Pakistan> .
 <Earline_S._Rogers>	<isCitizenOf>	<Gary,_Indiana> .
 <Walter_L._Cole>	<isCitizenOf>	<Mountjoy_Square> .
-<V._R._Krishna_Iyer>	<isCitizenOf>	<Ernakulam> .
+<V._R._Krishna_Iyer>	<isCitizenOf>	<Ernakulam> .	true
 <Carla_Suárez_Navarro>	<isCitizenOf>	<Barcelona> .
 <Chogyal>	<isCitizenOf>	<Sikkim> .
 <Christine_Whelan>	<isCitizenOf>	<Iowa_City,_Iowa> .
@@ -7800,7 +7800,7 @@ Rule 'livesIn(subject,object)' produced:
 <Tony_Laubach>	<isCitizenOf>	<Colorado> .
 <Harriet_Tubman>	<isCitizenOf>	<Auburn,_New_York> .
 <Ken_Cuccinelli>	<isCitizenOf>	<Fairfax_County,_Virginia> .
-<Emmanuelle_Gagliardi>	<isCitizenOf>	<Monaco> .
+<Emmanuelle_Gagliardi>	<isCitizenOf>	<Monaco> .	true
 <Vilna_Gaon>	<isCitizenOf>	<Grand_Duchy_of_Lithuania> .
 <Paul_Broadhurst>	<isCitizenOf>	<Atherstone> .
 <Bijan_(designer)>	<isCitizenOf>	<Beverly_Hills,_California> .
@@ -8182,7 +8182,7 @@ Rule 'livesIn(subject,object)' produced:
 <Nasir_Iqbal>	<isCitizenOf>	<Peshawar> .
 <Eugénie_Blanchard>	<isCitizenOf>	<France> .
 <Carte_Goodwin>	<isCitizenOf>	<Charleston,_West_Virginia> .
-<John_Janney>	<isCitizenOf>	<Leesburg,_Virginia> .
+<John_Janney>	<isCitizenOf>	<Leesburg,_Virginia> .	true
 <Joe_Duffy>	<isCitizenOf>	<Clontarf,_Dublin> .
 <Leo_Trich>	<isCitizenOf>	<Washington,_Pennsylvania> .
 <Matthias_Rioux>	<isCitizenOf>	<Rivière-à-Claude,_Quebec> .
@@ -8564,7 +8564,7 @@ Rule 'livesIn(subject,object)' produced:
 <David_Shore>	<isCitizenOf>	<California> .
 <Chris_Danou>	<isCitizenOf>	<Trempealeau,_Wisconsin> .
 <Buz_Lukens>	<isCitizenOf>	<Middletown,_Ohio> .
-<Budd_Lynch>	<isCitizenOf>	<Wyandotte,_Michigan> .
+<Budd_Lynch>	<isCitizenOf>	<Wyandotte,_Michigan> .	true
 <Tomislav_Nikolić>	<isCitizenOf>	<Belgrade> .
 <Lin_Yue>	<isCitizenOf>	<Beijing> .
 <Claudine_Schaul>	<isCitizenOf>	<Garnich> .
@@ -8946,7 +8946,7 @@ Rule 'livesIn(subject,object)' produced:
 <Feng_Tianwei>	<isCitizenOf>	<Singapore> .
 <David_James_McFadden>	<isCitizenOf>	<Ontario> .
 <Herbert_Mayfield>	<isCitizenOf>	<Texas> .
-<William_Russell_Robinson>	<isCitizenOf>	<Pittsburgh> .
+<William_Russell_Robinson>	<isCitizenOf>	<Pittsburgh> .	true
 <Yukari_Yoshihara>	<isCitizenOf>	<Japan> .
 <Mandy_Minella>	<isCitizenOf>	<Esch-sur-Alzette> .
 <M._A._Sumanthiran>	<isCitizenOf>	<Sri_Lanka> .
@@ -9328,7 +9328,7 @@ Rule 'livesIn(subject,object)' produced:
 <Jan_Peter_Balkenende>	<isCitizenOf>	<Capelle_aan_den_IJssel> .
 <Kazys_Varnelis_(historian)>	<isCitizenOf>	<Montclair,_New_Jersey> .
 <Jang_Jeong>	<isCitizenOf>	<Orlando,_Florida> .
-<Sofía_Mulánovich>	<isCitizenOf>	<Punta_Hermosa> .
+<Sofía_Mulánovich>	<isCitizenOf>	<Punta_Hermosa> .	true
 <Robert_Arrigo>	<isCitizenOf>	<Sliema> .
 <Barbara_McIlvaine_Smith>	<isCitizenOf>	<West_Chester,_Pennsylvania> .
 <Stewart_Ginn>	<isCitizenOf>	<Malaysia> .
@@ -9710,7 +9710,7 @@ Rule 'livesIn(subject,object)' produced:
 <Jerry_Thomas_(Louisiana_politician)>	<isCitizenOf>	<Franklinton,_Louisiana> .
 <Nicolas_Vanhootegem>	<isCitizenOf>	<Knokke> .
 <George_Smoot>	<isCitizenOf>	<France> .
-<Jalal_Dabagh>	<isCitizenOf>	<Sweden> .
+<Jalal_Dabagh>	<isCitizenOf>	<Sweden> .	true
 <Antonio_Luján>	<isCitizenOf>	<New_Mexico> .
 <Jake_Siewert>	<isCitizenOf>	<New_York_City> .
 <Carol_McFarlane>	<isCitizenOf>	<White_Bear_Lake,_Minnesota> .
@@ -10092,7 +10092,7 @@ Rule 'livesIn(subject,object)' produced:
 <Keisuke_Miyagi>	<isCitizenOf>	<California> .
 <Bob_Flowerdew>	<isCitizenOf>	<Norfolk> .
 <Kip_Kay>	<isCitizenOf>	<St._Petersburg,_Florida> .
-<Peter_Hanson>	<isCitizenOf>	<Sweden> .
+<Peter_Hanson>	<isCitizenOf>	<Sweden> .	true
 <Victoria_Recaño>	<isCitizenOf>	<Los_Angeles> .
 <Oskar_Gröning>	<isCitizenOf>	<Germany> .
 <Avraham_Trahtman>	<isCitizenOf>	<Jerusalem> .
@@ -10474,7 +10474,7 @@ Rule 'livesIn(subject,object)' produced:
 <Ken_Boshcoff>	<isCitizenOf>	<Ontario> .
 <Herbert_Mayfield>	<isCitizenOf>	<Castro_County,_Texas> .
 <Uri_Geller>	<isCitizenOf>	<Greece> .
-<Daniel_Silva_(golfer)>	<isCitizenOf>	<Algarve> .
+<Daniel_Silva_(golfer)>	<isCitizenOf>	<Algarve> .	true
 <Philip_Brodie,_Lord_Brodie>	<isCitizenOf>	<Edinburgh> .
 <Steven_Vanackere>	<isCitizenOf>	<Brussels> .
 <Tsutomu_Adachi>	<isCitizenOf>	<Japan> .
@@ -10856,7 +10856,7 @@ Rule 'livesIn(subject,object)' produced:
 <Franklin_Drilon>	<isCitizenOf>	<Metro_Manila> .
 <Raphael_I_Bidawid>	<isCitizenOf>	<Iraq> .
 <Li_Fang_(tennis)>	<isCitizenOf>	<Hunan> .
-<Niall_McCrudden>	<isCitizenOf>	<Drumcondra,_Dublin> .
+<Niall_McCrudden>	<isCitizenOf>	<Drumcondra,_Dublin> .	true
 <Anthony_M._DeLuca>	<isCitizenOf>	<Verona,_Pennsylvania> .
 <Lucie_Hradecká>	<isCitizenOf>	<Prague> .
 <H._P._Gandhi>	<isCitizenOf>	<Junagadh> .
@@ -11238,7 +11238,7 @@ Rule 'livesIn(subject,object)' produced:
 <Charles_E._Richardson>	<isCitizenOf>	<Sweetwater_County,_Wyoming> .
 <Simeon_S._Pennewill>	<isCitizenOf>	<Delaware> .
 <Henrik_Bjørnstad>	<isCitizenOf>	<Palm_Beach_Gardens,_Florida> .
-<Åsa_Waldau>	<isCitizenOf>	<Knutby> .
+<Åsa_Waldau>	<isCitizenOf>	<Knutby> .	true
 <Christian_Süß>	<isCitizenOf>	<Düsseldorf> .
 <David_Horsey_(golfer)>	<isCitizenOf>	<England> .
 <Michael_Dukakis>	<isCitizenOf>	<Brookline,_Massachusetts> .
@@ -11620,7 +11620,7 @@ Rule 'livesIn(subject,object)' produced:
 <Paul_Broadhurst>	<isCitizenOf>	<Warwickshire> .
 <Eric_Turkington>	<isCitizenOf>	<Falmouth,_Massachusetts> .
 <Nathan_Cullen>	<isCitizenOf>	<Smithers,_British_Columbia> .
-<Barry_Simon>	<isCitizenOf>	<California> .
+<Barry_Simon>	<isCitizenOf>	<California> .	true
 <Robby_Ginepri>	<isCitizenOf>	<Kennesaw,_Georgia> .
 <Bert_Koenders>	<isCitizenOf>	<Amsterdam> .
 <Erich_Klinghammer>	<isCitizenOf>	<Indiana> .
@@ -12002,7 +12002,7 @@ Rule 'livesIn(subject,object)' produced:
 <Bronson_M._Cutting>	<isCitizenOf>	<Santa_Fe,_New_Mexico> .
 <Kevin_Stadler>	<isCitizenOf>	<Arizona> .
 <Fumio_Demura>	<isCitizenOf>	<Santa_Ana,_California> .
-<Arturo_Sarukhán>	<isCitizenOf>	<Washington,_D.C.> .
+<Arturo_Sarukhán>	<isCitizenOf>	<Washington,_D.C.> .	true
 <Kevin_Fisher>	<isCitizenOf>	<Wisconsin> .
 <Jayne_Pierson>	<isCitizenOf>	<Carmarthen> .
 <Chris_Davies>	<isCitizenOf>	<Greenfield,_Greater_Manchester> .
@@ -12734,7 +12734,7 @@ Rule 'livesIn(subject,object)' produced:
 <Elaine_Kim_(fashion_designer)>	<isCitizenOf>	<Los_Angeles> .
 <Matthew_Chambers>	<isCitizenOf>	<Oxford> .
 <Oliver_Wilson>	<isCitizenOf>	<Mansfield> .
-<Amasa_Stone_Bishop>	<isCitizenOf>	<Switzerland> .
+<Amasa_Stone_Bishop>	<isCitizenOf>	<Switzerland> .	true
 <John_Mahan>	<isCitizenOf>	<Jersey_City,_New_Jersey> .
 <Ernest_Bai_Koroma>	<isCitizenOf>	<Freetown> .
 <Roland_Carl_Backhouse>	<isCitizenOf>	<England> .
@@ -12743,7 +12743,7 @@ Rule 'livesIn(subject,object)' produced:
 <Rafael_Cabrera-Bello>	<isCitizenOf>	<Gran_Canaria> .
 <Galileo_Galilei>	<isCitizenOf>	<Grand_Duchy_of_Tuscany> .
 Rule 'isLocatedIn(f,object) & isLocatedIn(subject,f)' produced:
-<Christopher_Blake>	<isCitizenOf>	<United_Kingdom> .
+<Christopher_Blake>	<isCitizenOf>	<United_Kingdom> .	true
 <Sondra_Peterson>	<isCitizenOf>	<Missouri> .
 <Kim_Noorda>	<isCitizenOf>	<Netherlands> .
 <Belle_Chrystall>	<isCitizenOf>	<North_West_England> .
@@ -12850,7 +12850,7 @@ Rule 'isLocatedIn(f,object) & isLocatedIn(subject,f)' produced:
 <Jay_Hunt_(director)>	<isCitizenOf>	<Pennsylvania> .
 <J._K._Ralston>	<isCitizenOf>	<Montana> .
 <Wintjiya_Napaltjarri>	<isCitizenOf>	<Northern_Territory> .
-<Calumet_Farm>	<isCitizenOf>	<Kentucky> .
+<Calumet_Farm>	<isCitizenOf>	<Kentucky> .	false
 <Frederique_van_der_Wal>	<isCitizenOf>	<Netherlands> .
 <Hugh_McDermott_(actor)>	<isCitizenOf>	<Scotland> .
 <Milk_Morizono>	<isCitizenOf>	<Yamaguchi_Prefecture> .
@@ -12957,7 +12957,7 @@ Rule 'isLocatedIn(f,object) & isLocatedIn(subject,f)' produced:
 <Scott_Whyte>	<isCitizenOf>	<Los_Angeles_County,_California> .
 <William_Walker_(muralist)>	<isCitizenOf>	<Alabama> .
 <Nehemiah_Persoff>	<isCitizenOf>	<Israel> .
-<Henry_Golden_Dearth>	<isCitizenOf>	<Rhode_Island> .
+<Henry_Golden_Dearth>	<isCitizenOf>	<Rhode_Island> .	true
 <Chill_Wills>	<isCitizenOf>	<Texas> .
 <Shabana_Rehman_Gaarder>	<isCitizenOf>	<Pakistan> .
 <Richard_Neill>	<isCitizenOf>	<Pennsylvania> .
@@ -13064,7 +13064,7 @@ Rule 'isLocatedIn(f,object) & isLocatedIn(subject,f)' produced:
 <Ace_Bhatti>	<isCitizenOf>	<East_Midlands> .
 <Harry_Cheshire>	<isCitizenOf>	<Kansas> .
 <Scouting_in_Oklahoma>	<isCitizenOf>	<Oklahoma> .
-<Jessica_Gomes>	<isCitizenOf>	<Western_Australia> .
+<Jessica_Gomes>	<isCitizenOf>	<Western_Australia> .	true
 <Frank_Dekkers>	<isCitizenOf>	<Netherlands> .
 <Charles_William_Jefferys>	<isCitizenOf>	<Kent> .
 <Ernest_William_Christmas>	<isCitizenOf>	<South_Australia> .
@@ -13171,7 +13171,7 @@ Rule 'isLocatedIn(f,object) & isLocatedIn(subject,f)' produced:
 <Erich_von_Stroheim>	<isCitizenOf>	<Austria> .
 <Eleanor_Davis>	<isCitizenOf>	<Arizona> .
 <Madeleine_Carroll>	<isCitizenOf>	<West_Midlands_(county)> .
-<Ray_"Crash"_Corrigan>	<isCitizenOf>	<Wisconsin> .
+<Ray_"Crash"_Corrigan>	<isCitizenOf>	<Wisconsin> .	true
 <George_Lindsey>	<isCitizenOf>	<Alabama> .
 <Catherine_Hickland>	<isCitizenOf>	<Broward_County,_Florida> .
 <Olivia_Hamnett>	<isCitizenOf>	<North_West_England> .
@@ -13278,7 +13278,7 @@ Rule 'isLocatedIn(f,object) & isLocatedIn(subject,f)' produced:
 <Todd_Alcott>	<isCitizenOf>	<Illinois> .
 <Daphne_Deckers>	<isCitizenOf>	<Netherlands> .
 <Philip_Stein>	<isCitizenOf>	<New_Jersey> .
-<Vernon_Dent>	<isCitizenOf>	<San_Francisco_Bay_Area> .
+<Vernon_Dent>	<isCitizenOf>	<San_Francisco_Bay_Area> .	true
 <Virginia_McKenna>	<isCitizenOf>	<United_Kingdom> .
 <Emanuel_Leutze>	<isCitizenOf>	<Baden-Württemberg> .
 <Pieter_Janssens_Elinga>	<isCitizenOf>	<Belgium> .
@@ -13384,8 +13384,8 @@ Rule 'isLocatedIn(f,object) & isLocatedIn(subject,f)' produced:
 <Al_Hirschfeld>	<isCitizenOf>	<Missouri> .
 <Lisa_Cerasoli>	<isCitizenOf>	<Michigan> .
 <Marshall_Neilan>	<isCitizenOf>	<San_Bernardino_County,_California> .
-<Wally_Wood>	<isCitizenOf>	<Minnesota> .
-<Jack_Boynton>	<isCitizenOf>	<Texas> .
+<Wally_Wood>	<isCitizenOf>	<Minnesota> .	true
+<Jack_Boynton>	<isCitizenOf>	<Texas> .	true
 <Warren_William>	<isCitizenOf>	<Minnesota> .
 <Ambyr_Childers>	<isCitizenOf>	<Riverside_County,_California> .
 <Johann_Wilhelm_Baur>	<isCitizenOf>	<France> .
@@ -13492,7 +13492,7 @@ Rule 'isLocatedIn(f,object) & isLocatedIn(subject,f)' produced:
 <Betty_Balfour>	<isCitizenOf>	<United_Kingdom> .
 <Diane_Farr>	<isCitizenOf>	<New_York_City> .
 <Caroline_Coon>	<isCitizenOf>	<United_Kingdom> .
-<Peter_Welch_(actor)>	<isCitizenOf>	<United_Kingdom> .
+<Peter_Welch_(actor)>	<isCitizenOf>	<United_Kingdom> .	true
 <Barney_Furey>	<isCitizenOf>	<Idaho> .
 <Christina_Lindberg>	<isCitizenOf>	<Sweden> .
 <Theodore_Komisarjevsky>	<isCitizenOf>	<Venetian_Lagoon> .
@@ -13599,7 +13599,7 @@ Rule 'isLocatedIn(f,object) & isLocatedIn(subject,f)' produced:
 <Boyd_Holbrook>	<isCitizenOf>	<Kentucky> .
 <Garth_Ennis>	<isCitizenOf>	<County_Down> .
 <James_Robert_Ford>	<isCitizenOf>	<Surrey> .
-<Ashley_Jackson_(artist)>	<isCitizenOf>	<Malaysia> .
+<Ashley_Jackson_(artist)>	<isCitizenOf>	<Malaysia> .	true
 <Victor_Brooks>	<isCitizenOf>	<United_Kingdom> .
 <Lance_Krall>	<isCitizenOf>	<California> .
 <Cornelis_Pronk>	<isCitizenOf>	<Netherlands> .
@@ -13706,7 +13706,7 @@ Rule 'isLocatedIn(f,object) & isLocatedIn(subject,f)' produced:
 <Andrew_Jones_(filmmaker)>	<isCitizenOf>	<United_Kingdom> .
 <John_Inman>	<isCitizenOf>	<North_West_England> .
 <Louise_Dresser>	<isCitizenOf>	<Indiana> .
-<Wybrand_de_Geest>	<isCitizenOf>	<Friesland> .
+<Wybrand_de_Geest>	<isCitizenOf>	<Friesland> .	true
 <Barbro_Hiort_af_Ornäs>	<isCitizenOf>	<Sweden> .
 <Gabriella_Porpora>	<isCitizenOf>	<Ciampino> .
 <John_Hensley>	<isCitizenOf>	<Kentucky> .
@@ -13813,7 +13813,7 @@ Rule 'isLocatedIn(f,object) & isLocatedIn(subject,f)' produced:
 <Roger_Raupp>	<isCitizenOf>	<Wisconsin> .
 <Chris_Johanson>	<isCitizenOf>	<San_Francisco_Bay_Area> .
 <Rex_Harrison>	<isCitizenOf>	<Merseyside> .
-<Frances_Fowler>	<isCitizenOf>	<Kentucky> .
+<Frances_Fowler>	<isCitizenOf>	<Kentucky> .	true
 <Southern_Region_(Boy_Scouts_of_America)>	<isCitizenOf>	<Texas> .
 <Vernon_Grant>	<isCitizenOf>	<Middlesex_County,_Massachusetts> .
 <Shreela_Ghosh>	<isCitizenOf>	<Northeast_India> .
@@ -13920,7 +13920,7 @@ Rule 'isLocatedIn(f,object) & isLocatedIn(subject,f)' produced:
 <Geoffrey_Burridge>	<isCitizenOf>	<United_Kingdom> .
 <Geraldine_Newman>	<isCitizenOf>	<East_Sussex> .
 <Afrika_(artist)>	<isCitizenOf>	<Russia> .
-<Georgette_Sanchez>	<isCitizenOf>	<Philippines> .
+<Georgette_Sanchez>	<isCitizenOf>	<Philippines> .	true
 <Iselin_Steiro>	<isCitizenOf>	<Norway> .
 <Reiko_Shimizu>	<isCitizenOf>	<Kumamoto_Prefecture> .
 <Jackie_Lou_Blanco>	<isCitizenOf>	<Philippines> .
@@ -14027,7 +14027,7 @@ Rule 'isLocatedIn(f,object) & isLocatedIn(subject,f)' produced:
 <Fay_Godwin>	<isCitizenOf>	<Germany> .
 <Roger_Stern>	<isCitizenOf>	<Indiana> .
 <Kyle_Newman>	<isCitizenOf>	<New_Jersey> .
-<Dave_Draper>	<isCitizenOf>	<New_Jersey> .
+<Dave_Draper>	<isCitizenOf>	<New_Jersey> .	true
 <Fred_Quimby>	<isCitizenOf>	<Minnesota> .
 <Peter_Butterworth>	<isCitizenOf>	<Greater_Manchester> .
 <Ciarán_Griffiths>	<isCitizenOf>	<North_West_England> .
@@ -14134,7 +14134,7 @@ Rule 'isLocatedIn(f,object) & isLocatedIn(subject,f)' produced:
 <John_B._O'Brien>	<isCitizenOf>	<Virginia> .
 <Alessandra_Panaro>	<isCitizenOf>	<Ciampino> .
 <Alice_Baber>	<isCitizenOf>	<Illinois> .
-<Millard_Mitchell>	<isCitizenOf>	<Cuba> .
+<Millard_Mitchell>	<isCitizenOf>	<Cuba> .	true
 <Olive_Sloane>	<isCitizenOf>	<United_Kingdom> .
 <Kevin_Huizenga>	<isCitizenOf>	<Illinois> .
 <George_Ovey>	<isCitizenOf>	<Missouri> .
@@ -14241,7 +14241,7 @@ Rule 'isLocatedIn(f,object) & isLocatedIn(subject,f)' produced:
 <Erica_Gimpel>	<isCitizenOf>	<New_York_City> .
 <Amanda_Donohoe>	<isCitizenOf>	<United_Kingdom> .
 <Milton_Kibbee>	<isCitizenOf>	<New_Mexico> .
-<Hideko_Mizuno>	<isCitizenOf>	<Yamaguchi_Prefecture> .
+<Hideko_Mizuno>	<isCitizenOf>	<Yamaguchi_Prefecture> .	true
 <Barry_Mahon>	<isCitizenOf>	<California> .
 <Pert_Kelton>	<isCitizenOf>	<Montana> .
 <Ralph_Michael>	<isCitizenOf>	<United_Kingdom> .
@@ -14348,7 +14348,7 @@ Rule 'isLocatedIn(f,object) & isLocatedIn(subject,f)' produced:
 <John_French_Sloan>	<isCitizenOf>	<Pennsylvania> .
 <Norman_Bird>	<isCitizenOf>	<Leicestershire> .
 <Satoshi_Tsumabuki>	<isCitizenOf>	<Fukuoka_Prefecture> .
-<Christine_McIntyre>	<isCitizenOf>	<Arizona> .
+<Christine_McIntyre>	<isCitizenOf>	<Arizona> .	true
 <Eva_Habermann>	<isCitizenOf>	<Germany> .
 <Arvid_E._Gillstrom>	<isCitizenOf>	<Sweden> .
 <Ramón_García_(TV_host)>	<isCitizenOf>	<Spain> .
@@ -14455,7 +14455,7 @@ Rule 'isLocatedIn(f,object) & isLocatedIn(subject,f)' produced:
 <Shawn_Reaves>	<isCitizenOf>	<Louisiana> .
 <Greta_Garbo>	<isCitizenOf>	<Sweden> .
 <Risa_Itō>	<isCitizenOf>	<Nagano_Prefecture> .
-<Mary_Ure>	<isCitizenOf>	<Scotland> .
+<Mary_Ure>	<isCitizenOf>	<Scotland> .	true
 <Jack_P._Shepherd>	<isCitizenOf>	<West_Yorkshire> .
 <Ryan_Thomas>	<isCitizenOf>	<North_West_England> .
 <Matt_Kindt>	<isCitizenOf>	<Missouri> .
@@ -14562,7 +14562,7 @@ Rule 'isLocatedIn(f,object) & isLocatedIn(subject,f)' produced:
 <Véra_Clouzot>	<isCitizenOf>	<Brazil> .
 <William_Desmond_(actor)>	<isCitizenOf>	<Republic_of_Ireland> .
 <Dicky_Zulkarnaen>	<isCitizenOf>	<Indonesia> .
-<Georgia_O'Keeffe>	<isCitizenOf>	<Wisconsin> .
+<Georgia_O'Keeffe>	<isCitizenOf>	<Wisconsin> .	true
 <Grethe_Holmer>	<isCitizenOf>	<Denmark> .
 <Darla_Hood>	<isCitizenOf>	<Oklahoma> .
 <Sam_Atwell>	<isCitizenOf>	<Queensland> .
@@ -14669,7 +14669,7 @@ Rule 'isLocatedIn(f,object) & isLocatedIn(subject,f)' produced:
 <Wilhelm_Marstrand>	<isCitizenOf>	<Denmark> .
 <Dot_Farley>	<isCitizenOf>	<Illinois> .
 <Martha_O'Driscoll>	<isCitizenOf>	<Oklahoma> .
-<Peter_Eugene_Ball>	<isCitizenOf>	<West_Midlands_(region)> .
+<Peter_Eugene_Ball>	<isCitizenOf>	<West_Midlands_(region)> .	true
 <Peter_Howitt>	<isCitizenOf>	<North_West_England> .
 <Lysette_Anthony>	<isCitizenOf>	<United_Kingdom> .
 <Kyle_Lowder>	<isCitizenOf>	<Missouri> .
@@ -14776,7 +14776,7 @@ Rule 'isLocatedIn(f,object) & isLocatedIn(subject,f)' produced:
 <André_Morell>	<isCitizenOf>	<United_Kingdom> .
 <Dabbs_Greer>	<isCitizenOf>	<Missouri> .
 <Earle_Williams>	<isCitizenOf>	<California> .
-<Avi_Schwartz>	<isCitizenOf>	<Romania> .
+<Avi_Schwartz>	<isCitizenOf>	<Romania> .	true
 <Edward_Burne-Jones>	<isCitizenOf>	<West_Midlands_(region)> .
 <Ambrosius_Bosschaert>	<isCitizenOf>	<Belgium> .
 <George_Chinnery>	<isCitizenOf>	<United_Kingdom> .
@@ -14883,7 +14883,7 @@ Rule 'isLocatedIn(f,object) & isLocatedIn(subject,f)' produced:
 <Rochus_Lussi>	<isCitizenOf>	<Switzerland> .
 <Ulla_Jacobsson>	<isCitizenOf>	<Sweden> .
 <Jayna_Altman>	<isCitizenOf>	<Arizona> .
-<Jonathan_Linsley>	<isCitizenOf>	<West_Yorkshire> .
+<Jonathan_Linsley>	<isCitizenOf>	<West_Yorkshire> .	true
 <Bill_Holman_(cartoonist)>	<isCitizenOf>	<Indiana> .
 <Bojana_Ordinačev>	<isCitizenOf>	<Rimski_Šančevi> .
 <Andrea_Evans>	<isCitizenOf>	<Illinois> .
@@ -14990,7 +14990,7 @@ Rule 'isLocatedIn(f,object) & isLocatedIn(subject,f)' produced:
 <J._Scott_Campbell>	<isCitizenOf>	<Michigan> .
 <Vincent_Villafranca>	<isCitizenOf>	<California> .
 <Herblock>	<isCitizenOf>	<Illinois> .
-<Paul_Nicholls_(actor)>	<isCitizenOf>	<Greater_Manchester> .
+<Paul_Nicholls_(actor)>	<isCitizenOf>	<Greater_Manchester> .	true
 <Guy_Middleton>	<isCitizenOf>	<East_Sussex> .
 <Ilya_Repin>	<isCitizenOf>	<Ukraine> .
 <Lex_McLean>	<isCitizenOf>	<Scotland> .
@@ -15097,7 +15097,7 @@ Rule 'isLocatedIn(f,object) & isLocatedIn(subject,f)' produced:
 <Joe_King_(actor)>	<isCitizenOf>	<Camp_Mabry> .
 <Tony_Gardner>	<isCitizenOf>	<Greater_Manchester> .
 <Anthony_Allen_Shore>	<isCitizenOf>	<South_Dakota> .
-<Central_Region_(Boy_Scouts_of_America)>	<isCitizenOf>	<Illinois> .
+<Central_Region_(Boy_Scouts_of_America)>	<isCitizenOf>	<Illinois> .	false
 <Harry_Carmean>	<isCitizenOf>	<Kansas> .
 <George_Cooper_(actor)>	<isCitizenOf>	<New_Jersey> .
 <Richard_Corben>	<isCitizenOf>	<Missouri> .
@@ -15204,7 +15204,7 @@ Rule 'isLocatedIn(f,object) & isLocatedIn(subject,f)' produced:
 <Sam_Francis>	<isCitizenOf>	<California> .
 <Juliet_Mills>	<isCitizenOf>	<United_Kingdom> .
 <Brian_Gibson_(director)>	<isCitizenOf>	<Berkshire> .
-<John_Rubens_Smith>	<isCitizenOf>	<United_Kingdom> .
+<John_Rubens_Smith>	<isCitizenOf>	<United_Kingdom> .	true
 <Nida_Blanca>	<isCitizenOf>	<Philippines> .
 <Petar_Gligorovski>	<isCitizenOf>	<Republic_of_Macedonia> .
 <Andrzej_Zieliński_(artist)>	<isCitizenOf>	<Missouri> .
@@ -15311,7 +15311,7 @@ Rule 'isLocatedIn(f,object) & isLocatedIn(subject,f)' produced:
 <Dennis_Trillo>	<isCitizenOf>	<Philippines> .
 <Keith_Haring>	<isCitizenOf>	<Pennsylvania> .
 <Jose_Antonio_Rodriguez_Vega>	<isCitizenOf>	<Spain> .
-<Tobias_Menzies>	<isCitizenOf>	<United_Kingdom> .
+<Tobias_Menzies>	<isCitizenOf>	<United_Kingdom> .	true
 <Stuart_Cooper>	<isCitizenOf>	<New_Jersey> .
 <Valentine_Stockdale>	<isCitizenOf>	<United_Kingdom> .
 <Neil_Lawson_Baker>	<isCitizenOf>	<Hertfordshire> .
@@ -15418,7 +15418,7 @@ Rule 'isLocatedIn(f,object) & isLocatedIn(subject,f)' produced:
 <Joanna_Christie>	<isCitizenOf>	<West_Yorkshire> .
 <Caroline_Carver_(actor)>	<isCitizenOf>	<North_West_England> .
 <Lark_Voorhies>	<isCitizenOf>	<Tennessee> .
-<Joseph_Sweeney_(actor)>	<isCitizenOf>	<Pennsylvania> .
+<Joseph_Sweeney_(actor)>	<isCitizenOf>	<Pennsylvania> .	true
 <Irene_Napier>	<isCitizenOf>	<Scotland> .
 <Luti_Fagbenle>	<isCitizenOf>	<United_Kingdom> .
 <Peter_Sutcliffe>	<isCitizenOf>	<West_Yorkshire> .
@@ -15525,7 +15525,7 @@ Rule 'isLocatedIn(f,object) & isLocatedIn(subject,f)' produced:
 <Brian_O'Shaughnessy_(actor)>	<isCitizenOf>	<Hampshire> .
 <Victor_Bregeda>	<isCitizenOf>	<Russia> .
 <Frederic_Leighton,_1st_Baron_Leighton>	<isCitizenOf>	<North_Yorkshire> .
-<Lisa_Armstrong>	<isCitizenOf>	<South_East_England> .
+<Lisa_Armstrong>	<isCitizenOf>	<South_East_England> .	true
 <Nighttime_Killers>	<isCitizenOf>	<Ukraine> .
 <Darwood_Kaye>	<isCitizenOf>	<Colorado> .
 <Ronald_Davis>	<isCitizenOf>	<Los_Angeles_County,_California> .
@@ -15632,7 +15632,7 @@ Rule 'isLocatedIn(f,object) & isLocatedIn(subject,f)' produced:
 <Carl_Eugene_Watts>	<isCitizenOf>	<Texas> .
 <Mitsuru_Adachi>	<isCitizenOf>	<Gunma_Prefecture> .
 <Steve_Gerber>	<isCitizenOf>	<Missouri> .
-<King_Donovan>	<isCitizenOf>	<New_York_City> .
+<King_Donovan>	<isCitizenOf>	<New_York_City> .	true
 <Robert_Raglan>	<isCitizenOf>	<Surrey> .
 <Bartlett_Cormack>	<isCitizenOf>	<Indiana> .
 <Verónica_Sánchez>	<isCitizenOf>	<Spain> .
@@ -15739,7 +15739,7 @@ Rule 'isLocatedIn(f,object) & isLocatedIn(subject,f)' produced:
 <Tanya_Moiseiwitsch>	<isCitizenOf>	<United_Kingdom> .
 <Tsutomu_Miyazaki>	<isCitizenOf>	<Tokyo> .
 <George_New>	<isCitizenOf>	<Pennsylvania> .
-<Saadia_Himi>	<isCitizenOf>	<Netherlands> .
+<Saadia_Himi>	<isCitizenOf>	<Netherlands> .	true
 <Michael_Staniforth>	<isCitizenOf>	<West_Midlands_(region)> .
 <Justine_Saunders>	<isCitizenOf>	<Queensland> .
 <Red_Grooms>	<isCitizenOf>	<Tennessee> .
@@ -15846,7 +15846,7 @@ Rule 'isLocatedIn(f,object) & isLocatedIn(subject,f)' produced:
 <Dan_Graham>	<isCitizenOf>	<Illinois> .
 <Jarah_Mariano>	<isCitizenOf>	<Hawaii> .
 <Heidi_Mount>	<isCitizenOf>	<Utah> .
-<Charles_Comfort>	<isCitizenOf>	<Scotland> .
+<Charles_Comfort>	<isCitizenOf>	<Scotland> .	true
 <Wilf_Lunn>	<isCitizenOf>	<West_Yorkshire> .
 <Alvan_Fisher>	<isCitizenOf>	<Norfolk_County,_Massachusetts> .
 <Ryan_McFaul>	<isCitizenOf>	<Illinois> .
@@ -15971,7 +15971,7 @@ Rule 'isLocatedIn(f,object) & isLocatedIn(subject,f)' produced:
 <Eddy_Vilard>	<isCitizenOf>	<Caribbean> .
 <Russell_Hunter>	<isCitizenOf>	<Scotland> .
 Rule 'influences(subject,f) & isCitizenOf(f,object)' produced:
-<Rudolf_Otto>	<isCitizenOf>	<Romania> .
+<Rudolf_Otto>	<isCitizenOf>	<Romania> .	false
 <Jules_Bastien-Lepage>	<isCitizenOf>	<Hungary> .
 <Patrick_Heron>	<isCitizenOf>	<United_Kingdom> .
 <Jorge_Luis_Borges>	<isCitizenOf>	<Dominican_Republic> .
@@ -16010,7 +16010,7 @@ Rule 'influences(subject,f) & isCitizenOf(f,object)' produced:
 <Franciscus_Sylvius>	<isCitizenOf>	<Netherlands> .
 <Gore_Vidal>	<isCitizenOf>	<United_Kingdom> .
 <Alessandro_Manzoni>	<isCitizenOf>	<Romania> .
-<David_Nash_(artist)>	<isCitizenOf>	<United_Kingdom> .
+<David_Nash_(artist)>	<isCitizenOf>	<United_Kingdom> .	true
 <Sri_Aurobindo>	<isCitizenOf>	<India> .
 <Jean-Paul_Sartre>	<isCitizenOf>	<United_Kingdom> .
 <Charlotte_Brontë>	<isCitizenOf>	<England> .
@@ -16047,7 +16047,7 @@ Rule 'influences(subject,f) & isCitizenOf(f,object)' produced:
 <Nikolaus_Lenau>	<isCitizenOf>	<Romania> .
 <Petrarch>	<isCitizenOf>	<Poland> .
 <Benjamin_Mazar>	<isCitizenOf>	<Israel> .
-<Friedrich_Tinner>	<isCitizenOf>	<Pakistan> .
+<Friedrich_Tinner>	<isCitizenOf>	<Pakistan> .	false
 <Edward_Bagnall_Poulton>	<isCitizenOf>	<United_Kingdom> .
 <René_Descartes>	<isCitizenOf>	<Netherlands> .
 <Edwin_Morgan_(poet)>	<isCitizenOf>	<Scotland> .
@@ -16085,7 +16085,7 @@ Rule 'influences(subject,f) & isCitizenOf(f,object)' produced:
 <Dimitrie_Anghel>	<isCitizenOf>	<Romania> .
 <Robert_Bloch>	<isCitizenOf>	<Republic_of_Ireland> .
 <Joan_Didion>	<isCitizenOf>	<Canada> .
-<Henri_Matisse>	<isCitizenOf>	<United_Kingdom> .
+<Henri_Matisse>	<isCitizenOf>	<United_Kingdom> .	false
 <Jens_Andreas_Friis>	<isCitizenOf>	<Norway> .
 <Eugène_Scribe>	<isCitizenOf>	<Romania> .
 <Joseph_Butler>	<isCitizenOf>	<England> .
@@ -16123,7 +16123,7 @@ Rule 'influences(subject,f) & isCitizenOf(f,object)' produced:
 <Andrew_Young_(poet)>	<isCitizenOf>	<United_Kingdom> .
 <Jean-Paul_Sartre>	<isCitizenOf>	<Italy> .
 <Isaac_Newton>	<isCitizenOf>	<England> .
-<Tupac_Shakur>	<isCitizenOf>	<Canada> .
+<Tupac_Shakur>	<isCitizenOf>	<Canada> .	false
 <Bob_Newhart>	<isCitizenOf>	<Canada> .
 <Robert_Burns>	<isCitizenOf>	<Costa_Rica> .
 <George_Brydges_Rodney,_1st_Baron_Rodney>	<isCitizenOf>	<Scotland> .
@@ -16161,7 +16161,7 @@ Rule 'influences(subject,f) & isCitizenOf(f,object)' produced:
 <Ernst_Mach>	<isCitizenOf>	<Kingdom_of_Württemberg> .
 <Marc_Chagall>	<isCitizenOf>	<France> .
 <Ovid_Densusianu>	<isCitizenOf>	<Romania> .
-<Émile_Zola>	<isCitizenOf>	<Wallachia> .
+<Émile_Zola>	<isCitizenOf>	<Wallachia> .	false
 <François-René_de_Chateaubriand>	<isCitizenOf>	<France> .
 <Philip_K._Dick>	<isCitizenOf>	<England> .
 <Norman_Mailer>	<isCitizenOf>	<Canada> .
@@ -16199,7 +16199,7 @@ Rule 'influences(subject,f) & isCitizenOf(f,object)' produced:
 <Edgar_Allan_Poe>	<isCitizenOf>	<Romania> .
 <Fyodor_Dostoyevsky>	<isCitizenOf>	<Poland> .
 <Gaston_Ramon>	<isCitizenOf>	<France> .
-<Joséphin_Péladan>	<isCitizenOf>	<Wallachia> .
+<Joséphin_Péladan>	<isCitizenOf>	<Wallachia> .	false
 <Oskar_Morgenstern>	<isCitizenOf>	<Hungary> .
 <Edward_Burne-Jones>	<isCitizenOf>	<England> .
 <E._M._Forster>	<isCitizenOf>	<England> .
@@ -16237,7 +16237,7 @@ Rule 'influences(subject,f) & isCitizenOf(f,object)' produced:
 <Seneca_the_Younger>	<isCitizenOf>	<France> .
 <Remy_de_Gourmont>	<isCitizenOf>	<Romania> .
 <Immanuel_Kant>	<isCitizenOf>	<Austria> .
-<Angelo_Zanelli>	<isCitizenOf>	<Poland> .
+<Angelo_Zanelli>	<isCitizenOf>	<Poland> .	false
 <Henry_Fielding>	<isCitizenOf>	<Czechoslovakia> .
 <Elmore_Leonard>	<isCitizenOf>	<Canada> .
 <Caravaggio>	<isCitizenOf>	<Norway> .
@@ -16275,7 +16275,7 @@ Rule 'influences(subject,f) & isCitizenOf(f,object)' produced:
 <Georges_Cuvier>	<isCitizenOf>	<France> .
 <Oton_Župančič>	<isCitizenOf>	<Italy> .
 <Sophocles>	<isCitizenOf>	<Romania> .
-<Nicolas_Boileau-Despréaux>	<isCitizenOf>	<Wallachia> .
+<Nicolas_Boileau-Despréaux>	<isCitizenOf>	<Wallachia> .	false
 <Billy_Childish>	<isCitizenOf>	<United_Kingdom> .
 <Ernst_Haeckel>	<isCitizenOf>	<Brazil> .
 <Piet_Mondrian>	<isCitizenOf>	<Singapore> .
@@ -16313,7 +16313,7 @@ Rule 'influences(subject,f) & isCitizenOf(f,object)' produced:
 <Hannah_Arendt>	<isCitizenOf>	<France> .
 <Ferdinand_Hodler>	<isCitizenOf>	<Slovenia> .
 <Marcel_Deprez>	<isCitizenOf>	<Switzerland> .
-<Neil_Gaiman>	<isCitizenOf>	<United_Kingdom> .
+<Neil_Gaiman>	<isCitizenOf>	<United_Kingdom> .	true
 <Arnold_J._Toynbee>	<isCitizenOf>	<India> .
 <Friedrich_Schiller>	<isCitizenOf>	<Romania> .
 <Lauren_Ackerman>	<isCitizenOf>	<Italy> .
@@ -16351,7 +16351,7 @@ Rule 'influences(subject,f) & isCitizenOf(f,object)' produced:
 <Max_Perutz>	<isCitizenOf>	<Austria> .
 <Graham_Joyce>	<isCitizenOf>	<Canada> .
 <John_F._Kennedy>	<isCitizenOf>	<United_Kingdom> .
-<H._G._Wells>	<isCitizenOf>	<Wallachia> .
+<H._G._Wells>	<isCitizenOf>	<Wallachia> .	false
 <Charles_Darwin>	<isCitizenOf>	<Denmark> .
 <Arthur_Schopenhauer>	<isCitizenOf>	<Switzerland> .
 <Damien_Hirst>	<isCitizenOf>	<Canada> .
@@ -16389,7 +16389,7 @@ Rule 'influences(subject,f) & isCitizenOf(f,object)' produced:
 <Adrian_Heath>	<isCitizenOf>	<United_Kingdom> .
 <Gilbert_Blane>	<isCitizenOf>	<United_Kingdom> .
 <Arthur_Rimbaud>	<isCitizenOf>	<Romania> .
-<Robert_Rauschenberg>	<isCitizenOf>	<Spain> .
+<Robert_Rauschenberg>	<isCitizenOf>	<Spain> .	false
 <Haruki_Murakami>	<isCitizenOf>	<United_Kingdom> .
 <Blaise_Pascal>	<isCitizenOf>	<Netherlands> .
 <Ramakrishna>	<isCitizenOf>	<India> .
@@ -16427,7 +16427,7 @@ Rule 'influences(subject,f) & isCitizenOf(f,object)' produced:
 <William_McIlvanney>	<isCitizenOf>	<United_Kingdom> .
 <Gary_Lee_Price>	<isCitizenOf>	<France> .
 <Emanuel_Hahn>	<isCitizenOf>	<Canada> .
-<Oscar_Wilde>	<isCitizenOf>	<United_Kingdom> .
+<Oscar_Wilde>	<isCitizenOf>	<United_Kingdom> .	false
 <Andy_Warhol>	<isCitizenOf>	<Canada> .
 <Maurice_Maeterlinck>	<isCitizenOf>	<Romania> .
 <Frederick_Sanger>	<isCitizenOf>	<Austria> .
@@ -16465,7 +16465,7 @@ Rule 'influences(subject,f) & isCitizenOf(f,object)' produced:
 <Hugo_von_Hofmannsthal>	<isCitizenOf>	<Austria> .
 <Emil_Brumaru>	<isCitizenOf>	<Romania> .
 <Andy_Kaufman>	<isCitizenOf>	<Netherlands> .
-<Mary_Shelley>	<isCitizenOf>	<United_Kingdom> .
+<Mary_Shelley>	<isCitizenOf>	<United_Kingdom> .	true
 <Michel_Foucault>	<isCitizenOf>	<United_Kingdom> .
 <Claude_Bernard>	<isCitizenOf>	<Germany> .
 <Salman_Rushdie>	<isCitizenOf>	<England> .
@@ -16504,7 +16504,7 @@ Rule 'influences(subject,f) & isCitizenOf(f,object)' produced:
 <Edvard_Kocbek>	<isCitizenOf>	<Germany> .
 <John_Steinbeck>	<isCitizenOf>	<Slovenia> .
 <Neil_Gaiman>	<isCitizenOf>	<England> .
-<Ezra_Pound>	<isCitizenOf>	<Lithuania> .
+<Ezra_Pound>	<isCitizenOf>	<Lithuania> .	false
 <Jamie_Hewlett>	<isCitizenOf>	<United_Kingdom> .
 <Eric_Hobsbawm>	<isCitizenOf>	<Canada> .
 <Curzio_Malaparte>	<isCitizenOf>	<Romania> .
@@ -16541,7 +16541,7 @@ Rule 'influences(subject,f) & isCitizenOf(f,object)' produced:
 <Joseph_Priestley>	<isCitizenOf>	<England> .
 <Charlie_Chaplin>	<isCitizenOf>	<United_Kingdom> .
 <Jean_Dubuffet>	<isCitizenOf>	<South_Africa> .
-<Vladislav_Krapivin>	<isCitizenOf>	<Russia> .
+<Vladislav_Krapivin>	<isCitizenOf>	<Russia> .	true
 <Paul_Celan>	<isCitizenOf>	<Austria> .
 <Barry_Windsor-Smith>	<isCitizenOf>	<Canada> .
 <Wilkie_Collins>	<isCitizenOf>	<United_Kingdom> .
@@ -16579,7 +16579,7 @@ Rule 'influences(subject,f) & isCitizenOf(f,object)' produced:
 <J._J._Thomson>	<isCitizenOf>	<United_Kingdom> .
 <Hayao_Miyazaki>	<isCitizenOf>	<Japan> .
 <René_Descartes>	<isCitizenOf>	<France> .
-<François-René_de_Chateaubriand>	<isCitizenOf>	<Wallachia> .
+<François-René_de_Chateaubriand>	<isCitizenOf>	<Wallachia> .	false
 <André_Breton>	<isCitizenOf>	<Spain> .
 <John_Maynard_Keynes>	<isCitizenOf>	<Germany> .
 <Niki_de_Saint_Phalle>	<isCitizenOf>	<France> .
@@ -16617,7 +16617,7 @@ Rule 'influences(subject,f) & isCitizenOf(f,object)' produced:
 <Julius_Evola>	<isCitizenOf>	<Romania> .
 <Kenneth_Arrow>	<isCitizenOf>	<Hungary> .
 <Kurt_Schwitters>	<isCitizenOf>	<France> .
-<Jacques_Maritain>	<isCitizenOf>	<Italy> .
+<Jacques_Maritain>	<isCitizenOf>	<Italy> .	false
 <Robert_Schumann>	<isCitizenOf>	<Romania> .
 <Graham_Greene>	<isCitizenOf>	<India> .
 <Nicolae_Manolescu>	<isCitizenOf>	<Romania> .
@@ -16655,7 +16655,7 @@ Rule 'influences(subject,f) & isCitizenOf(f,object)' produced:
 <Cissy_van_Marxveldt>	<isCitizenOf>	<Weimar_Republic> .
 <Louis-Ferdinand_Céline>	<isCitizenOf>	<Italy> .
 <J._D._Salinger>	<isCitizenOf>	<Romania> .
-<Tukaram>	<isCitizenOf>	<India> .
+<Tukaram>	<isCitizenOf>	<India> .	true
 <Gustave_Flaubert>	<isCitizenOf>	<Russia> .
 <Charles_Baudelaire>	<isCitizenOf>	<Romania> .
 <John_Dos_Passos>	<isCitizenOf>	<Romania> .
@@ -16693,7 +16693,7 @@ Rule 'influences(subject,f) & isCitizenOf(f,object)' produced:
 <Georg_Wilhelm_Friedrich_Hegel>	<isCitizenOf>	<Wallachia> .
 <Aloysius_Bertrand>	<isCitizenOf>	<Poland> .
 <Paul_Grist>	<isCitizenOf>	<United_Kingdom> .
-<Wallace_Stevens>	<isCitizenOf>	<Canada> .
+<Wallace_Stevens>	<isCitizenOf>	<Canada> .	false
 <Victor_Hugo>	<isCitizenOf>	<Portugal> .
 <Walter_Scott>	<isCitizenOf>	<Portugal> .
 <André_Breton>	<isCitizenOf>	<Romania> .
@@ -16731,7 +16731,7 @@ Rule 'influences(subject,f) & isCitizenOf(f,object)' produced:
 <Richard_Brautigan>	<isCitizenOf>	<Canada> .
 <Leo_Tolstoy>	<isCitizenOf>	<Chile> .
 <John_Updike>	<isCitizenOf>	<Canada> .
-<Henri_Bergson>	<isCitizenOf>	<Romania> .
+<Henri_Bergson>	<isCitizenOf>	<Romania> .	false
 <Isamu_Noguchi>	<isCitizenOf>	<Canada> .
 <T._S._Eliot>	<isCitizenOf>	<Northern_Ireland> .
 <Daniel_Defoe>	<isCitizenOf>	<South_Africa> .
@@ -16769,7 +16769,7 @@ Rule 'influences(subject,f) & isCitizenOf(f,object)' produced:
 <Vasily_Zhukovsky>	<isCitizenOf>	<Moldavia> .
 <Charles_Dickens>	<isCitizenOf>	<England> .
 <Titu_Maiorescu>	<isCitizenOf>	<Romania> .
-<Franz_Kafka>	<isCitizenOf>	<Poland> .
+<Franz_Kafka>	<isCitizenOf>	<Poland> .	false
 <Ivan_Illich>	<isCitizenOf>	<Brazil> .
 <Knut_Hamsun>	<isCitizenOf>	<Slovenia> .
 <Joaquin_Miller>	<isCitizenOf>	<Japan> .
@@ -16807,7 +16807,7 @@ Rule 'influences(subject,f) & isCitizenOf(f,object)' produced:
 <Elaine_Hamilton-O'Neal>	<isCitizenOf>	<Pakistan> .
 <Christopher_Isham>	<isCitizenOf>	<Greece> .
 <Petrarch>	<isCitizenOf>	<Portugal> .
-<Gheorghe_Lazăr>	<isCitizenOf>	<Wallachia> .
+<Gheorghe_Lazăr>	<isCitizenOf>	<Wallachia> .	true
 <Jean-Martin_Charcot>	<isCitizenOf>	<France> .
 <Johann_Sebastian_Bach>	<isCitizenOf>	<Czechoslovakia> .
 <Alfred_de_Musset>	<isCitizenOf>	<Wallachia> .
@@ -16845,7 +16845,7 @@ Rule 'influences(subject,f) & isCitizenOf(f,object)' produced:
 <William_Cowper_(anatomist)>	<isCitizenOf>	<England> .
 <Giovanni_Papini>	<isCitizenOf>	<Romania> .
 <Anton_Pann>	<isCitizenOf>	<Romania> .
-<George_Berkeley>	<isCitizenOf>	<France> .
+<George_Berkeley>	<isCitizenOf>	<France> .	false
 <Henri_Barbusse>	<isCitizenOf>	<Slovenia> .
 <Ivan_Turgenev>	<isCitizenOf>	<Denmark> .
 <William_Knox_(Scottish_poet)>	<isCitizenOf>	<Scotland> .
@@ -16883,7 +16883,7 @@ Rule 'influences(subject,f) & isCitizenOf(f,object)' produced:
 <Jakob_Böhme>	<isCitizenOf>	<Germany> .
 <Franz_Kafka>	<isCitizenOf>	<Egypt> .
 <George_Frederick_Charles_Searle>	<isCitizenOf>	<United_Kingdom> .
-<Marcel_Proust>	<isCitizenOf>	<Romania> .
+<Marcel_Proust>	<isCitizenOf>	<Romania> .	false
 <Robert_Graves>	<isCitizenOf>	<United_Kingdom> .
 <William_Blake>	<isCitizenOf>	<Brazil> .
 <Peter_Handke>	<isCitizenOf>	<Romania> .
@@ -16921,7 +16921,7 @@ Rule 'influences(subject,f) & isCitizenOf(f,object)' produced:
 <Bratko_Kreft>	<isCitizenOf>	<Slovenia> .
 <George_Gurdjieff>	<isCitizenOf>	<Israel> .
 <Margaret_Drabble>	<isCitizenOf>	<Canada> .
-<Mark_Twain>	<isCitizenOf>	<Netherlands> .
+<Mark_Twain>	<isCitizenOf>	<Netherlands> .	false
 <Adam_Smith>	<isCitizenOf>	<United_Kingdom> .
 <Nicolae_Filimon>	<isCitizenOf>	<Romania> .
 <L._Gundappa>	<isCitizenOf>	<India> .
@@ -16959,7 +16959,7 @@ Rule 'influences(subject,f) & isCitizenOf(f,object)' produced:
 <Ilarie_Voronca>	<isCitizenOf>	<Romania> .
 <Jack_London>	<isCitizenOf>	<Slovenia> .
 <Ben_Nicholson>	<isCitizenOf>	<United_Kingdom> .
-<Walter_Seymour_Allward>	<isCitizenOf>	<Germany> .
+<Walter_Seymour_Allward>	<isCitizenOf>	<Germany> .	false
 <William_Petty>	<isCitizenOf>	<United_Kingdom> .
 <Chuck_Palahniuk>	<isCitizenOf>	<Norway> .
 <Franz_Kafka>	<isCitizenOf>	<United_Kingdom> .
@@ -16997,7 +16997,7 @@ Rule 'influences(subject,f) & isCitizenOf(f,object)' produced:
 <J._M._W._Turner>	<isCitizenOf>	<Czech_Republic> .
 <Lenny_Bruce>	<isCitizenOf>	<Canada> .
 <Douglas_Adams>	<isCitizenOf>	<Canada> .
-<Samuel_Beckett>	<isCitizenOf>	<South_Africa> .
+<Samuel_Beckett>	<isCitizenOf>	<South_Africa> .	false
 <Rainer_Maria_Rilke>	<isCitizenOf>	<Austria> .
 <Michel_Houellebecq>	<isCitizenOf>	<Romania> .
 <Georges-Louis_Leclerc,_Comte_de_Buffon>	<isCitizenOf>	<France> .
@@ -17035,7 +17035,7 @@ Rule 'influences(subject,f) & isCitizenOf(f,object)' produced:
 <Sully_Prudhomme>	<isCitizenOf>	<Romania> .
 <Swami_Vivekananda>	<isCitizenOf>	<India> .
 <Xuanzang>	<isCitizenOf>	<United_Kingdom> .
-<Alexandre_Herculano>	<isCitizenOf>	<Brazil> .
+<Alexandre_Herculano>	<isCitizenOf>	<Brazil> .	false
 <Don_Rickles>	<isCitizenOf>	<Canada> .
 <Victor_Hugo>	<isCitizenOf>	<France> .
 <Euclides_da_Cunha>	<isCitizenOf>	<Brazil> .
@@ -17071,7 +17071,7 @@ Rule 'influences(subject,f) & isCitizenOf(f,object)' produced:
 <Igor_Kurchatov>	<isCitizenOf>	<Russia> .
 <Dinesh_Manocha>	<isCitizenOf>	<Netherlands> .
 <Johann_Wolfgang_von_Goethe>	<isCitizenOf>	<France> .
-<Stanley_G._Weinbaum>	<isCitizenOf>	<United_Kingdom> .
+<Stanley_G._Weinbaum>	<isCitizenOf>	<United_Kingdom> .	false
 <Vincenzo_Viviani>	<isCitizenOf>	<England> .
 <Lewis_Black>	<isCitizenOf>	<Republic_of_Ireland> .
 <Paul_Bowles>	<isCitizenOf>	<India> .
@@ -17115,7 +17115,7 @@ Rule 'influences(subject,f) & isCitizenOf(f,object)' produced:
 <Paul_Gauguin>	<isCitizenOf>	<Hungary> .
 <Theo_van_Doesburg>	<isCitizenOf>	<Hungary> .
 Rule 'diedIn(subject,f) & isLocatedIn(f,object)' produced:
-<Folke_Sundquist>	<isCitizenOf>	<Sweden> .
+<Folke_Sundquist>	<isCitizenOf>	<Sweden> .	true
 <Pauline_Curley>	<isCitizenOf>	<Los_Angeles_County,_California> .
 <Charlotte_Christine_of_Brunswick-Lüneburg>	<isCitizenOf>	<Russia> .
 <William_Lyne_Wilson>	<isCitizenOf>	<Virginia> .
@@ -17396,7 +17396,7 @@ Rule 'diedIn(subject,f) & isLocatedIn(f,object)' produced:
 <Michael_Bentine>	<isCitizenOf>	<United_Kingdom> .
 <Gustav_IV_Adolf_of_Sweden>	<isCitizenOf>	<Switzerland> .
 <John_Vincent_(sailor)>	<isCitizenOf>	<Lincolnshire> .
-<Karl_Friedrich_von_dem_Knesebeck>	<isCitizenOf>	<Germany> .
+<Karl_Friedrich_von_dem_Knesebeck>	<isCitizenOf>	<Germany> .	true
 <Thomas_Gray>	<isCitizenOf>	<East_of_England> .
 <Elizabeth_of_Aragon>	<isCitizenOf>	<Portugal> .
 <Norbert_Wiener>	<isCitizenOf>	<Sweden> .
@@ -17677,7 +17677,7 @@ Rule 'diedIn(subject,f) & isLocatedIn(f,object)' produced:
 <John_Brown_Francis>	<isCitizenOf>	<Rhode_Island> .
 <Robert_R._Young>	<isCitizenOf>	<Rhode_Island> .
 <Thomas_Sully>	<isCitizenOf>	<Pennsylvania> .
-<Daws_Butler>	<isCitizenOf>	<Los_Angeles_County,_California> .
+<Daws_Butler>	<isCitizenOf>	<Los_Angeles_County,_California> .	true
 <Rose_Van_Thyn>	<isCitizenOf>	<Louisiana> .
 <Lim_Yew_Hock>	<isCitizenOf>	<Ottoman_Empire> .
 <Jake_Boultes>	<isCitizenOf>	<Missouri> .
@@ -17958,7 +17958,7 @@ Rule 'diedIn(subject,f) & isLocatedIn(f,object)' produced:
 <Charles_Dudley_Daly>	<isCitizenOf>	<California> .
 <David_Hoadley_(businessman)>	<isCitizenOf>	<New_Jersey> .
 <Otto_Drescher>	<isCitizenOf>	<Lithuania> .
-<John_Cameron_(cricketer)>	<isCitizenOf>	<West_Sussex> .
+<John_Cameron_(cricketer)>	<isCitizenOf>	<West_Sussex> .	true
 <Samuel_D._Gross>	<isCitizenOf>	<Pennsylvania> .
 <William_Roy>	<isCitizenOf>	<United_Kingdom> .
 <Otto_Jürgen_Hofmann>	<isCitizenOf>	<Camp_Mabry> .
@@ -18239,7 +18239,7 @@ Rule 'diedIn(subject,f) & isLocatedIn(f,object)' produced:
 <David_Beatty,_1st_Earl_Beatty>	<isCitizenOf>	<United_Kingdom> .
 <Shigeru_Aoki>	<isCitizenOf>	<Fukuoka_Prefecture> .
 <Prince_Arisugawa_Takehito>	<isCitizenOf>	<Hyōgo_Prefecture> .
-<Ken_Jones_(rugby_player_born_1921)>	<isCitizenOf>	<Wales> .
+<Ken_Jones_(rugby_player_born_1921)>	<isCitizenOf>	<Wales> .	true
 <Francis_Trowbridge_Sherman>	<isCitizenOf>	<Illinois> .
 <Alexander_Zass>	<isCitizenOf>	<United_Kingdom> .
 <J._L._"Dusty"_Rhoades>	<isCitizenOf>	<Texas> .
@@ -18520,7 +18520,7 @@ Rule 'diedIn(subject,f) & isLocatedIn(f,object)' produced:
 <Kofi_Abrefa_Busia>	<isCitizenOf>	<South_East_England> .
 <Marcelo_Caetano>	<isCitizenOf>	<Brazil> .
 <Pope_Paul_IV>	<isCitizenOf>	<Ciampino> .
-<Tayeb_Salih>	<isCitizenOf>	<United_Kingdom> .
+<Tayeb_Salih>	<isCitizenOf>	<United_Kingdom> .	true
 <Patrick_Cranshaw>	<isCitizenOf>	<Texas> .
 <Gian_Luigi_Polidoro>	<isCitizenOf>	<Ciampino> .
 <Dudley_S._Gregory>	<isCitizenOf>	<New_Jersey> .
@@ -18801,7 +18801,7 @@ Rule 'diedIn(subject,f) & isLocatedIn(f,object)' produced:
 <William_Hootkins>	<isCitizenOf>	<Los_Angeles_County,_California> .
 <Thomas_Cleeve>	<isCitizenOf>	<Republic_of_Ireland> .
 <Faye_Edgerton>	<isCitizenOf>	<New_Mexico> .
-<Theodor_Panofka>	<isCitizenOf>	<Germany> .
+<Theodor_Panofka>	<isCitizenOf>	<Germany> .	true
 <Rosario_Maceo>	<isCitizenOf>	<Texas> .
 <Gerda_Boyesen>	<isCitizenOf>	<United_Kingdom> .
 <Béla_H._Bánáthy>	<isCitizenOf>	<California> .
@@ -19082,7 +19082,7 @@ Rule 'diedIn(subject,f) & isLocatedIn(f,object)' produced:
 <Alex_Laidlaw>	<isCitizenOf>	<West_Yorkshire> .
 <Elinor_Z._Taylor>	<isCitizenOf>	<Martin_County,_Florida> .
 <Carlo_Orelli>	<isCitizenOf>	<Ciampino> .
-<Ashley_Harvey-Walker>	<isCitizenOf>	<South_Africa> .
+<Ashley_Harvey-Walker>	<isCitizenOf>	<South_Africa> .	true
 <Paul_Cavanagh>	<isCitizenOf>	<United_Kingdom> .
 <Patrick_McLaughlin_(churchman)>	<isCitizenOf>	<United_Kingdom> .
 <Achille_Majeroni>	<isCitizenOf>	<Ciampino> .
@@ -19363,7 +19363,7 @@ Rule 'diedIn(subject,f) & isLocatedIn(f,object)' produced:
 <Jean_De_Gaillard_De_la_Valden>	<isCitizenOf>	<Switzerland> .
 <Frank_Wolff_(actor)>	<isCitizenOf>	<Ciampino> .
 <Nathan_B._Bradley>	<isCitizenOf>	<Michigan> .
-<Moses_Wisner>	<isCitizenOf>	<Kentucky> .
+<Moses_Wisner>	<isCitizenOf>	<Kentucky> .	true
 <Leo_Dryden>	<isCitizenOf>	<United_Kingdom> .
 <Jack_Cassidy>	<isCitizenOf>	<Los_Angeles_County,_California> .
 <Henry_Rinnan>	<isCitizenOf>	<Norway> .
@@ -19644,7 +19644,7 @@ Rule 'diedIn(subject,f) & isLocatedIn(f,object)' produced:
 <Ilya_Darevsky>	<isCitizenOf>	<Russia> .
 <Charles_Farrell>	<isCitizenOf>	<Riverside_County,_California> .
 <G._D._H._Cole>	<isCitizenOf>	<United_Kingdom> .
-<Joan_Davis>	<isCitizenOf>	<Riverside_County,_California> .
+<Joan_Davis>	<isCitizenOf>	<Riverside_County,_California> .	true
 <Judy_Gunn>	<isCitizenOf>	<United_Kingdom> .
 <David_William_Thomas>	<isCitizenOf>	<Louisiana> .
 <Stormy_Rottman>	<isCitizenOf>	<Colorado> .
@@ -19925,7 +19925,7 @@ Rule 'diedIn(subject,f) & isLocatedIn(f,object)' produced:
 <Bhabendra_Nath_Saikia>	<isCitizenOf>	<Northeast_India> .
 <Lucius_E._Polk>	<isCitizenOf>	<Tennessee> .
 <C._Farris_Bryant>	<isCitizenOf>	<Duval_County,_Florida> .
-<Earl_Woods>	<isCitizenOf>	<Orange_County,_California> .
+<Earl_Woods>	<isCitizenOf>	<Orange_County,_California> .	true
 <Michel_de_Sallaberry>	<isCitizenOf>	<France> .
 <Calouste_Gulbenkian>	<isCitizenOf>	<Portugal> .
 <Bertie_Ison_Martin_Conley>	<isCitizenOf>	<West_Virginia> .
@@ -20206,7 +20206,7 @@ Rule 'diedIn(subject,f) & isLocatedIn(f,object)' produced:
 <Paul_Dirac>	<isCitizenOf>	<Leon_County,_Florida> .
 <Stjepan_Gradić>	<isCitizenOf>	<Ciampino> .
 <Karakoz_Abdaliev>	<isCitizenOf>	<Ukraine> .
-<Henry_Burghersh>	<isCitizenOf>	<Belgium> .
+<Henry_Burghersh>	<isCitizenOf>	<Belgium> .	false
 <Mihnea_cel_Rău>	<isCitizenOf>	<Romania> .
 <Paul_Powell_(politician)>	<isCitizenOf>	<Minnesota> .
 <Gaston_van_de_Werve_et_de_Schilde>	<isCitizenOf>	<Belgium> .
@@ -20487,7 +20487,7 @@ Rule 'diedIn(subject,f) & isLocatedIn(f,object)' produced:
 <Tom_W._Blackburn>	<isCitizenOf>	<Colorado> .
 <Josef_Franke>	<isCitizenOf>	<North_Rhine-Westphalia> .
 <Thomas_Kennedy_(unionist)>	<isCitizenOf>	<Pennsylvania> .
-<Ivan_Noble>	<isCitizenOf>	<United_Kingdom> .
+<Ivan_Noble>	<isCitizenOf>	<United_Kingdom> .	true
 <Joseph_Williamson_(philanthropist)>	<isCitizenOf>	<United_Kingdom> .
 <Ford_Beebe>	<isCitizenOf>	<Riverside_County,_California> .
 <Horst_Wessel>	<isCitizenOf>	<Germany> .
@@ -20768,7 +20768,7 @@ Rule 'diedIn(subject,f) & isLocatedIn(f,object)' produced:
 <Gustav_Knuth>	<isCitizenOf>	<Kloten> .
 <Wolfgang_Kapp>	<isCitizenOf>	<Saxony> .
 <Peter_Cushing>	<isCitizenOf>	<South_East_England> .
-<Dutch_Schultz>	<isCitizenOf>	<New_Jersey> .
+<Dutch_Schultz>	<isCitizenOf>	<New_Jersey> .	true
 <Cosetta_Greco>	<isCitizenOf>	<Ciampino> .
 <George_Hollis>	<isCitizenOf>	<South_West_England> .
 <Alfred_Kinsey>	<isCitizenOf>	<Indiana> .
@@ -21049,7 +21049,7 @@ Rule 'diedIn(subject,f) & isLocatedIn(f,object)' produced:
 <Manuel_Guimarães>	<isCitizenOf>	<Portugal> .
 <Anthony_Adducci>	<isCitizenOf>	<Arizona> .
 <Hallam_Cooley>	<isCitizenOf>	<California> .
-<Thomas_Fowke>	<isCitizenOf>	<Somerset> .
+<Thomas_Fowke>	<isCitizenOf>	<Somerset> .	true
 <Vasile_Vasilache>	<isCitizenOf>	<Moldova> .
 <Federico_Uruburu>	<isCitizenOf>	<Portugal> .
 <John_Hope_(writer)>	<isCitizenOf>	<United_Kingdom> .
@@ -21330,7 +21330,7 @@ Rule 'diedIn(subject,f) & isLocatedIn(f,object)' produced:
 <Vivian_Liberto>	<isCitizenOf>	<Ventura_County,_California> .
 <Duane_Hanson>	<isCitizenOf>	<Palm_Beach_County,_Florida> .
 <Georg-Robert_Besslein>	<isCitizenOf>	<Baden-Württemberg> .
-<Pope_Sabinian>	<isCitizenOf>	<Ciampino> .
+<Pope_Sabinian>	<isCitizenOf>	<Ciampino> .	true
 <Margot_Grahame>	<isCitizenOf>	<United_Kingdom> .
 <Dan_Sikes>	<isCitizenOf>	<Duval_County,_Florida> .
 <Walter_O._Snelling>	<isCitizenOf>	<Pennsylvania> .
@@ -21611,7 +21611,7 @@ Rule 'diedIn(subject,f) & isLocatedIn(f,object)' produced:
 <John_Byers_Anderson>	<isCitizenOf>	<Kansas> .
 <Tony_Anholt>	<isCitizenOf>	<United_Kingdom> .
 <Justin_Martyr>	<isCitizenOf>	<Ciampino> .
-<Thomas_Kilby>	<isCitizenOf>	<Alabama> .
+<Thomas_Kilby>	<isCitizenOf>	<Alabama> .	true
 <Robert_Ginnaven>	<isCitizenOf>	<Arkansas> .
 <Marius_Petipa>	<isCitizenOf>	<Ukraine> .
 <Rodolfo_Cadena>	<isCitizenOf>	<San_Bernardino_County,_California> .
@@ -21892,7 +21892,7 @@ Rule 'diedIn(subject,f) & isLocatedIn(f,object)' produced:
 <John_Joly>	<isCitizenOf>	<Republic_of_Ireland> .
 <John_Zaborszky>	<isCitizenOf>	<Missouri> .
 <Isabel_Wood_Holt>	<isCitizenOf>	<West_Virginia> .
-<John_Barker_(RAF_officer)>	<isCitizenOf>	<South_West_England> .
+<John_Barker_(RAF_officer)>	<isCitizenOf>	<South_West_England> .	true
 <Dorothy_Dwan>	<isCitizenOf>	<Ventura_County,_California> .
 <Olle_Hellbom>	<isCitizenOf>	<Sweden> .
 <Conrad_Baker>	<isCitizenOf>	<Indiana> .
@@ -22173,7 +22173,7 @@ Rule 'diedIn(subject,f) & isLocatedIn(f,object)' produced:
 <John_M._Clayton>	<isCitizenOf>	<Delaware> .
 <Lothar_Debes>	<isCitizenOf>	<Lower_Saxony> .
 <Buzz_Sawyer>	<isCitizenOf>	<California> .
-<Christopher_Cole_(Royal_Navy_officer)>	<isCitizenOf>	<United_Kingdom> .
+<Christopher_Cole_(Royal_Navy_officer)>	<isCitizenOf>	<United_Kingdom> .	true
 <Francis_C._Green>	<isCitizenOf>	<Tennessee> .
 <Hawa_Yakubu>	<isCitizenOf>	<United_Kingdom> .
 <Winston_Graham>	<isCitizenOf>	<United_Kingdom> .
@@ -22454,7 +22454,7 @@ Rule 'diedIn(subject,f) & isLocatedIn(f,object)' produced:
 <Erich_Ollenhauer>	<isCitizenOf>	<North_Rhine-Westphalia> .
 <Mel_Ignatow>	<isCitizenOf>	<Kentucky> .
 <Eduard_David>	<isCitizenOf>	<Germany> .
-<Arnold_Williams>	<isCitizenOf>	<Idaho> .
+<Arnold_Williams>	<isCitizenOf>	<Idaho> .	true
 <Herbert_Sawyer_(1730–1798)>	<isCitizenOf>	<Somerset> .
 <Ralph_Moody_(actor)>	<isCitizenOf>	<Los_Angeles_County,_California> .
 <Peter_Birrel>	<isCitizenOf>	<Somerset> .
@@ -22735,7 +22735,7 @@ Rule 'diedIn(subject,f) & isLocatedIn(f,object)' produced:
 <Bernhard_Goetzke>	<isCitizenOf>	<Germany> .
 <Saint_Parthenius>	<isCitizenOf>	<Ciampino> .
 <Rosemary_Sutcliff>	<isCitizenOf>	<West_Sussex> .
-<Thomas_Hope_(architect)>	<isCitizenOf>	<Tennessee> .
+<Thomas_Hope_(architect)>	<isCitizenOf>	<Tennessee> .	true
 <Turner_Ashby>	<isCitizenOf>	<Virginia> .
 <William_Troy>	<isCitizenOf>	<California> .
 <Ernst_Schirlitz>	<isCitizenOf>	<Germany> .
@@ -23016,7 +23016,7 @@ Rule 'diedIn(subject,f) & isLocatedIn(f,object)' produced:
 <Arthur_S._Champeny>	<isCitizenOf>	<Kansas> .
 <Adam_Smith>	<isCitizenOf>	<Scotland> .
 <D'Ewes_Coke>	<isCitizenOf>	<Somerset> .
-<Henry_Schulte>	<isCitizenOf>	<Nebraska> .
+<Henry_Schulte>	<isCitizenOf>	<Nebraska> .	true
 <William_Montgomery_McGovern>	<isCitizenOf>	<Illinois> .
 <Vladek_Sheybal>	<isCitizenOf>	<United_Kingdom> .
 <Caleb_V._Haynes>	<isCitizenOf>	<California> .
@@ -23297,7 +23297,7 @@ Rule 'diedIn(subject,f) & isLocatedIn(f,object)' produced:
 <Tancred_Ibsen>	<isCitizenOf>	<Norway> .
 <Edward_Jackett>	<isCitizenOf>	<North_Yorkshire> .
 <Pier_Gerlofs_Donia>	<isCitizenOf>	<Friesland> .
-<Joseph_Gurney_Cannon>	<isCitizenOf>	<Illinois> .
+<Joseph_Gurney_Cannon>	<isCitizenOf>	<Illinois> .	true
 <Grace_Stafford>	<isCitizenOf>	<Los_Angeles_County,_California> .
 <Richard_Chorley>	<isCitizenOf>	<East_of_England> .
 <Simon_Pollard_Hughes,_Jr.>	<isCitizenOf>	<Arkansas> .
@@ -23578,7 +23578,7 @@ Rule 'diedIn(subject,f) & isLocatedIn(f,object)' produced:
 <Paul_Priem>	<isCitizenOf>	<Saxony> .
 <Arthur_Townsend>	<isCitizenOf>	<Utah> .
 <Duchess_Jutta_of_Mecklenburg-Strelitz>	<isCitizenOf>	<Ciampino> .
-<Anne_of_Denmark,_Electress_of_Saxony>	<isCitizenOf>	<Saxony> .
+<Anne_of_Denmark,_Electress_of_Saxony>	<isCitizenOf>	<Saxony> .	true
 <Teófilo_Braga>	<isCitizenOf>	<Portugal> .
 <Flinders_Petrie>	<isCitizenOf>	<Israel> .
 <Edward_Andrews>	<isCitizenOf>	<Los_Angeles_County,_California> .
@@ -23859,7 +23859,7 @@ Rule 'diedIn(subject,f) & isLocatedIn(f,object)' produced:
 <Daniel_Schaefer>	<isCitizenOf>	<Colorado> .
 <Eric_Monti>	<isCitizenOf>	<Orange_County,_California> .
 <Joseph_Medill>	<isCitizenOf>	<Illinois> .
-<John_S._Allen>	<isCitizenOf>	<Hillsborough_County,_Florida> .
+<John_S._Allen>	<isCitizenOf>	<Hillsborough_County,_Florida> .	true
 <Hans-Gerrit_von_Stockhausen>	<isCitizenOf>	<Germany> .
 <John_Joseph_Mitty>	<isCitizenOf>	<California> .
 <Martin_Ryle>	<isCitizenOf>	<East_of_England> .
@@ -24140,7 +24140,7 @@ Rule 'diedIn(subject,f) & isLocatedIn(f,object)' produced:
 <Esther_Cailingold>	<isCitizenOf>	<Israel> .
 <Frank_B._Jewett>	<isCitizenOf>	<New_Jersey> .
 <Lajos_Bíró>	<isCitizenOf>	<United_Kingdom> .
-<Truman_G._Madsen>	<isCitizenOf>	<Utah> .
+<Truman_G._Madsen>	<isCitizenOf>	<Utah> .	true
 <Cornelius_Shea>	<isCitizenOf>	<Illinois> .
 <Nino_Marchetti>	<isCitizenOf>	<Ciampino> .
 <Arthur_Henderson>	<isCitizenOf>	<United_Kingdom> .
@@ -24421,7 +24421,7 @@ Rule 'diedIn(subject,f) & isLocatedIn(f,object)' produced:
 <Rudolf_Geisler>	<isCitizenOf>	<Ukraine> .
 <William_Joyce_Sewell>	<isCitizenOf>	<New_Jersey> .
 <Hiram_Stevens_Maxim>	<isCitizenOf>	<United_Kingdom> .
-<Jun_Takami>	<isCitizenOf>	<Kanagawa_Prefecture> .
+<Jun_Takami>	<isCitizenOf>	<Kanagawa_Prefecture> .	true
 <Floyd_Crosby>	<isCitizenOf>	<Ventura_County,_California> .
 <Juan_Eduardo_David_Posada>	<isCitizenOf>	<Cuba> .
 <Gian-Carlo_Rota>	<isCitizenOf>	<Middlesex_County,_Massachusetts> .
@@ -24702,7 +24702,7 @@ Rule 'diedIn(subject,f) & isLocatedIn(f,object)' produced:
 <Ivan_Bubnov>	<isCitizenOf>	<Russia> .
 <Martine_Bartlett>	<isCitizenOf>	<Arizona> .
 <Pavlo_Shandruk>	<isCitizenOf>	<New_Jersey> .
-<Clarence_W._Wigington>	<isCitizenOf>	<Missouri> .
+<Clarence_W._Wigington>	<isCitizenOf>	<Missouri> .	true
 <Nathaniel_Bowden-Smith>	<isCitizenOf>	<United_Kingdom> .
 <Fred_Dawson>	<isCitizenOf>	<Nebraska> .
 <Herbert_Schultze>	<isCitizenOf>	<United_Kingdom> .
@@ -24983,7 +24983,7 @@ Rule 'diedIn(subject,f) & isLocatedIn(f,object)' produced:
 <Carolina_Coronado>	<isCitizenOf>	<Portugal> .
 <David_Hampton>	<isCitizenOf>	<New_Jersey> .
 <John_Janssen>	<isCitizenOf>	<Illinois> .
-<Oskar_Bider>	<isCitizenOf>	<Switzerland> .
+<Oskar_Bider>	<isCitizenOf>	<Switzerland> .	true
 <Kroger_Babb>	<isCitizenOf>	<Riverside_County,_California> .
 <Arthur_Rostron>	<isCitizenOf>	<United_Kingdom> .
 <Amyas_Connell>	<isCitizenOf>	<United_Kingdom> .
@@ -25264,7 +25264,7 @@ Rule 'diedIn(subject,f) & isLocatedIn(f,object)' produced:
 <Edward_Carrere>	<isCitizenOf>	<Orange_County,_California> .
 <Alladi_Ramakrishnan>	<isCitizenOf>	<Alachua_County,_Florida> .
 <Pope_Clement_XIII>	<isCitizenOf>	<Ciampino> .
-<George_Myatt>	<isCitizenOf>	<Orange_County,_Florida> .
+<George_Myatt>	<isCitizenOf>	<Orange_County,_Florida> .	true
 <António_Granjo>	<isCitizenOf>	<Portugal> .
 <David_D._Aitken>	<isCitizenOf>	<Michigan> .
 <Torvald_Appelroth>	<isCitizenOf>	<Finland> .
@@ -25550,7 +25550,7 @@ Rule 'diedIn(subject,f) & isLocatedIn(f,object)' produced:
 <Jack_Swilling>	<isCitizenOf>	<Arizona> .
 <Frank_A._Capell>	<isCitizenOf>	<New_Jersey> .
 Rule 'isLocatedIn(f,object) & livesIn(subject,f)' produced:
-<Annelize_Naudé>	<isCitizenOf>	<Netherlands> .
+<Annelize_Naudé>	<isCitizenOf>	<Netherlands> .	true
 <Sir_Watkin_Williams-Wynn,_11th_Baronet>	<isCitizenOf>	<Flintshire> .
 <Michael_Long_(golfer)>	<isCitizenOf>	<Western_Australia> .
 <Elihu_Doty>	<isCitizenOf>	<Fujian> .
@@ -25626,7 +25626,7 @@ Rule 'isLocatedIn(f,object) & livesIn(subject,f)' produced:
 <Phillip_Bentz>	<isCitizenOf>	<Utah> .
 <Tara_Sad>	<isCitizenOf>	<Cheshire_County,_New_Hampshire> .
 <Reuben_Gaylord>	<isCitizenOf>	<Nebraska> .
-<Angela_Maxwell>	<isCitizenOf>	<New_Jersey> .
+<Angela_Maxwell>	<isCitizenOf>	<New_Jersey> .	true
 <Naoto_Hikosaka>	<isCitizenOf>	<Aichi_Prefecture> .
 <C.B._Forgotston>	<isCitizenOf>	<Louisiana> .
 <John_J._Dempsey>	<isCitizenOf>	<New_Mexico> .
@@ -25780,7 +25780,7 @@ Rule 'isLocatedIn(f,object) & livesIn(subject,f)' produced:
 <Boris_Becker>	<isCitizenOf>	<Switzerland> .
 <Jay_Rockefeller>	<isCitizenOf>	<West_Virginia> .
 <Doreen_Howard>	<isCitizenOf>	<Rockingham_County,_New_Hampshire> .
-<Félix_Sánchez>	<isCitizenOf>	<San_Diego_County,_California> .
+<Félix_Sánchez>	<isCitizenOf>	<San_Diego_County,_California> .	true
 <Bill_Nelson>	<isCitizenOf>	<Orange_County,_Florida> .
 <Connie_Lawson>	<isCitizenOf>	<Indiana> .
 <Theodor_Herzl>	<isCitizenOf>	<Austria> .
@@ -25857,7 +25857,7 @@ Rule 'isLocatedIn(f,object) & livesIn(subject,f)' produced:
 <Jang_Jeong>	<isCitizenOf>	<Orange_County,_Florida> .
 <Lord_Mayor_of_London>	<isCitizenOf>	<City_of_London> .
 <Gurnee_Munn>	<isCitizenOf>	<Washington_County,_Rhode_Island> .
-<Ruth_M._J._Byrne>	<isCitizenOf>	<Northern_Europe> .
+<Ruth_M._J._Byrne>	<isCitizenOf>	<Northern_Europe> .	true
 <Mark_Warner>	<isCitizenOf>	<Virginia> .
 <Chris_Bravacos>	<isCitizenOf>	<Pennsylvania> .
 <Jared_Benson>	<isCitizenOf>	<Minnesota> .
@@ -25934,7 +25934,7 @@ Rule 'isLocatedIn(f,object) & livesIn(subject,f)' produced:
 <John_Nesbitt_(announcer)>	<isCitizenOf>	<Los_Angeles> .
 <Max_Sherman>	<isCitizenOf>	<Camp_Mabry> .
 <Allen_"Puddler"_Harris>	<isCitizenOf>	<Louisiana> .
-<Harry_Teague>	<isCitizenOf>	<New_Mexico> .
+<Harry_Teague>	<isCitizenOf>	<New_Mexico> .	true
 <Shaun_Rogers_(figure_skater)>	<isCitizenOf>	<Delaware> .
 <Benjamin_Pierce_Cheney>	<isCitizenOf>	<Dover,_Massachusetts> .
 <Selina_Chilton>	<isCitizenOf>	<United_Kingdom> .
@@ -26011,7 +26011,7 @@ Rule 'isLocatedIn(f,object) & livesIn(subject,f)' produced:
 <Alex_Rider_(character)>	<isCitizenOf>	<United_Kingdom> .
 <Arthur_G._Hansen>	<isCitizenOf>	<Indiana> .
 <Phil_Richardson>	<isCitizenOf>	<Oklahoma> .
-<Brandon_Lewis>	<isCitizenOf>	<Norfolk> .
+<Brandon_Lewis>	<isCitizenOf>	<Norfolk> .	true
 <Minh_Quang_Tran>	<isCitizenOf>	<Switzerland> .
 <Robert_Giese>	<isCitizenOf>	<Nebraska> .
 <Garrett_Willis>	<isCitizenOf>	<Tennessee> .
@@ -26088,7 +26088,7 @@ Rule 'isLocatedIn(f,object) & livesIn(subject,f)' produced:
 <Steve_Gibson_(computer_programmer)>	<isCitizenOf>	<Orange_County,_California> .
 <Haroon_Ahmed>	<isCitizenOf>	<East_of_England> .
 <Jose_Antonio_N._Carrion>	<isCitizenOf>	<Philippines> .
-<Sarah_Lee_(golfer)>	<isCitizenOf>	<Orange_County,_Florida> .
+<Sarah_Lee_(golfer)>	<isCitizenOf>	<Orange_County,_Florida> .	true
 <Jamie_Silverstein>	<isCitizenOf>	<Michigan> .
 <John_Warner>	<isCitizenOf>	<Virginia> .
 <Dow_Finsterwald>	<isCitizenOf>	<Orange_County,_Florida> .
@@ -26165,7 +26165,7 @@ Rule 'isLocatedIn(f,object) & livesIn(subject,f)' produced:
 <William_B._Cooper>	<isCitizenOf>	<Sussex_County,_Delaware> .
 <Bernard_Mitton>	<isCitizenOf>	<Orange_County,_California> .
 <Henry_Hill>	<isCitizenOf>	<Los_Angeles_County,_California> .
-<Keith_G._Allred>	<isCitizenOf>	<Idaho> .
+<Keith_G._Allred>	<isCitizenOf>	<Idaho> .	true
 <Jerry_Newton_(politician)>	<isCitizenOf>	<Minnesota> .
 <Angela_Haynes>	<isCitizenOf>	<Orange_County,_California> .
 <Duncan_Menzies,_Lord_Menzies>	<isCitizenOf>	<Scotland> .
@@ -26242,7 +26242,7 @@ Rule 'isLocatedIn(f,object) & livesIn(subject,f)' produced:
 <Matthew_W._Milam>	<isCitizenOf>	<New_Jersey> .
 <Lito_Lapid>	<isCitizenOf>	<Philippines> .
 <Dennis_Tyler>	<isCitizenOf>	<Indiana> .
-<Andrew_Marshall_(golfer)>	<isCitizenOf>	<Norfolk> .
+<Andrew_Marshall_(golfer)>	<isCitizenOf>	<Norfolk> .	true
 <David_Bly>	<isCitizenOf>	<Minnesota> .
 <David_McCarthy_(born_1983)>	<isCitizenOf>	<Republic_of_Ireland> .
 <Les_Gara>	<isCitizenOf>	<Alaska> .
@@ -26319,7 +26319,7 @@ Rule 'isLocatedIn(f,object) & livesIn(subject,f)' produced:
 <Maxwell_Sheffield>	<isCitizenOf>	<New_York_City> .
 <Eric_Schmitt>	<isCitizenOf>	<Missouri> .
 <Kent_Eken>	<isCitizenOf>	<Minnesota> .
-<Hans-Josef_Klauck>	<isCitizenOf>	<Illinois> .
+<Hans-Josef_Klauck>	<isCitizenOf>	<Illinois> .	true
 <Shirley_D._Bowler>	<isCitizenOf>	<Louisiana> .
 <Gregory_Mahler>	<isCitizenOf>	<Indiana> .
 <Darcy_A._Olsen>	<isCitizenOf>	<Arizona> .
@@ -26396,7 +26396,7 @@ Rule 'isLocatedIn(f,object) & livesIn(subject,f)' produced:
 <David_Nuuhiwa>	<isCitizenOf>	<San_Diego_County,_California> .
 <Gary_Spivey>	<isCitizenOf>	<Ventura_County,_California> .
 <Brett_Guthrie>	<isCitizenOf>	<Kentucky> .
-<Steve_Veriato>	<isCitizenOf>	<Texas> .
+<Steve_Veriato>	<isCitizenOf>	<Texas> .	true
 <Eileen_S._Naughton>	<isCitizenOf>	<Rhode_Island> .
 <Barry_Jaeckel>	<isCitizenOf>	<Riverside_County,_California> .
 <Mississippi_Winn>	<isCitizenOf>	<Louisiana> .
@@ -26473,7 +26473,7 @@ Rule 'isLocatedIn(f,object) & livesIn(subject,f)' produced:
 <Jim_Eisenhower>	<isCitizenOf>	<Pennsylvania> .
 <Ted_Menzies>	<isCitizenOf>	<Alberta> .
 <Bill_Paparian>	<isCitizenOf>	<Los_Angeles_County,_California> .
-<Raymond_Floyd>	<isCitizenOf>	<Palm_Beach_County,_Florida> .
+<Raymond_Floyd>	<isCitizenOf>	<Palm_Beach_County,_Florida> .	true
 <Ken_Skupski>	<isCitizenOf>	<United_Kingdom> .
 <Bo_Van_Pelt>	<isCitizenOf>	<Oklahoma> .
 <The_Lizardman>	<isCitizenOf>	<Camp_Mabry> .
@@ -26550,7 +26550,7 @@ Rule 'isLocatedIn(f,object) & livesIn(subject,f)' produced:
 <Mitch_Tropila>	<isCitizenOf>	<Montana> .
 <Eric_Nunez>	<isCitizenOf>	<Miami-Dade_County,_Florida> .
 <Jim_Talent>	<isCitizenOf>	<Missouri> .
-<Kent_Williams_(politician)>	<isCitizenOf>	<Tennessee> .
+<Kent_Williams_(politician)>	<isCitizenOf>	<Tennessee> .	true
 <Emma_Ferguson>	<isCitizenOf>	<United_Kingdom> .
 <Beatrice_Gumulya>	<isCitizenOf>	<Indonesia> .
 <Mahmud_Abouhalima>	<isCitizenOf>	<Colorado> .
@@ -26627,7 +26627,7 @@ Rule 'isLocatedIn(f,object) & livesIn(subject,f)' produced:
 <Joseph_Almeida>	<isCitizenOf>	<Rhode_Island> .
 <Robert_Tingle>	<isCitizenOf>	<Rhode_Island> .
 <Brett_Quigley>	<isCitizenOf>	<Palm_Beach_County,_Florida> .
-<Tom_Ed_McHugh>	<isCitizenOf>	<Louisiana> .
+<Tom_Ed_McHugh>	<isCitizenOf>	<Louisiana> .	true
 <Carte_Goodwin>	<isCitizenOf>	<West_Virginia> .
 <Amy_Jo_Martin>	<isCitizenOf>	<Arizona> .
 <Shane_Schoeller>	<isCitizenOf>	<Missouri> .
@@ -26704,7 +26704,7 @@ Rule 'isLocatedIn(f,object) & livesIn(subject,f)' produced:
 <Lane_Larson>	<isCitizenOf>	<Montana> .
 <Kevin_Elsenheimer>	<isCitizenOf>	<Michigan> .
 <Nicolás_Lapentti>	<isCitizenOf>	<Miami-Dade_County,_Florida> .
-<Paul_C._McKain>	<isCitizenOf>	<Leon_County,_Florida> .
+<Paul_C._McKain>	<isCitizenOf>	<Leon_County,_Florida> .	true
 <Mark_Foley>	<isCitizenOf>	<Palm_Beach_County,_Florida> .
 <James_Lewis_(Indiana_politician)>	<isCitizenOf>	<Indiana> .
 <Paul_Loscocco>	<isCitizenOf>	<Middlesex_County,_Massachusetts> .
@@ -26781,7 +26781,7 @@ Rule 'isLocatedIn(f,object) & livesIn(subject,f)' produced:
 <Jim_Bob_Bizzell>	<isCitizenOf>	<Texas> .
 <Ryan_Moore_(golfer)>	<isCitizenOf>	<Mojave_Desert> .
 <Shirley_E._Flynn>	<isCitizenOf>	<Wyoming> .
-<Dale_Grubb>	<isCitizenOf>	<Indiana> .
+<Dale_Grubb>	<isCitizenOf>	<Indiana> .	true
 <Jane_Nelson>	<isCitizenOf>	<Texas> .
 <Jim_Slattery>	<isCitizenOf>	<Kansas> .
 <Joshua_H._Marvil>	<isCitizenOf>	<Sussex_County,_Delaware> .
@@ -26858,7 +26858,7 @@ Rule 'isLocatedIn(f,object) & livesIn(subject,f)' produced:
 <Joseph_W._Furber>	<isCitizenOf>	<Minnesota> .
 <Berta_Gardner>	<isCitizenOf>	<Alaska> .
 <Isaac_J._MacCollum>	<isCitizenOf>	<Kent_County,_Delaware> .
-<Ken_Cheuvront>	<isCitizenOf>	<Arizona> .
+<Ken_Cheuvront>	<isCitizenOf>	<Arizona> .	true
 <Delroy_Cambridge>	<isCitizenOf>	<Orange_County,_Florida> .
 <Danny_Sapsford>	<isCitizenOf>	<Surrey> .
 <Thomas_Edd_Mayfield>	<isCitizenOf>	<Texas> .
@@ -26935,7 +26935,7 @@ Rule 'isLocatedIn(f,object) & livesIn(subject,f)' produced:
 <Waliyy_Dixon>	<isCitizenOf>	<New_Jersey> .
 <Julieta_Granada>	<isCitizenOf>	<Orange_County,_Florida> .
 <John_C._Malone>	<isCitizenOf>	<Colorado> .
-<Herman_Rattliff>	<isCitizenOf>	<Kentucky> .
+<Herman_Rattliff>	<isCitizenOf>	<Kentucky> .	true
 <Elizabeth_Truss>	<isCitizenOf>	<Norfolk> .
 <Babe_Hiskey>	<isCitizenOf>	<Texas> .
 <William_Sellers>	<isCitizenOf>	<New_Castle_County,_Delaware> .
@@ -27012,7 +27012,7 @@ Rule 'isLocatedIn(f,object) & livesIn(subject,f)' produced:
 <J._D._DeBlieux>	<isCitizenOf>	<Louisiana> .
 <Ana_Timotić>	<isCitizenOf>	<Spain> .
 <Iain_Stewart_(politician)>	<isCitizenOf>	<Buckinghamshire> .
-<Thomas_Bingham,_Baron_Bingham_of_Cornhill>	<isCitizenOf>	<United_Kingdom> .
+<Thomas_Bingham,_Baron_Bingham_of_Cornhill>	<isCitizenOf>	<United_Kingdom> .	true
 <Susan_Wilson_Solovic>	<isCitizenOf>	<Missouri> .
 <Sid_Lovett>	<isCitizenOf>	<Grafton_County,_New_Hampshire> .
 <Sheldon_Whitehouse>	<isCitizenOf>	<Rhode_Island> .
@@ -27089,7 +27089,7 @@ Rule 'isLocatedIn(f,object) & livesIn(subject,f)' produced:
 <Les_Whitt>	<isCitizenOf>	<Louisiana> .
 <Viktoriya_Kutuzova>	<isCitizenOf>	<Ukraine> .
 <Fred_Couples>	<isCitizenOf>	<Riverside_County,_California> .
-<Samuel_Wescott>	<isCitizenOf>	<New_Jersey> .
+<Samuel_Wescott>	<isCitizenOf>	<New_Jersey> .	true
 <Mo_Denis>	<isCitizenOf>	<Mojave_Desert> .
 <Kim_McMillan>	<isCitizenOf>	<Tennessee> .
 <Robert_M._Murphy>	<isCitizenOf>	<Pennsylvania> .
@@ -27166,7 +27166,7 @@ Rule 'isLocatedIn(f,object) & livesIn(subject,f)' produced:
 <John_Mahan>	<isCitizenOf>	<New_Jersey> .
 <Gene_Hunt>	<isCitizenOf>	<North_West_England> .
 <Judy_Robson>	<isCitizenOf>	<Wisconsin> .
-<Kelvin_Atkinson>	<isCitizenOf>	<Mojave_Desert> .
+<Kelvin_Atkinson>	<isCitizenOf>	<Mojave_Desert> .	true
 <Harley_O._Staggers,_Jr.>	<isCitizenOf>	<West_Virginia> .
 <Walter_L._Cole>	<isCitizenOf>	<Republic_of_Ireland> .
 <Ashok_Kumar_(British_politician)>	<isCitizenOf>	<North_Yorkshire> .
@@ -27243,7 +27243,7 @@ Rule 'isLocatedIn(f,object) & livesIn(subject,f)' produced:
 <Alistair_Brownlee>	<isCitizenOf>	<West_Yorkshire> .
 <Jonathan_Couch>	<isCitizenOf>	<Isles_of_Scilly> .
 <Oliver_DeMille>	<isCitizenOf>	<Utah> .
-<Phil_Bredesen>	<isCitizenOf>	<Tennessee> .
+<Phil_Bredesen>	<isCitizenOf>	<Tennessee> .	true
 <Joan_Ballweg>	<isCitizenOf>	<Wisconsin> .
 <Go_Soeda>	<isCitizenOf>	<Kanagawa_Prefecture> .
 <Ivan_Lendl>	<isCitizenOf>	<Manatee_County,_Florida> .
@@ -27320,7 +27320,7 @@ Rule 'isLocatedIn(f,object) & livesIn(subject,f)' produced:
 <Ntozake_Shange>	<isCitizenOf>	<Pennsylvania> .
 <Ben_Way>	<isCitizenOf>	<Miami-Dade_County,_Florida> .
 <William_Russell_Robinson>	<isCitizenOf>	<Pennsylvania> .
-<Galen_Hollenbaugh>	<isCitizenOf>	<Montana> .
+<Galen_Hollenbaugh>	<isCitizenOf>	<Montana> .	true
 <Cassie_Jackman>	<isCitizenOf>	<East_of_England> .
 <Michael_Doven>	<isCitizenOf>	<Los_Angeles_County,_California> .
 <Sven_Strüver>	<isCitizenOf>	<Orange_County,_Florida> .
@@ -27397,7 +27397,7 @@ Rule 'isLocatedIn(f,object) & livesIn(subject,f)' produced:
 <Robert_Jauch>	<isCitizenOf>	<Wisconsin> .
 <Jake_Humphrey>	<isCitizenOf>	<United_Kingdom> .
 <Jonathan_Kemp>	<isCitizenOf>	<West_Yorkshire> .
-<Georgi_Karakhanyan>	<isCitizenOf>	<Riverside_County,_California> .
+<Georgi_Karakhanyan>	<isCitizenOf>	<Riverside_County,_California> .	true
 <Broderick_Henderson>	<isCitizenOf>	<Kansas> .
 <James_J._Manderino>	<isCitizenOf>	<Pennsylvania> .
 <Christopher_Hurst>	<isCitizenOf>	<King_County,_Washington> .
@@ -27474,7 +27474,7 @@ Rule 'isLocatedIn(f,object) & livesIn(subject,f)' produced:
 <David_Edwards_(golfer)>	<isCitizenOf>	<Oklahoma> .
 <Phil_English>	<isCitizenOf>	<Pennsylvania> .
 <Cliff_Drysdale>	<isCitizenOf>	<Miami-Dade_County,_Florida> .
-<Glen_Maxey>	<isCitizenOf>	<Camp_Mabry> .
+<Glen_Maxey>	<isCitizenOf>	<Camp_Mabry> .	true
 <Sandy_Gumulya>	<isCitizenOf>	<Indonesia> .
 <John_McCain>	<isCitizenOf>	<Arizona> .
 <Max_Mirnyi>	<isCitizenOf>	<Manatee_County,_Florida> .
@@ -27551,7 +27551,7 @@ Rule 'isLocatedIn(f,object) & livesIn(subject,f)' produced:
 <Joe_Smith_(Missouri_politician)>	<isCitizenOf>	<Missouri> .
 <Paul_Davis_(Kansas_politician)>	<isCitizenOf>	<Kansas> .
 <Morgan_Pressel>	<isCitizenOf>	<Palm_Beach_County,_Florida> .
-<Juan_Hinojosa>	<isCitizenOf>	<Texas> .
+<Juan_Hinojosa>	<isCitizenOf>	<Texas> .	true
 <Harold_Lane_(Kansas_politician)>	<isCitizenOf>	<Kansas> .
 <Matt_Heinz>	<isCitizenOf>	<Arizona> .
 <Nancy_Rodriguez>	<isCitizenOf>	<New_Mexico> .
@@ -27628,7 +27628,7 @@ Rule 'isLocatedIn(f,object) & livesIn(subject,f)' produced:
 <William_Thomson,_1st_Baron_Kelvin>	<isCitizenOf>	<Scotland> .
 <Katie_O'Brien>	<isCitizenOf>	<United_Kingdom> .
 <Peter_Whittle>	<isCitizenOf>	<East_of_England> .
-<Leverett_W._Babcock>	<isCitizenOf>	<Minnesota> .
+<Leverett_W._Babcock>	<isCitizenOf>	<Minnesota> .	true
 <Patrick_Hall_(athlete)>	<isCitizenOf>	<Tennessee> .
 <Colin_McPhillips>	<isCitizenOf>	<Orange_County,_California> .
 <Holly_Sutton-Scorpio>	<isCitizenOf>	<United_Kingdom> .
@@ -27705,7 +27705,7 @@ Rule 'isLocatedIn(f,object) & livesIn(subject,f)' produced:
 <Eva_Ekeblad>	<isCitizenOf>	<Sweden> .
 <Drew_Kittleson>	<isCitizenOf>	<Arizona> .
 <Robert_Čoban>	<isCitizenOf>	<Rimski_Šančevi> .
-<Jim_Inhofe>	<isCitizenOf>	<Oklahoma> .
+<Jim_Inhofe>	<isCitizenOf>	<Oklahoma> .	true
 <John_Hitt>	<isCitizenOf>	<Orange_County,_Florida> .
 <Louis_Oosthuizen>	<isCitizenOf>	<North_West_England> .
 <Lisa_Walters>	<isCitizenOf>	<Hillsborough_County,_Florida> .
@@ -27782,7 +27782,7 @@ Rule 'isLocatedIn(f,object) & livesIn(subject,f)' produced:
 <Don_Young>	<isCitizenOf>	<Alaska> .
 <Sesil_Karatantcheva>	<isCitizenOf>	<Sarasota_County,_Florida> .
 <Corrine_Brown>	<isCitizenOf>	<Duval_County,_Florida> .
-<Michael_McKillop>	<isCitizenOf>	<United_Kingdom> .
+<Michael_McKillop>	<isCitizenOf>	<United_Kingdom> .	false
 <Peter_Dedecker>	<isCitizenOf>	<Belgium> .
 <Eliot_Glassheim>	<isCitizenOf>	<North_Dakota> .
 <Cristina_Mendonsa>	<isCitizenOf>	<California> .
@@ -27876,7 +27876,7 @@ Rule 'isLocatedIn(f,object) & livesIn(subject,f)' produced:
 Unknown facts for relation 'created':
 Rule 'directed(subject,object)' produced:
 <Dave_Fleischer>	<created>	<The_Old_Man_of_the_Mountain_(film)> .
-<Michał_Waszyński>	<created>	<30_karatów_szczęścia> .
+<Michał_Waszyński>	<created>	<30_karatów_szczęścia> .	false
 <William_A._Wellman>	<created>	<Other_Men's_Women> .
 <Priyadarshan>	<created>	<Mazha_Peyyunnu_Maddalam_Kottunnu> .
 <John_Frankenheimer>	<created>	<The_Horsemen_(1971_film)> .
@@ -28601,7 +28601,7 @@ Rule 'directed(subject,object)' produced:
 <John_Guillermin>	<created>	<The_Bridge_at_Remagen> .
 <Thornton_Freeland>	<created>	<Love_Affair_(1932_film)> .
 <Luís_Filipe_Rocha>	<created>	<Cerromaior> .
-<Anthony_Simmons_(writer)>	<created>	<Black_Joy_(1977_film)> .
+<Anthony_Simmons_(writer)>	<created>	<Black_Joy_(1977_film)> .	true
 <Frank_Tashlin>	<created>	<The_Alphabet_Murders> .
 <Ruby_Yang>	<created>	<Tongzhi_in_Love> .
 <Subodh_Mukherjee>	<created>	<Munimji> .
@@ -29328,7 +29328,7 @@ Rule 'directed(subject,object)' produced:
 <Elmo_Williams>	<created>	<Hell_Ship_Mutiny> .
 <Malcolm_St._Clair_(filmmaker)>	<created>	<Jitterbugs> .
 <Joel_Schumacher>	<created>	<Blood_Creek> .
-<Arthur_Lubin>	<created>	<It_Grows_on_Trees> .
+<Arthur_Lubin>	<created>	<It_Grows_on_Trees> .	false
 <Jules_White>	<created>	<Heavenly_Daze> .
 <Jörg_Buttgereit>	<created>	<Nekromantik> .
 <Peter_Clifton>	<created>	<The_Song_Remains_the_Same_(film)> .
@@ -30055,7 +30055,7 @@ Rule 'directed(subject,object)' produced:
 <Jules_White>	<created>	<Tricky_Dicks> .
 <Mervyn_LeRoy>	<created>	<Toward_the_Unknown> .
 <Steven_Seagal>	<created>	<On_Deadly_Ground> .
-<Rahul_Dholakia>	<created>	<Mumbai_Cutting> .
+<Rahul_Dholakia>	<created>	<Mumbai_Cutting> .	true
 <Robert_Kurtzman>	<created>	<Deadly_Impact> .
 <Adelqui_Migliar>	<created>	<Ambición> .
 <Sam_Peckinpah>	<created>	<The_Wild_Bunch> .
@@ -30782,7 +30782,7 @@ Rule 'directed(subject,object)' produced:
 <Abrar_Alvi>	<created>	<Zamane_Se_Poocho> .
 <Deven_Verma>	<created>	<Besharam> .
 <King_Baggot>	<created>	<Raffles_(1925_film)> .
-<Anant_Mahadevan>	<created>	<Dil_Vil_Pyar_Vyar> .
+<Anant_Mahadevan>	<created>	<Dil_Vil_Pyar_Vyar> .	false
 <Harry_Beaumont>	<created>	<The_Gold_Diggers_(1923_film)> .
 <Ronny_Yu>	<created>	<Fearless_(2006_film)> .
 <Harry_L._Fraser>	<created>	<Chained_for_Life> .
@@ -31509,7 +31509,7 @@ Rule 'directed(subject,object)' produced:
 <Marcel_Varnel>	<created>	<Where's_That_Fire?> .
 <Albert_S._Rogell>	<created>	<Hit_Parade_of_1943> .
 <Edward_A._Kull>	<created>	<The_Face_in_the_Watch> .
-<Frank_Coraci>	<created>	<Around_the_World_in_80_Days_(2004_film)> .
+<Frank_Coraci>	<created>	<Around_the_World_in_80_Days_(2004_film)> .	false
 <Peter_Segal>	<created>	<50_First_Dates> .
 <Mitchell_Leisen>	<created>	<Captain_Carey,_U.S.A.> .
 <Cristian_Nemescu>	<created>	<California_Dreamin'_(film)> .
@@ -32236,7 +32236,7 @@ Rule 'directed(subject,object)' produced:
 <Arthur_Ripley>	<created>	<I_Met_My_Love_Again> .
 <Hiroyuki_Nasu>	<created>	<Be-Bop_High_School> .
 <Richard_T._Heffron>	<created>	<Foolin'_Around> .
-<Peter_Howitt>	<created>	<Antitrust_(film)> .
+<Peter_Howitt>	<created>	<Antitrust_(film)> .	false
 <Alvin_Rakoff>	<created>	<City_on_Fire_(1979_film)> .
 <Robert_F._Hill>	<created>	<Haunted_Island> .
 <Augusto_Genina>	<created>	<La_doppia_ferita> .
@@ -32963,7 +32963,7 @@ Rule 'directed(subject,object)' produced:
 <Charles_Vidor>	<created>	<The_Mask_of_Fu_Manchu> .
 <Luigi_Comencini>	<created>	<Le_bambole> .
 <Stuart_Rosenberg>	<created>	<Murder,_Inc._(film)> .
-<Jason_Connery>	<created>	<51_(film)> .
+<Jason_Connery>	<created>	<51_(film)> .	false
 <Marcel_Carné>	<created>	<Les_Visiteurs_du_Soir> .
 <Henry_King_(director)>	<created>	<Margie_(film)> .
 <Hawley_Pratt>	<created>	<The_Pink_Package_Plot> .
@@ -33690,7 +33690,7 @@ Rule 'directed(subject,object)' produced:
 <Henry_King_(director)>	<created>	<Alexander's_Ragtime_Band_(film)> .
 <James_Keach>	<created>	<The_Stars_Fell_on_Henrietta> .
 <Roscoe_Arbuckle>	<created>	<Fatty's_Magic_Pants> .
-<Lambert_Hillyer>	<created>	<Gang_Bullets> .
+<Lambert_Hillyer>	<created>	<Gang_Bullets> .	false
 <Greg_Beeman>	<created>	<Under_Wraps_(film)> .
 <Alberto_Cardone>	<created>	<Black_Eagle_of_Santa_Fe> .
 <S._Sylvan_Simon>	<created>	<Four_Girls_in_White> .
@@ -34417,7 +34417,7 @@ Rule 'directed(subject,object)' produced:
 <William_Witney>	<created>	<The_Lone_Ranger_(serial)> .
 <Klaus_Emmerich_(director)>	<created>	<The_First_Polka> .
 <Donald_Shebib>	<created>	<Goin'_Down_the_Road> .
-<Matt_Reeves>	<created>	<Let_Me_In_(film)> .
+<Matt_Reeves>	<created>	<Let_Me_In_(film)> .	true
 <Ishirō_Honda>	<created>	<A_Rainbow_Plays_in_My_Heart> .
 <John_Ford>	<created>	<Straight_Shooting> .
 <Lewis_Gilbert>	<created>	<The_Adventurers_(1970_film)> .
@@ -35144,7 +35144,7 @@ Rule 'directed(subject,object)' produced:
 <Abel_Ferrara>	<created>	<The_Addiction> .
 <Richard_Donner>	<created>	<Radio_Flyer_(film)> .
 <Friz_Freleng>	<created>	<You_Ought_to_Be_in_Pictures> .
-<Norman_Z._McLeod>	<created>	<Little_Men_(1940_film)> .
+<Norman_Z._McLeod>	<created>	<Little_Men_(1940_film)> .	false
 <Donald_Crisp>	<created>	<The_Princess_of_New_York> .
 <Anthony_Asquith>	<created>	<The_Way_to_the_Stars> .
 <Alex_Kendrick>	<created>	<Facing_the_Giants> .
@@ -35871,7 +35871,7 @@ Rule 'directed(subject,object)' produced:
 <Paul_L._Stein>	<created>	<Kiss_the_Bride_Goodbye> .
 <B._Reeves_Eason>	<created>	<In_Trust> .
 <Bert_Glennon>	<created>	<Gang_War> .
-<Roger_Spottiswoode>	<created>	<And_the_Band_Played_On_(film)> .
+<Roger_Spottiswoode>	<created>	<And_the_Band_Played_On_(film)> .	false
 <Val_Guest>	<created>	<Mister_Drake's_Duck> .
 <Dick_Clement>	<created>	<To_Catch_a_Spy> .
 <Vicky_Jenson>	<created>	<Shrek> .
@@ -36598,7 +36598,7 @@ Rule 'directed(subject,object)' produced:
 <C._Jay_Cox>	<created>	<Latter_Days> .
 <Nils_R._Müller>	<created>	<Tonny> .
 <Arthur_Lubin>	<created>	<Buck_Privates> .
-<Augusto_Genina>	<created>	<La_signorina_Ciclone> .
+<Augusto_Genina>	<created>	<La_signorina_Ciclone> .	true
 <Al_Christie>	<created>	<When_the_Heart_Calls> .
 <Michael_Schultz>	<created>	<Woman_Thou_Art_Loosed> .
 <Dario_Argento>	<created>	<Do_You_Like_Hitchcock?> .
@@ -37325,7 +37325,7 @@ Rule 'directed(subject,object)' produced:
 <Roddy_McDowall>	<created>	<Tam-Lin_(film)> .
 <Erle_C._Kenton>	<created>	<House_of_Dracula> .
 <Ruggero_Deodato>	<created>	<The_Atlantis_Interceptors> .
-<Michael_Curtiz>	<created>	<Black_Legion_(film)> .
+<Michael_Curtiz>	<created>	<Black_Legion_(film)> .	false
 <Edward_Bennett_(director)>	<created>	<Ascendancy_(film)> .
 <Joseph_Barbera>	<created>	<Baby_Butch> .
 <Jack_Sholder>	<created>	<The_Hidden_(film)> .
@@ -38052,7 +38052,7 @@ Rule 'directed(subject,object)' produced:
 <Chuck_Jones>	<created>	<Rabbit's_Feat> .
 <Rob_Reiner>	<created>	<Stand_by_Me_(film)> .
 <Julien_Temple>	<created>	<Aria_(film)> .
-<Bogdan_Žižić>	<created>	<Don't_Lean_Out_the_Window> .
+<Bogdan_Žižić>	<created>	<Don't_Lean_Out_the_Window> .	true
 <Shaji_Kailas>	<created>	<Natturajavu> .
 <Ken_Ghosh>	<created>	<Chance_Pe_Dance> .
 <Sam_Newfield>	<created>	<The_Black_Raven> .
@@ -38779,7 +38779,7 @@ Rule 'directed(subject,object)' produced:
 <Albert_Maysles>	<created>	<The_Last_Romantic> .
 <Bruce_Beresford>	<created>	<The_Contract_(2006_film)> .
 <Edward_Dillon_(actor)>	<created>	<The_Sky_Pirate> .
-<Sabina_Guzzanti>	<created>	<Draquila_–_L'Italia_che_trema> .
+<Sabina_Guzzanti>	<created>	<Draquila_–_L'Italia_che_trema> .	true
 <Chuck_Jones>	<created>	<A_Bear_for_Punishment> .
 <David_Dobkin_(director)>	<created>	<Fred_Claus> .
 <Robert_Young_(director)>	<created>	<Splitting_Heirs> .
@@ -39506,7 +39506,7 @@ Rule 'directed(subject,object)' produced:
 <Gene_Saks>	<created>	<A_Fine_Romance_(film)> .
 <John_Ford>	<created>	<Up_the_River> .
 <Jon_Turteltaub>	<created>	<Cool_Runnings> .
-<Peter_Hyams>	<created>	<Running_Scared_(1986_film)> .
+<Peter_Hyams>	<created>	<Running_Scared_(1986_film)> .	false
 <Charles_Frend>	<created>	<The_Magnet_(film)> .
 <Gene_Levitt>	<created>	<The_Phantom_of_Hollywood> .
 <Kurt_Gloor>	<created>	<The_Sudden_Loneliness_of_Konrad_Steiner> .
@@ -40233,7 +40233,7 @@ Rule 'directed(subject,object)' produced:
 <Kevin_Costner>	<created>	<Open_Range> .
 <Sin_Yaw_Mg_Mg>	<created>	<Mystery_of_Snow> .
 <Michael_Cristofer>	<created>	<Body_Shots> .
-<Adam_Shankman>	<created>	<Hairspray_(2007_film)> .
+<Adam_Shankman>	<created>	<Hairspray_(2007_film)> .	false
 <James_L._Brooks>	<created>	<Spanglish_(film)> .
 <Ron_Howard>	<created>	<The_Missing> .
 <Gustaf_Molander>	<created>	<A_Woman's_Face_(1938_film)> .
@@ -40960,7 +40960,7 @@ Rule 'directed(subject,object)' produced:
 <Arthur_Hiller>	<created>	<Nightwing_(film)> .
 <Garry_Marshall>	<created>	<The_Other_Sister> .
 <Martin_Scorsese>	<created>	<Bringing_Out_the_Dead> .
-<Raoul_Walsh>	<created>	<What_Price_Glory?_(1926_film)> .
+<Raoul_Walsh>	<created>	<What_Price_Glory?_(1926_film)> .	false
 <George_Archainbaud>	<created>	<Thirteen_Women> .
 <Lloyd_Bacon>	<created>	<The_Oklahoma_Kid> .
 <Guy_Hamilton>	<created>	<The_Man_with_the_Golden_Gun_(film)> .
@@ -41687,7 +41687,7 @@ Rule 'directed(subject,object)' produced:
 <Ashutosh_Gowariker>	<created>	<Baazi_(1995_film)> .
 <Ringo_Lam>	<created>	<Prison_on_Fire_II> .
 <Peter_Bogdanovich>	<created>	<Texasville> .
-<Francis_Mankiewicz>	<created>	<Les_Portes_tournantes> .
+<Francis_Mankiewicz>	<created>	<Les_Portes_tournantes> .	true
 <Ray_McCarey>	<created>	<Three_Little_Pigskins> .
 <John_Woo>	<created>	<The_Hire> .
 <Leopold_Lindtberg>	<created>	<Four_in_a_Jeep> .
@@ -42414,7 +42414,7 @@ Rule 'directed(subject,object)' produced:
 <Friz_Freleng>	<created>	<Tree_Cornered_Tweety> .
 <Jon_Iversen>	<created>	<I_gabestokken> .
 <Enzo_G._Castellari>	<created>	<Escape_from_the_Bronx> .
-<Alain_Resnais>	<created>	<Mon_oncle_d'Amérique> .
+<Alain_Resnais>	<created>	<Mon_oncle_d'Amérique> .	false
 <Philippe_Mora>	<created>	<The_Beast_Within> .
 <Elliot_M._Bour>	<created>	<Kronk's_New_Groove> .
 <Wallace_Fox>	<created>	<The_Girl_from_Monterrey> .
@@ -43142,7 +43142,7 @@ Rule 'directed(subject,object)' produced:
 <Robert_Aldrich>	<created>	<Autumn_Leaves_(film)> .
 <Minoru_Kunizawa>	<created>	<Eighteen_Year-Old,_Uniform's_Breast> .
 <Alfred_Mazure>	<created>	<Moord_in_het_Modehuis> .
-<Bob_Phillips>	<created>	<Jack_Says> .
+<Bob_Phillips>	<created>	<Jack_Says> .	false
 <S._Ramanathan>	<created>	<Do_Phool> .
 <Neeraj_Pandey>	<created>	<A_Wednesday!> .
 <Edward_Dmytryk>	<created>	<The_'Human'_Factor> .
@@ -43868,7 +43868,7 @@ Rule 'directed(subject,object)' produced:
 <Michael_Curtiz>	<created>	<Captain_Blood_(1935_film)> .
 <Stanley_Donen>	<created>	<The_Little_Prince_(film)> .
 <Giles_Foster>	<created>	<Summer_Solstice_(2005_film)> .
-<Jack_Sholder>	<created>	<Generation_X_(film)> .
+<Jack_Sholder>	<created>	<Generation_X_(film)> .	false
 <John_Ford>	<created>	<How_Green_Was_My_Valley_(film)> .
 <Peter_R._Hunt>	<created>	<On_Her_Majesty's_Secret_Service_(film)> .
 <John_Greyson>	<created>	<Proteus_(2003_film)> .
@@ -44595,7 +44595,7 @@ Rule 'directed(subject,object)' produced:
 <Wang_Xiaoshuai>	<created>	<The_House_(1999_film)> .
 <F._W._Murnau>	<created>	<The_Burning_Soil> .
 <Charley_Rogers>	<created>	<The_Bohemian_Girl_(film)> .
-<Ernst_Lubitsch>	<created>	<Forbidden_Paradise> .
+<Ernst_Lubitsch>	<created>	<Forbidden_Paradise> .	false
 <António_Lopes_Ribeiro>	<created>	<The_Tyrant_Father> .
 <Robert_McKimson>	<created>	<Tease_for_Two> .
 <Corey_Yuen>	<created>	<Yes,_Madam> .
@@ -45322,7 +45322,7 @@ Rule 'directed(subject,object)' produced:
 <Sergio_Corbucci>	<created>	<Compañeros> .
 <Norman_Foster_(director)>	<created>	<Journey_into_Fear_(1943_film)> .
 <Wan_Laiming>	<created>	<The_Camel's_Dance> .
-<Vladimir_Bortko>	<created>	<Afghan_Breakdown> .
+<Vladimir_Bortko>	<created>	<Afghan_Breakdown> .	false
 <Louis_H._Chrispijn>	<created>	<The_Living_Ladder> .
 <Robin_Tampoe>	<created>	<Dehadaka_Duka> .
 <Rudolph_Maté>	<created>	<Second_Chance_(1953_film)> .
@@ -46049,7 +46049,7 @@ Rule 'directed(subject,object)' produced:
 <Joel_Lamangan>	<created>	<Mano_Po> .
 <David_Lowell_Rich>	<created>	<The_Concorde_..._Airport_'79> .
 <Fritz_Lang>	<created>	<The_Big_Heat> .
-<D._W._Griffith>	<created>	<Three_Friends_(film)> .
+<D._W._Griffith>	<created>	<Three_Friends_(film)> .	false
 <Jingle_Ma>	<created>	<Love_in_the_City_(2007_film)> .
 <René_Viénet>	<created>	<One_More_Effort,_Chinamen,_if_you_want_to_be_revolutionaries!> .
 <Zola_Maseko>	<created>	<Drum_(2004_film)> .
@@ -46776,7 +46776,7 @@ Rule 'directed(subject,object)' produced:
 <Robert_Wise>	<created>	<Mystery_in_Mexico> .
 <Steve_Carver>	<created>	<Lone_Wolf_McQuade> .
 <Joseph_McGrath_(film_director)>	<created>	<The_Bliss_of_Mrs._Blossom> .
-<John_Erman>	<created>	<An_Early_Frost> .
+<John_Erman>	<created>	<An_Early_Frost> .	false
 <Danny_Boyle>	<created>	<Vacuuming_Completely_Nude_in_Paradise> .
 <Mikio_Naruse>	<created>	<Shūu> .
 <Robert_F._McGowan>	<created>	<Buried_Treasure_(1926_film)> .
@@ -47503,7 +47503,7 @@ Rule 'directed(subject,object)' produced:
 <Lew_Ayres>	<created>	<Hearts_in_Bondage> .
 <Bill_L._Norton>	<created>	<Three_for_the_Road> .
 <Ben_Sharpsteen>	<created>	<Dumbo> .
-<Philip_Leacock>	<created>	<The_Curse_of_King_Tut's_Tomb_(1980_film)> .
+<Philip_Leacock>	<created>	<The_Curse_of_King_Tut's_Tomb_(1980_film)> .	false
 <Mark_Pellington>	<created>	<Single_Video_Theory> .
 <Jerry_Hopper>	<created>	<Never_Say_Goodbye_(1956_film)> .
 <Daniel_Alfredson>	<created>	<The_Man_on_the_Balcony_(film)> .
@@ -48230,7 +48230,7 @@ Rule 'directed(subject,object)' produced:
 <Michael_Mayer_(director)>	<created>	<Flicka> .
 <Robert_Stevenson_(director)>	<created>	<Son_of_Flubber> .
 <Bruce_Beresford>	<created>	<The_Getting_of_Wisdom_(film)> .
-<George_Cukor>	<created>	<Travels_with_My_Aunt_(film)> .
+<George_Cukor>	<created>	<Travels_with_My_Aunt_(film)> .	false
 <Mohammed_Hussain>	<created>	<Sultana_Daku> .
 <Anson_Williams>	<created>	<All-American_Murder> .
 <Corey_Yuen>	<created>	<Fong_Sai-yuk_II> .
@@ -48957,7 +48957,7 @@ Rule 'directed(subject,object)' produced:
 <Mark_Sandrich>	<created>	<Follow_the_Fleet> .
 <Douglas_McGrath>	<created>	<Nicholas_Nickleby_(2002_film)> .
 <Walter_Grauman>	<created>	<Are_You_in_the_House_Alone?> .
-<Marco_Brambilla>	<created>	<Destricted> .
+<Marco_Brambilla>	<created>	<Destricted> .	false
 <Nick_Cohen>	<created>	<Beginner's_Luck_(2001_film)> .
 <Richard_Rush_(director)>	<created>	<Getting_Straight> .
 <Sidney_Lanfield>	<created>	<The_Hound_of_the_Baskervilles_(1939_film)> .
@@ -49684,7 +49684,7 @@ Rule 'directed(subject,object)' produced:
 <Leo_McCarey>	<created>	<Duck_Soup_(1933_film)> .
 <David_Swift_(director)>	<created>	<Good_Neighbor_Sam> .
 <John_McTiernan>	<created>	<Predator_(film)> .
-<Clarence_Brown>	<created>	<Wife_vs._Secretary> .
+<Clarence_Brown>	<created>	<Wife_vs._Secretary> .	false
 <Doug_Karr>	<created>	<LSD_25_(film)> .
 <V._K._Prakash>	<created>	<Moonnamathoral> .
 <Herbert_Wilcox>	<created>	<No,_No,_Nanette_(1940_film)> .
@@ -49699,7 +49699,7 @@ Rule 'directed(subject,object)' produced:
 
 Unknown facts for relation 'isLeaderOf':
 Rule 'livesIn(subject,object)' produced:
-<Roswell_B._Mason>	<isLeaderOf>	<Illinois> .
+<Roswell_B._Mason>	<isLeaderOf>	<Illinois> .	true
 <Mauricio_Vargas>	<isLeaderOf>	<Chile> .
 <Frank_Moser_(tennis)>	<isLeaderOf>	<Baden-Baden> .
 <Artur_Ekert>	<isLeaderOf>	<Singapore> .
@@ -50102,7 +50102,7 @@ Rule 'livesIn(subject,object)' produced:
 <Ivana_Abramović>	<isLeaderOf>	<Zagreb> .
 <Chris_Baker_(golfer)>	<isLeaderOf>	<Brownstown,_Indiana> .
 <Caesar_Rodney>	<isLeaderOf>	<Delaware> .
-<Mark_Kirk>	<isLeaderOf>	<Highland_Park,_Illinois> .
+<Mark_Kirk>	<isLeaderOf>	<Highland_Park,_Illinois> .	true
 <William_Elliott_Whitmore>	<isLeaderOf>	<Canada> .
 <Gay_Byrne>	<isLeaderOf>	<Sandymount> .
 <Paul_Uppal>	<isLeaderOf>	<United_Kingdom> .
@@ -50505,7 +50505,7 @@ Rule 'livesIn(subject,object)' produced:
 <Ronald_C._Green>	<isLeaderOf>	<Houston> .
 <Khalid_A._Al-Falih>	<isLeaderOf>	<Saudi_Arabia> .
 <Emilio_Benfele_Álvarez>	<isLeaderOf>	<Munich> .
-<James_Kingston>	<isLeaderOf>	<South_Africa> .
+<James_Kingston>	<isLeaderOf>	<South_Africa> .	false
 <Tobias_Read>	<isLeaderOf>	<Beaverton,_Oregon> .
 <Bijan_(designer)>	<isLeaderOf>	<Beverly_Hills,_California> .
 <Konrad_Zuse>	<isLeaderOf>	<Germany> .
@@ -50909,7 +50909,7 @@ Rule 'livesIn(subject,object)' produced:
 <Dick_Cheney>	<isLeaderOf>	<McLean,_Virginia> .
 <Des_Terblanche>	<isLeaderOf>	<South_Africa> .
 <Eugenio_Garza_Lagüera>	<isLeaderOf>	<Monterrey> .
-<N._Rangaswamy>	<isLeaderOf>	<Puducherry> .
+<N._Rangaswamy>	<isLeaderOf>	<Puducherry> .	true
 <Letitia_Chambers>	<isLeaderOf>	<Arizona> .
 <Gene_Locke>	<isLeaderOf>	<Houston> .
 <Steve_Banyard>	<isLeaderOf>	<Gloucestershire> .
@@ -51313,7 +51313,7 @@ Rule 'livesIn(subject,object)' produced:
 <Juan_Aguilera>	<isLeaderOf>	<Barcelona> .
 <Alex_Sink>	<isLeaderOf>	<Tampa,_Florida> .
 <Paul_Schuyt>	<isLeaderOf>	<Castricum> .
-<Noor_Muhammad_Jadmani>	<isLeaderOf>	<Tokyo> .
+<Noor_Muhammad_Jadmani>	<isLeaderOf>	<Tokyo> .	false
 <Maria_Fernanda_Alves>	<isLeaderOf>	<Florianópolis> .
 <Zac_Sunderland>	<isLeaderOf>	<Thousand_Oaks,_California> .
 <James_McGhie,_Lord_McGhie>	<isLeaderOf>	<Edinburgh> .
@@ -51717,7 +51717,7 @@ Rule 'livesIn(subject,object)' produced:
 <Ted_McMeekin>	<isLeaderOf>	<Waterdown,_Ontario> .
 <Robert_Dudley,_1st_Earl_of_Leicester>	<isLeaderOf>	<Essex> .
 <Cynthia_Nava>	<isLeaderOf>	<Las_Cruces,_New_Mexico> .
-<Naoto_Hikosaka>	<isLeaderOf>	<Japan> .
+<Naoto_Hikosaka>	<isLeaderOf>	<Japan> .	false
 <Cliff_Kresge>	<isLeaderOf>	<Heathrow,_Florida> .
 <Willard_Saulsbury,_Jr.>	<isLeaderOf>	<Delaware> .
 <Doug_Cloud>	<isLeaderOf>	<Gig_Harbor,_Washington> .
@@ -52121,7 +52121,7 @@ Rule 'livesIn(subject,object)' produced:
 <William_A._Massey_(mathematician)>	<isLeaderOf>	<Princeton,_New_Jersey> .
 <Magdaléna_Rybáriková>	<isLeaderOf>	<Slovakia> .
 <Kathy_Tingelstad>	<isLeaderOf>	<Andover,_Minnesota> .
-<Alexandra_Panova>	<isLeaderOf>	<Moscow> .
+<Alexandra_Panova>	<isLeaderOf>	<Moscow> .	false
 <Irvine_Laidlaw,_Baron_Laidlaw>	<isLeaderOf>	<Scotland> .
 <Julio_Tavarez>	<isLeaderOf>	<Paterson,_New_Jersey> .
 <Sergei_Viktorovich_Popov>	<isLeaderOf>	<Russia> .
@@ -52525,7 +52525,7 @@ Rule 'livesIn(subject,object)' produced:
 <Christos_Papoutsis>	<isLeaderOf>	<Athens> .
 <William_Hale_Thompson>	<isLeaderOf>	<Chicago> .
 <Zack_Fleishman>	<isLeaderOf>	<California> .
-<Waliyy_Dixon>	<isLeaderOf>	<Linden,_New_Jersey> .
+<Waliyy_Dixon>	<isLeaderOf>	<Linden,_New_Jersey> .	false
 <Keith_J._Laidler>	<isLeaderOf>	<United_Kingdom> .
 <Judy_Goffman_Cutler>	<isLeaderOf>	<Newport,_Rhode_Island> .
 <Brynn_Carman>	<isLeaderOf>	<Colorado_Springs,_Colorado> .
@@ -52929,7 +52929,7 @@ Rule 'livesIn(subject,object)' produced:
 <Tyson_Gay>	<isLeaderOf>	<Clermont,_Florida> .
 <Vidal_M._Treviño>	<isLeaderOf>	<Webb_County,_Texas> .
 <Roy_M._Anderson>	<isLeaderOf>	<London> .
-<Kimball_Cho>	<isLeaderOf>	<Sacramento,_California> .
+<Kimball_Cho>	<isLeaderOf>	<Sacramento,_California> .	false
 <Arthur_N._Dare>	<isLeaderOf>	<Elk_River,_Minnesota> .
 <Maurice_Smith_(politician)>	<isLeaderOf>	<Antigonish,_Nova_Scotia> .
 <Michael_Anthony_Bilandic>	<isLeaderOf>	<Chicago> .
@@ -53333,7 +53333,7 @@ Rule 'livesIn(subject,object)' produced:
 <Paul_Clymer>	<isLeaderOf>	<Sellersville,_Pennsylvania> .
 <Jim_D._Hansen>	<isLeaderOf>	<Boise,_Idaho> .
 <Alice_Dye>	<isLeaderOf>	<Carmel,_Indiana> .
-<Kenji_Tsumura>	<isLeaderOf>	<Hiroshima> .
+<Kenji_Tsumura>	<isLeaderOf>	<Hiroshima> .	false
 <William_H._Boyce>	<isLeaderOf>	<Delaware> .
 <Abdul_Mannan_Choudhury>	<isLeaderOf>	<Dhaka> .
 <Thomas_Clayton>	<isLeaderOf>	<Delaware> .
@@ -53737,7 +53737,7 @@ Rule 'livesIn(subject,object)' produced:
 <Yolanda_Pulecio>	<isLeaderOf>	<Bogotá> .
 <Henrik_I._Christensen>	<isLeaderOf>	<Atlanta> .
 <Robert_Q._Crane>	<isLeaderOf>	<Wellesley,_Massachusetts> .
-<Merle_Boucher>	<isLeaderOf>	<Rolette,_North_Dakota> .
+<Merle_Boucher>	<isLeaderOf>	<Rolette,_North_Dakota> .	true
 <Alfredas_Bumblauskas>	<isLeaderOf>	<Vilnius> .
 <Ben_Stevens>	<isLeaderOf>	<Anchorage,_Alaska> .
 <Julie_Ditty>	<isLeaderOf>	<Ashland,_Kentucky> .
@@ -54141,7 +54141,7 @@ Rule 'livesIn(subject,object)' produced:
 <Ricardo_Mello>	<isLeaderOf>	<Campinas> .
 <Steve_Darcis>	<isLeaderOf>	<Saive> .
 <Zac_Sunderland>	<isLeaderOf>	<California> .
-<Adi_Shamir>	<isLeaderOf>	<Israel> .
+<Adi_Shamir>	<isLeaderOf>	<Israel> .	false
 <Dora_Bakoyannis>	<isLeaderOf>	<Greece> .
 <Toru_Taniguchi>	<isLeaderOf>	<Nara_Prefecture> .
 <Geoff_Connor>	<isLeaderOf>	<Austin,_Texas> .
@@ -54545,7 +54545,7 @@ Rule 'livesIn(subject,object)' produced:
 <Volodymyr_Yavorivsky>	<isLeaderOf>	<Kiev> .
 <Krzysztof_Komosa>	<isLeaderOf>	<Warsaw> .
 <George_Byng,_1st_Viscount_Torrington>	<isLeaderOf>	<England> .
-<Maria_Augimeri>	<isLeaderOf>	<Ontario> .
+<Maria_Augimeri>	<isLeaderOf>	<Ontario> .	true
 <Tim_Hennessey>	<isLeaderOf>	<Pottstown,_Pennsylvania> .
 <Sergey_Galitsky>	<isLeaderOf>	<Russia> .
 <Joseph_H._Weston>	<isLeaderOf>	<Cave_City,_Arkansas> .
@@ -54949,7 +54949,7 @@ Rule 'livesIn(subject,object)' produced:
 <Mirinda_Carfrae>	<isLeaderOf>	<Logan_City> .
 <Jonathan_Edwards_(athlete)>	<isLeaderOf>	<Gosforth> .
 <Joseph_Gallian>	<isLeaderOf>	<Duluth,_Minnesota> .
-<Christian_Nilsson>	<isLeaderOf>	<Karlstad> .
+<Christian_Nilsson>	<isLeaderOf>	<Karlstad> .	false
 <David_Giuliano>	<isLeaderOf>	<Ontario> .
 <James_H._Hawley>	<isLeaderOf>	<Boise,_Idaho> .
 <Asfandyar_Wali_Khan>	<isLeaderOf>	<Charsadda> .
@@ -55353,7 +55353,7 @@ Rule 'livesIn(subject,object)' produced:
 <Hempstead_Washburne>	<isLeaderOf>	<Illinois> .
 <Jonathan_Erlich>	<isLeaderOf>	<Israel> .
 <William_Aramony>	<isLeaderOf>	<Alexandria,_Virginia> .
-<Mateusz_Kowalczyk>	<isLeaderOf>	<Zabrze> .
+<Mateusz_Kowalczyk>	<isLeaderOf>	<Zabrze> .	false
 <David_Duval>	<isLeaderOf>	<Colorado> .
 <Mark_L._Mendoza>	<isLeaderOf>	<Batangas> .
 <Ernesto_Scorsone>	<isLeaderOf>	<Lexington,_Kentucky> .
@@ -55757,7 +55757,7 @@ Rule 'livesIn(subject,object)' produced:
 <J._B._Holmes>	<isLeaderOf>	<Kentucky> .
 <Joseph_Vazhackan>	<isLeaderOf>	<Kottayam> .
 <Ke_Wu>	<isLeaderOf>	<Canada> .
-<Michael_V._Drake>	<isLeaderOf>	<Irvine,_California> .
+<Michael_V._Drake>	<isLeaderOf>	<Irvine,_California> .	false
 <Rizwan_Hussain>	<isLeaderOf>	<United_Kingdom> .
 <Hermilando_Mandanas>	<isLeaderOf>	<Batangas> .
 <Marie_Tussaud>	<isLeaderOf>	<England> .
@@ -56161,7 +56161,7 @@ Rule 'livesIn(subject,object)' produced:
 <Igor_Panarin>	<isLeaderOf>	<Moscow> .
 <Stuart_Langridge>	<isLeaderOf>	<Stourbridge> .
 <Caroline_Vis>	<isLeaderOf>	<The_Hague> .
-<Lucius_Beebe>	<isLeaderOf>	<Virginia_City,_Nevada> .
+<Lucius_Beebe>	<isLeaderOf>	<Virginia_City,_Nevada> .	false
 <K._Rani>	<isLeaderOf>	<Namakkal> .
 <Chu_Bong-Foo>	<isLeaderOf>	<Macau> .
 <Sir_Edward_Buller,_1st_Baronet>	<isLeaderOf>	<United_Kingdom> .
@@ -56565,7 +56565,7 @@ Rule 'livesIn(subject,object)' produced:
 <Elena_Pampoulova>	<isLeaderOf>	<Bulgaria> .
 <Sandra_Zaniewska>	<isLeaderOf>	<Katowice> .
 <Bobby_Verwey>	<isLeaderOf>	<South_Africa> .
-<Marjorie_Scardino>	<isLeaderOf>	<London> .
+<Marjorie_Scardino>	<isLeaderOf>	<London> .	false
 <Maša_Zec_Peškirič>	<isLeaderOf>	<Slovenia> .
 <Abd_al-Wahhab_Al-Bayati>	<isLeaderOf>	<Cairo> .
 <Walter_Annenberg>	<isLeaderOf>	<California> .
@@ -56969,7 +56969,7 @@ Rule 'livesIn(subject,object)' produced:
 <Ray_Musto>	<isLeaderOf>	<Pittston,_Pennsylvania> .
 <Luther_Olsen>	<isLeaderOf>	<Ripon,_Wisconsin> .
 <Kim_Swan>	<isLeaderOf>	<Bermuda> .
-<Luke_Donald>	<isLeaderOf>	<Palm_Beach_Gardens,_Florida> .
+<Luke_Donald>	<isLeaderOf>	<Palm_Beach_Gardens,_Florida> .	false
 <Eli_M._Saulsbury>	<isLeaderOf>	<Delaware> .
 <Charles_C._Gossett>	<isLeaderOf>	<Nampa,_Idaho> .
 <Per_Nyman>	<isLeaderOf>	<Kristianstad> .
@@ -57373,7 +57373,7 @@ Rule 'livesIn(subject,object)' produced:
 <Almroth_Wright>	<isLeaderOf>	<England> .
 <Gillian_Rubinstein>	<isLeaderOf>	<Goolwa,_South_Australia> .
 <Pervez_Hoodbhoy>	<isLeaderOf>	<Islamabad_Capital_Territory> .
-<Willard_Boyle>	<isLeaderOf>	<Canada> .
+<Willard_Boyle>	<isLeaderOf>	<Canada> .	false
 <Harith_al-Dhari>	<isLeaderOf>	<Baghdad> .
 <James_Martin_(Maine_politician)>	<isLeaderOf>	<Orono,_Maine> .
 <Dušan_Vemić>	<isLeaderOf>	<Belgrade> .
@@ -57777,7 +57777,7 @@ Rule 'livesIn(subject,object)' produced:
 <George_C._Butte>	<isLeaderOf>	<Austin,_Texas> .
 <James_Sykes_(governor)>	<isLeaderOf>	<Dover,_Delaware> .
 <Mark_Hensby>	<isLeaderOf>	<Mesa,_Arizona> .
-<Jamie_Van_Fossen>	<isLeaderOf>	<Davenport,_Iowa> .
+<Jamie_Van_Fossen>	<isLeaderOf>	<Davenport,_Iowa> .	true
 <Cliff_Hyte>	<isLeaderOf>	<Findlay,_Ohio> .
 <Meng_Xuenong>	<isLeaderOf>	<Taiyuan> .
 <Robert_Čoban>	<isLeaderOf>	<Novi_Sad> .
@@ -58181,7 +58181,7 @@ Rule 'livesIn(subject,object)' produced:
 <Lydia_P._Jackson>	<isLeaderOf>	<Shreveport,_Louisiana> .
 <Asaram_Bapu>	<isLeaderOf>	<India> .
 <George_Eid>	<isLeaderOf>	<Mount_Lebanon> .
-<Vicky_Moscholiou>	<isLeaderOf>	<Greece> .
+<Vicky_Moscholiou>	<isLeaderOf>	<Greece> .	false
 <Jan_Frodeno>	<isLeaderOf>	<South_Africa> .
 <Celso_Lafer>	<isLeaderOf>	<Brazil> .
 <Dale_Hargens>	<isLeaderOf>	<Miller,_South_Dakota> .
@@ -58585,7 +58585,7 @@ Rule 'livesIn(subject,object)' produced:
 <Charles_Perry_(Texas_politician)>	<isLeaderOf>	<Lubbock,_Texas> .
 <Dan_Lipinski>	<isLeaderOf>	<Western_Springs,_Illinois> .
 <Jan_Philipp_Albrecht>	<isLeaderOf>	<Germany> .
-<Alan_Frumin>	<isLeaderOf>	<Bethesda,_Maryland> .
+<Alan_Frumin>	<isLeaderOf>	<Bethesda,_Maryland> .	true
 <CV_Madhukar>	<isLeaderOf>	<New_Delhi> .
 <Jeppe_Huldahl>	<isLeaderOf>	<Copenhagen> .
 <Sherri_Turner>	<isLeaderOf>	<Greenville,_South_Carolina> .
@@ -58989,7 +58989,7 @@ Rule 'livesIn(subject,object)' produced:
 <P._S._Veeraraghavan>	<isLeaderOf>	<India> .
 <Arlene_Phillips>	<isLeaderOf>	<London> .
 <Terry_Grier>	<isLeaderOf>	<Ontario> .
-<David_Lewis_(politician)>	<isLeaderOf>	<Toronto> .
+<David_Lewis_(politician)>	<isLeaderOf>	<Toronto> .	true
 <Sulaiman_Abdul_Aziz_Al_Rajhi>	<isLeaderOf>	<Saudi_Arabia> .
 <Joanne_Verger>	<isLeaderOf>	<Coos_Bay,_Oregon> .
 <Lemuel_Carpenter>	<isLeaderOf>	<Missouri> .
@@ -59393,7 +59393,7 @@ Rule 'livesIn(subject,object)' produced:
 <David_Grubin>	<isLeaderOf>	<New_York_City> .
 <Conchita_Leeflang>	<isLeaderOf>	<Westwood,_California> .
 <Danai_Udomchoke>	<isLeaderOf>	<Thailand> .
-<John_Mooney_(activist)>	<isLeaderOf>	<New_York_City> .
+<John_Mooney_(activist)>	<isLeaderOf>	<New_York_City> .	true
 <Samuel_Armas>	<isLeaderOf>	<Villa_Rica,_Georgia> .
 <Johanna_Larsson_(tennis)>	<isLeaderOf>	<Helsingborg> .
 <Andrew_Natsios>	<isLeaderOf>	<Holliston,_Massachusetts> .
@@ -59797,7 +59797,7 @@ Rule 'livesIn(subject,object)' produced:
 <Steve_Bolstad>	<isLeaderOf>	<Great_Falls,_Montana> .
 <Tom_Watson_(golfer)>	<isLeaderOf>	<Kansas> .
 <Frank_Morse_(Oregon_politician)>	<isLeaderOf>	<Albany,_Oregon> .
-<William_Brouncker,_2nd_Viscount_Brouncker>	<isLeaderOf>	<England> .
+<William_Brouncker,_2nd_Viscount_Brouncker>	<isLeaderOf>	<England> .	false
 <Charles_G._Groat>	<isLeaderOf>	<Texas> .
 <S._K._Roongta>	<isLeaderOf>	<India> .
 <Sergey_Kofanov>	<isLeaderOf>	<Moscow> .
@@ -60201,7 +60201,7 @@ Rule 'livesIn(subject,object)' produced:
 <Zack_Space>	<isLeaderOf>	<Dover,_Ohio> .
 <Connie_Lawson>	<isLeaderOf>	<Danville,_Indiana> .
 <Petra_Mandula>	<isLeaderOf>	<Budapest> .
-<Iggy_Arroyo>	<isLeaderOf>	<Quezon_City> .
+<Iggy_Arroyo>	<isLeaderOf>	<Quezon_City> .	true
 <Joseph_Koziura>	<isLeaderOf>	<Lorain,_Ohio> .
 <Richard_Madaleno>	<isLeaderOf>	<Montgomery_County,_Maryland> .
 <Matthias_Rioux>	<isLeaderOf>	<Quebec> .
@@ -60605,7 +60605,7 @@ Rule 'livesIn(subject,object)' produced:
 <Mike_Doogan>	<isLeaderOf>	<Anchorage,_Alaska> .
 <Trent_Franks>	<isLeaderOf>	<Glendale,_Arizona> .
 <Hideki_Komatsu>	<isLeaderOf>	<Japan> .
-<Jim_Webb>	<isLeaderOf>	<Falls_Church,_Virginia> .
+<Jim_Webb>	<isLeaderOf>	<Falls_Church,_Virginia> .	true
 <Marco_Blume>	<isLeaderOf>	<Germany> .
 <Michael_Sim>	<isLeaderOf>	<Western_Australia> .
 <João_Cunha_e_Silva>	<isLeaderOf>	<Lisbon> .
@@ -61009,7 +61009,7 @@ Rule 'livesIn(subject,object)' produced:
 <John_O'Leary_(golfer)>	<isLeaderOf>	<Surrey> .
 <H._S._S._Lawrence>	<isLeaderOf>	<Anna_Nagar> .
 <Ben_Nelson>	<isLeaderOf>	<Omaha,_Nebraska> .
-<Sally_Rogers>	<isLeaderOf>	<Epsom> .
+<Sally_Rogers>	<isLeaderOf>	<Epsom> .	false
 <Eugénie_Blanchard>	<isLeaderOf>	<France> .
 <Isaac_Lawrence_Milliken>	<isLeaderOf>	<Chicago> .
 <Alex_Shibutani>	<isLeaderOf>	<Ann_Arbor,_Michigan> .
@@ -61413,7 +61413,7 @@ Rule 'livesIn(subject,object)' produced:
 <Todd_Hamilton>	<isLeaderOf>	<Westlake,_Texas> .
 <Anders_Björck>	<isLeaderOf>	<Stockholm> .
 <Yang_Yong-eun>	<isLeaderOf>	<Southlake,_Texas> .
-<Dan_Slobin>	<isLeaderOf>	<Berkeley,_California> .
+<Dan_Slobin>	<isLeaderOf>	<Berkeley,_California> .	false
 <Eleanor_Parke_Custis_Lewis>	<isLeaderOf>	<Woodlawn_(plantation)> .
 <Nika_Ožegović>	<isLeaderOf>	<Zagreb> .
 <Cathy_Hudgins>	<isLeaderOf>	<Reston,_Virginia> .
