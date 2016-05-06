@@ -54,34 +54,34 @@ public class QueryJenaRDFAPI extends QueryJenaLibrary{
 	
 	public static void main(String[] args) throws Exception{
 		ConfigurationFacility.getConfiguration();
-		Dataset dataset = TDBFactory.createDataset("/Users/sortona/Documents/KDR/Data/DBPedia/jena") ;
-		long start = System.currentTimeMillis();
-		dataset.begin(ReadWrite.READ);
-		String entity = "http://dbpedia.org/resource/Spain";
-		QueryExecution qExec = QueryExecutionFactory.create("select * {{SELECT * where {?subject ?predicate <"+entity+">.} LIMIT 5000}"
-				+ " UNION {SELECT * where {<"+entity+"> ?predicate ?object.}}}", dataset);
-		ResultSet results = qExec.execSelect() ;
-		
-		Map<String,Set<String>> output = Maps.newHashMap();
-		
-		while(results.hasNext()){
-			QuerySolution solution = results.next();
-			String relation = solution.get("?predicate").toString();
-			String object = solution.get("?subject")!=null ? solution.get("?subject").toString() : solution.get("?object").toString();
-
-			Set<String> currentExamples = output.get(relation);
-			if(currentExamples==null){
-				currentExamples=Sets.newHashSet();
-				output.put(relation, currentExamples);
-			}
-			currentExamples.add(object);
-		}
-		dataset.end();
-		System.out.println((System.currentTimeMillis()-start)/1000.);
-		
-		
-		QueryJenaRDFAPI e = new QueryJenaRDFAPI(ConfigurationFacility.getConfiguration().subset("naive.sparql"));
-		//e.query();
+//		Dataset dataset = TDBFactory.createDataset("/Users/sortona/Documents/KDR/Data/DBPedia/jena") ;
+//		long start = System.currentTimeMillis();
+//		dataset.begin(ReadWrite.READ);
+//		String entity = "http://dbpedia.org/resource/Spain";
+//		QueryExecution qExec = QueryExecutionFactory.create("select * {{SELECT * where {?subject ?predicate <"+entity+">.} LIMIT 5000}"
+//				+ " UNION {SELECT * where {<"+entity+"> ?predicate ?object.}}}", dataset);
+//		ResultSet results = qExec.execSelect() ;
+//		
+//		Map<String,Set<String>> output = Maps.newHashMap();
+//		
+//		while(results.hasNext()){
+//			QuerySolution solution = results.next();
+//			String relation = solution.get("?predicate").toString();
+//			String object = solution.get("?subject")!=null ? solution.get("?subject").toString() : solution.get("?object").toString();
+//
+//			Set<String> currentExamples = output.get(relation);
+//			if(currentExamples==null){
+//				currentExamples=Sets.newHashSet();
+//				output.put(relation, currentExamples);
+//			}
+//			currentExamples.add(object);
+//		}
+//		dataset.end();
+//		System.out.println((System.currentTimeMillis()-start)/1000.);
+//		
+//		
+//		QueryJenaRDFAPI e = new QueryJenaRDFAPI(ConfigurationFacility.getConfiguration().subset("naive.sparql"));
+//		//e.query();
 	}
 	
 	public void query() throws Exception{

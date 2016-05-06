@@ -1,5 +1,6 @@
 package asu.edu.neg_rule_miner.sparql.jena;
 
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
@@ -75,9 +76,8 @@ public abstract class QueryJenaLibrary extends SparqlExecutor {
 
 			//check the relation is a type relation
 			if(relation.equals(this.typePrefix)&&
-					oneResult.get("obj")!=null&&
-					!this.topTypes.contains(oneResult.get("obj").toString())){
-				//graph.addType(entity, oneResult.get("obj").toString());
+					oneResult.get("obj")!=null){
+				graph.addType(entity, oneResult.get("obj").toString());
 			}
 
 			if(this.relationToAvoid!=null&&this.relationToAvoid.contains(relation))
@@ -93,6 +93,7 @@ public abstract class QueryJenaLibrary extends SparqlExecutor {
 			}
 			if(!isTargetRelation)
 				continue;
+
 			String nodeToAdd = null;
 			Edge<String> edgeToAdd = null;
 			String lexicalForm = null;
@@ -131,28 +132,6 @@ public abstract class QueryJenaLibrary extends SparqlExecutor {
 		}
 
 		startTime = System.currentTimeMillis();
-		//if it has types add inequality with every other node in the graph that has EXACTLY same types
-		//TO DO: check how to comapre nodes with same types
-		//		if(currentTypes.size()>0){
-		//			for(String n:graph.getNodes()){
-		//				if(n.equals(entity))
-		//					continue;
-		//				Set<String> otherNodeTypes = entity2types.get(n);
-		//				if(otherNodeTypes!=null&&otherNodeTypes.size()>0){
-		//
-		//					//have ALL types in common
-		//					if(currentTypes.equals(otherNodeTypes)){
-		//						boolean addEdge = graph.addEdge(entity, n, "!=", true);
-		//						if(!addEdge)
-		//							LOGGER.warn("Not able to insert the edge '!=' between nodes '{}' and '{}'.",entity,n);
-		//					}
-		//
-		//				}
-		//			}
-		//		}
-		//		double end = (System.currentTimeMillis()-startTime)/1000.;
-		//		if(end>0.2)
-		//			LOGGER.debug("!= expasions took '{}' seconds.",end);
 
 		this.closeResources();
 		return neighbours;
@@ -160,9 +139,9 @@ public abstract class QueryJenaLibrary extends SparqlExecutor {
 	}
 
 	@Override
-	public Set<Pair<String, String>> generateNegativeExamples(
-			Set<String> relations, String typeSubject, String typeObject) {
-		String negativeCandidateQuery = super.generateNegativeExampleQuery(relations, typeSubject, typeObject);
+	public Set<Pair<String, String>> generateUnionNegativeExamples(
+			Set<String> relations, String typeSubject, String typeObject, boolean subjectFunction, boolean objectFunction) {
+		String negativeCandidateQuery = super.generateNegativeExampleUnionQuery(relations, typeSubject, typeObject,subjectFunction,objectFunction);
 		Set<Pair<String,String>> negativeExamples = Sets.newHashSet();
 		if(negativeCandidateQuery==null)
 			return negativeExamples;
@@ -171,7 +150,16 @@ public abstract class QueryJenaLibrary extends SparqlExecutor {
 		long startTime = System.currentTimeMillis();
 		if(this.openResource!=null)
 			this.openResource.close();
-		ResultSet results = this.executeQuery(negativeCandidateQuery);
+
+		//try to execute normal query
+		ResultSet results = null;
+		try{
+			results = this.executeQuery(negativeCandidateQuery);
+		}catch(Exception e){
+			//if not able, put a limit of 5000 records
+			LOGGER.debug("Not able to execute normal query, setting a limit of 5000 results");
+			results = this.executeQuery(negativeCandidateQuery+" LIMIT 5000");
+		}
 		LOGGER.debug("Query executed in {} seconds.",(System.currentTimeMillis()-startTime)/1000.0);
 
 		while(results.hasNext()){
@@ -227,63 +215,8 @@ public abstract class QueryJenaLibrary extends SparqlExecutor {
 		return positiveExamples;
 	}
 
-
-	/**
-	 * Jena still needs to query the endpoint to retrieve examples
-	 * TO DO: generate them with a better query
-	 * UPDATE: if we use string instead of RDFNOdes, the following method can be inherithed from the superclass
-	 */
-	//	@Override
-	//	public Set<Pair<String,String>> readExamplesFromFile(File inputFile) throws IOException{
-	//		Set<Pair<String,String>> plainNegativeExamples = super.readExamplesFromFile(inputFile);
-	//		if(plainNegativeExamples==null||plainNegativeExamples.size()==0)
-	//			return plainNegativeExamples;
-	//
-	//		StringBuilder subjectFilters = new StringBuilder();
-	//		subjectFilters.append("FILTER(");
-	//		StringBuilder objectFilters = new StringBuilder();
-	//		objectFilters.append("FILTER(");
-	//		Iterator<Pair<String,String>> examplesIterator = plainNegativeExamples.iterator();
-	//		while(examplesIterator.hasNext()){
-	//			Pair<String,String> example = examplesIterator.next();
-	//			subjectFilters.append("?subject=<"+example.getLeft()+">");
-	//			objectFilters.append("?object=<"+example.getRight()+">");
-	//			if(examplesIterator.hasNext()){
-	//				subjectFilters.append(" || ");
-	//				objectFilters.append(" || ");
-	//			}
-	//			else{
-	//				subjectFilters.append(")");
-	//				objectFilters.append(")");
-	//			}
-	//		}
-	//
-	//		String query = "SELECT DISTINCT ?subject ?relation ?object WHERE {?subject ?relation ?object. "+subjectFilters+" "
-	//				+objectFilters+"}";
-	//
-	//		LOGGER.debug("Executing negative candidate query selection '{}' on Sparql Endpoint...",query);
-	//		long startTime = System.currentTimeMillis();
-	//		if(this.openResource!=null)
-	//			this.openResource.close();
-	//		ResultSet results = this.executeQuery(query);
-	//		LOGGER.debug("Query executed in {} seconds.",(System.currentTimeMillis()-startTime)/1000.0);
-	//
-	//		Set<Pair<String,String>> negativeExamples = Sets.newHashSet();
-	//		while(results.hasNext()){
-	//			QuerySolution oneResult = results.next();
-	//			Pair<String,String> negativeExample = 
-	//					Pair.of(oneResult.get("subject").toString(), oneResult.get("object").toString());
-	//			negativeExamples.add(negativeExample);
-	//		}
-	//
-	//		this.closeResources();
-	//		LOGGER.debug("{} negative examples retrieved.",negativeExamples.size());
-	//
-	//		return negativeExamples;
-	//	}
-
 	@Override
-	public Set<Pair<String,String>> getKBExamples(String query,String subject,String object){
+	public Set<Pair<String,String>> getKBExamples(String query,String subject,String object,boolean includeInverted){
 
 		LOGGER.debug("Executing negative candidate query selection '{}' on Sparql Endpoint...",query);
 		long startTime = System.currentTimeMillis();
@@ -295,9 +228,12 @@ public abstract class QueryJenaLibrary extends SparqlExecutor {
 		Set<Pair<String,String>> examples = Sets.newHashSet();
 		while(results.hasNext()){
 			QuerySolution oneResult = results.next();
-			String secondResult = oneResult.get("object").toString();
-			String firstResult = oneResult.get("subject").toString();
-			if(!examples.contains(Pair.of(secondResult, firstResult))){
+			String secondResult = oneResult.get(object).toString();
+			//check object is not a literal
+			if(oneResult.get(object).isLiteral())
+				secondResult = oneResult.get(object).asLiteral().getLexicalForm();
+			String firstResult = oneResult.get(subject).toString();
+			if(includeInverted || !examples.contains(Pair.of(secondResult, firstResult))){
 				Pair<String,String> currentExample = 
 						Pair.of(firstResult, secondResult);
 				examples.add(currentExample);
@@ -325,7 +261,7 @@ public abstract class QueryJenaLibrary extends SparqlExecutor {
 
 		if(rules.size()==0)
 			return 0;
-		String positiveExamplesCountQuery = super.generatePositiveExampleCountQuery(rules, 
+		String positiveExamplesCountQuery = super.generateRulesPositiveExampleQuery(rules, 
 				relations, typeSubject, typeObject);
 
 		return executeSubjectObjectQuery(positiveExamplesCountQuery,positiveExamples).size();
@@ -337,19 +273,44 @@ public abstract class QueryJenaLibrary extends SparqlExecutor {
 
 		if(rules.size()==0)
 			return Sets.newHashSet();
-		String positiveExamplesCountQuery = super.generatePositiveExampleCountQuery(rules, 
+		String positiveExamplesCountQuery = super.generateRulesPositiveExampleQuery(rules, 
 				relations, typeSubject, typeObject);
 
 		return executeSubjectObjectQuery(positiveExamplesCountQuery,positiveExamples);
 
 	}
 
+	@Override
+	public Set<Pair<String,String>> getMatchingNegativeExamples(Set<RuleAtom> rules,
+			Set<String> relations, String typeSubject, String typeObject, Set<Pair<String,String>> negativeExamples, 
+			boolean subjectFuntion, boolean objectFunction) {
+
+		if(rules.size()==0)
+			return Sets.newHashSet();
+		String negativeExamplesCountQuery = super.generateRulesNegativeExampleQuery(rules, 
+				relations, typeSubject, typeObject, subjectFuntion, objectFunction);
+
+		return executeSubjectObjectQuery(negativeExamplesCountQuery,negativeExamples);
+
+	}
+
 	public Set<Pair<String,String>> executeHornRuleQuery(Set<RuleAtom> rules, String typeSubject, String typeObject){
 		if(rules.size()==0)
 			return Sets.newHashSet();
-		String positiveExamplesCountQuery = super.generateHornRuleQuery(rules, typeSubject, typeObject);
+		String hornRuleQuery = super.generateHornRuleQuery(rules, typeSubject, typeObject);
 
-		return executeSubjectObjectQuery(positiveExamplesCountQuery,null);
+		return executeSubjectObjectQuery(hornRuleQuery,null);
+
+	}
+
+	public Set<Pair<String,String>> executeRestrictiveHornRuleQuery(String queryRestriction,
+			Set<RuleAtom> rules, String typeSubject, String typeObject){
+		if(rules.size()==0)
+			return Sets.newHashSet();
+		String hornRuleQuery = super.generateHornRuleQuery(rules, typeSubject, typeObject);
+		hornRuleQuery = hornRuleQuery.replaceAll("WHERE \\{", "WHERE {"+queryRestriction+" ");
+
+		return executeSubjectObjectQuery(hornRuleQuery,null);
 
 	}
 
@@ -367,6 +328,7 @@ public abstract class QueryJenaLibrary extends SparqlExecutor {
 		LOGGER.debug("Query executed in {} seconds.",(System.currentTimeMillis()-startTime)/1000.0);
 
 		while(results.hasNext()){
+
 			QuerySolution oneResult = results.next();
 			String subject = oneResult.get("subject").toString();
 			String object = oneResult.get("object").toString();
@@ -378,6 +340,31 @@ public abstract class QueryJenaLibrary extends SparqlExecutor {
 
 		return matchingPositiveExamples;
 
+	}
+
+	public int executeCountQuery(String inputQuery){
+		//get the count variable
+		if(!inputQuery.contains("count")&&!inputQuery.contains("COUNT"))
+			return -1;
+		LOGGER.debug("Executing sparql rule query '{}' on Sparql Endpoint...",inputQuery);
+		if(this.openResource!=null)
+			this.openResource.close();
+		ResultSet results = this.executeQuery(inputQuery);
+
+		int result = -1;
+		List<String> resultsVariable = results.getResultVars();
+		if(results.hasNext() && resultsVariable.size()>0){
+			QuerySolution oneResult = results.next();
+			try{
+				result = oneResult.getLiteral(resultsVariable.get(0)).getInt();
+			}
+			catch(Exception e){
+				LOGGER.warn("Not able to parse as integer the result of the count query {}.",inputQuery);
+			}
+		}
+		this.closeResources();
+
+		return result;
 	}
 
 	public Map<String,Set<Pair<String,String>>> getRulePositiveSupport(Set<Pair<String,String>> positiveExamples){

@@ -10,23 +10,18 @@ package asu.edu.neg_rule_miner.model.rdf.graph;
  * @param <T>
  */
 public class Edge <T> {
-	public T nodeSource;
-
-	public Edge(T source, T end, String label){
-		this.label=label;
-		this.nodeSource = source;
-		this.nodeEnd = end;
-	}
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
+		result = prime * result + (isArtificial ? 1231 : 1237);
 		result = prime * result + ((label == null) ? 0 : label.hashCode());
 		result = prime * result + ((nodeEnd == null) ? 0 : nodeEnd.hashCode());
-		result = prime * result
-				+ ((nodeSource == null) ? 0 : nodeSource.hashCode());
+		result = prime * result + ((nodeSource == null) ? 0 : nodeSource.hashCode());
 		return result;
 	}
+
+	@SuppressWarnings("unchecked")
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -35,8 +30,9 @@ public class Edge <T> {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		@SuppressWarnings("unchecked")
 		Edge<T> other = (Edge<T>) obj;
+		if (isArtificial != other.isArtificial)
+			return false;
 		if (label == null) {
 			if (other.label != null)
 				return false;
@@ -54,6 +50,27 @@ public class Edge <T> {
 			return false;
 		return true;
 	}
+
+	public T nodeSource;
+
+	private boolean isArtificial;
+
+	public Edge(T source, T end, String label){
+		this.label=label;
+		this.nodeSource = source;
+		this.nodeEnd = end;
+		this.isArtificial = false;
+	}
+
+	public void setIsArtificial(boolean isArtificial){
+		this.isArtificial = isArtificial;
+	}
+
+	public boolean isArtificial(){
+		return this.isArtificial;
+	}
+
+
 	public T getNodeSource() {
 		return nodeSource;
 	}

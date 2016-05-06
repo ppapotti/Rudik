@@ -33,10 +33,12 @@ package asu.edu.neg_rule_miner.model.rdf.graph;
 import java.util.Map;
 import java.util.Set;
 
+import org.apache.commons.configuration.Configuration;
 import org.apache.commons.lang3.tuple.Pair;
 import org.apache.jena.ext.com.google.common.collect.Maps;
 import org.apache.jena.ext.com.google.common.collect.Sets;
 
+import asu.edu.neg_rule_miner.configuration.ConfigurationFacility;
 import asu.edu.neg_rule_miner.configuration.Constant;
 
 /**
@@ -51,16 +53,28 @@ import asu.edu.neg_rule_miner.configuration.Constant;
 
 public class Graph<T>{
 
+	int equality_types_number = -1;
+
 	public Graph(){
 		this.neighbours=Maps.newConcurrentMap();
-		this.edge2artificial = Maps.newConcurrentMap();
 		this.literal2lexicalForm = Maps.newHashMap();
 		this.examples = Sets.newHashSet();
 		this.node2types = Maps.newHashMap();
-	}
-	public Map<T,Set<Edge<T>>> neighbours;
 
-	public Map<Edge<T>,Boolean> edge2artificial;
+		Configuration config = ConfigurationFacility.getConfiguration();
+		//read number of threads if specified in the conf file
+		if(config.containsKey(Constant.CONF_NUM_THREADS)){
+			try{
+				equality_types_number = config.getInt(Constant.CONF_EQUALITY_TYPES_NUMBER);
+			}
+			catch(Exception e){
+				//do not set it
+			}
+		}
+
+	}
+
+	public Map<T,Set<Edge<T>>> neighbours;
 
 	public Map<T,String> literal2lexicalForm;
 
@@ -106,17 +120,13 @@ public class Graph<T>{
 		Set<Edge<T>> neighbours = this.neighbours.get(source);
 
 		neighbours.add(edge);
-		this.edge2artificial.put(edge, false);
 
 		if(bidirectional){
 			T end = edge.getNodeEnd();
 			Edge<T> inverseEdge = new Edge<T>(end, source, edge.getLabel());
+			inverseEdge.setIsArtificial(true);
 			neighbours = this.neighbours.get(end);
-			//do not add if inverse edge has been already added
-			if(!neighbours.contains(inverseEdge)){
-				neighbours.add(inverseEdge);
-				this.edge2artificial.put(inverseEdge, true);
-			}
+			neighbours.add(inverseEdge);
 		}
 
 		return true;
@@ -128,13 +138,6 @@ public class Graph<T>{
 
 	public Set<T> getNodes(){
 		return Sets.newHashSet(this.neighbours.keySet());
-	}
-
-
-	public boolean isArtifical(Edge<T> e){
-		Boolean isArtifical = this.edge2artificial.get(e);
-		return isArtifical!=null ? isArtifical : false;
-
 	}
 
 	public boolean isLiteral(T label){
@@ -264,7 +267,7 @@ public class Graph<T>{
 	public Set<T> getSameTypesNodes(Set<String> inputTypes, Set<T> startingNodes, int maxDistance){
 
 		Set<T> outputNodes = Sets.newHashSet();
-		if(inputTypes==null || inputTypes.size()==0)
+		if(inputTypes==null || inputTypes.size()==0 || this.equality_types_number==-1)
 			return outputNodes;
 
 		Set<T> toAnalyse = Sets.newHashSet();
@@ -275,7 +278,8 @@ public class Graph<T>{
 
 			otherNodeTypes = this.getTypes(oneStartingNode);
 			otherNodeTypes.retainAll(inputTypes);
-			if(otherNodeTypes.equals(inputTypes))
+			if(otherNodeTypes.equals(inputTypes) || 
+					(this.equality_types_number>0 && otherNodeTypes.size()>=this.equality_types_number))
 				outputNodes.add(oneStartingNode);
 
 			analysedNodes.add(oneStartingNode);
@@ -296,7 +300,8 @@ public class Graph<T>{
 							continue;
 						otherNodeTypes = this.getTypes(endingNode);
 						otherNodeTypes.retainAll(inputTypes);
-						if(otherNodeTypes.equals(inputTypes))
+						if(otherNodeTypes.equals(inputTypes) || 
+								(this.equality_types_number>0 && otherNodeTypes.size()>=this.equality_types_number))
 							outputNodes.add(endingNode);
 
 						if(!analysedNodes.contains(endingNode) && i+1 <maxDistance)

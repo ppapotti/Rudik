@@ -58,15 +58,21 @@ public class MultipleGraphHornRule<T> {
 
 		Set<MultipleGraphHornRule<T>> nextPlausibleRules = Sets.newHashSet();
 
-		//for debugging purpose, TO DELETE!
-		//		if(this.rules.size()==2&&this.rules.get(0).getRelation().equals("http://www.wikidata.org/prop/direct/P31")&&
-		//				this.rules.get(1).getRelation().equals("http://www.wikidata.org/prop/direct/P31"))
-		//			return nextPlausibleRules;
+		/**
+		 * FOR DEBUGGING PURPOSE AND AVOID OUT OF MEMORY
+		 */
+		if(this.rules.size()==2 &&
+				this.rules.get(0).getRelation().equals("http://yago-knowledge.org/resource/hasGender") &&
+				this.rules.get(1).getRelation().equals("http://yago-knowledge.org/resource/hasGender"))
+			return nextPlausibleRules;
+
+		if(this.rules.size()==2 &&
+				this.rules.get(0).getRelation().equals("http://www.wikidata.org/prop/direct/P31") &&
+				this.rules.get(1).getRelation().equals("http://www.wikidata.org/prop/direct/P31"))
+			return nextPlausibleRules;
+		/** */
 
 		this.initialiseBoundingVariable();
-
-		//		if(this.expandWithInequality())
-		//			this.addInequalityRelation(maxAtomThreshold);
 
 		boolean isLast = this.getLen()==maxAtomThreshold-1;
 		String obligedVariable = null;
@@ -103,7 +109,7 @@ public class MultipleGraphHornRule<T> {
 			for(Edge<T> e:neighbors){
 				for(Pair<T,T> oneCoveredExample:currentCoveredExamples){
 					boolean isNewVariable = false;
-					boolean isArtifical = g.isArtifical(e);
+					boolean isArtifical = e.isArtificial();
 					String newVariable = null;
 					if(node2example2variable.containsKey(e.getNodeEnd()))
 						newVariable = node2example2variable.get(e.getNodeEnd()).get(oneCoveredExample);
@@ -127,10 +133,6 @@ public class MultipleGraphHornRule<T> {
 					//TO DO: different check
 					if(currentVariable.equals(newVariable)&&!(e.getNodeEnd().equals(e.getNodeSource())))
 						continue;
-
-					//FOR DEBUGGING PURPOSE, TO DELETE!
-					//					if(!newRule.getRelation().equals("http://www.wikidata.org/prop/direct/P21") && !newRule.getRelation().equals("http://www.wikidata.org/prop/direct/P127"))
-					//						continue;
 
 					if(!rule2newVariable.containsKey(newRule))
 						rule2newVariable.put(newRule, isNewVariable);
@@ -276,7 +278,7 @@ public class MultipleGraphHornRule<T> {
 			return "Empty Rule";
 		String hornRule = "";
 		for(RuleAtom rule:rules){
-			hornRule+=rule+" ^ ";
+			hornRule+=rule+" & ";
 		}
 		return hornRule.substring(0,hornRule.length()-3);
 	}
@@ -428,7 +430,7 @@ public class MultipleGraphHornRule<T> {
 				notCoveredExamples.addAll(currentNode2examples.get(oneNode));
 				Set<Edge<T>> neighbours = g.getNeighbours(oneNode);
 				for(Edge<T> oneNeighbour:neighbours){
-					if(!oneNeighbour.getLabel().equals(relation) || g.isArtifical(oneNeighbour)!=isInverse)
+					if(!oneNeighbour.getLabel().equals(relation) || oneNeighbour.isArtificial()!=isInverse)
 						continue;
 
 					T endNode = oneNeighbour.getNodeEnd();
@@ -494,15 +496,6 @@ public class MultipleGraphHornRule<T> {
 
 	public Set<MultipleGraphHornRule<T>> nextOneHopPlausibleRules(int maxAtomThreshold, int minRuleSupport, String variable){
 
-		Set<RuleAtom> trial = Sets.newHashSet();
-		trial.add(new RuleAtom("object","http://dbpedia.org/ontology/birthYear","v0"));
-		trial.add(new RuleAtom("v0",">","v1"));
-
-		if(this.getRules().equals(trial)){
-			System.out.println("ciao");
-		}
-
-
 		Set<MultipleGraphHornRule<T>> nextPlausibleRules = Sets.newHashSet();
 		if(!variable.equals(START_NODE)&&!variable.equals(END_NODE))
 			return nextPlausibleRules;
@@ -542,7 +535,7 @@ public class MultipleGraphHornRule<T> {
 						continue;
 
 					RuleAtom newRule = null;
-					if(this.g.isArtifical(oneNeighbour))
+					if(oneNeighbour.isArtificial())
 						newRule= new RuleAtom(currentVariable, oneNeighbour.getLabel(), variable);
 					else
 						newRule= new RuleAtom(variable, oneNeighbour.getLabel(), currentVariable);
@@ -604,58 +597,21 @@ public class MultipleGraphHornRule<T> {
 		return true;
 	}
 
-	private void addInequalityRelation(int maxRulesLength){
-		System.out.println("Adding inequality relations...");
-		boolean containsStart = false;
-		boolean containsEnd = false;
-		for(RuleAtom oneAtom:this.rules){
-			if(oneAtom.getSubject().equals(START_NODE)||oneAtom.getObject().equals(START_NODE))
-				containsStart = true;
-			if(oneAtom.getSubject().equals(END_NODE)||oneAtom.getObject().equals(END_NODE))
-				containsEnd = true;
-		}
-
-		if(this.currentNode2examples==null)
-			this.initialiseBoundingVariable();
-
-
-		Set<T> targetNodes = Sets.newHashSet();
-		for(T currentNode:this.currentNode2examples.keySet()){
-			targetNodes.clear();
-			Set<Pair<T,T>> currentTargetExamples = this.currentNode2examples.get(currentNode);
-			for(Pair<T,T> oneExample:currentTargetExamples){
-				if(!containsStart)
-					targetNodes.add(oneExample.getLeft());
-				if(!containsEnd)
-					targetNodes.add(oneExample.getRight());
-			}
-
-			Set<T> inequalityNodes = this.g.getSameTypesNodes(this.g.getTypes(currentNode), targetNodes, maxRulesLength-this.rules.size()-1);
-			for(T inequalNode:inequalityNodes){
-				if(!inequalNode.equals(currentNode))
-					this.g.addEdge(currentNode, inequalNode, Constant.DIFF_REL, true);
-			}
-
-		}
-		System.out.println("..inequalities added.");
-	}
-	
 	/**
 	 * Read a rule atom from a string representation
 	 * @param ruleString
 	 * @return
 	 */
 	public static Set<RuleAtom> readHornRule(String ruleString){
-		String []atomString = ruleString.split(" ^ ");
+		String []atomString = ruleString.split(" & ");
 		Set<RuleAtom> hornRule = Sets.newHashSet();
 		for(String oneAtomString:atomString){
 			String relation = oneAtomString.substring(0,oneAtomString.indexOf("("));
-			oneAtomString.replaceAll(relation+"(", "");
-			oneAtomString.substring(0,oneAtomString.length()-1);
+			oneAtomString = oneAtomString.substring(relation.length()+1,oneAtomString.length()-1);
 			RuleAtom oneAtom = new RuleAtom(oneAtomString.split(",")[0], relation, oneAtomString.split(",")[1]);
 			hornRule.add(oneAtom);
 		}
-		
+
 		return hornRule;
 	}
 

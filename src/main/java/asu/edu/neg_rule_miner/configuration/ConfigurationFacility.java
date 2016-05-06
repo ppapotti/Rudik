@@ -21,29 +21,38 @@ public class ConfigurationFacility {
 	private final static Logger LOGGER = LoggerFactory.getLogger(ConfigurationFacility.class.getName());
 
 	public synchronized static Configuration getConfiguration(){
-		
-
-		if(instance == null){
-			BasicConfigurator.configure(new NullAppender());
-
-			Configuration config = null;
-			try {
-				config = new XMLConfiguration(Constant.CONF_FILE);
-			} catch (ConfigurationException e) {
-				throw new RuleMinerException("Unable to read conf file at ''"+
-						Constant.CONF_FILE, e);
-			}
-			instance = config;
-			//read the logger properties
-			String logFile = config.getString(Constant.CONF_LOGGER);
-			if(logFile != null)
-				PropertyConfigurator.configure(logFile);
-		}
+		if(instance == null)
+			initialiseConfiguration(Constant.CONF_FILE);
 		return instance;
-
 	}
-	
-	public SparqlExecutor getSparqlExecutor(){
+
+	/**
+	 * Set the global configuration file to the input file name
+	 * @param confFileName
+	 */
+	public static void setConfigurationFile(String confFileName){
+		initialiseConfiguration(confFileName);
+	}
+
+
+	private static void initialiseConfiguration(String confFileName){
+		BasicConfigurator.configure(new NullAppender());
+
+		Configuration config = null;
+		try {
+			config = new XMLConfiguration(confFileName);
+		} catch (ConfigurationException e) {
+			throw new RuleMinerException("Unable to read conf file at ''"+
+					Constant.CONF_FILE, e);
+		}
+		instance = config;
+		//read the logger properties
+		String logFile = config.getString(Constant.CONF_LOGGER);
+		if(logFile != null)
+			PropertyConfigurator.configure(logFile);
+	}
+
+	public static SparqlExecutor getSparqlExecutor(){
 
 		if(!ConfigurationFacility.getConfiguration().containsKey(Constant.CONF_SPARQL_ENGINE))
 			throw new RuleMinerException("Sparql engine parameters not found in the configuration file.", 
