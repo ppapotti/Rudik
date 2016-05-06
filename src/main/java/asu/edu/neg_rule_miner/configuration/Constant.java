@@ -17,5 +17,7 @@ public class Constant {
 	public static String CONF_THRESHOLD = "naive.runtime.threshold";
 	public static String CONF_MAX_RULE_LEN = "naive.runtime.max_rule_lenght";
 	public static String CONF_SPARQL_ENGINE = "naive.sparql";
+	public static String CONF_EQUALITY_TYPES_NUMBER = "naive.disequality_relation.equality_types_number";
+	
 
 }

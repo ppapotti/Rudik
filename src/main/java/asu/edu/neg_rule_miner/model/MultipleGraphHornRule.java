@@ -58,6 +58,20 @@ public class MultipleGraphHornRule<T> {
 
 		Set<MultipleGraphHornRule<T>> nextPlausibleRules = Sets.newHashSet();
 
+		/**
+		 * FOR DEBUGGING PURPOSE AND AVOID OUT OF MEMORY
+		 */
+		if(this.rules.size()==2 &&
+				this.rules.get(0).getRelation().equals("http://yago-knowledge.org/resource/hasGender") &&
+				this.rules.get(1).getRelation().equals("http://yago-knowledge.org/resource/hasGender"))
+			return nextPlausibleRules;
+
+		if(this.rules.size()==2 &&
+				this.rules.get(0).getRelation().equals("http://www.wikidata.org/prop/direct/P31") &&
+				this.rules.get(1).getRelation().equals("http://www.wikidata.org/prop/direct/P31"))
+			return nextPlausibleRules;
+		/** */
+
 		this.initialiseBoundingVariable();
 
 		boolean isLast = this.getLen()==maxAtomThreshold-1;
@@ -95,7 +109,7 @@ public class MultipleGraphHornRule<T> {
 			for(Edge<T> e:neighbors){
 				for(Pair<T,T> oneCoveredExample:currentCoveredExamples){
 					boolean isNewVariable = false;
-					boolean isArtifical = g.isArtifical(e);
+					boolean isArtifical = e.isArtificial();
 					String newVariable = null;
 					if(node2example2variable.containsKey(e.getNodeEnd()))
 						newVariable = node2example2variable.get(e.getNodeEnd()).get(oneCoveredExample);
@@ -416,7 +430,7 @@ public class MultipleGraphHornRule<T> {
 				notCoveredExamples.addAll(currentNode2examples.get(oneNode));
 				Set<Edge<T>> neighbours = g.getNeighbours(oneNode);
 				for(Edge<T> oneNeighbour:neighbours){
-					if(!oneNeighbour.getLabel().equals(relation) || g.isArtifical(oneNeighbour)!=isInverse)
+					if(!oneNeighbour.getLabel().equals(relation) || oneNeighbour.isArtificial()!=isInverse)
 						continue;
 
 					T endNode = oneNeighbour.getNodeEnd();
@@ -521,7 +535,7 @@ public class MultipleGraphHornRule<T> {
 						continue;
 
 					RuleAtom newRule = null;
-					if(this.g.isArtifical(oneNeighbour))
+					if(oneNeighbour.isArtificial())
 						newRule= new RuleAtom(currentVariable, oneNeighbour.getLabel(), variable);
 					else
 						newRule= new RuleAtom(variable, oneNeighbour.getLabel(), currentVariable);

@@ -63,7 +63,7 @@ public class QuerySparqlRemoteEndpointTest {
 		Set<String> totalNodes = Sets.newHashSet();
 		totalNodes.add(entity);
 		for(Edge<String> edge:neighbours){
-			if(this.inputGraph.isArtifical(edge))
+			if(edge.isArtificial())
 				actualObjectRel++;
 			else
 				actualSubjectRel++;
@@ -136,7 +136,7 @@ public class QuerySparqlRemoteEndpointTest {
 
 		edge = new Edge<String>(secondEntityLiteral,secondEntityNode,secondRelation);
 		Assert.assertTrue(this.inputGraph.getNeighbours(secondEntityLiteral).contains(edge));
-		Assert.assertTrue(this.inputGraph.isArtifical(edge));
+		Assert.assertTrue(edge.isArtificial());
 	}
 
 }

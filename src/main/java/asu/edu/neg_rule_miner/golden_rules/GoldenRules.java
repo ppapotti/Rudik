@@ -69,7 +69,7 @@ public class GoldenRules {
 						resultPairs= exec.executeHornRuleQuery(rules, typeSubject, typeObject);
 					}
 					catch(Exception e){
-						resultPairs = exec.executeExpensiveHornRuleQuery(rules, typeSubject, typeObject);
+						//deal with the exception
 					}
 				}
 				

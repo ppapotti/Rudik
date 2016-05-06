@@ -57,7 +57,6 @@ public class Graph<T>{
 
 	public Graph(){
 		this.neighbours=Maps.newConcurrentMap();
-		this.edge2artificial = Maps.newConcurrentMap();
 		this.literal2lexicalForm = Maps.newHashMap();
 		this.examples = Sets.newHashSet();
 		this.node2types = Maps.newHashMap();
@@ -76,8 +75,6 @@ public class Graph<T>{
 	}
 
 	public Map<T,Set<Edge<T>>> neighbours;
-
-	public Map<Edge<T>,Boolean> edge2artificial;
 
 	public Map<T,String> literal2lexicalForm;
 
@@ -123,17 +120,13 @@ public class Graph<T>{
 		Set<Edge<T>> neighbours = this.neighbours.get(source);
 
 		neighbours.add(edge);
-		this.edge2artificial.put(edge, false);
 
 		if(bidirectional){
 			T end = edge.getNodeEnd();
 			Edge<T> inverseEdge = new Edge<T>(end, source, edge.getLabel());
+			inverseEdge.setIsArtificial(true);
 			neighbours = this.neighbours.get(end);
-			//do not add if inverse edge has been already added
-			if(!neighbours.contains(inverseEdge)){
-				neighbours.add(inverseEdge);
-				this.edge2artificial.put(inverseEdge, true);
-			}
+			neighbours.add(inverseEdge);
 		}
 
 		return true;
@@ -145,13 +138,6 @@ public class Graph<T>{
 
 	public Set<T> getNodes(){
 		return Sets.newHashSet(this.neighbours.keySet());
-	}
-
-
-	public boolean isArtifical(Edge<T> e){
-		Boolean isArtifical = this.edge2artificial.get(e);
-		return isArtifical!=null ? isArtifical : false;
-
 	}
 
 	public boolean isLiteral(T label){
