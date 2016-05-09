@@ -25,7 +25,7 @@ Given the body $r_{body}$ of a Horn Rule $r$, we denote by $r^{*}_{body}$ the \e
 
 Given a KB $K$, a set of pair of entities $G$ from $K$ (generation set), a set of pair of entities $V$ from $K$ (validation set) where $G \cap V = \emptyset$, and a set of Horn Rules $R=\{r_1,r_2,\cdots,r_n\}$, we define the \emph{cumulative score} $s(R,G,V)$ as the function:
 \begin{equation*}
--\alpha \cdot \frac{\mid\bigcup\limits_{r_i \in R} C_{r_i}(G)\mid}{\mid G \mid} +\beta \cdot \sum_{r_i \in R}\frac{\mid C_{r_i}(V) \mid}{\mid U_{r_i}(V)\mid}  -\gamma \cdot \frac{\mid\bigcup\limits_{r_i \in R} U_{r_i}(V)\mid}{\mid V \mid}
+	\alpha \cdot \bigg(1-\frac{\mid\bigcup\limits_{r_i \in R} C_{r_i}(G)\mid}{\mid G \mid}\bigg) +\beta \cdot \sum_{r_i \in R}\frac{\mid C_{r_i}(V) \mid}{\mid U_{r_i}(V)\mid}  +\gamma \cdot \bigg(1-\frac{\mid\bigcup\limits_{r_i \in R} U_{r_i}(V)\mid}{\mid V \mid}\bigg)
 \end{equation*}
 
 \subsection{Problem Definition}
