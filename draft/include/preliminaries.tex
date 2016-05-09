@@ -15,7 +15,7 @@ Given the body $r_{body}$ of a Horn Rule $r$, we denote by $r^{*}_{body}$ the \e
 
 \begin{myExample}
 	Given the rule \emph{$r=\texttt{hasChild(}a,v_0\texttt{)} $ $\wedge \texttt{hasChild(}b,v_0\texttt{)}$} and a KB $K$, we denot by $E$ the set of all possible pairs of entities in $K$.
-	 The coverage of $r$ over $E$ $(C_r(E))$ is the set of all pairs of entities $(x,y)$ where both $x$ and $y$ are in relation \emph{\texttt{hasChild}} with the same entity $v_0$, while the unbounded coverage of $r$ over $E$ $(U_r(E))$ is the set of all pairs of entities $(x,y)$ where $x$ is in relation \emph{\texttt{hasChild}} with an entity $v_1$ and $y$ is in relation \emph{\texttt{hasChild}} with an entity $v_2$, and not necesserly $v_1 = v_2$. 
+	 The coverage of $r$ over $E$ $(C_r(E))$ is the set of all pairs of entities $(x,y)$ where both $x$ and $y$ are in relation \emph{\texttt{hasChild}} with the same entity $v_0$, while the unbounded coverage of $r$ over $E$ $(U_r(E))$ is the set of all pairs of entities $(x,y)$ where $x$ is in relation \emph{\texttt{hasChild}} with an entity $v_1$ and $y$ is in relation \emph{\texttt{hasChild}} with an entity $v_2$, and not necessarily $v_1 = v_2$. 
 \end{myExample}
 
 \subsection{Scoring Function}
@@ -34,6 +34,6 @@ Given a KB $K$, a generation set $G$ and a validation set $V$, where both $G$ an
 R^* = \min\limits_{R}\{s(R,G,V)\}
 \end{equation*}
 \begin{itemize}
-\item \textbf{Optimal Solution.} Generate universe of all possible rules $U$ and solve an integer linear programming problem. We have a integer variable $x_r$ for each rule in $U$, $1$ denotes the rule is in the optimal output, $0$ the rule is not. The objective function of the problem is the minimisation function defined above;
-\item \textbf{Greedy Algorithm.} Best if we can prove that the optimal problem is NP hard, but even if we cannot we can always argue that computing the optimal solution is expensive since we have to generate all possible rules. In the greedy approach, at each iteration, we choose the rule that gives the smallest contribution to the cumulative score (since the object is to minimise). Greedy algorithm will not produce the optimal solution in some circumstances, but it does not require the generation of all the rules.
+\item \textbf{Optimal Solution.} Generate universe of all possible rules $U$ and solve an integer linear programming problem. We have a integer variable $x_r$ for each rule in $U$, $1$ denotes the rule is in the optimal output, $0$ the rule is not. The objective function of the problem is the minimization function defined above;
+\item \textbf{Greedy Algorithm.} Best if we can prove that the optimal problem is NP hard, but even if we cannot we can always argue that computing the optimal solution is expensive since we have to generate all possible rules. In the greedy approach, at each iteration, we choose the rule that gives the smallest contribution to the cumulative score (since the object is to minimize). Greedy algorithm will not produce the optimal solution in some circumstances, but it does not require the generation of all the rules.
 \end{itemize}
