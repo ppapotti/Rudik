@@ -1,16 +1,39 @@
 \section{Preliminaries and Definitions}
-Talk about KBs.
+{\color{red} Talk about KBs.}
 
 \subsection{Language}
-Horn Rule, with the restriction of having each variables appearing twice.
-Extension of predicates with inequalities.
+{\color{red} Horn Rule, with the restriction of having each variables appearing twice.
+Extension of predicates with inequalities.}
+
+A Horn Rule $r$ has the form $A_1 \wedge A_2 \wedge \cdots A_n \Rightarrow r(a,b)$, where  $A_1 \wedge A_2 \wedge \cdots \wedge A_n = r_{body}$ is the \emph{body} of the rule.
 
 \subsection{Coverage}
-Given a set of examples, talk about coverage and relative coverage of a rule.
+Given a pair of entities $(x,y)$ from the KB and a Horn Rule $r$, we say that $r_{body}$ \emph{covers} $(x,y)$ if
+$(x,y) \models r_{body}$. In other words, given a Horn Rule $r = r_{body} \Rightarrow r(a,b)$, $r_{body}$ covers a pair of entities $(x,y)$ iff $r_{body}$ can be instantiated over the KB by substituting $a$ with $x$ and $b$ with $y$. Given a set of pair of entities $E = \{(x_1,y_1),(x_2,y_2),\cdots,(x_n,y_n)\}$ and a rule $r$, we denote by $C_r(E)$ the \emph{coverage} of $r_{body}$ over $E$ as the set of elements in $E$ covered by $r$, $C_r(E)=\{(x,y) \in E | (x,y) \models r_{body}\}$.
+
+Given the body $r_{body}$ of a Horn Rule $r$, we denote by $r^{*}_{body}$ the \emph{unbounded body} of $r$. The unbounded body of a rule is the set of all atoms in $r_{body}$ that contains either variable $a$ or variable $b$, and where the other variable of the atom is substituted with another unique variable. As an example, given $r_{body} = rel_1(a,v_0) \wedge rel_2(b,v_0)$, $r^{*}_{body} = rel_1(a,v_1) \wedge rel_2(b,v_2)$. Given a set of pair of entities $E = \{(x_1,y_1),(x_2,y_2),\cdots,(x_n,y_n)\}$ and a rule $r$, we denote by $U_r(E)$ the \emph{unbounded coverage} of $r^{*}_{body}$ over $E$ as the set of elements in $E$ covered by $r^{*}_{body}$, $U_r(E)=\{(x,y) \in E | (x,y) \models r^{*}_{body}\}$.
+
+\begin{myExample}
+	Given the rule \emph{$r=\texttt{hasChild(}a,v_0\texttt{)} $ $\wedge \texttt{hasChild(}b,v_0\texttt{)}$} and a KB $K$, we denot by $E$ the set of all possible pairs of entities in $K$.
+	 The coverage of $r$ over $E$ $(C_r(E))$ is the set of all pairs of entities $(x,y)$ where both $x$ and $y$ are in relation \emph{\texttt{hasChild}} with the same entity $v_0$, while the unbounded coverage of $r$ over $E$ $(U_r(E))$ is the set of all pairs of entities $(x,y)$ where $x$ is in relation \emph{\texttt{hasChild}} with an entity $v_1$ and $y$ is in relation \emph{\texttt{hasChild}} with an entity $v_2$, and not necesserly $v_1 = v_2$. 
+\end{myExample}
 
 \subsection{Scoring Function}
-Given a generation and a validation set, define score for a rule and cumulative score for a set of rules.
+
+{\color{red} Introduce red-blue set cover as a possible solution, and
+	say why it is not appropriate.}
+
+Given a KB $K$, a set of pair of entities $G$ from $K$ (generation set), a set of pair of entities $V$ from $K$ (validation set) where $G \cap V = \emptyset$, and a set of Horn Rules $R=\{r_1,r_2,\cdots,r_n\}$, we define the \emph{cumulative score} $s(R,G,V)$ as the function:
+\begin{equation*}
+-\alpha \cdot \frac{\mid\bigcup\limits_{r_i \in R} C_{r_i}(G)\mid}{\mid G \mid} +\beta \cdot \sum_{r_i \in R}\frac{\mid C_{r_i}(V) \mid}{\mid U_{r_i}(V)\mid}  -\gamma \cdot \frac{\mid\bigcup\limits_{r_i \in R} U_{r_i}(V)\mid}{\mid V \mid}
+\end{equation*}
 
 \subsection{Problem Definition}
-Introduce red-blue set cover as a possible solutio, and say why it is not appropriate.
-Define the problem as computing the set that miminizes the cumulative scoring function.
+Given a KB $K$, a generation set $G$ and a validation set $V$, where both $G$ and $V$ are sets of pair of entities from $K$, an optimal set of rules $R^*$ is the set of rules that minimizes the cumulative score:
+\begin{equation*}
+R^* = \min\limits_{R}\{s(R,G,V)\}
+\end{equation*}
+\begin{itemize}
+\item \textbf{Optimal Solution.} Generate universe of all possible rules $U$ and solve an integer linear programming problem. We have a integer variable $x_r$ for each rule in $U$, $1$ denotes the rule is in the optimal output, $0$ the rule is not. The objective function of the problem is the minimisation function defined above;
+\item \textbf{Greedy Algorithm.} Best if we can prove that the optimal problem is NP hard, but even if we cannot we can always argue that computing the optimal solution is expensive since we have to generate all possible rules. In the greedy approach, at each iteration, we choose the rule that gives the smallest contribution to the cumulative score (since the object is to minimise). Greedy algorithm will not produce the optimal solution in some circumstances, but it does not require the generation of all the rules.
+\end{itemize}
