@@ -11,10 +11,11 @@ A Horn Rule $r$ has the form $A_1 \wedge A_2 \wedge \cdots A_n \Rightarrow r(a,b
 Given a pair of entities $(x,y)$ from the KB and a Horn Rule $r$, we say that $r_{body}$ \emph{covers} $(x,y)$ if
 $(x,y) \models r_{body}$. In other words, given a Horn Rule $r = r_{body} \Rightarrow r(a,b)$, $r_{body}$ covers a pair of entities $(x,y)$ iff $r_{body}$ can be instantiated over the KB by substituting $a$ with $x$ and $b$ with $y$. Given a set of pair of entities $E = \{(x_1,y_1),(x_2,y_2),\cdots,(x_n,y_n)\}$ and a rule $r$, we denote by $C_r(E)$ the \emph{coverage} of $r_{body}$ over $E$ as the set of elements in $E$ covered by $r$, $C_r(E)=\{(x,y) \in E | (x,y) \models r_{body}\}$.
 
-Given the body $r_{body}$ of a Horn Rule $r$, we denote by $r^{*}_{body}$ the \emph{unbounded body} of $r$. The unbounded body of a rule is the set of all atoms in $r_{body}$ that contains either variable $a$ or variable $b$, and where the other variable of the atom is substituted with another unique variable. As an example, given $r_{body} = rel_1(a,v_0) \wedge rel_2(b,v_0)$, $r^{*}_{body} = rel_1(a,v_1) \wedge rel_2(b,v_2)$. Given a set of pair of entities $E = \{(x_1,y_1),(x_2,y_2),\cdots,(x_n,y_n)\}$ and a rule $r$, we denote by $U_r(E)$ the \emph{unbounded coverage} of $r^{*}_{body}$ over $E$ as the set of elements in $E$ covered by $r^{*}_{body}$, $U_r(E)=\{(x,y) \in E | (x,y) \models r^{*}_{body}\}$.
+Given the body $r_{body}$ of a Horn Rule $r$, we denote by $r^{*}_{body}$ the \emph{unbounded body} of $r$. The unbounded body of a rule is the set of all atoms in $r_{body}$ that contains either variable $a$ or variable $b$, and where the other variable of the atom is substituted with another unique variable. As an example, given $r_{body} = rel_1(a,v_0) \wedge rel_2(b,v_0)$, $r^{*}_{body} = rel_1(a,v_1) \wedge rel_2(b,v_2)$. \paolo{I suggest to have $rel_3(a,b)$ to avoid the confusion raised by cartesian product}
+Given a set of pair of entities $E = \{(x_1,y_1),(x_2,y_2),\cdots,(x_n,y_n)\}$ and a rule $r$, we denote by $U_r(E)$ the \emph{unbounded coverage} of $r^{*}_{body}$ over $E$ as the set of elements in $E$ covered by $r^{*}_{body}$, $U_r(E)=\{(x,y) \in E | (x,y) \models r^{*}_{body}\}$.
 
 \begin{myExample}
-	Given the rule \emph{$r=\texttt{hasChild(}a,v_0\texttt{)} $ $\wedge \texttt{hasChild(}b,v_0\texttt{)}$} and a KB $K$, we denot by $E$ the set of all possible pairs of entities in $K$.
+	Given the rule \emph{$r=\texttt{hasChild(}a,v_0\texttt{)} $ $\wedge \texttt{hasChild(}b,v_0\texttt{)}$} and a KB $K$, we denote by $E$ the set of all possible pairs of entities in $K$.
 	 The coverage of $r$ over $E$ $(C_r(E))$ is the set of all pairs of entities $(x,y)$ where both $x$ and $y$ are in relation \emph{\texttt{hasChild}} with the same entity $v_0$, while the unbounded coverage of $r$ over $E$ $(U_r(E))$ is the set of all pairs of entities $(x,y)$ where $x$ is in relation \emph{\texttt{hasChild}} with an entity $v_1$ and $y$ is in relation \emph{\texttt{hasChild}} with an entity $v_2$, and not necessarily $v_1 = v_2$. 
 \end{myExample}
 
@@ -28,6 +29,8 @@ Given a KB $K$, a set of pair of entities $G$ from $K$ (generation set), a set o
 	\alpha \cdot \bigg(1-\frac{\mid\bigcup\limits_{r_i \in R} C_{r_i}(G)\mid}{\mid G \mid}\bigg) +\beta \cdot \sum_{r_i \in R}\frac{\mid C_{r_i}(V) \mid}{\mid U_{r_i}(V)\mid}  +\gamma \cdot \bigg(1-\frac{\mid\bigcup\limits_{r_i \in R} U_{r_i}(V)\mid}{\mid V \mid}\bigg)
 \end{equation*}
 
+\paolo{if we want to minimize it, it should be defined as a cost function}
+
 \subsection{Problem Definition}
 Given a KB $K$, a generation set $G$ and a validation set $V$, where both $G$ and $V$ are sets of pair of entities from $K$, an optimal set of rules $R^*$ is the set of rules that minimizes the cumulative score:
 \begin{equation*}
@@ -37,3 +40,27 @@ R^* = \min\limits_{R}\{s(R,G,V)\}
 \item \textbf{Optimal Solution.} Generate universe of all possible rules $U$ and solve an integer linear programming problem. We have a integer variable $x_r$ for each rule in $U$, $1$ denotes the rule is in the optimal output, $0$ the rule is not. The objective function of the problem is the minimization function defined above;
 \item \textbf{Greedy Algorithm.} Best if we can prove that the optimal problem is NP hard, but even if we cannot we can always argue that computing the optimal solution is expensive since we have to generate all possible rules. In the greedy approach, at each iteration, we choose the rule that gives the smallest contribution to the cumulative score (since the object is to minimize). Greedy algorithm will not produce the optimal solution in some circumstances, but it does not require the generation of all the rules.
 \end{itemize}
+
+\subsection{Alternative Problem Definition}
+
+Given a KB $K$ with $G$ and $V$, and a set of rules $R$ with the union of their bodies $B$, 
+a solution for the \emph{exact discovery problem} is a subset $R'$ of $R$  s.t.
+$$R_{opt}=\underset{|R'|}{\operatorname{argmin}}(R'|(B'(K) = G) \wedge (B'(K) \cap V = \emptyset) )$$
+
+Discussion: this solution may not exist. This may lead to one query for each triple in $G$. We need more flexibility to account for errors in $G$ and $V$, this leads to better rules. We therefore introduce a cost function $c$ as defined above. \paolo{here goes the description of the three intuition behind the three components, why they are needed, etc. Show with example introduce in intro}
+
+We can now state the approximate version of the problem.
+
+
+Given a KB $K$ with $G$ and $V$, a set of rules $R$ with the union of their bodies $B$, and an $c$ cost function for $K$,
+a solution for the \emph{approximate discovery problem} is a subset $R'$ of $R$  s.t.
+
+$$R_{opt}=\underset{c(R')}{\operatorname{argmin}}(R'|(B'(K) \supseteq G)) )$$
+
+
+We can map this problem to the well-known weighted set cover problem, which is proven to be an NP-Complete problem~\cite{chvatal1979greedy}, where the universe is $G$ and the sets are all the possible queries over $K$.
+
+Since the set of all possible queries for $K$ is too big to enumerate, we solve the online variant of the above problem. \paolo{if offline problem is NP, online is at least NP; to be verified}
+
+
+
