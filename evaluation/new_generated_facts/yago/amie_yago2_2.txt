@@ -22281,7 +22281,7 @@ Rule 'diedIn(subject,f) & hasCapital(object,f)' produced:
 <Mieczysława_Ćwiklińska>	<isPoliticianOf>	<Polish_National_Government_(January_Uprising)> .
 <Gavin_Douglas>	<isPoliticianOf>	<England> .
 Rule 'diedIn(subject,f) & isLocatedIn(f,object)' produced:
-<Helen_Zelezny-Scholz>	<isPoliticianOf>	<Ciampino> .
+<Helen_Zelezny-Scholz>	<isPoliticianOf>	<Ciampino> .	false
 <David_Austin_Sayre>	<isPoliticianOf>	<Kentucky> .
 <Smedley_Butler>	<isPoliticianOf>	<Pennsylvania> .
 <Lenny_Fant>	<isPoliticianOf>	<Louisiana> .
@@ -22290,7 +22290,7 @@ Rule 'diedIn(subject,f) & isLocatedIn(f,object)' produced:
 <Edward_Andrews>	<isPoliticianOf>	<Los_Angeles_County,_California> .
 <Charles_B._Lore>	<isPoliticianOf>	<Delaware> .
 <Charles_Eliot_Norton>	<isPoliticianOf>	<Middlesex_County,_Massachusetts> .
-<Pope_Benedict_VI>	<isPoliticianOf>	<Ciampino> .
+<Pope_Benedict_VI>	<isPoliticianOf>	<Ciampino> .	false
 <Archduchess_Isabella_of_Austria>	<isPoliticianOf>	<Switzerland> .
 <Leonora_Corbett>	<isPoliticianOf>	<Netherlands> .
 <Ford_Madox_Ford>	<isPoliticianOf>	<France> .
@@ -22307,7 +22307,7 @@ Rule 'diedIn(subject,f) & isLocatedIn(f,object)' produced:
 <Ludwig_Wolff_(general)>	<isPoliticianOf>	<Baden-Württemberg> .
 <Aldo_Leopold>	<isPoliticianOf>	<Wisconsin> .
 <Antônio_Gonçalves_Teixeira_e_Sousa>	<isPoliticianOf>	<Brazil> .
-<Dennis_Michie>	<isPoliticianOf>	<Cuba> .
+<Dennis_Michie>	<isPoliticianOf>	<Cuba> .	false
 <Akiyama_Saneyuki>	<isPoliticianOf>	<Kanagawa_Prefecture> .
 <Richard_Gregory>	<isPoliticianOf>	<United_Kingdom> .
 <Julian_Scott>	<isPoliticianOf>	<New_Jersey> .
@@ -22318,19 +22318,19 @@ Rule 'diedIn(subject,f) & isLocatedIn(f,object)' produced:
 <Kurt_Kuhlmey>	<isPoliticianOf>	<North_Rhine-Westphalia> .
 <Norman_Jacob>	<isPoliticianOf>	<Lincolnshire> .
 <James_Lillywhite>	<isPoliticianOf>	<West_Sussex> .
-<Brigitte_Kuhlmann>	<isPoliticianOf>	<Great_Rift_Valley> .
+<Brigitte_Kuhlmann>	<isPoliticianOf>	<Great_Rift_Valley> .	false
 <Mir_Ali_Dost_Bugti>	<isPoliticianOf>	<Pakistan> .
 <Francis_Trevithick>	<isPoliticianOf>	<United_Kingdom> .
 <Charles_H._Voorhis>	<isPoliticianOf>	<New_Jersey> .
 <Maksimas_Katche>	<isPoliticianOf>	<Lithuania> .
 <Byron_M._Cutcheon>	<isPoliticianOf>	<Michigan> .
-<Pope_Agapetus_II>	<isPoliticianOf>	<Ciampino> .
+<Pope_Agapetus_II>	<isPoliticianOf>	<Ciampino> .	false
 <Mel_Bradford>	<isPoliticianOf>	<Texas> .
 <Boleslav_Vladimirovich_Likhterman>	<isPoliticianOf>	<Ukraine> .
 <Mario_Mattoli>	<isPoliticianOf>	<Ciampino> .
 <Grand_Duke_Nicholas_Nikolaevich_of_Russia_(1831–1891)>	<isPoliticianOf>	<Ukraine> .
 <Victor_Klemperer>	<isPoliticianOf>	<Saxony> .
-<Pope_Gregory_XI>	<isPoliticianOf>	<Ciampino> .
+<Pope_Gregory_XI>	<isPoliticianOf>	<Ciampino> .	false
 <Charles_Nagel>	<isPoliticianOf>	<Missouri> .
 <Mikhail_Tugan-Baranovsky>	<isPoliticianOf>	<Ukraine> .
 <Alexander_Radishchev>	<isPoliticianOf>	<Russia> .
@@ -22344,14 +22344,14 @@ Rule 'diedIn(subject,f) & isLocatedIn(f,object)' produced:
 <Monique_Wittig>	<isPoliticianOf>	<Arizona> .
 <Boris_Shamanov>	<isPoliticianOf>	<Russia> .
 <Lester_L._Bond>	<isPoliticianOf>	<Illinois> .
-<Thomas_Jones_(rugby_player)>	<isPoliticianOf>	<Wales> .
+<Thomas_Jones_(rugby_player)>	<isPoliticianOf>	<Wales> .	false
 <S._A._M._Wood>	<isPoliticianOf>	<Alabama> .
 <Cosmo_D'Angeli>	<isPoliticianOf>	<Ciampino> .
 <Lucius_Antonius_Saturninus>	<isPoliticianOf>	<Germany> .
 <Jeremiah_Boyle>	<isPoliticianOf>	<Kentucky> .
 <Arthur_Fitger>	<isPoliticianOf>	<Germany> .
 <Arthur_von_Briesen>	<isPoliticianOf>	<Baden-Württemberg> .
-<Robert_Cushman_(curator)>	<isPoliticianOf>	<Kentucky> .
+<Robert_Cushman_(curator)>	<isPoliticianOf>	<Kentucky> .	false
 <Katsuji_Matsumoto>	<isPoliticianOf>	<Shizuoka_Prefecture> .
 <Sarah_Clotworthy_Stevenson>	<isPoliticianOf>	<West_Virginia> .
 <Edward_Ludwig>	<isPoliticianOf>	<Los_Angeles_County,_California> .
@@ -22369,7 +22369,7 @@ Rule 'diedIn(subject,f) & isLocatedIn(f,object)' produced:
 <Godert_de_Ginkell,_1st_Earl_of_Athlone>	<isPoliticianOf>	<Netherlands> .
 <Paul_Bartholomew>	<isPoliticianOf>	<Pennsylvania> .
 <Rita_Meyer_(baseball)>	<isPoliticianOf>	<Missouri> .
-<Robert_Ewing_III>	<isPoliticianOf>	<Louisiana> .
+<Robert_Ewing_III>	<isPoliticianOf>	<Louisiana> .	false
 <Maylie_Scott>	<isPoliticianOf>	<California> .
 <Charles_Delucena_Meigs>	<isPoliticianOf>	<Pennsylvania> .
 <Hopkin_Maddock>	<isPoliticianOf>	<United_Kingdom> .
@@ -22400,7 +22400,7 @@ Rule 'diedIn(subject,f) & isLocatedIn(f,object)' produced:
 <Willem_Jacob_Luyten>	<isPoliticianOf>	<Minnesota> .
 <Norma_Talmadge>	<isPoliticianOf>	<Mojave_Desert> .
 <Dai_Fitzgerald>	<isPoliticianOf>	<United_Kingdom> .
-<William_Murphy_(Bishop_of_Saginaw)>	<isPoliticianOf>	<Michigan> .
+<William_Murphy_(Bishop_of_Saginaw)>	<isPoliticianOf>	<Michigan> .	false
 <John_Connors>	<isPoliticianOf>	<Greece> .
 <Cary_Odell>	<isPoliticianOf>	<California> .
 <Walter_B._Jones_(geologist)>	<isPoliticianOf>	<Alabama> .
@@ -22454,7 +22454,7 @@ Rule 'diedIn(subject,f) & isLocatedIn(f,object)' produced:
 <Mervyn_Stockwood>	<isPoliticianOf>	<Somerset> .
 <Benjamin_O._Davis,_Sr.>	<isPoliticianOf>	<Illinois> .
 <John_Little_McClellan>	<isPoliticianOf>	<Arkansas> .
-<Harry_Day_(rugby_player)>	<isPoliticianOf>	<Wales> .
+<Harry_Day_(rugby_player)>	<isPoliticianOf>	<Wales> .	false
 <Hoge_Workman>	<isPoliticianOf>	<Lee_County,_Florida> .
 <Rajmundo_Kunić>	<isPoliticianOf>	<Ciampino> .
 <Wild_Bill_Hickok>	<isPoliticianOf>	<South_Dakota> .
@@ -22469,7 +22469,7 @@ Rule 'diedIn(subject,f) & isLocatedIn(f,object)' produced:
 <Ted_Briggs>	<isPoliticianOf>	<United_Kingdom> .
 <Jackie_Condon>	<isPoliticianOf>	<Los_Angeles_County,_California> .
 <Joe_De_Santis>	<isPoliticianOf>	<Utah> .
-<Giovanni_Maria_Lancisi>	<isPoliticianOf>	<Ciampino> .
+<Giovanni_Maria_Lancisi>	<isPoliticianOf>	<Ciampino> .	false
 <Lewis_Croft>	<isPoliticianOf>	<Idaho> .
 <Farouk_of_Egypt>	<isPoliticianOf>	<Ciampino> .
 <Joseph_W._Tkach>	<isPoliticianOf>	<Los_Angeles_County,_California> .
@@ -22520,7 +22520,7 @@ Rule 'diedIn(subject,f) & isLocatedIn(f,object)' produced:
 <Friedrich_Bertram_Sixt_von_Armin>	<isPoliticianOf>	<Saxony-Anhalt> .
 <Frank_Daniel_Gerber>	<isPoliticianOf>	<Michigan> .
 <Willy_Marienfeld>	<isPoliticianOf>	<Romania> .
-<Big_Nose_Kate>	<isPoliticianOf>	<Arizona> .
+<Big_Nose_Kate>	<isPoliticianOf>	<Arizona> .	false
 <Pope_Benedict_I>	<isPoliticianOf>	<Ciampino> .
 <John_Chambers_(politician)>	<isPoliticianOf>	<Kentucky> .
 <Ray_Dandridge>	<isPoliticianOf>	<Brevard_County,_Florida> .
@@ -22535,15 +22535,15 @@ Rule 'diedIn(subject,f) & isLocatedIn(f,object)' produced:
 <Dick_Catledge>	<isPoliticianOf>	<Okaloosa_County,_Florida> .
 <Julia_Compton_Moore>	<isPoliticianOf>	<Alabama> .
 <Nan_Martin>	<isPoliticianOf>	<Los_Angeles_County,_California> .
-<Gustav_Ucicky>	<isPoliticianOf>	<Germany> .
+<Gustav_Ucicky>	<isPoliticianOf>	<Germany> .	false
 <Albion_P._Howe>	<isPoliticianOf>	<Middlesex_County,_Massachusetts> .
 <Louis_I_of_Hungary>	<isPoliticianOf>	<Piešťany> .
 <Valentine_Davies>	<isPoliticianOf>	<Los_Angeles_County,_California> .
 <Abraham_Gottlob_Werner>	<isPoliticianOf>	<Saxony> .
 <William_L._Lyons>	<isPoliticianOf>	<Wisconsin> .
 <Anthony_Wood>	<isPoliticianOf>	<South_East_England> .
-<William_F._Train>	<isPoliticianOf>	<California> .
-<Pietro_Bembo>	<isPoliticianOf>	<Ciampino> .
+<William_F._Train>	<isPoliticianOf>	<California> .	false
+<Pietro_Bembo>	<isPoliticianOf>	<Ciampino> .	false
 <Eleanor_of_England,_Countess_of_Bar>	<isPoliticianOf>	<Belgium> .
 <Albert_J._Friscia>	<isPoliticianOf>	<Ciampino> .
 <Claus_Clausen_(actor)>	<isPoliticianOf>	<North_Rhine-Westphalia> .
@@ -22581,10 +22581,10 @@ Rule 'diedIn(subject,f) & isLocatedIn(f,object)' produced:
 <Carl_Möhner>	<isPoliticianOf>	<Texas> .
 <Henry_John_Stephen_Smith>	<isPoliticianOf>	<South_East_England> .
 <Alec_Kessler>	<isPoliticianOf>	<Santa_Rosa_County,_Florida> .
-<Giorgione>	<isPoliticianOf>	<Venetian_Lagoon> .
+<Giorgione>	<isPoliticianOf>	<Venetian_Lagoon> .	false
 <Joseph_Warder>	<isPoliticianOf>	<Indiana> .
 <Patrick_Gilmore>	<isPoliticianOf>	<Missouri> .
-<Miles_Day>	<isPoliticianOf>	<France> .
+<Miles_Day>	<isPoliticianOf>	<France> .	false
 <Zora_G._Clevenger>	<isPoliticianOf>	<Indiana> .
 <Jacqueline_Logan>	<isPoliticianOf>	<Brevard_County,_Florida> .
 <Thurl_Ravenscroft>	<isPoliticianOf>	<Orange_County,_California> .
@@ -22604,12 +22604,12 @@ Rule 'diedIn(subject,f) & isLocatedIn(f,object)' produced:
 <William_Hale_Thompson>	<isPoliticianOf>	<Illinois> .
 <Dick_Metz>	<isPoliticianOf>	<Kansas> .
 <Ira_Baldwin>	<isPoliticianOf>	<Arizona> .
-<Ralph_Gibson_(fighter_pilot)>	<isPoliticianOf>	<Arizona> .
+<Ralph_Gibson_(fighter_pilot)>	<isPoliticianOf>	<Arizona> .	false
 <Elijah_Gates>	<isPoliticianOf>	<Missouri> .
 <Decatur_Dorsey>	<isPoliticianOf>	<New_Jersey> .
 <Bob_Orton>	<isPoliticianOf>	<Mojave_Desert> .
 <Pamela_May>	<isPoliticianOf>	<West_Midlands_(region)> .
-<Bob_Brown_(wrestler)>	<isPoliticianOf>	<Missouri> .
+<Bob_Brown_(wrestler)>	<isPoliticianOf>	<Missouri> .	false
 <Diponegoro>	<isPoliticianOf>	<Indonesia> .
 <John_Couey>	<isPoliticianOf>	<Duval_County,_Florida> .
 <William_K._Sebastian>	<isPoliticianOf>	<Tennessee> .
@@ -22617,14 +22617,14 @@ Rule 'diedIn(subject,f) & isLocatedIn(f,object)' produced:
 <Alex_Toth>	<isPoliticianOf>	<Los_Angeles_County,_California> .
 <John_Dement>	<isPoliticianOf>	<Illinois> .
 <Sandro_Ruffini>	<isPoliticianOf>	<Ciampino> .
-<Napoleon_Charles_Bonaparte>	<isPoliticianOf>	<Netherlands> .
+<Napoleon_Charles_Bonaparte>	<isPoliticianOf>	<Netherlands> .	false
 <Princess_Fawzia_Farouk_of_Egypt>	<isPoliticianOf>	<Switzerland> .
 <Benjamin_Ogle_Tayloe>	<isPoliticianOf>	<Ciampino> .
 <Ralph_D._Winter>	<isPoliticianOf>	<Los_Angeles_County,_California> .
 <Frederick_Luke>	<isPoliticianOf>	<Scotland> .
 <Jerauld_R._Gentry>	<isPoliticianOf>	<Virginia> .
 <Harry_Austin>	<isPoliticianOf>	<South_East_England> .
-<Princess_Feodora_of_Leiningen>	<isPoliticianOf>	<Baden-Württemberg> .
+<Princess_Feodora_of_Leiningen>	<isPoliticianOf>	<Baden-Württemberg> .	false
 <Hayashi_Fusao>	<isPoliticianOf>	<Kanagawa_Prefecture> .
 <James_Alexander_Smith>	<isPoliticianOf>	<North_Yorkshire> .
 <Charles_E._Townsend>	<isPoliticianOf>	<Michigan> .
@@ -22667,7 +22667,7 @@ Rule 'diedIn(subject,f) & isLocatedIn(f,object)' produced:
 <Alfred_Schwarzmann>	<isPoliticianOf>	<Lower_Saxony> .
 <William_L._Stoughton>	<isPoliticianOf>	<Michigan> .
 <Gabe_Cazares>	<isPoliticianOf>	<Pinellas_County,_Florida> .
-<Guglielmo_Marconi>	<isPoliticianOf>	<Ciampino> .
+<Guglielmo_Marconi>	<isPoliticianOf>	<Ciampino> .	false
 <Paolo_Emilio_Rondinini>	<isPoliticianOf>	<Ciampino> .
 <Ivan_Kotlyarevsky>	<isPoliticianOf>	<Ukraine> .
 <Nettie_McBirney>	<isPoliticianOf>	<Oklahoma> .
@@ -22678,7 +22678,7 @@ Rule 'diedIn(subject,f) & isLocatedIn(f,object)' produced:
 <James_Megeath>	<isPoliticianOf>	<Utah> .
 <Aspasia_Manos>	<isPoliticianOf>	<Venetian_Lagoon> .
 <Salvador_Laurel>	<isPoliticianOf>	<California> .
-<Harold_Scott_(director)>	<isPoliticianOf>	<New_Jersey> .
+<Harold_Scott_(director)>	<isPoliticianOf>	<New_Jersey> .	false
 <Roy_Marlin_Voris>	<isPoliticianOf>	<California> .
 <Myron_H._McCord>	<isPoliticianOf>	<Arizona> .
 <Emile_Norman>	<isPoliticianOf>	<California> .
@@ -22693,7 +22693,7 @@ Rule 'diedIn(subject,f) & isLocatedIn(f,object)' produced:
 <Jan_Hendrik_Hofmeyr_(1894–1948)>	<isPoliticianOf>	<South_Africa> .
 <Donald_P._Lay>	<isPoliticianOf>	<Minnesota> .
 <Eliel_Saarinen>	<isPoliticianOf>	<Michigan> .
-<Norman_Foster_(director)>	<isPoliticianOf>	<Los_Angeles_County,_California> .
+<Norman_Foster_(director)>	<isPoliticianOf>	<Los_Angeles_County,_California> .	false
 <Alex_Laidlaw>	<isPoliticianOf>	<West_Yorkshire> .
 <Horst_Frank>	<isPoliticianOf>	<Baden-Württemberg> .
 <Kamal-ol-molk>	<isPoliticianOf>	<Iran> .
@@ -22732,7 +22732,7 @@ Rule 'diedIn(subject,f) & isLocatedIn(f,object)' produced:
 <Wyatt_C._Hedrick>	<isPoliticianOf>	<Texas> .
 <Cecilia_Colledge>	<isPoliticianOf>	<Middlesex_County,_Massachusetts> .
 <Ronald_George_Wreyford_Norrish>	<isPoliticianOf>	<East_of_England> .
-<Frank_Faylen>	<isPoliticianOf>	<Los_Angeles_County,_California> .
+<Frank_Faylen>	<isPoliticianOf>	<Los_Angeles_County,_California> .	false
 <John_Blackner>	<isPoliticianOf>	<East_Midlands> .
 <Elsie_Inglis>	<isPoliticianOf>	<United_Kingdom> .
 <Max_Greenberg>	<isPoliticianOf>	<New_Jersey> .
@@ -22773,7 +22773,7 @@ Rule 'diedIn(subject,f) & isLocatedIn(f,object)' produced:
 <Plum_Mariko>	<isPoliticianOf>	<Hiroshima_Prefecture> .
 <Henry_IV,_Duke_of_Saxony>	<isPoliticianOf>	<Saxony> .
 <John_Thomson_Mason_(1787–1850)>	<isPoliticianOf>	<Texas> .
-<Gummo_Marx>	<isPoliticianOf>	<Riverside_County,_California> .
+<Gummo_Marx>	<isPoliticianOf>	<Riverside_County,_California> .	false
 <Yuri_Khukhrov>	<isPoliticianOf>	<Russia> .
 <Thomas_Forrester_(cricketer)>	<isPoliticianOf>	<East_Midlands> .
 <Lew_Wallace>	<isPoliticianOf>	<Indiana> .
@@ -22800,7 +22800,7 @@ Rule 'diedIn(subject,f) & isLocatedIn(f,object)' produced:
 <Jamal_Abro>	<isPoliticianOf>	<Pakistan> .
 <George_Washington_Buckner>	<isPoliticianOf>	<Indiana> .
 <Erich_Lorenz>	<isPoliticianOf>	<Germany> .
-<Dick_Cusack>	<isPoliticianOf>	<Illinois> .
+<Dick_Cusack>	<isPoliticianOf>	<Illinois> .	false
 <Jean_Weaver>	<isPoliticianOf>	<Illinois> .
 <Robert_Eyssen>	<isPoliticianOf>	<Baden-Württemberg> .
 <Dennis_O'Keefe>	<isPoliticianOf>	<Los_Angeles_County,_California> .
@@ -22816,14 +22816,14 @@ Rule 'diedIn(subject,f) & isLocatedIn(f,object)' produced:
 <Vincent_Ellis_McKelvey>	<isPoliticianOf>	<Osceola_County,_Florida> .
 <Harley_Earl>	<isPoliticianOf>	<Palm_Beach_County,_Florida> .
 <Bill_Musselman>	<isPoliticianOf>	<Minnesota> .
-<Pope_Marcellus_I>	<isPoliticianOf>	<Ciampino> .
+<Pope_Marcellus_I>	<isPoliticianOf>	<Ciampino> .	false
 <Warith_Deen_Mohammed>	<isPoliticianOf>	<Illinois> .
 <Paris_Gibson>	<isPoliticianOf>	<Montana> .
 <Kurt_Dobratz>	<isPoliticianOf>	<Germany> .
 <Kenji_Miyazawa>	<isPoliticianOf>	<Iwate_Prefecture> .
 <James_Curtiss>	<isPoliticianOf>	<Illinois> .
 <Eleazer_A._Paine>	<isPoliticianOf>	<New_Jersey> .
-<Taisia_Afonina>	<isPoliticianOf>	<Russia> .
+<Taisia_Afonina>	<isPoliticianOf>	<Russia> .	false
 <Pope_Honorius_III>	<isPoliticianOf>	<Ciampino> .
 <Thomas_Bramwell_Welch>	<isPoliticianOf>	<New_Jersey> .
 <Asif_Maharammov>	<isPoliticianOf>	<Ukraine> .
@@ -22852,12 +22852,12 @@ Rule 'diedIn(subject,f) & isLocatedIn(f,object)' produced:
 <Aristides_Agramonte>	<isPoliticianOf>	<Louisiana> .
 <Robert_Bray>	<isPoliticianOf>	<California> .
 <Clark_Ashton_Smith>	<isPoliticianOf>	<California> .
-<Vladimir_Gardin>	<isPoliticianOf>	<Russia> .
+<Vladimir_Gardin>	<isPoliticianOf>	<Russia> .	false
 <Sarah_Knauss>	<isPoliticianOf>	<Pennsylvania> .
 <Viktor_Kurmanovych>	<isPoliticianOf>	<Ukraine> .
 <Wayne_Brenkert>	<isPoliticianOf>	<Lake_County,_Florida> .
 <Fred_A._Busse>	<isPoliticianOf>	<Illinois> .
-<J._J._Thomson>	<isPoliticianOf>	<East_of_England> .
+<J._J._Thomson>	<isPoliticianOf>	<East_of_England> .	false
 <Princess_Louise_of_Orléans>	<isPoliticianOf>	<Spain> .
 <Elwood_Haynes>	<isPoliticianOf>	<Indiana> .
 <Guy_Bignell>	<isPoliticianOf>	<Switzerland> .
@@ -22865,7 +22865,7 @@ Rule 'diedIn(subject,f) & isLocatedIn(f,object)' produced:
 <Harold_Stirling_Vanderbilt>	<isPoliticianOf>	<Rhode_Island> .
 <Pat_Kronebusch>	<isPoliticianOf>	<Minnesota> .
 <Sara_Sothern>	<isPoliticianOf>	<Riverside_County,_California> .
-<Allison_Kolb>	<isPoliticianOf>	<Louisiana> .
+<Allison_Kolb>	<isPoliticianOf>	<Louisiana> .	true
 <Bartolomé_Esteban_Murillo>	<isPoliticianOf>	<Spain> .
 <William_D._Washington>	<isPoliticianOf>	<Virginia> .
 <Robert_C._Belloni>	<isPoliticianOf>	<California> .
@@ -22907,7 +22907,7 @@ Rule 'diedIn(subject,f) & isLocatedIn(f,object)' produced:
 <Amedeo_Guillet>	<isPoliticianOf>	<Ciampino> .
 <Prince_Christian_Oscar_of_Hanover>	<isPoliticianOf>	<Switzerland> .
 <Princess_Maria_Carolina_of_Savoy>	<isPoliticianOf>	<Saxony> .
-<Opal_Hill>	<isPoliticianOf>	<Missouri> .
+<Opal_Hill>	<isPoliticianOf>	<Missouri> .	false
 <Walter_C._Whitaker>	<isPoliticianOf>	<Kentucky> .
 <Alfred_Lamert_Dickens>	<isPoliticianOf>	<North_West_England> .
 <Charles_Ezra_Greene>	<isPoliticianOf>	<Michigan> .
@@ -22946,7 +22946,7 @@ Rule 'diedIn(subject,f) & isLocatedIn(f,object)' produced:
 <Antonio_Salandra>	<isPoliticianOf>	<Ciampino> .
 <Frank_A._Capell>	<isPoliticianOf>	<New_Jersey> .
 <James_Whitford_Bashford>	<isPoliticianOf>	<Los_Angeles_County,_California> .
-<Bob_Haney>	<isPoliticianOf>	<San_Diego_County,_California> .
+<Bob_Haney>	<isPoliticianOf>	<San_Diego_County,_California> .	false
 <Pope_Clement_XI>	<isPoliticianOf>	<Ciampino> .
 <Desiderius_Erasmus>	<isPoliticianOf>	<Switzerland> .
 <Nathan_Goff,_Jr.>	<isPoliticianOf>	<West_Virginia> .
@@ -23041,7 +23041,7 @@ Rule 'diedIn(subject,f) & isLocatedIn(f,object)' produced:
 <Carl_Rodenburg>	<isPoliticianOf>	<Germany> .
 <Timothy_Dwight_Hobart>	<isPoliticianOf>	<Texas> .
 <Shelby_Foote>	<isPoliticianOf>	<Tennessee> .
-<Nikolai_Baskakov>	<isPoliticianOf>	<Russia> .
+<Nikolai_Baskakov>	<isPoliticianOf>	<Russia> .	false
 <Ernst_Schirlitz>	<isPoliticianOf>	<Germany> .
 <Yury_Verlinsky>	<isPoliticianOf>	<Illinois> .
 <Walter_O._Snelling>	<isPoliticianOf>	<Pennsylvania> .
@@ -23060,7 +23060,7 @@ Rule 'diedIn(subject,f) & isLocatedIn(f,object)' produced:
 <William_Young_(veteran)>	<isPoliticianOf>	<Western_Australia> .
 <Halliwell_Hobbes>	<isPoliticianOf>	<Los_Angeles_County,_California> .
 <Pope_Boniface_IX>	<isPoliticianOf>	<Ciampino> .
-<Jaxon>	<isPoliticianOf>	<Texas> .
+<Jaxon>	<isPoliticianOf>	<Texas> .	false
 <Edwin_Williams_(rugby)>	<isPoliticianOf>	<United_Kingdom> .
 <George_Rose_(Medal_of_Honor)>	<isPoliticianOf>	<New_Jersey> .
 <Teófilo_Dias>	<isPoliticianOf>	<Brazil> .
@@ -23081,7 +23081,7 @@ Rule 'diedIn(subject,f) & isLocatedIn(f,object)' produced:
 <Bernard_Seigal>	<isPoliticianOf>	<San_Diego_County,_California> .
 <Hans_Bemmann>	<isPoliticianOf>	<North_Rhine-Westphalia> .
 <Richie_Powers>	<isPoliticianOf>	<Pennsylvania> .
-<Isaac_Hull>	<isPoliticianOf>	<Pennsylvania> .
+<Isaac_Hull>	<isPoliticianOf>	<Pennsylvania> .	false
 <Joe_Layton>	<isPoliticianOf>	<Monroe_County,_Florida> .
 <Israel_Regardie>	<isPoliticianOf>	<Arizona> .
 <Richard_E._Miller>	<isPoliticianOf>	<St._Johns_County,_Florida> .
@@ -23096,7 +23096,7 @@ Rule 'diedIn(subject,f) & isLocatedIn(f,object)' produced:
 <Vincent_Malo>	<isPoliticianOf>	<Ciampino> .
 <Isaac_E._Avery>	<isPoliticianOf>	<Pennsylvania> .
 <Osamu_Kudō>	<isPoliticianOf>	<Western_Australia> .
-<Otto_Weiß_(pilot)>	<isPoliticianOf>	<Germany> .
+<Otto_Weiß_(pilot)>	<isPoliticianOf>	<Germany> .	false
 <J._Frank_Allee>	<isPoliticianOf>	<Delaware> .
 <Darryl_F._Zanuck>	<isPoliticianOf>	<Riverside_County,_California> .
 <Prince_Fushimi_Sadanaru>	<isPoliticianOf>	<Chiba_Prefecture> .
@@ -23113,7 +23113,7 @@ Rule 'diedIn(subject,f) & isLocatedIn(f,object)' produced:
 <Peter_Dudley>	<isPoliticianOf>	<North_West_England> .
 <William_Guybon_Atherstone>	<isPoliticianOf>	<South_Africa> .
 <Max_von_Stephanitz>	<isPoliticianOf>	<Saxony> .
-<Samuel_Stewart_(fencer)>	<isPoliticianOf>	<New_Jersey> .
+<Samuel_Stewart_(fencer)>	<isPoliticianOf>	<New_Jersey> .	false
 <Joseph_Torchia>	<isPoliticianOf>	<San_Francisco_Bay_Area> .
 <Frederick_Augustus_I_of_Saxony>	<isPoliticianOf>	<Saxony> .
 <Creepy_Crespi>	<isPoliticianOf>	<Missouri> .
@@ -23137,7 +23137,7 @@ Rule 'diedIn(subject,f) & isLocatedIn(f,object)' produced:
 <Laurindo_Rabelo>	<isPoliticianOf>	<Brazil> .
 <Jimmy_Snyder>	<isPoliticianOf>	<Mojave_Desert> .
 <Jacob_van_Campen>	<isPoliticianOf>	<Netherlands> .
-<Dick_Martin_(comedian)>	<isPoliticianOf>	<Los_Angeles_County,_California> .
+<Dick_Martin_(comedian)>	<isPoliticianOf>	<Los_Angeles_County,_California> .	false
 <Fred_Baden>	<isPoliticianOf>	<Louisiana> .
 <Sergio_Osmeña>	<isPoliticianOf>	<Philippines> .
 <Leo_McCarey>	<isPoliticianOf>	<Los_Angeles_County,_California> .
@@ -29988,7 +29988,7 @@ Rule 'isLocatedIn(f,object) & livesIn(subject,f)' produced:
 <Patrycja_Sanduska>	<isPoliticianOf>	<United_Kingdom> .
 <Carlos_A._Peres>	<isPoliticianOf>	<East_of_England> .
 <Terry_Dill>	<isPoliticianOf>	<Texas> .
-<Prospero_Nograles>	<isPoliticianOf>	<Philippines> .
+<Prospero_Nograles>	<isPoliticianOf>	<Philippines> .	true
 <Kelly_Wood>	<isPoliticianOf>	<Scotland> .
 <Emma_Laine>	<isPoliticianOf>	<Finland> .
 <Katie_Sieben>	<isPoliticianOf>	<Minnesota> .
@@ -30050,7 +30050,7 @@ Rule 'isLocatedIn(f,object) & livesIn(subject,f)' produced:
 <Serena_Williams>	<isPoliticianOf>	<Palm_Beach_County,_Florida> .
 <Bernardo_Mota>	<isPoliticianOf>	<Portugal> .
 <Heather_Mills>	<isPoliticianOf>	<New_York_City> .
-<Marco_Blume>	<isPoliticianOf>	<Germany> .
+<Marco_Blume>	<isPoliticianOf>	<Germany> .	false
 <Svein_Alsaker>	<isPoliticianOf>	<Norway> .
 <Michelle_Estill>	<isPoliticianOf>	<Arizona> .
 <Anind_Dey>	<isPoliticianOf>	<Pennsylvania> .
@@ -30063,7 +30063,7 @@ Rule 'isLocatedIn(f,object) & livesIn(subject,f)' produced:
 <Cynthia_Lummis>	<isPoliticianOf>	<Wyoming> .
 <Dianne_Watts>	<isPoliticianOf>	<Cloverdale,_British_Columbia> .
 <Pete_Gallego>	<isPoliticianOf>	<Texas> .
-<Karen_Harrison>	<isPoliticianOf>	<South_East_England> .
+<Karen_Harrison>	<isPoliticianOf>	<South_East_England> .	false
 <Velda_Jones-Potter>	<isPoliticianOf>	<Delaware> .
 <Simeon_Olcott>	<isPoliticianOf>	<Sullivan_County,_New_Hampshire> .
 <Max_Sherman>	<isPoliticianOf>	<Camp_Mabry> .
@@ -30072,7 +30072,7 @@ Rule 'isLocatedIn(f,object) & livesIn(subject,f)' produced:
 <Linda_Lawson>	<isPoliticianOf>	<Indiana> .
 <Eric_Geiselman>	<isPoliticianOf>	<Volusia_County,_Florida> .
 <Łukasz_Kubot>	<isPoliticianOf>	<Silesia> .
-<Katzen_(performer)>	<isPoliticianOf>	<Camp_Mabry> .
+<Katzen_(performer)>	<isPoliticianOf>	<Camp_Mabry> .	false
 <Mads_Vibe-Hastrup>	<isPoliticianOf>	<Denmark> .
 <Simona_Halep>	<isPoliticianOf>	<Romania> .
 <Ken_Coon>	<isPoliticianOf>	<Arkansas> .
@@ -30086,7 +30086,7 @@ Rule 'isLocatedIn(f,object) & livesIn(subject,f)' produced:
 <Roderick_Wright_(politician)>	<isPoliticianOf>	<Los_Angeles_County,_California> .
 <Henry_Duenas,_Jr.>	<isPoliticianOf>	<Philippines> .
 <Oprah_Winfrey>	<isPoliticianOf>	<Illinois> .
-<Robert_Newman_(comedian)>	<isPoliticianOf>	<United_Kingdom> .
+<Robert_Newman_(comedian)>	<isPoliticianOf>	<United_Kingdom> .	false
 <Mike_Gloor>	<isPoliticianOf>	<Nebraska> .
 <May-Britt_Moser>	<isPoliticianOf>	<Norway> .
 <Brian_Barnes_(golfer)>	<isPoliticianOf>	<West_Sussex> .
@@ -30102,7 +30102,7 @@ Rule 'isLocatedIn(f,object) & livesIn(subject,f)' produced:
 <Nick_O'Hern>	<isPoliticianOf>	<Western_Australia> .
 <Aaron_Parchem>	<isPoliticianOf>	<Illinois> .
 <Eric_Prydz>	<isPoliticianOf>	<United_Kingdom> .
-<Dario_Franceschini>	<isPoliticianOf>	<Ciampino> .
+<Dario_Franceschini>	<isPoliticianOf>	<Ciampino> .	false
 <Cornelia_Adair>	<isPoliticianOf>	<Texas> .
 <J.O._Patterson,_Jr.>	<isPoliticianOf>	<Confederate_States_of_America> .
 <Paul_Eales>	<isPoliticianOf>	<Lancashire> .
@@ -30192,13 +30192,13 @@ Rule 'isLocatedIn(f,object) & livesIn(subject,f)' produced:
 <Ishtiaq_Ahmed_(political_scientist)>	<isPoliticianOf>	<Sweden> .
 <Paul_Davis_(Kansas_politician)>	<isPoliticianOf>	<Kansas> .
 <Craig_Parry>	<isPoliticianOf>	<Orange_County,_Florida> .
-<Pier_Luigi_Bersani>	<isPoliticianOf>	<Ciampino> .
+<Pier_Luigi_Bersani>	<isPoliticianOf>	<Ciampino> .	false
 <Wouter_Bos>	<isPoliticianOf>	<Netherlands> .
 <Matthew_Titone>	<isPoliticianOf>	<New_York_City> .
 <Thomas_S._Monson>	<isPoliticianOf>	<Utah> .
 <Lindsey_Wright>	<isPoliticianOf>	<Texas> .
 <Bryan_Aylstock>	<isPoliticianOf>	<Escambia_County,_Florida> .
-<Peter_Butler_(golfer)>	<isPoliticianOf>	<Surrey> .
+<Peter_Butler_(golfer)>	<isPoliticianOf>	<Surrey> .	false
 <Peggy_Wilson>	<isPoliticianOf>	<Alaska> .
 <Cornelia_Adair>	<isPoliticianOf>	<Northern_Europe> .
 <Larry_Belcher>	<isPoliticianOf>	<Kentucky> .
@@ -30207,11 +30207,11 @@ Rule 'isLocatedIn(f,object) & livesIn(subject,f)' produced:
 <Kristi_Albers>	<isPoliticianOf>	<Texas> .
 <Bob_Dettmer>	<isPoliticianOf>	<Minnesota> .
 <Annie_Cartwright>	<isPoliticianOf>	<North_West_England> .
-<Pete_Petersen_(politician)>	<isPoliticianOf>	<Alaska> .
+<Pete_Petersen_(politician)>	<isPoliticianOf>	<Alaska> .	true
 <Kay_Oppenheimer>	<isPoliticianOf>	<Strafford_County,_New_Hampshire> .
 <Kevin_Anderson_(tennis)>	<isPoliticianOf>	<Illinois> .
 <J._B._Holmes>	<isPoliticianOf>	<Kentucky> .
-<John_Sergeant_(journalist)>	<isPoliticianOf>	<United_Kingdom> .
+<John_Sergeant_(journalist)>	<isPoliticianOf>	<United_Kingdom> .	false
 <Wendell_Erickson>	<isPoliticianOf>	<Minnesota> .
 <Hilda_Solis>	<isPoliticianOf>	<California> .
 <Charles_Silmon>	<isPoliticianOf>	<Texas> .
@@ -30247,7 +30247,7 @@ Rule 'isLocatedIn(f,object) & livesIn(subject,f)' produced:
 <Oletha_Faust-Goudeau>	<isPoliticianOf>	<Kansas> .
 <Lee_Slattery>	<isPoliticianOf>	<Merseyside> .
 <Tracy_Austin>	<isPoliticianOf>	<Los_Angeles_County,_California> .
-<Roger_Chapman_(golfer)>	<isPoliticianOf>	<Berkshire> .
+<Roger_Chapman_(golfer)>	<isPoliticianOf>	<Berkshire> .	false
 <Thomas_B._Evans,_Jr.>	<isPoliticianOf>	<Delaware> .
 <Ken_Yeager>	<isPoliticianOf>	<San_Francisco_Bay_Area> .
 <Jeppe_Huldahl>	<isPoliticianOf>	<Denmark> .
@@ -30258,7 +30258,7 @@ Rule 'isLocatedIn(f,object) & livesIn(subject,f)' produced:
 <Jason_Chaffetz>	<isPoliticianOf>	<Utah> .
 <Cynthia_Hiner>	<isPoliticianOf>	<Montana> .
 <L._Brent_Bozell_III>	<isPoliticianOf>	<Virginia> .
-<Andreas_Beck_(tennis)>	<isPoliticianOf>	<Baden-Württemberg> .
+<Andreas_Beck_(tennis)>	<isPoliticianOf>	<Baden-Württemberg> .	false
 <Peter_Lawrie>	<isPoliticianOf>	<Republic_of_Ireland> .
 <Jon_Bramnick>	<isPoliticianOf>	<New_Jersey> .
 <Louie_Vito>	<isPoliticianOf>	<Utah> .
@@ -30280,7 +30280,7 @@ Rule 'isLocatedIn(f,object) & livesIn(subject,f)' produced:
 <Dave_Cheatham>	<isPoliticianOf>	<Indiana> .
 <James_S._Norris>	<isPoliticianOf>	<Minnesota> .
 <John_Warner_(North_Dakota_politician)>	<isPoliticianOf>	<North_Dakota> .
-<Rodrigo_y_Gabriela>	<isPoliticianOf>	<Republic_of_Ireland> .
+<Rodrigo_y_Gabriela>	<isPoliticianOf>	<Republic_of_Ireland> .	false
 <Sharon_Cissna>	<isPoliticianOf>	<Alaska> .
 <Maria_Bińczyk>	<isPoliticianOf>	<Germany> .
 <Jeremy_Nordquist>	<isPoliticianOf>	<Nebraska> .
@@ -30339,7 +30339,7 @@ Rule 'isLocatedIn(f,object) & livesIn(subject,f)' produced:
 <Floyd_Zaiger>	<isPoliticianOf>	<California> .
 <Peter_Aldous>	<isPoliticianOf>	<Suffolk> .
 <RaDene_R._Hatfield>	<isPoliticianOf>	<Utah> .
-<Frank_Moser_(tennis)>	<isPoliticianOf>	<Baden-Württemberg> .
+<Frank_Moser_(tennis)>	<isPoliticianOf>	<Baden-Württemberg> .	false
 <Dan_Halldorson>	<isPoliticianOf>	<Illinois> .
 <Victor_Crivoi>	<isPoliticianOf>	<Romania> .
 <Odette_Krempin>	<isPoliticianOf>	<Germany> .
@@ -30350,7 +30350,7 @@ Rule 'isLocatedIn(f,object) & livesIn(subject,f)' produced:
 <Lynn_Kriengkrairut>	<isPoliticianOf>	<Michigan> .
 <Steven_Fulop>	<isPoliticianOf>	<New_Jersey> .
 <Daniel_C._Miller>	<isPoliticianOf>	<Pennsylvania> .
-<Happy_(Sons_of_Anarchy)>	<isPoliticianOf>	<California> .
+<Happy_(Sons_of_Anarchy)>	<isPoliticianOf>	<California> .	false
 <Robert_M._Murphy>	<isPoliticianOf>	<Pennsylvania> .
 <Dale_Eggeling>	<isPoliticianOf>	<Hillsborough_County,_Florida> .
 <Tara_Sad>	<isPoliticianOf>	<Cheshire_County,_New_Hampshire> .
@@ -30379,7 +30379,7 @@ Rule 'isLocatedIn(f,object) & livesIn(subject,f)' produced:
 <Christian_Lindner>	<isPoliticianOf>	<North_Rhine-Westphalia> .
 <Steve_Hilgenberg>	<isPoliticianOf>	<Wisconsin> .
 <Michail_Elgin>	<isPoliticianOf>	<Russia> .
-<John_Mason_(planter)>	<isPoliticianOf>	<Potomac_River> .
+<John_Mason_(planter)>	<isPoliticianOf>	<Potomac_River> .	false
 <Dimitrij_Ovtcharov>	<isPoliticianOf>	<Lower_Saxony> .
 <Susan_Williams_Gifford>	<isPoliticianOf>	<Plymouth_County,_Massachusetts> .
 <Karin_Sjödin>	<isPoliticianOf>	<Sweden> .
@@ -30395,7 +30395,7 @@ Rule 'isLocatedIn(f,object) & livesIn(subject,f)' produced:
 <Gabriel_Schillinger>	<isPoliticianOf>	<Palm_Beach_County,_Florida> .
 <J._George_Stewart>	<isPoliticianOf>	<Delaware> .
 <Tom_Gillis>	<isPoliticianOf>	<Michigan> .
-<Mark_Davis_(golfer)>	<isPoliticianOf>	<Essex> .
+<Mark_Davis_(golfer)>	<isPoliticianOf>	<Essex> .	false
 <Kenny_Knox>	<isPoliticianOf>	<Leon_County,_Florida> .
 <Attakullakulla>	<isPoliticianOf>	<Monroe_County,_Tennessee> .
 <Virgil_Goode>	<isPoliticianOf>	<Virginia> .
@@ -30428,10 +30428,10 @@ Rule 'isLocatedIn(f,object) & livesIn(subject,f)' produced:
 <Rebecca_Bross>	<isPoliticianOf>	<Texas> .
 <Kenji_Tsumura>	<isPoliticianOf>	<Hiroshima_Prefecture> .
 <Francisco_Tatad>	<isPoliticianOf>	<Philippines> .
-<Daryl_(magician)>	<isPoliticianOf>	<California> .
+<Daryl_(magician)>	<isPoliticianOf>	<California> .	false
 <John_Grubesic>	<isPoliticianOf>	<New_Mexico> .
 <Donna_Caponi>	<isPoliticianOf>	<Hillsborough_County,_Florida> .
-<Ryan_Harrison_(tennis)>	<isPoliticianOf>	<Texas> .
+<Ryan_Harrison_(tennis)>	<isPoliticianOf>	<Texas> .	false
 <Deborah_Arnie_Arnesen>	<isPoliticianOf>	<Grafton_County,_New_Hampshire> .
 <Joop_van_den_Ende>	<isPoliticianOf>	<Netherlands> .
 <Tamera_Alexander>	<isPoliticianOf>	<Tennessee> .
@@ -30442,7 +30442,7 @@ Rule 'isLocatedIn(f,object) & livesIn(subject,f)' produced:
 <Ivan_Lendl>	<isPoliticianOf>	<Indian_River_County,_Florida> .
 <Whiplash_the_Cowboy_Monkey>	<isPoliticianOf>	<Texas> .
 <Kevin_Furey>	<isPoliticianOf>	<Montana> .
-<James_Ward_(tennis)>	<isPoliticianOf>	<United_Kingdom> .
+<James_Ward_(tennis)>	<isPoliticianOf>	<United_Kingdom> .	false
 <Glyn_Stone>	<isPoliticianOf>	<United_Kingdom> .
 <Donald_Mackay,_Baron_Mackay_of_Drumadoon>	<isPoliticianOf>	<Scotland> .
 <Henry_C._Dethloff>	<isPoliticianOf>	<Texas> .
@@ -30498,7 +30498,7 @@ Rule 'isLocatedIn(f,object) & livesIn(subject,f)' produced:
 <Nick_Anstee>	<isPoliticianOf>	<City_of_London> .
 <Mary_Glenski>	<isPoliticianOf>	<South_Dakota> .
 <Glenn_Ralph>	<isPoliticianOf>	<Surrey> .
-<Tom_Galligan_(mayor)>	<isPoliticianOf>	<Indiana> .
+<Tom_Galligan_(mayor)>	<isPoliticianOf>	<Indiana> .	true
 <Peggy_Mast>	<isPoliticianOf>	<Kansas> .
 <Lyudmyla_Denisova>	<isPoliticianOf>	<Ukraine> .
 <Gale_Brewer>	<isPoliticianOf>	<New_York_City> .
@@ -30510,7 +30510,7 @@ Rule 'isLocatedIn(f,object) & livesIn(subject,f)' produced:
 <Richard_G._Neeson>	<isPoliticianOf>	<Louisiana> .
 <Qaim_Ali_Shah>	<isPoliticianOf>	<Pakistan> .
 <Ron_Luce>	<isPoliticianOf>	<Texas> .
-<John_Aspinall_(zoo_owner)>	<isPoliticianOf>	<South_East_England> .
+<John_Aspinall_(zoo_owner)>	<isPoliticianOf>	<South_East_England> .	false
 <Metodyj_Trochanovskij>	<isPoliticianOf>	<Nowy_Sącz_County> .
 <William_Murdoch>	<isPoliticianOf>	<West_Midlands_(region)> .
 <Ian_Hislop>	<isPoliticianOf>	<Kent> .
@@ -30531,7 +30531,7 @@ Rule 'isLocatedIn(f,object) & livesIn(subject,f)' produced:
 <Gerald_P._Pulley>	<isPoliticianOf>	<Virginia> .
 <Rich_Waltz>	<isPoliticianOf>	<Broward_County,_Florida> .
 <Charlie_Janssen>	<isPoliticianOf>	<Nebraska> .
-<Liaqat_Ali_Khan_(mathematician)>	<isPoliticianOf>	<Saudi_Arabia> .
+<Liaqat_Ali_Khan_(mathematician)>	<isPoliticianOf>	<Saudi_Arabia> .	false
 <Sue_Schafer>	<isPoliticianOf>	<Colorado> .
 <Michael_Scott-Joynt>	<isPoliticianOf>	<United_Kingdom> .
 <Russ_Karpisek>	<isPoliticianOf>	<Nebraska> .
@@ -30592,7 +30592,7 @@ Rule 'isLocatedIn(f,object) & livesIn(subject,f)' produced:
 <Gifford_Miller>	<isPoliticianOf>	<New_York_City> .
 <Jean-Paul_Procureur>	<isPoliticianOf>	<Belgium> .
 <Phil_Schubert>	<isPoliticianOf>	<Texas> .
-<Thomas_Blake_(tennis)>	<isPoliticianOf>	<Hillsborough_County,_Florida> .
+<Thomas_Blake_(tennis)>	<isPoliticianOf>	<Hillsborough_County,_Florida> .	false
 <Beau_McCoy>	<isPoliticianOf>	<Nebraska> .
 <Steven_Bradford>	<isPoliticianOf>	<Los_Angeles_County,_California> .
 <Charles_Humphrey_Atherton>	<isPoliticianOf>	<Hillsborough_County,_New_Hampshire> .
@@ -30643,19 +30643,19 @@ Rule 'isLocatedIn(f,object) & livesIn(subject,f)' produced:
 <Wee_Ka_Siong>	<isPoliticianOf>	<Malaysia> .
 <Pol_Van_Den_Driessche>	<isPoliticianOf>	<Belgium> .
 <Kip_Averitt>	<isPoliticianOf>	<Texas> .
-<Ernst_Hirsch_Ballin>	<isPoliticianOf>	<Netherlands> .
+<Ernst_Hirsch_Ballin>	<isPoliticianOf>	<Netherlands> .	true
 <Ruben_Kihuen>	<isPoliticianOf>	<Mojave_Desert> .
 <Claire_Curran>	<isPoliticianOf>	<United_Kingdom> .
 <Jejomar_Binay>	<isPoliticianOf>	<Philippines> .
 <Jon_Lundberg>	<isPoliticianOf>	<Confederate_States_of_America> .
-<Chris_Wood_(golfer)>	<isPoliticianOf>	<United_Kingdom> .
+<Chris_Wood_(golfer)>	<isPoliticianOf>	<United_Kingdom> .	false
 <John_Gallagher_(golfer)>	<isPoliticianOf>	<Scotland> .
 <Debbie_Austin>	<isPoliticianOf>	<Orange_County,_Florida> .
 <Sheldon_Brown_(bicycle_mechanic)>	<isPoliticianOf>	<Newton,_Massachusetts> .
 <Tricia_Chuah>	<isPoliticianOf>	<Malaysia> .
 <Bobby_Bright>	<isPoliticianOf>	<Alabama> .
 <Roger_L._Hunt>	<isPoliticianOf>	<Mojave_Desert> .
-<Paul_Curry_(golfer)>	<isPoliticianOf>	<Suffolk> .
+<Paul_Curry_(golfer)>	<isPoliticianOf>	<Suffolk> .	false
 <Mary_C._Seward>	<isPoliticianOf>	<New_Jersey> .
 <Marcel_Siem>	<isPoliticianOf>	<North_Rhine-Westphalia> .
 <Sharon_Tomiko_Santos>	<isPoliticianOf>	<King_County,_Washington> .
@@ -30704,7 +30704,7 @@ Rule 'isLocatedIn(f,object) & livesIn(subject,f)' produced:
 <Henry_Darnall>	<isPoliticianOf>	<Prince_George's_County,_Maryland> .
 <James_Alexander_Green>	<isPoliticianOf>	<South_East_England> .
 <Alexandr_Dolgopolov>	<isPoliticianOf>	<Ukraine> .
-<Patrick_Hall_(athlete)>	<isPoliticianOf>	<Tennessee> .
+<Patrick_Hall_(athlete)>	<isPoliticianOf>	<Tennessee> .	false
 <Kenneth_Osborne,_Lord_Osborne>	<isPoliticianOf>	<Scotland> .
 <Jeff_Watson_(politician)>	<isPoliticianOf>	<Ontario> .
 <Mark_Calcavecchia>	<isPoliticianOf>	<Palm_Beach_County,_Florida> .
@@ -30790,7 +30790,7 @@ Rule 'isLocatedIn(f,object) & livesIn(subject,f)' produced:
 <Madison_Hubbell>	<isPoliticianOf>	<Michigan> .
 <Piet_Hein_Donner>	<isPoliticianOf>	<Netherlands> .
 <Lynne_Yelich>	<isPoliticianOf>	<Saskatchewan> .
-<James_Morrison_(golfer)>	<isPoliticianOf>	<Surrey> .
+<James_Morrison_(golfer)>	<isPoliticianOf>	<Surrey> . false
 <Lucy_Weber>	<isPoliticianOf>	<Cheshire_County,_New_Hampshire> .
 <Sarah_Newton>	<isPoliticianOf>	<Isles_of_Scilly> .
 <Stuart_Andrew>	<isPoliticianOf>	<West_Yorkshire> .
@@ -30805,7 +30805,7 @@ Rule 'isLocatedIn(f,object) & livesIn(subject,f)' produced:
 <Willard_Hughes_Rollings>	<isPoliticianOf>	<Mojave_Desert> .
 <Carlos_Cardona>	<isPoliticianOf>	<Miami-Dade_County,_Florida> .
 <Lawson_Tait>	<isPoliticianOf>	<West_Midlands_(region)> .
-<Nigel_McCulloch>	<isPoliticianOf>	<North_West_England> .
+<Nigel_McCulloch>	<isPoliticianOf>	<North_West_England> .	false
 <Juha_Väätäinen>	<isPoliticianOf>	<Finland> .
 <John_Arderne>	<isPoliticianOf>	<United_Kingdom> .
 <Margaret_Porter>	<isPoliticianOf>	<Merrimack_County,_New_Hampshire> .
@@ -30827,12 +30827,12 @@ Rule 'isLocatedIn(f,object) & livesIn(subject,f)' produced:
 <Aníbal_Cavaco_Silva>	<isPoliticianOf>	<Portugal> .
 <Kateryna_Bondarenko>	<isPoliticianOf>	<Ukraine> .
 <Mina_Harigae>	<isPoliticianOf>	<California> .
-<Xavier_Malisse>	<isPoliticianOf>	<Manatee_County,_Florida> .
+<Xavier_Malisse>	<isPoliticianOf>	<Manatee_County,_Florida> .	false
 <Marion_Andres>	<isPoliticianOf>	<Philippines> .
 <Penny_Bernard_Schaber>	<isPoliticianOf>	<Wisconsin> .
 <Harry_G._Haskell,_Jr.>	<isPoliticianOf>	<Delaware> .
 <Lyle_W._Hillyard>	<isPoliticianOf>	<Utah> .
-<Peter_Dawson_(golfer)>	<isPoliticianOf>	<Hampshire> .
+<Peter_Dawson_(golfer)>	<isPoliticianOf>	<Hampshire> .	false
 <Dave_Aronberg>	<isPoliticianOf>	<Palm_Beach_County,_Florida> .
 <Carson_Ross>	<isPoliticianOf>	<Missouri> .
 <Wouter_Van_Besien>	<isPoliticianOf>	<Belgium> .
@@ -30860,7 +30860,7 @@ Rule 'isLocatedIn(f,object) & livesIn(subject,f)' produced:
 <Blair_Buswell>	<isPoliticianOf>	<Utah> .
 <Alexander_Pechtold>	<isPoliticianOf>	<Netherlands> .
 <John_Coghill>	<isPoliticianOf>	<Alaska> .
-<Richard_Green_(golfer)>	<isPoliticianOf>	<Surrey> .
+<Richard_Green_(golfer)>	<isPoliticianOf>	<Surrey> .	false
 <Madison_Chock>	<isPoliticianOf>	<Michigan> .
 <Carly_Gullickson>	<isPoliticianOf>	<Palm_Beach_County,_Florida> .
 <Marty_Seifert>	<isPoliticianOf>	<Minnesota> .
@@ -30881,7 +30881,7 @@ Rule 'isLocatedIn(f,object) & livesIn(subject,f)' produced:
 <Adler_Volmar>	<isPoliticianOf>	<Broward_County,_Florida> .
 <Bill_Stoltze>	<isPoliticianOf>	<Alaska> .
 <Randy_Ewing>	<isPoliticianOf>	<Louisiana> .
-<Nathan_Cullen>	<isPoliticianOf>	<British_Columbia> .
+<Nathan_Cullen>	<isPoliticianOf>	<British_Columbia> .	true
 <Lori_Ehrlich>	<isPoliticianOf>	<Essex_County,_Massachusetts> .
 <Andy_Ram>	<isPoliticianOf>	<Israel> .
 <Jerry_Petrowski>	<isPoliticianOf>	<Wisconsin> .
