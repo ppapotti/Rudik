@@ -7,9 +7,9 @@ Rule 'dbo:coverArtist(subject,object)' produced:
 <db:A_Swiftly_Tilting_Planet>	<dbo:illustrator>	<db:Leo_and_Diane_Dillon> .
 <db:Ramona_the_Pest>	<dbo:illustrator>	<db:Tracy_Dockray> .
 <db:Chainfire>	<dbo:illustrator>	<db:Keith_Parkinson> .
-<db:Strange_Gateways>	<dbo:illustrator>	<db:Lee_Brown_Coye> .
+<db:Strange_Gateways>	<dbo:illustrator>	<db:Lee_Brown_Coye> .	false
 <db:Lord_of_Chaos>	<dbo:illustrator>	<db:Darrell_K._Sweet> .
-<db:Conan_the_Warrior>	<dbo:illustrator>	<db:Frank_Frazetta> .
+<db:Conan_the_Warrior>	<dbo:illustrator>	<db:Frank_Frazetta> .	false
 <db:The_Dragon_Token>	<dbo:illustrator>	<db:Michael_Whelan> .
 <db:Books_of_Blood>	<dbo:illustrator>	<db:Clive_Barker> .
 <db:The_Bacta_War_%28novel%29>	<dbo:illustrator>	<db:Paul_Youll> .
@@ -21,7 +21,7 @@ Rule 'dbo:coverArtist(subject,object)' produced:
 <db:The_Quantum_Rose>	<dbo:illustrator>	<db:Julie_Bell> .
 <db:In_the_King%27s_Service>	<dbo:illustrator>	<db:Matt_Stawicki> .
 <db:The_Wyvern%27s_Spur>	<dbo:illustrator>	<db:Clyde_Caldwell> .
-<db:The_Mysterious_Benedict_Society>	<dbo:illustrator>	<db:Carson_Ellis> .
+<db:The_Mysterious_Benedict_Society>	<dbo:illustrator>	<db:Carson_Ellis> .	false
 <db:The_Dastard>	<dbo:illustrator>	<db:Darrell_K._Sweet> .
 <db:The_Mouse_and_the_Motorcycle>	<dbo:illustrator>	<db:Tracy_Dockray> .
 <db:Yon_Ill_Wind>	<dbo:illustrator>	<db:Darrell_K._Sweet> .
@@ -88,7 +88,7 @@ Rule 'dbo:coverArtist(subject,object)' produced:
 <db:Alias_Grace>	<dbo:illustrator>	<db:Dante_Gabriel_Rossetti> .
 <db:Castle_Roogna>	<dbo:illustrator>	<db:Darrell_K._Sweet> .
 <db:Heir_to_the_Empire>	<dbo:illustrator>	<db:Tom_Jung> .
-<db:Lucky_Starr_and_the_Rings_of_Saturn>	<dbo:illustrator>	<db:Darrell_K._Sweet> .
+<db:Lucky_Starr_and_the_Rings_of_Saturn>	<dbo:illustrator>	<db:Darrell_K._Sweet> .	false
 <db:Lost_Laysen>	<dbo:illustrator>	<db:Louise_Fili> .
 <db:Peter_Duck>	<dbo:illustrator>	<db:Arthur_Ransome> .
 <db:The_Castle_of_Iron>	<dbo:illustrator>	<db:Hannes_Bok> .
@@ -96,7 +96,7 @@ Rule 'dbo:coverArtist(subject,object)' produced:
 <db:Sunrunner%27s_Fire>	<dbo:illustrator>	<db:Michael_Whelan> .
 <db:The_Infinitive_of_Go>	<dbo:illustrator>	<db:Darrell_K._Sweet> .
 <db:Greyhawk_Adventures>	<dbo:illustrator>	<db:Jeff_Easley> .
-<db:The_Family_Trade>	<dbo:illustrator>	<db:Paul_Youll> .
+<db:The_Family_Trade>	<dbo:illustrator>	<db:Paul_Youll> .	false
 <db:The_Tar-Aiym_Krang>	<dbo:illustrator>	<db:Bob_Eggleton> .
 <db:The_Virgin_%26_the_Wheels>	<dbo:illustrator>	<db:Don_Maitz> .
 <db:The_Color_of_Her_Panties>	<dbo:illustrator>	<db:Darrell_K._Sweet> .
@@ -129,7 +129,7 @@ Rule 'dbo:coverArtist(subject,object)' produced:
 <db:To_Sail_Beyond_the_Sunset>	<dbo:illustrator>	<db:Boris_Vallejo> .
 <db:Confessor_%28novel%29>	<dbo:illustrator>	<db:Keith_Parkinson> .
 <db:Mission_from_Mount_Yoda>	<dbo:illustrator>	<db:Drew_Struzan> .
-<db:A_Spell_for_Chameleon>	<dbo:illustrator>	<db:Michael_Whelan> .
+<db:A_Spell_for_Chameleon>	<dbo:illustrator>	<db:Michael_Whelan> .	false
 <db:Lucky_Starr_and_the_Moons_of_Jupiter>	<dbo:illustrator>	<db:Darrell_K._Sweet> .
 <db:Gods_and_Pawns>	<dbo:illustrator>	<db:Paul_Youll> .
 <db:The_Conan_Reader>	<dbo:illustrator>	<db:Bernie_Wrightson> .
@@ -145,7 +145,7 @@ Rule 'dbo:coverArtist(subject,object)' produced:
 <db:Once_a_Hero_%28novel%29>	<dbo:illustrator>	<db:Gary_Ruddell> .
 <db:The_Ruins_of_Ambrai>	<dbo:illustrator>	<db:Michael_Whelan> .
 <db:The_Complete_Guide_to_Middle-earth>	<dbo:illustrator>	<db:Brothers_Hildebrandt> .
-<db:The_Cat_Who_Walks_Through_Walls>	<dbo:illustrator>	<db:Michael_Whelan> .
+<db:The_Cat_Who_Walks_Through_Walls>	<dbo:illustrator>	<db:Michael_Whelan> .	false
 <db:Duck_for_President>	<dbo:illustrator>	<db:Betsy_Lewin> .
 <db:Azure_Bonds>	<dbo:illustrator>	<db:Clyde_Caldwell> .
 <db:Draconian_Measures>	<dbo:illustrator>	<db:Daniel_Horne> .
@@ -157,7 +157,7 @@ Rule 'dbo:coverArtist(subject,object)' produced:
 <db:Stone_of_Tears>	<dbo:illustrator>	<db:Keith_Parkinson> .
 <db:Chander_Pahar>	<dbo:illustrator>	<db:Satyajit_Ray> .
 <db:The_Alien_Sea>	<dbo:illustrator>	<db:David_Hudnut> .
-<db:The_Spiraling_Worm>	<dbo:illustrator>	<db:David_Lee_Ingersoll> .
+<db:The_Spiraling_Worm>	<dbo:illustrator>	<db:David_Lee_Ingersoll> .	false
 <db:Conan_the_Avenger>	<dbo:illustrator>	<db:Frank_Frazetta> .
 <db:Between_Planets>	<dbo:illustrator>	<db:Clifford_Geary> .
 <db:The_Aliens_of_Earth>	<dbo:illustrator>	<db:Ed_Paschke> .
@@ -179,7 +179,7 @@ Rule 'dbo:coverArtist(subject,object)' produced:
 <db:The_Tritonian_Ring>	<dbo:illustrator>	<db:Frank_Frazetta> .
 <db:The_Doom_Brigade>	<dbo:illustrator>	<db:Keith_Parkinson> .
 <db:Angry_Lead_Skies>	<dbo:illustrator>	<db:Alan_Pollack> .
-<db:Zombie_Lover>	<dbo:illustrator>	<db:Darrell_K._Sweet> .
+<db:Zombie_Lover>	<dbo:illustrator>	<db:Darrell_K._Sweet> .	false
 <db:Wall_of_Serpents>	<dbo:illustrator>	<db:Ed_Emshwiller> .
 <db:Night_Mare>	<dbo:illustrator>	<db:Darrell_K._Sweet> .
 <db:M._C._Higgins%2C_the_Great>	<dbo:illustrator>	<db:Leo_and_Diane_Dillon> .
@@ -188,7 +188,7 @@ Rule 'dbo:coverArtist(subject,object)' produced:
 <db:Man_from_Mundania>	<dbo:illustrator>	<db:Darrell_K._Sweet> .
 <db:The_Ambler_Warning>	<dbo:illustrator>	<db:Craig_White> .
 <db:The_Legacy_of_Vashna>	<dbo:illustrator>	<db:Peter_Andrew_Jones> .
-<db:Black_Sun_Rising>	<dbo:illustrator>	<db:Michael_Whelan> .
+<db:Black_Sun_Rising>	<dbo:illustrator>	<db:Michael_Whelan> .	false
 <db:The_Island_of_the_Mighty>	<dbo:illustrator>	<db:Bob_Pepper> .
 <db:Black_Medicine>	<dbo:illustrator>	<db:Lee_Brown_Coye> .
 <db:The_Quest_for_Saint_Camber>	<dbo:illustrator>	<db:Darrell_K._Sweet> .
@@ -198,34 +198,34 @@ Rule 'dbo:coverArtist(subject,object)' produced:
 <db:The_Golden_Key_%28novel%29>	<dbo:illustrator>	<db:Michael_Whelan> .
 <db:Trail_of_the_Black_Wyrm>	<dbo:illustrator>	<db:Matt_Stawicki> .
 <db:The_Paladin>	<dbo:illustrator>	<db:Gary_Ruddell> .
-<db:The_Divine_Invasion>	<dbo:illustrator>	<db:Rowena_Morrill> .
+<db:The_Divine_Invasion>	<dbo:illustrator>	<db:Rowena_Morrill> .	false
 <db:The_Virgin_of_Zesh>	<dbo:illustrator>	<db:Don_Maitz> .
 <db:The_High_King>	<dbo:illustrator>	<db:Evaline_Ness> .
 <db:The_Namesake>	<dbo:illustrator>	<db:Philippe_Lardy> .
-<db:Deathstalker_%28novel%29>	<dbo:illustrator>	<db:Donato_Giancola> .
+<db:Deathstalker_%28novel%29>	<dbo:illustrator>	<db:Donato_Giancola> .	false
 <db:Madwand>	<dbo:illustrator>	<db:Rowena_Morrill> .
-<db:The_Song_of_Rhiannon>	<dbo:illustrator>	<db:David_Johnston> .
+<db:The_Song_of_Rhiannon>	<dbo:illustrator>	<db:David_Johnston> .	false
 <db:Sons_of_the_Oak>	<dbo:illustrator>	<db:Darrell_K._Sweet> .
 <db:The_Dargonesti>	<dbo:illustrator>	<db:Larry_Elmore> .
-<db:The_Mageborn_Traitor>	<dbo:illustrator>	<db:Michael_Whelan> .
+<db:The_Mageborn_Traitor>	<dbo:illustrator>	<db:Michael_Whelan> .	false
 <db:Running_with_the_Demon>	<dbo:illustrator>	<db:Gerald_Brom> .
 <db:Conan_the_Adventurer_%28collection%29>	<dbo:illustrator>	<db:Frank_Frazetta> .
 <db:The_Icarus_Hunt>	<dbo:illustrator>	<db:Paul_Youll> .
-<db:The_Road_to_Dune>	<dbo:illustrator>	<db:Stephen_Youll> .
+<db:The_Road_to_Dune>	<dbo:illustrator>	<db:Stephen_Youll> .	false
 <db:The_Hammer_of_God>	<dbo:illustrator>	<db:Stephen_Youll> .
 <db:The_Dunwich_Horror_and_Others>	<dbo:illustrator>	<db:Lee_Brown_Coye> .
-<db:The_Plague_Lords_of_Ruel>	<dbo:illustrator>	<db:Dave_Dorman> .
+<db:The_Plague_Lords_of_Ruel>	<dbo:illustrator>	<db:Dave_Dorman> .	false
 <db:The_Lost_City_of_the_Jedi>	<dbo:illustrator>	<db:Drew_Struzan> .
 <db:Dagon_and_Other_Macabre_Tales>	<dbo:illustrator>	<db:Lee_Brown_Coye> .
 <db:The_Chasm_of_Doom>	<dbo:illustrator>	<db:Richard_Corben> .
 <db:Roadmarks>	<dbo:illustrator>	<db:Darrell_K._Sweet> .
-<db:The_Pillars_of_Creation>	<dbo:illustrator>	<db:Keith_Parkinson> .
+<db:The_Pillars_of_Creation>	<dbo:illustrator>	<db:Keith_Parkinson> .	false
 <db:Shadow_on_the_Sand>	<dbo:illustrator>	<db:Richard_Corben> .
 <db:Secret_Water>	<dbo:illustrator>	<db:Arthur_Ransome> .
 <db:Lucky_Starr_and_the_Big_Sun_of_Mercury>	<dbo:illustrator>	<db:Darrell_K._Sweet> .
 <db:Harpy_Thyme>	<dbo:illustrator>	<db:Darrell_K._Sweet> .
-<db:Cthulhu_Mythos_anthology>	<dbo:illustrator>	<db:Jason_Van_Hollander> .
-<db:Soul_of_the_Fire>	<dbo:illustrator>	<db:Keith_Parkinson> .
+<db:Cthulhu_Mythos_anthology>	<dbo:illustrator>	<db:Jason_Van_Hollander> .	false
+<db:Soul_of_the_Fire>	<dbo:illustrator>	<db:Keith_Parkinson> .	false
 <db:Death_Masks>	<dbo:illustrator>	<db:Lee_MacLeod> .
 <db:The_Dream_Master>	<dbo:illustrator>	<db:Frank_Kelly_Freas> .
 <db:Dooby_Dooby_Moo>	<dbo:illustrator>	<db:Betsy_Lewin> .
@@ -238,7 +238,7 @@ Rule 'dbo:coverArtist(subject,object)' produced:
 <db:The_Eye_of_the_World>	<dbo:illustrator>	<db:Darrell_K._Sweet> .
 <db:Bloom_%28novel%29>	<dbo:illustrator>	<db:Rick_Berry> .
 <db:Traitor%27s_Knot>	<dbo:illustrator>	<db:Janny_Wurts> .
-<db:The_Wishsong_of_Shannara>	<dbo:illustrator>	<db:Darrell_K._Sweet> .
+<db:The_Wishsong_of_Shannara>	<dbo:illustrator>	<db:Darrell_K._Sweet> .	false
 <db:Time_of_the_Twins>	<dbo:illustrator>	<db:Matt_Stawicki> .
 <db:The_Conan_Swordbook>	<dbo:illustrator>	<db:George_Barr_%28artist%29> .
 <db:New_Spring>	<dbo:illustrator>	<db:Darrell_K._Sweet> .
@@ -252,7 +252,7 @@ Rule 'dbo:coverArtist(subject,object)' produced:
 <db:Test_of_the_Twins>	<dbo:illustrator>	<db:Matt_Stawicki> .
 <db:Naked_Empire>	<dbo:illustrator>	<db:Keith_Parkinson> .
 <db:Kushiel%27s_Chosen>	<dbo:illustrator>	<db:John_Jude_Palencar> .
-<db:Camber_the_Heretic>	<dbo:illustrator>	<db:Darrell_K._Sweet> .
+<db:Camber_the_Heretic>	<dbo:illustrator>	<db:Darrell_K._Sweet> .	false
 <db:The_Hidden_Family>	<dbo:illustrator>	<db:Paul_Youll> .
 <db:Knife_of_Dreams>	<dbo:illustrator>	<db:Darrell_K._Sweet> .
 <db:The_Bishop%27s_Heir>	<dbo:illustrator>	<db:Darrell_K._Sweet> .
@@ -273,7 +273,7 @@ Rule 'dbo:coverArtist(subject,object)' produced:
 <db:Vision_of_the_Future>	<dbo:illustrator>	<db:Drew_Struzan> .
 <db:Currant_Events>	<dbo:illustrator>	<db:Darrell_K._Sweet> .
 <db:The_Gene_Wars_universe>	<dbo:illustrator>	<db:Bob_Eggleton> .
-<db:The_Lair_of_Bones>	<dbo:illustrator>	<db:Darrell_K._Sweet> .
+<db:The_Lair_of_Bones>	<dbo:illustrator>	<db:Darrell_K._Sweet> .	false
 <db:Dark_Thane>	<dbo:illustrator>	<db:Matt_Stawicki> .
 <db:Brotherhood_of_the_Wolf_%28novel%29>	<dbo:illustrator>	<db:Darrell_K._Sweet> .
 <db:Kushiel%27s_Scion>	<dbo:illustrator>	<db:John_Jude_Palencar> .
@@ -281,17 +281,17 @@ Rule 'dbo:coverArtist(subject,object)' produced:
 <db:Farmer_in_the_Sky>	<dbo:illustrator>	<db:Clifford_Geary> .
 <db:The_Ringworld_Throne>	<dbo:illustrator>	<db:Barclay_Shaw> .
 <db:The_Zanzibar_Cat>	<dbo:illustrator>	<db:James_C._Christensen> .
-<db:The_Adventures_of_Mao_on_the_Long_March>	<dbo:illustrator>	<db:Roy_Lichtenstein> .
+<db:The_Adventures_of_Mao_on_the_Long_March>	<dbo:illustrator>	<db:Roy_Lichtenstein> .	false
 <db:Ferdydurke>	<dbo:illustrator>	<db:Bruno_Schulz> .
 <db:Swell_Foop>	<dbo:illustrator>	<db:Darrell_K._Sweet> .
-<db:Dragons_of_the_Dwarven_Depths>	<dbo:illustrator>	<db:Matt_Stawicki> .
+<db:Dragons_of_the_Dwarven_Depths>	<dbo:illustrator>	<db:Matt_Stawicki> .	false
 <db:Psycho_%28novel%29>	<dbo:illustrator>	<db:Tony_Palladino> .
 <db:Fires_of_Azeroth>	<dbo:illustrator>	<db:Michael_Whelan> .
 <db:Grand_Conspiracy>	<dbo:illustrator>	<db:Janny_Wurts> .
-<db:Beyond_the_Golden_Stair>	<dbo:illustrator>	<db:Gervasio_Gallardo> .
+<db:Beyond_the_Golden_Stair>	<dbo:illustrator>	<db:Gervasio_Gallardo> .	false
 <db:Other_Dimensions>	<dbo:illustrator>	<db:Lee_Brown_Coye> .
 <db:When_Darkness_Falls>	<dbo:illustrator>	<db:Todd_Lockwood> .
-<db:Gojiro>	<dbo:illustrator>	<db:Stephen_Youll> .
+<db:Gojiro>	<dbo:illustrator>	<db:Stephen_Youll> .	false
 <db:Friday_%28novel%29>	<dbo:illustrator>	<db:Richard_Powers> .
 <db:Out_of_Space_and_Time>	<dbo:illustrator>	<db:Hannes_Bok> .
 <db:Cobra_Trap>	<dbo:illustrator>	<db:Jim_Holdaway> .
@@ -299,7 +299,7 @@ Rule 'dbo:coverArtist(subject,object)' produced:
 <db:Thrice_Upon_a_Time>	<dbo:illustrator>	<db:Rowena_Morrill> .
 <db:Traitor_%28Star_Wars_novel%29>	<dbo:illustrator>	<db:Steven_Anderson> .
 <db:The_Rolling_Stones_%28novel%29>	<dbo:illustrator>	<db:Clifford_Geary> .
-<db:Dragon_on_a_Pedestal>	<dbo:illustrator>	<db:Darrell_K._Sweet> .
+<db:Dragon_on_a_Pedestal>	<dbo:illustrator>	<db:Darrell_K._Sweet> .	false
 <db:Prisoner_of_Haven>	<dbo:illustrator>	<db:Matt_Stawicki> .
 <db:New_Worlds_for_Old>	<dbo:illustrator>	<db:David_Johnston> .
 <db:Heaven_Cent>	<dbo:illustrator>	<db:Darrell_K._Sweet> .
@@ -309,9 +309,9 @@ Rule 'dbo:coverArtist(subject,object)' produced:
 <db:The_Outsider_and_Others>	<dbo:illustrator>	<db:Virgil_Finlay> .
 <db:The_Castle_of_Llyr>	<dbo:illustrator>	<db:Evaline_Ness> .
 <db:Children_of_the_Atom>	<dbo:illustrator>	<db:Frank_Kelly_Freas> .
-<db:The_War_of_the_Flowers>	<dbo:illustrator>	<db:Michael_Whelan> .
+<db:The_War_of_the_Flowers>	<dbo:illustrator>	<db:Michael_Whelan> .	false
 <db:Faun_%26_Games>	<dbo:illustrator>	<db:Darrell_K._Sweet> .
-<db:Song_in_the_Silence>	<dbo:illustrator>	<db:Stephen_Hickman> .
+<db:Song_in_the_Silence>	<dbo:illustrator>	<db:Stephen_Hickman> .	false
 <db:Conan_%28collection%29>	<dbo:illustrator>	<db:Frank_Frazetta> .
 <db:Cyteen>	<dbo:illustrator>	<db:Keith_Birdsong> .
 <db:Ilium_%28novel%29>	<dbo:illustrator>	<db:Gary_Ruddell> .
@@ -324,7 +324,7 @@ Rule 'dbo:coverArtist(subject,object)' produced:
 <db:Cube_Route>	<dbo:illustrator>	<db:Darrell_K._Sweet> .
 <db:Space_Viking>	<dbo:illustrator>	<db:Michael_Whelan> .
 <db:Kender%2C_Gully_Dwarves%2C_and_Gnomes>	<dbo:illustrator>	<db:Larry_Elmore> .
-<db:Tales_of_the_Bounty_Hunters>	<dbo:illustrator>	<db:Stephen_Youll> .
+<db:Tales_of_the_Bounty_Hunters>	<dbo:illustrator>	<db:Stephen_Youll> .	false
 <db:The_Glory_That_Was>	<dbo:illustrator>	<db:Ed_Emshwiller> .
 <db:The_Honorable_Barbarian>	<dbo:illustrator>	<db:Darrell_K._Sweet> .
 <db:Diplomatic_Immunity_%28novel%29>	<dbo:illustrator>	<db:Stephen_Hickman> .
