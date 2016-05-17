@@ -331,36 +331,36 @@ Rule 'dbo:coverArtist(subject,object)' produced:
 Unknown facts for relation 'dbo:residence':
 Rule 'dbo:nationality(subject,object)' produced:
 <db:Robert_L._Gibson>	<dbo:residence>	<db:United_States> .
-<db:Mark_Allen_%28snooker_player%29>	<dbo:residence>	<db:Northern_Ireland> .
-<db:Joe_Davis>	<dbo:residence>	<db:England> .
-<db:Kenneth_Murray_%28archaeologist%29>	<dbo:residence>	<db:United_Kingdom> .
-<db:Jean-Claude_Rudaz>	<dbo:residence>	<db:Switzerland> .
-<db:Theodor_Mommsen>	<dbo:residence>	<db:Germany> .
-<db:Piero_Scotti>	<dbo:residence>	<db:Italy> .
-<db:James_Thurber>	<dbo:residence>	<db:United_States> .
-<db:Toni_Branca>	<dbo:residence>	<db:Switzerland> .
-<db:Juan_Manuel_Fangio>	<dbo:residence>	<db:Argentina> .
-<db:Michael_Spinks>	<dbo:residence>	<db:United_States> .
-<db:Phil_Hope>	<dbo:residence>	<db:United_Kingdom> .
-<db:Tony_Settember>	<dbo:residence>	<db:United_States> .
-<db:Billy_Bowden>	<dbo:residence>	<db:New_Zealand> .
-<db:Qazi_Muhammad>	<dbo:residence>	<db:Iran> .
-<db:Robert_Curbeam>	<dbo:residence>	<db:United_States> .
-<db:W._W._Rouse_Ball>	<dbo:residence>	<db:England> .
-<db:Judith_Resnik>	<dbo:residence>	<db:United_States> .
-<db:Cliff_Thorburn>	<dbo:residence>	<db:Canada> .
-<db:Franco_Maria_Malfatti>	<dbo:residence>	<db:Italy> .
-<db:Barbara_Keeley>	<dbo:residence>	<db:United_Kingdom> .
-<db:Trevor_Berbick>	<dbo:residence>	<db:Jamaica> .
-<db:Muhammed_Faris>	<dbo:residence>	<db:Syria> .
-<db:Tom_Clarke_%28politician%29>	<dbo:residence>	<db:United_Kingdom> .
-<db:Rainer_Maria_Rilke>	<dbo:residence>	<db:Austria> .
-<db:Gimax>	<dbo:residence>	<db:Italy> .
-<db:G%C3%BCnther_Bechem>	<dbo:residence>	<db:Germany> .
-<db:Fran%C3%A7ois_Duval>	<dbo:residence>	<db:Belgium> .
-<db:Valery_Ryumin>	<dbo:residence>	<db:Russia> .
-<db:Buffie_Carruth>	<dbo:residence>	<db:United_States> .
-<db:Colin_Burgon>	<dbo:residence>	<db:United_Kingdom> .
+<db:Mark_Allen_%28snooker_player%29>	<dbo:residence>	<db:Northern_Ireland> .	true
+<db:Joe_Davis>	<dbo:residence>	<db:England> .	true
+<db:Kenneth_Murray_%28archaeologist%29>	<dbo:residence>	<db:United_Kingdom> .	true
+<db:Jean-Claude_Rudaz>	<dbo:residence>	<db:Switzerland> .	true
+<db:Theodor_Mommsen>	<dbo:residence>	<db:Germany> .	true
+<db:Piero_Scotti>	<dbo:residence>	<db:Italy> .	true
+<db:James_Thurber>	<dbo:residence>	<db:United_States> .	true
+<db:Toni_Branca>	<dbo:residence>	<db:Switzerland> .	true
+<db:Juan_Manuel_Fangio>	<dbo:residence>	<db:Argentina> .	true
+<db:Michael_Spinks>	<dbo:residence>	<db:United_States> .	true
+<db:Phil_Hope>	<dbo:residence>	<db:United_Kingdom> .	true
+<db:Tony_Settember>	<dbo:residence>	<db:United_States> .	true
+<db:Billy_Bowden>	<dbo:residence>	<db:New_Zealand> .	true
+<db:Qazi_Muhammad>	<dbo:residence>	<db:Iran> .	true
+<db:Robert_Curbeam>	<dbo:residence>	<db:United_States> .	true
+<db:W._W._Rouse_Ball>	<dbo:residence>	<db:England> .	true
+<db:Judith_Resnik>	<dbo:residence>	<db:United_States> .	true
+<db:Cliff_Thorburn>	<dbo:residence>	<db:Canada> .	true
+<db:Franco_Maria_Malfatti>	<dbo:residence>	<db:Italy> .	true
+<db:Barbara_Keeley>	<dbo:residence>	<db:United_Kingdom> .	true
+<db:Trevor_Berbick>	<dbo:residence>	<db:Jamaica> .	true
+<db:Muhammed_Faris>	<dbo:residence>	<db:Syria> .	true
+<db:Tom_Clarke_%28politician%29>	<dbo:residence>	<db:United_Kingdom> .	true
+<db:Rainer_Maria_Rilke>	<dbo:residence>	<db:Austria> .	true
+<db:Gimax>	<dbo:residence>	<db:Italy> .	true
+<db:G%C3%BCnther_Bechem>	<dbo:residence>	<db:Germany> .	true
+<db:Fran%C3%A7ois_Duval>	<dbo:residence>	<db:Belgium> .	true
+<db:Valery_Ryumin>	<dbo:residence>	<db:Russia> .	true
+<db:Buffie_Carruth>	<dbo:residence>	<db:United_States> .	true
+<db:Colin_Burgon>	<dbo:residence>	<db:United_Kingdom> .	true
 <db:Dorothy_Allison>	<dbo:residence>	<db:United_States> .
 <db:Charles_Bradlaugh>	<dbo:residence>	<db:United_Kingdom> .
 <db:Emily_Thornberry>	<dbo:residence>	<db:United_Kingdom> .
@@ -3564,8 +3564,8 @@ Rule 'dbo:nationality(subject,object)' produced:
 Unknown facts for relation 'dbo:heir':
 Rule 'dbo:successor(subject,object)' produced:
 <db:Se%C3%A1n_MacBride>	<dbo:heir>	<db:Frank_Aiken> .
-<db:Alexandre_Millerand>	<dbo:heir>	<db:Gaston_Doumergue> .
-<db:Pope_Theodore_II>	<dbo:heir>	<db:Pope_John_IX> .
+<db:Alexandre_Millerand>	<dbo:heir>	<db:Gaston_Doumergue> .	false
+<db:Pope_Theodore_II>	<dbo:heir>	<db:Pope_John_IX> .	false
 <db:Sir_John_Eardley-Wilmot%2C_1st_Baronet>	<dbo:heir>	<db:William_Denison> .
 <db:Israel_Washburn%2C_Jr.>	<dbo:heir>	<db:Abner_Coburn> .
 <db:Thomas_Ford_%28politician%29>	<dbo:heir>	<db:Augustus_C._French> .
@@ -3597,8 +3597,8 @@ Rule 'dbo:successor(subject,object)' produced:
 <db:Eunice_Groark>	<dbo:heir>	<db:Jodi_Rell> .
 <db:Michael_Ochiltree>	<dbo:heir>	<db:Robert_Lauder> .
 <db:Carlos_Mesa>	<dbo:heir>	<db:Eduardo_Rodr%C3%ADguez> .
-<db:Pope_Alexander_III>	<dbo:heir>	<db:Pope_Lucius_III> .
-<db:Franco_Maria_Malfatti>	<dbo:heir>	<db:Sicco_Mansholt> .
+<db:Pope_Alexander_III>	<dbo:heir>	<db:Pope_Lucius_III> .	false
+<db:Franco_Maria_Malfatti>	<dbo:heir>	<db:Sicco_Mansholt> .	false
 <db:Harold_G._Hoffman>	<dbo:heir>	<db:A._Harry_Moore> .
 <db:Mao_Zedong>	<dbo:heir>	<db:Hua_Guofeng> .
 <db:Bill_Casey>	<dbo:heir>	<db:Dianne_Brushett> .
@@ -3621,12 +3621,12 @@ Rule 'dbo:successor(subject,object)' produced:
 <db:Edward_B._Watson>	<dbo:heir>	<db:John_B._Waldo> .
 <db:Se%C3%A1n_MacEntee>	<dbo:heir>	<db:Gerard_Sweetman> .
 <db:Indravarman_I>	<dbo:heir>	<db:Yasovarman_I> .
-<db:Jerry_Rawlings>	<dbo:heir>	<db:John_Kufuor> .
+<db:Jerry_Rawlings>	<dbo:heir>	<db:John_Kufuor> .	false
 <db:Giuseppe_Saragat>	<dbo:heir>	<db:Giovanni_Leone> .
 <db:Jacques_Chirac>	<dbo:heir>	<db:Nicolas_Sarkozy> .
 <db:Erhard_Eppler>	<dbo:heir>	<db:Egon_Bahr> .
-<db:Pope_Leo_VIII>	<dbo:heir>	<db:Pope_Benedict_V> .
-<db:Pope_Julius_I>	<dbo:heir>	<db:Pope_Liberius> .
+<db:Pope_Leo_VIII>	<dbo:heir>	<db:Pope_Benedict_V> .	false
+<db:Pope_Julius_I>	<dbo:heir>	<db:Pope_Liberius> .	false
 <db:Simeon_S._Pennewill>	<dbo:heir>	<db:Charles_R._Miller> .
 <db:Buddy_Roemer>	<dbo:heir>	<db:Edwin_Edwards> .
 <db:Em%C3%ADlio_Garrastazu_M%C3%A9dici>	<dbo:heir>	<db:Ernesto_Geisel> .
@@ -3635,7 +3635,7 @@ Rule 'dbo:successor(subject,object)' produced:
 <db:Albert_Sarraut>	<dbo:heir>	<db:Camille_Chautemps> .
 <db:Joseph_Duncan_%28politician%29>	<dbo:heir>	<db:Thomas_Carlin> .
 <db:Kevin_Shelley>	<dbo:heir>	<db:Cathy_Mitchell> .
-<db:Carus>	<dbo:heir>	<db:Carinus> .
+<db:Carus>	<dbo:heir>	<db:Carinus> .	true
 <db:Fuad_II_of_Egypt>	<dbo:heir>	<db:Muhammad_Naguib> .
 <db:Eugene_Foss>	<dbo:heir>	<db:David_I._Walsh> .
 <db:John_L._Barstow>	<dbo:heir>	<db:Samuel_E._Pingree> .
@@ -3648,12 +3648,12 @@ Rule 'dbo:successor(subject,object)' produced:
 <db:John_Franklin>	<dbo:heir>	<db:Sir_John_Eardley-Wilmot%2C_1st_Baronet> .
 <db:Bamanga_Tukur>	<dbo:heir>	<db:Mohammed_Jega> .
 <db:Michel_Debr%C3%A9>	<dbo:heir>	<db:Georges_Pompidou> .
-<db:Pope_Benedict_VII>	<dbo:heir>	<db:Pope_John_XIV> .
+<db:Pope_Benedict_VII>	<dbo:heir>	<db:Pope_John_XIV> .	false
 <db:George_Busbee>	<dbo:heir>	<db:Joe_Frank_Harris> .
 <db:Ernest_McFarland>	<dbo:heir>	<db:Robert_A._Taft> .
 <db:Miriam_A._Ferguson>	<dbo:heir>	<db:Dan_Moody> .
 <db:Gordian_II>	<dbo:heir>	<db:Balbinus> .
-<db:Paolo_Lucio_Anafesto>	<dbo:heir>	<db:Marcello_Tegalliano> .
+<db:Paolo_Lucio_Anafesto>	<dbo:heir>	<db:Marcello_Tegalliano> .	false
 <db:Alpheus_Felch>	<dbo:heir>	<db:William_L._Greenly> .
 <db:Edward_V_of_England>	<dbo:heir>	<db:Richard_III_of_England> .
 <db:Jules_L%C3%A9ger>	<dbo:heir>	<db:Edward_Schreyer> .
@@ -3671,7 +3671,7 @@ Rule 'dbo:successor(subject,object)' produced:
 <db:Giovanni_Leone>	<dbo:heir>	<db:Amintore_Fanfani> .
 <db:Michael_Myers_%28judge%29>	<dbo:heir>	<db:Humphrey_O%27Leary> .
 <db:Richard_Nixon>	<dbo:heir>	<db:Thomas_Kuchel> .
-<db:William_Johnstone_Ritchie>	<dbo:heir>	<db:John_Wellington_Gwynne> .
+<db:William_Johnstone_Ritchie>	<dbo:heir>	<db:John_Wellington_Gwynne> .	false
 <db:Mikul%C3%A1%C5%A1_Dzurinda>	<dbo:heir>	<db:Robert_Fico> .
 <db:Fr%C3%A9d%C3%A9ric_Fran%C3%A7ois-Marsal>	<dbo:heir>	<db:%C3%89douard_Herriot> .
 <db:Manuel_Mar%C3%ADa_Mallarino>	<dbo:heir>	<db:Mariano_Ospina_Rodr%C3%ADguez> .
@@ -3684,13 +3684,13 @@ Rule 'dbo:successor(subject,object)' produced:
 <db:Justinian_I>	<dbo:heir>	<db:Justin_II> .
 <db:Jim_Peterson>	<dbo:heir>	<db:John_Oostrom> .
 <db:George_Thomas%2C_1st_Viscount_Tonypandy>	<dbo:heir>	<db:Bernard_Weatherill> .
-<db:Spyros_Kyprianou>	<dbo:heir>	<db:Alekos_Michaelides> .
+<db:Spyros_Kyprianou>	<dbo:heir>	<db:Alekos_Michaelides> .	false
 <db:Kirk_Fordice>	<dbo:heir>	<db:Ronnie_Musgrove> .
 <db:Joseph_Bech>	<dbo:heir>	<db:Pierre_Frieden> .
 <db:Neil_Hartigan>	<dbo:heir>	<db:Dave_O%27Neal> .
 <db:Dwight_F._Davis>	<dbo:heir>	<db:James_William_Good> .
 <db:Jean_Beetz>	<dbo:heir>	<db:Peter_Cory> .
-<db:George_Rossman>	<dbo:heir>	<db:Ralph_M._Holman> .
+<db:George_Rossman>	<dbo:heir>	<db:Ralph_M._Holman> .	false
 <db:V%C3%ADctor_Paz_Estenssoro>	<dbo:heir>	<db:Hern%C3%A1n_Siles_Zuazo> .
 <db:Paulo_Maluf>	<dbo:heir>	<db:Jos%C3%A9_Maria_Marin> .
 <db:Sao_Shwe_Thaik>	<dbo:heir>	<db:Ba_U> .
@@ -3709,7 +3709,7 @@ Rule 'dbo:successor(subject,object)' produced:
 <db:Roy_Jenkins>	<dbo:heir>	<db:James_Prior%2C_Baron_Prior> .
 <db:Constantine_II_%28emperor%29>	<dbo:heir>	<db:Constans> .
 <db:Okey_L._Patteson>	<dbo:heir>	<db:William_C._Marland> .
-<db:Erich_Ollenhauer>	<dbo:heir>	<db:Willy_Brandt> .
+<db:Erich_Ollenhauer>	<dbo:heir>	<db:Willy_Brandt> .	false
 <db:Todd_Hiett>	<dbo:heir>	<db:Lance_Cargill> .
 <db:Vincent_Auriol>	<dbo:heir>	<db:L%C3%A9on_Blum> .
 <db:Paul_Keating>	<dbo:heir>	<db:John_Howard> .
@@ -3721,7 +3721,7 @@ Rule 'dbo:successor(subject,object)' produced:
 <db:Major_James_Coldwell>	<dbo:heir>	<db:Hazen_Argue> .
 <db:Pierre_Werner>	<dbo:heir>	<db:Jacques_Santer> .
 <db:Gamal_Abdel_Nasser>	<dbo:heir>	<db:Anwar_Sadat> .
-<db:Tassos_Papadopoulos>	<dbo:heir>	<db:Marios_Garoyian> .
+<db:Tassos_Papadopoulos>	<dbo:heir>	<db:Marios_Garoyian> .	false
 <db:Pietro_II_Orseolo>	<dbo:heir>	<db:Otto_Orseolo> .
 <db:Al_Quie>	<dbo:heir>	<db:Rudy_Perpich> .
 <db:Tassos_Papadopoulos>	<dbo:heir>	<db:Spyros_Kyprianou> .
@@ -3732,8 +3732,8 @@ Rule 'dbo:successor(subject,object)' produced:
 <db:Kurt_Georg_Kiesinger>	<dbo:heir>	<db:Willy_Brandt> .
 <db:Pope_John_VII>	<dbo:heir>	<db:Pope_Sisinnius> .
 <db:Ram%C3%B3n_Jos%C3%A9_Vel%C3%A1squez>	<dbo:heir>	<db:Rafael_Caldera> .
-<db:William_R._King_%28judge%29>	<dbo:heir>	<db:Henry_J._Bean> .
-<db:Patrick_Hillery>	<dbo:heir>	<db:Mary_Robinson> .
+<db:William_R._King_%28judge%29>	<dbo:heir>	<db:Henry_J._Bean> .	false
+<db:Patrick_Hillery>	<dbo:heir>	<db:Mary_Robinson> .	false
 <db:Henry_Forster%2C_1st_Baron_Forster>	<dbo:heir>	<db:John_Baird%2C_1st_Viscount_Stonehaven> .
 <db:Pope_Sylvester_I>	<dbo:heir>	<db:Pope_Mark> .
 <db:J%C3%B3n_%C3%9Eorl%C3%A1ksson>	<dbo:heir>	<db:Tryggvi_%C3%9E%C3%B3rhallsson> .
@@ -3763,8 +3763,8 @@ Rule 'dbo:successor(subject,object)' produced:
 <db:Luis_Mu%C3%B1oz_Mar%C3%ADn>	<dbo:heir>	<db:Roberto_S%C3%A1nchez_Vilella> .
 <db:Frederick_Weld>	<dbo:heir>	<db:Cecil_Clementi_Smith> .
 <db:Johann_II%2C_Prince_of_Liechtenstein>	<dbo:heir>	<db:Franz_I%2C_Prince_of_Liechtenstein> .
-<db:Patricia_Lewsley>	<dbo:heir>	<db:Marietta_Farrell> .
-<db:Pope_Eugene_II>	<dbo:heir>	<db:Pope_Valentine> .
+<db:Patricia_Lewsley>	<dbo:heir>	<db:Marietta_Farrell> .	false
+<db:Pope_Eugene_II>	<dbo:heir>	<db:Pope_Valentine> .	false
 <db:Charles_IV_of_Spain>	<dbo:heir>	<db:Joseph_Bonaparte> .
 <db:Miche%C3%A1l_Martin>	<dbo:heir>	<db:Mary_Harney> .
 <db:Pope_John_XII>	<dbo:heir>	<db:Pope_Leo_VIII> .
@@ -3783,10 +3783,10 @@ Rule 'dbo:successor(subject,object)' produced:
 <db:Reginald_Maudling>	<dbo:heir>	<db:John_Davies_%28businessman%29> .
 <db:John_O._Pastore>	<dbo:heir>	<db:John_S._McKiernan> .
 <db:William_J._Holloway>	<dbo:heir>	<db:William_H._Murray> .
-<db:Alexander_III_of_Russia>	<dbo:heir>	<db:Nicholas_II_of_Russia> .
+<db:Alexander_III_of_Russia>	<dbo:heir>	<db:Nicholas_II_of_Russia> .	true
 <db:Thomas_Wharton_Jr.>	<dbo:heir>	<db:George_Bryan> .
 <db:Eduardo_Angeloz>	<dbo:heir>	<db:Ram%C3%B3n_Mestre> .
-<db:Tom_C._Korologos>	<dbo:heir>	<db:Sam_Fox> .
+<db:Tom_C._Korologos>	<dbo:heir>	<db:Sam_Fox> .	false
 <db:Harry_H._Belt>	<dbo:heir>	<db:George_Rossman> .
 <db:Virginia_Bottomley>	<dbo:heir>	<db:Chris_Smith%2C_Baron_Smith_of_Finsbury> .
 <db:Ghebreselassie_Yoseph>	<dbo:heir>	<db:Berhane_Abrehe> .
@@ -3811,9 +3811,9 @@ Rule 'dbo:successor(subject,object)' produced:
 <db:Sulaiman_%28Brunei%29>	<dbo:heir>	<db:Saiful_Rijal> .
 <db:Ernest_Charles_Drury>	<dbo:heir>	<db:Howard_Ferguson> .
 <db:Stephen_F._Chadwick>	<dbo:heir>	<db:W._W._Thayer> .
-<db:Pope_Pelagius_I>	<dbo:heir>	<db:Pope_John_III> .
+<db:Pope_Pelagius_I>	<dbo:heir>	<db:Pope_John_III> .	false
 <db:Charles_R._Boutin>	<dbo:heir>	<db:Sheryl_Davis_Kohl> .
-<db:William_Cushing>	<dbo:heir>	<db:Joseph_Story> .
+<db:William_Cushing>	<dbo:heir>	<db:Joseph_Story> .	false
 <db:Oskar_Lafontaine>	<dbo:heir>	<db:Hans_Eichel> .
 <db:Tillie_K._Fowler>	<dbo:heir>	<db:Ander_Crenshaw> .
 <db:Fran%C3%A7ois_Darlan>	<dbo:heir>	<db:Pierre_Laval> .
@@ -3830,9 +3830,9 @@ Rule 'dbo:successor(subject,object)' produced:
 <db:Pertinax>	<dbo:heir>	<db:Didius_Julianus> .
 <db:Teburoro_Tito>	<dbo:heir>	<db:Anote_Tong> .
 <db:Milton_Obote>	<dbo:heir>	<db:Idi_Amin> .
-<db:Romano_Prodi>	<dbo:heir>	<db:Jos%C3%A9_Manuel_Barroso> .
+<db:Romano_Prodi>	<dbo:heir>	<db:Jos%C3%A9_Manuel_Barroso> .	false
 <db:Andrew_Young>	<dbo:heir>	<db:Donald_McHenry> .
-<db:Lamberto_Dini>	<dbo:heir>	<db:Giuliano_Amato> .
+<db:Lamberto_Dini>	<dbo:heir>	<db:Giuliano_Amato> .	false
 <db:Emil_H%C3%A1cha>	<dbo:heir>	<db:Edvard_Bene%C5%A1> .
 <db:George_F._Shafer>	<dbo:heir>	<db:William_Langer> .
 <db:Pope_Lucius_II>	<dbo:heir>	<db:Pope_Eugene_III> .
@@ -3844,7 +3844,7 @@ Rule 'dbo:successor(subject,object)' produced:
 <db:Pope_Hilarius>	<dbo:heir>	<db:Pope_Simplicius> .
 <db:William_Comstock>	<dbo:heir>	<db:Frank_Fitzgerald> .
 <db:Alva_Adams_%28governor%29>	<dbo:heir>	<db:James_Hamilton_Peabody> .
-<db:Marcello_Tegalliano>	<dbo:heir>	<db:Orso_Ipato> .
+<db:Marcello_Tegalliano>	<dbo:heir>	<db:Orso_Ipato> .	false
 <db:Oliver_Mowat>	<dbo:heir>	<db:Arthur_Sturgis_Hardy> .
 <db:Cosette_Simon>	<dbo:heir>	<db:Winfield_Moses> .
 <db:Louie_B._Nunn>	<dbo:heir>	<db:Wendell_H._Ford> .
@@ -3866,7 +3866,7 @@ Rule 'dbo:successor(subject,object)' produced:
 <db:Gheorghe_Mironescu>	<dbo:heir>	<db:Iuliu_Maniu> .
 <db:Hilbrand_Nawijn>	<dbo:heir>	<db:Rita_Verdonk> .
 <db:Hans_van_Mierlo>	<dbo:heir>	<db:Jozias_van_Aartsen> .
-<db:Pope_Sixtus_V>	<dbo:heir>	<db:Pope_Urban_VII> .
+<db:Pope_Sixtus_V>	<dbo:heir>	<db:Pope_Urban_VII> .	false
 <db:Kevin_Sullivan_%28politician%29>	<dbo:heir>	<db:Michael_Fedele> .
 <db:Yasser_Arafat>	<dbo:heir>	<db:Rawhi_Fattouh> .
 <db:Walter_R._Peterson%2C_Jr.>	<dbo:heir>	<db:Meldrim_Thomson%2C_Jr.> .
@@ -3877,7 +3877,7 @@ Rule 'dbo:successor(subject,object)' produced:
 <db:Dixy_Lee_Ray>	<dbo:heir>	<db:John_Spellman> .
 <db:Orville_C._Pratt>	<dbo:heir>	<db:George_Henry_Williams> .
 <db:Robert_Emmet_King>	<dbo:heir>	<db:George_Davidson_Todd> .
-<db:Styles_Bridges>	<dbo:heir>	<db:Francis_P._Murphy> .
+<db:Styles_Bridges>	<dbo:heir>	<db:Francis_P._Murphy> .	false
 <db:Kenneth_Jacobs>	<dbo:heir>	<db:Ronald_Wilson> .
 <db:Dick_Spring>	<dbo:heir>	<db:Albert_Reynolds> .
 <db:Denis_Healey>	<dbo:heir>	<db:Geoffrey_Howe> .
@@ -3891,7 +3891,7 @@ Rule 'dbo:successor(subject,object)' produced:
 <db:Charles_IX_of_France>	<dbo:heir>	<db:Henry_III_of_France> .
 <db:George_S._Boutwell>	<dbo:heir>	<db:George_M._Brooks> .
 <db:Amos_W._Barber>	<dbo:heir>	<db:John_Eugene_Osborne> .
-<db:Hugh_Hanrahan>	<dbo:heir>	<db:Rahim_Jaffer> .
+<db:Hugh_Hanrahan>	<dbo:heir>	<db:Rahim_Jaffer> .	false
 <db:Frank_Hsieh>	<dbo:heir>	<db:Su_Tseng-chang> .
 <db:Pope_Julius_II>	<dbo:heir>	<db:Pope_Leo_X> .
 <db:Edwin_J._Peterson>	<dbo:heir>	<db:Robert_D._Durham> .
@@ -3903,7 +3903,7 @@ Rule 'dbo:successor(subject,object)' produced:
 <db:Paddy_Ashdown>	<dbo:heir>	<db:Charles_Kennedy> .
 <db:Merenre_Nemtyemsaf_I>	<dbo:heir>	<db:Pepi_II_Neferkare> .
 <db:Lyman_Duff>	<dbo:heir>	<db:Thibaudeau_Rinfret> .
-<db:Pope_Urban_II>	<dbo:heir>	<db:Pope_Paschal_II> .
+<db:Pope_Urban_II>	<dbo:heir>	<db:Pope_Paschal_II> .	false
 <db:M._Susan_Savage>	<dbo:heir>	<db:Bill_LaFortune> .
 <db:Barend_Biesheuvel>	<dbo:heir>	<db:Joop_den_Uyl> .
 <db:Oscar_Luigi_Scalfaro>	<dbo:heir>	<db:Franco_Maria_Malfatti> .
@@ -3912,7 +3912,7 @@ Rule 'dbo:successor(subject,object)' produced:
 <db:Andriy_Livytskyi>	<dbo:heir>	<db:Stepan_Vytvytskyi> .
 <db:Fred_Akuffo>	<dbo:heir>	<db:Jerry_Rawlings> .
 <db:Alfred_Gleave>	<dbo:heir>	<db:Ray_Hnatyshyn> .
-<db:Kamal_Kharazi>	<dbo:heir>	<db:Manouchehr_Mottaki> .
+<db:Kamal_Kharazi>	<dbo:heir>	<db:Manouchehr_Mottaki> .	false
 <db:C._A._Bottolfsen>	<dbo:heir>	<db:Chase_A._Clark> .
 <db:Ramesses_IX>	<dbo:heir>	<db:Ramesses_X> .
 <db:Jenny_Macklin>	<dbo:heir>	<db:Julia_Gillard> .
@@ -3931,7 +3931,7 @@ Rule 'dbo:successor(subject,object)' produced:
 <db:Richard_Caswell>	<dbo:heir>	<db:Abner_Nash> .
 <db:Cruz_Bustamante>	<dbo:heir>	<db:John_Garamendi> .
 <db:Henry_S._Tyler>	<dbo:heir>	<db:Robert_Emmet_King> .
-<db:Neville_Miller>	<dbo:heir>	<db:Joseph_D._Scholtz> .
+<db:Neville_Miller>	<dbo:heir>	<db:Joseph_D._Scholtz> .	false
 <db:David_Orr>	<dbo:heir>	<db:Eugene_Sawyer> .
 <db:Pierre_Tirard>	<dbo:heir>	<db:Charles_Floquet> .
 <db:Chase_Osborn>	<dbo:heir>	<db:Woodbridge_Nathan_Ferris> .
@@ -3942,7 +3942,7 @@ Rule 'dbo:successor(subject,object)' produced:
 <db:Charles_Grey%2C_2nd_Earl_Grey>	<dbo:heir>	<db:William_Lamb%2C_2nd_Viscount_Melbourne> .
 <db:James_Lee_%28Canadian_politician%29>	<dbo:heir>	<db:Joe_Ghiz> .
 <db:Farouk_of_Egypt>	<dbo:heir>	<db:Fuad_II_of_Egypt> .
-<db:Pope_Benedict_VI>	<dbo:heir>	<db:Pope_Benedict_VII> .
+<db:Pope_Benedict_VI>	<dbo:heir>	<db:Pope_Benedict_VII> .	false
 <db:Francisco_Ram%C3%B3n_Vicu%C3%B1a>	<dbo:heir>	<db:Francisco_Antonio_Pinto> .
 <db:Constantin_Argetoianu>	<dbo:heir>	<db:Gheorghe_T%C4%83t%C4%83rescu> .
 <db:Mihail_Kog%C4%83lniceanu>	<dbo:heir>	<db:Dimitrie_Ghica> .
@@ -3960,13 +3960,13 @@ Rule 'dbo:successor(subject,object)' produced:
 <db:Johan_Ramstedt>	<dbo:heir>	<db:Christian_Lundeberg> .
 <db:James_Henderson_Berry>	<dbo:heir>	<db:Simon_Pollard_Hughes%2C_Jr.> .
 <db:Edward_A._O%27Neal>	<dbo:heir>	<db:Thomas_Seay> .
-<db:Giuseppe_Pella>	<dbo:heir>	<db:Amintore_Fanfani> .
+<db:Giuseppe_Pella>	<dbo:heir>	<db:Amintore_Fanfani> .	false
 <db:Samuel_W._Pennypacker>	<dbo:heir>	<db:Edwin_Sydney_Stuart> .
 <db:William_Marvin>	<dbo:heir>	<db:David_S._Walker> .
 <db:Michail_Stasinopoulos>	<dbo:heir>	<db:Konstantinos_Tsatsos> .
 <db:Marlene_Johnson>	<dbo:heir>	<db:Joanell_Dyrstad> .
 <db:Eduardo_Rodr%C3%ADguez>	<dbo:heir>	<db:Evo_Morales> .
-<db:Edward_McTiernan>	<dbo:heir>	<db:Keith_Aickin> .
+<db:Edward_McTiernan>	<dbo:heir>	<db:Keith_Aickin> .	false
 <db:Pierre_Messmer>	<dbo:heir>	<db:Jacques_Chirac> .
 <db:Georges_Clemenceau>	<dbo:heir>	<db:Alexandre_Millerand> .
 <db:Robert_Bork>	<dbo:heir>	<db:Clarence_Thomas> .
