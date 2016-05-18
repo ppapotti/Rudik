@@ -20,6 +20,7 @@ import org.slf4j.LoggerFactory;
 import com.google.common.collect.Sets;
 
 import asu.edu.neg_rule_miner.RuleMinerException;
+import asu.edu.neg_rule_miner.configuration.ConfigurationFacility;
 import asu.edu.neg_rule_miner.configuration.Constant;
 import asu.edu.neg_rule_miner.model.MultipleGraphHornRule;
 import asu.edu.neg_rule_miner.model.RuleAtom;
@@ -152,6 +153,9 @@ public abstract class SparqlExecutor {
 			query.append("  ?subject <"+typePrefix+"> <"+ typeSubject + ">.");
 		query.append("  ?subject ?targetRelation ?object. " +
 				"  FILTER (" + filterRelation.toString() + ") }");
+		
+		if(ConfigurationFacility.getPositiveExampleLimit() >= 0)
+			query.append(" ORDER BY RAND() LIMIT "+ConfigurationFacility.getPositiveExampleLimit());
 
 		return query.toString();
 	}
@@ -339,13 +343,16 @@ public abstract class SparqlExecutor {
 			if(objectFunction)
 				negativeCandidateQuery+=" ?realSubject ?targetRelation ?object. ";
 		}
-
+		
+		
 		negativeCandidateQuery+="  ?subject ?otherRelation ?object. " +
 				"  FILTER (" + filterRelation.toString() + ") " +
 				"  FILTER (" + filterNotRelation.toString() + ") " +
 				differentRelation.toString();
 
 		negativeCandidateQuery+="}";
+		if(ConfigurationFacility.getNegativeExampleLimit()>=0)
+			negativeCandidateQuery+=" ORDER BY RAND() LIMIT "+ConfigurationFacility.getNegativeExampleLimit();
 
 		return negativeCandidateQuery;
 	}
