@@ -10,12 +10,13 @@ import com.google.common.collect.Sets;
 
 import asu.edu.neg_rule_miner.model.MultipleGraphHornRule;
 import asu.edu.neg_rule_miner.model.RuleAtom;
+import asu.edu.neg_rule_miner.model.statistic.StatisticsContainer;
 import asu.edu.neg_rule_miner.sparql.SparqlExecutor;
 
 public class DynamicScoreComputation {
 	private double alpha = 0.3;
 	private double beta = 0.6;
-	private double gamma = 1;
+	private double gamma = 0.1;
 
 	private double totalMiningExamplesCount;
 	private double totalOtherExamplesCount;
@@ -218,6 +219,9 @@ public class DynamicScoreComputation {
 	}
 
 	public int getRuleMatchingOtherExamples(Set<RuleAtom> rules){
+		StatisticsContainer.increaseValidationQuery();
+		
+		long startingTime = System.currentTimeMillis();
 		int coverage = -1;
 		try{
 			if(minePositive){
@@ -234,6 +238,9 @@ public class DynamicScoreComputation {
 		catch(Exception e){
 			coverage = Integer.MAX_VALUE;
 		}
+		long endingTime = System.currentTimeMillis();
+		StatisticsContainer.increaseTimeValidationQuery(endingTime-startingTime);
+		
 		return coverage;
 	}
 

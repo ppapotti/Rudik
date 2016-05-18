@@ -1,5 +1,6 @@
 package asu.edu.neg_rule_miner.sparql.jena;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -15,6 +16,7 @@ import org.apache.jena.rdf.model.RDFNode;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import asu.edu.neg_rule_miner.configuration.ConfigurationFacility;
 import asu.edu.neg_rule_miner.model.RuleAtom;
 import asu.edu.neg_rule_miner.model.rdf.graph.Edge;
 import asu.edu.neg_rule_miner.model.rdf.graph.Graph;
@@ -66,12 +68,18 @@ public abstract class QueryJenaLibrary extends SparqlExecutor {
 		if(totalTime>50000)
 			LOGGER.debug("Query '{}' took {} seconds to complete.",sparqlQuery, totalTime/1000.);
 
+		TripleFilter tripFil = new TripleFilter();
+		
+		//TO DO: read from config file
+		String sub = "sub", rel = "rel", obj = "obj";
+		
+		ArrayList<QuerySolution> resultTriples = tripFil.doFilter(results, sub, rel, obj, entity, ConfigurationFacility.getSubjectLimit(), 
+				ConfigurationFacility.getObjectLimit());
 
 		Set<String> currentTypes = Sets.newHashSet();
 		entity2types.put(entity, currentTypes);
-		while(results.hasNext()){
-			QuerySolution oneResult = results.next();
-
+		for(QuerySolution oneResult:resultTriples){
+			
 			String relation = oneResult.get("rel").toString();
 
 			//check the relation is a type relation
