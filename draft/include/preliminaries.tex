@@ -28,11 +28,18 @@ Similarly, the coverage and the unbounded coverage for a set of rules $R=\{r_1,r
 
 $$C_R(E) = \bigcup \limits_{r \in R} C_r(E) \qquad U_R(E) = \bigcup \limits_{r \in R} U_r(E) $$
 
+Our problem is the discovery of positive (negative) rules for an input given relation. We uniquely identify a relation with two different sets of pair of entities.
+	$G$ -- \emph{generation set}. $G$ contains good examples for the relation that we are trying to discover ($G$ contains examples of parents and children if we are discovering positive rules for a child relation).
+	$V$ -- the validation set. $V$ contains counter examples for the target relation (pairs of people that are not in a child relation).
+We will explain in Section~\ref{sec:examples_gen} how to generate these two sets for a given relation.
+Note that our approach is not less generic than those for mining rules for the entire KB (e.g.,~\cite{abedjan2014amending,galarraga2015fast}): it is true that we require a target relation as input, however we can generically apply such setting for every relation in the KB and compute rules for each of them.
+
+
 We can now formalize the \emph{exact discovery problem}.
 Given a KB $K$, a set of pair of entities $G$, a set of pair of entities $V$, and a universe of rules $R$, 
 a solution for the \emph{exact discovery problem} is a subset $R'$ of $R$  such that:
 $$R_{opt}=\underset{|R'|}{\operatorname{argmin}}(R'|(C_{R'}(G) = G) \wedge (C_{R'}(V) \cap V = \emptyset) )$$
-$G$ is the \emph{generation set}, which contains good examples for the rule that we are trying to discover ($G$ contains examples of parents and children if we are discovering positive rules for a child relation). $V$ is the validation set, which contains counter examples for the target rule (pairs of people that are not in a child relation). The ideal solution is a set of rules that covers all examples in $G$, and none of the examples in $V$. Note that given a pair of entities $(x,y)$, we can always generate a Horn Rule whose body covers only $(x,y)$ by assigning variable $a$ to $x$ and variable $b$ to $y$.
+The ideal solution is a set of rules that covers all examples in $G$, and none of the examples in $V$. Note that given a pair of entities $(x,y)$, we can always generate a Horn Rule whose body covers only $(x,y)$ by assigning variable $a$ to $x$ and variable $b$ to $y$.
 
 Unfortunately, since the solution is not allowed to cover any element in $V$, in the worst case the exact solution may be a set of rules s.t. each rule covers only one example in $G$, making such set of rules difficult to use.
 
@@ -48,18 +55,18 @@ with $\alpha,\beta,\gamma \in [0,1]$ and $\alpha + \beta + \gamma = 1$. The weig
 \begin{inparaenum}[\itshape(i)]
 	\item The first component captures the coverage over the generation set $G$ -- the ratio between the coverage of $r$ over $G$ and $G$ itself. Note that if $r$ covers all elements in $G$, then this componenet is $0$ because of the subtraction from $1$.
 	\item The second component aims to quantify potential errors of $r$, or rather the coverage over $V$. The coverage over $V$ is not divided by total elements in $V$, because 
-	for thos elemenets in $V$ that do not have relations stated in $r$ we cannot be sure that such elements are not covered by $r$. Thus we divide the coverage of over $V$ by the unbounded coverage of $r$ over $V$. Ideally this number is close to $0$.
-	\item The last element of the weight capture how many elements of $V$ have the information stated by relations in $r$. The more elements in $V$ are unbounded covered by $r$, the better we can judge the rule w.r.t. $V$. This element is close to $0$ when $r$ unbounded covers many elements of $V$. 
+	for thos elemenets in $V$ that do not have relations stated in $r$ we cannot be sure that such elements are not covered by $r$. Thus we divide the coverage over $V$ by the unbounded coverage of $r$ over $V$. Ideally this number is close to $0$.
+	\item The last element of the weight captures how many elements of $V$ have the information stated by relations in $r$. The more elements in $V$ are unbounded covered by $r$, the better we can judge the rule w.r.t. $V$. This element is close to $0$ when $r$ unbounded covers many elements of $V$. 
 \end{inparaenum}
-The parameters $\alpha,\beta,\gamma$ are used to give more importance to some components than other. We would set a high $\beta$ if we want to discover rules with high precision that identifies few mistakes, or we would set a high $\alpha$ if we are more interested in recall and the discovered rules should identify as many examples as possible.
+The parameters $\alpha,\beta,\gamma$ are used to give more relevance to some components. We would set a high $\beta$ if we want to discover rules with high precision that identifies few mistakes, or we would set a high $\alpha$ if we are more interested in recall and the discovered rules should identify as many examples as possible.
 
 \begin{myExample}
 	W.r.t. the negative rule $r$ of Example~\ref{ex:intro}, given two sets of pair of entities $G$ and $V$ the three components of $w_r$ are computed as follow:
 	\begin{inparaenum}[\itshape(i)]
 		\item the first component is computed as 1 minus number of pairs $(x,y)$ in $G$ where
 		$x$ is born after $y$ divided by the number of elements in $G$;
-		\item the second component is the ratio between number of pairs $(x,y)$ in $V$ where $x$ is born after $y$ and number of pairs $(x,y)$ in $V$ where the date of birth is available in the KB;
-		\item the last component is computed as 1 minus number of pairs $(x,y)$ in $V$ where the date of birth is available in the KB divided by the total number of elements in $V$.
+		\item the second component is the ratio between number of pairs $(x,y)$ in $V$ where $x$ is born after $y$ and number of pairs $(x,y)$ in $V$ where the date of birth (for both $x$ and $y$) is available in the KB;
+		\item the last component is computed as 1 minus number of pairs $(x,y)$ in $V$ where the date of birth (for both $x$ and $y$) is available in the KB divided by the total number of elements in $V$.
 	\end{inparaenum}
 \end{myExample}
 	
