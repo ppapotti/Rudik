@@ -54,6 +54,8 @@ import asu.edu.neg_rule_miner.configuration.Constant;
 public class Graph<T>{
 
 	int equality_types_number = -1;
+	
+	private int edgesNumber;
 
 	public Graph(){
 		this.neighbours=Maps.newConcurrentMap();
@@ -119,14 +121,18 @@ public class Graph<T>{
 		T source = edge.getNodeSource();
 		Set<Edge<T>> neighbours = this.neighbours.get(source);
 
-		neighbours.add(edge);
+		boolean added = neighbours.add(edge);
+		if(added)
+			edgesNumber++;
 
 		if(bidirectional){
 			T end = edge.getNodeEnd();
 			Edge<T> inverseEdge = new Edge<T>(end, source, edge.getLabel());
 			inverseEdge.setIsArtificial(true);
 			neighbours = this.neighbours.get(end);
-			neighbours.add(inverseEdge);
+			added = neighbours.add(inverseEdge);
+			if(added)
+				edgesNumber++;
 		}
 
 		return true;
@@ -314,5 +320,14 @@ public class Graph<T>{
 		}
 
 		return outputNodes;
+	}
+	
+	public int getNodesNumber(){
+		return node2types.size() + literal2lexicalForm.size();
+	}
+	
+	public int getNodesEdges(){
+		return edgesNumber;
+		
 	}
 }

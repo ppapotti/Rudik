@@ -19,6 +19,7 @@ import asu.edu.neg_rule_miner.model.MultipleGraphHornRule;
 import asu.edu.neg_rule_miner.model.RuleAtom;
 import asu.edu.neg_rule_miner.model.rdf.graph.Edge;
 import asu.edu.neg_rule_miner.model.rdf.graph.Graph;
+import asu.edu.neg_rule_miner.model.statistic.StatisticsContainer;
 import asu.edu.neg_rule_miner.sparql.SparqlExecutor;
 
 public class DynamicPruningRuleDiscovery extends SequentialNaiveRuleDiscovery{
@@ -62,7 +63,7 @@ public class DynamicPruningRuleDiscovery extends SequentialNaiveRuleDiscovery{
 
 	private List<Set<RuleAtom>> discoverHornRules(Set<Pair<String,String>> negativeExamples, Set<Pair<String,String>> positiveExamples,
 			Set<String> relations, DynamicScoreComputation score){
-
+		StatisticsContainer.setStartTime(System.currentTimeMillis());
 
 
 		Map<String,Set<Pair<String,String>>> expandedNodes2examples = Maps.newHashMap();
@@ -173,7 +174,11 @@ public class DynamicPruningRuleDiscovery extends SequentialNaiveRuleDiscovery{
 			Pair<MultipleGraphHornRule<String>,Double> ruleAndscore = 
 					score.getNextBestRule(negativeHornRules, rule2relativePositiveCoverage,this.maxRuleLen);
 			if(ruleAndscore==null){
+
 				LOGGER.debug("Next best rule has a positive score, returning all the founded rules.");
+				StatisticsContainer.setNodesNumber(totalGraph.getNodesNumber());
+				StatisticsContainer.setEdgesNumber(totalGraph.getNodesEdges());
+
 				break;
 			}
 			bestNegativeRule = ruleAndscore.getLeft();
@@ -210,6 +215,8 @@ public class DynamicPruningRuleDiscovery extends SequentialNaiveRuleDiscovery{
 
 		}
 
+		StatisticsContainer.setEndTime(System.currentTimeMillis());
+		StatisticsContainer.setOutputRules(outputRules);
 		return outputRules;
 
 	}
