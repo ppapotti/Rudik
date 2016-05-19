@@ -1,0 +1,7 @@
+\section{Introduction}
+\begin{myExample}\label{ex:intro}
+	Given a KB that contains information about parent and child relationships, we can discover the following positive rule:
+	\emph{$$ \atom{parent}{b}{a} \Rightarrow \atom{child}{a}{b} $$}which states that if a is parent of b, then b is child of a.
+	On the other hand, a negative rule may be:
+	\emph{$$ \atom{birthDate}{a}{v_0} \wedge \atom{birthDate}{b}{v_1} \wedge v_0 > v_1 \Rightarrow \neg \atom{child}{a}{b} $$}Such rule expresses the concept that b cannot be child of a if a was born after b.
+\end{myExample}

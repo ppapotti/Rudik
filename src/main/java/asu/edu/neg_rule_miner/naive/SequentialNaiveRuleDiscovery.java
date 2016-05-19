@@ -25,6 +25,7 @@ import asu.edu.neg_rule_miner.model.HornRule;
 import asu.edu.neg_rule_miner.model.RuleAtom;
 import asu.edu.neg_rule_miner.model.rdf.graph.Edge;
 import asu.edu.neg_rule_miner.model.rdf.graph.Graph;
+import asu.edu.neg_rule_miner.model.statistic.StatisticsContainer;
 import asu.edu.neg_rule_miner.sparql.SparqlExecutor;
 
 public class SequentialNaiveRuleDiscovery {
@@ -499,7 +500,11 @@ public class SequentialNaiveRuleDiscovery {
 
 	public Set<Pair<String,String>> generatePositiveExamples(
 			Set<String> relations, String typeSubject, String typeObject){
-		return this.getSparqlExecutor().generatePositiveExamples(relations, typeSubject, typeObject);
+		long startTime = System.currentTimeMillis();
+		Set<Pair<String,String>> examples =  this.getSparqlExecutor().generatePositiveExamples(relations, typeSubject, typeObject);
+		long endTime = System.currentTimeMillis();
+		StatisticsContainer.setPositiveSetTime((endTime-startTime)/1000.);
+		return examples;
 
 	}
 
@@ -517,8 +522,12 @@ public class SequentialNaiveRuleDiscovery {
 	 */
 	public Set<Pair<String,String>> generateNegativeExamples(
 			Set<String> relations, String typeSubject, String typeObject, boolean subjectFunction, boolean objectFunction){
-		return this.getSparqlExecutor().generateUnionNegativeExamples(relations, 
+		long startTime = System.currentTimeMillis();
+		Set<Pair<String,String>> examples = this.getSparqlExecutor().generateUnionNegativeExamples(relations, 
 				typeSubject, typeObject,subjectFunction,objectFunction);
+		long endTime = System.currentTimeMillis();
+		StatisticsContainer.setNegativeSetTime((endTime-startTime)/1000.);
+		return examples;
 
 	}
 	
