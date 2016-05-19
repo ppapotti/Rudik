@@ -22,6 +22,7 @@ import com.google.common.collect.Sets;
 import asu.edu.neg_rule_miner.RuleMinerException;
 import asu.edu.neg_rule_miner.configuration.ConfigurationFacility;
 import asu.edu.neg_rule_miner.configuration.Constant;
+import asu.edu.neg_rule_miner.model.HornRule;
 import asu.edu.neg_rule_miner.model.MultipleGraphHornRule;
 import asu.edu.neg_rule_miner.model.RuleAtom;
 import asu.edu.neg_rule_miner.model.rdf.graph.Edge;
@@ -95,7 +96,7 @@ public abstract class SparqlExecutor {
 		}
 	}
 
-	public abstract Map<Edge<String>,String> executeQuery(String entity,
+	public abstract void executeQuery(String entity,
 			Graph<String> inputGraphs, Map<String,Set<String>> entity2types);
 
 	public abstract Set<Pair<String,String>> generateUnionNegativeExamples(Set<String> relations, String typeSubject, 
@@ -214,12 +215,12 @@ public abstract class SparqlExecutor {
 		inequalityFilter.append("FILTER NOT EXISTS {");
 		String variableToSubstitue = inequalityAtom.getSubject();
 		String replacementVariable = inequalityAtom.getObject();
-		if(variableToSubstitue.equals(MultipleGraphHornRule.START_NODE) || variableToSubstitue.equals(MultipleGraphHornRule.END_NODE)){
+		if(variableToSubstitue.equals(HornRule.START_NODE) || variableToSubstitue.equals(HornRule.END_NODE)){
 			variableToSubstitue = inequalityAtom.getObject();
 			replacementVariable = inequalityAtom.getSubject();
 		}
 
-		if(!replacementVariable.equals(MultipleGraphHornRule.START_NODE)&&!replacementVariable.equals(MultipleGraphHornRule.END_NODE))
+		if(!replacementVariable.equals(HornRule.START_NODE)&&!replacementVariable.equals(HornRule.END_NODE))
 			replacementVariable = "other"+replacementVariable;
 
 		for(RuleAtom atom:rules){
@@ -230,7 +231,7 @@ public abstract class SparqlExecutor {
 			if(subject.equals(variableToSubstitue))
 				subject = replacementVariable;
 			else{
-				if(!subject.equals(MultipleGraphHornRule.START_NODE) &&!subject.equals(MultipleGraphHornRule.END_NODE))
+				if(!subject.equals(HornRule.START_NODE) &&!subject.equals(HornRule.END_NODE))
 					subject = "other"+subject;
 			}
 
@@ -238,7 +239,7 @@ public abstract class SparqlExecutor {
 			if(object.equals(variableToSubstitue))
 				object = replacementVariable;
 			else{
-				if(!object.equals(MultipleGraphHornRule.START_NODE) &&!object.equals(MultipleGraphHornRule.END_NODE))
+				if(!object.equals(HornRule.START_NODE) &&!object.equals(HornRule.END_NODE))
 					object = "other"+object;
 			}
 

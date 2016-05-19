@@ -36,14 +36,13 @@ public abstract class QueryJenaLibrary extends SparqlExecutor {
 	private final static Logger LOGGER = LoggerFactory.getLogger(QuerySparqlRemoteEndpoint.class.getName());
 
 	@Override
-	public Map<Edge<String>,String> executeQuery(String entity, 
+	public void executeQuery(String entity, 
 			Graph<String> graph, Map<String,Set<String>> entity2types) {
-		Map<Edge<String>,String> neighbours = Maps.newHashMap();
 		//different query if the entity is a literal
 		if(graph.isLiteral(entity)){
 			//this.compareLiterals(entity, graph);
 			//if it's a literal do not return any neighbours because they might change based on the graph
-			return neighbours;
+			return;
 		}
 
 		String sparqlQuery = "SELECT DISTINCT ?sub ?rel ?obj";
@@ -132,7 +131,7 @@ public abstract class QueryJenaLibrary extends SparqlExecutor {
 			else
 				graph.addLiteralNode(nodeToAdd, lexicalForm);
 
-			neighbours.put(edgeToAdd,lexicalForm);
+			//neighbours.put(edgeToAdd,lexicalForm);
 			boolean addEdge = graph.addEdge(edgeToAdd, true);
 			if(!addEdge)
 				LOGGER.warn("Not able to insert the edge '{}' in the graph '{}'.",edgeToAdd,graph);
@@ -142,8 +141,6 @@ public abstract class QueryJenaLibrary extends SparqlExecutor {
 		startTime = System.currentTimeMillis();
 
 		this.closeResources();
-		return neighbours;
-
 	}
 
 	@Override

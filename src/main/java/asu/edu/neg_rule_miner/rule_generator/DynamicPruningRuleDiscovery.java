@@ -20,6 +20,7 @@ import asu.edu.neg_rule_miner.model.RuleAtom;
 import asu.edu.neg_rule_miner.model.rdf.graph.Edge;
 import asu.edu.neg_rule_miner.model.rdf.graph.Graph;
 import asu.edu.neg_rule_miner.model.statistic.StatisticsContainer;
+import asu.edu.neg_rule_miner.rule_generator.score.DynamicScoreComputation;
 import asu.edu.neg_rule_miner.sparql.SparqlExecutor;
 
 /**
@@ -30,7 +31,7 @@ import asu.edu.neg_rule_miner.sparql.SparqlExecutor;
  */
 public class DynamicPruningRuleDiscovery extends HornRuleDiscovery{
 
-	private final static Logger LOGGER = LoggerFactory.getLogger(MultipleGraphHornRule.class.getName());
+	private final static Logger LOGGER = LoggerFactory.getLogger(DynamicPruningRuleDiscovery.class.getName());
 
 	public DynamicPruningRuleDiscovery(){
 		super();
@@ -191,7 +192,7 @@ public class DynamicPruningRuleDiscovery extends HornRuleDiscovery{
 
 			LOGGER.debug("Next best rule with best approximate score '{}' ({} covered negative examples, {} relative covered positive, {} positive coverage, score: {})",
 					bestNegativeRule,bestNegativeRule.getCoveredExamples().size(),rule2relativePositiveCoverage.get(bestNegativeRule.getRules()).size(),
-					score.getRulePositiveScore(bestNegativeRule.getRules()),ruleAndscore.getRight());
+					score.getRuleValidationScore(bestNegativeRule.getRules()),ruleAndscore.getRight());
 
 			//expand nodes for the current positive and negative examples only if the rule can be expanded
 			if(bestNegativeRule.getLen() < maxRuleLen - 1){
@@ -209,7 +210,7 @@ public class DynamicPruningRuleDiscovery extends HornRuleDiscovery{
 					toAnalyse.removeAll(expandedNodes2examples.keySet());
 					if(toAnalyse.size()>0){
 						LOGGER.debug("Expanding {} nodes for negative and positive examples...",toAnalyse.size());
-						this.expandGraphs(toAnalyse, totalGraph, null, entity2types, numThreads);
+						this.expandGraphs(toAnalyse, totalGraph, entity2types, numThreads);
 						LOGGER.debug("...expansion completed.");
 					}
 
@@ -259,7 +260,7 @@ public class DynamicPruningRuleDiscovery extends HornRuleDiscovery{
 			coveredExamples.add(example);
 		}
 		negativeNodesGraph.addExamples(negativeExamples);
-		this.expandGraphs(toAnalyse, negativeNodesGraph, null, entity2types, numThreads);
+		this.expandGraphs(toAnalyse, negativeNodesGraph, entity2types, numThreads);
 		negativeHornRules.add(new MultipleGraphHornRule<String>(negativeNodesGraph,true,negativeExamples));
 		negativeHornRules.add(new MultipleGraphHornRule<String>(negativeNodesGraph,false,negativeExamples));
 
@@ -271,7 +272,7 @@ public class DynamicPruningRuleDiscovery extends HornRuleDiscovery{
 			toAnalyse.add(example.getLeft());
 			toAnalyse.add(example.getRight());
 		}
-		this.expandGraphs(toAnalyse, positiveNodesGraph, null, entity2types, numThreads);
+		this.expandGraphs(toAnalyse, positiveNodesGraph, entity2types, numThreads);
 
 		//create map of positive relative coverage
 		Set<Edge<String>> currentEdges;
@@ -325,7 +326,7 @@ public class DynamicPruningRuleDiscovery extends HornRuleDiscovery{
 		newCoverage.addAll(previous);
 
 		for(RuleAtom oneAtom:toVerify){
-			if(oneAtom.getSubject().equals(MultipleGraphHornRule.START_NODE)){
+			if(oneAtom.getSubject().equals(HornRule.START_NODE)){
 				String relation = oneAtom.getRelation()+"(subject,_)";
 				if(relation2examples.containsKey(relation))
 					newCoverage.retainAll(relation2examples.get(relation));
@@ -334,7 +335,7 @@ public class DynamicPruningRuleDiscovery extends HornRuleDiscovery{
 				}
 			}
 
-			if(oneAtom.getObject().equals(MultipleGraphHornRule.START_NODE)){
+			if(oneAtom.getObject().equals(HornRule.START_NODE)){
 				String relation = oneAtom.getRelation()+"(_,subject)";
 				if(relation2examples.containsKey(relation))
 					newCoverage.retainAll(relation2examples.get(relation));
@@ -342,7 +343,7 @@ public class DynamicPruningRuleDiscovery extends HornRuleDiscovery{
 					newCoverage.clear();
 				}
 			}
-			if(oneAtom.getSubject().equals(MultipleGraphHornRule.END_NODE)){
+			if(oneAtom.getSubject().equals(HornRule.END_NODE)){
 				String relation = oneAtom.getRelation()+"(object,_)";
 				if(relation2examples.containsKey(relation))
 					newCoverage.retainAll(relation2examples.get(relation));
@@ -351,7 +352,7 @@ public class DynamicPruningRuleDiscovery extends HornRuleDiscovery{
 				}
 			}
 
-			if(oneAtom.getObject().equals(MultipleGraphHornRule.END_NODE)){
+			if(oneAtom.getObject().equals(HornRule.END_NODE)){
 				String relation = oneAtom.getRelation()+"(_,object)";
 				if(relation2examples.containsKey(relation))
 					newCoverage.retainAll(relation2examples.get(relation));

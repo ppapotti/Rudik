@@ -18,16 +18,13 @@ import asu.edu.neg_rule_miner.RuleMinerException;
 import asu.edu.neg_rule_miner.configuration.ConfigurationFacility;
 import asu.edu.neg_rule_miner.configuration.Constant;
 import asu.edu.neg_rule_miner.model.RuleAtom;
-import asu.edu.neg_rule_miner.model.rdf.graph.Edge;
 import asu.edu.neg_rule_miner.model.rdf.graph.Graph;
 import asu.edu.neg_rule_miner.model.statistic.StatisticsContainer;
 import asu.edu.neg_rule_miner.sparql.SparqlExecutor;
 
-public abstract class HornRuleDiscovery {
+public abstract class HornRuleDiscovery implements RuleDiscovery{
 
 	protected int numThreads = 1;
-
-	protected int threshold = 0;
 
 	protected int maxRuleLen = 3;
 
@@ -50,16 +47,6 @@ public abstract class HornRuleDiscovery {
 			}
 		}
 
-		//read threshold if specified in the conf file
-		if(ConfigurationFacility.getConfiguration().containsKey(Constant.CONF_THRESHOLD)){
-			try{
-				threshold = config.getInt(Constant.CONF_THRESHOLD);
-			}
-			catch(Exception e){
-				LOGGER.error("Error while trying to read the "
-						+ "threshold configuration parameter. Set to 0.");
-			}
-		}
 
 		//read maxRuleLength if specified in the conf file
 		if(ConfigurationFacility.getConfiguration().containsKey(Constant.CONF_MAX_RULE_LEN)){
@@ -73,10 +60,10 @@ public abstract class HornRuleDiscovery {
 		}
 
 	}
-	
+
 	public abstract List<Set<RuleAtom>> discoverPositiveHornRules(Set<Pair<String,String>> negativeExamples, Set<Pair<String,String>> positiveExamples,
 			Set<String> relations, String typeSubject, String typeObject);
-	
+
 	public abstract List<Set<RuleAtom>> discoverPositiveHornRules(Set<Pair<String,String>> negativeExamples, Set<Pair<String,String>> positiveExamples,
 			Set<String> relations, String typeSubject, String typeObject,boolean subjectFunction, boolean objectFunction);
 
@@ -92,39 +79,12 @@ public abstract class HornRuleDiscovery {
 	 * @param entity2types
 	 * @param numThreads
 	 */
-	protected void expandGraphs(Set<String> toAnalyse, Graph<String> graph,
-			Map<String,Map<Edge<String>,String>> node2neghbours,Map<String,Set<String>> entity2types,
+	protected void expandGraphs(Set<String> toAnalyse, Graph<String> graph, Map<String,Set<String>> entity2types,
 			int numThreads){
-
-		//remove already expanded nodes
-		Set<String> filteredToAnalyse = Sets.newHashSet();
-		filteredToAnalyse.addAll(toAnalyse);
-		if(node2neghbours!=null){
-			for(String currentNode:toAnalyse){
-				if(node2neghbours.containsKey(currentNode)){
-					Map<Edge<String>,String> edge2literalForm = node2neghbours.get(currentNode);
-					for(Edge<String> edge:edge2literalForm.keySet()){
-						String lexicalForm = edge2literalForm.get(edge);
-						String toAdd = edge.getNodeSource();
-						if(currentNode.equals(toAdd))
-							toAdd = edge.getNodeEnd();
-						if(lexicalForm==null)
-							graph.addNode(toAdd);
-						else
-							graph.addLiteralNode(toAdd, lexicalForm);
-						graph.addEdge(edge, true);
-					}
-					filteredToAnalyse.remove(currentNode);
-				}
-			}
-		}
-
-		if(filteredToAnalyse.size()==0)
-			return;
 
 		List<Thread> activeThreads = Lists.newLinkedList();
 		List<Set<String>> currentInputs = 
-				this.splitNodesThreads(filteredToAnalyse, numThreads);
+				this.splitNodesThreads(toAnalyse, numThreads);
 
 		int i=0;
 		for(Set<String> currentInput:currentInputs){
@@ -132,7 +92,7 @@ public abstract class HornRuleDiscovery {
 			i++;
 			// Create the thread and add it to the list
 			final Thread current_thread = new Thread(new OneExampleRuleDiscovery(currentInput,graph,
-					this.getSparqlExecutor(),node2neghbours,entity2types), "Thread"+i);
+					this.getSparqlExecutor(),entity2types), "Thread"+i);
 			activeThreads.add(current_thread);
 
 			// start the thread and querydbpedia
@@ -198,7 +158,7 @@ public abstract class HornRuleDiscovery {
 		return examples;
 
 	}
-	
+
 	public Set<Pair<String,String>> generateNegativeExamples(
 			Set<String> relations, String typeSubject, String typeObject){
 		return this.getSparqlExecutor().generateUnionNegativeExamples(relations, 
