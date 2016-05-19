@@ -1,4 +1,4 @@
-package asu.edu.neg_rule_miner.naive;
+package asu.edu.neg_rule_miner.rule_generator;
 
 import java.util.Map;
 import java.util.Set;

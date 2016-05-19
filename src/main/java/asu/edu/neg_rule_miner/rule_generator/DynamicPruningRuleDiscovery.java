@@ -1,4 +1,4 @@
-package asu.edu.neg_rule_miner.naive;
+package asu.edu.neg_rule_miner.rule_generator;
 
 import java.util.List;
 import java.util.Map;
@@ -22,7 +22,13 @@ import asu.edu.neg_rule_miner.model.rdf.graph.Graph;
 import asu.edu.neg_rule_miner.model.statistic.StatisticsContainer;
 import asu.edu.neg_rule_miner.sparql.SparqlExecutor;
 
-public class DynamicPruningRuleDiscovery extends SequentialNaiveRuleDiscovery{
+/**
+ * Implements A* dynamic pruning discovery algorithm for rules generation
+ * 
+ * @author sortona
+ *
+ */
+public class DynamicPruningRuleDiscovery extends HornRuleDiscovery{
 
 	private final static Logger LOGGER = LoggerFactory.getLogger(MultipleGraphHornRule.class.getName());
 
