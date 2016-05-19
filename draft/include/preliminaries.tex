@@ -2,7 +2,7 @@
 {\color{red} Talk about KBs. Describe what entities and literals are}
 
 \subsection{Language} \label{sec:language}
-{\color{red} Horn Rule. Given the definition of a \emph{valid} rule (each variables appearing twice and each variable connected transitevily to every other variable) and also give the definition of a valid body (a and b at least once, other variables twice).
+{\color{red} Horn Rule. Given the definition of a \emph{valid} rule (each variables appearing twice and each variable connected transitively to every other variable) and also give the definition of a valid body (a and b at least once, other variables twice).
 Extension of predicates with inequalities.
 Define instantiation of an atom.}
 
@@ -54,9 +54,9 @@ Given a KB $K$, two sets of pair of entities $G$ and $V$ from $K$ where $G \cap 
 \end{equation*}
 with $\alpha,\beta,\gamma \in [0,1]$ and $\alpha + \beta + \gamma = 1$. The weight is a value between $0$ and $1$ that captures the \emph{goodness} of a rule w.r.t. $G$ and $V$: the better the rule, the lower the weight -- perfect rule would have a weight of $0$. The weight is made of three components normalized by the three parameters $\alpha,\beta,\gamma$.
 \begin{inparaenum}[\itshape(i)]
-	\item The first component captures the coverage over the generation set $G$ -- the ratio between the coverage of $r$ over $G$ and $G$ itself. Note that if $r$ covers all elements in $G$, then this componenet is $0$ because of the subtraction from $1$.
+	\item The first component captures the coverage over the generation set $G$ -- the ratio between the coverage of $r$ over $G$ and $G$ itself. Note that if $r$ covers all elements in $G$, then this component is $0$ because of the subtraction from $1$.
 	\item The second component aims to quantify potential errors of $r$, or rather the coverage over $V$. The coverage over $V$ is not divided by total elements in $V$, because 
-	for thos elemenets in $V$ that do not have relations stated in $r$ we cannot be sure that such elements are not covered by $r$. Thus we divide the coverage over $V$ by the unbounded coverage of $r$ over $V$. Ideally this number is close to $0$.
+	for those elements in $V$ that do not have relations stated in $r$ we cannot be sure that such elements are not covered by $r$. Thus we divide the coverage over $V$ by the unbounded coverage of $r$ over $V$. Ideally this number is close to $0$.
 	\item The last element of the weight captures how many elements of $V$ have the information stated by relations in $r$. The more elements in $V$ are unbounded covered by $r$, the better we can judge the rule w.r.t. $V$. This element is close to $0$ when $r$ unbounded covers many elements of $V$. 
 \end{inparaenum}
 The parameters $\alpha,\beta,\gamma$ are used to give more relevance to some components. We would set a high $\beta$ if we want to discover rules with high precision that identifies few mistakes, or we would set a high $\alpha$ if we are more interested in recall and the discovered rules should identify as many examples as possible.
@@ -91,7 +91,7 @@ $$R_{opt}=\underset{w(R')}{\operatorname{argmin}}(R'|R'(G) = G)$$
 
 We can map this problem to the well-known weighted set cover problem, which is proven to be a NP-Complete problem~\cite{chvatal1979greedy}, where the universe is $G$ and the sets are all the possible rules defined in $R$.
 
-Since we want to minimise the total weight of the output rules, the approximate version of the discovery problem aims to cover all elements in $G$, and as few as possible elements in $V$. Since for each element $(x,y)$ in $G$ there always exists a rule that covers only $(x,y)$ (single-instance rule), an optimal output is always guaranteed to exist. We expect such output to be made of some rules that covers more than one example in $G$, and the remaining examples in $G$ to be covered by single-instance rules. In the best-case scenario a single rule covers all elements in $G$ and none of the elements in $V$.
+Since we want to minimize the total weight of the output rules, the approximate version of the discovery problem aims to cover all elements in $G$, and as few as possible elements in $V$. Since for each element $(x,y)$ in $G$ there always exists a rule that covers only $(x,y)$ (single-instance rule), an optimal output is always guaranteed to exist. We expect such output to be made of some rules that covers more than one example in $G$, and the remaining examples in $G$ to be covered by single-instance rules. In the best-case scenario a single rule covers all elements in $G$ and none of the elements in $V$.
 
 Section~\ref{sec:greedy_alg} will describe a greedy polynomial algorithm to find a good solution for our problem.
 
