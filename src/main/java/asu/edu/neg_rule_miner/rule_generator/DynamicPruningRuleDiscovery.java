@@ -42,7 +42,7 @@ public class DynamicPruningRuleDiscovery extends HornRuleDiscovery{
 		//switch positive and negative examples
 		DynamicScoreComputation score = new DynamicScoreComputation(positiveExamples.size(), 
 				negativeExamples.size(), this.getSparqlExecutor(), relations, typeSubject, typeObject, negativeExamples);
-		score.setMinePositive(true,true,true);
+		score.setMinePositive(true,false,false);
 		return 
 				this.discoverHornRules(positiveExamples, negativeExamples, relations, score);
 

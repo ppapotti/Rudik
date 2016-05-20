@@ -10,7 +10,6 @@ import java.text.SimpleDateFormat;
 import java.util.List;
 import java.util.Set;
 
-import asu.edu.neg_rule_miner.configuration.ConfigurationFacility;
 import asu.edu.neg_rule_miner.model.RuleAtom;
 
 public class StatisticsContainer {

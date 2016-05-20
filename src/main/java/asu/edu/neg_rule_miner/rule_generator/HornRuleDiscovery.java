@@ -28,6 +28,10 @@ public abstract class HornRuleDiscovery implements RuleDiscovery{
 
 	protected int maxRuleLen = 3;
 
+	Integer subjectLimit = null; 
+
+	Integer objectLimit = null; 
+
 	private final static Logger LOGGER = 
 			LoggerFactory.getLogger(OneExampleRuleDiscovery.class.getName());
 
@@ -91,6 +95,11 @@ public abstract class HornRuleDiscovery implements RuleDiscovery{
 
 			i++;
 			// Create the thread and add it to the list
+			SparqlExecutor executor = this.getSparqlExecutor();
+			if(subjectLimit!=null)
+				executor.setSubjectLimit(subjectLimit);
+			if(objectLimit!=null)
+				executor.setSubjectLimit(objectLimit);
 			final Thread current_thread = new Thread(new OneExampleRuleDiscovery(currentInput,graph,
 					this.getSparqlExecutor(),entity2types), "Thread"+i);
 			activeThreads.add(current_thread);
@@ -148,8 +157,29 @@ public abstract class HornRuleDiscovery implements RuleDiscovery{
 
 	}
 
+	/**
+	 * Generated limited set of positive examples
+	 * @param relations
+	 * @param typeSubject
+	 * @param typeObject
+	 * @param limit
+	 * @return
+	 */
+	public Set<Pair<String,String>> generatePositiveExamples(
+			Set<String> relations, String typeSubject, String typeObject, int limit){
+		long startTime = System.currentTimeMillis();
+		SparqlExecutor executor = this.getSparqlExecutor();
+		Set<Pair<String,String>> examples =  executor.generatePositiveExamples(relations, typeSubject, typeObject);
+		executor.setPosExamplesLimit(limit);
+		long endTime = System.currentTimeMillis();
+		StatisticsContainer.setPositiveSetTime((endTime-startTime)/1000.);
+		return examples;
+
+	}
+
 	public Set<Pair<String,String>> generateNegativeExamples(
-			Set<String> relations, String typeSubject, String typeObject, boolean subjectFunction, boolean objectFunction){
+			Set<String> relations, String typeSubject, String typeObject, 
+			boolean subjectFunction, boolean objectFunction){
 		long startTime = System.currentTimeMillis();
 		Set<Pair<String,String>> examples = this.getSparqlExecutor().generateUnionNegativeExamples(relations, 
 				typeSubject, typeObject,subjectFunction,objectFunction);
@@ -162,7 +192,24 @@ public abstract class HornRuleDiscovery implements RuleDiscovery{
 	public Set<Pair<String,String>> generateNegativeExamples(
 			Set<String> relations, String typeSubject, String typeObject){
 		return this.getSparqlExecutor().generateUnionNegativeExamples(relations, 
-				typeSubject, typeObject,true,true);
+				typeSubject, typeObject,false,false);
+
+	}
+
+	/**
+	 * Generate limited negative examples
+	 * @param relations
+	 * @param typeSubject
+	 * @param typeObject
+	 * @param limit
+	 * @return
+	 */
+	public Set<Pair<String,String>> generateNegativeExamples(
+			Set<String> relations, String typeSubject, String typeObject, int limit){
+		SparqlExecutor executor = this.getSparqlExecutor();
+		executor.setNegExamplesLimit(limit);
+		return executor.generateUnionNegativeExamples(relations, 
+				typeSubject, typeObject,false,false);
 
 	}
 
@@ -212,5 +259,14 @@ public abstract class HornRuleDiscovery implements RuleDiscovery{
 		}
 		return endpoint;
 	}
+
+	public void setSubjectLimit(int limit){
+		this.subjectLimit = limit;
+	}
+
+	public void setObjectLimit(int limit){
+		this.objectLimit = limit;
+	}
+
 
 }

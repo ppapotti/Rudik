@@ -20,14 +20,6 @@ public class ConfigurationFacility {
 
 	private final static Logger LOGGER = LoggerFactory.getLogger(ConfigurationFacility.class.getName());
 
-	private static int subjectLimit = -1;
-
-	private static int objectLimit = -1;
-	
-	private static int negativeExampleLimit = -1;
-	
-	private static int positiveExampleLimit = -1;
-
 	public synchronized static Configuration getConfiguration(){
 		if(instance == null)
 			initialiseConfiguration(Constant.CONF_FILE);
@@ -85,38 +77,5 @@ public class ConfigurationFacility {
 		}
 		return endpoint;
 	}
-
-	public static int getSubjectLimit(){
-		return subjectLimit;
-	}
-
-	public static int getObjectLimit(){
-		return objectLimit;
-	}
 	
-	public static int getNegativeExampleLimit(){
-		return negativeExampleLimit;
-	}
-
-	public static int getPositiveExampleLimit(){
-		return positiveExampleLimit;
-	}
-	
-	public static void setSubjectLimit(int limit){
-		subjectLimit = limit;
-	}
-
-	public static void setObjectLimit(int limit){
-		objectLimit = limit;
-	}
-	
-	public static void setNegativeExampleLimit(int limit){
-		negativeExampleLimit = limit;
-	}
-	
-	public static void setPositiveExampleLimit(int limit){
-		positiveExampleLimit = limit;
-	}
-
-
 }

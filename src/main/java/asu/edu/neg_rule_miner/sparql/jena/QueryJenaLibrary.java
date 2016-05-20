@@ -16,11 +16,11 @@ import org.apache.jena.rdf.model.RDFNode;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import asu.edu.neg_rule_miner.configuration.ConfigurationFacility;
 import asu.edu.neg_rule_miner.model.RuleAtom;
 import asu.edu.neg_rule_miner.model.rdf.graph.Edge;
 import asu.edu.neg_rule_miner.model.rdf.graph.Graph;
 import asu.edu.neg_rule_miner.sparql.SparqlExecutor;
+import asu.edu.neg_rule_miner.sparql.jena.filter.TripleFilter;
 import asu.edu.neg_rule_miner.sparql.jena.remote.QuerySparqlRemoteEndpoint;
 
 public abstract class QueryJenaLibrary extends SparqlExecutor {
@@ -72,8 +72,8 @@ public abstract class QueryJenaLibrary extends SparqlExecutor {
 		//TO DO: read from config file
 		String sub = "sub", rel = "rel", obj = "obj";
 		
-		ArrayList<QuerySolution> resultTriples = tripFil.doFilter(results, sub, rel, obj, entity, ConfigurationFacility.getSubjectLimit(), 
-				ConfigurationFacility.getObjectLimit());
+		ArrayList<QuerySolution> resultTriples = tripFil.doFilter(results, sub, rel, obj, entity, this.subjectLimit, 
+				this.objectLimit);
 
 		Set<String> currentTypes = Sets.newHashSet();
 		entity2types.put(entity, currentTypes);
