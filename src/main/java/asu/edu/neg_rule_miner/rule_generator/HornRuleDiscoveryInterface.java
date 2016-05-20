@@ -6,9 +6,9 @@ import java.util.Set;
 
 import org.apache.commons.lang3.tuple.Pair;
 
-import asu.edu.neg_rule_miner.model.RuleAtom;
+import asu.edu.neg_rule_miner.model.horn_rule.HornRule;
 
-public interface RuleDiscovery {
+public interface HornRuleDiscoveryInterface {
 	
 	/**
 	 * Discover positive horn rules by using union strategy as default
@@ -19,7 +19,7 @@ public interface RuleDiscovery {
 	 * @param typeObject
 	 * @return
 	 */
-	public List<Set<RuleAtom>> discoverPositiveHornRules(Set<Pair<String,String>> negativeExamples, Set<Pair<String,String>> positiveExamples,
+	public List<HornRule> discoverPositiveHornRules(Set<Pair<String,String>> negativeExamples, Set<Pair<String,String>> positiveExamples,
 			Set<String> relations, String typeSubject, String typeObject);
 	
 	/**
@@ -36,7 +36,7 @@ public interface RuleDiscovery {
 	 * @param objectFunction
 	 * @return
 	 */
-	public List<Set<RuleAtom>> discoverPositiveHornRules(Set<Pair<String,String>> negativeExamples, Set<Pair<String,String>> positiveExamples,
+	public List<HornRule> discoverPositiveHornRules(Set<Pair<String,String>> negativeExamples, Set<Pair<String,String>> positiveExamples,
 			Set<String> relations, String typeSubject, String typeObject,boolean subjectFunction, boolean objectFunction);
 
 	/**
@@ -49,7 +49,7 @@ public interface RuleDiscovery {
 	 * @param typeObject
 	 * @return
 	 */
-	public abstract List<Set<RuleAtom>> discoverNegativeHornRules(Set<Pair<String,String>> negativeExamples, Set<Pair<String,String>> positiveExamples,
+	public abstract List<HornRule> discoverNegativeHornRules(Set<Pair<String,String>> negativeExamples, Set<Pair<String,String>> positiveExamples,
 			Set<String> relations, String typeSubject, String typeObject);
 	
 	/**

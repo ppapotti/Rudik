@@ -4,6 +4,8 @@ package asu.edu.neg_rule_miner.model;
 import org.junit.Before;
 import org.junit.Test;
 
+import asu.edu.neg_rule_miner.model.horn_rule.HornRule;
+import asu.edu.neg_rule_miner.model.horn_rule.RuleAtom;
 import junit.framework.Assert;
 
 public class HornRuleTest {

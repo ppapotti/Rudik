@@ -13,7 +13,8 @@ import com.google.common.collect.Maps;
 import com.google.common.collect.Sets;
 
 import asu.edu.neg_rule_miner.client.evaluation.amie.AmieEvaluationClient;
-import asu.edu.neg_rule_miner.model.RuleAtom;
+import asu.edu.neg_rule_miner.model.horn_rule.HornRule;
+import asu.edu.neg_rule_miner.model.horn_rule.RuleAtom;
 import asu.edu.neg_rule_miner.rule_generator.DynamicPruningRuleDiscovery;
 /**
  * Hello world!
@@ -301,7 +302,7 @@ public class App
 		DynamicPruningRuleDiscovery naive = new DynamicPruningRuleDiscovery();
 
 		Map<String,Long> relation2runningTime = Maps.newHashMap();
-		Map<String,List<Set<RuleAtom>>> relation2output = Maps.newHashMap();
+		Map<String,List<HornRule>> relation2output = Maps.newHashMap();
 
 		int count=0;
 		for(Set<String> currentRelations: relation2typeSubjectObject.keySet()){
@@ -321,7 +322,7 @@ public class App
 
 				Set<Pair<String,String>> positiveExamples = naive.generatePositiveExamples(currentRelations, typeSubject, typeObject);
 
-				List<Set<RuleAtom>> output = 
+				List<HornRule> output = 
 						naive.discoverPositiveHornRules(negativeExamples, positiveExamples, currentRelations, typeSubject, typeObject, false, false);
 
 				relation2runningTime.put(relation, (System.currentTimeMillis()-startTime));

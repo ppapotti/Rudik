@@ -14,9 +14,9 @@ import com.google.common.collect.Sets;
 
 import asu.edu.neg_rule_miner.RuleMinerException;
 import asu.edu.neg_rule_miner.configuration.Constant;
-import asu.edu.neg_rule_miner.model.HornRule;
-import asu.edu.neg_rule_miner.model.MultipleGraphHornRule;
-import asu.edu.neg_rule_miner.model.RuleAtom;
+import asu.edu.neg_rule_miner.model.horn_rule.HornRule;
+import asu.edu.neg_rule_miner.model.horn_rule.MultipleGraphHornRule;
+import asu.edu.neg_rule_miner.model.horn_rule.RuleAtom;
 import asu.edu.neg_rule_miner.model.rdf.graph.Edge;
 import asu.edu.neg_rule_miner.model.rdf.graph.Graph;
 import asu.edu.neg_rule_miner.model.statistic.StatisticsContainer;
@@ -37,7 +37,7 @@ public class DynamicPruningRuleDiscovery extends HornRuleDiscovery{
 		super();
 	}
 
-	public List<Set<RuleAtom>> discoverPositiveHornRules(Set<Pair<String,String>> negativeExamples, Set<Pair<String,String>> positiveExamples,
+	public List<HornRule> discoverPositiveHornRules(Set<Pair<String,String>> negativeExamples, Set<Pair<String,String>> positiveExamples,
 			Set<String> relations, String typeSubject, String typeObject){
 		//switch positive and negative examples
 		DynamicScoreComputation score = new DynamicScoreComputation(positiveExamples.size(), 
@@ -48,7 +48,7 @@ public class DynamicPruningRuleDiscovery extends HornRuleDiscovery{
 
 	}
 
-	public List<Set<RuleAtom>> discoverNegativeHornRules(Set<Pair<String,String>> negativeExamples, Set<Pair<String,String>> positiveExamples,
+	public List<HornRule> discoverNegativeHornRules(Set<Pair<String,String>> negativeExamples, Set<Pair<String,String>> positiveExamples,
 			Set<String> relations, String typeSubject, String typeObject){
 		DynamicScoreComputation score = new DynamicScoreComputation(negativeExamples.size(), 
 				positiveExamples.size(), this.getSparqlExecutor(), relations, typeSubject, typeObject, positiveExamples);
@@ -57,7 +57,7 @@ public class DynamicPruningRuleDiscovery extends HornRuleDiscovery{
 
 	}
 
-	public List<Set<RuleAtom>> discoverPositiveHornRules(Set<Pair<String,String>> negativeExamples, Set<Pair<String,String>> positiveExamples,
+	public List<HornRule> discoverPositiveHornRules(Set<Pair<String,String>> negativeExamples, Set<Pair<String,String>> positiveExamples,
 			Set<String> relations, String typeSubject, String typeObject,boolean subjectFunction, boolean objectFunction){
 		//switch positive and negative examples
 		DynamicScoreComputation score = new DynamicScoreComputation(positiveExamples.size(), 
@@ -68,7 +68,7 @@ public class DynamicPruningRuleDiscovery extends HornRuleDiscovery{
 
 	}
 
-	private List<Set<RuleAtom>> discoverHornRules(Set<Pair<String,String>> negativeExamples, Set<Pair<String,String>> positiveExamples,
+	private List<HornRule> discoverHornRules(Set<Pair<String,String>> negativeExamples, Set<Pair<String,String>> positiveExamples,
 			Set<String> relations, DynamicScoreComputation score){
 		StatisticsContainer.setStartTime(System.currentTimeMillis());
 
@@ -104,7 +104,7 @@ public class DynamicPruningRuleDiscovery extends HornRuleDiscovery{
 
 		Set<Set<RuleAtom>> seenRules = Sets.newHashSet();
 
-		List<Set<RuleAtom>> outputRules = Lists.newArrayList();
+		List<HornRule> outputRules = Lists.newArrayList();
 
 		while(bestNegativeRule!=null){
 
@@ -121,7 +121,7 @@ public class DynamicPruningRuleDiscovery extends HornRuleDiscovery{
 				}
 				else{
 					LOGGER.debug("Found a new valid rule: {}",bestNegativeRule);
-					outputRules.add(bestNegativeRule.getRules());
+					outputRules.add(bestNegativeRule);
 					expand = false;
 				}
 			}
@@ -175,6 +175,8 @@ public class DynamicPruningRuleDiscovery extends HornRuleDiscovery{
 				}
 
 			}
+			else
+				bestNegativeRule.dematerialiseRule();
 
 			LOGGER.debug("Computing next best rule according to score...");
 
@@ -229,19 +231,30 @@ public class DynamicPruningRuleDiscovery extends HornRuleDiscovery{
 	}
 
 
-	private void initialiseRules(Set<Pair<String,String>> negativeExamples, 
-			Set<Pair<String,String>> positiveExamples,
+	private void initialiseRules(Set<Pair<String,String>> generationExamples, 
+			Set<Pair<String,String>> validationExamples,
 			Map<String,Set<Pair<String,String>>> expandedNodes,Map<String,Set<String>> entity2types,
-			Set<MultipleGraphHornRule<String>> negativeHornRules,
-			Map<String,Set<Pair<String,String>>> relation2positiveExample, Graph<String> negativeNodesGraph){
+			Set<MultipleGraphHornRule<String>> hornRules,
+			Map<String,Set<Pair<String,String>>> relation2validationExample, Graph<String> generationNodesGraph){
 		LOGGER.debug("Creating initial graphs and expanding all positive and negative examples...");
+		if(generationExamples==null || generationExamples.size()==0 || validationExamples==null || validationExamples.size()==0)
+			return;
 
 		//when adding new nodes, add also the corresponding example
 		Set<String> toAnalyse = Sets.newHashSet();
 		Set<Pair<String,String>> coveredExamples;
-		for(Pair<String,String> example:negativeExamples){
-			negativeNodesGraph.addNode(example.getLeft());
-			negativeNodesGraph.addNode(example.getRight());
+
+		String subjectConstant = generationExamples.iterator().next().getLeft();
+		String objectConstant = generationExamples.iterator().next().getRight();
+		for(Pair<String,String> example:generationExamples){
+			if(subjectConstant!=null && !example.getLeft().equals(subjectConstant))
+				subjectConstant = null;
+
+			if(objectConstant != null && !example.getRight().equals(objectConstant))
+				objectConstant=null;
+
+			generationNodesGraph.addNode(example.getLeft());
+			generationNodesGraph.addNode(example.getRight());
 			toAnalyse.add(example.getLeft());
 			toAnalyse.add(example.getRight());
 
@@ -259,14 +272,22 @@ public class DynamicPruningRuleDiscovery extends HornRuleDiscovery{
 			}
 			coveredExamples.add(example);
 		}
-		negativeNodesGraph.addExamples(negativeExamples);
-		this.expandGraphs(toAnalyse, negativeNodesGraph, entity2types, numThreads);
-		negativeHornRules.add(new MultipleGraphHornRule<String>(negativeNodesGraph,true,negativeExamples));
-		negativeHornRules.add(new MultipleGraphHornRule<String>(negativeNodesGraph,false,negativeExamples));
+
+
+		generationNodesGraph.addExamples(generationExamples);
+		this.expandGraphs(toAnalyse, generationNodesGraph, entity2types, numThreads);
+		MultipleGraphHornRule<String> subjectRule = new MultipleGraphHornRule<String>(generationNodesGraph,true,generationExamples);
+		if(subjectConstant != null)
+			subjectRule.addConstantBinding(HornRule.START_NODE, subjectConstant);
+		hornRules.add(subjectRule);
+		MultipleGraphHornRule<String> objectRule = new MultipleGraphHornRule<String>(generationNodesGraph,false,generationExamples);
+		if(objectConstant!=null)
+			objectRule.addConstantBinding(HornRule.END_NODE, objectConstant);
+		hornRules.add(objectRule);
 
 		Graph<String> positiveNodesGraph = new Graph<String>();
 		toAnalyse.clear();
-		for(Pair<String,String> example:positiveExamples){
+		for(Pair<String,String> example:validationExamples){
 			positiveNodesGraph.addNode(example.getLeft());
 			positiveNodesGraph.addNode(example.getRight());
 			toAnalyse.add(example.getLeft());
@@ -282,7 +303,7 @@ public class DynamicPruningRuleDiscovery extends HornRuleDiscovery{
 		permutations.add("object");
 		Set<String> currentExampleRelation = Sets.newHashSet();
 
-		for(Pair<String,String> posExample:positiveExamples){
+		for(Pair<String,String> posExample:validationExamples){
 			currentExampleRelation.clear();
 
 			for(String onePermutation:permutations){
@@ -299,10 +320,10 @@ public class DynamicPruningRuleDiscovery extends HornRuleDiscovery{
 					if(currentExampleRelation.contains(relation))
 						continue;
 					currentExampleRelation.add(relation);
-					currentRelationExamples = relation2positiveExample.get(relation);
+					currentRelationExamples = relation2validationExample.get(relation);
 					if(currentRelationExamples==null){
 						currentRelationExamples=Sets.newHashSet();
-						relation2positiveExample.put(relation, currentRelationExamples);
+						relation2validationExample.put(relation, currentRelationExamples);
 					}
 					currentRelationExamples.add(posExample);
 				}

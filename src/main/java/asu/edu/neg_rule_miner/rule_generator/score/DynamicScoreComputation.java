@@ -13,10 +13,9 @@ import com.google.common.collect.Sets;
 
 import asu.edu.neg_rule_miner.configuration.ConfigurationFacility;
 import asu.edu.neg_rule_miner.configuration.Constant;
-import asu.edu.neg_rule_miner.model.MultipleGraphHornRule;
-import asu.edu.neg_rule_miner.model.RuleAtom;
+import asu.edu.neg_rule_miner.model.horn_rule.MultipleGraphHornRule;
+import asu.edu.neg_rule_miner.model.horn_rule.RuleAtom;
 import asu.edu.neg_rule_miner.model.statistic.StatisticsContainer;
-import asu.edu.neg_rule_miner.rule_generator.DynamicPruningRuleDiscovery;
 import asu.edu.neg_rule_miner.sparql.SparqlExecutor;
 
 /**

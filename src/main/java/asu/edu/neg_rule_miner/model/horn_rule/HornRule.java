@@ -1,4 +1,4 @@
-package asu.edu.neg_rule_miner.model;
+package asu.edu.neg_rule_miner.model.horn_rule;
 
 import java.util.List;
 import java.util.Set;

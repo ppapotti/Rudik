@@ -1,0 +1,2 @@
+- Fix bug for != generation. Currently an atom (a!=b) is created if there exists just one case where a!=b. 
+However it must to be checked that for all edges a!=b
