@@ -169,8 +169,8 @@ public abstract class HornRuleDiscovery implements HornRuleDiscoveryInterface{
 			Set<String> relations, String typeSubject, String typeObject, int limit){
 		long startTime = System.currentTimeMillis();
 		SparqlExecutor executor = this.getSparqlExecutor();
-		Set<Pair<String,String>> examples =  executor.generatePositiveExamples(relations, typeSubject, typeObject);
 		executor.setPosExamplesLimit(limit);
+		Set<Pair<String,String>> examples =  executor.generatePositiveExamples(relations, typeSubject, typeObject);
 		long endTime = System.currentTimeMillis();
 		StatisticsContainer.setPositiveSetTime((endTime-startTime)/1000.);
 		return examples;

@@ -3,11 +3,11 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>asu.edu</groupId>
-	<artifactId>neg_rule_miner</artifactId>
+	<artifactId>rule_miner</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
-	<name>neg_rule_miner</name>
+	<name>rule_miner</name>
 	<url>http://maven.apache.org</url>
 
 	<organization>

@@ -68,8 +68,12 @@ public class DynamicPruningRuleDiscovery extends HornRuleDiscovery{
 
 	}
 
+	@SuppressWarnings("unchecked")
 	private List<HornRule> discoverHornRules(Set<Pair<String,String>> negativeExamples, Set<Pair<String,String>> positiveExamples,
 			Set<String> relations, DynamicScoreComputation score){
+		if(negativeExamples.size()==0 || positiveExamples.size()==0)
+			return null;
+
 		StatisticsContainer.setStartTime(System.currentTimeMillis());
 
 
@@ -137,7 +141,7 @@ public class DynamicPruningRuleDiscovery extends HornRuleDiscovery{
 				rule2relativePositiveCoverage.remove(bestNegativeRule.getRules());
 			}
 
-			//expand it only if it has
+			//expand it only if it has less than maxRuleLen atoms
 			if(expand){
 
 				LOGGER.debug("Computing next rules for current best rule...");
@@ -225,6 +229,13 @@ public class DynamicPruningRuleDiscovery extends HornRuleDiscovery{
 		}
 
 		StatisticsContainer.setEndTime(System.currentTimeMillis());
+		//promove constants for each rule
+		for(HornRule rule:outputRules){
+			//cast
+			((MultipleGraphHornRule<String>) rule).promoteConstant();
+			((MultipleGraphHornRule<String>) rule).dematerialiseRule();
+		}
+
 		StatisticsContainer.setOutputRules(outputRules);
 		return outputRules;
 
@@ -244,14 +255,7 @@ public class DynamicPruningRuleDiscovery extends HornRuleDiscovery{
 		Set<String> toAnalyse = Sets.newHashSet();
 		Set<Pair<String,String>> coveredExamples;
 
-		String subjectConstant = generationExamples.iterator().next().getLeft();
-		String objectConstant = generationExamples.iterator().next().getRight();
 		for(Pair<String,String> example:generationExamples){
-			if(subjectConstant!=null && !example.getLeft().equals(subjectConstant))
-				subjectConstant = null;
-
-			if(objectConstant != null && !example.getRight().equals(objectConstant))
-				objectConstant=null;
 
 			generationNodesGraph.addNode(example.getLeft());
 			generationNodesGraph.addNode(example.getRight());
@@ -277,12 +281,8 @@ public class DynamicPruningRuleDiscovery extends HornRuleDiscovery{
 		generationNodesGraph.addExamples(generationExamples);
 		this.expandGraphs(toAnalyse, generationNodesGraph, entity2types, numThreads);
 		MultipleGraphHornRule<String> subjectRule = new MultipleGraphHornRule<String>(generationNodesGraph,true,generationExamples);
-		if(subjectConstant != null)
-			subjectRule.addConstantBinding(HornRule.START_NODE, subjectConstant);
 		hornRules.add(subjectRule);
 		MultipleGraphHornRule<String> objectRule = new MultipleGraphHornRule<String>(generationNodesGraph,false,generationExamples);
-		if(objectConstant!=null)
-			objectRule.addConstantBinding(HornRule.END_NODE, objectConstant);
 		hornRules.add(objectRule);
 
 		Graph<String> positiveNodesGraph = new Graph<String>();
@@ -437,10 +437,20 @@ public class DynamicPruningRuleDiscovery extends HornRuleDiscovery{
 
 	}
 
+	/**
+	 * The creation of inequalities edges is allowed only for 1,000,000 examples, otherwise it gets too big
+	 * @param toAnalyse
+	 * @param totalGraph
+	 * @param hornRule
+	 * @param expandedInequalityNodes2examples
+	 */
 	private void expandInequalityNodes(Set<String> toAnalyse, Graph<String> totalGraph,MultipleGraphHornRule<String> hornRule, 
 			Map<String,Set<Pair<String,String>>> expandedInequalityNodes2examples){
 
 		Set<Pair<String,String>> nodeCoveredExamplesToAnalyse = Sets.newHashSet();
+
+		int totEdgesCount = 0;
+
 		for(String nodeToAnalyse:toAnalyse){
 			nodeCoveredExamplesToAnalyse.clear();
 			//get the current covered examples of the node
@@ -459,21 +469,29 @@ public class DynamicPruningRuleDiscovery extends HornRuleDiscovery{
 			if(nodeCoveredExamplesToAnalyse.size()==0 || !hornRule.isInequalityExpandible()
 					|| totalGraph.getTypes(nodeToAnalyse).size()==0)
 				continue;
+
 			previouslyCoveredExamples.addAll(nodeCoveredExamplesToAnalyse);
 
 			Set<String> targetNodes = Sets.newHashSet();
+			//consider only allowed number of examples
 			for(Pair<String,String> oneExample:nodeCoveredExamplesToAnalyse){
-				String targetPartExample = hornRule.getStartingVariable().equals(HornRule.START_NODE) ? 
-						oneExample.getRight() : oneExample.getLeft();
-						targetNodes.add(targetPartExample);
+				String targetPartExample = hornRule.getStartingVariable().equals(HornRule.START_NODE) ? oneExample.getRight() : oneExample.getLeft();
+				targetNodes.add(targetPartExample);
+
 			}
 
 			Set<String> sameTypesNodes = totalGraph.getSameTypesNodes(totalGraph.getTypes(nodeToAnalyse),targetNodes, this.maxRuleLen-hornRule.getLen()-1);
+
+			totEdgesCount += sameTypesNodes.size();
+
 			//remove current node if exists
 			sameTypesNodes.remove(nodeToAnalyse);
 			for(String otherNode:sameTypesNodes){
 				totalGraph.addEdge(nodeToAnalyse, otherNode, Constant.DIFF_REL, true);
 			}
+
+			if(totEdgesCount > 1000000)
+				return;
 
 		}
 
