@@ -9416,26 +9416,26 @@ Rule 'dbo:predecessor(object,subject)' produced:
 <db:Albert_Reynolds>	<dbo:heir>	<db:Dick_Spring> .
 Unknown facts for relation 'dbo:firstDriver':
 Rule 'dbo:lastWin(object,subject)' produced:
-<db:1971_Italian_Grand_Prix>	<dbo:firstDriver>	<db:Peter_Gethin> .
-<db:1973_Canadian_Grand_Prix>	<dbo:firstDriver>	<db:Peter_Revson> .
-<db:1970_Belgian_Grand_Prix>	<dbo:firstDriver>	<db:Pedro_Rodr%C3%ADguez_%28racing_driver%29> .
-<db:1970_German_Grand_Prix>	<dbo:firstDriver>	<db:Jochen_Rindt> .
-<db:1972_German_Grand_Prix>	<dbo:firstDriver>	<db:Jacky_Ickx> .
+<db:1971_Italian_Grand_Prix>	<dbo:firstDriver>	<db:Peter_Gethin> .	true
+<db:1973_Canadian_Grand_Prix>	<dbo:firstDriver>	<db:Peter_Revson> .	true
+<db:1970_Belgian_Grand_Prix>	<dbo:firstDriver>	<db:Pedro_Rodr%C3%ADguez_%28racing_driver%29> .	true
+<db:1970_German_Grand_Prix>	<dbo:firstDriver>	<db:Jochen_Rindt> .	true
+<db:1972_German_Grand_Prix>	<dbo:firstDriver>	<db:Jacky_Ickx> .	true
 Rule 'dbo:firstWin(object,subject)' produced:
-<db:1973_French_Grand_Prix>	<dbo:firstDriver>	<db:Ronnie_Peterson> .
-<db:1974_South_African_Grand_Prix>	<dbo:firstDriver>	<db:Carlos_Reutemann> .
-<db:1974_Swedish_Grand_Prix>	<dbo:firstDriver>	<db:Jody_Scheckter> .
-<db:1974_Spanish_Grand_Prix>	<dbo:firstDriver>	<db:Niki_Lauda> .
-<db:1970_Italian_Grand_Prix>	<dbo:firstDriver>	<db:Clay_Regazzoni> .
+<db:1973_French_Grand_Prix>	<dbo:firstDriver>	<db:Ronnie_Peterson> .	true
+<db:1974_South_African_Grand_Prix>	<dbo:firstDriver>	<db:Carlos_Reutemann> .	true
+<db:1974_Swedish_Grand_Prix>	<dbo:firstDriver>	<db:Jody_Scheckter> .	true
+<db:1974_Spanish_Grand_Prix>	<dbo:firstDriver>	<db:Niki_Lauda> .	true
+<db:1970_Italian_Grand_Prix>	<dbo:firstDriver>	<db:Clay_Regazzoni> .	true
 Unknown facts for relation 'dbo:city':
 Rule 'dbo:location(subject,object)' produced:
-<db:Namibia_Breweries_Limited>	<dbo:city>	<db:Namibia> .
+<db:Namibia_Breweries_Limited>	<dbo:city>	<db:Namibia> .	false
 <db:Charlotte_High_School_%28Punta_Gorda%2C_Florida%29>	<dbo:city>	<db:Punta_Gorda%2C_Florida> .
-<db:Ashland_Inc.>	<dbo:city>	<db:United_States> .
+<db:Ashland_Inc.>	<dbo:city>	<db:United_States> .	false
 <db:Mind_Candy>	<dbo:city>	<db:Battersea> .
-<db:PKP_Cargo>	<dbo:city>	<db:Poland> .
-<db:Life-Link_Friendship-Schools>	<dbo:city>	<db:Sweden> .
-<db:Next_Fifteen_Communications>	<dbo:city>	<db:Seattle> .
+<db:PKP_Cargo>	<dbo:city>	<db:Poland> .	false
+<db:Life-Link_Friendship-Schools>	<dbo:city>	<db:Sweden> .	false
+<db:Next_Fifteen_Communications>	<dbo:city>	<db:Seattle> .	true
 <db:Time_Warner>	<dbo:city>	<db:New_York_City> .
 <db:Miracle_Mart_%28North_Dakota%29>	<dbo:city>	<db:Minot%2C_North_Dakota> .
 <db:WTSP>	<dbo:city>	<db:Tampa%2C_Florida> .
@@ -9444,12 +9444,12 @@ Rule 'dbo:location(subject,object)' produced:
 <db:Emaar_Properties>	<dbo:city>	<db:Dubai> .
 <db:Bowers_%26_Wilkins>	<dbo:city>	<db:United_Kingdom> .
 <db:WATE-TV>	<dbo:city>	<db:Knoxville%2C_Tennessee> .
-<db:Westerford_High_School>	<dbo:city>	<db:South_Africa> .
-<db:Urban_Bank>	<dbo:city>	<db:Philippines> .
+<db:Westerford_High_School>	<dbo:city>	<db:South_Africa> .	false
+<db:Urban_Bank>	<dbo:city>	<db:Philippines> .	false
 <db:Freshtel>	<dbo:city>	<db:Victoria_%28Australia%29> .
-<db:French_Connection_%28clothing%29>	<dbo:city>	<db:London> .
-<db:KK_Cibona>	<dbo:city>	<db:Croatia> .
-<db:WRDC>	<dbo:city>	<db:Fayetteville%2C_North_Carolina> .
+<db:French_Connection_%28clothing%29>	<dbo:city>	<db:London> .	true
+<db:KK_Cibona>	<dbo:city>	<db:Croatia> .	false
+<db:WRDC>	<dbo:city>	<db:Fayetteville%2C_North_Carolina> .	false
 <db:Edmond_Memorial_High_School>	<dbo:city>	<db:Edmond%2C_Oklahoma> .
 <db:Ulster_Bank>	<dbo:city>	<db:Belfast> .
 <db:Mam_Tor_Publishing>	<dbo:city>	<db:Derby> .
@@ -9470,9 +9470,9 @@ Rule 'dbo:location(subject,object)' produced:
 <db:Attijariwafa_Bank>	<dbo:city>	<db:Casablanca> .
 <db:Attensity>	<dbo:city>	<db:United_States> .
 <db:Renchi>	<dbo:city>	<db:Hong_Kong> .
-<db:Speranski>	<dbo:city>	<db:Canberra> .
-<db:KXXV>	<dbo:city>	<db:Waco%2C_Texas> .
-<db:Kaypro>	<dbo:city>	<db:California> .
+<db:Speranski>	<dbo:city>	<db:Canberra> .	false
+<db:KXXV>	<dbo:city>	<db:Waco%2C_Texas> .	true
+<db:Kaypro>	<dbo:city>	<db:California> .	false
 <db:War_Child_%28charity%29>	<dbo:city>	<db:Canada> .
 <db:WLAJ>	<dbo:city>	<db:Lansing%2C_Michigan> .
 <db:KCWI-TV>	<dbo:city>	<db:Des_Moines%2C_Iowa> .
@@ -9482,13 +9482,13 @@ Rule 'dbo:location(subject,object)' produced:
 <db:WesternGeco>	<dbo:city>	<db:Texas> .
 <db:State_Bank_of_Travancore>	<dbo:city>	<db:India> .
 <db:Stuarts_Draft_High_School>	<dbo:city>	<db:Virginia> .
-<db:Halliburton>	<dbo:city>	<db:United_Arab_Emirates> .
+<db:Halliburton>	<dbo:city>	<db:United_Arab_Emirates> .	false
 <db:BNFL>	<dbo:city>	<db:England> .
 <db:Hyperlite_Wake_Mfg.>	<dbo:city>	<db:Redmond%2C_Washington> .
-<db:KCXP-LP>	<dbo:city>	<db:Aspen%2C_Colorado> .
+<db:KCXP-LP>	<dbo:city>	<db:Aspen%2C_Colorado> .	true
 <db:Mission_Hills_High_School>	<dbo:city>	<db:San_Marcos%2C_California> .
 <db:WLWC>	<dbo:city>	<db:New_Bedford%2C_Massachusetts> .
-<db:PrepMe>	<dbo:city>	<db:United_States> .
+<db:PrepMe>	<dbo:city>	<db:United_States> .	false
 <db:WLFG>	<dbo:city>	<db:Bluefield%2C_Virginia> .
 <db:WSAW-TV>	<dbo:city>	<db:Wausau%2C_Wisconsin> .
 <db:China_Motor_Bus>	<dbo:city>	<db:Hong_Kong> .
@@ -9497,11 +9497,11 @@ Rule 'dbo:location(subject,object)' produced:
 <db:Modiran_Vehicle_Manufacturing_Company>	<dbo:city>	<db:Tehran> .
 <db:AFFCO_Holdings>	<dbo:city>	<db:Hamilton%2C_New_Zealand> .
 <db:WGFL>	<dbo:city>	<db:High_Springs%2C_Florida> .
-<db:Boral>	<dbo:city>	<db:Australia> .
-<db:Bristol_Rugby>	<dbo:city>	<db:England> .
+<db:Boral>	<dbo:city>	<db:Australia> .	false
+<db:Bristol_Rugby>	<dbo:city>	<db:England> .	false
 <db:Fair_Trade_Association_of_Australia_and_New_Zealand>	<dbo:city>	<db:Auckland> .
-<db:Sony_Pictures_Entertainment>	<dbo:city>	<db:Tokyo> .
-<db:W%C3%A4rtsil%C3%A4>	<dbo:city>	<db:Finland> .
+<db:Sony_Pictures_Entertainment>	<dbo:city>	<db:Tokyo> .	true
+<db:W%C3%A4rtsil%C3%A4>	<dbo:city>	<db:Finland> .	false
 <db:St_George%27s_College%2C_Weybridge>	<dbo:city>	<db:Weybridge> .
 <db:Mazda>	<dbo:city>	<db:Hiroshima_Prefecture> .
 <db:Reebok>	<dbo:city>	<db:Bolton> .
@@ -9531,9 +9531,9 @@ Rule 'dbo:location(subject,object)' produced:
 <db:Copersucar>	<dbo:city>	<db:S%C3%A3o_Paulo> .
 <db:UCB_%28company%29>	<dbo:city>	<db:Belgium> .
 <db:Rand_McNally>	<dbo:city>	<db:Skokie%2C_Illinois> .
-<db:Steyr-Daimler-Puch>	<dbo:city>	<db:Austria> .
+<db:Steyr-Daimler-Puch>	<dbo:city>	<db:Austria> .	false
 <db:BRVM>	<dbo:city>	<db:Abidjan> .
-<db:Numico>	<dbo:city>	<db:Amsterdam> .
+<db:Numico>	<dbo:city>	<db:Amsterdam> .	true
 <db:WSMH>	<dbo:city>	<db:Saginaw%2C_Michigan> .
 <db:West_Brook_Senior_High_School>	<dbo:city>	<db:Beaumont%2C_Texas> .
 <db:National_Commercial_Bank>	<dbo:city>	<db:Jeddah> .
@@ -9555,10 +9555,10 @@ Rule 'dbo:location(subject,object)' produced:
 <db:WSST-TV>	<dbo:city>	<db:Cordele%2C_Georgia> .
 <db:Helen_of_Troy_Limited>	<dbo:city>	<db:El_Paso%2C_Texas> .
 <db:Hawick_RFC>	<dbo:city>	<db:Hawick> .
-<db:AdaCore>	<dbo:city>	<db:Paris> .
+<db:AdaCore>	<dbo:city>	<db:Paris> .	true
 <db:Finish_Line%2C_Inc.>	<dbo:city>	<db:Indianapolis> .
 <db:KMOS-TV>	<dbo:city>	<db:Columbia%2C_Missouri> .
-<db:Lotto_Sport_Italia>	<dbo:city>	<db:Italy> .
+<db:Lotto_Sport_Italia>	<dbo:city>	<db:Italy> .	false
 <db:Fage>	<dbo:city>	<db:Greece> .
 <db:Viking_Line>	<dbo:city>	<db:Finland> .
 <db:Focus_Media_Holding>	<dbo:city>	<db:Shanghai> .
@@ -9572,9 +9572,9 @@ Rule 'dbo:location(subject,object)' produced:
 <db:Crescent_College>	<dbo:city>	<db:Ireland> .
 <db:WCLF>	<dbo:city>	<db:Clearwater%2C_Florida> .
 <db:Cipla>	<dbo:city>	<db:India> .
-<db:WKCF>	<dbo:city>	<db:Florida> .
+<db:WKCF>	<dbo:city>	<db:Florida> .	false
 <db:Ultrasone>	<dbo:city>	<db:Germany> .
-<db:Porsche>	<dbo:city>	<db:Germany> .
+<db:Porsche>	<dbo:city>	<db:Germany> .	false
 <db:Scott%27s_Food_%26_Pharmacy>	<dbo:city>	<db:Fort_Wayne%2C_Indiana> .
 <db:Slovensk%C3%A1_z%C3%A1ru%C4%8Dn%C3%A1_a_rozvojov%C3%A1_banka>	<dbo:city>	<db:Bratislava> .
 <db:Applebee%27s>	<dbo:city>	<db:Overland_Park%2C_Kansas> .
@@ -9589,7 +9589,7 @@ Rule 'dbo:location(subject,object)' produced:
 <db:K58CM>	<dbo:city>	<db:Duluth%2C_Minnesota> .
 <db:Lucid_Records>	<dbo:city>	<db:Illinois> .
 <db:KFFX-TV>	<dbo:city>	<db:Tri-Cities%2C_Washington> .
-<db:JetBrains>	<dbo:city>	<db:Massachusetts> .
+<db:JetBrains>	<dbo:city>	<db:Massachusetts> .	false
 <db:Destineer>	<dbo:city>	<db:United_States> .
 <db:MSTelcom>	<dbo:city>	<db:Angola> .
 <db:Manufacturers_Mutual_Insurance>	<dbo:city>	<db:Australia> .
@@ -9599,11 +9599,11 @@ Rule 'dbo:location(subject,object)' produced:
 <db:High_Impact_Games>	<dbo:city>	<db:United_States> .
 <db:Hongkong_Post>	<dbo:city>	<db:Hong_Kong> .
 <db:WSOC-TV>	<dbo:city>	<db:Charlotte%2C_North_Carolina> .
-<db:Albyn_School>	<dbo:city>	<db:Scotland> .
+<db:Albyn_School>	<dbo:city>	<db:Scotland> .	false
 <db:Sullivan_Bluth_Studios>	<dbo:city>	<db:Burbank%2C_California> .
 <db:Mandarake>	<dbo:city>	<db:Japan> .
 <db:Blue_Origin>	<dbo:city>	<db:Kent%2C_Washington> .
-<db:Bergdorf_Goodman>	<dbo:city>	<db:New_York_City> .
+<db:Bergdorf_Goodman>	<dbo:city>	<db:New_York_City> .	true
 <db:Fjord1_Nordvestlandske>	<dbo:city>	<db:Flor%C3%B8> .
 <db:BI-LO_%28Australia%29>	<dbo:city>	<db:Australia> .
 <db:Peterbilt>	<dbo:city>	<db:Denton%2C_Texas> .
@@ -9654,7 +9654,7 @@ Rule 'dbo:location(subject,object)' produced:
 <db:Seoul_Metropolitan_Rapid_Transit_Corporation>	<dbo:city>	<db:Seoul> .
 <db:Christian_Brothers_College%2C_Cork>	<dbo:city>	<db:Ireland> .
 <db:Zastava_Arms>	<dbo:city>	<db:Kragujevac> .
-<db:European_Foundation_for_the_Improvement_of_Living_and_Working_Conditions>	<dbo:city>	<db:Ireland> .
+<db:European_Foundation_for_the_Improvement_of_Living_and_Working_Conditions>	<dbo:city>	<db:Ireland> .	false
 <db:Faurecia>	<dbo:city>	<db:Nanterre> .
 <db:Detica>	<dbo:city>	<db:Guildford> .
 <db:MegaFon>	<dbo:city>	<db:Russia> .
@@ -16861,8 +16861,8 @@ Rule 'dbo:location(subject,object)' produced:
 <db:Borden_Ladner_Gervais>	<dbo:city>	<db:Montreal> .
 Unknown facts for relation 'dbo:province':
 Rule 'dbo:capital(object,subject)' produced:
-<db:Jerusalem>	<dbo:province>	<db:Israel> .
-<db:Lansing%2C_Michigan>	<dbo:province>	<db:Michigan> .
+<db:Jerusalem>	<dbo:province>	<db:Israel> .	false
+<db:Lansing%2C_Michigan>	<dbo:province>	<db:Michigan> .	false
 <db:Lleida>	<dbo:province>	<db:Segri%C3%A0> .
 <db:Seelow>	<dbo:province>	<db:M%C3%A4rkisch-Oderland> .
 <db:Greiz>	<dbo:province>	<db:Greiz_%28district%29> .
@@ -16892,7 +16892,7 @@ Rule 'dbo:capital(object,subject)' produced:
 <db:Homs>	<dbo:province>	<db:Homs_Governorate> .
 <db:Larsnes>	<dbo:province>	<db:Sande%2C_M%C3%B8re_og_Romsdal> .
 <db:Nantou_City>	<dbo:province>	<db:Nantou_County> .
-<db:Windhoek>	<dbo:province>	<db:Namibia> .
+<db:Windhoek>	<dbo:province>	<db:Namibia> .	false
 <db:Pisco%2C_Peru>	<dbo:province>	<db:Pisco_Province> .
 <db:Wildeshausen>	<dbo:province>	<db:Oldenburg_%28district%29> .
 <db:Oregon_City%2C_Oregon>	<dbo:province>	<db:Provisional_Government_of_Oregon> .
@@ -16908,7 +16908,7 @@ Rule 'dbo:capital(object,subject)' produced:
 <db:Arlon>	<dbo:province>	<db:Luxembourg_%28Belgium%29> .
 <db:Svolv%C3%A6r>	<dbo:province>	<db:V%C3%A5gan> .
 <db:Luoyang>	<dbo:province>	<db:Cao_Wei> .
-<db:Freetown>	<dbo:province>	<db:Sierra_Leone> .
+<db:Freetown>	<dbo:province>	<db:Sierra_Leone> .	false
 <db:Svarstad>	<dbo:province>	<db:Lardal> .
 <db:Kigali>	<dbo:province>	<db:Rwanda> .
 <db:Kalibo%2C_Aklan>	<dbo:province>	<db:Aklan> .
@@ -16921,7 +16921,7 @@ Rule 'dbo:capital(object,subject)' produced:
 <db:Villena>	<dbo:province>	<db:Alto_Vinalop%C3%B3> .
 <db:Matar%C3%B3>	<dbo:province>	<db:Maresme> .
 <db:Holzminden>	<dbo:province>	<db:Holzminden_%28district%29> .
-<db:Saposoa>	<dbo:province>	<db:Huallaga_Province> .
+<db:Saposoa>	<dbo:province>	<db:Huallaga_Province> .	true
 <db:Taunggyi>	<dbo:province>	<db:Shan_State> .
 <db:Kaiserslautern>	<dbo:province>	<db:Kaiserslautern_%28district%29> .
 <db:Jeonju>	<dbo:province>	<db:Jeolla> .
@@ -16930,14 +16930,14 @@ Rule 'dbo:capital(object,subject)' produced:
 <db:Qom>	<dbo:province>	<db:Qom_Province> .
 <db:Vathy%2C_Samos>	<dbo:province>	<db:Samos_Prefecture> .
 <db:Pleiku>	<dbo:province>	<db:Gia_Lai_Province> .
-<db:Phetchabun>	<dbo:province>	<db:Phetchabun_Province> .
-<db:Jakarta>	<dbo:province>	<db:Indonesia> .
+<db:Phetchabun>	<dbo:province>	<db:Phetchabun_Province> .	true
+<db:Jakarta>	<dbo:province>	<db:Indonesia> .	false
 <db:Lucknow>	<dbo:province>	<db:Uttar_Pradesh> .
 <db:Ume%C3%A5>	<dbo:province>	<db:V%C3%A4sterbotten_County> .
-<db:Lusaka>	<dbo:province>	<db:Zambia> .
+<db:Lusaka>	<dbo:province>	<db:Zambia> .	false
 <db:Fort-de-France>	<dbo:province>	<db:Martinique> .
 <db:Chengdu>	<dbo:province>	<db:Shu_Han> .
-<db:Arequipa>	<dbo:province>	<db:Arequipa_Province> .
+<db:Arequipa>	<dbo:province>	<db:Arequipa_Province> .	true
 <db:Djursholm>	<dbo:province>	<db:Danderyd_Municipality> .
 <db:Akkerhaugen>	<dbo:province>	<db:Sauherad> .
 <db:San_Jos%C3%A9_de_Ocoa>	<dbo:province>	<db:San_Jos%C3%A9_de_Ocoa_Province> .
@@ -16953,31 +16953,31 @@ Rule 'dbo:capital(object,subject)' produced:
 <db:K%C3%A4vlinge>	<dbo:province>	<db:K%C3%A4vlinge_Municipality> .
 <db:Subotica>	<dbo:province>	<db:North_Ba%C4%8Dka_District> .
 <db:Sarajevo>	<dbo:province>	<db:Socialist_Republic_of_Bosnia_and_Herzegovina> .
-<db:Hamilton%2C_Bermuda>	<dbo:province>	<db:Bermuda> .
-<db:Seville>	<dbo:province>	<db:Andalusia> .
+<db:Hamilton%2C_Bermuda>	<dbo:province>	<db:Bermuda> .	false
+<db:Seville>	<dbo:province>	<db:Andalusia> .	false
 <db:Puerto_Maldonado>	<dbo:province>	<db:Tambopata_Province> .
 <db:%C3%85m%C3%A5l>	<dbo:province>	<db:%C3%85m%C3%A5l_Municipality> .
 <db:Kingston%2C_Norfolk_Island>	<dbo:province>	<db:Norfolk_Island> .
 <db:Vechta>	<dbo:province>	<db:Vechta_%28district%29> .
-<db:Perugia>	<dbo:province>	<db:Province_of_Perugia> .
+<db:Perugia>	<dbo:province>	<db:Province_of_Perugia> .	true
 <db:Wittenberg>	<dbo:province>	<db:Wittenberg_%28district%29> .
 <db:Zahedan>	<dbo:province>	<db:Sistan_and_Baluchestan_Province> .
 <db:Vindeln>	<dbo:province>	<db:Vindeln_Municipality> .
 <db:Nyn%C3%A4shamn>	<dbo:province>	<db:Nyn%C3%A4shamn_Municipality> .
 <db:Trelleborg>	<dbo:province>	<db:Trelleborg_Municipality> .
-<db:Columbus%2C_Ohio>	<dbo:province>	<db:Ohio> .
+<db:Columbus%2C_Ohio>	<dbo:province>	<db:Ohio> .	false
 <db:Daru>	<dbo:province>	<db:Western_Province_%28Papua_New_Guinea%29> .
 <db:Jammu>	<dbo:province>	<db:Jammu_and_Kashmir> .
 <db:Telavi>	<dbo:province>	<db:Kakheti> .
 <db:N%C3%B6dinge-Nol>	<dbo:province>	<db:Ale_Municipality> .
 <db:Lule%C3%A5>	<dbo:province>	<db:Lule%C3%A5_Municipality> .
-<db:Asadabad%2C_Afghanistan>	<dbo:province>	<db:Kunar_Province> .
+<db:Asadabad%2C_Afghanistan>	<dbo:province>	<db:Kunar_Province> .	true
 <db:Kiruna>	<dbo:province>	<db:Kiruna_Municipality> .
 <db:Bridgetown>	<dbo:province>	<db:Barbados> .
-<db:Managua>	<dbo:province>	<db:Nicaragua> .
+<db:Managua>	<dbo:province>	<db:Nicaragua> .	false
 <db:Vienna>	<dbo:province>	<db:Austria-Hungary> .
 <db:Puerto_Cabezas>	<dbo:province>	<db:Regi%C3%B3n_Aut%C3%B3noma_del_Atl%C3%A1ntico_Norte> .
-<db:Wellington>	<dbo:province>	<db:New_Zealand> .
+<db:Wellington>	<dbo:province>	<db:New_Zealand> .	false
 <db:Bordeaux>	<dbo:province>	<db:Aquitaine> .
 <db:Kielce>	<dbo:province>	<db:%C5%9Awi%C4%99tokrzyskie_Voivodeship> .
 <db:Ljusdal>	<dbo:province>	<db:Ljusdal_Municipality> .
@@ -16988,13 +16988,13 @@ Rule 'dbo:capital(object,subject)' produced:
 <db:Kleppest%C3%B8>	<dbo:province>	<db:Ask%C3%B8y> .
 <db:Dr%C3%B8bak>	<dbo:province>	<db:Frogn> .
 <db:Athens>	<dbo:province>	<db:Greece> .
-<db:Udon_Thani>	<dbo:province>	<db:Udon_Thani_Province> .
+<db:Udon_Thani>	<dbo:province>	<db:Udon_Thani_Province> .	true
 <db:Arauca%2C_Arauca>	<dbo:province>	<db:Arauca_Department> .
 <db:Lund>	<dbo:province>	<db:Lund_Municipality> .
 <db:Beeskow>	<dbo:province>	<db:Oder-Spree> .
 <db:Kuala_Terengganu>	<dbo:province>	<db:Terengganu> .
 <db:Bulgan_%28city%29>	<dbo:province>	<db:Bulgan_Province> .
-<db:Saint_Helier>	<dbo:province>	<db:Jersey> .
+<db:Saint_Helier>	<dbo:province>	<db:Jersey> .	false
 <db:Pekanbaru>	<dbo:province>	<db:Riau> .
 <db:Springfield%2C_Illinois>	<dbo:province>	<db:Illinois> .
 <db:Kristinehamn>	<dbo:province>	<db:Kristinehamn_Municipality> .
@@ -17014,17 +17014,17 @@ Rule 'dbo:capital(object,subject)' produced:
 <db:Puli_Khumri>	<dbo:province>	<db:Baghlan_Province> .
 <db:Catarman%2C_Northern_Samar>	<dbo:province>	<db:Northern_Samar> .
 <db:Kusel>	<dbo:province>	<db:Kusel_%28district%29> .
-<db:Amman>	<dbo:province>	<db:Jordan> .
+<db:Amman>	<dbo:province>	<db:Jordan> .	false
 <db:Kramfors>	<dbo:province>	<db:Kramfors_Municipality> .
 <db:Bengkulu_%28city%29>	<dbo:province>	<db:Bengkulu> .
 <db:Amposta>	<dbo:province>	<db:Montsi%C3%A0> .
-<db:Seoul>	<dbo:province>	<db:Korea_under_Japanese_rule> .
+<db:Seoul>	<dbo:province>	<db:Korea_under_Japanese_rule> .	false
 <db:Ipoh>	<dbo:province>	<db:Perak> .
 <db:Hato_Mayor_del_Rey>	<dbo:province>	<db:Hato_Mayor_Province> .
 <db:Belmopan>	<dbo:province>	<db:Belize> .
 <db:Arl%C3%B6v>	<dbo:province>	<db:Burl%C3%B6v_Municipality> .
 <db:Yinchuan>	<dbo:province>	<db:Ningxia> .
-<db:Aplao>	<dbo:province>	<db:Castilla_Province> .
+<db:Aplao>	<dbo:province>	<db:Castilla_Province> .	true
 <db:Pereira%2C_Colombia>	<dbo:province>	<db:Risaralda_Department> .
 <db:Ockelbo>	<dbo:province>	<db:Ockelbo_Municipality> .
 <db:Uppsala>	<dbo:province>	<db:Uppsala_Municipality> .
@@ -17057,15 +17057,15 @@ Rule 'dbo:capital(object,subject)' produced:
 <db:Simrishamn>	<dbo:province>	<db:Simrishamn_Municipality> .
 <db:George_Town%2C_Penang>	<dbo:province>	<db:Penang> .
 <db:Mashhad>	<dbo:province>	<db:Razavi_Khorasan_Province> .
-<db:Salem%2C_Oregon>	<dbo:province>	<db:Oregon> .
+<db:Salem%2C_Oregon>	<dbo:province>	<db:Oregon> .	false
 <db:Tskhinvali>	<dbo:province>	<db:South_Ossetia> .
 <db:San_Salvador_de_Jujuy>	<dbo:province>	<db:Jujuy_Province> .
 <db:Tanumshede>	<dbo:province>	<db:Tanum_Municipality> .
-<db:Cangallo>	<dbo:province>	<db:Cangallo_Province> .
+<db:Cangallo>	<dbo:province>	<db:Cangallo_Province> .	true
 <db:Mons>	<dbo:province>	<db:Hainaut_%28province%29> .
 <db:Tarapoto>	<dbo:province>	<db:San_Mart%C3%ADn_Province> .
 <db:Chait%C3%A9n>	<dbo:province>	<db:Palena_Province> .
-<db:Damascus>	<dbo:province>	<db:Syria> .
+<db:Damascus>	<dbo:province>	<db:Syria> .	false
 <db:Leer>	<dbo:province>	<db:Leer_%28district%29> .
 <db:G%C3%A4vle>	<dbo:province>	<db:G%C3%A4vle_Municipality> .
 <db:Iba%2C_Zambales>	<dbo:province>	<db:Zambales> .
@@ -17073,7 +17073,7 @@ Rule 'dbo:capital(object,subject)' produced:
 <db:Osijek>	<dbo:province>	<db:Osijek-Baranja_County> .
 <db:Kragujevac>	<dbo:province>	<db:%C5%A0umadija_District> .
 <db:Djibouti_%28city%29>	<dbo:province>	<db:Djibouti> .
-<db:Middle_Island%2C_Saint_Kitts_and_Nevis>	<dbo:province>	<db:Saint_Thomas_Middle_Island_Parish> .
+<db:Middle_Island%2C_Saint_Kitts_and_Nevis>	<dbo:province>	<db:Saint_Thomas_Middle_Island_Parish> .	false
 <db:Bernburg>	<dbo:province>	<db:Salzlandkreis> .
 <db:Mandalgovi>	<dbo:province>	<db:Dundgovi_Province> .
 <db:Concepci%C3%B3n%2C_Chile>	<dbo:province>	<db:Concepci%C3%B3n_Province%2C_Chile> .
@@ -17092,10 +17092,10 @@ Rule 'dbo:capital(object,subject)' produced:
 <db:Cushamen>	<dbo:province>	<db:Cushamen_Department> .
 <db:Tashkent>	<dbo:province>	<db:Uzbekistan> .
 <db:Halberstadt>	<dbo:province>	<db:Harz_%28district%29> .
-<db:Muscat%2C_Oman>	<dbo:province>	<db:Oman> .
+<db:Muscat%2C_Oman>	<dbo:province>	<db:Oman> .	false
 <db:Leeuwarden>	<dbo:province>	<db:Friesland> .
 <db:Nassau%2C_Bahamas>	<dbo:province>	<db:The_Bahamas> .
-<db:Baku>	<dbo:province>	<db:Azerbaijan> .
+<db:Baku>	<dbo:province>	<db:Azerbaijan> .	false
 <db:Vossevangen>	<dbo:province>	<db:Voss> .
 <db:Merseburg>	<dbo:province>	<db:Saalekreis> .
 <db:%C3%96lgii_%28city%29>	<dbo:province>	<db:Bayan-%C3%96lgii_Province> .
@@ -17111,7 +17111,7 @@ Rule 'dbo:capital(object,subject)' produced:
 <db:Vadstena>	<dbo:province>	<db:Vadstena_Municipality> .
 <db:San_Juan%2C_Puerto_Rico>	<dbo:province>	<db:Puerto_Rico> .
 <db:Anklam>	<dbo:province>	<db:Ostvorpommern> .
-<db:Cuxhaven>	<dbo:province>	<db:Cuxhaven_%28district%29> .
+<db:Cuxhaven>	<dbo:province>	<db:Cuxhaven_%28district%29> .	true
 <db:Wiltz>	<dbo:province>	<db:Wiltz_%28canton%29> .
 <db:Hu%C3%A1nuco>	<dbo:province>	<db:Hu%C3%A1nuco_Province> .
 <db:Locumba>	<dbo:province>	<db:Jorge_Basadre_Province> .
@@ -17144,7 +17144,7 @@ Rule 'dbo:capital(object,subject)' produced:
 <db:Heidelberg>	<dbo:province>	<db:Electoral_Palatinate> .
 <db:Polygyros>	<dbo:province>	<db:Chalkidiki> .
 <db:Chep%C3%A9n>	<dbo:province>	<db:Chep%C3%A9n_Province> .
-<db:Harare>	<dbo:province>	<db:Zimbabwe> .
+<db:Harare>	<dbo:province>	<db:Zimbabwe> .	false
 <db:Assen>	<dbo:province>	<db:Drenthe> .
 <db:Stockholm_urban_area>	<dbo:province>	<db:Nacka_Municipality> .
 <db:Baruun-Urt>	<dbo:province>	<db:S%C3%BCkhbaatar_Province> .
@@ -17178,7 +17178,7 @@ Rule 'dbo:capital(object,subject)' produced:
 <db:Luarca>	<dbo:province>	<db:Vald%C3%A9s%2C_Asturias> .
 <db:Oviedo>	<dbo:province>	<db:Asturias> .
 <db:Kikinda>	<dbo:province>	<db:North_Banat_District> .
-<db:Libreville>	<dbo:province>	<db:Gabon> .
+<db:Libreville>	<dbo:province>	<db:Gabon> .	false
 <db:Lule%C3%A5>	<dbo:province>	<db:Norrbotten_County> .
 <db:Cayon>	<dbo:province>	<db:Saint_Mary_Cayon_Parish> .
 <db:Tripoli%2C_Greece>	<dbo:province>	<db:Arcadia> .
@@ -17238,7 +17238,7 @@ Rule 'dbo:capital(object,subject)' produced:
 <db:Ashgabat>	<dbo:province>	<db:Turkmenistan> .
 <db:Eskilstuna>	<dbo:province>	<db:Eskilstuna_Municipality> .
 <db:Kutaisi>	<dbo:province>	<db:Imereti> .
-<db:Ottawa>	<dbo:province>	<db:Canada> .
+<db:Ottawa>	<dbo:province>	<db:Canada> .	false
 <db:Edinburgh_of_the_Seven_Seas>	<dbo:province>	<db:Tristan_da_Cunha> .
 <db:Boise%2C_Idaho>	<dbo:province>	<db:Idaho> .
 <db:Nakhon_Phanom>	<dbo:province>	<db:Nakhon_Phanom_Province> .
@@ -18066,17 +18066,17 @@ Rule 'dbo:capital(object,subject)' produced:
 <db:Hjo>	<dbo:province>	<db:Hjo_Municipality> .
 Unknown facts for relation 'dbo:nerve':
 Rule 'dbo:innervates(object,subject)' produced:
-<db:Lateral_compartment_of_leg>	<dbo:nerve>	<db:Common_fibular_nerve> .
-<db:Lateral_pterygoid_muscle>	<dbo:nerve>	<db:Buccal_nerve> .
-<db:Inferior_pharyngeal_constrictor_muscle>	<dbo:nerve>	<db:Vagus_nerve> .
-<db:Anterior_compartment_of_leg>	<dbo:nerve>	<db:Common_fibular_nerve> .
-<db:Lateral_rotator_group>	<dbo:nerve>	<db:Sciatic_nerve> .
-<db:Temple_%28anatomy%29>	<dbo:nerve>	<db:Auriculotemporal_nerve> .
-<db:Sphenoidal_sinus>	<dbo:nerve>	<db:Posterior_ethmoidal_nerve> .
-<db:Medial_pterygoid_muscle>	<dbo:nerve>	<db:Medial_pterygoid_nerve> .
+<db:Lateral_compartment_of_leg>	<dbo:nerve>	<db:Common_fibular_nerve> .	true
+<db:Lateral_pterygoid_muscle>	<dbo:nerve>	<db:Buccal_nerve> .	true
+<db:Inferior_pharyngeal_constrictor_muscle>	<dbo:nerve>	<db:Vagus_nerve> .	true
+<db:Anterior_compartment_of_leg>	<dbo:nerve>	<db:Common_fibular_nerve> .	true
+<db:Lateral_rotator_group>	<dbo:nerve>	<db:Sciatic_nerve> .	true
+<db:Temple_%28anatomy%29>	<dbo:nerve>	<db:Auriculotemporal_nerve> .	true
+<db:Sphenoidal_sinus>	<dbo:nerve>	<db:Posterior_ethmoidal_nerve> .	true
+<db:Medial_pterygoid_muscle>	<dbo:nerve>	<db:Medial_pterygoid_nerve> .	true
 Unknown facts for relation 'dbo:largestCity':
 Rule 'dbo:capital(subject,object)' produced:
-<db:Abkhazia>	<dbo:largestCity>	<db:Sukhumi> .
+<db:Abkhazia>	<dbo:largestCity>	<db:Sukhumi> .	true
 <db:Evrytania>	<dbo:largestCity>	<db:Karpenisi> .
 <db:San_Jos%C3%A9_de_Ocoa_Province>	<dbo:largestCity>	<db:San_Jos%C3%A9_de_Ocoa> .
 <db:Barbados>	<dbo:largestCity>	<db:Bridgetown> .
@@ -18093,8 +18093,8 @@ Rule 'dbo:capital(subject,object)' produced:
 <db:Osterode_%28district%29>	<dbo:largestCity>	<db:Osterode_am_Harz> .
 <db:Narathiwat_Province>	<dbo:largestCity>	<db:Narathiwat> .
 <db:Aceh_Jaya_Regency>	<dbo:largestCity>	<db:Calang> .
-<db:Ohio>	<dbo:largestCity>	<db:Columbus%2C_Ohio> .
-<db:Laos>	<dbo:largestCity>	<db:Vientiane> .
+<db:Ohio>	<dbo:largestCity>	<db:Columbus%2C_Ohio> .	true
+<db:Laos>	<dbo:largestCity>	<db:Vientiane> .	true
 <db:Chubut_Province>	<dbo:largestCity>	<db:Rawson%2C_Chubut> .
 <db:Sabah>	<dbo:largestCity>	<db:Kota_Kinabalu> .
 <db:Dalarna_County>	<dbo:largestCity>	<db:Falun> .
@@ -18118,9 +18118,9 @@ Rule 'dbo:capital(subject,object)' produced:
 <db:Hjo_Municipality>	<dbo:largestCity>	<db:Hjo> .
 <db:Artibonite_Department>	<dbo:largestCity>	<db:Gona%C3%AFves> .
 <db:Gnosj%C3%B6_Municipality>	<dbo:largestCity>	<db:Gnosj%C3%B6> .
-<db:Province_of_Alessandria>	<dbo:largestCity>	<db:Alessandria> .
-<db:Luxembourg_%28canton%29>	<dbo:largestCity>	<db:Luxembourg_%28city%29> .
-<db:Italy>	<dbo:largestCity>	<db:Rome> .
+<db:Province_of_Alessandria>	<dbo:largestCity>	<db:Alessandria> .	true
+<db:Luxembourg_%28canton%29>	<dbo:largestCity>	<db:Luxembourg_%28city%29> .	true
+<db:Italy>	<dbo:largestCity>	<db:Rome> .	true
 <db:Saraburi_Province>	<dbo:largestCity>	<db:Saraburi> .
 <db:San_Pedro_de_Macor%C3%ADs_Province>	<dbo:largestCity>	<db:San_Pedro_de_Macor%C3%ADs> .
 <db:Ardabil_Province>	<dbo:largestCity>	<db:Ardabil> .
@@ -18170,10 +18170,10 @@ Rule 'dbo:capital(subject,object)' produced:
 <db:Guadalcanal_Province>	<dbo:largestCity>	<db:Honiara> .
 <db:Kv%C3%A6nangen>	<dbo:largestCity>	<db:Burfjord> .
 <db:V%C3%A5gan>	<dbo:largestCity>	<db:Svolv%C3%A6r> .
-<db:Ottoman_Empire>	<dbo:largestCity>	<db:Edirne> .
+<db:Ottoman_Empire>	<dbo:largestCity>	<db:Edirne> .	false
 <db:Quillota_Province>	<dbo:largestCity>	<db:Quillota> .
-<db:Belarus>	<dbo:largestCity>	<db:Minsk> .
-<db:Province_of_Modena>	<dbo:largestCity>	<db:Modena> .
+<db:Belarus>	<dbo:largestCity>	<db:Minsk> .	true
+<db:Province_of_Modena>	<dbo:largestCity>	<db:Modena> .	true
 <db:Str%C3%B6mstad_Municipality>	<dbo:largestCity>	<db:Str%C3%B6mstad> .
 <db:Province_of_Pavia>	<dbo:largestCity>	<db:Pavia> .
 <db:Province_of_Trapani>	<dbo:largestCity>	<db:Trapani> .
@@ -18233,7 +18233,7 @@ Rule 'dbo:capital(subject,object)' produced:
 <db:Monse%C3%B1or_Nouel_Province>	<dbo:largestCity>	<db:Bonao> .
 <db:Province_of_Nuoro>	<dbo:largestCity>	<db:Nuoro> .
 <db:Palena_Province>	<dbo:largestCity>	<db:Chait%C3%A9n> .
-<db:Province_of_Arezzo>	<dbo:largestCity>	<db:Arezzo> .
+<db:Province_of_Arezzo>	<dbo:largestCity>	<db:Arezzo> .	true
 <db:J%C3%B6nk%C3%B6ping_County>	<dbo:largestCity>	<db:J%C3%B6nk%C3%B6ping> .
 <db:Osnabr%C3%BCck_%28district%29>	<dbo:largestCity>	<db:Osnabr%C3%BCck> .
 <db:Berg%2C_Norway>	<dbo:largestCity>	<db:Skaland> .
@@ -18255,7 +18255,7 @@ Rule 'dbo:capital(subject,object)' produced:
 <db:Moskenes>	<dbo:largestCity>	<db:Reine> .
 <db:Bor_District>	<dbo:largestCity>	<db:Bor%2C_Serbia> .
 <db:Hamgyong>	<dbo:largestCity>	<db:Hamhung> .
-<db:North_Vietnam>	<dbo:largestCity>	<db:Hanoi> .
+<db:North_Vietnam>	<dbo:largestCity>	<db:Hanoi> .	false
 <db:Province_of_Barletta-Andria-Trani>	<dbo:largestCity>	<db:Andria> .
 <db:Province_of_Olbia-Tempio>	<dbo:largestCity>	<db:Tempio_Pausania> .
 <db:Amnat_Charoen_Province>	<dbo:largestCity>	<db:Amnat_Charoen> .
@@ -18266,7 +18266,7 @@ Rule 'dbo:capital(subject,object)' produced:
 <db:Ystad_Municipality>	<dbo:largestCity>	<db:Ystad> .
 <db:Opole_Voivodeship>	<dbo:largestCity>	<db:Opole> .
 <db:Province_of_Gorizia>	<dbo:largestCity>	<db:Gorizia> .
-<db:The_Bahamas>	<dbo:largestCity>	<db:Nassau%2C_Bahamas> .
+<db:The_Bahamas>	<dbo:largestCity>	<db:Nassau%2C_Bahamas> .	true
 <db:Cebu>	<dbo:largestCity>	<db:Cebu_City> .
 <db:West_Ba%C4%8Dka_District>	<dbo:largestCity>	<db:Sombor> .
 <db:Cha%C3%B1aral_Province>	<dbo:largestCity>	<db:Cha%C3%B1aral> .
@@ -18750,7 +18750,7 @@ Rule 'dbo:capital(subject,object)' produced:
 <db:Uddevalla_Municipality>	<dbo:largestCity>	<db:Uddevalla> .
 <db:Horta_Nord>	<dbo:largestCity>	<db:Pu%C3%A7ol> .
 <db:%C5%A0ibenik-Knin_County>	<dbo:largestCity>	<db:%C5%A0ibenik> .
-<db:Kingdom_of_the_Netherlands>	<dbo:largestCity>	<db:Amsterdam> .
+<db:Kingdom_of_the_Netherlands>	<dbo:largestCity>	<db:Amsterdam> .	true
 <db:Oder-Spree>	<dbo:largestCity>	<db:Beeskow> .
 <db:%C5%81%C3%B3d%C5%BA_Voivodeship>	<dbo:largestCity>	<db:%C5%81%C3%B3d%C5%BA> .
 <db:Lund_Municipality>	<dbo:largestCity>	<db:Lund> .
@@ -18812,7 +18812,7 @@ Rule 'dbo:capital(subject,object)' produced:
 <db:Province_of_Catanzaro>	<dbo:largestCity>	<db:Catanzaro> .
 <db:Aurland>	<dbo:largestCity>	<db:Aurlandsvangen> .
 <db:Dajab%C3%B3n_Province>	<dbo:largestCity>	<db:Dajab%C3%B3n> .
-<db:State_of_Burma>	<dbo:largestCity>	<db:Yangon> .
+<db:State_of_Burma>	<dbo:largestCity>	<db:Yangon> .	true
 <db:Midi-Pyr%C3%A9n%C3%A9es>	<dbo:largestCity>	<db:Toulouse> .
 <db:Aschersleben-Sta%C3%9Ffurt>	<dbo:largestCity>	<db:Aschersleben> .
 <db:Pr%C3%ADncipe>	<dbo:largestCity>	<db:Santo_Ant%C3%B3nio> .
@@ -19171,8 +19171,8 @@ Rule 'dbo:capital(subject,object)' produced:
 <db:Khon_Kaen_Province>	<dbo:largestCity>	<db:Khon_Kaen> .
 <db:Chainat_Province>	<dbo:largestCity>	<db:Chai_Nat> .
 <db:V%C3%A4ster%C3%A5s_Municipality>	<dbo:largestCity>	<db:V%C3%A4ster%C3%A5s> .
-<db:Mozambique>	<dbo:largestCity>	<db:Maputo> .
-<db:Province_of_Piacenza>	<dbo:largestCity>	<db:Piacenza> .
+<db:Mozambique>	<dbo:largestCity>	<db:Maputo> .	true
+<db:Province_of_Piacenza>	<dbo:largestCity>	<db:Piacenza> .	true
 <db:Nicaragua>	<dbo:largestCity>	<db:Managua> .
 <db:Lower_Canada>	<dbo:largestCity>	<db:Quebec_City> .
 <db:Piura_Province>	<dbo:largestCity>	<db:Piura> .
@@ -19180,17 +19180,17 @@ Rule 'dbo:capital(subject,object)' produced:
 <db:Abra_%28province%29>	<dbo:largestCity>	<db:Bangued%2C_Abra> .
 <db:Batanes>	<dbo:largestCity>	<db:Basco%2C_Batanes> .
 <db:Ljusdal_Municipality>	<dbo:largestCity>	<db:Ljusdal> .
-<db:Province_of_Ferrara>	<dbo:largestCity>	<db:Ferrara> .
+<db:Province_of_Ferrara>	<dbo:largestCity>	<db:Ferrara> .	true
 <db:Jammu_and_Kashmir>	<dbo:largestCity>	<db:Jammu> .
 <db:Phitsanulok_Province>	<dbo:largestCity>	<db:Phitsanulok> .
-<db:Cantabria>	<dbo:largestCity>	<db:Santander%2C_Spain> .
+<db:Cantabria>	<dbo:largestCity>	<db:Santander%2C_Spain> .		true
 <db:Sistan_and_Baluchestan_Province>	<dbo:largestCity>	<db:Zahedan> .
-<db:Province_of_Prato>	<dbo:largestCity>	<db:Prato> .
+<db:Province_of_Prato>	<dbo:largestCity>	<db:Prato> .		true
 <db:Tucum%C3%A1n_Province>	<dbo:largestCity>	<db:San_Miguel_de_Tucum%C3%A1n> .
 <db:Daraa_Governorate>	<dbo:largestCity>	<db:Daraa> .
 <db:J%C3%B6nk%C3%B6ping_Municipality>	<dbo:largestCity>	<db:J%C3%B6nk%C3%B6ping> .
 <db:Modalen>	<dbo:largestCity>	<db:Mo%2C_Hordaland> .
-<db:Botswana>	<dbo:largestCity>	<db:Gaborone> .
+<db:Botswana>	<dbo:largestCity>	<db:Gaborone> .	true
 <db:Lea-Artibai>	<dbo:largestCity>	<db:Markina-Xemein> .
 <db:Esl%C3%B6v_Municipality>	<dbo:largestCity>	<db:Esl%C3%B6v> .
 <db:Sulu>	<dbo:largestCity>	<db:Jolo%2C_Sulu> .
@@ -19213,8 +19213,8 @@ Rule 'dbo:capital(subject,object)' produced:
 <db:Surigao_del_Norte>	<dbo:largestCity>	<db:Surigao_City> .
 <db:Province_of_Cremona>	<dbo:largestCity>	<db:Cremona> .
 <db:Languedoc-Roussillon>	<dbo:largestCity>	<db:Montpellier> .
-<db:Lomma_Municipality>	<dbo:largestCity>	<db:Lomma> .
-<db:Loei_Province>	<dbo:largestCity>	<db:Loei> .
+<db:Lomma_Municipality>	<dbo:largestCity>	<db:Lomma> .	true
+<db:Loei_Province>	<dbo:largestCity>	<db:Loei> .	true
 <db:S%C3%A4ter_Municipality>	<dbo:largestCity>	<db:S%C3%A4ter> .
 <db:Ullensaker>	<dbo:largestCity>	<db:Jessheim> .
 <db:Lika-Senj_County>	<dbo:largestCity>	<db:Gospi%C4%87> .
@@ -19222,8 +19222,8 @@ Rule 'dbo:capital(subject,object)' produced:
 <db:Belgium>	<dbo:largestCity>	<db:Brussels> .
 <db:Cambodia>	<dbo:largestCity>	<db:Phnom_Penh> .
 <db:Tacna_Province>	<dbo:largestCity>	<db:Tacna> .
-<db:Province_of_Genoa>	<dbo:largestCity>	<db:Genoa> .
-<db:Province_of_Pistoia>	<dbo:largestCity>	<db:Pistoia> .
+<db:Province_of_Genoa>	<dbo:largestCity>	<db:Genoa> .	true
+<db:Province_of_Pistoia>	<dbo:largestCity>	<db:Pistoia> . 	true
 <db:Lubusz_Voivodeship>	<dbo:largestCity>	<db:Zielona_G%C3%B3ra> .
 <db:Bolln%C3%A4s_Municipality>	<dbo:largestCity>	<db:Bolln%C3%A4s> .
 <db:Regi%C3%B3n_Aut%C3%B3noma_del_Atl%C3%A1ntico_Norte>	<dbo:largestCity>	<db:Puerto_Cabezas> .
