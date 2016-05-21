@@ -16,7 +16,7 @@ $(x,y) \models r_{body}$. In other words, given a Horn Rule $r = r_{body} \Right
 Given the body $r_{body}$ of a Horn Rule $r$, we denote by $r^{*}_{body}$ the \emph{unbounded body} of $r$. The unbounded body of a rule is obtained by substituting each atom in $r$ that contains either variable $a$ or $b$ with a new atom where the other variable that is not $a$ or $b$ 
 is substituted with another unique variable. As an example, given $r_{body} = \atom{rel}{a}{b}$, $r^{*}_{body} = \atom{rel}{a}{v_1} \wedge \atom{rel}{v_2}{b}$.
 \paolo{I suggest to have $rel_3(a,b)$ to avoid the confusion raised by cartesian product} 
-\stefano{Better now?}
+\stefano{Better now?}\paolo{to me this is still unclear, the way that is written it applies for all combinations of a and b universal variables, no matter if they are related or not. Therefore it seems the cartesian product. The same seems to be stated in the following example. Adding a small instance in the intro will probably clarify things}
 Given a set of pair of entities $E = \{(x_1,y_1),(x_2,y_2),\cdots,(x_n,y_n)\}$ and a rule $r$, we denote by $U_r(E)$ the \emph{unbounded coverage} of $r^{*}_{body}$ over $E$ as the set of elements in $E$ covered by $r^{*}_{body}$, $U_r(E)=\{(x,y) \in E | (x,y) \models r^{*}_{body}\}$.
 
 \begin{myExample}
@@ -69,8 +69,9 @@ The parameters $\alpha,\beta,\gamma$ are used to give more relevance to some com
 		\item the second component is the ratio between number of pairs $(x,y)$ in $V$ where $x$ is born after $y$ and number of pairs $(x,y)$ in $V$ where the date of birth (for both $x$ and $y$) is available in the KB;
 		\item the last component is computed as 1 minus number of pairs $(x,y)$ in $V$ where the date of birth (for both $x$ and $y$) is available in the KB divided by the total number of elements in $V$.
 	\end{inparaenum}
-\end{myExample}
-	
+\paolo{I think this would be more useful by referring to data in an example with micro KB}
+	\end{myExample}
+
 
 Similarly, the weight for a set of rules $R$ is defined as:
 \begin{equation*}
@@ -93,7 +94,7 @@ We can map this problem to the well-known weighted set cover problem, which is p
 
 Since we want to minimize the total weight of the output rules, the approximate version of the discovery problem aims to cover all elements in $G$, and as few as possible elements in $V$. Since for each element $(x,y)$ in $G$ there always exists a rule that covers only $(x,y)$ (single-instance rule), an optimal output is always guaranteed to exist. We expect such output to be made of some rules that covers more than one example in $G$, and the remaining examples in $G$ to be covered by single-instance rules. In the best-case scenario a single rule covers all elements in $G$ and none of the elements in $V$.
 
-Section~\ref{sec:greedy_alg} will describe a greedy polynomial algorithm to find a good solution for our problem.
+Section~\ref{sec:greedy_alg} will describe a greedy polynomial algorithm to find a good solution for our problem. \paolo{Perhaps we should clarify the role of the queries in the bodies vs the role of the sets, and the fact that we do not have all the queries materialized because of their large number }
 
 
 
