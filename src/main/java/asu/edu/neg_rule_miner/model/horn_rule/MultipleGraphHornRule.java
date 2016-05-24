@@ -61,21 +61,6 @@ public class MultipleGraphHornRule<T> extends HornRule{
 
 		Set<MultipleGraphHornRule<T>> nextPlausibleRules = Sets.newHashSet();
 
-		//		/**
-		//		 * FOR DEBUGGING PURPOSE AND AVOID OUT OF MEMORY
-		//		 */
-		//		if(this.rules.size()==2 &&
-		//				this.rules.get(0).getRelation().equals("http://yago-knowledge.org/resource/hasGender") &&
-		//				this.rules.get(1).getRelation().equals("http://yago-knowledge.org/resource/hasGender"))
-		//			return nextPlausibleRules;
-		//
-		//		if(this.rules.size()==2 &&
-		//				this.rules.get(0).getRelation().equals("http://www.wikidata.org/prop/direct/P31") &&
-		//				this.rules.get(1).getRelation().equals("http://www.wikidata.org/prop/direct/P31"))
-		//			return nextPlausibleRules;
-		//		/** */
-
-
 		boolean succ = this.initialiseBoundingVariable();
 		if(!succ){
 			LOGGER.warn("Error while trying to instantiate rule {}. Rule cannot be expanded.",this.toString());
