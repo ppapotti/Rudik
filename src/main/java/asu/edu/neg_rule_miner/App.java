@@ -12,9 +12,7 @@ import org.slf4j.LoggerFactory;
 import com.google.common.collect.Maps;
 import com.google.common.collect.Sets;
 
-import asu.edu.neg_rule_miner.client.evaluation.amie.AmieEvaluationClient;
 import asu.edu.neg_rule_miner.model.horn_rule.HornRule;
-import asu.edu.neg_rule_miner.model.horn_rule.RuleAtom;
 import asu.edu.neg_rule_miner.rule_generator.DynamicPruningRuleDiscovery;
 /**
  * Hello world!
@@ -22,7 +20,7 @@ import asu.edu.neg_rule_miner.rule_generator.DynamicPruningRuleDiscovery;
  */
 public class App 
 {
-	private final static Logger LOGGER = LoggerFactory.getLogger(AmieEvaluationClient.class.getName());
+	private final static Logger LOGGER = LoggerFactory.getLogger(App.class.getName());
 	public static void main( String[] args ) throws IOException
 	{
 		Set<String> relations = Sets.newHashSet();
