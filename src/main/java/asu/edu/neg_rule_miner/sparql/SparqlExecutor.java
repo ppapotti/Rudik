@@ -55,7 +55,7 @@ public abstract class SparqlExecutor {
 
 	protected int positiveExampleLimit = -1;
 
-	protected boolean includeLiterals = false;
+	protected boolean includeLiterals = true;
 
 	@SuppressWarnings("unchecked")
 	public SparqlExecutor(Configuration config){
