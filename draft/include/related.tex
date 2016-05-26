@@ -8,3 +8,8 @@
 \system{ALEPH}~\cite{muggleton1995inverse}, \system{WARMR}~\cite{dehaspe1999discovery}, and \system{Sherlock}~\cite{schoenmackers2010learning} -- Inductive Logic Programming approaches (outperformed by \amie).
 
 \yago~\cite{suchanek2007yago}, \dbpedia~\cite{bizer2009dbpedia}, and \wikidata~\cite{vrandevcic2014wikidata}.
+
+Association Rules Mining~\cite{agrawal1993mining}: given a database of costumer transactions, generate associtation rules that correlates items in the database (e.g., customers who usually buy bread and butter also purchase milk). Different setting (search space small), and usually confidence thresholds are difficult to set. Cannot be applied to KBs because building a relational database from a graph means compute all possible instantiations of a given relation, which makes the search space too big (this is why traditional databases algorithms are difficult to apply over KBs).
+
+"Ontological Pathfinding: Mining First-Order Knowledge from Large Knowledge Bases." (SIGMOD '16, to be published). Same language and similar algorithm of AMIE, they just focus on scalability (they load the DB in a relational db and split it in different batches, to apply rules discovery in each batch independently and merge the results in a map-reduce fashion). Still require many resources (different machines and/or cores), and they do not consider literals.
+

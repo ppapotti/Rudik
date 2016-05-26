@@ -6,6 +6,11 @@ Z.~Abedjan and F.~Naumann.
 \newblock In {\em The Semantic Web: ESWC 2014 Satellite Events}, pages
   131--143. Springer, 2014.
 
+\bibitem{agrawal1993mining}
+R.~Agrawal, T.~Imieli{\'n}ski, and A.~Swami.
+\newblock Mining association rules between sets of items in large databases.
+\newblock {\em SIGMOD}, 22(2):207--216, 1993.
+
 \bibitem{bizer2009dbpedia}
 C.~Bizer, J.~Lehmann, G.~Kobilarov, S.~Auer, C.~Becker, R.~Cyganiak, and
   S.~Hellmann.
