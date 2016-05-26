@@ -83,6 +83,7 @@
 					<negative>-1</negative>
 				</examples>
 			</limits>
+			<include_literals>true</include_literals>
 		</sparql>
 		<disequality_relation>
 				<!-- number of types two entities must have in common to be considered of the same type. 

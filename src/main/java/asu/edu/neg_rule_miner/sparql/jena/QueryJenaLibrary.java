@@ -68,17 +68,17 @@ public abstract class QueryJenaLibrary extends SparqlExecutor {
 			LOGGER.debug("Query '{}' took {} seconds to complete.",sparqlQuery, totalTime/1000.);
 
 		TripleFilter tripFil = new TripleFilter();
-		
+
 		//TO DO: read from config file
 		String sub = "sub", rel = "rel", obj = "obj";
-		
+
 		ArrayList<QuerySolution> resultTriples = tripFil.doFilter(results, sub, rel, obj, entity, this.subjectLimit, 
 				this.objectLimit);
 
 		Set<String> currentTypes = Sets.newHashSet();
 		entity2types.put(entity, currentTypes);
 		for(QuerySolution oneResult:resultTriples){
-			
+
 			String relation = oneResult.get("rel").toString();
 
 			//check the relation is a type relation
@@ -128,10 +128,13 @@ public abstract class QueryJenaLibrary extends SparqlExecutor {
 
 			if(lexicalForm == null)
 				graph.addNode(nodeToAdd);
-			else
-				graph.addLiteralNode(nodeToAdd, lexicalForm);
+			else{
+				if(includeLiterals)
+					graph.addLiteralNode(nodeToAdd, lexicalForm);
+				else
+					continue;
+			}
 
-			//neighbours.put(edgeToAdd,lexicalForm);
 			boolean addEdge = graph.addEdge(edgeToAdd, true);
 			if(!addEdge)
 				LOGGER.warn("Not able to insert the edge '{}' in the graph '{}'.",edgeToAdd,graph);

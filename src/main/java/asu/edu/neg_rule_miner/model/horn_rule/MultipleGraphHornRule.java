@@ -321,9 +321,11 @@ public class MultipleGraphHornRule<T> extends HornRule{
 				}
 
 				//remove the not covered examples
-				node2example2variable.get(oneNode).keySet().removeAll(notCoveredExamples);
-				if(node2example2variable.get(oneNode).size()==0)
-					node2example2variable.remove(oneNode);
+				if(node2example2variable.containsKey(oneNode)){
+					node2example2variable.get(oneNode).keySet().removeAll(notCoveredExamples);
+					if(node2example2variable.get(oneNode).size()==0)
+						node2example2variable.remove(oneNode);
+				}
 			}
 
 			currentVariable = newVariable;

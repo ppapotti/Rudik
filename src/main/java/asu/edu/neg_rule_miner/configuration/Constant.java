@@ -27,6 +27,7 @@ public class Constant {
 	public static String CONF_RELATION_TARGET_REFIX = "relation_target_prefix.prefix";
 	public static String CONF_GRAPH_IRI = "graph_iri";
 	public static String CONF_RELATION_TO_AVOID = "relation_to_avoid.relation";
+	public static String CONF_INCLUDE_LITERALS = "include_literals";
 	//limits
 	public static String CONF_SUBJECT_LIMIT = "limits.edges.subject";
 	public static String CONF_OBJECT_LIMIT = "limits.edges.object";

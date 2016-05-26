@@ -55,6 +55,8 @@ public abstract class SparqlExecutor {
 
 	protected int positiveExampleLimit = -1;
 
+	protected boolean includeLiterals = false;
+
 	@SuppressWarnings("unchecked")
 	public SparqlExecutor(Configuration config){
 
@@ -137,6 +139,15 @@ public abstract class SparqlExecutor {
 			}
 		}
 
+		if(config.containsKey(Constant.CONF_INCLUDE_LITERALS)){
+			try{
+				this.includeLiterals = config.getBoolean(Constant.CONF_INCLUDE_LITERALS);
+			}
+			catch(Exception e){
+				LOGGER.error("Error while setting "+Constant.CONF_INCLUDE_LITERALS+" configuration parameter.",e);
+			}
+		}
+
 	}
 
 	public abstract void executeQuery(String entity,
@@ -183,11 +194,9 @@ public abstract class SparqlExecutor {
 		}
 		query.append("SELECT DISTINCT ?subject ?object");
 
-		/**
-		 * Jena does not work with count and nested query with from
-		 */
-		//if(this.graphIri!=null&&graphIri.length()>0)
-		//query.append(" FROM "+this.graphIri);
+
+		if(this.graphIri!=null&&graphIri.length()>0)
+			query.append(" FROM "+this.graphIri);
 
 		query.append(" WHERE {");
 
@@ -623,7 +632,7 @@ public abstract class SparqlExecutor {
 		}
 
 		reader.close();
-		LOGGER.debug("Read {} negative examples from input file.",examples.size());
+		LOGGER.debug("Read {} examples from input file.",examples.size());
 		return examples;
 	}
 
@@ -881,19 +890,19 @@ public abstract class SparqlExecutor {
 	public String getTypePrefix(){
 		return this.typePrefix;
 	}
-	
+
 	public void setSubjectLimit(int limit){
 		this.subjectLimit = limit;
 	}
-	
+
 	public void setObjectLimit(int limit){
 		this.objectLimit = limit;
 	}
-	
+
 	public void setPosExamplesLimit(int limit){
 		this.positiveExampleLimit = limit;
 	}
-	
+
 	public void setNegExamplesLimit(int limit){
 		this.negativeExampleLimit = limit;
 	}

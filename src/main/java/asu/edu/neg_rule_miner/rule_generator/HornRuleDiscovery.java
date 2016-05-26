@@ -96,12 +96,8 @@ public abstract class HornRuleDiscovery implements HornRuleDiscoveryInterface{
 			i++;
 			// Create the thread and add it to the list
 			SparqlExecutor executor = this.getSparqlExecutor();
-			if(subjectLimit!=null)
-				executor.setSubjectLimit(subjectLimit);
-			if(objectLimit!=null)
-				executor.setSubjectLimit(objectLimit);
 			final Thread current_thread = new Thread(new OneExampleRuleDiscovery(currentInput,graph,
-					this.getSparqlExecutor(),entity2types), "Thread"+i);
+					executor,entity2types), "Thread"+i);
 			activeThreads.add(current_thread);
 
 			// start the thread and querydbpedia
@@ -223,7 +219,7 @@ public abstract class HornRuleDiscovery implements HornRuleDiscoveryInterface{
 			return this.getSparqlExecutor().readExamplesFromFile(inputFile);
 		}
 		catch(IOException e){
-			LOGGER.error("Error while reading the input negative examples file '{}'",
+			LOGGER.error("Error while reading the input examples file '{}'",
 					inputFile.getAbsolutePath(),e);
 		}
 		return null;
@@ -257,6 +253,12 @@ public abstract class HornRuleDiscovery implements HornRuleDiscoveryInterface{
 		catch(Exception e){
 			throw new RuleMinerException("Error while instantiang the sparql executor enginge.", e,LOGGER);
 		}
+		
+		if(subjectLimit!=null)
+			endpoint.setSubjectLimit(subjectLimit);
+		if(objectLimit!=null)
+			endpoint.setObjectLimit(objectLimit);
+		
 		return endpoint;
 	}
 
