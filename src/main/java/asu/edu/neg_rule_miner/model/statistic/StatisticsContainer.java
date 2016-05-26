@@ -8,10 +8,8 @@ import java.sql.Date;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.List;
-import java.util.Set;
 
-import asu.edu.neg_rule_miner.configuration.ConfigurationFacility;
-import asu.edu.neg_rule_miner.model.RuleAtom;
+import asu.edu.neg_rule_miner.model.horn_rule.HornRule;
 
 public class StatisticsContainer {
 
@@ -35,7 +33,7 @@ public class StatisticsContainer {
 
 	private static double positiveSetTime;
 
-	private static List<Set<RuleAtom>> outputRules;	
+	private static List<HornRule> outputRules;	
 	
 
 	public static void initialiseContainer(String currentId){
@@ -98,7 +96,7 @@ public class StatisticsContainer {
 		endTime = currentEndTime;
 	}
 
-	public static void setOutputRules(List<Set<RuleAtom>> currentOutputRules){
+	public static void setOutputRules(List<HornRule> currentOutputRules){
 		outputRules = currentOutputRules;
 	}
 

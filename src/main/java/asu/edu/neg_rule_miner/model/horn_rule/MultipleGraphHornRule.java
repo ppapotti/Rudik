@@ -1,4 +1,4 @@
-package asu.edu.neg_rule_miner.model;
+package asu.edu.neg_rule_miner.model.horn_rule;
 
 import java.util.List;
 import java.util.Map;
@@ -7,25 +7,23 @@ import java.util.Set;
 import org.apache.commons.lang3.tuple.Pair;
 import org.apache.jena.ext.com.google.common.collect.Lists;
 import org.apache.jena.ext.com.google.common.collect.Maps;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import com.google.common.collect.Sets;
 
-import asu.edu.neg_rule_miner.configuration.Constant;
 import asu.edu.neg_rule_miner.model.rdf.graph.Edge;
 import asu.edu.neg_rule_miner.model.rdf.graph.Graph;
 
-public class MultipleGraphHornRule<T> {
+/**
+ * Implements a HornRule structure that keeps tracks of a graph for each input generation example
+ * @author sortona
+ *
+ * @param <T>
+ */
+public class MultipleGraphHornRule<T> extends HornRule{
 
-	public static final String START_NODE = "subject";
-	public static final String END_NODE = "object";
-
-	private List<RuleAtom> rules;
-
-	int variableCount = 0;
-
-	private String startingVariable;
-
-	private String currentVariable;
+	private final static Logger LOGGER = LoggerFactory.getLogger(MultipleGraphHornRule.class.getName());
 
 	private Graph<T> g;
 
@@ -39,9 +37,14 @@ public class MultipleGraphHornRule<T> {
 	 * @return
 	 */
 	public Set<T> getCurrentNodes(){
-		if(node2example2variable==null ||
-				currentNode2examples==null)
-			initialiseBoundingVariable();
+		if(node2example2variable==null || currentNode2examples==null){
+			boolean succ = initialiseBoundingVariable();
+			if(!succ){
+				LOGGER.warn("Error while trying to instantiate rule {}. Cannot compute current nodes.",this.toString());
+				return Sets.newHashSet();
+
+			}
+		}
 		return currentNode2examples.keySet();
 	}
 
@@ -58,21 +61,11 @@ public class MultipleGraphHornRule<T> {
 
 		Set<MultipleGraphHornRule<T>> nextPlausibleRules = Sets.newHashSet();
 
-		/**
-		 * FOR DEBUGGING PURPOSE AND AVOID OUT OF MEMORY
-		 */
-		if(this.rules.size()==2 &&
-				this.rules.get(0).getRelation().equals("http://yago-knowledge.org/resource/hasGender") &&
-				this.rules.get(1).getRelation().equals("http://yago-knowledge.org/resource/hasGender"))
+		boolean succ = this.initialiseBoundingVariable();
+		if(!succ){
+			LOGGER.warn("Error while trying to instantiate rule {}. Rule cannot be expanded.",this.toString());
 			return nextPlausibleRules;
-
-		if(this.rules.size()==2 &&
-				this.rules.get(0).getRelation().equals("http://www.wikidata.org/prop/direct/P31") &&
-				this.rules.get(1).getRelation().equals("http://www.wikidata.org/prop/direct/P31"))
-			return nextPlausibleRules;
-		/** */
-
-		this.initialiseBoundingVariable();
+		}
 
 		boolean isLast = this.getLen()==maxAtomThreshold-1;
 		String obligedVariable = null;
@@ -107,31 +100,33 @@ public class MultipleGraphHornRule<T> {
 
 			Set<Edge<T>> neighbors = g.getNeighbours(currentNode);
 			for(Edge<T> e:neighbors){
+				boolean isArtifical = e.isArtificial();
+				T endNode = e.getNodeEnd();
+				String label = e.getLabel();
 				for(Pair<T,T> oneCoveredExample:currentCoveredExamples){
 					boolean isNewVariable = false;
-					boolean isArtifical = e.isArtificial();
 					String newVariable = null;
-					if(node2example2variable.containsKey(e.getNodeEnd()))
-						newVariable = node2example2variable.get(e.getNodeEnd()).get(oneCoveredExample);
+					if(node2example2variable.containsKey(endNode))
+						newVariable = node2example2variable.get(endNode).get(oneCoveredExample);
 
 					if(newVariable==null){
 						if(isLast)
 							continue;
-						newVariable = "v"+variableCount;
+						newVariable = LOOSE_VARIABLE_NAME+variableCount;
 						isNewVariable = true;
 					}
 					if(obligedVariable!=null && !newVariable.equals(obligedVariable))
 						continue;
 					RuleAtom newRule = null;
 					if(isArtifical)
-						newRule= new RuleAtom(newVariable, e.getLabel(), currentVariable);
+						newRule= new RuleAtom(newVariable, label, currentVariable);
 					else
-						newRule= new RuleAtom(currentVariable, e.getLabel(), newVariable);
+						newRule= new RuleAtom(currentVariable, label, newVariable);
 					if(rules.contains(newRule))
 						continue;
 
 					//TO DO: different check
-					if(currentVariable.equals(newVariable)&&!(e.getNodeEnd().equals(e.getNodeSource())))
+					if(currentVariable.equals(newVariable)&&!(endNode.equals(e.getNodeSource())))
 						continue;
 
 					if(!rule2newVariable.containsKey(newRule))
@@ -162,27 +157,20 @@ public class MultipleGraphHornRule<T> {
 
 
 
-
 	/**
-	 * Add a rule atome to the current rule
+	 * Add a rule atome to the current rule and modify the covered examples
+	 * 
 	 * @param rule
-	 * @param graph2EdgeSupport
+	 * @param newVariable
+	 * @param newCoveredExamples
 	 */
 
 	public void addRuleAtom(RuleAtom rule, boolean newVariable, Set<Pair<T,T>> newCoveredExamples){
 
-		if(rules.contains(rule))
-			return;
-
-		rules.add(rule);
-
-		//increment variable count if it is a new variable
-		if(newVariable)
-			this.variableCount++;
+		this.addRuleAtom(rule, newVariable);
 
 		this.coveredExamples.clear();
 		this.coveredExamples.addAll(newCoveredExamples);
-
 	}
 
 	/**
@@ -203,9 +191,8 @@ public class MultipleGraphHornRule<T> {
 	}
 
 	private MultipleGraphHornRule(){
-		this.rules = Lists.newArrayList();
+		super();
 		this.coveredExamples = Sets.newHashSet();
-		this.variableCount = 0;
 	}
 
 	/**
@@ -227,157 +214,11 @@ public class MultipleGraphHornRule<T> {
 		return newRule;
 	}
 
-	/**
-	 * If they have an empty set of rules check the start variable
-	 */
 
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + ((rules == null || rules.size()==0) ? startingVariable.hashCode() : rules.hashCode());
-		return result;
-	}
-
-
-
-	@SuppressWarnings("unchecked")
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		MultipleGraphHornRule<T> other = (MultipleGraphHornRule<T>) obj;
-		if (rules == null) {
-			if (other.rules != null)
-				return false;
-		} else {
-			if (!rules.equals(other.rules))
-				return false;
-			else 
-				if(rules.size()==0) 
-					return startingVariable.equals(other.startingVariable); 
-		}
-		return true;
-	}
-
-	/**
-	 * Get the number of rule atoms in the rule
-	 * @return
-	 */
-	public int getLen(){
-		return this.rules.size();
-	}
-
-	@Override
-	public String toString(){
-		if(this.rules.size()==0)
-			return "Empty Rule";
-		String hornRule = "";
-		for(RuleAtom rule:rules){
-			hornRule+=rule+" & ";
-		}
-		return hornRule.substring(0,hornRule.length()-3);
-	}
-
-	/**
-	 * A HornRule is valid iff each variable appear at least twice and start and end at least once
-	 * @return
-	 */
-	public boolean isValid(){
-
-		Set<String> seenVariables = Sets.newHashSet();
-		seenVariables.add(START_NODE);
-		seenVariables.add(END_NODE);
-		Set<String> countOneVariable = Sets.newHashSet();
-		countOneVariable.add(START_NODE);
-		countOneVariable.add(END_NODE);
-		for(RuleAtom rule:rules){
-			String firstVariable = rule.getSubject();
-			String secondVariable = rule.getObject();
-
-			if(seenVariables.contains(firstVariable)){
-				countOneVariable.remove(firstVariable);
-			}
-			else{
-				seenVariables.add(firstVariable);
-				countOneVariable.add(firstVariable);
-			}
-
-			if(seenVariables.contains(secondVariable)){
-				countOneVariable.remove(secondVariable);
-			}
-			else{
-				seenVariables.add(secondVariable);
-				countOneVariable.add(secondVariable);
-			}
-		}
-		return countOneVariable.size()==0;
-
-	}
-
-	/**
-	 * Return thes set of rule atoms
-	 * @return
-	 */
-	public Set<RuleAtom> getRules(){
-		return Sets.newHashSet(this.rules);
-	}
-
-	/**
-	 * A rule is expandible only if it contains less than maxAtomLen atoms
-	 * @return
-	 */
-	public boolean isExpandible(int maxAtomLen){
-		if(this.getLen()<maxAtomLen)
-			return true;
-		return false;
-	}
-
-	public Set<RuleAtom> getEquivalentRule(){
-		Set<RuleAtom> alternativeRulesAtom = Sets.newHashSet();
-
-		//get the total number of variables different from start and node
-		Set<String> looseVariables = Sets.newHashSet();
-		for(RuleAtom oneAtom:this.rules){
-			if(!oneAtom.getSubject().equals(MultipleGraphHornRule.START_NODE)&&
-					!oneAtom.getSubject().equals(MultipleGraphHornRule.END_NODE))
-				looseVariables.add(oneAtom.getSubject());
-			if(!oneAtom.getObject().equals(MultipleGraphHornRule.START_NODE)&&
-					!oneAtom.getObject().equals(MultipleGraphHornRule.END_NODE))
-				looseVariables.add(oneAtom.getObject());
-		}
-
-		int variablesSize = looseVariables.size()-1;
-		if(variablesSize<=1){
-			alternativeRulesAtom.addAll(rules);
-			return alternativeRulesAtom;
-		}
-
-		for(RuleAtom rule:this.rules){
-			String subject = rule.getSubject();
-			if(!subject.equals(HornRule.START_NODE)&&!subject.equals(HornRule.END_NODE)){
-				subject = "v"+(variablesSize-Integer.parseInt(subject.replaceAll("v", "")));
-			}
-			String object = rule.getObject();
-			if(!object.equals(HornRule.START_NODE)&&!object.equals(HornRule.END_NODE)){
-				object = "v"+(variablesSize-Integer.parseInt(object.replaceAll("v", "")));
-			}
-			alternativeRulesAtom.add(new RuleAtom(subject, rule.getRelation(), object));
-		}
-
-		return alternativeRulesAtom;
-
-
-	}
-
-	private void initialiseBoundingVariable(){
+	private boolean initialiseBoundingVariable(){
 
 		if(this.currentVariable!=null && this.node2example2variable!=null && this.currentNode2examples!=null)
-			return;
+			return true;
 
 		Set<Pair<T,T>> examples = g.getExamples();
 		//build initial node2example2variable and currentNode2examples
@@ -417,6 +258,12 @@ public class MultipleGraphHornRule<T> {
 		Set<Pair<T,T>> notCoveredExamples = Sets.newHashSet();
 		this.currentVariable = startingVariable;
 
+		//to avoid out of memory issues
+		//current implementation can hold around 10M edges for each Giga of memory
+		int totEdgesCount = 0;
+		long maxEdgesCount = Runtime.getRuntime().maxMemory()/100;
+		//remove 1 giga from the maximum memory for further processing
+		maxEdgesCount-=10000000;
 		for(RuleAtom oneAtom : rules){
 			Map<T,Set<Pair<T,T>>> newCurrentNodes = Maps.newHashMap();
 			String relation = oneAtom.getRelation();
@@ -429,7 +276,15 @@ public class MultipleGraphHornRule<T> {
 				notCoveredExamples.clear();
 				notCoveredExamples.addAll(currentNode2examples.get(oneNode));
 				Set<Edge<T>> neighbours = g.getNeighbours(oneNode);
+
+				//need to keep track of available meory to avoid out of memory issue
+				totEdgesCount += neighbours.size() * currentNode2examples.get(oneNode).size();
+
+				if(totEdgesCount > maxEdgesCount && rules.size()>=2)
+					return false;
+
 				for(Edge<T> oneNeighbour:neighbours){
+
 					if(!oneNeighbour.getLabel().equals(relation) || oneNeighbour.isArtificial()!=isInverse)
 						continue;
 
@@ -466,9 +321,11 @@ public class MultipleGraphHornRule<T> {
 				}
 
 				//remove the not covered examples
-				node2example2variable.get(oneNode).keySet().removeAll(notCoveredExamples);
-				if(node2example2variable.get(oneNode).size()==0)
-					node2example2variable.remove(oneNode);
+				if(node2example2variable.containsKey(oneNode)){
+					node2example2variable.get(oneNode).keySet().removeAll(notCoveredExamples);
+					if(node2example2variable.get(oneNode).size()==0)
+						node2example2variable.remove(oneNode);
+				}
 			}
 
 			currentVariable = newVariable;
@@ -476,6 +333,8 @@ public class MultipleGraphHornRule<T> {
 			currentNode2examples = newCurrentNodes;
 			this.currentVariable = newVariable;
 		}
+
+		return true;
 	}
 
 	public void dematerialiseRule(){
@@ -485,13 +344,14 @@ public class MultipleGraphHornRule<T> {
 	}
 
 	public Set<Pair<T,T>> getCoveredExamples(T specifiNode){
-		if(this.currentNode2examples==null)
-			this.initialiseBoundingVariable();
+		if(this.currentNode2examples==null){
+			boolean succ = this.initialiseBoundingVariable();
+			if(!succ){
+				LOGGER.warn("Error while trying to instantiate rule {}. Cannot compute covered examples.",this.toString());
+				return Sets.newHashSet();
+			}
+		}
 		return this.currentNode2examples.get(specifiNode);
-	}
-
-	public String getStartingVariable(){
-		return this.startingVariable;
 	}
 
 	public Set<MultipleGraphHornRule<T>> nextOneHopPlausibleRules(int maxAtomThreshold, int minRuleSupport, String variable){
@@ -500,8 +360,15 @@ public class MultipleGraphHornRule<T> {
 		if(!variable.equals(START_NODE)&&!variable.equals(END_NODE))
 			return nextPlausibleRules;
 
-		if(this.currentNode2examples==null)
-			this.initialiseBoundingVariable();
+		if(this.currentNode2examples==null){
+
+			boolean succ = this.initialiseBoundingVariable();
+			if(!succ){
+				LOGGER.warn("Error while trying to instantiate rule {}. Rule cannot be expanded.",this.toString());
+				return nextPlausibleRules;
+			}
+
+		}
 
 		Set<T> obligedEndingNodes = Sets.newHashSet();
 		for(Pair<T,T> oneExample:this.coveredExamples){
@@ -570,49 +437,47 @@ public class MultipleGraphHornRule<T> {
 		return nextPlausibleRules;
 	}
 
-	public boolean isInequalityExpandible(){
-		if(this.rules.size()==0)
-			return false;
-
-		//check current variable different from start and end
-		if(this.currentVariable.equals(START_NODE)||this.currentVariable.equals(END_NODE))
-			return false;
-
-		//check it already exists and inequality or contains both start and end
-		boolean containsStart = false;
-		boolean containsEnd = false;
+	public void promoteConstant(){
+		boolean succ = this.initialiseBoundingVariable();
+		if(!succ)
+			return;
+		Map<String,T> variable2constant = Maps.newHashMap();
+		Set<String> allVariables = Sets.newHashSet();
 		for(RuleAtom oneAtom:this.rules){
-			if(oneAtom.getRelation().equals(Constant.DIFF_REL))
-				return false;
-			if(oneAtom.getSubject().equals(START_NODE)||oneAtom.getObject().equals(START_NODE))
-				containsStart = true;
-			if(oneAtom.getSubject().equals(END_NODE)||oneAtom.getObject().equals(END_NODE))
-				containsEnd = true;
+			allVariables.add(oneAtom.getSubject());
+			allVariables.add(oneAtom.getObject());
 		}
 
-		if(containsStart&&containsEnd)
-			return false;
+		Set<String> currentVariables = Sets.newHashSet();
+		for(T oneNode:node2example2variable.keySet()){
+			Map<Pair<T,T>,String> currentExamples = node2example2variable.get(oneNode);
+			currentVariables.clear();
+			currentVariables.addAll(currentExamples.values());
+			for(String oneVariable:currentVariables){
+				if(!allVariables.contains(oneVariable))
+					continue;
 
-		//elegible
-		return true;
-	}
+				if(variable2constant.containsKey(oneVariable) && !variable2constant.get(oneVariable).equals(oneNode))
+					allVariables.remove(oneVariable);
 
-	/**
-	 * Read a rule atom from a string representation
-	 * @param ruleString
-	 * @return
-	 */
-	public static Set<RuleAtom> readHornRule(String ruleString){
-		String []atomString = ruleString.split(" & ");
-		Set<RuleAtom> hornRule = Sets.newHashSet();
-		for(String oneAtomString:atomString){
-			String relation = oneAtomString.substring(0,oneAtomString.indexOf("("));
-			oneAtomString = oneAtomString.substring(relation.length()+1,oneAtomString.length()-1);
-			RuleAtom oneAtom = new RuleAtom(oneAtomString.split(",")[0], relation, oneAtomString.split(",")[1]);
-			hornRule.add(oneAtom);
+				if(allVariables.size()==0)
+					return;
+
+				variable2constant.put(oneVariable, oneNode);
+			}
 		}
 
-		return hornRule;
+		if(allVariables.size()>0){
+			List<RuleAtom> newAtoms = Lists.newLinkedList();
+			for(RuleAtom atom:rules){
+				String subj =allVariables.contains(atom.getSubject()) ? variable2constant.get(atom.getSubject()).toString() : atom.getSubject();
+
+				String obj =allVariables.contains(atom.getObject()) ? variable2constant.get(atom.getObject()).toString() : atom.getObject();
+
+				newAtoms.add(new RuleAtom(subj, atom.getRelation(), obj));
+			}
+			this.rules = newAtoms;
+		}
 	}
 
 }

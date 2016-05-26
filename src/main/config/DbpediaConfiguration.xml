@@ -5,10 +5,17 @@
 	    <!-- specify here runtime parameters of the rule generation algorithms -->
 		<runtime>
 			<num_threads>1</num_threads>
-			<!-- min number of negative examples to support a rule to be in output -->
-			<threshold>0</threshold>
 			<!-- max number of atoms in the output rule -->
 			<max_rule_lenght>3</max_rule_lenght>
+			<!-- if a rule covers more than validation_threshold*(validation set size) validation examples, then it is discared.
+			Default 0.2 -->
+			<score>
+				<validation_threshold>0.2</validation_threshold>
+				<!-- set weights for the score computation. Default 0.3, 0.6, 0.1 -->
+				<alpha>0.3</alpha>
+				<beta>0.6</beta>
+				<gamma>0.1</gamma>
+			</score>
 		</runtime>
 		<!-- sparql engine endpoint specific parameters -->
 		<sparql>
@@ -61,6 +68,21 @@
 			<types>
 				<type_prefix>http://www.w3.org/1999/02/22-rdf-syntax-ns#type</type_prefix>
 			</types>
+			<limits>
+				<edges>
+					<!-- Limit incoming edges for an entity. -1 for unlimited -->
+					<subject>-1</subject>
+					<!-- Limit outgoing edges for an entity. -1 for unlimited -->
+					<object>-1</object>
+				</edges>
+				<examples>
+					<!-- Limit positive examples. -1 for unlimited -->
+					<positive>-1</positive>
+					<!-- Limit negative examples. -1 for unlimited -->
+					<negative>-1</negative>
+				</examples>
+			</limits>
+			<include_literals>true</include_literals>
 		</sparql>
 		<disequality_relation>
 				<!-- number of types two entities must have in common to be considered of the same type. 

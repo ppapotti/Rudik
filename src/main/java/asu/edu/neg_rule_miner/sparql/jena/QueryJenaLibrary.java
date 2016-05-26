@@ -16,11 +16,11 @@ import org.apache.jena.rdf.model.RDFNode;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import asu.edu.neg_rule_miner.configuration.ConfigurationFacility;
-import asu.edu.neg_rule_miner.model.RuleAtom;
+import asu.edu.neg_rule_miner.model.horn_rule.RuleAtom;
 import asu.edu.neg_rule_miner.model.rdf.graph.Edge;
 import asu.edu.neg_rule_miner.model.rdf.graph.Graph;
 import asu.edu.neg_rule_miner.sparql.SparqlExecutor;
+import asu.edu.neg_rule_miner.sparql.jena.filter.TripleFilter;
 import asu.edu.neg_rule_miner.sparql.jena.remote.QuerySparqlRemoteEndpoint;
 
 public abstract class QueryJenaLibrary extends SparqlExecutor {
@@ -36,14 +36,13 @@ public abstract class QueryJenaLibrary extends SparqlExecutor {
 	private final static Logger LOGGER = LoggerFactory.getLogger(QuerySparqlRemoteEndpoint.class.getName());
 
 	@Override
-	public Map<Edge<String>,String> executeQuery(String entity, 
+	public void executeQuery(String entity, 
 			Graph<String> graph, Map<String,Set<String>> entity2types) {
-		Map<Edge<String>,String> neighbours = Maps.newHashMap();
 		//different query if the entity is a literal
 		if(graph.isLiteral(entity)){
 			//this.compareLiterals(entity, graph);
 			//if it's a literal do not return any neighbours because they might change based on the graph
-			return neighbours;
+			return;
 		}
 
 		String sparqlQuery = "SELECT DISTINCT ?sub ?rel ?obj";
@@ -69,17 +68,17 @@ public abstract class QueryJenaLibrary extends SparqlExecutor {
 			LOGGER.debug("Query '{}' took {} seconds to complete.",sparqlQuery, totalTime/1000.);
 
 		TripleFilter tripFil = new TripleFilter();
-		
+
 		//TO DO: read from config file
 		String sub = "sub", rel = "rel", obj = "obj";
-		
-		ArrayList<QuerySolution> resultTriples = tripFil.doFilter(results, sub, rel, obj, entity, ConfigurationFacility.getSubjectLimit(), 
-				ConfigurationFacility.getObjectLimit());
+
+		ArrayList<QuerySolution> resultTriples = tripFil.doFilter(results, sub, rel, obj, entity, this.subjectLimit, 
+				this.objectLimit);
 
 		Set<String> currentTypes = Sets.newHashSet();
 		entity2types.put(entity, currentTypes);
 		for(QuerySolution oneResult:resultTriples){
-			
+
 			String relation = oneResult.get("rel").toString();
 
 			//check the relation is a type relation
@@ -129,10 +128,13 @@ public abstract class QueryJenaLibrary extends SparqlExecutor {
 
 			if(lexicalForm == null)
 				graph.addNode(nodeToAdd);
-			else
-				graph.addLiteralNode(nodeToAdd, lexicalForm);
+			else{
+				if(includeLiterals)
+					graph.addLiteralNode(nodeToAdd, lexicalForm);
+				else
+					continue;
+			}
 
-			neighbours.put(edgeToAdd,lexicalForm);
 			boolean addEdge = graph.addEdge(edgeToAdd, true);
 			if(!addEdge)
 				LOGGER.warn("Not able to insert the edge '{}' in the graph '{}'.",edgeToAdd,graph);
@@ -142,8 +144,6 @@ public abstract class QueryJenaLibrary extends SparqlExecutor {
 		startTime = System.currentTimeMillis();
 
 		this.closeResources();
-		return neighbours;
-
 	}
 
 	@Override

@@ -1,30 +1,33 @@
 package asu.edu.neg_rule_miner;
 
-import java.io.File;
 import java.io.IOException;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
 import org.apache.commons.lang3.tuple.Pair;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
+import com.google.common.collect.Maps;
 import com.google.common.collect.Sets;
 
-import asu.edu.neg_rule_miner.model.GraphHornRule;
-import asu.edu.neg_rule_miner.model.RuleAtom;
-import asu.edu.neg_rule_miner.naive.DynamicPruningRuleDiscovery;
-import asu.edu.neg_rule_miner.naive.SequentialNaiveRuleDiscovery;
+import asu.edu.neg_rule_miner.client.evaluation.amie.AmieEvaluationClient;
+import asu.edu.neg_rule_miner.model.horn_rule.HornRule;
+import asu.edu.neg_rule_miner.model.horn_rule.RuleAtom;
+import asu.edu.neg_rule_miner.rule_generator.DynamicPruningRuleDiscovery;
 /**
  * Hello world!
  *
  */
 public class App 
 {
+	private final static Logger LOGGER = LoggerFactory.getLogger(AmieEvaluationClient.class.getName());
 	public static void main( String[] args ) throws IOException
 	{
 		Set<String> relations = Sets.newHashSet();
-		//						relations.add("http://dbpedia.org/ontology/founder");
-		//						relations.add("http://dbpedia.org/ontology/foundedBy");
+		//		relations.add("http://dbpedia.org/ontology/founder");
+		//		relations.add("http://dbpedia.org/ontology/foundedBy");
 
 		//		relations.add("http://dbpedia.org/ontology/spouse");
 
@@ -37,7 +40,7 @@ public class App
 		//		relations.add("http://dbpedia.org/ontology/academicAdvisor");
 
 
-		//				relations.add("http://dbpedia.org/ontology/ceremonialCounty");
+		//		relations.add("http://dbpedia.org/ontology/ceremonialCounty");
 
 		//		relations.add("http://dbpedia.org/ontology/child");
 
@@ -52,7 +55,7 @@ public class App
 
 		//		relations.add("http://yago-knowledge.org/resource/dealsWith");
 
-		relations.add("http://yago-knowledge.org/resource/hasChild");
+		//		relations.add("http://yago-knowledge.org/resource/hasChild");
 
 		//		relations.add("http://yago-knowledge.org/resource/influences");
 
@@ -62,7 +65,7 @@ public class App
 		//		relations.add("http://www.wikidata.org/prop/direct/P463");
 
 		//wikidata spouse
-		//				relations.add("http://www.wikidata.org/prop/direct/P26");
+		//		relations.add("http://www.wikidata.org/prop/direct/P26");
 
 		//wikidata founder
 		//		relations.add("http://www.wikidata.org/prop/direct/P112");
@@ -96,8 +99,8 @@ public class App
 		//		String typeObject="http://dbpedia.org/ontology/Person";
 
 		//dbpedia cerimonal county
-		//				String typeSubject = "http://dbpedia.org/ontology/PopulatedPlace";
-		//				String typeObject = "http://dbpedia.org/ontology/Region";
+		//		String typeSubject = "http://dbpedia.org/ontology/PopulatedPlace";
+		//		String typeObject = "http://dbpedia.org/ontology/Region";
 
 		//		String typeSubject = "http://xmlns.com/foaf/0.1/Person";
 		//		String typeObject = "http://schema.org/Country";
@@ -108,8 +111,8 @@ public class App
 		//				String typeSubject = "http://yago-knowledge.org/resource/wordnet_person_100007846";
 		//				String typeObject = "http://yago-knowledge.org/resource/wordnet_organization_108008335";
 
-		String typeSubject = "http://yago-knowledge.org/resource/wordnet_person_100007846";
-		String typeObject = "http://yago-knowledge.org/resource/wordnet_person_100007846";
+		//		String typeSubject = "http://yago-knowledge.org/resource/wordnet_person_100007846";
+		//		String typeObject = "http://yago-knowledge.org/resource/wordnet_person_100007846";
 
 		//		String typeSubject = "http://yago-knowledge.org/resource/wordnet_country_108544813";
 		//		String typeObject = "http://yago-knowledge.org/resource/wordnet_country_108544813";
@@ -219,18 +222,131 @@ public class App
 
 		DynamicPruningRuleDiscovery naive = new DynamicPruningRuleDiscovery();
 
+		//		relations.add("http://dbpedia.org/ontology/child");
+		//
+		//		String typeSubject = "http://dbpedia.org/ontology/Person";
+		//		String typeObject = "http://dbpedia.org/ontology/Person";
 
-		Set<Pair<String,String>> negativeExamples = naive.generateNegativeExamples(relations, typeSubject, typeObject, true, true);
+		relations.add("http://dbpedia.org/ontology/artery");
+
+		String typeSubject = "http://dbpedia.org/ontology/AnatomicalStructure";
+		String typeObject = "http://dbpedia.org/ontology/AnatomicalStructure";
+
+
+		Set<Pair<String,String>> negativeExamples = naive.generateNegativeExamples(relations, typeSubject, typeObject, false, false);
+
+		//		Set<Pair<String,String>> negativeExamples = naive.generateNegativeExamples(new File("negExamples"));
 
 
 
 		Set<Pair<String,String>> positiveExamples = naive.generatePositiveExamples(relations, typeSubject, typeObject);
 
+		//		Set<Pair<String,String>> positiveExamples = naive.generateNegativeExamples(new File("posExamples"));
 
 
-		naive.discoverNegativeHornRules(negativeExamples,positiveExamples,relations,typeSubject,typeObject);
 
-		//		naive.discoverPositiveHornRules(negativeExamples, positiveExamples, relations, typeSubject, typeObject, true, false);
+		//		naive.discoverNegativeHornRules(negativeExamples,positiveExamples,relations,typeSubject,typeObject);
+
+		System.out.println(naive.discoverPositiveHornRules(negativeExamples, positiveExamples, relations, typeSubject, typeObject, false, false));
+
+		//		computeMultiplePositiveRules();
+
+
+		//setting limits
+
+		//set the last parameter to the desired limit to reduce neg examples
+		//naive.generateNegativeExamples(relations, typeSubject, typeObject, 100);
+
+		//set the last parameter to the desired limit to reduce pos examples
+		//naive.generatePositiveExamples(relations, typeSubject, typeObject, 100);
+
+		//set limit on subject incoming edges when expanding a single entity
+		naive.setSubjectLimit(100);
+
+		//set limit on object incoming edges when expanding a single entity
+		naive.setObjectLimit(100);
+	}
+
+
+	public static void computeMultiplePositiveRules(){
+		Map<Set<String>,Pair<String,String>> relation2typeSubjectObject = Maps.newHashMap();
+
+		//		Set<String> relations1 = Sets.newHashSet();
+		//		relations1.add("http://dbpedia.org/ontology/founder");
+		//		relations1.add("http://dbpedia.org/ontology/foundedBy");
+		//		relation2typeSubjectObject.put(relations1, Pair.of("http://dbpedia.org/ontology/Organisation", "http://dbpedia.org/ontology/Person"));
+		//		//
+		//		Set<String> relations2 = Sets.newHashSet();
+		//		relations2.add("http://dbpedia.org/ontology/spouse");
+		//		relation2typeSubjectObject.put(relations2, Pair.of("http://dbpedia.org/ontology/Person", "http://dbpedia.org/ontology/Person"));
+		//		//
+		Set<String> relations3 = Sets.newHashSet();
+		relations3.add("http://dbpedia.org/ontology/academicAdvisor");
+		relation2typeSubjectObject.put(relations3, Pair.of("http://dbpedia.org/ontology/Person", "http://dbpedia.org/ontology/Person"));
+		//		//
+		//		Set<String> relations4 = Sets.newHashSet();
+		//		relations4.add("http://dbpedia.org/ontology/successor");
+		//		relation2typeSubjectObject.put(relations4, Pair.of("http://dbpedia.org/ontology/Person", "http://dbpedia.org/ontology/Person"));
+
+		//		Set<String> relations5 = Sets.newHashSet();
+		//		relations5.add("http://dbpedia.org/ontology/artery");
+		//		relation2typeSubjectObject.put(relations5, Pair.of("http://dbpedia.org/ontology/AnatomicalStructure", "http://dbpedia.org/ontology/AnatomicalStructure"));
+
+		//		Set<String> relations6 = Sets.newHashSet();
+		//		relations6.add("http://dbpedia.org/ontology/ceremonialCounty");
+		//		relation2typeSubjectObject.put(relations6, Pair.of("http://dbpedia.org/ontology/PopulatedPlace", "http://dbpedia.org/ontology/Region"));
+
+
+		long startTime;
+
+		DynamicPruningRuleDiscovery naive = new DynamicPruningRuleDiscovery();
+
+		Map<String,Long> relation2runningTime = Maps.newHashMap();
+		Map<String,List<HornRule>> relation2output = Maps.newHashMap();
+
+		int count=0;
+		for(Set<String> currentRelations: relation2typeSubjectObject.keySet()){
+			count++;
+			String relation = currentRelations.iterator().next();
+			LOGGER.debug("Computing output rules for relation {} ({} out of {}).",relation,count,
+					relation2typeSubjectObject.size());
+			try{
+
+				startTime = System.currentTimeMillis();
+				String typeSubject = relation2typeSubjectObject.get(currentRelations).getLeft();
+				String typeObject = relation2typeSubjectObject.get(currentRelations).getRight();
+
+				Set<Pair<String,String>> negativeExamples = naive.generateNegativeExamples(currentRelations, typeSubject, typeObject, false, false);
+
+
+
+				Set<Pair<String,String>> positiveExamples = naive.generatePositiveExamples(currentRelations, typeSubject, typeObject);
+
+				List<HornRule> output = 
+						naive.discoverPositiveHornRules(negativeExamples, positiveExamples, currentRelations, typeSubject, typeObject, false, false);
+
+				relation2runningTime.put(relation, (System.currentTimeMillis()-startTime));
+				relation2output.put(relation, output);
+			}
+
+			catch(Exception e){
+				LOGGER.warn("Error computing output rules.",e);
+			}
+
+		}
+
+		for(String relationOutput:relation2output.keySet()){
+			System.out.println(relationOutput+"\t"+relation2output.get(relationOutput));
+			Long runningTime = relation2runningTime.get(relationOutput);
+			if(runningTime!=null){
+				System.out.println(relationOutput+"\t"+(runningTime/1000.));
+			}
+		}
+
+
+
+
+
 
 	}
 }

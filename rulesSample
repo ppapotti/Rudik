@@ -1,2 +1,0 @@
-http://dbpedia.org/ontology/hometown(subject,v1) & http://dbpedia.org/ontology/associatedBand(object,v0) & http://dbpedia.org/ontology/hometown(v0,v1)
-!=(v0,subject) & http://dbpedia.org/ontology/associatedBand(v0,subject) & http://dbpedia.org/ontology/associatedBand(object,subject)

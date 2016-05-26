@@ -20,11 +20,9 @@ import org.slf4j.LoggerFactory;
 import com.google.common.collect.Sets;
 
 import asu.edu.neg_rule_miner.RuleMinerException;
-import asu.edu.neg_rule_miner.configuration.ConfigurationFacility;
 import asu.edu.neg_rule_miner.configuration.Constant;
-import asu.edu.neg_rule_miner.model.MultipleGraphHornRule;
-import asu.edu.neg_rule_miner.model.RuleAtom;
-import asu.edu.neg_rule_miner.model.rdf.graph.Edge;
+import asu.edu.neg_rule_miner.model.horn_rule.HornRule;
+import asu.edu.neg_rule_miner.model.horn_rule.RuleAtom;
 import asu.edu.neg_rule_miner.model.rdf.graph.Graph;
 
 /**
@@ -49,14 +47,24 @@ public abstract class SparqlExecutor {
 
 	protected String typePrefix;
 
+	protected int subjectLimit = -1;
+
+	protected int objectLimit = -1;
+
+	protected int negativeExampleLimit = -1;
+
+	protected int positiveExampleLimit = -1;
+
+	protected boolean includeLiterals = true;
+
 	@SuppressWarnings("unchecked")
 	public SparqlExecutor(Configuration config){
 
-		if(config.containsKey("relation_prefix.prefix")){
+		if(config.containsKey(Constant.CONF_RELATION_PREFIX)){
 			this.prefixQuery = Sets.newHashSet();
 			try{
 				HierarchicalConfiguration hierarchicalConfig = (HierarchicalConfiguration) config;
-				List<HierarchicalConfiguration> prefixes = hierarchicalConfig.configurationsAt("relation_prefix.prefix");
+				List<HierarchicalConfiguration> prefixes = hierarchicalConfig.configurationsAt(Constant.CONF_RELATION_PREFIX);
 				for(HierarchicalConfiguration prefix:prefixes){
 					String name = prefix.getString("name");
 					String uri = prefix.getString("uri");
@@ -66,36 +74,83 @@ public abstract class SparqlExecutor {
 
 			}
 			catch(Exception e){
-				LOGGER.error("Error while reading relation_prefix.prefix parameter from the configuration file.",e);
+				LOGGER.error("Error while reading "+Constant.CONF_RELATION_PREFIX+" parameter from the configuration file.",e);
 			}
 		}
 
-		if(!config.containsKey("types.type_prefix")||config.getString("types.type_prefix").length()==0)
-			throw new RuleMinerException("No type_prefix specific in the Configuration file.",LOGGER);
-		typePrefix = config.getString("types.type_prefix");
+		if(!config.containsKey(Constant.CONF_TYPE_PREFIX)||config.getString(Constant.CONF_TYPE_PREFIX).length()==0)
+			throw new RuleMinerException("No "+Constant.CONF_TYPE_PREFIX+" specific in the Configuration file.",LOGGER);
+		typePrefix = config.getString(Constant.CONF_TYPE_PREFIX);
 
-		if(config.containsKey("relation_target_prefix.prefix")){
+		if(config.containsKey(Constant.CONF_RELATION_TARGET_REFIX)){
 			this.targetPrefix = Sets.newHashSet();
-			List<String> objects = (List<String>) config.getList("relation_target_prefix.prefix");
+			List<String> objects = (List<String>) config.getList(Constant.CONF_RELATION_TARGET_REFIX);
 			for(String object:objects){
 				this.targetPrefix.add(object);
 			}
 		}
 
-		if(config.containsKey("graph_iri")&&config.getString("graph_iri").length()>0){
-			this.graphIri = "<"+config.getString("graph_iri")+">";
+		if(config.containsKey(Constant.CONF_GRAPH_IRI)&&config.getString(Constant.CONF_GRAPH_IRI).length()>0){
+			this.graphIri = "<"+config.getString(Constant.CONF_GRAPH_IRI)+">";
 		}
 
 		this.relationToAvoid = Sets.newHashSet();
-		if(config.containsKey("relation_to_avoid.relation")){
-			List<String> objects = (List<String>) config.getList("relation_to_avoid.relation");
+		if(config.containsKey(Constant.CONF_RELATION_TO_AVOID)){
+			List<String> objects = (List<String>) config.getList(Constant.CONF_RELATION_TO_AVOID);
 			for(String object:objects){
 				this.relationToAvoid.add(object);
 			}
 		}
+
+		//read limit from config file
+		if(config.containsKey(Constant.CONF_SUBJECT_LIMIT)){
+			try{
+				this.subjectLimit = config.getInt(Constant.CONF_SUBJECT_LIMIT);
+			}
+			catch(Exception e){
+				LOGGER.error("Error while setting "+Constant.CONF_SUBJECT_LIMIT+" configuration parameter.",e);
+			}
+		}
+
+		if(config.containsKey(Constant.CONF_OBJECT_LIMIT)){
+			try{
+				this.objectLimit = config.getInt(Constant.CONF_OBJECT_LIMIT);
+			}
+			catch(Exception e){
+				LOGGER.error("Error while setting "+Constant.CONF_OBJECT_LIMIT+" configuration parameter.",e);
+			}
+		}
+
+		if(config.containsKey(Constant.CONF_POS_EXAMPLES_LIMIT)){
+			try{
+				this.positiveExampleLimit = config.getInt(Constant.CONF_POS_EXAMPLES_LIMIT);
+			}
+			catch(Exception e){
+				LOGGER.error("Error while setting "+Constant.CONF_POS_EXAMPLES_LIMIT+" configuration parameter.",e);
+			}
+		}
+
+		if(config.containsKey(Constant.CONF_NEG_EXAMPLES_LIMIT)){
+			try{
+				this.negativeExampleLimit = config.getInt(Constant.CONF_NEG_EXAMPLES_LIMIT);
+			}
+			catch(Exception e){
+				LOGGER.error("Error while setting "+Constant.CONF_NEG_EXAMPLES_LIMIT+" configuration parameter.",e);
+			}
+		}
+
+		if(config.containsKey(Constant.CONF_INCLUDE_LITERALS)){
+			try{
+				this.includeLiterals = config.getBoolean(Constant.CONF_INCLUDE_LITERALS);
+			}
+			catch(Exception e){
+				LOGGER.error("Error while setting "+Constant.CONF_INCLUDE_LITERALS+" configuration parameter.",e);
+			}
+		}
+
 	}
 
-	public abstract Map<Edge<String>,String> executeQuery(String entity,
+	public abstract void executeQuery(String entity,
 			Graph<String> inputGraphs, Map<String,Set<String>> entity2types);
 
 	public abstract Set<Pair<String,String>> generateUnionNegativeExamples(Set<String> relations, String typeSubject, 
@@ -139,11 +194,9 @@ public abstract class SparqlExecutor {
 		}
 		query.append("SELECT DISTINCT ?subject ?object");
 
-		/**
-		 * Jena does not work with count and nested query with from
-		 */
-		//if(this.graphIri!=null&&graphIri.length()>0)
-		//query.append(" FROM "+this.graphIri);
+
+		if(this.graphIri!=null&&graphIri.length()>0)
+			query.append(" FROM "+this.graphIri);
 
 		query.append(" WHERE {");
 
@@ -153,9 +206,9 @@ public abstract class SparqlExecutor {
 			query.append("  ?subject <"+typePrefix+"> <"+ typeSubject + ">.");
 		query.append("  ?subject ?targetRelation ?object. " +
 				"  FILTER (" + filterRelation.toString() + ") }");
-		
-		if(ConfigurationFacility.getPositiveExampleLimit() >= 0)
-			query.append(" ORDER BY RAND() LIMIT "+ConfigurationFacility.getPositiveExampleLimit());
+
+		if(this.positiveExampleLimit >= 0)
+			query.append(" ORDER BY RAND() LIMIT "+this.positiveExampleLimit);
 
 		return query.toString();
 	}
@@ -214,12 +267,12 @@ public abstract class SparqlExecutor {
 		inequalityFilter.append("FILTER NOT EXISTS {");
 		String variableToSubstitue = inequalityAtom.getSubject();
 		String replacementVariable = inequalityAtom.getObject();
-		if(variableToSubstitue.equals(MultipleGraphHornRule.START_NODE) || variableToSubstitue.equals(MultipleGraphHornRule.END_NODE)){
+		if(variableToSubstitue.equals(HornRule.START_NODE) || variableToSubstitue.equals(HornRule.END_NODE)){
 			variableToSubstitue = inequalityAtom.getObject();
 			replacementVariable = inequalityAtom.getSubject();
 		}
 
-		if(!replacementVariable.equals(MultipleGraphHornRule.START_NODE)&&!replacementVariable.equals(MultipleGraphHornRule.END_NODE))
+		if(!replacementVariable.equals(HornRule.START_NODE)&&!replacementVariable.equals(HornRule.END_NODE))
 			replacementVariable = "other"+replacementVariable;
 
 		for(RuleAtom atom:rules){
@@ -230,7 +283,7 @@ public abstract class SparqlExecutor {
 			if(subject.equals(variableToSubstitue))
 				subject = replacementVariable;
 			else{
-				if(!subject.equals(MultipleGraphHornRule.START_NODE) &&!subject.equals(MultipleGraphHornRule.END_NODE))
+				if(!subject.equals(HornRule.START_NODE) &&!subject.equals(HornRule.END_NODE))
 					subject = "other"+subject;
 			}
 
@@ -238,7 +291,7 @@ public abstract class SparqlExecutor {
 			if(object.equals(variableToSubstitue))
 				object = replacementVariable;
 			else{
-				if(!object.equals(MultipleGraphHornRule.START_NODE) &&!object.equals(MultipleGraphHornRule.END_NODE))
+				if(!object.equals(HornRule.START_NODE) &&!object.equals(HornRule.END_NODE))
 					object = "other"+object;
 			}
 
@@ -343,16 +396,16 @@ public abstract class SparqlExecutor {
 			if(objectFunction)
 				negativeCandidateQuery+=" ?realSubject ?targetRelation ?object. ";
 		}
-		
-		
+
+
 		negativeCandidateQuery+="  ?subject ?otherRelation ?object. " +
 				"  FILTER (" + filterRelation.toString() + ") " +
 				"  FILTER (" + filterNotRelation.toString() + ") " +
 				differentRelation.toString();
 
 		negativeCandidateQuery+="}";
-		if(ConfigurationFacility.getNegativeExampleLimit()>=0)
-			negativeCandidateQuery+=" ORDER BY RAND() LIMIT "+ConfigurationFacility.getNegativeExampleLimit();
+		if(this.negativeExampleLimit>=0)
+			negativeCandidateQuery+=" ORDER BY RAND() LIMIT "+this.negativeExampleLimit;
 
 		return negativeCandidateQuery;
 	}
@@ -579,7 +632,7 @@ public abstract class SparqlExecutor {
 		}
 
 		reader.close();
-		LOGGER.debug("Read {} negative examples from input file.",examples.size());
+		LOGGER.debug("Read {} examples from input file.",examples.size());
 		return examples;
 	}
 
@@ -836,6 +889,22 @@ public abstract class SparqlExecutor {
 
 	public String getTypePrefix(){
 		return this.typePrefix;
+	}
+
+	public void setSubjectLimit(int limit){
+		this.subjectLimit = limit;
+	}
+
+	public void setObjectLimit(int limit){
+		this.objectLimit = limit;
+	}
+
+	public void setPosExamplesLimit(int limit){
+		this.positiveExampleLimit = limit;
+	}
+
+	public void setNegExamplesLimit(int limit){
+		this.negativeExampleLimit = limit;
 	}
 
 }
