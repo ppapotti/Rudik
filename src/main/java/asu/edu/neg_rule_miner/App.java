@@ -1,5 +1,6 @@
 package asu.edu.neg_rule_miner;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.List;
 import java.util.Map;
@@ -13,6 +14,8 @@ import com.google.common.collect.Maps;
 import com.google.common.collect.Sets;
 
 import asu.edu.neg_rule_miner.model.horn_rule.HornRule;
+import asu.edu.neg_rule_miner.model.horn_rule.RuleAtom;
+import asu.edu.neg_rule_miner.model.statistic.StatisticsContainer;
 import asu.edu.neg_rule_miner.rule_generator.DynamicPruningRuleDiscovery;
 /**
  * Hello world!
@@ -24,8 +27,8 @@ public class App
 	public static void main( String[] args ) throws IOException
 	{
 		Set<String> relations = Sets.newHashSet();
-		//		relations.add("http://dbpedia.org/ontology/founder");
-		//		relations.add("http://dbpedia.org/ontology/foundedBy");
+		relations.add("http://dbpedia.org/ontology/founder");
+		relations.add("http://dbpedia.org/ontology/foundedBy");
 
 		//		relations.add("http://dbpedia.org/ontology/spouse");
 
@@ -87,8 +90,8 @@ public class App
 		//		relations.add("http://www.wikidata.org/prop/direct/P170");
 
 
-		//		String typeSubject = "http://dbpedia.org/ontology/Organisation";
-		//		String typeObject ="http://dbpedia.org/ontology/Person";
+		String typeSubject = "http://dbpedia.org/ontology/Organisation";
+		String typeObject ="http://dbpedia.org/ontology/Person";
 
 		//		String typeSubject = "http://schema.org/Movie";
 		//		String typeObject = "http://dbpedia.org/ontology/Person";
@@ -225,19 +228,19 @@ public class App
 		//		String typeSubject = "http://dbpedia.org/ontology/Person";
 		//		String typeObject = "http://dbpedia.org/ontology/Person";
 
-		relations.add("http://dbpedia.org/ontology/artery");
-
-		String typeSubject = "http://dbpedia.org/ontology/AnatomicalStructure";
-		String typeObject = "http://dbpedia.org/ontology/AnatomicalStructure";
-
-
-		Set<Pair<String,String>> negativeExamples = naive.generateNegativeExamples(relations, typeSubject, typeObject, false, false);
-
-		//		Set<Pair<String,String>> negativeExamples = naive.generateNegativeExamples(new File("negExamples"));
+		//		relations.add("http://dbpedia.org/ontology/artery");
+		//
+		//		String typeSubject = "http://dbpedia.org/ontology/AnatomicalStructure";
+		//		String typeObject = "http://dbpedia.org/ontology/AnatomicalStructure";
 
 
+		//		Set<Pair<String,String>> negativeExamples = naive.generateNegativeExamples(relations, typeSubject, typeObject, false, false);
 
-		Set<Pair<String,String>> positiveExamples = naive.generatePositiveExamples(relations, typeSubject, typeObject);
+		//		Set<Pair<String,String>> negativeExamples = naive.readExamples(new File("negExamples"));
+
+
+
+		//		Set<Pair<String,String>> positiveExamples = naive.generatePositiveExamples(relations, typeSubject, typeObject);
 
 		//		Set<Pair<String,String>> positiveExamples = naive.generateNegativeExamples(new File("posExamples"));
 
@@ -245,9 +248,11 @@ public class App
 
 		//		naive.discoverNegativeHornRules(negativeExamples,positiveExamples,relations,typeSubject,typeObject);
 
-		System.out.println(naive.discoverPositiveHornRules(negativeExamples, positiveExamples, relations, typeSubject, typeObject, false, false));
+		//		System.out.println(naive.discoverNegativeHornRules(negativeExamples, positiveExamples, relations, typeSubject, typeObject));
 
-		//		computeMultiplePositiveRules();
+		computeMultiplePositiveRules();
+
+		//		computeMultipleNegativeRules();
 
 
 		//setting limits
@@ -266,33 +271,81 @@ public class App
 	}
 
 
-	public static void computeMultiplePositiveRules(){
+	public static void computeMultiplePositiveRules() throws IOException{
 		Map<Set<String>,Pair<String,String>> relation2typeSubjectObject = Maps.newHashMap();
+
+		//		Set<String> relations1 = Sets.newHashSet();
+		//		relations1.add("http://www.wikidata.org/prop/direct/P26");
+		//		relation2typeSubjectObject.put(relations1, Pair.of("http://www.wikidata.org/entity/Q5", 
+		//				"http://www.wikidata.org/entity/Q5"));
+
+		//		Set<String> relations4 = Sets.newHashSet();
+		//		relations4.add("http://www.wikidata.org/prop/direct/P355");
+		//		relation2typeSubjectObject.put(relations4, Pair.of("http://www.wikidata.org/entity/Q4830453", 
+		//				"http://www.wikidata.org/entity/Q4830453"));
+
+
+		//		Set<String> relations2 = Sets.newHashSet();
+		//		relations2.add("http://www.wikidata.org/prop/direct/P40");
+		//		relation2typeSubjectObject.put(relations2, Pair.of("http://www.wikidata.org/entity/Q5", "http://www.wikidata.org/entity/Q5"));
+		//
+		//		Set<String> relations3 = Sets.newHashSet();
+		//		relations3.add("http://www.wikidata.org/prop/direct/P184");
+		//		relation2typeSubjectObject.put(relations3, Pair.of("http://www.wikidata.org/entity/Q5", 
+		//				"http://www.wikidata.org/entity/Q5"));
+		//		//
+		//		Set<String> relations5 = Sets.newHashSet();
+		//		relations5.add("http://www.wikidata.org/prop/direct/P170");
+		//		relation2typeSubjectObject.put(relations5, Pair.of("http://www.wikidata.org/entity/Q3305213","http://www.wikidata.org/entity/Q5"));
+
 
 		//		Set<String> relations1 = Sets.newHashSet();
 		//		relations1.add("http://dbpedia.org/ontology/founder");
 		//		relations1.add("http://dbpedia.org/ontology/foundedBy");
-		//		relation2typeSubjectObject.put(relations1, Pair.of("http://dbpedia.org/ontology/Organisation", "http://dbpedia.org/ontology/Person"));
-		//		//
+		//		relation2typeSubjectObject.put(relations1, Pair.of("http://dbpedia.org/ontology/Company", "http://dbpedia.org/ontology/Person"));
+		//
+		// 	
 		//		Set<String> relations2 = Sets.newHashSet();
-		//		relations2.add("http://dbpedia.org/ontology/spouse");
+		//		relations2.add("http://dbpedia.org/ontology/child");
 		//		relation2typeSubjectObject.put(relations2, Pair.of("http://dbpedia.org/ontology/Person", "http://dbpedia.org/ontology/Person"));
-		//		//
-		Set<String> relations3 = Sets.newHashSet();
-		relations3.add("http://dbpedia.org/ontology/academicAdvisor");
-		relation2typeSubjectObject.put(relations3, Pair.of("http://dbpedia.org/ontology/Person", "http://dbpedia.org/ontology/Person"));
-		//		//
+		//
+		//		Set<String> relations3 = Sets.newHashSet();
+		//		relations3.add("http://dbpedia.org/ontology/academicAdvisor");
+		//		relation2typeSubjectObject.put(relations3, Pair.of("http://dbpedia.org/ontology/Person", "http://dbpedia.org/ontology/Person"));
+		//
 		//		Set<String> relations4 = Sets.newHashSet();
-		//		relations4.add("http://dbpedia.org/ontology/successor");
-		//		relation2typeSubjectObject.put(relations4, Pair.of("http://dbpedia.org/ontology/Person", "http://dbpedia.org/ontology/Person"));
-
+		//		relations4.add("http://dbpedia.org/ontology/spouse");
+		//		relation2typeSubjectObject.put(relations4, Pair.of("http://dbpedia.org/ontology/Person","http://dbpedia.org/ontology/Person"));
+		//
 		//		Set<String> relations5 = Sets.newHashSet();
-		//		relations5.add("http://dbpedia.org/ontology/artery");
-		//		relation2typeSubjectObject.put(relations5, Pair.of("http://dbpedia.org/ontology/AnatomicalStructure", "http://dbpedia.org/ontology/AnatomicalStructure"));
+		//		relations5.add("http://dbpedia.org/ontology/successor");
+		//		relation2typeSubjectObject.put(relations5, Pair.of("http://dbpedia.org/ontology/Person","http://dbpedia.org/ontology/Person"));
 
-		//		Set<String> relations6 = Sets.newHashSet();
-		//		relations6.add("http://dbpedia.org/ontology/ceremonialCounty");
-		//		relation2typeSubjectObject.put(relations6, Pair.of("http://dbpedia.org/ontology/PopulatedPlace", "http://dbpedia.org/ontology/Region"));
+		//		Set<String> relations1 = Sets.newHashSet();
+		//		relations1.add("http://yago-knowledge.org/resource/created");
+		//		relation2typeSubjectObject.put(relations1, Pair.of("http://yago-knowledge.org/resource/wordnet_person_100007846", 
+		//				"http://yago-knowledge.org/resource/wordnet_organization_108008335"));
+		//
+		//		Set<String> relations2 = Sets.newHashSet();
+		//		relations2.add("http://yago-knowledge.org/resource/hasChild");
+		//		relation2typeSubjectObject.put(relations2, Pair.of("http://yago-knowledge.org/resource/wordnet_person_100007846", 
+		//				"http://yago-knowledge.org/resource/wordnet_person_100007846"));
+		//
+		//		Set<String> relations3 = Sets.newHashSet();
+		//		relations3.add("http://yago-knowledge.org/resource/isMarriedTo");
+		//		relation2typeSubjectObject.put(relations3, Pair.of("http://yago-knowledge.org/resource/wordnet_person_100007846", 
+		//				"http://yago-knowledge.org/resource/wordnet_person_100007846"));
+
+		Set<String> relations5 = Sets.newHashSet();
+		relations5.add("http://yago-knowledge.org/resource/imports");
+		relation2typeSubjectObject.put(relations5, Pair.of("http://yago-knowledge.org/resource/wordnet_country_108544813",
+				null));
+
+
+		//		Set<String> relations4 = Sets.newHashSet();
+		//		relations4.add("http://yago-knowledge.org/resource/hasAcademicAdvisor");
+		//		relation2typeSubjectObject.put(relations4, Pair.of("http://yago-knowledge.org/resource/wordnet_person_100007846",
+		//				"http://yago-knowledge.org/resource/wordnet_person_100007846"));
 
 
 		long startTime;
@@ -301,8 +354,11 @@ public class App
 
 		Map<String,Long> relation2runningTime = Maps.newHashMap();
 		Map<String,List<HornRule>> relation2output = Maps.newHashMap();
+		
+		naive.setObjectLimit(10);
 
 		int count=0;
+		StatisticsContainer.setFileName(new File("statistics"));
 		for(Set<String> currentRelations: relation2typeSubjectObject.keySet()){
 			count++;
 			String relation = currentRelations.iterator().next();
@@ -310,21 +366,26 @@ public class App
 					relation2typeSubjectObject.size());
 			try{
 
+				StatisticsContainer.initialiseContainer(currentRelations.toString());
 				startTime = System.currentTimeMillis();
 				String typeSubject = relation2typeSubjectObject.get(currentRelations).getLeft();
 				String typeObject = relation2typeSubjectObject.get(currentRelations).getRight();
 
-				Set<Pair<String,String>> negativeExamples = naive.generateNegativeExamples(currentRelations, typeSubject, typeObject, false, false);
+				Set<Pair<String,String>> negativeExamples = naive.generateNegativeExamples(currentRelations, typeSubject, typeObject);
 
 
 
-				Set<Pair<String,String>> positiveExamples = naive.generatePositiveExamples(currentRelations, typeSubject, typeObject);
+				//				Set<Pair<String,String>> positiveExamples = naive.generatePositiveExamples(currentRelations, typeSubject, typeObject);
+
+				Set<Pair<String,String>> positiveExamples = naive.getKBExamples("select ?subject ?object { ?subject <http://yago-knowledge.org/resource/imports> ?object. ?subject <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://yago-knowledge.org/resource/wordnet_country_108544813>. }", "subject", "object");
 
 				List<HornRule> output = 
-						naive.discoverPositiveHornRules(negativeExamples, positiveExamples, currentRelations, typeSubject, typeObject, false, false);
+						naive.discoverPositiveHornRules(negativeExamples, positiveExamples, currentRelations, typeSubject, typeObject);
 
 				relation2runningTime.put(relation, (System.currentTimeMillis()-startTime));
 				relation2output.put(relation, output);
+				StatisticsContainer.printStatistics();
+
 			}
 
 			catch(Exception e){
@@ -340,11 +401,130 @@ public class App
 				System.out.println(relationOutput+"\t"+(runningTime/1000.));
 			}
 		}
+	}
+
+	public static void computeMultipleNegativeRules() throws IOException{
+		Map<Set<String>,Pair<String,String>> relation2typeSubjectObject = Maps.newHashMap();
+
+		//		Set<String> relations1 = Sets.newHashSet();
+		//		relations1.add("http://www.wikidata.org/prop/direct/P26");
+		//		relation2typeSubjectObject.put(relations1, Pair.of("http://www.wikidata.org/entity/Q5", "http://www.wikidata.org/entity/Q5"));
+		//		//
+		//		Set<String> relations2 = Sets.newHashSet();
+		//		relations2.add("http://www.wikidata.org/prop/direct/P40");
+		//		relation2typeSubjectObject.put(relations2, Pair.of("http://www.wikidata.org/entity/Q5", "http://www.wikidata.org/entity/Q5"));
+		//		//
+		//		Set<String> relations3 = Sets.newHashSet();
+		//		relations3.add("http://www.wikidata.org/prop/direct/P112");
+		//		relation2typeSubjectObject.put(relations3, Pair.of("http://www.wikidata.org/entity/Q4830453", 
+		//				"http://www.wikidata.org/entity/Q5"));
+		//
+		//		Set<String> relations5 = Sets.newHashSet();
+		//		relations5.add("http://www.wikidata.org/prop/direct/P170");
+		//		relation2typeSubjectObject.put(relations5, Pair.of("http://www.wikidata.org/entity/Q3305213","http://www.wikidata.org/entity/Q5"));
+		//
+		//
+		//		Set<String> relations4 = Sets.newHashSet();
+		//		relations4.add("http://www.wikidata.org/prop/direct/P543");
+		//		relation2typeSubjectObject.put(relations4, Pair.of("http://www.wikidata.org/entity/Q159821","http://www.wikidata.org/entity/Q5"));
+
+		//		Set<String> relations1 = Sets.newHashSet();
+		//		relations1.add("http://dbpedia.org/ontology/founder");
+		//		relations1.add("http://dbpedia.org/ontology/foundedBy");
+		//		relation2typeSubjectObject.put(relations1, Pair.of("http://dbpedia.org/ontology/Organisation", "http://dbpedia.org/ontology/Person"));
+		//
+		//		Set<String> relations2 = Sets.newHashSet();
+		//		relations2.add("http://dbpedia.org/ontology/child");
+		//		relation2typeSubjectObject.put(relations2, Pair.of("http://dbpedia.org/ontology/Person", "http://dbpedia.org/ontology/Person"));
+		//
+		//		Set<String> relations3 = Sets.newHashSet();
+		//		relations3.add("http://dbpedia.org/ontology/spouse");
+		//		relation2typeSubjectObject.put(relations3, Pair.of("http://dbpedia.org/ontology/Person", 
+		//				"http://dbpedia.org/ontology/Person"));
+		//
+		//		Set<String> relations5 = Sets.newHashSet();
+		//		relations5.add("http://dbpedia.org/ontology/academicAdvisor");
+		//		relation2typeSubjectObject.put(relations5, Pair.of("http://dbpedia.org/ontology/Person","http://dbpedia.org/ontology/Person"));
+		//
+		//
+		//		Set<String> relations4 = Sets.newHashSet();
+		//		relations4.add("http://dbpedia.org/ontology/ceremonialCounty");
+		//		relation2typeSubjectObject.put(relations4, Pair.of("http://dbpedia.org/ontology/PopulatedPlace","http://dbpedia.org/ontology/Region"));
+
+		Set<String> relations1 = Sets.newHashSet();
+		relations1.add("http://yago-knowledge.org/resource/created");
+		relation2typeSubjectObject.put(relations1, Pair.of("http://yago-knowledge.org/resource/wordnet_person_100007846", 
+				"http://yago-knowledge.org/resource/wordnet_organization_108008335"));
+
+		Set<String> relations2 = Sets.newHashSet();
+		relations2.add("http://yago-knowledge.org/resource/hasChild");
+		relation2typeSubjectObject.put(relations2, Pair.of("http://yago-knowledge.org/resource/wordnet_person_100007846", 
+				"http://yago-knowledge.org/resource/wordnet_person_100007846"));
+
+		Set<String> relations3 = Sets.newHashSet();
+		relations3.add("http://yago-knowledge.org/resource/isMarriedTo");
+		relation2typeSubjectObject.put(relations3, Pair.of("http://yago-knowledge.org/resource/wordnet_person_100007846", 
+				"http://yago-knowledge.org/resource/wordnet_person_100007846"));
+
+		Set<String> relations5 = Sets.newHashSet();
+		relations5.add("http://yago-knowledge.org/resource/wroteMusicFor");
+		relation2typeSubjectObject.put(relations5, Pair.of("http://yago-knowledge.org/resource/wordnet_person_100007846",
+				"http://yago-knowledge.org/resource/wordnet_movie_106613686"));
 
 
+		Set<String> relations4 = Sets.newHashSet();
+		relations4.add("http://yago-knowledge.org/resource/hasAcademicAdvisor");
+		relation2typeSubjectObject.put(relations4, Pair.of("http://yago-knowledge.org/resource/wordnet_person_100007846",
+				"http://yago-knowledge.org/resource/wordnet_person_100007846"));
 
 
+		long startTime;
+
+		DynamicPruningRuleDiscovery naive = new DynamicPruningRuleDiscovery();
+
+		Map<String,Long> relation2runningTime = Maps.newHashMap();
+		Map<String,List<HornRule>> relation2output = Maps.newHashMap();
+
+		int count=0;
+
+		StatisticsContainer.setFileName(new File("statistics"));
+		for(Set<String> currentRelations: relation2typeSubjectObject.keySet()){
+			count++;
+			String relation = currentRelations.iterator().next();
+			LOGGER.debug("Computing output rules for relation {} ({} out of {}).",relation,count,
+					relation2typeSubjectObject.size());
+			try{
+
+				StatisticsContainer.initialiseContainer(currentRelations.toString());
+				startTime = System.currentTimeMillis();
+				String typeSubject = relation2typeSubjectObject.get(currentRelations).getLeft();
+				String typeObject = relation2typeSubjectObject.get(currentRelations).getRight();
+
+				Set<Pair<String,String>> negativeExamples = naive.generateNegativeExamples(currentRelations, typeSubject, typeObject);
 
 
+				Set<Pair<String,String>> positiveExamples = naive.generatePositiveExamples(currentRelations, typeSubject, typeObject);
+
+				List<HornRule> output = 
+						naive.discoverNegativeHornRules(negativeExamples, positiveExamples, currentRelations, typeSubject, typeObject);
+
+				relation2runningTime.put(relation, (System.currentTimeMillis()-startTime));
+				relation2output.put(relation, output);
+				StatisticsContainer.printStatistics();
+			}
+
+			catch(Exception e){
+				LOGGER.warn("Error computing output rules.",e);
+			}
+
+		}
+
+		for(String relationOutput:relation2output.keySet()){
+			System.out.println(relationOutput+"\t"+relation2output.get(relationOutput));
+			Long runningTime = relation2runningTime.get(relationOutput);
+			if(runningTime!=null){
+				System.out.println(relationOutput+"\t"+(runningTime/1000.));
+			}
+		}
 	}
 }
