@@ -1,93 +1,93 @@
 Rule 'http://dbpedia.org/ontology/country(subject,v0) & http://dbpedia.org/ontology/birthPlace(object,v0)' produced:
-http://dbpedia.org/resource/Word_Entertainment	http://dbpedia.org/resource/Michael_Burke_(soccer)
-http://dbpedia.org/resource/Augsburg_Fortress	http://dbpedia.org/resource/Candice_Miller
-http://dbpedia.org/resource/DB_Rush_Records	http://dbpedia.org/resource/Roberto_Delgado_(swimmer)
-http://dbpedia.org/resource/Profane_Existence	http://dbpedia.org/resource/Caleb_Ellis
-http://dbpedia.org/resource/JEMP_Records	http://dbpedia.org/resource/Roger_Bothe
-http://dbpedia.org/resource/IBM_Press	http://dbpedia.org/resource/Cornelius_Grant
-http://dbpedia.org/resource/Innova_Recordings	http://dbpedia.org/resource/Edna_McGriff
-http://dbpedia.org/resource/Hippos_in_Tanks	http://dbpedia.org/resource/Shirley_Jaffe_(artist)
-http://dbpedia.org/resource/MGM_Records	http://dbpedia.org/resource/Tha_Realest
-http://dbpedia.org/resource/Benchmark_Recordings	http://dbpedia.org/resource/Ernest_Neal
-http://dbpedia.org/resource/Delmark_Records	http://dbpedia.org/resource/Berkley_Scott
-http://dbpedia.org/resource/Standard_Comics	http://dbpedia.org/resource/John_Thomas_Fowlkes,_Jr.
-http://dbpedia.org/resource/Comic_Media	http://dbpedia.org/resource/Leonard_Fein
-http://dbpedia.org/resource/Roc-A-Fella_Records	http://dbpedia.org/resource/Lincoln_LaPaz
-http://dbpedia.org/resource/Astralwerks	http://dbpedia.org/resource/Skin_Diamond
-http://dbpedia.org/resource/Sony_Classical_Records	http://dbpedia.org/resource/Ken_Greengrass
-http://dbpedia.org/resource/Amemura-O-Town_Record	http://dbpedia.org/resource/Io_Sakisaka
-http://dbpedia.org/resource/Spun_Records	http://dbpedia.org/resource/Jody_Harris
-http://dbpedia.org/resource/IUniverse	http://dbpedia.org/resource/William_Curtis_Bryson
-http://dbpedia.org/resource/Warcon_Enterprises	http://dbpedia.org/resource/Bryheem_Hancock
-http://dbpedia.org/resource/Passenger_Records	http://dbpedia.org/resource/Otey_Cannon
-http://dbpedia.org/resource/Midi:Nette	http://dbpedia.org/resource/Ken_Shimizu
-http://dbpedia.org/resource/Prentice_Hall	http://dbpedia.org/resource/Peter_Brown_(ice_hockey)
-http://dbpedia.org/resource/Alucard_Music	http://dbpedia.org/resource/Joseph_Unwin
-http://dbpedia.org/resource/Pizza_of_Death_Records	http://dbpedia.org/resource/Hikaru_Mita
-http://dbpedia.org/resource/Discos_Qualiton	http://dbpedia.org/resource/Daniela_Krukower
-http://dbpedia.org/resource/Smells_Like_Records	http://dbpedia.org/resource/Bob_Burkard
-http://dbpedia.org/resource/Rhythm_Zone	http://dbpedia.org/resource/Junpei_Shinoda
-http://dbpedia.org/resource/Appleton-Century-Crofts	http://dbpedia.org/resource/Hugh_Everett_III
-http://dbpedia.org/resource/Smells_Like_Records	http://dbpedia.org/resource/Dwight_Helminen
+http://dbpedia.org/resource/Word_Entertainment	http://dbpedia.org/resource/Michael_Burke_(soccer)	false
+http://dbpedia.org/resource/Augsburg_Fortress	http://dbpedia.org/resource/Candice_Miller	false
+http://dbpedia.org/resource/DB_Rush_Records	http://dbpedia.org/resource/Roberto_Delgado_(swimmer)	false
+http://dbpedia.org/resource/Profane_Existence	http://dbpedia.org/resource/Caleb_Ellis	false
+http://dbpedia.org/resource/JEMP_Records	http://dbpedia.org/resource/Roger_Bothe	false
+http://dbpedia.org/resource/IBM_Press	http://dbpedia.org/resource/Cornelius_Grant	false
+http://dbpedia.org/resource/Innova_Recordings	http://dbpedia.org/resource/Edna_McGriff	false
+http://dbpedia.org/resource/Hippos_in_Tanks	http://dbpedia.org/resource/Shirley_Jaffe_(artist)	false
+http://dbpedia.org/resource/MGM_Records	http://dbpedia.org/resource/Tha_Realest	false
+http://dbpedia.org/resource/Benchmark_Recordings	http://dbpedia.org/resource/Ernest_Neal falses
+http://dbpedia.org/resource/Delmark_Records	http://dbpedia.org/resource/Berkley_Scott	false
+http://dbpedia.org/resource/Standard_Comics	http://dbpedia.org/resource/John_Thomas_Fowlkes,_Jr.	false
+http://dbpedia.org/resource/Comic_Media	http://dbpedia.org/resource/Leonard_Fein	false
+http://dbpedia.org/resource/Roc-A-Fella_Records	http://dbpedia.org/resource/Lincoln_LaPaz	false
+http://dbpedia.org/resource/Astralwerks	http://dbpedia.org/resource/Skin_Diamond	false
+http://dbpedia.org/resource/Sony_Classical_Records	http://dbpedia.org/resource/Ken_Greengrass	false
+http://dbpedia.org/resource/Amemura-O-Town_Record	http://dbpedia.org/resource/Io_Sakisaka	false
+http://dbpedia.org/resource/Spun_Records	http://dbpedia.org/resource/Jody_Harris	false
+http://dbpedia.org/resource/IUniverse	http://dbpedia.org/resource/William_Curtis_Bryson	false
+http://dbpedia.org/resource/Warcon_Enterprises	http://dbpedia.org/resource/Bryheem_Hancock	false
+http://dbpedia.org/resource/Passenger_Records	http://dbpedia.org/resource/Otey_Cannon	false
+http://dbpedia.org/resource/Midi:Nette	http://dbpedia.org/resource/Ken_Shimizu	false
+http://dbpedia.org/resource/Prentice_Hall	http://dbpedia.org/resource/Peter_Brown_(ice_hockey)	false
+http://dbpedia.org/resource/Alucard_Music	http://dbpedia.org/resource/Joseph_Unwin	false
+http://dbpedia.org/resource/Pizza_of_Death_Records	http://dbpedia.org/resource/Hikaru_Mita	false	false
+http://dbpedia.org/resource/Discos_Qualiton	http://dbpedia.org/resource/Daniela_Krukower	false
+http://dbpedia.org/resource/Smells_Like_Records	http://dbpedia.org/resource/Bob_Burkard	false
+http://dbpedia.org/resource/Rhythm_Zone	http://dbpedia.org/resource/Junpei_Shinoda	false
+http://dbpedia.org/resource/Appleton-Century-Crofts	http://dbpedia.org/resource/Hugh_Everett_III	false
+http://dbpedia.org/resource/Smells_Like_Records	http://dbpedia.org/resource/Dwight_Helminen false
 Rule 'http://dbpedia.org/ontology/associatedMusicalArtist(object,v0) & http://dbpedia.org/ontology/activeYearsStartYear(v0,v1) & http://dbpedia.org/ontology/foundingYear(subject,v1)' produced:
-http://dbpedia.org/resource/Vantiv	http://dbpedia.org/resource/Tom_Howard_(musician)
-http://dbpedia.org/resource/OzForex	http://dbpedia.org/resource/Martin_Tielli
-http://dbpedia.org/resource/Archenemy_Record_Company	http://dbpedia.org/resource/Abstract_Rude
-http://dbpedia.org/resource/Camera_Obscura_(record_label)	http://dbpedia.org/resource/Tamio_Okuda
-http://dbpedia.org/resource/CI_Financial	http://dbpedia.org/resource/Brian_Downey_(drummer)
-http://dbpedia.org/resource/Heyday_Records	http://dbpedia.org/resource/Ashwin_Sood
-http://dbpedia.org/resource/Generally_Speaking_Production_Network	http://dbpedia.org/resource/Wednesday_13
-http://dbpedia.org/resource/Nimbus_Records	http://dbpedia.org/resource/Andy_Roberts_(musician)
-http://dbpedia.org/resource/I-Volution_PML	http://dbpedia.org/resource/Sonny_Digital
-http://dbpedia.org/resource/Zafin	http://dbpedia.org/resource/Colt_Ford
-http://dbpedia.org/resource/City_Pacific	http://dbpedia.org/resource/Nachhatar_Gill
-http://dbpedia.org/resource/Jacksonville_Bancorp	http://dbpedia.org/resource/Prozak_(rapper)
-http://dbpedia.org/resource/Weider_History_Group	http://dbpedia.org/resource/Stephen_O'Malley
-http://dbpedia.org/resource/BEC_Recordings	http://dbpedia.org/resource/Dickon_Edwards
-http://dbpedia.org/resource/AZ_(label)	http://dbpedia.org/resource/Masanori_Mark_Christianson
-http://dbpedia.org/resource/I.B._Tauris	http://dbpedia.org/resource/Steve_Stevens
-http://dbpedia.org/resource/Eleven:_A_Music_Company	http://dbpedia.org/resource/Maxsta
-http://dbpedia.org/resource/First_Data	http://dbpedia.org/resource/Skoota_Warner
-http://dbpedia.org/resource/Produttori_Associati	http://dbpedia.org/resource/Mac_Davis
-http://dbpedia.org/resource/Six_Shooter_Records	http://dbpedia.org/resource/D._O._(rapper)
-http://dbpedia.org/resource/Bank_Mandiri	http://dbpedia.org/resource/Jamie_Arentzen
-http://dbpedia.org/resource/Paper_Tiger_Books	http://dbpedia.org/resource/Adrian_Borland
-http://dbpedia.org/resource/Dependent_Music	http://dbpedia.org/resource/Nick_Zinner
-http://dbpedia.org/resource/Seliger_(forum)	http://dbpedia.org/resource/Annie_(Norwegian_singer)
-http://dbpedia.org/resource/Bentham_Science_Publishers	http://dbpedia.org/resource/Sir_Jinx
-http://dbpedia.org/resource/Great_White_North_Records	http://dbpedia.org/resource/Johnny_Kitagawa
-http://dbpedia.org/resource/Compartamos_Banco	http://dbpedia.org/resource/Doug_Parmenter
-http://dbpedia.org/resource/Citizens_Bank_of_Northern_California	http://dbpedia.org/resource/Big_Bert
-http://dbpedia.org/resource/Peter_J._Solomon_Company	http://dbpedia.org/resource/Johnny_Kalsi
-http://dbpedia.org/resource/Heads_Up_International	http://dbpedia.org/resource/Kevin_L._Evans
+http://dbpedia.org/resource/Vantiv	http://dbpedia.org/resource/Tom_Howard_(musician)	false
+http://dbpedia.org/resource/OzForex	http://dbpedia.org/resource/Martin_Tielli	false
+http://dbpedia.org/resource/Archenemy_Record_Company	http://dbpedia.org/resource/Abstract_Rude	false
+http://dbpedia.org/resource/Camera_Obscura_(record_label)	http://dbpedia.org/resource/Tamio_Okuda	false
+http://dbpedia.org/resource/CI_Financial	http://dbpedia.org/resource/Brian_Downey_(drummer)	false
+http://dbpedia.org/resource/Heyday_Records	http://dbpedia.org/resource/Ashwin_Sood	false
+http://dbpedia.org/resource/Generally_Speaking_Production_Network	http://dbpedia.org/resource/Wednesday_13	false
+http://dbpedia.org/resource/Nimbus_Records	http://dbpedia.org/resource/Andy_Roberts_(musician)	false
+http://dbpedia.org/resource/I-Volution_PML	http://dbpedia.org/resource/Sonny_Digital	false
+http://dbpedia.org/resource/Zafin	http://dbpedia.org/resource/Colt_Ford	false
+http://dbpedia.org/resource/City_Pacific	http://dbpedia.org/resource/Nachhatar_Gill	false
+http://dbpedia.org/resource/Jacksonville_Bancorp	http://dbpedia.org/resource/Prozak_(rapper)	false
+http://dbpedia.org/resource/Weider_History_Group	http://dbpedia.org/resource/Stephen_O'Malley	false
+http://dbpedia.org/resource/BEC_Recordings	http://dbpedia.org/resource/Dickon_Edwards	false
+http://dbpedia.org/resource/AZ_(label)	http://dbpedia.org/resource/Masanori_Mark_Christianson	false
+http://dbpedia.org/resource/I.B._Tauris	http://dbpedia.org/resource/Steve_Stevens	false
+http://dbpedia.org/resource/Eleven:_A_Music_Company	http://dbpedia.org/resource/Maxsta	false
+http://dbpedia.org/resource/First_Data	http://dbpedia.org/resource/Skoota_Warner	false
+http://dbpedia.org/resource/Produttori_Associati	http://dbpedia.org/resource/Mac_Davis	false
+http://dbpedia.org/resource/Six_Shooter_Records	http://dbpedia.org/resource/D._O._(rapper)	false
+http://dbpedia.org/resource/Bank_Mandiri	http://dbpedia.org/resource/Jamie_Arentzen	false
+http://dbpedia.org/resource/Paper_Tiger_Books	http://dbpedia.org/resource/Adrian_Borland	false
+http://dbpedia.org/resource/Dependent_Music	http://dbpedia.org/resource/Nick_Zinner	false
+http://dbpedia.org/resource/Seliger_(forum)	http://dbpedia.org/resource/Annie_(Norwegian_singer)	false
+http://dbpedia.org/resource/Bentham_Science_Publishers	http://dbpedia.org/resource/Sir_Jinx	false
+http://dbpedia.org/resource/Great_White_North_Records	http://dbpedia.org/resource/Johnny_Kitagawa	false
+http://dbpedia.org/resource/Compartamos_Banco	http://dbpedia.org/resource/Doug_Parmenter	false
+http://dbpedia.org/resource/Citizens_Bank_of_Northern_California	http://dbpedia.org/resource/Big_Bert	false
+http://dbpedia.org/resource/Peter_J._Solomon_Company	http://dbpedia.org/resource/Johnny_Kalsi	false
+http://dbpedia.org/resource/Heads_Up_International	http://dbpedia.org/resource/Kevin_L._Evans	false
 Rule 'http://dbpedia.org/ontology/foundedBy(subject,v0) & http://dbpedia.org/ontology/birthYear(v0,v1) & http://dbpedia.org/ontology/birthYear(object,v1)' produced:
-http://dbpedia.org/resource/Sympathy_for_the_Record_Industry	http://dbpedia.org/resource/Brian_Derksen
-http://dbpedia.org/resource/Merge_Records	http://dbpedia.org/resource/Minoru_Suzuki
-http://dbpedia.org/resource/Gotee_Records	http://dbpedia.org/resource/Mark_McPhee
-http://dbpedia.org/resource/Mpire_Music_Group	http://dbpedia.org/resource/Andrew_Ilie
-http://dbpedia.org/resource/Ice_Records	http://dbpedia.org/resource/Jimmy_Cliff
-http://dbpedia.org/resource/Hydeout_Productions	http://dbpedia.org/resource/Hayley_Lewis
-http://dbpedia.org/resource/Anticon	http://dbpedia.org/resource/Jimmy_Marlu
-http://dbpedia.org/resource/N.E.E.T._Recordings	http://dbpedia.org/resource/Patrick_Latham
-http://dbpedia.org/resource/Illegal_Records	http://dbpedia.org/resource/Antal_Nagy_(footballer_born_1944)
-http://dbpedia.org/resource/Rebel_Records_(France)	http://dbpedia.org/resource/Prabowo_Subianto
-http://dbpedia.org/resource/Smells_Like_Records	http://dbpedia.org/resource/Dennis_K._Burke
-http://dbpedia.org/resource/K_Records	http://dbpedia.org/resource/Calvin_Johnson
-http://dbpedia.org/resource/Nobody's_Bizzness	http://dbpedia.org/resource/Joe_Vogel
-http://dbpedia.org/resource/Amusic	http://dbpedia.org/resource/Lotte_Olsen
-http://dbpedia.org/resource/Rory_Records	http://dbpedia.org/resource/Max_Bemis
-http://dbpedia.org/resource/Some_Bizzare_Records	http://dbpedia.org/resource/Paul_Temay
-http://dbpedia.org/resource/Ora_Recordings	http://dbpedia.org/resource/Adiam_Dymott
-http://dbpedia.org/resource/Paper_+_Plastick	http://dbpedia.org/resource/Kurt_Sinette
-http://dbpedia.org/resource/Sheffield_Tunes	http://dbpedia.org/resource/Kurt_Russ
-http://dbpedia.org/resource/Anticon	http://dbpedia.org/resource/Khaled_Hussein
-http://dbpedia.org/resource/Alpha_&_Omega_Recording	http://dbpedia.org/resource/Csilla_Madarász
-http://dbpedia.org/resource/Ipecac_Recordings_discography	http://dbpedia.org/resource/George_Fouché
-http://dbpedia.org/resource/Curvve_Recordings	http://dbpedia.org/resource/Roberto_Rolfo
-http://dbpedia.org/resource/M3_Records	http://dbpedia.org/resource/Quorthon
-http://dbpedia.org/resource/Harmolodics	http://dbpedia.org/resource/Roberto_Achával
-http://dbpedia.org/resource/Shemspeed	http://dbpedia.org/resource/Guillermo_Díaz_Gastambide
-http://dbpedia.org/resource/Amaru_Entertainment	http://dbpedia.org/resource/Bob_Heinz
-http://dbpedia.org/resource/Iqra_Promotions	http://dbpedia.org/resource/Ahmad_Hussain
-http://dbpedia.org/resource/Bad_Boy_Records	http://dbpedia.org/resource/Mike_Thomas_(baseball)
-http://dbpedia.org/resource/Panart	http://dbpedia.org/resource/Shigeyoshi_Suzuki
+http://dbpedia.org/resource/Sympathy_for_the_Record_Industry	http://dbpedia.org/resource/Brian_Derksen	false
+http://dbpedia.org/resource/Merge_Records	http://dbpedia.org/resource/Minoru_Suzuki	false
+http://dbpedia.org/resource/Gotee_Records	http://dbpedia.org/resource/Mark_McPhee	false
+http://dbpedia.org/resource/Mpire_Music_Group	http://dbpedia.org/resource/Andrew_Ilie	false
+http://dbpedia.org/resource/Ice_Records	http://dbpedia.org/resource/Jimmy_Cliff	false
+http://dbpedia.org/resource/Hydeout_Productions	http://dbpedia.org/resource/Hayley_Lewis	false
+http://dbpedia.org/resource/Anticon	http://dbpedia.org/resource/Jimmy_Marlu	false
+http://dbpedia.org/resource/N.E.E.T._Recordings	http://dbpedia.org/resource/Patrick_Latham	false
+http://dbpedia.org/resource/Illegal_Records	http://dbpedia.org/resource/Antal_Nagy_(footballer_born_1944)	false
+http://dbpedia.org/resource/Rebel_Records_(France)	http://dbpedia.org/resource/Prabowo_Subianto	false
+http://dbpedia.org/resource/Smells_Like_Records	http://dbpedia.org/resource/Dennis_K._Burke	false
+http://dbpedia.org/resource/K_Records	http://dbpedia.org/resource/Calvin_Johnson	true
+http://dbpedia.org/resource/Nobody's_Bizzness	http://dbpedia.org/resource/Joe_Vogel	false
+http://dbpedia.org/resource/Amusic	http://dbpedia.org/resource/Lotte_Olsen	false
+http://dbpedia.org/resource/Rory_Records	http://dbpedia.org/resource/Max_Bemis	true
+http://dbpedia.org/resource/Some_Bizzare_Records	http://dbpedia.org/resource/Paul_Temay	false
+http://dbpedia.org/resource/Ora_Recordings	http://dbpedia.org/resource/Adiam_Dymott	false
+http://dbpedia.org/resource/Paper_+_Plastick	http://dbpedia.org/resource/Kurt_Sinette	false
+http://dbpedia.org/resource/Sheffield_Tunes	http://dbpedia.org/resource/Kurt_Russ	false
+http://dbpedia.org/resource/Anticon	http://dbpedia.org/resource/Khaled_Hussein	false
+http://dbpedia.org/resource/Alpha_&_Omega_Recording	http://dbpedia.org/resource/Csilla_Madarász	false
+http://dbpedia.org/resource/Ipecac_Recordings_discography	http://dbpedia.org/resource/George_Fouché	false
+http://dbpedia.org/resource/Curvve_Recordings	http://dbpedia.org/resource/Roberto_Rolfo	false
+http://dbpedia.org/resource/M3_Records	http://dbpedia.org/resource/Quorthon	false
+http://dbpedia.org/resource/Harmolodics	http://dbpedia.org/resource/Roberto_Achával	false
+http://dbpedia.org/resource/Shemspeed	http://dbpedia.org/resource/Guillermo_Díaz_Gastambide	false
+http://dbpedia.org/resource/Amaru_Entertainment	http://dbpedia.org/resource/Bob_Heinz	false
+http://dbpedia.org/resource/Iqra_Promotions	http://dbpedia.org/resource/Ahmad_Hussain	true
+http://dbpedia.org/resource/Bad_Boy_Records	http://dbpedia.org/resource/Mike_Thomas_(baseball)	false
+http://dbpedia.org/resource/Panart	http://dbpedia.org/resource/Shigeyoshi_Suzuki	false
