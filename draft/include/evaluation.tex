@@ -1,9 +1,31 @@
 \section{Experiments} \label{sec:experiment}
+We carried out an extensive experimental evaluation of our rules discovery approach.
+We grouped the evaluation into 4 main sub-categories: 
+\begin{inparaenum}[\itshape(i)]
+	\item a first set of experiments aims at demonstrating the quality of our output, both for negative and positive rules;
+	\item a second set of experiments compares our method with state-of-the-art systems;
+	\item in the third set of experiments we outline the applicability of rules discovery by enhancing machine learning algorithms;
+	\item in the last set of experiments we discuss internal system settings and some preliminary optimization techniques.
+\end{inparaenum}
+
+\myparagraph{Settings}
+We evaluated our approach over several popular KBs. For each KB, we downloaded the most up-to-date core facts and loaded them into our SPARQL query engine. We experimented several SPARQL engines, including \system{Jena ARQ}, \system{OWLIM Lite}, and \system{RDF-3x}. We also implemented a na\"ive relational database solution with \system{PostgreSQL}. Eventually we opted for \system{OpenLink Virtuoso}, as it was the fastest among all the solutions. \system{Virtuoso} took on average 20 minutes to load a medium size KB (i.e., 10 GB) into its store, and around 100 milliseconds to excute a single hop query. All experiments are run on a iMac desktop with
+an Intel quad-core i7 at 3.40GHz with 16 GB RAM. We run \system{Virtuoso} server with its SPARQL query endpoint on the same machin, optimized for a machine with 8 GB of available RAM.
+
+Our method needs the two input parameters $\alpha$ and $\beta$ of Equation(REF.). As briefly explained, $\alpha$ measures the importance of the coverage over the generation set, while $\beta$ measures the coverage over the validation set. In other words, a high $\alpha$ priviliges recall over precision, while a high $\beta$ gives more importance to precision. We can afford a high $\alpha$ and a low $\beta$ when the input KB is accurate and complete. We will show that KBs contain many errors and missing information, therefore we set $\alpha = 0.3$ and $\beta = 0.7$. Increasing $\alpha$ and decreasing $\beta$ means a higher number of output rules with a lower accuracy. 
+
+\myparagraph{Evaluation Metrics}
+Our approach discovers rules for a given target predicate. For each KB, we chose $5$ representative predicates as follows: we first ordered predicates according to descending popularity (i.e., number of triples having thar predicate), and then picked the top $3$ predicates for which we know there exists at least one meaningful rule, and other $2$ top predicates for which we did not know whether some meaningful rules exist or not. We repeat the procedure for each input KB, and for positive and negative rules. Despite working one predicate at time, we can also discover rules for the entire KB: we can just list all predicates in the KB, and discover rules for each of them. We will show in Section~\ref{sec:comp_evaluation} how we can discover rules for the entire KB.
+
+Positive rules are very useful to enrich the KB by discovering new facts. Since we are generating new data, we cannot evaluate the induced rule over the existing data. Therefore we proceed as follows: we run the algorithm over the KB, and for each output rule we generate all new predictions that are not already in the KB (we execute the head of the rule against the KB and we remove all those pairs that are already connected by the target predicate in the KB). As an example, for the rule $\atom{spouse}{b}{a} \Rightarrow \atom{spouse}{a}{b}$, we retrieve all the pairs $(b,a)$ such that $b$ is $spouse$ with $a$ but $a$ is not $spouse$ with $b$ in the KB. If the rule is universally correct (like the previous example), we mark all the new predictions as true. If the rule is unknown, we randomly sampled 30 new predictions and manually check them against the Web. The \emph{precision} of the rule is then computed as the ratio of true predictions out of true and false predictions.
+
+Negative rules are slighlty more complicated to evaluate. In fact, despite KBs are usually incomplete, the majority of the data not stated in the KB is false -- if we take all the people in a KB, a very small fraction of the cartesian product of all the people will be actually married. Therefore negative rules will always discover many correct negative facts. However, negative rules are a great means to discover errors in the KB, and we leverage this aspect to evaluate them. For each discovered rule, we retrieve from the KB pairs of entities for which the body of the rule can be instantiated and that are also connected by the target predicate. As an example, for the rule $\atom{child}{a}{b} \Rightarrow \neg \atom{spouse}{a}{b}$, we retrive all the pairs $(a,b)$ such that $b$ is $child$ of $a$ and $a$ is $spouse$ with $b$. We call these generated pairs of entities \emph{potential errors}. Similarly to positive rules, whenever a rule is universally correct we mark all its potential errors as true, whereas if the rule is unknown we manually check 30 sampled potential errors.
+\stefano{Shall we say that a pair of entities is a true error not only if the final pair is wrong, but also if some intermediate values are wrong? Like the birthYear and foundingYear for a founder relation, we consider a true error not only if the person is not the actual founder, but also if the birthYear and/or the foundingYear are wrong}.
 
 \subsection{Negative Rules Evaluation}
 Evaluation of negative rules.
 
-\subsection{Comparison Evaluation}
+\subsection{Comparative Evaluation} ~\label{sec:comp_evaluation}
 Comparison against \amie and evaluation of positive rules.
 
 \subsection{Machine Learning Application}
