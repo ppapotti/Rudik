@@ -1,0 +1,31 @@
+Rule 'http://www.wikidata.org/prop/direct/P26(subject,v0) & http://www.wikidata.org/prop/direct/P22(v1,v0) & http://www.wikidata.org/prop/direct/P9(object,v1)' produced:	true
+http://www.wikidata.org/entity/Q1647787	"Talha ibn Ubaydullah"@en	http://www.wikidata.org/entity/Q584737	"Sukayna bint Husayn"@en - False 
+http://www.wikidata.org/entity/Q6382364	"Keawemauhili"@en	http://www.wikidata.org/entity/Q455795	"Kamehameha III"@en - False  
+http://www.wikidata.org/entity/Q10892238	"Hachijō-no-miya Naohito-shinnō"@en	http://www.wikidata.org/entity/Q11516503	"Arisugawa-no-miya Yukihito-shinnō"@en - False 
+http://www.wikidata.org/entity/Q6382364	"Keawemauhili"@en	http://www.wikidata.org/entity/Q3447891	"Kekāuluohi"@en - False 
+http://www.wikidata.org/entity/Q2857715	"Antenor Patiño"@en	http://www.wikidata.org/entity/Q7352256	"Robin Birley"@en - False
+http://www.wikidata.org/entity/Q449437	"Empress Dou Miao"@en	http://www.wikidata.org/entity/Q10897190	"Liu Hua"@en - True
+http://www.wikidata.org/entity/Q7944991	"Věra Barandovská-Frank"@en	http://www.wikidata.org/entity/Q15077763	"Tilo Frank"@en - False 
+http://www.wikidata.org/entity/Q19854787	"Song Guifei"@en	http://www.wikidata.org/entity/Q16075366	"Zhao Ti"@en - True
+http://www.wikidata.org/entity/Q10897191	"Liu"@en	http://www.wikidata.org/entity/Q10721270	"Princess Xincheng"@en - True
+http://www.wikidata.org/entity/Q232475	"Mary of Modena"@en	http://www.wikidata.org/entity/Q166023	"James FitzJames, 1st Duke of Berwick"@en - False 
+http://www.wikidata.org/entity/Q4704130	"Al Jawhara bint Musaed Al Jiluwi"@en	http://www.wikidata.org/entity/Q2602302	"Mishaal bin Abdulaziz Al Saud"@en - False 
+http://www.wikidata.org/entity/Q736829	"Debsirindra"@en	http://www.wikidata.org/entity/Q449452	"Sunandha Kumariratana"@en - False 
+http://www.wikidata.org/entity/Q11567173	"Ishi-naishinnō"@en	http://www.wikidata.org/entity/Q11664373	"Shōshi-naishinnō"@en - False 
+http://www.wikidata.org/entity/Q1943555	"Sawda bint Zamʿa"@en	http://www.wikidata.org/entity/Q2300129	"Ruqayyah bint Muhammad"@en - False 
+http://www.wikidata.org/entity/Q11385743	"Yasuko-naishinnō"@en	http://www.wikidata.org/entity/Q583698	"Fujiwara no Michitaka"@en - False 
+http://www.wikidata.org/entity/Q7774555	"Consort Fang"@en	http://www.wikidata.org/entity/Q8004217	"eighth daughter of Qianlong"@en - False  
+http://www.wikidata.org/entity/Q11623305	"Fujiwara no Tabiko"@en	http://www.wikidata.org/entity/Q11378621	"Nakano-shinnō"@en - False 
+http://www.wikidata.org/entity/Q1059974	"Empress Wang Xianyuan"@en	http://www.wikidata.org/entity/Q703283	"Liu Zixun"@en - False 
+http://www.wikidata.org/entity/Q7353802	"Consort Chun Yu Qin"@en	http://www.wikidata.org/entity/Q7362099	"State Princess Rongxian"@en - False 
+http://www.wikidata.org/entity/Q4177257	"Yesui"@en	http://www.wikidata.org/entity/Q186581	"Jochi"@en - False 
+http://www.wikidata.org/entity/Q7354917	"Consort Rong"@en	http://www.wikidata.org/entity/Q6853955	"Yinzhuo"@en - False 
+http://www.wikidata.org/entity/Q16603742	"Feng xianfei"@en	http://www.wikidata.org/entity/Q15938920	"Gun"@en - False 
+http://www.wikidata.org/entity/Q3847857	"Marie Armande de La Trémoille"@en	http://www.wikidata.org/entity/Q3847860	"Marie Charlotte de La Tour d'Auvergne"@en - False 
+http://www.wikidata.org/entity/Q240094	"Christiane Eberhardine of Brandenburg-Bayreuth"@en	http://www.wikidata.org/entity/Q70885	"Frederick Augustus Rutowsky"@en - False 
+http://www.wikidata.org/entity/Q233319	"Maria Eleonora of Brandenburg"@en	http://www.wikidata.org/entity/Q561371	"Gustav of Vasaborg"@en - False 
+http://www.wikidata.org/entity/Q7354975	"Consort Ding"@en	http://www.wikidata.org/entity/Q7357341	"Wanpu"@en - False 
+http://www.wikidata.org/entity/Q263829	"Safiyya bint Huyayy"@en	http://www.wikidata.org/entity/Q180123	"Fatimah"@en - False 
+http://www.wikidata.org/entity/Q12131342	"Minase Ujiko"@en	http://www.wikidata.org/entity/Q12144216	"Bunsatsu-nyoō"@en - False 
+http://www.wikidata.org/entity/Q17132	"Soong Ching-ling"@en	http://www.wikidata.org/entity/Q701897	"Sun Fo"@en - False 
+http://www.wikidata.org/entity/Q4975453	"Ingrid von Rosen"@en	http://www.wikidata.org/entity/Q4938570	"Lena Bergman"@en - False 
