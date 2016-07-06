@@ -894,9 +894,17 @@ public abstract class SparqlExecutor {
 	public void setSubjectLimit(int limit){
 		this.subjectLimit = limit;
 	}
+	
+	public int getSubjectLimit(){
+		return this.subjectLimit;
+	}
 
 	public void setObjectLimit(int limit){
 		this.objectLimit = limit;
+	}
+	
+	public int getObjectLimit(){
+		return this.objectLimit;
 	}
 
 	public void setPosExamplesLimit(int limit){

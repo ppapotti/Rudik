@@ -7,7 +7,7 @@ import org.apache.jena.query.QuerySolution;
 import org.apache.jena.query.ResultSet;
 
 
-public class TripleFilter {
+public class TripleFilter implements Filter{
 	public HashMap<String,ArrayList<QuerySolution>> hMap;
 	public TripleFilter(){
 		hMap= new HashMap<String,ArrayList<QuerySolution>>();

@@ -1,6 +1,8 @@
 package asu.edu.neg_rule_miner;
 
+import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -12,7 +14,9 @@ import org.slf4j.LoggerFactory;
 import com.google.common.collect.Maps;
 import com.google.common.collect.Sets;
 
+import asu.edu.neg_rule_miner.configuration.ConfigurationFacility;
 import asu.edu.neg_rule_miner.model.horn_rule.HornRule;
+import asu.edu.neg_rule_miner.model.statistic.StatisticsContainer;
 import asu.edu.neg_rule_miner.rule_generator.DynamicPruningRuleDiscovery;
 /**
  * Hello world!
@@ -23,7 +27,7 @@ public class App
 	private final static Logger LOGGER = LoggerFactory.getLogger(App.class.getName());
 	public static void main( String[] args ) throws IOException
 	{
-		Set<String> relations = Sets.newHashSet();
+		
 		//		relations.add("http://dbpedia.org/ontology/founder");
 		//		relations.add("http://dbpedia.org/ontology/foundedBy");
 
@@ -218,52 +222,194 @@ public class App
 
 
 
-		DynamicPruningRuleDiscovery naive = new DynamicPruningRuleDiscovery();
+//		DynamicPruningRuleDiscovery naive = new DynamicPruningRuleDiscovery();
+//
+//				relations.add("http://dbpedia.org/ontology/child");
+//		
+//				String typeSubject = "http://dbpedia.org/ontology/Person";
+//				String typeObject = "http://dbpedia.org/ontology/Person";
+				
+				DynamicPruningRuleDiscovery naive = new DynamicPruningRuleDiscovery();
+				StatisticsContainer.setFileName(new File("statisticsFile"));
 
-		//		relations.add("http://dbpedia.org/ontology/child");
-		//
-		//		String typeSubject = "http://dbpedia.org/ontology/Person";
-		//		String typeObject = "http://dbpedia.org/ontology/Person";
+			ArrayList<Set<String>> relationList;
+			ArrayList<String> subjectList, objectList;
+			
+			for(int sign =0; sign<1; sign++){
+				
+				for(int i=1; i<2; i++){
+					Set<String> relations = Sets.newHashSet();
+					String typeSubject, typeObject;
+					ArrayList<Integer> limitSet = new ArrayList<Integer>();
+					typeSubject = ""; typeObject = "";
+					if(i==0 && sign ==0){
+						relations.add("http://dbpedia.org/ontology/founder");
+						relations.add("http://dbpedia.org/ontology/foundedBy");
+						typeSubject = "http://dbpedia.org/ontology/Organisation";
+						typeObject ="http://dbpedia.org/ontology/Person";
+					}
+					else if(i==1 && sign ==0){
+						relations.add("http://dbpedia.org/ontology/spouse");
+						typeSubject = "http://dbpedia.org/ontology/Person";
+						typeObject ="http://dbpedia.org/ontology/Person";
+					}
+					else if(i==2 && sign ==0){
+						relations.add("http://dbpedia.org/ontology/academicAdvisor");
+						typeSubject = "http://dbpedia.org/ontology/Person";
+						typeObject ="http://dbpedia.org/ontology/Person";
+					}
+					else if(i==3 && sign ==0){
+						relations.add("http://dbpedia.org/ontology/ceremonialCounty");
+						typeSubject = "http://dbpedia.org/ontology/PopulatedPlace";
+						typeObject ="http://dbpedia.org/ontology/Region";
+					}
+					else if(i==4 && sign ==0){
+						relations.add("http://dbpedia.org/ontology/child");
+						typeSubject = "http://dbpedia.org/ontology/Person";
+						typeObject ="http://dbpedia.org/ontology/Person";
+					}
+					else if(i==0 && sign ==1){
+						relations.add("http://dbpedia.org/ontology/founder");
+						relations.add("http://dbpedia.org/ontology/foundedBy");
+						typeSubject = "http://dbpedia.org/ontology/Organisation";
+						typeObject ="http://dbpedia.org/ontology/Person";
+					}
+					else if(i==1 && sign ==1){
+						relations.add("http://dbpedia.org/ontology/spouse");
+						typeSubject = "http://dbpedia.org/ontology/Person";
+						typeObject ="http://dbpedia.org/ontology/Person";
+					}
+					else if(i==2 && sign ==1){
+						relations.add("http://dbpedia.org/ontology/successor");
+						typeSubject = "http://dbpedia.org/ontology/Person";
+						typeObject ="http://dbpedia.org/ontology/Person";
+					}
+					else if(i==3 && sign ==1){
+						relations.add("http://dbpedia.org/ontology/academicAdvisor");
+						typeSubject = "http://dbpedia.org/ontology/Person";
+						typeObject ="http://dbpedia.org/ontology/Person";
+					}
+					else if(i==4 && sign ==1){
+						relations.add("http://dbpedia.org/ontology/child");
+						typeSubject = "http://dbpedia.org/ontology/Person";
+						typeObject ="http://dbpedia.org/ontology/Person";
+					}
+					//		for(int i=0; i<1; i++){
+					
+					
+						limitSet.add(-1); // child has to be the last entry
+//					limitSet.add(1);
+//						limitSet.add(2);
+//						limitSet.add(5);
+//						limitSet.add(10);
+//					
+//					limitSet.add(20);
+//					limitSet.add(50);
+//					limitSet.add(100); 
+						
+						//naive.setGenerationSmartLimit(10);
+					
+					for(int l=0;l<limitSet.size();l++){
+						int limitSubject = limitSet.get(l);
+						int limitObject = limitSet.get(l);
+						naive.setSubjectLimit(limitSubject);
+						naive.setObjectLimit(limitObject);
+						ArrayList<Integer> genLimitSet = new ArrayList<Integer>();
+						genLimitSet.add(-1);
+//					//	if(limitSubject==1 || limitSubject == 5){
+//							genLimitSet.add(5);
+			//				genLimitSet.add(10);
+			//			genLimitSet.add(20);
+//						genLimitSet.add(50);
+//							genLimitSet.add(100);
+//							genLimitSet.add(500);
+//							genLimitSet.add(1000);
+					//	}	
+						ArrayList<Integer> smartLimitSet = new ArrayList<Integer>();
+						smartLimitSet.add(5);
+//						smartLimitSet.add(10);
+//						smartLimitSet.add(20);
+//						smartLimitSet.add(50);
+//						smartLimitSet.add(100);
+//						smartLimitSet.add(500);
+//						smartLimitSet.add(1000);
+//						smartLimitSet.add(-1);
+						for(int g=0; g<genLimitSet.size(); g++){
+							int posLimit, negLimit;
+							if(sign == 1){
+								posLimit = genLimitSet.get(g);
+								negLimit = -1;
+							}
+							else{
+								negLimit = genLimitSet.get(g);
+								posLimit = -1;
+							}
+							for(int n=0; n<smartLimitSet.size(); n++){
+								int smartLimit = smartLimitSet.get(n);
+								double alpha = 0.1, beta =0.1, gamma =0.8, subWeight = 0.5, objWeight =0.5;
+								boolean isTopK = false;
+								naive.setGenerationSmartLimit(smartLimit); // limit on the example number from smartSampling
+								naive.setSmartWeights(alpha, beta, gamma, subWeight, objWeight); // alpha, beta, gamma, subWeight, objWeight
+								naive.setIsTopK(isTopK); // if true, top-K sampling, else uniform sampling
+								String id = relations+"_"+limitSubject+"_"+limitObject+"_"+posLimit+"_"+negLimit+"_"+smartLimit+"_"+alpha
+										             +"_"+beta+"_"+gamma+"_"+isTopK;
+								StatisticsContainer.initialiseContainer(id);
 
-		relations.add("http://dbpedia.org/ontology/artery");
 
-		String typeSubject = "http://dbpedia.org/ontology/AnatomicalStructure";
-		String typeObject = "http://dbpedia.org/ontology/AnatomicalStructure";
+								Set<Pair<String,String>> negativeExamples;
+								if(negLimit == -1)
+									negativeExamples = naive.generateNegativeExamples(relations, typeSubject, typeObject); //-1 indicates no pruning on the negative example set
+								else
+									negativeExamples = naive.generateNegativeExamples(relations, typeSubject, typeObject, negLimit);
+								Set<Pair<String,String>> positiveExamples;
+								if(posLimit == -1)
+									positiveExamples = naive.generatePositiveExamples(relations, typeSubject, typeObject); //-1 indicates no pruning on the positive example set
+								else
+									positiveExamples = naive.generatePositiveExamples(relations, typeSubject, typeObject, posLimit);
+
+								if(sign == 0)
+									naive.discoverNegativeHornRules(negativeExamples, positiveExamples, relations, typeSubject, typeObject);
+								else
+									naive.discoverPositiveHornRules(negativeExamples, positiveExamples, relations, typeSubject, typeObject);
+								StatisticsContainer.printStatistics();
+							}
+							
+						}
+						
+					}
+
+				}
+			}
+			
+//			//set smart sampling limit
+//			int limit = 10;
+//			naive.setGenerationSmartLimit(limit);
+
+				
+				/*		ConfigurationFacility.setSubjectLimit(1);
+				ConfigurationFacility.setObjectLimit(1);
+				String id = relations+"_"+1+"_"+1;
+
+				StatisticsContainer.initialiseContainer(id);
 
 
-		Set<Pair<String,String>> negativeExamples = naive.generateNegativeExamples(relations, typeSubject, typeObject, false, false);
-
-		//		Set<Pair<String,String>> negativeExamples = naive.generateNegativeExamples(new File("negExamples"));
+				Set<Pair<String,String>> negativeExamples = naive.generateNegativeExamples(relations, typeSubject, typeObject, false, false);
 
 
 
-		Set<Pair<String,String>> positiveExamples = naive.generatePositiveExamples(relations, typeSubject, typeObject);
-
-		//		Set<Pair<String,String>> positiveExamples = naive.generateNegativeExamples(new File("posExamples"));
+				Set<Pair<String,String>> positiveExamples = naive.generatePositiveExamples(relations, typeSubject, typeObject);
 
 
 
-		//		naive.discoverNegativeHornRules(negativeExamples,positiveExamples,relations,typeSubject,typeObject);
+				naive.discoverNegativeHornRules(negativeExamples,positiveExamples,relations,typeSubject,typeObject);
 
-		System.out.println(naive.discoverPositiveHornRules(negativeExamples, positiveExamples, relations, typeSubject, typeObject, false, false));
+				StatisticsContainer.printStatistics();
 
-		//		computeMultiplePositiveRules();
+				 */	//		naive.discoverPositiveHornRules(negativeExamples, positiveExamples, relations, typeSubject, typeObject, true, false);
 
+			}
+		
 
-		//setting limits
-
-		//set the last parameter to the desired limit to reduce neg examples
-		//naive.generateNegativeExamples(relations, typeSubject, typeObject, 100);
-
-		//set the last parameter to the desired limit to reduce pos examples
-		//naive.generatePositiveExamples(relations, typeSubject, typeObject, 100);
-
-		//set limit on subject incoming edges when expanding a single entity
-		naive.setSubjectLimit(100);
-
-		//set limit on object incoming edges when expanding a single entity
-		naive.setObjectLimit(100);
-	}
 
 
 	public static void computeMultiplePositiveRules(){

@@ -31,6 +31,20 @@ public abstract class HornRuleDiscovery implements HornRuleDiscoveryInterface{
 	Integer subjectLimit = null; 
 
 	Integer objectLimit = null; 
+	
+	Integer generationSmartLimit = null;
+	
+	Double alphaSmart = null;
+	
+	Double betaSmart = null;
+	
+	Double gammaSmart = null;
+	
+	Double subWeightSmart = null;
+	
+	Double objWeightSmart = null;
+	
+	Boolean isTopK = null;
 
 	private final static Logger LOGGER = 
 			LoggerFactory.getLogger(OneExampleRuleDiscovery.class.getName());
@@ -269,6 +283,21 @@ public abstract class HornRuleDiscovery implements HornRuleDiscoveryInterface{
 	public void setObjectLimit(int limit){
 		this.objectLimit = limit;
 	}
+	
+	public void setGenerationSmartLimit(int limit){
+		this.generationSmartLimit = limit;
+	}
 
+	public void setSmartWeights(double alpha_smart, double beta_smart, double gamma_smart, double sub_weight, double obj_weight){
+		this.alphaSmart = alpha_smart;
+		this.betaSmart = beta_smart;
+		this.gammaSmart = gamma_smart;
+		this.subWeightSmart = sub_weight;
+		this.objWeightSmart = obj_weight;
+	}
+	
+	public void setIsTopK(boolean isTopKValue){
+		this.isTopK = isTopKValue;
+	}
 
 }

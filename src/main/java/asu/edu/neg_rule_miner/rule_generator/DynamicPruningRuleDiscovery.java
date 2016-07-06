@@ -20,8 +20,10 @@ import asu.edu.neg_rule_miner.model.horn_rule.RuleAtom;
 import asu.edu.neg_rule_miner.model.rdf.graph.Edge;
 import asu.edu.neg_rule_miner.model.rdf.graph.Graph;
 import asu.edu.neg_rule_miner.model.statistic.StatisticsContainer;
+import asu.edu.neg_rule_miner.rule_generator.examples_sampling.VariancePopularSampling;
 import asu.edu.neg_rule_miner.rule_generator.score.DynamicScoreComputation;
 import asu.edu.neg_rule_miner.sparql.SparqlExecutor;
+
 
 /**
  * Implements A* dynamic pruning discovery algorithm for rules generation
@@ -85,13 +87,13 @@ public class DynamicPruningRuleDiscovery extends HornRuleDiscovery{
 		Set<MultipleGraphHornRule<String>> negativeHornRules = Sets.newHashSet();
 		Map<String,Set<Pair<String,String>>> relation2positiveExamples = Maps.newHashMap();
 
-		int negativeCoverageThreshold = negativeExamples.size()/100 +1;
-		int positiveCoverageThreshold = positiveExamples.size()/100 +1;
-
 		Graph<String> totalGraph = new Graph<String>();
 
 		this.initialiseRules(negativeExamples, positiveExamples, expandedNodes2examples, 
 				entity2types,negativeHornRules, relation2positiveExamples, totalGraph);
+
+		int negativeCoverageThreshold = negativeExamples.size()/100 +1;
+		int positiveCoverageThreshold = positiveExamples.size()/100 +1;
 
 		Map<Set<RuleAtom>,Set<Pair<String,String>>> rule2relativePositiveCoverage = Maps.newHashMap();
 
@@ -277,9 +279,19 @@ public class DynamicPruningRuleDiscovery extends HornRuleDiscovery{
 			coveredExamples.add(example);
 		}
 
+		this.expandGraphs(toAnalyse, generationNodesGraph, entity2types, numThreads);
+
+		if(generationSmartLimit != null && generationSmartLimit > 0){
+			//double alpha = 0.1, beta = 0.1, gamma = 0.8, subWeight = 0.5, objWeight = 0.5;
+			VariancePopularSampling sampling = new VariancePopularSampling(alphaSmart, betaSmart, gammaSmart, subWeightSmart, objWeightSmart, this.getSparqlExecutor().getSubjectLimit(), this.getSparqlExecutor().getObjectLimit(), isTopK);
+			Set<Pair<String,String>> sampledExamples = 
+					sampling.sampleExamples(generationExamples, generationNodesGraph, generationSmartLimit);
+			generationExamples.clear();
+			generationExamples.addAll(sampledExamples);
+			StatisticsContainer.setGenerationSample(generationExamples);
+		}
 
 		generationNodesGraph.addExamples(generationExamples);
-		this.expandGraphs(toAnalyse, generationNodesGraph, entity2types, numThreads);
 		MultipleGraphHornRule<String> subjectRule = new MultipleGraphHornRule<String>(generationNodesGraph,true,generationExamples);
 		hornRules.add(subjectRule);
 		MultipleGraphHornRule<String> objectRule = new MultipleGraphHornRule<String>(generationNodesGraph,false,generationExamples);
