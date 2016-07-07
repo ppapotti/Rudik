@@ -470,9 +470,11 @@ public class MultipleGraphHornRule<T> extends HornRule{
 		if(allVariables.size()>0){
 			List<RuleAtom> newAtoms = Lists.newLinkedList();
 			for(RuleAtom atom:rules){
-				String subj =allVariables.contains(atom.getSubject()) ? variable2constant.get(atom.getSubject()).toString() : atom.getSubject();
+				String subj =allVariables.contains(atom.getSubject()) && variable2constant.get(atom.getSubject())!=null 
+						? variable2constant.get(atom.getSubject()).toString() : atom.getSubject();
 
-				String obj =allVariables.contains(atom.getObject()) ? variable2constant.get(atom.getObject()).toString() : atom.getObject();
+				String obj =allVariables.contains(atom.getObject()) && variable2constant.get(atom.getObject()) != null
+						? variable2constant.get(atom.getObject()).toString() : atom.getObject();
 
 				newAtoms.add(new RuleAtom(subj, atom.getRelation(), obj));
 			}

@@ -8,7 +8,8 @@ import java.sql.Date;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.List;
-
+import java.util.Set;
+import org.apache.commons.lang3.tuple.Pair;
 import asu.edu.neg_rule_miner.model.horn_rule.HornRule;
 
 public class StatisticsContainer {
@@ -34,6 +35,8 @@ public class StatisticsContainer {
 	private static double positiveSetTime;
 
 	private static List<HornRule> outputRules;	
+	
+	private static Set<Pair<String, String>> generationSample;
 	
 
 	public static void initialiseContainer(String currentId){
@@ -99,6 +102,10 @@ public class StatisticsContainer {
 	public static void setOutputRules(List<HornRule> currentOutputRules){
 		outputRules = currentOutputRules;
 	}
+	
+	public static void setGenerationSample(Set<Pair<String, String>> generationExamples){
+		generationSample = generationExamples;
+	}
 
 
 	public static void printStatistics() throws IOException{
@@ -126,6 +133,7 @@ public class StatisticsContainer {
 		writer.write("Positive examples generation time: "+positiveSetTime+" seconds.\n");
 		writer.write("Negative examples generation time: "+negativeSetTime+" seconds.\n");
 		writer.write("Total running time: "+((endTime-startTime)/1000.)+" seconds.\n");
+		writer.write("Generation sample examples: "+generationSample+"\n");
 		writer.write("Output rules: "+outputRules+"\n");
 //		writer.write("-------------------------"+id+"_"+ConfigurationFacility.getNegativeExampleLimit()+"_"+ endDateFormatted+"-------------------------");
 		writer.write("-------------------------"+id+"_"+endDateFormatted+"-------------------------");

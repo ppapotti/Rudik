@@ -6,10 +6,9 @@ import java.util.HashMap;
 import org.apache.jena.query.QuerySolution;
 import org.apache.jena.query.ResultSet;
 
-
-public class TripleFilter implements Filter{
+public class TripleFilterFunctional implements Filter {
 	public HashMap<String,ArrayList<QuerySolution>> hMap;
-	public TripleFilter(){
+	public TripleFilterFunctional(){
 		hMap= new HashMap<String,ArrayList<QuerySolution>>();
 	}
 	public ArrayList<QuerySolution> doFilter(ResultSet results, String sub, String rel, String obj, String entity, int limitSubject, int limitObject){
@@ -17,6 +16,8 @@ public class TripleFilter implements Filter{
 			limitSubject = (int)Double.POSITIVE_INFINITY;
 		if(limitObject < 0)
 			limitObject = (int)Double.POSITIVE_INFINITY;
+		ArrayList<String> blackListedSubKeys = new ArrayList<String>();
+		ArrayList<String> blackListedObjKeys = new ArrayList<String>();
 		while(results.hasNext()){
 			QuerySolution oneResult = results.next();
 			String subject, object;
@@ -31,12 +32,16 @@ public class TripleFilter implements Filter{
 			String relation = oneResult.get(rel).toString();
 			String subRelKey = relation+"_sub";
 			String objRelKey = relation+"_obj";
-			if(subject.equals(entity)){
+			if(subject.equals(entity) && !blackListedSubKeys.contains(subRelKey)){
 				if(hMap.containsKey(subRelKey)){
 					ArrayList<QuerySolution> valSet = hMap.get(subRelKey);
 					if(valSet.size() < limitSubject){
 						valSet.add(oneResult);
 						hMap.put(subRelKey, valSet);
+					}
+					else if(valSet.size() >= limitSubject) { // added because limitSubject can be 0
+						hMap.remove(subRelKey);
+						blackListedSubKeys.add(subRelKey);
 					}
 				}
 				else{
@@ -47,17 +52,21 @@ public class TripleFilter implements Filter{
 					}
 				}				
 			}
-			else if(object.equals(entity)){
+			else if(object.equals(entity) && !blackListedObjKeys.contains(objRelKey)){
 				if(hMap.containsKey(objRelKey)){
 					ArrayList<QuerySolution> valSet = hMap.get(objRelKey);
 					if(valSet.size() < limitObject){
 						valSet.add(oneResult);
 						hMap.put(objRelKey, valSet);
 					}
+					else if(valSet.size() >= limitObject) {
+						hMap.remove(objRelKey);
+						blackListedObjKeys.add(objRelKey);
+					}
 				}
 				else{
 					ArrayList<QuerySolution> valSet = new ArrayList<QuerySolution>();
-					if(valSet.size() < limitObject){
+					if(valSet.size() < limitObject){// added because limitObject can be 0
 						valSet.add(oneResult);
 						hMap.put(objRelKey, valSet);
 					}
