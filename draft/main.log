@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2014) (preloaded format=pdflatex 2014.12.3)  22 JUN 2016 18:31
+This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2014) (preloaded format=pdflatex 2014.12.3)  7 JUL 2016 18:51
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -951,45 +951,182 @@ LaTeX Font Info:    Try loading font information for T1+aess on input line 12.
 
 (/usr/local/texlive/2014/texmf-dist/tex/latex/ae/t1aess.fd
 File: t1aess.fd 1997/11/16 Font definitions for T1/aess.
-) [5])
-(./include/related.tex) (./include/conclusion.tex) (./main.bbl) [6] (./main.aux
-)
+) [5]
+Overfull \hbox (2.05658pt too wide) in paragraph at lines 39--40
+ []|\T1/aer/m/it/8 #Predicates| 
+ []
+
+
+Overfull \hbox (3.55898pt too wide) in paragraph at lines 41--41
+ []|\T1/aer/m/n/8 10.056GB| 
+ []
+
+
+Overfull \hbox (1.48169pt too wide) in paragraph at lines 43--43
+ []|\T1/aer/m/sc/8 Wikidata| 
+ []
+
+
+Overfull \hbox (2.68507pt too wide) in paragraph at lines 43--43
+ []|\T1/aer/m/n/8 20160229| 
+ []
+
+
+Overfull \hbox (3.11748pt too wide) in paragraph at lines 43--43
+ []|\T1/aer/m/n/8 272,129,814| 
+ []
+
+
+Underfull \vbox (badness 3229) has occurred while \output is active []
+
+ [6]
+Underfull \hbox (badness 10000) in paragraph at lines 103--103
+[][]\T1/aer/m/n/9 www.mpi-inf.mpg.de/departments/databases-and-
+ []
+
+[7] <include/figure/vsAmieYago.pdf, id=63, 603.45819pt x 240.1788pt>
+File: include/figure/vsAmieYago.pdf Graphic file (type pdf)
+
+<use include/figure/vsAmieYago.pdf>
+Package pdftex.def Info: include/figure/vsAmieYago.pdf used on input line 130.
+(pdftex.def)             Requested size: 240.0pt x 95.52008pt.
+
+Underfull \vbox (badness 2351) has occurred while \output is active []
+
+
+<include/figure/vsAmieDBPedia.pdf, id=64, 953.74084pt x 390.79163pt>
+File: include/figure/vsAmieDBPedia.pdf Graphic file (type pdf)
+
+<use include/figure/vsAmieDBPedia.pdf>
+Package pdftex.def Info: include/figure/vsAmieDBPedia.pdf used on input line 14
+4.
+(pdftex.def)             Requested size: 240.0pt x 98.3357pt.
+
+Overfull \hbox (2.5954pt too wide) in paragraph at lines 184--184
+ []|\T1/aer/m/it/7 #Triple| 
+ []
+
+
+Overfull \hbox (1.87729pt too wide) in paragraph at lines 184--184
+ []|\T1/aer/m/it/7 #Predicates| 
+ []
+
+LaTeX Font Info:    Font shape `T1/aess/m/it' in size <7> not available
+(Font)              Font shape `T1/aess/m/sl' tried instead on input line 184.
+
+Overfull \hbox (0.89697pt too wide) in paragraph at lines 184--184
+ []|\T1/aess/m/sl/7 AMIE| 
+ []
+
+
+Overfull \hbox (3.20708pt too wide) in paragraph at lines 184--185
+ []|\T1/aer/m/it/7 Types 
+ []
+
+
+Overfull \hbox (1.86296pt too wide) in paragraph at lines 184--185
+ \T1/aer/m/it/7 Time| 
+ []
+
+
+Overfull \hbox (3.7374pt too wide) in paragraph at lines 186--186
+ []|\T1/aer/m/n/7 18m,15s| 
+ []
+
+
+Overfull \hbox (3.7374pt too wide) in paragraph at lines 187--187
+ []|\T1/aer/m/n/7 47m,10s| 
+ []
+
+
+Overfull \hbox (1.54776pt too wide) in paragraph at lines 188--188
+ []|\T1/aer/m/n/7 >10h| 
+ []
+
+
+Overfull \hbox (1.00047pt too wide) in paragraph at lines 188--188
+ []|\T1/aer/m/n/7 7h,12m| 
+ []
+
+
+Overfull \hbox (1.54776pt too wide) in paragraph at lines 189--189
+ []|\T1/aer/m/n/7 >15h| 
+ []
+
+
+Overfull \hbox (1.00047pt too wide) in paragraph at lines 189--189
+ []|\T1/aer/m/n/7 8h,10m| 
+ []
+
+
+Overfull \hbox (1.54776pt too wide) in paragraph at lines 190--190
+ []|\T1/aer/m/n/7 >25h| 
+ []
+
+
+Overfull \hbox (1.00047pt too wide) in paragraph at lines 191--191
+ []|\T1/aer/m/n/7 2h,35m| 
+ []
+
+[8 <./include/figure/vsAmieYago.pdf> <./include/figure/vsAmieDBPedia.pdf>]
+<include/figure/deepDive1K.pdf, id=174, 1000.72343pt x 379.48149pt>
+File: include/figure/deepDive1K.pdf Graphic file (type pdf)
+
+<use include/figure/deepDive1K.pdf>
+Package pdftex.def Info: include/figure/deepDive1K.pdf used on input line 210.
+(pdftex.def)             Requested size: 240.0pt x 91.00792pt.
+
+<include/figure/deepDive1M.pdf, id=175, 1000.06221pt x 376.4091pt>
+File: include/figure/deepDive1M.pdf Graphic file (type pdf)
+
+<use include/figure/deepDive1M.pdf>
+Package pdftex.def Info: include/figure/deepDive1M.pdf used on input line 219.
+(pdftex.def)             Requested size: 240.0pt x 90.32854pt.
+ [9 <./include/figure/deepDive1K.pdf> <./include/figure/deepDive1M.pdf>]) (./in
+clude/related.tex) (./include/conclusion.tex) (./main.bbl) [10] (./main.aux)
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
  ) 
 Here is how much of TeX's memory you used:
- 8575 strings out of 493117
- 108785 string characters out of 6135433
- 232064 words of memory out of 5000000
- 11725 multiletter control sequences out of 15000+600000
- 70989 words of font info for 111 fonts, out of 8000000 for 9000
+ 8683 strings out of 493117
+ 110314 string characters out of 6135433
+ 236181 words of memory out of 5000000
+ 11788 multiletter control sequences out of 15000+600000
+ 96527 words of font info for 164 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 41i,10n,35p,3257b,239s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 41i,12n,35p,3257b,341s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/local/texlive/2014/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/local/t
-exlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx9.pfb></usr/local/tex
-live/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmcsc10.pfb></usr/local/tex
-live/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/local/texli
-ve/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi9.pfb></usr/local/texlive
-/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/local/texlive/20
-14/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/2014/
-texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/local/texlive/2014/tex
-mf-dist/fonts/type1/public/amsfonts/cm/cmss9.pfb></usr/local/texlive/2014/texmf
--dist/fonts/type1/public/amsfonts/cm/cmti8.pfb></usr/local/texlive/2014/texmf-d
-ist/fonts/type1/public/amsfonts/cm/cmti9.pfb></usr/local/texlive/2014/texmf-dis
-t/fonts/type1/public/amsfonts/cm/cmtt9.pfb></usr/local/texlive/2014/texmf-dist/
-fonts/type1/public/mathabx-type1/matha5.pfb></usr/local/texlive/2014/texmf-dist
-/fonts/type1/public/mathabx-type1/matha6.pfb></usr/local/texlive/2014/texmf-dis
-t/fonts/type1/public/mathabx-type1/matha9.pfb></usr/local/texlive/2014/texmf-di
-st/fonts/type1/public/mathabx-type1/mathx10.pfb></usr/local/texlive/2014/texmf-
-dist/fonts/type1/urw/helvetic/uhvb8a.pfb></usr/local/texlive/2014/texmf-dist/fo
-nts/type1/urw/helvetic/uhvr8a.pfb></usr/local/texlive/2014/texmf-dist/fonts/typ
-e1/urw/times/utmb8a.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/urw/tim
-es/utmr8a.pfb>
-Output written on main.pdf (6 pages, 267837 bytes).
+exlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx8.pfb></usr/local/tex
+live/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx9.pfb></usr/local/texli
+ve/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmcsc10.pfb></usr/local/texli
+ve/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/local/texlive
+/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/local/texlive/2
+014/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi9.pfb></usr/local/texlive/201
+4/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/local/texlive/2014/t
+exmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/texlive/2014/texm
+f-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/2014/texmf-d
+ist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/local/texlive/2014/texmf-dist
+/fonts/type1/public/amsfonts/cm/cmss9.pfb></usr/local/texlive/2014/texmf-dist/f
+onts/type1/public/amsfonts/cm/cmssbx10.pfb></usr/local/texlive/2014/texmf-dist/
+fonts/type1/public/amsfonts/cm/cmssi8.pfb></usr/local/texlive/2014/texmf-dist/f
+onts/type1/public/amsfonts/cm/cmti7.pfb></usr/local/texlive/2014/texmf-dist/fon
+ts/type1/public/amsfonts/cm/cmti8.pfb></usr/local/texlive/2014/texmf-dist/fonts
+/type1/public/amsfonts/cm/cmti9.pfb></usr/local/texlive/2014/texmf-dist/fonts/t
+ype1/public/amsfonts/cm/cmtt8.pfb></usr/local/texlive/2014/texmf-dist/fonts/typ
+e1/public/amsfonts/cm/cmtt9.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1
+/public/mathabx-type1/matha5.pfb></usr/local/texlive/2014/texmf-dist/fonts/type
+1/public/mathabx-type1/matha6.pfb></usr/local/texlive/2014/texmf-dist/fonts/typ
+e1/public/mathabx-type1/matha9.pfb></usr/local/texlive/2014/texmf-dist/fonts/ty
+pe1/public/mathabx-type1/mathx10.pfb></usr/local/texlive/2014/texmf-dist/fonts/
+type1/urw/helvetic/uhvb8a.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/u
+rw/helvetic/uhvr8a.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/urw/time
+s/utmb8a.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/urw/times/utmr8a.p
+fb>
+Output written on main.pdf (10 pages, 489443 bytes).
 PDF statistics:
- 117 PDF objects out of 1000 (max. 8388607)
- 85 compressed objects within 1 object stream
+ 382 PDF objects out of 1000 (max. 8388607)
+ 255 compressed objects within 3 object streams
  0 named destinations out of 1000 (max. 500000)
- 6 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 26 words of extra memory for PDF output out of 10000 (max. 10000000)
 

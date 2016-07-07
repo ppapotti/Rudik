@@ -5,28 +5,231 @@ We grouped the evaluation into 4 main sub-categories:
 	\item a first set of experiments aims at demonstrating the quality of our output, both for negative and positive rules;
 	\item a second set of experiments compares our method with state-of-the-art systems;
 	\item in the third set of experiments we outline the applicability of rules discovery by enhancing machine learning algorithms;
-	\item in the last set of experiments we discuss internal system settings and some preliminary optimization techniques.
+	\item in the last set of experiments we discuss internal system settings and some optimization techniques.
 \end{inparaenum}
 
 \myparagraph{Settings}
 We evaluated our approach over several popular KBs. For each KB, we downloaded the most up-to-date core facts and loaded them into our SPARQL query engine. We experimented several SPARQL engines, including \system{Jena ARQ}, \system{OWLIM Lite}, and \system{RDF-3x}. We also implemented a na\"ive relational database solution with \system{PostgreSQL}. Eventually we opted for \system{OpenLink Virtuoso}, as it was the fastest among all the solutions. \system{Virtuoso} took on average 20 minutes to load a medium size KB (i.e., 10 GB) into its store, and around 100 milliseconds to excute a single hop query. All experiments are run on a iMac desktop with
-an Intel quad-core i7 at 3.40GHz with 16 GB RAM. We run \system{Virtuoso} server with its SPARQL query endpoint on the same machin, optimized for a machine with 8 GB of available RAM.
+an Intel quad-core i7 at 3.40GHz with 16 GB RAM. We run \system{Virtuoso} server with its SPARQL query endpoint on the same machine, optimized for a 8 GB available RAM.
 
-Our method needs the two input parameters $\alpha$ and $\beta$ of Equation(REF.). As briefly explained, $\alpha$ measures the importance of the coverage over the generation set, while $\beta$ measures the coverage over the validation set. In other words, a high $\alpha$ priviliges recall over precision, while a high $\beta$ gives more importance to precision. We can afford a high $\alpha$ and a low $\beta$ when the input KB is accurate and complete. We will show that KBs contain many errors and missing information, therefore we set $\alpha = 0.3$ and $\beta = 0.7$. Increasing $\alpha$ and decreasing $\beta$ means a higher number of output rules with a lower accuracy. 
+Our method needs the two input parameters $\alpha$ and $\beta$ of Equation(REF.). $\alpha$ measures the importance of the coverage over the generation set, while $\beta$ measures the coverage over the validation set. In other words, a high $\alpha$ priviliges recall over precision, while a high $\beta$ gives more importance to precision. We can afford a high $\alpha$ and a low $\beta$ when the input KB is accurate and complete. We will show that KBs contain many errors and missing information, therefore we set $\alpha = 0.3$ and $\beta = 0.7$. Increasing $\alpha$ and decreasing $\beta$ means a higher number of output rules with a lower accuracy. 
+
+We also set the $MaxPathLen$ parameter to $3$. This number represents the maximum number of atoms that we can have in the body of discovered rules. We will show in Section~\ref{sec:int_evaluation} that increasing this parameter does not bring any benefits, as body rules longer than $3$ atoms start to be very complicated and not insightful.
 
 \myparagraph{Evaluation Metrics}
-Our approach discovers rules for a given target predicate. For each KB, we chose $5$ representative predicates as follows: we first ordered predicates according to descending popularity (i.e., number of triples having thar predicate), and then picked the top $3$ predicates for which we know there exists at least one meaningful rule, and other $2$ top predicates for which we did not know whether some meaningful rules exist or not. We repeat the procedure for each input KB, and for positive and negative rules. Despite working one predicate at time, we can also discover rules for the entire KB: we can just list all predicates in the KB, and discover rules for each of them. We will show in Section~\ref{sec:comp_evaluation} how we can discover rules for the entire KB.
+Our approach discovers rules for a given target predicate. For each KB, we chose $5$ representative predicates as follows: we first ordered predicates according to descending popularity (i.e., number of triples having that predicate), and then we picked the top $3$ predicates for which we know there exists at least one meaningful rule, and other $2$ top predicates for which we did not know whether some meaningful rules existed. We repeat the procedure for each input KB, and for positive and negative rules. Despite working one predicate at time, we can also discover rules for the entire KB by listing all predicates in the KB, and discover rules for each of them. We will show in Section~\ref{sec:comp_evaluation} how this can be done.
 
-Positive rules are very useful to enrich the KB by discovering new facts. Since we are generating new data, we cannot evaluate the induced rule over the existing data. Therefore we proceed as follows: we run the algorithm over the KB, and for each output rule we generate all new predictions that are not already in the KB (we execute the head of the rule against the KB and we remove all those pairs that are already connected by the target predicate in the KB). As an example, for the rule $\atom{spouse}{b}{a} \Rightarrow \atom{spouse}{a}{b}$, we retrieve all the pairs $(b,a)$ such that $b$ is $spouse$ with $a$ but $a$ is not $spouse$ with $b$ in the KB. If the rule is universally correct (like the previous example), we mark all the new predictions as true. If the rule is unknown, we randomly sampled 30 new predictions and manually check them against the Web. The \emph{precision} of the rule is then computed as the ratio of true predictions out of true and false predictions.
+Positive rules are very useful to enrich the KB by discovering new facts. Since we are generating new data, we cannot evaluate the induced rules over the existing data. Therefore we proceed as follows: we run the algorithm over the KB, and for each output rule we generate all new predictions that are not already in the KB (we execute the head of the rule against the KB and we remove all those pairs that are already connected by the target predicate in the KB). As an example, for the rule $\atom{spouse}{b}{a} \Rightarrow \atom{spouse}{a}{b}$, we retrieve all the pairs $(b,a)$ such that $b$ is $spouse$ with $a$ but $a$ is not $spouse$ with $b$ in the KB. If the rule is universally correct (like the previous example), we mark all the new predictions as true. If the rule is unknown, we randomly sampled 30 new predictions and manually check them against the Web. The \emph{precision} of the rule is then computed as the ratio of true predictions out of true and false predictions.
 
-Negative rules are slighlty more complicated to evaluate. In fact, despite KBs are usually incomplete, the majority of the data not stated in the KB is false -- if we take all the people in a KB, a very small fraction of the cartesian product of all the people will be actually married. Therefore negative rules will always discover many correct negative facts. However, negative rules are a great means to discover errors in the KB, and we leverage this aspect to evaluate them. For each discovered rule, we retrieve from the KB pairs of entities for which the body of the rule can be instantiated and that are also connected by the target predicate. As an example, for the rule $\atom{child}{a}{b} \Rightarrow \neg \atom{spouse}{a}{b}$, we retrive all the pairs $(a,b)$ such that $b$ is $child$ of $a$ and $a$ is $spouse$ with $b$. We call these generated pairs of entities \emph{potential errors}. Similarly to positive rules, whenever a rule is universally correct we mark all its potential errors as true, whereas if the rule is unknown we manually check 30 sampled potential errors.
+Negative rules are slighlty more complicated to evaluate. In fact, despite KBs are usually incomplete, the majority of the data not stated in the KB is false -- if we take all the people in a KB, a very small fraction of the cartesian product of all the people will be actually married. Therefore negative rules will always discover many correct negative facts. However, negative rules are a great means to discover errors in the KB, and we leverage this aspect to evaluate them. For each discovered rule, we retrieve from the KB pairs of entities for which the body of the rule can be instantiated and that are also connected by the target predicate. As an example, for the rule $\atom{child}{a}{b} \Rightarrow \neg \atom{spouse}{a}{b}$, we retrive all the pairs $(a,b)$ such that $b$ is $child$ of $a$ and $a$ is $spouse$ with $b$. We call these generated pairs of entities \emph{potential errors}. Similarly to positive rules, whenever a rule is universally correct we mark all its potential errors as true, whereas if the rule is unknown we manually check 30 sampled potential errors. The final precision of a rule is computed as actual errors divided by all potential errors.
 \stefano{Shall we say that a pair of entities is a true error not only if the final pair is wrong, but also if some intermediate values are wrong? Like the birthYear and foundingYear for a founder relation, we consider a true error not only if the person is not the actual founder, but also if the birthYear and/or the foundingYear are wrong}.
 
-\subsection{Negative Rules Evaluation}
-Evaluation of negative rules.
+\subsection{Rules Discovery Accuracy} \label{sec:gen_evaluation}
+The first set of experiments aims at evaluating the accuracy of discovered rules over the 3 most popular and widely used KBs: \dbpedia~\cite{bizer2009dbpedia}, \yago~\cite{suchanek2007yago}, and \wikidata~\cite{vrandevcic2014wikidata}. For each KB we downloaded the most recent version and selected core facts, facts about people, geolocations and transitive \texttt{rdf:type} facts. \wikidata provides only the enitre dump, therefore we just eliminated from it no-english literal values. Table~\ref{tab:datasetDescr} shows the characteristics of the 3 KBs.
+
+\begin{table}[htb]
+	\centering
+	\caption{Dataset characteristics.}
+	\label{tab:datasetDescr}
+	\begin{small}
+	\begin{tabular}
+		{|>{\centering} m{1.25cm}|>{\centering}m{1.1cm}|>{\centering}m{1.15cm}|>{\centering}m{1.4cm}|>{\centering}m{1.5cm}|}
+			\hline
+			\hline
+			{\it KB}&{\it Version}&{\it Size}&{\it  \#Triples}&{\it \#Predicates} \tabularnewline
+			\hline
+			\dbpedia & 3.7 & 10.056GB & 68,364,605 & 1,424 \tabularnewline
+			\yago & 3.0.2 & 7.82GB & 88,360,244 & 74 \tabularnewline
+			\wikidata & 20160229 & 12.32GB & 272,129,814 & 4,108 \tabularnewline
+			\hline
+		\end{tabular}
+	\end{small}
+\end{table}
+As the figure shows, the size of the KB is relevant. Loading the entire KB into main memory is not feasible unless we have high memory availability (cite the two SIGMOD16 papers),  or we reduce the KB by eliminating facts such as \texttt{rdf:type} or literals~\cite{galarraga2015fast}. We propose an approach that is disk-based where only a small portion of the KB is loaded into main memory, such that we can discover rules on any size KB with a normal machine.
+
+\myparagraph{Positive Rules Discovery} We first evaluate the precision of positive rules for the top 5 predicates on the 3 KBs. The number of new induced facts varies significantly from rule to rule -- for instance a rule with literals comparison will produce a very high number of facts. In order to avoid the precision to be dominated by such rules, we first compute the precision for each rule as explained above, and then we average values over all induced rules. Table~\ref{tab:pos_rules_acc} reports precision values, along with predicates average running time.
+
+\begin{table}[htb]
+	\centering
+	\caption{Positive Rules Accuracy.}
+	\label{tab:pos_rules_acc}
+		\begin{tabular}{|c|c|c|c|c|}
+			\hline
+			\hline
+			{\it KB}&{\it Avg. Running Time}&{\it Precision} \tabularnewline
+			\hline
+			\dbpedia & 34min, 56sec & \textbf{63.99}\%\tabularnewline
+			\yago &  59min, 25sec & \textbf{62.86}\%\tabularnewline
+			\wikidata &  2h, 21min, 34sec & \textbf{73.33}\%\tabularnewline
+			\hline
+		\end{tabular}
+\end{table}
+
+Our first observation is that the more accurate is the KB, the better is the quality of induced rules. \wikidata contains very few errors, since it is manually curated and every triple is manually checked by different individuals before being inserted. \dbpedia and \yago instead are automatically generated by extracting information from the Web, hence their quality is significantly lower. Discovering perfect positive rules is a hard task, mostly because there is no guarantee of the existence of valid negative examples. A striking example in this direction is the rule induced for \texttt{founder} in \dbpedia. Our approach discovers that if a person is born in the same place where a company is founded, then the person is the founder of the company. The rule is obviously wrong, as there are many people who are born in the same place of a company and have not founded the company. However this rule has a very high coverage over the generation set (many companies' founders founded their companies in their birth place), and a very low coverage over the validation set -- indeed among the cartesian product of all the people and companies, a very small fraction includes people and companies born and founded in the same place. Despite such hard cases, our approach is always capable of producing correct rules for those predicates for which we knew there existed some valid rules. Cases like \texttt{academicAdvisor}, \texttt{child}, and \texttt{spouse} have a precision above $95\%$ in all of the KBs, and final values are brought down by few predicates where meaningful rules probably do not exist at all.
+
+The running time is influenced by different factors. First of all the size of the KB has obviously a huge impact, as we are slower in \wikidata which is the biggest KB. Not only the number of triples is relevant, but also the different number of predicates. In fact the more predicates we have in the KB, the more alternative paths we observe when traversing the graph, hence a bigger search space. The second relevant aspect is the target predicate involved. We noticed that some kind of entities have a huge number of outgoing and incoming edges (\textit{United States} in \wikidata is connected to more than 600K entities). When the generation set includes such type of entities, the navigation of the graph is slower as we need to traverse a high number of edges. This is what happens in \yago, where the most popular predicates are \texttt{isLeaderOf} and \texttt{exports}. Eventually the $maxPathLen$ parameter also has a big say in the final running time. The longer the rule, the bigger is the search space. We will show in the next Section how we can be much faster if we set to 2 atoms the maximum length of the rule. Section~\ref{sec:int_evaluation} will discuss some optimization techniques to significantly cut down 	the running time based on the above observations.
+
+\myparagraph{Negative Rules Discovery} Negative rules are very useful to discover inconsistencies in the KB. We evaluated discovered negative rules as the percentage of correct errors discovered for the top 5 predicates in each KB. Table~\ref{tab:neg_rules_acc} shows, for each KB, the total number of potential erroneous triples discovered with negative rules, whereas the precision is computed as the percentage of actual errors among potential errors.
+
+\begin{table}[htb]
+	\centering
+	\caption{Negative Rules Accuracy.}
+	\label{tab:neg_rules_acc}
+	\begin{tabular}{|c|c|c|c|c|}
+		\hline
+		\hline
+		{\it KB}&{\it Avg. Run Time}&{\it \# Errors} & {\it Precision} \tabularnewline
+		\hline
+		\dbpedia & 19min, 40sec& 499 & \textbf{92.38}\%\tabularnewline
+		\yago & 10min, 40sec & 2,237& \textbf{90.61}\%\tabularnewline
+		\wikidata & 1h, 5min, 38sec & 1,776 & \textbf{73.99}\%\tabularnewline
+		\hline
+	\end{tabular}
+\end{table}
+
+Negative rules generally have better accuracy than positive ones. This is mostly due to the completeness of the valdation set: for negative rules the validation is the universe of all possible counter examples stated in the KB, whereas for positive rules the validation set is just a small fraction of it. Therefore usually negative rules are better validated than positive ones. \wikidata shows lower numbers just because it does not contain as many errors as \dbpedia and \yago: even though discovered rules are almost correct, the percentage of actual errors identified is lower in \wikidata. As an examples, our approach identifies the same rule that two people with same gender cannot be married both in \yago and \wikidata. Such rule identifies errors in \yago with 94\% accuracy, while the accuracy in \wikidata for the same rule is 57\%. \yago is the KB with the highest number of errors. As an example, there are 9,057 cases where a child is born before her parent. We cannot point exactly where the error is -- there could be an error in one of the birth dates or an error in the parentship relation -- but we can be sure that at least one of these values is wrong and we can send them to human evaluators to check exactly where the inconsistency is.
+
+Differently from positive rules, literals play a vital role in discovering negative rules. In fact in many cases correct negative rules relies on temporal aspects in which cannot happen before/after something else. Temporal information are usually expressed through dates, years, or other primitive types that are represented as literal values in KBs.
+
+Discovering negative rules is usually faster than discovering positive rules. This is mostly due to the time we spend executing validation queries. Whenever we discover a rule that respect our language bias (Section~\ref{sec:language}), we execute the body of the rule against the KB with a SPARQL query to compute its coverage over the validation set. These queries are faster for negative rules since the validation set is just all the entities connected by the target predicate, hence easier to compute by the SPARQL engine.
+
+\stefano{Shall we show some meaningful rules here?}
 
 \subsection{Comparative Evaluation} ~\label{sec:comp_evaluation}
-Comparison against \amie and evaluation of positive rules.
+We compare the performance of our rules discovery method against \amie~\cite{galarraga2015fast}, the state-of-the-art system in discovery Horn Rules from KBs.
+
+\amie is a rules discovery system designed to discover positive rules. It first loads the entire KB into memory, and then it discover positive rules for every predicate in the KB. \amie lists all the predicates in the KB and insert each of them in the head of the rule. Once the head is filled, the system tries to expand the rule by pivoting on one of the variable of the current predicate and looking for predicates having the same variable with high coverage in the KB. The coverage of  a rule is penalized with the partial closed world assumption, where the set of negative examples for a given pair $(x,y)$ and a target predicate $p$ is all those pairs where $x$ is connected with $p$ to another entity that is not $y$. Differently from us, \amie outputs all possible rules that exceeds a given threshold and rank them according to their coverage function.
+
+Given the in-memory implementation, \amie cannot handle large KBs. We tried to run it on the KBs of Table~\ref{tab:datasetDescr}, but the system goes quickly out of memory. Therefore we downloaded and used the modified versions of \yago and \dbpedia used in their experiments~\footnote{www.mpi-inf.mpg.de/departments/databases-and-information-systems/research/yago-naga/amie/}. These versions consist in the core facts of the KB, without literals and \texttt{rdf:type} facts. Table~\ref{tab:AmieDatasetDescr} summarizes the characheristic of this dataset.
+
+\begin{table}[htb]
+	\centering
+	\caption{\amie Dataset characteristics.}
+	\label{tab:AmieDatasetDescr}
+	\begin{small}
+		\begin{tabular}{|c|c|c|c|c|c|}
+			\hline
+			\hline
+			{\it KB}&{\it Size}&{\it  \#Triples}&{\it \#Predicates}&{\it \#}\texttt{rdf:type}\tabularnewline
+			\hline
+			\dbpedia & 551M & 7M & 10,342 & 22.2M \tabularnewline
+			\yago & 48M & 948.3K & 38 & 77.9M  \tabularnewline
+			\hline
+		\end{tabular}
+	\end{small}
+\end{table}
+
+Removing literals and \texttt{rdf:type} triples drastically reduce the size of the KB (Table~\ref{tab:datasetDescr}). Since our approach needs the type information, we run \amie on its original dataset, while we run our algorithm on the same dataset plus \texttt{rdf:type} triples. The last column of Table~\ref{tab:AmieDatasetDescr} shows how many triples we added to the original \amie dataset.
+
+\myparagraph{Positive Rules} We first compared against \amie on its natural setting: discovery of positive rules. \amie takes as input an entire KB, and discover rules for every relation in the KB. We adapted our system to discover rules for every relation in the KB as follows: we first list all the predicates in the KB, and for each predicate that connects a \emph{subject} to an \emph{object} we computed the most common types for both subject and object. The most common type is computed as the most popular \texttt{rdf:type} that is not super class of any other most popular type. After computing type domain and co-domain for each predicate, we run our approach sequentially on every predicate. Furthemore we set the $maxPathLen$ parameter to 2, since this is the default setting for \amie.
+
+\amie outputs a huge amount of rules along with their score -- 75 otuput rules in \yago, and 6090 in \dbpedia. We followed their experiments setting and picked the first 30 best rules according to their score. We then picked the rules produced by our approach on the head predicate of the 30 best rules output of \amie. Our approach is more conservative and produces muche less rules than \amie. We noticed that for every predicate \amie always produces more than one rule, while there are several cases where the output of our algorithm is empty since none of the plausible rules have enough support. This results, for instance, in just 11 rules in output on the entire \yago. The precision of each rule is computed as explained above with a minor modification: whenever a rule is unknown with its new predictions, we first check the existence of the new induced facts in a newer version of the KB. This is possible because the dataset does not contain the most up to date versions. If a new fact does not appear in the newer version and neither on the Web, is then evaluated as false.
+
+\begin{figure}[t]
+	\centering
+	\includegraphics[width=\columnwidth]{include/figure/vsAmieYago.pdf}
+	\caption{Predictions Accuracy on \yago}
+	\label{fig:vs_amie_yago}
+\end{figure}
+
+Figure~\ref{fig:vs_amie_yago} plots the total number of new unique predictions (x-axis) versus the aggregated precision (y-axis). The $n$-th point from the left represents the total number of predictions and the total precision of these predictions, computed over the first $n$ rules (sorted according to \amie's score). \amie produces many more predictions (262K vs 102K), but with a singnificant lower accuracy. This is due to the high number of rules in output of \amie, but also in the way these rules are ranked. In fact if we limit the output of \amie to 11 rules (same output of our approach), the final accuracy is still 29\% below our approach, with just 10K more predictions. In fact many good rules are preceeded by meanignless rules in the ranked output, and it is not clear how to set a proper $k$ in order to get the best top $k$ rules. Our approach instead understands that in some cases meaningful rules do not exist, and it outputs something only when it has a strong confidence. This results in a lower number of predictions with a very high accuracy (precision is above 85\% with 80K predictions). Moreover, our approach can also simulate \amie if we are more interested in recall. If we modify the $\alpha$ and$\beta$ parameters, we can obtain a higher number of predictions in output, at the expense of accuracy. 
+
+Figure~\ref{fig:vs_amie_dbpedia} shows the same evaluation on \dbpedia. \dbpedia has a richer set of relations, therefore also our approach is capable of producing 30 rules in output. Despite the same number of rules, once again our approach leads to a lower number of predictions (26K vs 41K) with a singificant higher accuracy (85\% vs 74\%). The only point where \amie can outpeform our approach is when we consider the top 3 rules: the third rule discovered by \amie is indeed a universally true rule that produces more than 11K correct predictions.
+
+\myparagraph{Negative Rules}
+As a second set of comparative experiments we used \amie to discover negative rules. \amie is not designed to work in this setting, and can discover rules only for predicates explicitly stated in the KB. Therefore we proceed as follows: we sampled the top 5 most popular predicates in each KB and we created for each predicate a set of negative examples as explained in Section~\ref{sec:examples_gen}. For each negative example we added to the KB a new fact connecting the two entities with the \emph{negation} of the predicate. For example, we added a \texttt{notSpouse} predicate connecting each pair of people who we believe are not married according to our negative examples generation technique. We then run \amie only on these new created predicates. The evaluation of negative rules is then carried out as before: we generate potential errors in the KB, and we manually evaluate the precision of such errors. Table~\ref{tab:vs_amie_neg} shows the results on the two KBs.
+
+\begin{figure}[t]
+	\centering
+	\includegraphics[width=\columnwidth]{include/figure/vsAmieDBPedia.pdf}
+	\caption{Predictions Accuracy on \dbpedia}
+	\label{fig:vs_amie_dbpedia}
+\end{figure}
+
+\begin{table}[htb]
+	\centering
+	\caption{Negative Rules vs \amie.}
+	\label{tab:vs_amie_neg}
+	\begin{small}
+	\begin{tabular}{c|c|c|c|c|}
+		\cline{2-5}
+		& \multicolumn{2}{c|}{\textbf{\amie}} & \multicolumn{2}{c|}{\textbf{\sys}} \tabularnewline
+		\hline
+		\multicolumn{1}{ |c| }{\it KB}&{\it \# Errors} & {\it Precision} &{\it \# Errors} & {\it Precision} \tabularnewline
+		\hline
+		\multicolumn{1}{ |c| }{\dbpedia} & 457 & 38.85\% & 148 & \textbf{57.76}\%\tabularnewline
+		\multicolumn{1}{ |c| }{\yago} & 633 & 48.81\% & 550 & \textbf{68.73}\%\tabularnewline
+		\hline
+	\end{tabular}
+	\end{small}
+\end{table}
+
+Our approach outperforms \amie in both cases of almost 20\%. This is because for the negation of a predicate, we use the actual predicate as counter examples. \amie instead is looking only at the negation of the predicate, hence it is much less precise. In fact the output of \amie consists in a high number of rules for each predicate (often more than 30), and in many cases \amie produces same rules for both the positive and negative scenario. As an examples, \amie outputs that if a country $a$ exports a good $b$, then $a$ imports $b$ and $a$ does not import $b$. 
+
+Despite clearly outperforming \amie, numbers look significnatly lower that the ones showed in Section~\ref{sec:gen_evaluation}. This is because in this experiment we are using the \amie modified KBs which do not contain literals. As previously mentioned, literals play a vital role when discovering negative rules, both in terms of total errors discovered and in terms of precision. Excluding literals is a big disadvntage, and we will show this aspect in details in Section~\ref{sec:int_evaluation}.
+
+
+\myparagraph{Running Time}
+We report here the running time of \amie and our approach on our Desktop machine. Note that numbers here are different from~\cite{galarraga2015fast}, where \amie was run on a 48 GB RAM server. \amie could finish the computation only on \yago 2, while for the other KB it gets stuck without outputting any more rules. When this happened, we stopped the computation after we did not see any new rules in output for more than 2 hours.
+
+\begin{table}[htb]
+	\centering
+	\caption{Run Time vs \amie.}
+	\label{tab:amie_runtime}
+	\begin{scriptsize}
+		\begin{tabular}
+			{|>{\centering} m{1.6cm}|>{\centering}m{0.9cm}|>{\centering}m{1.45cm}|>{\centering}m{0.6cm}|>{\centering}m{0.85cm}|>{\centering}m{0.6cm}|}
+			\hline
+			\hline
+			{\it KB}&{\it\#Triple}&{\it\#Predicates}&{\it\amie}&{\it\sys}&{\it Types Time}\tabularnewline
+			\hline
+			\yago 2& 948.3K & 20 & 30s & 18m,15s & 12s \tabularnewline
+			\yago 2s& 4.1M & 26 (38)& >8h & 47m,10s & 11s  \tabularnewline
+			\dbpedia 2.0& 7M & 904 (10342)& >10h & 7h,12m & 77s  \tabularnewline
+			\dbpedia 3.8& 11M & 237 (649) & >15h & 8h,10m & 37s  \tabularnewline
+			\wikidata & 8.4M & 118 (430) & >25h & 8h,2m & 11s  \tabularnewline
+			\yago 3*& 88.3M & 72 & - & 2h,35m & 128s  \tabularnewline
+			\hline
+		\end{tabular}
+	\end{scriptsize}
+\end{table}
+
+Table~\ref{tab:amie_runtime} reports the running time on different KBs. The first five KBs are the \amie modified version, while \yago 3* is complete \yago, including literals and \texttt{rdf:type}. The third column shows the number of predicates for which \amie was able to produce at least one rule. In some cases \amie got stuck without producing any rules for some predicates, hence we report the total number of predicates in brackests. For a fair comparison we run our algorithm only on those predicates for which \amie could prodcue at least one rule. The foruth and fifth columns report the total running time of the two approaches. Despite being disk-based, our approach can successfully complete the task faster than \amie, except the case of \yago 2. This is because of the very small size of the KB, which can easily fit in main memory. However, when we deal we real KBs (\yago 3*), \amie is not even capable of loading the KB due to out of memory errors. Eventually the last column reports the total time needed to compute \texttt{rdf:type} information for each predicate in the KB. Such time is negligible w.r.t. the total running time. The running time justify the disk-based strategy: our approach can succesfully discover rules for any size KBs on any machine.
+
+\myparagraph{Other Systems}
+We found other available systems to discover rules in KBs. \cite{abedjan2014amending} discover new facts at instance level, hence less generic than our approach. On \amie \yago 2 KB they can discover 2K new facts with a precision lower than 70\%. The best rule we discover on \yago 2 already discovers more than 2K facts with a 100\% precision. Ontological Path Finding (TO CITE) implements \amie algorithm with a focus on scalability. They do not introduce any novelty in the algorithmic part, but just a clever way of splitting the KB into multiple cluster nodes so that the computation can be run in parallel. The output is the same as \amie. Eventually we did not compare with classic Inductive Logic Programming systesm~\cite{dehaspe1999discovery,muggleton1995inverse}, as these are already significantly outperformed by \amie both in accuracy and running time.
 
 \subsection{Machine Learning Application}
-DeepDive.
+The main goal of this set of experiments is to prove the applicability of our approach in helping Machine Learning algorithms to provide meaningful training examples.
+We chose \deepdive~\cite{shin2015incremental}, a Machine Learning approach to incrementally construct KBs. \deepdive extracts entities and relations among entities from text articles via distant supervision. The key idea in distant supervision is to use an external source of information (e.g., a KB) to provide training examples for a supervised algorithm. As an example, the main showcase in \deepdive extracts mentions of married people from text documents. In such scenario \deepdive uses as a first step \dbpedia in order to label some pairs of entities as \emph{true} positive (those pairs of entities that can be found in \dbpedia). These labelled examples are then used to construct a factor graph, similar to Markov Logic, that will be used to predict labels on the rest of the candidates. Unfortunately, a KB can provide only positive examples. Hence in \deepdive the burden of creating negative examples is left to the user thorugh rules definition. 
+
+In this set of experiments we will use our negative rules on \dbpedia to generate negative examples, and compare the output of \deepdive generated with our negative examples with the manually defined negative examples. We used \deepdive showcase example\footnote{\url{http://deepdive.stanford.edu/}}, where the goal is to extract mentions of married people from text articles. \deepdive already provides some negative rules to generate negative examples (e.g., if two people appear in a sentence connected by the word \textit{brother} or \textit{sister} then they are not married). We therefore compare the output of \deepdive using our generated negative examples and the ones generated by \deepdive rules.
+
+\begin{figure}[t]
+	\centering
+	\includegraphics[width=\columnwidth]{include/figure/deepDive1K.pdf}
+	\caption{\deepdive Application 1K articles}
+	\label{fig:deep_dive_1k}
+\end{figure}
+
+Figure~\ref{sec:experiment} shows \deepdive accuracy plot run on 1K documents as input. The accuracy plot shows the ratio of correct positive predictions over positive and negative predications (y-axis), for each probability output value (x-axis). The dotted blue line represents the ideal situation, where the system finds high number of evidence positive predictions for higher probability output values (when the output probability is 0 there should not be positive predictions). The plot is computed over a test set, while the system is trained over a separated training set. The Figure shows 4 lines other than the ideal ones. \sys is the output of \deepdive using our approach to generate negative examples. \texttt{OnlyPos} uses only positive examples from \dbpedia, \texttt{Manual} uses positive examples from \dbpedia and manually defined rules to generate negative examples, while \texttt{ManualSampl} uses only a sample of the negative examples in size equal to positive examples. The first observation is that \texttt{OnlyPos} and \texttt{Manual} do not provide a valid training, as the former has only positive examples and labels everything as true, while the latter has many more negative examples than positive and labels everything as false. \texttt{ManualSampl} is the clear winner, while our approach suffers mostly the absence of data: over the input 1K articles, we could find only 20 positive and 15 negative examples from \dbpedia.
+
+\begin{figure}[b]
+	\centering
+	\includegraphics[width=\columnwidth]{include/figure/deepDive1M.pdf}
+	\caption{\deepdive Application 1M articles}
+	\label{fig:deep_dive_1M}
+\end{figure}
+
+If we extend the input to 1M articles, things change drastically (Figure~\ref{fig:deep_dive_1M}). All the three approaches except \texttt{OnlyPos} can correctly drive \deepdive in the training, with the examples provided with our technique leading to a slightly better result. This is because of the quality of the negative examples: our negative rules generate significant examples that can help \deepdive in understanding discriminatory features between positive and negative labels.
+The output of \texttt{ManualSampl} and \sys are very similar, meaning that we can use our approach to simulate user's behaviour and provide negative examples. With manually defined rules we generate a higher number of examples (23K against 5K generated from \dbpedia), however the results are very similar since a small number of significant examples is enough to provide complete evidence for the training. As long as we have an external source of information with a decent coverage over the input articles, users do not need to worry to provide rules to generate negative examples.
+
+\subsection{Ablation Study} ~\label{sec:int_evaluation}
+
+\myparagraph{Optimization Techniques}
+Limit on incoming and outgoing edges, samples of generation set: random and smart sampling.
+
+\myparagraph{Literals Effect}
+Remove literals from the KB and see what happens.
+
+\myparagraph{Rules Length} Try lenght 2 and 4.
