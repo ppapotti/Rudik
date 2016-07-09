@@ -21,6 +21,7 @@ import asu.edu.neg_rule_miner.model.rdf.graph.Edge;
 import asu.edu.neg_rule_miner.model.rdf.graph.Graph;
 import asu.edu.neg_rule_miner.sparql.SparqlExecutor;
 import asu.edu.neg_rule_miner.sparql.jena.filter.TripleFilter;
+import asu.edu.neg_rule_miner.sparql.jena.filter.TripleFilterFunctional;
 import asu.edu.neg_rule_miner.sparql.jena.remote.QuerySparqlRemoteEndpoint;
 
 public abstract class QueryJenaLibrary extends SparqlExecutor {
@@ -58,6 +59,7 @@ public abstract class QueryJenaLibrary extends SparqlExecutor {
 		if(this.openResource!=null)
 			this.openResource.close();
 		ResultSet results = this.executeQuery(sparqlQuery);
+		
 
 		if(!results.hasNext())
 			LOGGER.debug("Query '{}' returned an empty result!",sparqlQuery);
@@ -67,7 +69,7 @@ public abstract class QueryJenaLibrary extends SparqlExecutor {
 		if(totalTime>50000)
 			LOGGER.debug("Query '{}' took {} seconds to complete.",sparqlQuery, totalTime/1000.);
 
-		TripleFilter tripFil = new TripleFilter();
+		TripleFilterFunctional tripFil = new TripleFilterFunctional();
 
 		//TO DO: read from config file
 		String sub = "sub", rel = "rel", obj = "obj";
