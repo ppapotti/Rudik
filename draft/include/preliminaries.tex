@@ -49,9 +49,9 @@ In order to allow flexibility and errors in both $G$ and $V$, we drop the strict
 
 
 Given a KB $K$, two sets of pair of entities $G$ and $V$ from $K$ where $G \cap V = \emptyset$, and a Horn Rule $r$, the weight of $r$ is defined as follow:
-\begin{equation*}
+\begin{equation} \label{eq:weight_fun}
 	w(r) = \alpha \cdot (1-\frac{\mid C_{r}(G)\mid}{\mid G \mid}) +\beta \cdot (\frac{\mid C_{r}(V) \mid}{\mid U_{r}(V)\mid})  +\gamma \cdot (1-\frac{\mid U_{r}(V)\mid}{\mid V \mid})
-\end{equation*}
+\end{equation}
 with $\alpha,\beta,\gamma \in [0,1]$ and $\alpha + \beta + \gamma = 1$. The weight is a value between $0$ and $1$ that captures the \emph{goodness} of a rule w.r.t. $G$ and $V$: the better the rule, the lower the weight -- perfect rule would have a weight of $0$. The weight is made of three components normalized by the three parameters $\alpha,\beta,\gamma$.
 \begin{inparaenum}[\itshape(i)]
 	\item The first component captures the coverage over the generation set $G$ -- the ratio between the coverage of $r$ over $G$ and $G$ itself. Note that if $r$ covers all elements in $G$, then this component is $0$ because of the subtraction from $1$.

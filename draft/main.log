@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2014) (preloaded format=pdflatex 2014.12.3)  7 JUL 2016 18:51
+This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2014) (preloaded format=pdflatex 2014.12.3)  9 JUL 2016 17:05
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -976,95 +976,92 @@ Overfull \hbox (3.11748pt too wide) in paragraph at lines 43--43
  []|\T1/aer/m/n/8 272,129,814| 
  []
 
-
-Underfull \vbox (badness 3229) has occurred while \output is active []
-
- [6]
+[6]
 Underfull \hbox (badness 10000) in paragraph at lines 103--103
 [][]\T1/aer/m/n/9 www.mpi-inf.mpg.de/departments/databases-and-
  []
 
-[7] <include/figure/vsAmieYago.pdf, id=63, 603.45819pt x 240.1788pt>
+<include/figure/vsAmieYago.pdf, id=57, 603.45819pt x 240.1788pt>
 File: include/figure/vsAmieYago.pdf Graphic file (type pdf)
 
 <use include/figure/vsAmieYago.pdf>
-Package pdftex.def Info: include/figure/vsAmieYago.pdf used on input line 130.
+Package pdftex.def Info: include/figure/vsAmieYago.pdf used on input line 132.
 (pdftex.def)             Requested size: 240.0pt x 95.52008pt.
-
-Underfull \vbox (badness 2351) has occurred while \output is active []
-
-
+ [7]
 <include/figure/vsAmieDBPedia.pdf, id=64, 953.74084pt x 390.79163pt>
 File: include/figure/vsAmieDBPedia.pdf Graphic file (type pdf)
 
 <use include/figure/vsAmieDBPedia.pdf>
 Package pdftex.def Info: include/figure/vsAmieDBPedia.pdf used on input line 14
-4.
+6.
 (pdftex.def)             Requested size: 240.0pt x 98.3357pt.
 
-Overfull \hbox (2.5954pt too wide) in paragraph at lines 184--184
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Overfull \hbox (2.5954pt too wide) in paragraph at lines 186--186
  []|\T1/aer/m/it/7 #Triple| 
  []
 
 
-Overfull \hbox (1.87729pt too wide) in paragraph at lines 184--184
+Overfull \hbox (1.87729pt too wide) in paragraph at lines 186--186
  []|\T1/aer/m/it/7 #Predicates| 
  []
 
 LaTeX Font Info:    Font shape `T1/aess/m/it' in size <7> not available
-(Font)              Font shape `T1/aess/m/sl' tried instead on input line 184.
+(Font)              Font shape `T1/aess/m/sl' tried instead on input line 186.
 
-Overfull \hbox (0.89697pt too wide) in paragraph at lines 184--184
+Overfull \hbox (0.89697pt too wide) in paragraph at lines 186--186
  []|\T1/aess/m/sl/7 AMIE| 
  []
 
 
-Overfull \hbox (3.20708pt too wide) in paragraph at lines 184--185
+Overfull \hbox (3.20708pt too wide) in paragraph at lines 186--187
  []|\T1/aer/m/it/7 Types 
  []
 
 
-Overfull \hbox (1.86296pt too wide) in paragraph at lines 184--185
+Overfull \hbox (1.86296pt too wide) in paragraph at lines 186--187
  \T1/aer/m/it/7 Time| 
  []
 
 
-Overfull \hbox (3.7374pt too wide) in paragraph at lines 186--186
+Overfull \hbox (3.7374pt too wide) in paragraph at lines 188--188
  []|\T1/aer/m/n/7 18m,15s| 
  []
 
 
-Overfull \hbox (3.7374pt too wide) in paragraph at lines 187--187
+Overfull \hbox (3.7374pt too wide) in paragraph at lines 189--189
  []|\T1/aer/m/n/7 47m,10s| 
  []
 
 
-Overfull \hbox (1.54776pt too wide) in paragraph at lines 188--188
+Overfull \hbox (1.54776pt too wide) in paragraph at lines 190--190
  []|\T1/aer/m/n/7 >10h| 
  []
 
 
-Overfull \hbox (1.00047pt too wide) in paragraph at lines 188--188
+Overfull \hbox (1.00047pt too wide) in paragraph at lines 190--190
  []|\T1/aer/m/n/7 7h,12m| 
  []
 
 
-Overfull \hbox (1.54776pt too wide) in paragraph at lines 189--189
+Overfull \hbox (1.54776pt too wide) in paragraph at lines 191--191
  []|\T1/aer/m/n/7 >15h| 
  []
 
 
-Overfull \hbox (1.00047pt too wide) in paragraph at lines 189--189
+Overfull \hbox (1.00047pt too wide) in paragraph at lines 191--191
  []|\T1/aer/m/n/7 8h,10m| 
  []
 
 
-Overfull \hbox (1.54776pt too wide) in paragraph at lines 190--190
+Overfull \hbox (1.54776pt too wide) in paragraph at lines 192--192
  []|\T1/aer/m/n/7 >25h| 
  []
 
 
-Overfull \hbox (1.00047pt too wide) in paragraph at lines 191--191
+Overfull \hbox (1.00047pt too wide) in paragraph at lines 193--193
  []|\T1/aer/m/n/7 2h,35m| 
  []
 
@@ -1073,14 +1070,14 @@ Overfull \hbox (1.00047pt too wide) in paragraph at lines 191--191
 File: include/figure/deepDive1K.pdf Graphic file (type pdf)
 
 <use include/figure/deepDive1K.pdf>
-Package pdftex.def Info: include/figure/deepDive1K.pdf used on input line 210.
+Package pdftex.def Info: include/figure/deepDive1K.pdf used on input line 212.
 (pdftex.def)             Requested size: 240.0pt x 91.00792pt.
 
 <include/figure/deepDive1M.pdf, id=175, 1000.06221pt x 376.4091pt>
 File: include/figure/deepDive1M.pdf Graphic file (type pdf)
 
 <use include/figure/deepDive1M.pdf>
-Package pdftex.def Info: include/figure/deepDive1M.pdf used on input line 219.
+Package pdftex.def Info: include/figure/deepDive1M.pdf used on input line 221.
 (pdftex.def)             Requested size: 240.0pt x 90.32854pt.
  [9 <./include/figure/deepDive1K.pdf> <./include/figure/deepDive1M.pdf>]) (./in
 clude/related.tex) (./include/conclusion.tex) (./main.bbl) [10] (./main.aux)
@@ -1089,10 +1086,10 @@ LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
  ) 
 Here is how much of TeX's memory you used:
- 8683 strings out of 493117
- 110314 string characters out of 6135433
- 236181 words of memory out of 5000000
- 11788 multiletter control sequences out of 15000+600000
+ 8684 strings out of 493117
+ 110329 string characters out of 6135433
+ 235189 words of memory out of 5000000
+ 11789 multiletter control sequences out of 15000+600000
  96527 words of font info for 164 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  41i,12n,35p,3257b,341s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -1123,7 +1120,7 @@ type1/urw/helvetic/uhvb8a.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/u
 rw/helvetic/uhvr8a.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/urw/time
 s/utmb8a.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/urw/times/utmr8a.p
 fb>
-Output written on main.pdf (10 pages, 489443 bytes).
+Output written on main.pdf (10 pages, 489844 bytes).
 PDF statistics:
  382 PDF objects out of 1000 (max. 8388607)
  255 compressed objects within 3 object streams
