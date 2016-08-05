@@ -52,6 +52,11 @@ S.~Schoenmackers, O.~Etzioni, D.~S. Weld, and J.~Davis.
   Natural Language Processing}, pages 1088--1098. Association for Computational
   Linguistics, 2010.
 
+\bibitem{shin2015incremental}
+J.~Shin, S.~Wu, F.~Wang, C.~De~Sa, C.~Zhang, and C.~R{\'e}.
+\newblock Incremental knowledge base construction using deepdive.
+\newblock {\em Proceedings of the VLDB Endowment}, 8(11):1310--1321, 2015.
+
 \bibitem{suchanek2007yago}
 F.~M. Suchanek, G.~Kasneci, and G.~Weikum.
 \newblock Yago: a core of semantic knowledge.
