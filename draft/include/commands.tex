@@ -24,6 +24,8 @@
 \usepackage{mathabx}
 \usepackage{pdfpages}
 \usepackage{paralist}
+\usepackage{setspace}
+\usepackage[ruled,vlined,linesnumbered,shortend]{algorithm2e}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -36,8 +38,8 @@
 \usepackage{multirow}
 \usepackage{url}
 
-\usepackage[noend]{algorithmic}
-\usepackage{algorithm}
+%\usepackage[noend]{algorithmic}
+%\usepackage{algorithm}
 
 
 \let\olditemize\itemize
@@ -63,8 +65,8 @@
 
 \newcommand{\myparagraph}[1]{{\bf #1.}}
 
-\renewcommand{\algorithmicrequire}{\textbf{Input:}}
-\renewcommand{\algorithmicensure}{\textbf{Output:}}
+%\renewcommand{\algorithmicrequire}{\textbf{Input:}}
+%\renewcommand{\algorithmicensure}{\textbf{Output:}}
 
 \definecolor{darkgreen}{rgb}{0.2,0.7,0.2}
 \newcommand{\vamsi}[1]{\textcolor{darkgreen}{Vamsi: #1}}
@@ -94,7 +96,6 @@
 \newcommand{\yago}{\textsc{Yago}\xspace}
 \newcommand{\wikidata}{\textsc{Wikidata}\xspace}
 
-\newcommand{\system}[1]{\textsf{#1}\xspace}
 \newcommand{\amie}{\system{AMIE}}
 \newcommand{\deepdive}{\system{DeepDive}}
 
@@ -178,27 +179,9 @@
 \newcommand{\UPDATE}{\mbox{{\bf update}}\ }
 \newcommand{\SET}{\mbox{{\bf set}}\ }
 \newcommand{\IN}{\mbox{{\bf in}}\ }
-\newcommand{\If}{\mbox{\bf if}\ }
-\newcommand{\Then}{\mbox{\bf then}\ }
-\newcommand{\To}{\mbox{\bf to}\ }
-\newcommand{\Let}{\mbox{\bf let}\ }
-\newcommand{\Continue}{\mbox{\bf continue}\ }
-\newcommand{\Else}{\mbox{\bf else}\ }
-\newcommand{\ElseIf}{\mbox{\bf elseif}\ }
-\newcommand{\While}{\mbox{\bf while}\ }
-\newcommand{\Begin}{\mbox{\bf begin}\ }
-\newcommand{\End}{\mbox{\bf end}\ }
-\newcommand{\Do}{\mbox{\bf do}\ }
-\newcommand{\Downto}{\mbox{\bf downto}\ }
-\newcommand{\Repeat}{\mbox{\bf repeat}\ }
-\newcommand{\Until}{\mbox{\bf until}\ }
-\newcommand{\For}{\mbox{\bf for}\ }
-\newcommand{\ForEach}{\mbox{\bf for each}\ }
 %\newcommand{\Or}{\mbox{\bf or}\ }
 %\renewcommand{\And}{\mbox{\bf and}\ }
 %\newcommand{\Not}{\mbox{\bf not}\ }
-\newcommand{\Return}{\mbox{\bf return}\ }
-\newcommand{\Case}{\mbox{\bf case}\ }
 \newcommand{\Of}{\mbox{\bf of}\ }
 \newcommand{\EndCase}{\mbox{\bf end-case}\ }
 \newcommand{\NIL}{\mbox{\em nil}}
@@ -429,13 +412,15 @@
 \newcommand{\kb}{{\sc kb}\xspace}
 \newcommand{\kbs}{{\sc kb}s\xspace}
 
+\newcommand{\val}[1]{\textsf{#1}\xspace}
 \newcommand{\uk}{{\sc uk}\xspace}
 \newcommand{\us}{{\sc us}\xspace}
-\newcommand{\sys}{{\sc KRD}\xspace}
+\newcommand{\krd}{\val{RuDiK}}
+%\newcommand{\sys}{\krd}
 \newcommand{\REP}{{\sc REP}\xspace}
 \newcommand{\TRX}{{\sc TRX}\xspace}
 
-%\newcommand{\system}{\textsc{Violet}\xspace}
+\newcommand{\system}[1]{\textsf{#1}\xspace}
 \newcommand{\id}{\kw{id}}
 \newcommand{\get}{{\sc get}}
 \newcommand{\op}{\kw{op}}
@@ -492,6 +477,7 @@
 
 \newcommand{\mycirc}[1][black]{\Large\textcolor{#1}{\ensuremath\bullet}}
 
+\newcommand{\bigO}[1]{\ensuremath{\mathcal{O}\left(#1\right)}}
 
 %\newlength{\Oldarrayrulewidth}
 %% Cline redefining to add line thickness

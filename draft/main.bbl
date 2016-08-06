@@ -1,15 +1,42 @@
 \begin{thebibliography}{10}
 
+\bibitem{abedjan2015temporal}
+Z.~Abedjan, C.~G. Akcora, M.~Ouzzani, P.~Papotti, and M.~Stonebraker.
+\newblock Temporal rules discovery for web data cleaning.
+\newblock {\em Proceedings of the VLDB Endowment}, 9(4):336--347, 2015.
+
 \bibitem{abedjan2014amending}
 Z.~Abedjan and F.~Naumann.
 \newblock Amending rdf entities with new facts.
 \newblock In {\em The Semantic Web: ESWC 2014 Satellite Events}, pages
   131--143. Springer, 2014.
 
+\bibitem{abedjan2014dfd}
+Z.~Abedjan, P.~Schulze, and F.~Naumann.
+\newblock Dfd: Efficient functional dependency discovery.
+\newblock In {\em Proceedings of the 23rd ACM International Conference on
+  Conference on Information and Knowledge Management}, pages 949--958. ACM,
+  2014.
+
+\bibitem{abiteboul1995foundations}
+S.~Abiteboul, R.~Hull, and V.~Vianu.
+\newblock {\em Foundations of databases: the logical level}.
+\newblock Addison-Wesley Longman Publishing Co., Inc., 1995.
+
 \bibitem{agrawal1993mining}
 R.~Agrawal, T.~Imieli{\'n}ski, and A.~Swami.
 \newblock Mining association rules between sets of items in large databases.
 \newblock {\em SIGMOD}, 22(2):207--216, 1993.
+
+\bibitem{banko2007open}
+M.~Banko, M.~J. Cafarella, S.~Soderland, M.~Broadhead, and O.~Etzioni.
+\newblock Open information extraction for the web.
+\newblock In {\em IJCAI}, volume~7, pages 2670--2676, 2007.
+
+\bibitem{bertossi2011database}
+L.~Bertossi.
+\newblock Database repairing and consistent query answering.
+\newblock {\em Synthesis Lectures on Data Management}, 3(5):1--121, 2011.
 
 \bibitem{bizer2009dbpedia}
 C.~Bizer, J.~Lehmann, G.~Kobilarov, S.~Auer, C.~Becker, R.~Cyganiak, and
@@ -17,6 +44,30 @@ C.~Bizer, J.~Lehmann, G.~Kobilarov, S.~Auer, C.~Becker, R.~Cyganiak, and
 \newblock Dbpedia-a crystallization point for the web of data.
 \newblock {\em Web Semantics: science, services and agents on the world wide
   web}, 7(3):154--165, 2009.
+
+\bibitem{bollacker2008freebase}
+K.~Bollacker, C.~Evans, P.~Paritosh, T.~Sturge, and J.~Taylor.
+\newblock Freebase: a collaboratively created graph database for structuring
+  human knowledge.
+\newblock In {\em Proceedings of the 2008 ACM SIGMOD international conference
+  on Management of data}, pages 1247--1250. ACM, 2008.
+
+\bibitem{carlson2010toward}
+A.~Carlson, J.~Betteridge, B.~Kisiel, B.~Settles, E.~R. Hruschka~Jr, and T.~M.
+  Mitchell.
+\newblock Toward an architecture for never-ending language learning.
+\newblock In {\em AAAI}, volume~5, page~3, 2010.
+
+\bibitem{chu2013discovering}
+X.~Chu, I.~F. Ilyas, and P.~Papotti.
+\newblock Discovering denial constraints.
+\newblock {\em Proceedings of the VLDB Endowment}, 6(13):1498--1509, 2013.
+
+\bibitem{chu2013holistic}
+X.~Chu, I.~F. Ilyas, and P.~Papotti.
+\newblock Holistic data cleaning: Putting violations into context.
+\newblock In {\em Data Engineering (ICDE), 2013 IEEE 29th International
+  Conference on}, pages 458--469. IEEE, 2013.
 
 \bibitem{chvatal1979greedy}
 V.~Chvatal.
@@ -28,6 +79,14 @@ L.~Dehaspe and H.~Toivonen.
 \newblock Discovery of frequent datalog patterns.
 \newblock {\em Data Mining and knowledge discovery}, 3(1):7--36, 1999.
 
+\bibitem{deshpande2013building}
+O.~Deshpande, D.~S. Lamba, M.~Tourn, S.~Das, S.~Subramaniam, A.~Rajaraman,
+  V.~Harinarayan, and A.~Doan.
+\newblock Building, maintaining, and using knowledge bases: a report from the
+  trenches.
+\newblock In {\em Proceedings of the 2013 ACM SIGMOD International Conference
+  on Management of Data}, pages 1209--1220. ACM, 2013.
+
 \bibitem{dong2014knowledge}
 X.~Dong, E.~Gabrilovich, G.~Heitz, W.~Horn, N.~Lao, K.~Murphy, T.~Strohmann,
   S.~Sun, and W.~Zhang.
@@ -35,15 +94,78 @@ X.~Dong, E.~Gabrilovich, G.~Heitz, W.~Horn, N.~Lao, K.~Murphy, T.~Strohmann,
   fusion.
 \newblock In {\em SIGKDD}, pages 601--610. ACM, 2014.
 
+\bibitem{dong2014data}
+X.~L. Dong, E.~Gabrilovich, G.~Heitz, W.~Horn, K.~Murphy, S.~Sun, and W.~Zhang.
+\newblock From data fusion to knowledge fusion.
+\newblock {\em Proceedings of the VLDB Endowment}, 7(10):881--892, 2014.
+
+\bibitem{dong2015knowledge}
+X.~L. Dong, E.~Gabrilovich, K.~Murphy, V.~Dang, W.~Horn, C.~Lugaresi, S.~Sun,
+  and W.~Zhang.
+\newblock Knowledge-based trust: Estimating the trustworthiness of web sources.
+\newblock {\em Proceedings of the VLDB Endowment}, 8(9):938--949, 2015.
+
+\bibitem{elseidy2014grami}
+M.~Elseidy, E.~Abdelhamid, S.~Skiadopoulos, and P.~Kalnis.
+\newblock Grami: Frequent subgraph and pattern mining in a single large graph.
+\newblock {\em Proceedings of the VLDB Endowment}, 7(7):517--528, 2014.
+
+\bibitem{fan2011discovering}
+W.~Fan, F.~Geerts, J.~Li, and M.~Xiong.
+\newblock Discovering conditional functional dependencies.
+\newblock {\em IEEE Transactions on Knowledge and Data Engineering},
+  23(5):683--698, 2011.
+
 \bibitem{galarraga2015fast}
 L.~Gal{\'a}rraga, C.~Teflioudi, K.~Hose, and F.~M. Suchanek.
 \newblock Fast rule mining in ontological knowledge bases with amie+.
 \newblock {\em {PVLDB}}, 24(6):707--730, 2015.
 
+\bibitem{gc2015big}
+P.~S. GC, C.~Sun, H.~Zhang, F.~Yang, N.~Rampalli, S.~Prasad, E.~Arcaute,
+  G.~Krishnan, R.~Deep, V.~Raghavendra, et~al.
+\newblock Why big data industrial systems need rules and what we can do about
+  it.
+\newblock In {\em Proceedings of the 2015 ACM SIGMOD International Conference
+  on Management of Data}, pages 265--276. ACM, 2015.
+
+\bibitem{hart1968formal}
+P.~E. Hart, N.~J. Nilsson, and B.~Raphael.
+\newblock A formal basis for the heuristic determination of minimum cost paths.
+\newblock {\em IEEE transactions on Systems Science and Cybernetics},
+  4(2):100--107, 1968.
+
+\bibitem{huhtala1999tane}
+Y.~Huhtala, J.~K{\"a}rkk{\"a}inen, P.~Porkka, and H.~Toivonen.
+\newblock Tane: An efficient algorithm for discovering functional and
+  approximate dependencies.
+\newblock {\em The computer journal}, 42(2):100--111, 1999.
+
+\bibitem{kivinen1995approximate}
+J.~Kivinen and H.~Mannila.
+\newblock Approximate inference of functional dependencies from relations.
+\newblock {\em Theoretical Computer Science}, 149(1):129--149, 1995.
+
+\bibitem{min2013distant}
+B.~Min, R.~Grishman, L.~Wan, C.~Wang, and D.~Gondek.
+\newblock Distant supervision for relation extraction with an incomplete
+  knowledge base.
+\newblock In {\em HLT-NAACL}, pages 777--782, 2013.
+
 \bibitem{muggleton1995inverse}
 S.~Muggleton.
 \newblock Inverse entailment and progol.
 \newblock {\em New generation computing}, 13(3-4):245--286, 1995.
+
+\bibitem{muggleton1994inductive}
+S.~Muggleton and L.~De~Raedt.
+\newblock Inductive logic programming: Theory and methods.
+\newblock {\em The Journal of Logic Programming}, 19:629--679, 1994.
+
+\bibitem{richardson2006markov}
+M.~Richardson and P.~Domingos.
+\newblock Markov logic networks.
+\newblock {\em Machine learning}, 62(1-2):107--136, 2006.
 
 \bibitem{schoenmackers2010learning}
 S.~Schoenmackers, O.~Etzioni, D.~S. Weld, and J.~Davis.
@@ -62,14 +184,38 @@ F.~M. Suchanek, G.~Kasneci, and G.~Weikum.
 \newblock Yago: a core of semantic knowledge.
 \newblock In {\em {WWW}}, pages 697--706. ACM, 2007.
 
+\bibitem{suchanek2008yago}
+F.~M. Suchanek, G.~Kasneci, and G.~Weikum.
+\newblock Yago: A large ontology from wikipedia and wordnet.
+\newblock {\em Web Semantics: Science, Services and Agents on the World Wide
+  Web}, 6(3):203--217, 2008.
+
+\bibitem{suchanek2009sofie}
+F.~M. Suchanek, M.~Sozio, and G.~Weikum.
+\newblock Sofie: a self-organizing framework for information extraction.
+\newblock In {\em Proceedings of the 18th international conference on World
+  wide web}, pages 631--640. ACM, 2009.
+
 \bibitem{vrandevcic2014wikidata}
 D.~Vrande{\v{c}}i{\'c} and M.~Kr{\"o}tzsch.
 \newblock Wikidata: a free collaborative knowledgebase.
 \newblock {\em Communications of the ACM}, 57(10):78--85, 2014.
 
+\bibitem{wyss2001fastfds}
+C.~Wyss, C.~Giannella, and E.~Robertson.
+\newblock Fastfds: A heuristic-driven, depth-first algorithm for mining
+  functional dependencies from relation instances.
+\newblock In {\em International Conference on Data Warehousing and Knowledge
+  Discovery}, pages 101--110. Springer, 2001.
+
 \bibitem{zhu2011mining}
 F.~Zhu, Q.~Qu, D.~Lo, X.~Yan, J.~Han, and P.~S. Yu.
 \newblock Mining top-k large structural patterns in a massive network.
 \newblock {\em PVLDB}, 4(11):807--818, 2011.
+
+\bibitem{zou2009distance}
+L.~Zou, L.~Chen, and M.~T. {\"O}zsu.
+\newblock Distance-join: Pattern match query in a large graph database.
+\newblock {\em Proceedings of the VLDB Endowment}, 2(1):886--897, 2009.
 
 \end{thebibliography}

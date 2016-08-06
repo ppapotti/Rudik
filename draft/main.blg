@@ -3,44 +3,97 @@ Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
 The top-level auxiliary file: main.aux
 The style file: abbrv.bst
 Database file #1: DA.bib
-You've used 13 entries,
+Repeated entry---line 1456 of file DA.bib
+ : @article{muggleton1995inverse
+ :                              ,
+I'm skipping whatever remains of this entry
+Repeated entry---line 1467 of file DA.bib
+ : @article{dehaspe1999discovery
+ :                              ,
+I'm skipping whatever remains of this entry
+Repeated entry---line 1478 of file DA.bib
+ : @inproceedings{schoenmackers2010learning
+ :                                         ,
+I'm skipping whatever remains of this entry
+Repeated entry---line 1487 of file DA.bib
+ : @inproceedings{agrawal1993mining
+ :                                 ,
+I'm skipping whatever remains of this entry
+Repeated entry---line 1510 of file DA.bib
+ : @inproceedings{dong2014knowledge
+ :                                 ,
+I'm skipping whatever remains of this entry
+Repeated entry---line 1527 of file DA.bib
+ : @inproceedings{abedjan2014amending
+ :                                   ,
+I'm skipping whatever remains of this entry
+Repeated entry---line 1536 of file DA.bib
+ : @article{galarraga2015fast
+ :                           ,
+I'm skipping whatever remains of this entry
+Repeated entry---line 1548 of file DA.bib
+ : @inproceedings{suchanek2007yago
+ :                                ,
+I'm skipping whatever remains of this entry
+Repeated entry---line 1557 of file DA.bib
+ : @article{bizer2009dbpedia
+ :                          ,
+I'm skipping whatever remains of this entry
+Repeated entry---line 1568 of file DA.bib
+ : @article{vrandevcic2014wikidata
+ :                                ,
+I'm skipping whatever remains of this entry
+Repeated entry---line 1582 of file DA.bib
+ : @article{chvatal1979greedy
+ :                           ,
+I'm skipping whatever remains of this entry
+Repeated entry---line 1594 of file DA.bib
+ : @article{shin2015incremental
+ :                             ,
+I'm skipping whatever remains of this entry
+Repeated entry---line 1730 of file DA.bib
+ : @article{zhu2011mining
+ :                       ,
+I'm skipping whatever remains of this entry
+You've used 38 entries,
             2118 wiz_defined-function locations,
-            663 strings with 8302 characters,
-and the built_in function-call counts, 5627 in all, are:
-= -- 571
-> -- 287
-< -- 4
-+ -- 114
-- -- 100
-* -- 439
-:= -- 907
-add.period$ -- 43
-call.type$ -- 13
-change.case$ -- 89
+            794 strings with 13169 characters,
+and the built_in function-call counts, 16870 in all, are:
+= -- 1696
+> -- 891
+< -- 16
++ -- 352
+- -- 312
+* -- 1307
+:= -- 2687
+add.period$ -- 125
+call.type$ -- 38
+change.case$ -- 268
 chr.to.int$ -- 0
-cite$ -- 13
-duplicate$ -- 194
-empty$ -- 408
-format.name$ -- 100
-if$ -- 1177
+cite$ -- 38
+duplicate$ -- 590
+empty$ -- 1215
+format.name$ -- 312
+if$ -- 3553
 int.to.chr$ -- 0
-int.to.str$ -- 13
-missing$ -- 13
-newline$ -- 68
-num.names$ -- 26
-pop$ -- 83
+int.to.str$ -- 38
+missing$ -- 39
+newline$ -- 193
+num.names$ -- 76
+pop$ -- 268
 preamble$ -- 1
-purify$ -- 76
+purify$ -- 231
 quote$ -- 0
-skip$ -- 140
+skip$ -- 435
 stack$ -- 0
-substring$ -- 418
-swap$ -- 54
-text.length$ -- 4
+substring$ -- 1208
+swap$ -- 181
+text.length$ -- 16
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 52
+type$ -- 150
 warning$ -- 0
-while$ -- 56
-width$ -- 15
-write$ -- 149
+while$ -- 162
+width$ -- 40
+write$ -- 432
+(There were 13 error messages)

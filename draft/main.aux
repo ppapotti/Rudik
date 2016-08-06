@@ -1,91 +1,190 @@
 \relax 
+\citation{bizer2009dbpedia}
+\citation{bollacker2008freebase}
+\citation{vrandevcic2014wikidata}
+\citation{shin2015incremental}
+\citation{suchanek2008yago}
+\citation{carlson2010toward}
+\citation{banko2007open}
+\citation{dong2014knowledge}
+\citation{deshpande2013building}
+\citation{suchanek2009sofie}
+\citation{dong2014knowledge,galarraga2015fast}
 \@writefile{toc}{\contentsline {section}{\numberline {1}Introduction}{\thepage }}
-\newlabel{ex:intro}{{1}{\thepage }}
-\@writefile{toc}{\contentsline {section}{\numberline {2}Preliminaries and Definitions}{\thepage }}
-\@writefile{toc}{\contentsline {subsection}{\numberline {2.1}Language}{\thepage }}
-\newlabel{sec:language}{{2.1}{\thepage }}
-\@writefile{toc}{\contentsline {subsection}{\numberline {2.2}Coverage}{\thepage }}
+\citation{gc2015big}
+\citation{richardson2006markov,shin2015incremental}
+\citation{muggleton1994inductive}
+\citation{abiteboul1995foundations,huhtala1999tane,wyss2001fastfds}
+\citation{chu2013discovering}
 \citation{abedjan2014amending,galarraga2015fast}
+\citation{dehaspe1999discovery,galarraga2015fast,muggleton1995inverse,schoenmackers2010learning}
+\citation{abedjan2014amending,galarraga2015fast}
+\citation{bizer2009dbpedia}
+\citation{suchanek2007yago}
+\citation{vrandevcic2014wikidata}
+\newlabel{ex:krd_intro}{{1}{\thepage }}
+\@writefile{toc}{\contentsline {section}{\numberline {2}Preliminaries and Definitions}{\thepage }}
+\newlabel{sec:krd_prel}{{2}{\thepage }}
+\citation{muggleton1994inductive}
+\citation{galarraga2015fast}
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.1}Language}{\thepage }}
+\newlabel{sec:krd_language}{{2.1}{\thepage }}
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.2}Rules Coverage}{\thepage }}
+\citation{dong2014knowledge,min2013distant}
+\citation{abedjan2014amending,galarraga2015fast}
+\citation{dong2014knowledge,shin2015incremental,suchanek2007yago}
+\citation{suchanek2009sofie}
 \@writefile{toc}{\contentsline {subsection}{\numberline {2.3}Weight Function}{\thepage }}
+\newlabel{sec:krd_weight_fun}{{2.3}{\thepage }}
 \newlabel{eq:weight_fun}{{1}{\thepage }}
 \citation{chvatal1979greedy}
 \citation{galarraga2015fast}
+\citation{bizer2009dbpedia}
 \@writefile{toc}{\contentsline {subsection}{\numberline {2.4}Problem Definition}{\thepage }}
+\newlabel{sec:krd_prob_def}{{2.4}{\thepage }}
 \@writefile{toc}{\contentsline {section}{\numberline {3}Rules Generation}{\thepage }}
+\newlabel{sec:rules_gen}{{3}{\thepage }}
 \@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces Graph Portion of \textsc  {DBPedia}\xspace  }}{\thepage }}
-\newlabel{fig:graph_example}{{1}{\thepage }}
+\newlabel{fig:krd_graph_example}{{1}{\thepage }}
 \citation{dong2014knowledge,galarraga2015fast}
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.1}Literals and Constants}{\thepage }}
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.2}Input Examples Generation}{\thepage }}
-\newlabel{sec:examples_gen}{{3.2}{\thepage }}
 \citation{galarraga2015fast}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.1}Input Examples Generation}{\thepage }}
+\newlabel{sec:ex_generation}{{3.1}{\thepage }}
+\citation{abedjan2014amending,galarraga2015fast}
+\citation{chvatal1979greedy}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.2}Literals and Constants}{\thepage }}
+\@writefile{toc}{\contentsline {section}{\numberline {4}$A^*$ Greedy Algorithm}{\thepage }}
+\newlabel{sec:krd_greedy}{{4}{\thepage }}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.1}Marginal Weight}{\thepage }}
+\citation{chvatal1979greedy}
+\citation{hart1968formal}
+\@writefile{loa}{\contentsline {algocf}{\numberline {1}{\ignorespaces Greedy Rules Selection.}}{\thepage }}
+\newlabel{alg:krd_greedy}{{1}{\thepage }}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.2}$A^*$ Graph Traversal}{\thepage }}
+\citation{abiteboul1995foundations}
+\newlabel{lemma:krd_exp_cov}{{1}{\thepage }}
+\newlabel{def:est_res_wei}{{3}{\thepage }}
+\newlabel{alg_line:front_nodes}{{2}{\thepage }}
+\newlabel{alg_line:sparql_1}{{3}{\thepage }}
+\newlabel{alg_line:q_r_initialisation}{{4}{\thepage }}
+\newlabel{alg_line:valid_rule}{{8}{\thepage }}
+\newlabel{alg_line:exp_condition}{{10}{\thepage }}
+\newlabel{alg_line:sparql_2}{{12}{\thepage }}
+\@writefile{loa}{\contentsline {algocf}{\numberline {2}{\ignorespaces \textsf  {RuDiK}\xspace  Rules Discovery.}}{\thepage }}
+\newlabel{alg:krd_a*}{{2}{\thepage }}
 \citation{galarraga2015fast}
-\@writefile{toc}{\contentsline {section}{\numberline {4}A* Greedy Algorithm}{\thepage }}
-\newlabel{sec:greedy_alg}{{4}{\thepage }}
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.1}Optimality}{\thepage }}
 \@writefile{toc}{\contentsline {section}{\numberline {5}Experiments}{\thepage }}
-\newlabel{sec:experiment}{{5}{\thepage }}
+\newlabel{sec:krd_experiments}{{5}{\thepage }}
 \citation{bizer2009dbpedia}
 \citation{suchanek2007yago}
 \citation{vrandevcic2014wikidata}
 \citation{galarraga2015fast}
+\@writefile{lot}{\contentsline {table}{\numberline {1}{\ignorespaces Dataset characteristics.}}{\thepage }}
+\newlabel{tab:krdDatasetDescr}{{1}{\thepage }}
 \@writefile{toc}{\contentsline {subsection}{\numberline {5.1}Rules Discovery Accuracy}{\thepage }}
 \newlabel{sec:gen_evaluation}{{5.1}{\thepage }}
-\@writefile{lot}{\contentsline {table}{\numberline {1}{\ignorespaces Dataset characteristics.}}{\thepage }}
-\newlabel{tab:datasetDescr}{{1}{\thepage }}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {5.1.1}Positive Rules Discovery}{\thepage }}
 \@writefile{lot}{\contentsline {table}{\numberline {2}{\ignorespaces Positive Rules Accuracy.}}{\thepage }}
 \newlabel{tab:pos_rules_acc}{{2}{\thepage }}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {5.1.2}Negative Rules Discovery}{\thepage }}
 \citation{galarraga2015fast}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.2}Comparative Evaluation}{\thepage }}
+\newlabel{sec:krd_comparative}{{5.2}{\thepage }}
 \@writefile{lot}{\contentsline {table}{\numberline {3}{\ignorespaces Negative Rules Accuracy.}}{\thepage }}
 \newlabel{tab:neg_rules_acc}{{3}{\thepage }}
-\@writefile{toc}{\contentsline {subsection}{\numberline {5.2}Comparative Evaluation}{\thepage }}
-\newlabel{sec:comp_evaluation}{{5.2}{\thepage }}
-\@writefile{lot}{\contentsline {table}{\numberline {4}{\ignorespaces \textsf  {AMIE}\xspace  Dataset characteristics.}}{\thepage }}
-\newlabel{tab:AmieDatasetDescr}{{4}{\thepage }}
+\newlabel{tab:krd_rules_example}{{5.1.2}{\thepage }}
+\@writefile{lot}{\contentsline {table}{\numberline {4}{\ignorespaces Interesting Output Rules.}}{\thepage }}
+\@writefile{lot}{\contentsline {table}{\numberline {5}{\ignorespaces \textsf  {AMIE}\xspace  Dataset characteristics.}}{\thepage }}
+\newlabel{tab:AmieDatasetDescr}{{5}{\thepage }}
 \citation{galarraga2015fast}
 \@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces Predictions Accuracy on \textsc  {Yago}\xspace  }}{\thepage }}
 \newlabel{fig:vs_amie_yago}{{2}{\thepage }}
 \@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces Predictions Accuracy on \textsc  {DBPedia}\xspace  }}{\thepage }}
 \newlabel{fig:vs_amie_dbpedia}{{3}{\thepage }}
-\@writefile{lot}{\contentsline {table}{\numberline {5}{\ignorespaces Negative Rules vs \textsf  {AMIE}\xspace  .}}{\thepage }}
-\newlabel{tab:vs_amie_neg}{{5}{\thepage }}
-\@writefile{lot}{\contentsline {table}{\numberline {6}{\ignorespaces Run Time vs \textsf  {AMIE}\xspace  .}}{\thepage }}
-\newlabel{tab:amie_runtime}{{6}{\thepage }}
+\@writefile{lot}{\contentsline {table}{\numberline {6}{\ignorespaces Negative Rules vs \textsf  {AMIE}\xspace  .}}{\thepage }}
+\newlabel{tab:vs_amie_neg}{{6}{\thepage }}
 \citation{abedjan2014amending}
 \citation{dehaspe1999discovery,muggleton1995inverse}
 \citation{shin2015incremental}
+\@writefile{lot}{\contentsline {table}{\numberline {7}{\ignorespaces Run Time vs \textsf  {AMIE}\xspace  .}}{\thepage }}
+\newlabel{tab:amie_runtime}{{7}{\thepage }}
 \@writefile{toc}{\contentsline {subsection}{\numberline {5.3}Machine Learning Application}{\thepage }}
+\newlabel{sec:krd_deep_dive}{{5.3}{\thepage }}
 \@writefile{lof}{\contentsline {figure}{\numberline {4}{\ignorespaces \textsf  {DeepDive}\xspace  Application 1K articles}}{\thepage }}
 \newlabel{fig:deep_dive_1k}{{4}{\thepage }}
+\citation{abedjan2014amending,galarraga2015fast}
 \@writefile{lof}{\contentsline {figure}{\numberline {5}{\ignorespaces \textsf  {DeepDive}\xspace  Application 1M articles}}{\thepage }}
 \newlabel{fig:deep_dive_1M}{{5}{\thepage }}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.4}Internal Evaluation}{\thepage }}
+\newlabel{sec:krd_int_evaluation}{{5.4}{\thepage }}
+\@writefile{lot}{\contentsline {table}{\numberline {8}{\ignorespaces Rules Accuracy without Literals on \textsc  {DBPedia}\xspace  .}}{\thepage }}
+\newlabel{tab:literals_effect}{{8}{\thepage }}
+\@writefile{lot}{\contentsline {table}{\numberline {9}{\ignorespaces $maxPathLen$ Parameter Impact on \textsc  {DBPedia}\xspace  .}}{\thepage }}
+\newlabel{tab:rules_len_impact}{{9}{\thepage }}
+\@writefile{lot}{\contentsline {table}{\numberline {10}{\ignorespaces Effect of Negative Examples Generation Strategy on \textsc  {DBPedia}\xspace  .}}{\thepage }}
+\newlabel{tab:random_neg_examples}{{10}{\thepage }}
+\@writefile{toc}{\contentsline {section}{\numberline {6}Related Work}{\thepage }}
+\newlabel{sec:krd_related}{{6}{\thepage }}
+\citation{abiteboul1995foundations}
+\citation{abedjan2014dfd}
+\citation{huhtala1999tane}
+\citation{wyss2001fastfds}
+\citation{fan2011discovering}
+\citation{chu2013discovering}
+\citation{bertossi2011database,chu2013holistic}
+\citation{abedjan2015temporal,kivinen1995approximate}
 \citation{galarraga2015fast}
-\citation{zhu2011mining}
 \citation{abedjan2014amending}
-\citation{muggleton1995inverse}
+\citation{muggleton1994inductive}
 \citation{dehaspe1999discovery}
+\citation{muggleton1995inverse}
+\citation{galarraga2015fast}
 \citation{schoenmackers2010learning}
-\citation{suchanek2007yago}
-\citation{bizer2009dbpedia}
-\citation{vrandevcic2014wikidata}
 \citation{agrawal1993mining}
+\citation{dong2014data,dong2014knowledge}
+\citation{galarraga2015fast}
+\citation{dong2015knowledge}
+\citation{elseidy2014grami,zou2009distance}
+\citation{zhu2011mining}
 \bibstyle{abbrv}
 \bibdata{DA}
-\bibcite{abedjan2014amending}{1}
-\bibcite{agrawal1993mining}{2}
-\bibcite{bizer2009dbpedia}{3}
-\bibcite{chvatal1979greedy}{4}
-\bibcite{dehaspe1999discovery}{5}
-\bibcite{dong2014knowledge}{6}
-\bibcite{galarraga2015fast}{7}
-\bibcite{muggleton1995inverse}{8}
-\bibcite{schoenmackers2010learning}{9}
-\bibcite{shin2015incremental}{10}
-\bibcite{suchanek2007yago}{11}
-\bibcite{vrandevcic2014wikidata}{12}
-\bibcite{zhu2011mining}{13}
-\@writefile{toc}{\contentsline {subsection}{\numberline {5.4}Ablation Study}{\thepage }}
-\newlabel{sec:int_evaluation}{{5.4}{\thepage }}
-\@writefile{toc}{\contentsline {section}{\numberline {6}Related Work}{\thepage }}
+\bibcite{abedjan2015temporal}{1}
+\bibcite{abedjan2014amending}{2}
+\bibcite{abedjan2014dfd}{3}
+\bibcite{abiteboul1995foundations}{4}
+\bibcite{agrawal1993mining}{5}
+\bibcite{banko2007open}{6}
+\bibcite{bertossi2011database}{7}
+\bibcite{bizer2009dbpedia}{8}
+\bibcite{bollacker2008freebase}{9}
+\bibcite{carlson2010toward}{10}
+\bibcite{chu2013discovering}{11}
+\bibcite{chu2013holistic}{12}
+\bibcite{chvatal1979greedy}{13}
+\bibcite{dehaspe1999discovery}{14}
+\bibcite{deshpande2013building}{15}
+\bibcite{dong2014knowledge}{16}
+\bibcite{dong2014data}{17}
+\bibcite{dong2015knowledge}{18}
+\bibcite{elseidy2014grami}{19}
+\bibcite{fan2011discovering}{20}
+\bibcite{galarraga2015fast}{21}
 \@writefile{toc}{\contentsline {section}{\numberline {7}Conclusion}{\thepage }}
 \@writefile{toc}{\contentsline {section}{\numberline {8}References}{\thepage }}
+\bibcite{gc2015big}{22}
+\bibcite{hart1968formal}{23}
+\bibcite{huhtala1999tane}{24}
+\bibcite{kivinen1995approximate}{25}
+\bibcite{min2013distant}{26}
+\bibcite{muggleton1995inverse}{27}
+\bibcite{muggleton1994inductive}{28}
+\bibcite{richardson2006markov}{29}
+\bibcite{schoenmackers2010learning}{30}
+\bibcite{shin2015incremental}{31}
+\bibcite{suchanek2007yago}{32}
+\bibcite{suchanek2008yago}{33}
+\bibcite{suchanek2009sofie}{34}
+\bibcite{vrandevcic2014wikidata}{35}
+\bibcite{wyss2001fastfds}{36}
+\bibcite{zhu2011mining}{37}
+\bibcite{zou2009distance}{38}
