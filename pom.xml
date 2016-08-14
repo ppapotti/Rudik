@@ -5,7 +5,7 @@
 	<groupId>asu.edu</groupId>
 	<artifactId>rule_miner</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<packaging>jar</packaging>
+	<packaging>war</packaging>
 
 	<name>rule_miner</name>
 	<url>http://maven.apache.org</url>
