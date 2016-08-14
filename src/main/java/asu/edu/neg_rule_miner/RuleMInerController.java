@@ -187,7 +187,26 @@ temp.put("http://dbpedia.org/ontology/producer(v0,object) & http://dbpedia.org/o
         //	
 	}
     
-    
+	
+	@POST
+	@Path("UpdateResult")
+	@Produces(MediaType.TEXT_PLAIN)
+	@Consumes(MediaType.APPLICATION_JSON)
+	public String updateRuleResult(String jsonString) {
+		try {
+			System.out.println("**********UpdateRuleResultString  = " + jsonString);
+			//rule_miner rm = new ObjectMapper().readValue(jsonString, rule_miner.class);
+			//System.out.println("Last Name  = " + rm.getMaxNoRule());
+			String result = "Result read !!!!" ;
+			System.out.println(result);
+
+			return (result);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return "\n\n<Error>\n\t<Error Message>Please check the passed Input XML !!!!</Error Message>\n<Error> ";
+		}
+	}
+	
    
     @POST
     @Produces(MediaType.TEXT_PLAIN)

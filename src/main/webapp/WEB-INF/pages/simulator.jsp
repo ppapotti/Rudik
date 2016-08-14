@@ -26,6 +26,7 @@
 var count1=1000;
 var idx=0;
 var examples = [];
+var rules = [];
 
 	$(document).ready(function(){
 		$("#dialogBox").dialog({
@@ -33,7 +34,8 @@ var examples = [];
             autoOpen: false,
             title: "Rule specific example ",
             show : "blind", 
-            hide : "blind"
+            hide : "blind",
+            width: "auto"
         });
 		
 /* 		$( "#1009" ).click(function() {
@@ -168,6 +170,45 @@ var examples = [];
 		}
 		
 	}
+	function updateRuleStatus(){
+		$('#RuleMinerRules_response').val(" ");
+		document.getElementById('loader').style.visibility = "visible";
+		disableEntireForm();
+		var url = '/rule_miner/webapi/RuleMiner/UpdateResult';
+		//var dataString = document.getElementById('RuleMinerItem_request').value;
+		var ct;
+		var ruleValidVal = [] ;
+		for(ct=0;ct<idx;ct++)
+		{
+			var radios = document.getElementsByName("radioVal"+ct);
+			for (var i = 0, length = radios.length; i < length; i++) {
+			    if (radios[i].checked) {
+			        ruleValidVal[ct] = radios[i].value;
+			        break;
+			    }
+			}
+		}
+		var dataString = {
+				"rules": rules,
+				"UpdateValidVal": ruleValidVal
+		}
+		$.ajax({
+				type : 'POST',
+				url : url,
+				contentType : 'application/json',
+				data : JSON.stringify(dataString),
+				success : function(opData) {
+					$('#exmplDialog').val(opData);
+					$("#dialogBox").dialog("open");
+				},
+				complete : function(res){
+						document.getElementById('loader').style.visibility = "hidden";
+						enableEntireForm();
+				}
+			});
+	}	
+	
+	
 	function ajaxPostRuleMinerItem() {
 		$('#RuleMinerRules_response').val(" ");
 		//$('#RuleMinerItem_response').val(" ");
@@ -230,7 +271,7 @@ var examples = [];
 						
 					$.each(resultPost, function (key, value) {
 						//alert("key --"+key+"  value--"+value);
-					  var list = $('<ul style="list-style-type:none"></ul>');
+					  //var list = $('<ul style="list-style-type:none"></ul>');
 					  if(key == "rows")
 					  {
 						  $.each(value, function (innerKey, innerVal) {
@@ -247,10 +288,11 @@ var examples = [];
 								}
 								if(((innerKey1.substring(0, 6)).localeCompare("RuleID")) == 0)
 								{
+									rules[idx] = innerVal1;
 									//alert("innerKey --"+innerKey1+ "  Concat -- "+innerKey1.substring(0, 6)+ " values "+innerVal1);
 							  		$('div#foo').append('<tr><td width="90%"><a href= "#" onClick="return openModalWindowForRule(this.id,idx);" id= "diag'+idx+ '" >'+ innerVal1 + '</a></td>'
-									    + '<td width="10%" ><div class="post-date"><input type="radio"  name="sex" value="yes">Valid  </input>' 
-									    + '<input type="radio" name="sex" align="right" value="no">Invalid</input></div></td></tr>');
+									    + '<td width="10%" ><div class="post-date"><input type="radio" id="radioVal'+idx+'" name="radioVal'+idx+'"  value="yes">Valid  </input>' 
+									    + '<input type="radio" id="radioVal'+idx+'" name="radioVal'+idx+'" align="right" value="no">Invalid</input></div></td></tr>');
 								}
 						  	count1++;
 						  	
@@ -287,16 +329,20 @@ var examples = [];
 </head>
 
 <body onload="updateDefaultConfig()">
-<div id="dialogBox" title="My Dialog Title">
-<p><input width="100%" type="text" id="exmplDialog"/>
-</p>  
+<div id="dialogBox"  title="My Dialog Title">
+<table width="100%" height="100%">
+<tr height="100%">
+<td width="100%">
+<textarea style="margin: 0px; width: 1398px;"  id="exmplDialog"></textarea>
+</td> 
+</tr></table>
 </div>
 
 <table width="100%" height="100%">
 	<tr>
 		<td colspan="6" class="headerClass"><p>
 			<h1 style="color: white" align="center">RULE MINOR WEB TOOL</h1>
-		</p></td>
+		</td>
 	</tr>
 	<tr>
 		<td width="100%">
@@ -505,7 +551,7 @@ var examples = [];
 			</tr>
 			<tr height="10%" >
 				<td>
-					<a class="buttonClass" href="#" onClick="return generate();">Generate</a>
+					<a class="buttonClass" href="#" onClick="return updateRuleStatus();">Update Result</a>
 				</td>
 			</tr>
 			</table>
