@@ -1,0 +1,213 @@
+	
+html{
+   margin: 0px;
+   height: 100%;
+   width: 100%;
+}
+
+body {
+   margin: 0px;
+   height: 100%;
+   width: 100%;
+   font-family: Ubuntu;
+}
+
+html {
+  height: 100%;
+  background: #e3e3e0;
+}
+a {
+  text-decoration: none;
+}
+:focus, :active {
+  outline: 0;
+}
+
+* { 
+  -moz-box-sizing: border-box; 
+  -webkit-box-sizing: border-box; 
+  box-sizing: border-box;
+}
+
+.input {
+   font-family: Ubuntu;
+   color: #808080;
+}
+
+.buttonClass {
+		 background: #1E90FF;
+		  background-image: -webkit-linear-gradient(top, #3498db, #2980b9);
+		  background-image: -moz-linear-gradient(top, #3498db, #2980b9);
+		  background-image: -ms-linear-gradient(top, #3498db, #2980b9);
+		  background-image: -o-linear-gradient(top, #3498db, #2980b9);
+		  background-image: linear-gradient(to bottom, #3498db, #2980b9);
+		  -webkit-border-radius: 28;
+		  -moz-border-radius: 28;
+		  border-radius: 28px;
+		  font-family: Neutraface;
+		  color: #ffffff;
+		  font-size: 14px;
+		  padding: 10px 20px 10px 20px;
+		  text-decoration: none;
+		  line-height: 350%;
+		  width: 200px;
+
+}
+
+.leftClass {
+	overflow: auto;  
+	background: #BBDEFB;
+	width:33%; 
+	height: 40%;
+		 
+}
+ 
+
+.footerClass{
+	background: #335CD6; 
+	color: white;	
+	width:100%;
+	height: 20px;
+	text-align: center;
+}
+
+.textAreaClass{
+	 width:99%;
+	 height:99%;
+	 
+}
+
+.accAreaClass{
+	 width:99%;
+	 height:99%;
+	 
+}
+
+.bodyClass{
+		background:#ffffff; 
+		width:100%; 
+		height:100%;
+
+}
+
+
+.tableClass {
+	background:#ffffff;  
+	border:2px solid #ccc; 
+    border-radius: 5px;
+    width:100%;
+    overflow-y: auto;
+	overflow-x: auto;
+	display: table;
+    border-collapse: separate;
+    border-spacing: 5px;
+    border-color: gray;
+    vertical-align:top;
+}
+
+.accClass {
+	background:#BBDEFB; 
+	border:2px solid #ccc; 
+    border-radius: 5px;
+    width:100%;
+    overflow-y: auto;
+	overflow-x: auto;
+	display: table;
+    border-collapse: separate;
+    border-spacing: 5px;
+    border-color: gray;
+}
+ .headerClass{
+	background: #1A237E; 
+	color: white;	
+	width:100%;
+	height: 10%;
+	text-align: left;
+	padding-left: 3%;
+}
+
+ .subheaderClass{
+	background: #1A237E; 
+	color: white;	
+	width:100%;
+	text-align: left;
+	padding-left: 3%;
+}
+
+output { 
+  position: absolute;
+  background-image: linear-gradient(#3498db, #2980b9);
+  width: 20px; 
+  height: 15px; 
+  text-align: center; 
+  color: white; 
+  border-radius: 10px; 
+  display: inline-block; 
+  font: 10px/15px Ubuntu;
+  bottom: 80%;
+  left: 0;
+  margin-left: 40%;
+}
+output:after { 
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 0;
+  border-top: 7px solid #2980b9;
+  border-left: 3px solid transparent;
+  border-right: 3px solid transparent;
+  top: 100%;
+  left: 50%;
+  margin-left: -5px;
+  margin-top: -1px;
+}
+form { 
+  position: relative; 
+  font-family: Ubuntu;
+}
+body {
+  padding: 5px;
+}
+
+/* Font Import
+--------------------------------------------- */
+@import url(http://fonts.googleapis.com/css?family=Poiret+One);
+
+/* Accordion Customizations
+--------------------------------------------- */
+#accordion .panelClass {
+    background: #1A237E;
+    color: #ffffff;
+		  font-family: Ubuntu;
+		  color: #ffffff;
+		  font-size: 14px;
+		  padding: 10px 20px 10px 20px;
+		  text-decoration: none;
+		  line-height: 100%;
+}
+
+#toggle {
+    background: #000;
+    color: #fff;
+  	font-family: Ubuntu;
+
+}
+
+.accordion-body p {
+    font-size: 18px;
+    font-family: Ubuntu;
+}
+
+#accordion .ui-accordion-content {
+  	box-shadow: inset 0px -1px 0px 0px rgba(0, 0, 0, .4),
+	inset 0px 1px 1px 0px rgba(0, 0, 0, .2);
+	width: 100%;
+	background-color: #f3f3f3;
+	color: #777;
+	font-size: 10pt;
+	line-height: 16pt;
+}
+
+.post-date {
+    float: right;
+}
