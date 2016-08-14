@@ -2,6 +2,7 @@ package asu.edu.neg_rule_miner.configuration;
 
 import java.lang.reflect.Constructor;
 
+import asu.edu.neg_rule_miner.rule_miner;
 import org.apache.commons.configuration.Configuration;
 import org.apache.commons.configuration.ConfigurationException;
 import org.apache.commons.configuration.XMLConfiguration;
@@ -16,6 +17,7 @@ import asu.edu.neg_rule_miner.sparql.SparqlExecutor;
 
 public class ConfigurationFacility {
 
+	public static rule_miner rm1;
 	private static Configuration instance;
 
 	private final static Logger LOGGER = LoggerFactory.getLogger(ConfigurationFacility.class.getName());
@@ -34,14 +36,37 @@ public class ConfigurationFacility {
 		initialiseConfiguration(confFileName);
 	}
 
+	/* 
+	 * Varun Gaur: Changes to override the default config with User specific Configs
+	 */
+	public static void setUserParameters(rule_miner rmUser)
+	{
+		rm1 = rmUser;
+		System.out.println("Value are : "+rm1);
+	}
 
+	public static Configuration setUserSpecificConfiguration(Configuration confUser)
+	{
+		confUser.setProperty(Constant.CONF_SCORE_ALPHA, rm1.getAlpha());
+		confUser.setProperty(Constant.CONF_SCORE_BETA, rm1.getBeta());
+		confUser.setProperty(Constant.CONF_SCORE_GAMMA, rm1.getGamma());
+		confUser.setProperty(Constant.CONF_MAX_RULE_LEN, rm1.getMaxNoRule());
+		confUser.setProperty(Constant.CONF_NUM_THREADS, rm1.getNoOfThreads());
+		System.out.println("Value ==="+confUser);
+		return confUser;
+	
+	}
+	
 	private static void initialiseConfiguration(String confFileName){
 		BasicConfigurator.configure(new NullAppender());
 
 		Configuration config = null;
 		try {
 			config = new XMLConfiguration(confFileName);
+			if(rm1 != null)
+				config = setUserSpecificConfiguration(config);
 		} catch (ConfigurationException e) {
+			e.printStackTrace();
 			throw new RuleMinerException("Unable to read conf file at ''"+
 					Constant.CONF_FILE, e);
 		}

@@ -1,8 +1,8 @@
 package asu.edu.neg_rule_miner.configuration;
 
 public class Constant {
-	public static String CONF_FILE = "src/main/config/Configuration.xml";
-
+	//public static String CONF_FILE = "src/main/config/Configuration.xml";
+	public static String CONF_FILE = "Configuration.xml";
 	//parameter paths of the conf file
 	public static String CONF_LOGGER = "logfile";
 
