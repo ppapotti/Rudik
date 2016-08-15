@@ -282,9 +282,10 @@ var rules = [];
 									    + '<td width="20%" ><div class="post-date"><input type="radio" id="radioVal'+idx+'" name="radioVal'+idx+'"  value="yes">Valid  </input>' 
 									    + '<input type="radio" id="radioVal'+idx+'" name="radioVal'+idx+'" align="right" value="no">Invalid</input></div></td></tr>');
 								}
-						  	count1++;
+						  		count1++;
 						  	
 						  	});
+						  	idx++;
 						  });
 						  
 						  
@@ -436,7 +437,7 @@ var rules = [];
 					<INPUT type="text" id="edgeLimit" class="textbox" name="edgeLimit" value="" title="Edge Limit" />
 				</td>
 				<td>
-					<label for="genLimit" class="label">Generation Limit</label> 
+					<label for="genLimit" class="label">Generation/Sampling Limit</label> 
 				</td>
 				<td>
 					<INPUT type="text" id="genLimit" class="textbox" name="genLimit" title="Generation Limit" />
