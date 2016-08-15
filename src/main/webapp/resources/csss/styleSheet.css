@@ -234,9 +234,9 @@ textarea#exmplDialog {
 
 .ui-widget-header {
 	box-shadow:0 4px 6px rgba(0,0,0,0.1)!important;
-   	background:linear-gradient(#F9EFAF, #808080)!important;
-	background:-o-linear-gradient(#F9EFAF, #808080)!important;
-	background:-ms-linear-gradient(#F9EFAF, #808080)!important;
-	background:-moz-linear-gradient(#F9EFAF, #808080)!important;
-	background:-webkit-linear-gradient(#F9EFAF, #808080)!important;
+   	background:linear-gradient(#335CD6, #2980b9)!important;
+	background:-o-linear-gradient(#335CD6, #2980b9)!important;
+	background:-ms-linear-gradient(#335CD6, #2980b9)!important;
+	background:-moz-linear-gradient(#335CD6, #2980b9)!important;
+	background:-webkit-linear-gradient(#335CD6, #2980b9)!important;
 }
