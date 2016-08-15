@@ -141,17 +141,16 @@ public class RuleMInerController {
 		covExm1.add("(http://dbpedia.org/resource/The_Housemartins,http://dbpedia.org/resource/Norman_Cook)");
 		covExm2.add("(http://dbpedia.org/resource/Luny_Tunes,http://dbpedia.org/resource/DJ_Nelson)");
 		covExm2.add("(http://dbpedia.org/resource/Eli_Young_Band,http://dbpedia.org/resource/Frank_Liddell)");
-		
-temp.put("http://dbpedia.org/ontology/associatedBand(object,subject) & http://dbpedia.org/ontology/associatedMusicalArtist(object,v0) & http://dbpedia.org/ontology/associatedMusicalArtist(v0,v0)",(ArrayList<String>) covExm1);
-temp.put("http://dbpedia.org/ontology/producer(v0,object) & http://dbpedia.org/ontology/album(v1,v0) & http://dbpedia.org/ontology/producer(v1,subject)",(ArrayList<String>) covExm2);
+
+		temp.put("http://dbpedia.org/ontology/associatedBand(object,subject) & http://dbpedia.org/ontology/associatedMusicalArtist(object,v0) & http://dbpedia.org/ontology/associatedMusicalArtist(v0,v0)",
+				(ArrayList<String>) covExm1);
+		temp.put("http://dbpedia.org/ontology/producer(v0,object) & http://dbpedia.org/ontology/album(v1,v0) & http://dbpedia.org/ontology/producer(v1,subject)",(ArrayList<String>) covExm2);
 
 		
 
         // Inserting Rules !!!
 		JSONArray rulesHead = new JSONArray();
 		JSONArray ruleIds = new JSONArray();
-		
-		
 		
         for(int i=0;i<temp.size();i++)
         {
@@ -165,26 +164,14 @@ temp.put("http://dbpedia.org/ontology/producer(v0,object) & http://dbpedia.org/o
         	innerRuleDet.put("CovExamples"+i, covExamples);
         	rulesHead.add(innerRuleDet);
         	
-////        	JSONArray covExamples = new JSONArray();
-////        	for(int j=0;j<outputRules.size();j++)
-////        	{
-////        		covExamples.add("abc"+(i+j));
-////        	}
-////        	inner1.put("CovExamples", covExamples);
-////        	System.out.println("Rule1:--"+outputRules.get(i).toString());
-////        	inner1.put("RuleId",outputRules.get(i).toString());
-//        	list2.add(inner1.get("CovExamples"));
         	System.out.println(rulesHead);
         	
         }
-        //list2.add(inner1);
         JSONObject finalObj = new JSONObject();
         finalObj.put("rows", rulesHead);
         System.out.println(finalObj);
         
         return finalObj.toString();
-        
-        //	
 	}
     
 	
@@ -195,15 +182,15 @@ temp.put("http://dbpedia.org/ontology/producer(v0,object) & http://dbpedia.org/o
 	public String updateRuleResult(String jsonString) {
 		try {
 			System.out.println("**********UpdateRuleResultString  = " + jsonString);
-			//rule_miner rm = new ObjectMapper().readValue(jsonString, rule_miner.class);
-			//System.out.println("Last Name  = " + rm.getMaxNoRule());
-			String result = "Result read !!!!" ;
+			ResultUpdate resUpdate = new ObjectMapper().readValue(jsonString, ResultUpdate.class);
+			System.out.println("Results Name  = " + resUpdate.getUpdateValidVal());
+			String result = "Result Updated for following rules:\n" + resUpdate.getRules();
 			System.out.println(result);
 
 			return (result);
 		} catch (Exception e) {
 			e.printStackTrace();
-			return "\n\n<Error>\n\t<Error Message>Please check the passed Input XML !!!!</Error Message>\n<Error> ";
+			return "\n\n<Error>\n\t<Error Message>Please che ck the passed Input XML !!!!</Error Message>\n<Error> ";
 		}
 	}
 	
@@ -221,12 +208,12 @@ temp.put("http://dbpedia.org/ontology/producer(v0,object) & http://dbpedia.org/o
 	        System.out.println("Last Name  = "+rm.getMaxNoRule());
 	    	App app = new App();
 	    	
-    		//String result = app.parseRuleMineReq(rm);
+    		String result = app.parseRuleMineReq(rm);
 	        
 //	        String result = "{\"Rules\":[{\"title\":\"Beautiful title 1\"},{\"title\":\"Beautiful title 2\"},{\"title\":\"Beautiful title 3\"}],\"Generation Samples\":[{\"title\":\"Beautiful title 1\"}]}";
 	       // System.out.println(result);
 	        
-	        String result = createJsonReturnStrGet();
+	        //String result = createJsonReturnStrGet();
 	        System.out.println(result);
 	        
 	        

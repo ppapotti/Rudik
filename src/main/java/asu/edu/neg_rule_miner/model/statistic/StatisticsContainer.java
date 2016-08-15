@@ -7,6 +7,8 @@ import java.io.IOException;
 import java.sql.Date;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Set;
 import org.apache.commons.lang3.tuple.Pair;
@@ -109,37 +111,51 @@ public class StatisticsContainer {
 		generationSample = generationExamples;
 	}
 
-	public static String createJsonReturnStr()
-	{
-        //
+	public static String createJsonReturnStrGet() {
+		//
 
+		HashMap<String, ArrayList<String>> temp = new HashMap<String, ArrayList<String>>();
+		List<String> covExm1 = new ArrayList<String>();
+		List<String> covExm2 = new ArrayList<String>();
+		
+		covExm1.add("(http://dbpedia.org/resource/Non_Phixion,http://dbpedia.org/resource/Necro_(rapper))");
+		covExm1.add("(http://dbpedia.org/resource/Az_Yet,http://dbpedia.org/resource/Babyface_(musician))");
+		covExm1.add("(http://dbpedia.org/resource/The_Housemartins,http://dbpedia.org/resource/Norman_Cook)");
+		covExm2.add("(http://dbpedia.org/resource/Luny_Tunes,http://dbpedia.org/resource/DJ_Nelson)");
+		covExm2.add("(http://dbpedia.org/resource/Eli_Young_Band,http://dbpedia.org/resource/Frank_Liddell)");
 
-        // Inserting Rules !!!
-		JSONArray list2 = new JSONArray();
-		JSONObject inner1 = new JSONObject();
-        for(int i=0;i<outputRules.size();i++)
-        {
-        	JSONArray covExamples = new JSONArray();
-        	for(int j=0;j<outputRules.size();j++)
-        	{
-        		covExamples.add("abc"+(i+j));
-        	}
-        	inner1.put("CovExamples", covExamples);
-        	System.out.println("Rule1:--"+outputRules.get(i).toString());
-        	inner1.put("RuleId",outputRules.get(i).toString());
-        	list2.add(inner1.get("CovExamples"));
-        	System.out.println(inner1.get(0));
-        	
-        }
-        //list2.add(inner1);
-        JSONObject finalObj = new JSONObject();
-        finalObj.put("rows", list2);
-        System.out.println(finalObj);
-        
-        return finalObj.toString();
-        
-        //	
+		System.out.println("outputRules--"+outputRules.size());
+		for (int i = 0; i < outputRules.size(); i++) {
+			if (i % 2 == 0)
+				temp.put(outputRules.get(i).toString(), (ArrayList<String>) covExm1);
+			else
+				temp.put(outputRules.get(i).toString(), (ArrayList<String>) covExm2);
+		}
+
+		// Inserting Rules !!!
+		JSONArray rulesHead = new JSONArray();
+		JSONArray ruleIds = new JSONArray();
+
+		for (int i = 0; i < temp.size(); i++) {
+			JSONObject innerRuleDet = new JSONObject();
+			innerRuleDet.put("RuleID" + i, temp.keySet().toArray()[i]);
+			JSONArray covExamples = new JSONArray();
+			for (int j = 0; j < temp.get(temp.keySet().toArray()[i]).size(); j++) {
+				covExamples.add(temp.get(temp.keySet().toArray()[i]).get(j));
+			}
+			innerRuleDet.put("CovExamples" + i, covExamples);
+			rulesHead.add(innerRuleDet);
+
+			System.out.println(rulesHead);
+
+		}
+		JSONObject finalObj = new JSONObject();
+		finalObj.put("rows", rulesHead);
+		System.out.println(finalObj);
+
+		return finalObj.toString();
 	}
+	    
 	public static String printStatistics() throws IOException{
 		if(outputFile==null)
 			return "No Rules generated in this run !!!";
@@ -175,10 +191,9 @@ public class StatisticsContainer {
 		writer.close();
 		String opData = "\t\t\t\t\t**************** Output Rules:\n\n " + outputRules + "\n\n\n\t\t\t\t\t**************** Generated based on following examples:\n" + generationSample 
 				+ "\n\n\n\t\t\t\t\t**************** Time for execution: "+((endTime-startTime)/1000.)+" seconds.";
-//		System.out.println("Value --"+outputRules.get(0).getRules());
-		System.out.println(outputRules.get(0).hashCode());
-		createJsonReturnStr();
-		return opData;
+		System.out.println("opData--"+opData);
+		
+		return createJsonReturnStrGet();
 	}
 
 }

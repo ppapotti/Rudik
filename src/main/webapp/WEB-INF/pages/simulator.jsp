@@ -190,7 +190,7 @@ var rules = [];
 		}
 		var dataString = {
 				"rules": rules,
-				"UpdateValidVal": ruleValidVal
+				"updateValidVal": ruleValidVal
 		}
 		$.ajax({
 				type : 'POST',
@@ -290,8 +290,8 @@ var rules = [];
 								{
 									rules[idx] = innerVal1;
 									//alert("innerKey --"+innerKey1+ "  Concat -- "+innerKey1.substring(0, 6)+ " values "+innerVal1);
-							  		$('div#foo').append('<tr><td width="90%"><a href= "#" onClick="return openModalWindowForRule(this.id,idx);" id= "diag'+idx+ '" >'+ innerVal1 + '</a></td>'
-									    + '<td width="10%" ><div class="post-date"><input type="radio" id="radioVal'+idx+'" name="radioVal'+idx+'"  value="yes">Valid  </input>' 
+							  		$('div#foo').append('<tr><td width="80%"><a href= "#" onClick="return openModalWindowForRule(this.id,idx);" id= "diag'+idx+ '" >'+ innerVal1 + '</a></td>'
+									    + '<td width="20%" ><div class="post-date"><input type="radio" id="radioVal'+idx+'" name="radioVal'+idx+'"  value="yes">Valid  </input>' 
 									    + '<input type="radio" id="radioVal'+idx+'" name="radioVal'+idx+'" align="right" value="no">Invalid</input></div></td></tr>');
 								}
 						  	count1++;
@@ -333,7 +333,7 @@ var rules = [];
 <table width="100%" height="100%">
 <tr height="100%">
 <td width="100%">
-<textarea style="margin: 0px; width: 1398px;"  id="exmplDialog"></textarea>
+<textarea style="margin: 0px; width: 1300px;"  id="exmplDialog"></textarea>
 </td> 
 </tr></table>
 </div>

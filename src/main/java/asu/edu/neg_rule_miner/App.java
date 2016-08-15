@@ -104,9 +104,6 @@ public class App
 		}
 		StatisticsContainer.initialiseContainer(id);
 		
-		
-		
-
 		Set<Pair<String,String>> negativeExamples;
 		if(negLimit == -1)
 			negativeExamples = naive.generateNegativeExamples(relations, typeSubject, typeObject); //-1 indicates no pruning on the negative example set
