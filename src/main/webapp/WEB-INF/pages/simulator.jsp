@@ -54,10 +54,6 @@ var rules = [];
 
   function openModalWindowForRule(currId,value)
   {
-	  alert("current Count --"+currId);
-	  alert("current Value --"+value);
-	  alert("curr Ex"+examples[currId.substring(currId.length-1,currId.length)]);
-	  alert("currCount--"+currId);
 	  $('#exmplDialog').val(examples[currId.substring(currId.length-1,currId.length)]);
 	  $( "#dialogBox" ).dialog( "open" );
   }
@@ -247,9 +243,7 @@ var rules = [];
 					$('#RuleMinerItem_response').html(opData);
 					var resultPostJSON = opData;
 					var resultPost = $.parseJSON(resultPostJSON);
-					//alert("resultPost--"+resultPost);
 /* 					$.each(resultPost, function (key, value) {
-							alert("key --"+key+"  value--"+value);
 						  //$('div#foo').append($('<div></div>').html(key + ' (' + value.length + ' results)'));
 						  var list = $('<ul style="list-style-type:none"></ul>');
 						  if(key == "Rules")
@@ -270,26 +264,20 @@ var rules = [];
 						}); */
 						
 					$.each(resultPost, function (key, value) {
-						//alert("key --"+key+"  value--"+value);
-					  //var list = $('<ul style="list-style-type:none"></ul>');
 					  if(key == "rows")
 					  {
 						  $.each(value, function (innerKey, innerVal) {
-						  //	alert("innerKey --"+innerKey+ "  innerVal -- "+innerVal);
 						  	$.each(innerVal, function (innerKey1, innerVal1) {
 						  		
-						  		//alert("innerKey --"+innerKey1+ "  Concat -- "+innerKey1.substring(0, 6)+ " values "+innerVal1);
 						  		
 								if(((innerKey1.substring(0, 11)).localeCompare("CovExamples")) == 0)
 								{
-									//alert("innerKey --"+innerKey1+ "  Concat -- "+innerKey1.substring(0,11)+ " values "+innerVal1);
 									$('div#foo1').append('<tr><td width="100%">'+ innerVal1 + '</td></tr>');
 									examples[idx]=innerVal1;
 								}
 								if(((innerKey1.substring(0, 6)).localeCompare("RuleID")) == 0)
 								{
 									rules[idx] = innerVal1;
-									//alert("innerKey --"+innerKey1+ "  Concat -- "+innerKey1.substring(0, 6)+ " values "+innerVal1);
 							  		$('div#foo').append('<tr><td width="80%"><a href= "#" onClick="return openModalWindowForRule(this.id,idx);" id= "diag'+idx+ '" >'+ innerVal1 + '</a></td>'
 									    + '<td width="20%" ><div class="post-date"><input type="radio" id="radioVal'+idx+'" name="radioVal'+idx+'"  value="yes">Valid  </input>' 
 									    + '<input type="radio" id="radioVal'+idx+'" name="radioVal'+idx+'" align="right" value="no">Invalid</input></div></td></tr>');
@@ -297,12 +285,10 @@ var rules = [];
 						  	count1++;
 						  	
 						  	});
-						  	alert(idx++);
 						  });
 						  
 						  
 						  /* $.each(value, function (index, titleObj) {
-						  alert("index --"+index+ "  Title -- "+titleObj);
 							  $('div#foo').append('<tr><td width="50%"><a href= "#" onClick="return openModalWindowForRule(this.id);" id= "diag'+count1+ '" >'+ titleObj.title + '</a></td>'
 								    + '<td width="50%"><input type="radio" name="sex" value="yes">Valid  </input>' 
 								    + '<input type="radio" name="sex" value="no">Invalid</input></td></tr>');
