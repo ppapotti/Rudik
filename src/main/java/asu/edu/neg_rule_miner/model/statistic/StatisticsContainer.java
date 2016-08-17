@@ -15,6 +15,7 @@ import org.apache.commons.lang3.tuple.Pair;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import asu.edu.neg_rule_miner.model.horn_rule.HornRule;
+import asu.edu.neg_rule_miner.model.horn_rule.MultipleGraphHornRule;
 
 public class StatisticsContainer {
 
@@ -115,21 +116,21 @@ public class StatisticsContainer {
 		//
 
 		HashMap<String, ArrayList<String>> temp = new HashMap<String, ArrayList<String>>();
-		List<String> covExm1 = new ArrayList<String>();
-		List<String> covExm2 = new ArrayList<String>();
 		
-		covExm1.add("(http://dbpedia.org/resource/Non_Phixion,http://dbpedia.org/resource/Necro_(rapper))");
-		covExm1.add("(http://dbpedia.org/resource/Az_Yet,http://dbpedia.org/resource/Babyface_(musician))");
-		covExm1.add("(http://dbpedia.org/resource/The_Housemartins,http://dbpedia.org/resource/Norman_Cook)");
-		covExm2.add("(http://dbpedia.org/resource/Luny_Tunes,http://dbpedia.org/resource/DJ_Nelson)");
-		covExm2.add("(http://dbpedia.org/resource/Eli_Young_Band,http://dbpedia.org/resource/Frank_Liddell)");
-
+		MultipleGraphHornRule<String> mapNew1 = (MultipleGraphHornRule<String>) outputRules.get(0);
+		System.out.println(mapNew1.getCoveredExamples());
+		
 		System.out.println("outputRules--"+outputRules.size());
-		for (int i = 0; i < outputRules.size(); i++) {
-			if (i % 2 == 0)
-				temp.put(outputRules.get(i).toString(), (ArrayList<String>) covExm1);
-			else
-				temp.put(outputRules.get(i).toString(), (ArrayList<String>) covExm2);
+		for (int i = 0; i < outputRules.size(); i++) 
+		{
+			List<String> covExm1 = new ArrayList<String>();
+			MultipleGraphHornRule<String> hrSet = (MultipleGraphHornRule<String>) outputRules.get(i);
+			for(Pair<String,String> oneCoveredExample:hrSet.getCoveredExamples()){
+//				System.out.println(oneCoveredExample.getLeft());
+//				System.out.println("RIGHT "+oneCoveredExample.getRight()+"   Value  "+oneCoveredExample.getValue()+ "\n\n ENTIRE STRING --"+oneCoveredExample.toString());
+				covExm1.add(oneCoveredExample.toString());
+			}
+			temp.put(outputRules.get(i).toString(), (ArrayList<String>) covExm1);
 		}
 
 		// Inserting Rules !!!
@@ -189,6 +190,7 @@ public class StatisticsContainer {
 
 		writer.flush();
 		writer.close();
+		
 		String opData = "\t\t\t\t\t**************** Output Rules:\n\n " + outputRules + "\n\n\n\t\t\t\t\t**************** Generated based on following examples:\n" + generationSample 
 				+ "\n\n\n\t\t\t\t\t**************** Time for execution: "+((endTime-startTime)/1000.)+" seconds.";
 		System.out.println("opData--"+opData);
