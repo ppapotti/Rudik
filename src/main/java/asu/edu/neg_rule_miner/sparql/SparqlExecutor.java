@@ -572,6 +572,50 @@ public abstract class SparqlExecutor {
 			Set<RuleAtom> rules, String typeSubject, String typeObject);
 
 	public abstract int executeCountQuery(String inputQuery);
+	public String generateHornRuleQuery(Set<RuleAtom> rules, String typeSubject, 
+			String typeObject, boolean overloaded){
+
+		if(!(rules.size()>0))
+			return null;
+		//create the RDF 
+		StringBuilder query = new StringBuilder();
+
+		if(this.prefixQuery!=null&&this.prefixQuery.size()>0){
+			for(String prefix:this.prefixQuery){
+				query.append(prefix+" ");
+			}
+		}
+		query.append("SELECT DISTINCT ");
+		for(RuleAtom atom : rules){
+			String rel = atom.getRelation();
+			String sub = atom.getSubject();
+			String obj = atom.getObject();
+			query.append("<"+rel+"(>?"+sub+"<,>?"+obj+"<)>");
+		}
+
+		String subject = typeSubject!=null ? "?subject" : "";
+		String object = typeObject!=null ? "?object" : "";
+//		query.append("SELECT DISTINCT "+subject+" "+object);
+
+		/**
+		 * Jena does not work with count and nested query with from
+		 */
+		if(this.graphIri!=null&&graphIri.length()>0)
+			query.append(" FROM "+this.graphIri);
+
+		query.append(" WHERE {");
+		if(subject.length()>0)
+			query.append(subject+" <"+typePrefix+"> <"+ typeSubject + ">. ");
+		if(object.length()>0)
+			query.append(object+" <"+typePrefix+"> <"+ typeObject + ">. ");
+
+		//check if the query contains an inequality
+
+		query.append(this.getHornRuleAtomQuery(rules));
+		query.append("}");
+
+		return query.toString();
+	}
 
 	public String generateHornRuleQuery(Set<RuleAtom> rules, String typeSubject, 
 			String typeObject){

@@ -204,14 +204,20 @@ var rules = [];
 			});
 	}	
 	
+	function clearRulesAndExample()
+	{
+		idx =0;
+	}
 	
 	function ajaxPostRuleMinerItem() {
 		$('#RuleMinerRules_response').val(" ");
+		clearRulesAndExample();
 		//$('#RuleMinerItem_response').val(" ");
 		document.getElementById('loader').style.visibility = "visible";
 		disableEntireForm();
 		var url = '/rule_miner/webapi/RuleMiner';
 		//var dataString = document.getElementById('RuleMinerItem_request').value;
+		
 		var dataString = {
 				"alpha": $("#alphaR").val(),
 				"beta": $("#betaR").val(),
@@ -243,25 +249,6 @@ var rules = [];
 					$('#RuleMinerItem_response').html(opData);
 					var resultPostJSON = opData;
 					var resultPost = $.parseJSON(resultPostJSON);
-/* 					$.each(resultPost, function (key, value) {
-						  //$('div#foo').append($('<div></div>').html(key + ' (' + value.length + ' results)'));
-						  var list = $('<ul style="list-style-type:none"></ul>');
-						  if(key == "Rules")
-						  {
-							  $('div#foo').append(list);
-	
-							  $.each(value, function (index, titleObj) {
-							    list.append('<li>'
-							    + '<a href= "#" onClick="return openModalWindowForRule(this.id);" id= "diag'+count1+ '" >'+ titleObj.title + '</a>'
-							    + '<input type="radio" name="sex" value="yes">Valid</input>' 
-							    + '<input type="radio" name="sex" value="no">Invalid</input>'
-							    + '</li>');
-							    
-							    count1++;
-	
-							  });
-						  }
-						}); */
 						
 					$.each(resultPost, function (key, value) {
 					  if(key == "rows")
@@ -272,7 +259,7 @@ var rules = [];
 						  		
 								if(((innerKey1.substring(0, 11)).localeCompare("CovExamples")) == 0)
 								{
-									$('div#foo1').append('<tr><td width="100%">'+ innerVal1 + '</td></tr>');
+									//$('div#foo1').append('<tr><td width="100%">'+ innerVal1 + '</td></tr>');
 									examples[idx]=innerVal1;
 								}
 								if(((innerKey1.substring(0, 6)).localeCompare("RuleID")) == 0)
@@ -295,6 +282,42 @@ var rules = [];
 								    + '<input type="radio" name="sex" value="no">Invalid</input></td></tr>');
 						  	count1++;
 						  }); */
+					  }
+					  if(key == "Gen_Samples")
+					  {
+					  		$('div#foo1').append('<table width="100%"></table>');
+					  		var table = $('div#foo1').children(); 
+				  		 	$.each(value, function (genExKey, genExValue) {
+							  	//alert("For key-"+key+" Value is --"+value);
+							  	var res = genExValue.split("~~");
+							  	table.append('<tr><td width="50%">'+ res[0] + '</td><td width="50%">'+ res[1] + '</td></tr>');
+							  /* 	table.append("<tr><td>a</td><td>b</td></tr>");
+								table.append("<tr><td>c</td><td>d</td></tr>"); */
+					  		}); 
+					  		
+/* 							var table = $("<table/>").addClass('CSSTableGenerator').addWidth;
+							//$.each(data, function(rowIndex, r) {
+							$.each(value, function (genExKey, genExValue) {
+						     var row = $("<tr/>");
+						     var res = genExValue.split("~~");
+								//row.append($("<t"+(rowIndex == 0 ?  "h" : "d")+"/>").text(res[0]));
+						         row.append($('<td width="50%" />').text(res[0]));
+						         row.append($('<td width="50%" />').text(res[1]));
+						         //row.append($("<td"+"/>").text(res[1]));
+							});
+							     table.append(row);
+							 //}); */
+							 
+							 
+					    //$('div#foo1').append(table);
+					  
+					  	alert("For key-"+key+" Value is --"+table);
+					/*   	$.each(value, function (genExKey, genExValue) {
+						  	//alert("For key-"+key+" Value is --"+value);
+						  	var res = genExValue.split("~~");
+						  	$('div#foo1').append('<tr><td width="50%">'+ res[0] + '</td><td width="50%">'+ res[1] + '</td></tr>');
+					  	}); */
+					  	
 					  }
 					});
 

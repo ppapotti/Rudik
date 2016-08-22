@@ -16,6 +16,7 @@ import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import asu.edu.neg_rule_miner.model.horn_rule.HornRule;
 import asu.edu.neg_rule_miner.model.horn_rule.MultipleGraphHornRule;
+import asu.edu.neg_rule_miner.model.horn_rule.RuleAtom;
 
 public class StatisticsContainer {
 
@@ -126,8 +127,6 @@ public class StatisticsContainer {
 			List<String> covExm1 = new ArrayList<String>();
 			MultipleGraphHornRule<String> hrSet = (MultipleGraphHornRule<String>) outputRules.get(i);
 			for(Pair<String,String> oneCoveredExample:hrSet.getCoveredExamples()){
-//				System.out.println(oneCoveredExample.getLeft());
-//				System.out.println("RIGHT "+oneCoveredExample.getRight()+"   Value  "+oneCoveredExample.getValue()+ "\n\n ENTIRE STRING --"+oneCoveredExample.toString());
 				covExm1.add(oneCoveredExample.toString());
 			}
 			temp.put(outputRules.get(i).toString(), (ArrayList<String>) covExm1);
@@ -135,7 +134,9 @@ public class StatisticsContainer {
 
 		// Inserting Rules !!!
 		JSONArray rulesHead = new JSONArray();
+	
 		JSONArray ruleIds = new JSONArray();
+		JSONArray genSamArray = new JSONArray();
 
 		for (int i = 0; i < temp.size(); i++) {
 			JSONObject innerRuleDet = new JSONObject();
@@ -147,11 +148,21 @@ public class StatisticsContainer {
 			innerRuleDet.put("CovExamples" + i, covExamples);
 			rulesHead.add(innerRuleDet);
 
-			System.out.println(rulesHead);
-
+//			System.out.println(rulesHead);
+//			String rule = (String) temp.keySet().toArray()[i];
+//			Set<RuleAtom> ruleAtoms = HornRule.readHornRule(rule);
 		}
 		JSONObject finalObj = new JSONObject();
 		finalObj.put("rows", rulesHead);
+		
+		for(Pair<String, String> genSampl:generationSample)
+		{
+			String[] tempL,tempR;
+			tempL=(genSampl.getLeft().split(","))[0].split("/");
+			tempR=(genSampl.getRight().split(","))[0].split("/");
+			genSamArray.add(tempL[(tempL.length)-1] + "~~" + tempR[tempR.length-1]);
+		}
+		finalObj.put("Gen_Samples", genSamArray);
 		System.out.println(finalObj);
 
 		return finalObj.toString();
