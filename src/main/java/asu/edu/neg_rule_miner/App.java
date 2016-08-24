@@ -123,9 +123,6 @@ public class App
 		
 		return opResult;
 
-		
-		
-		
 		//		relations.add("http://dbpedia.org/ontology/founder");
 		//		relations.add("http://dbpedia.org/ontology/foundedBy");
 

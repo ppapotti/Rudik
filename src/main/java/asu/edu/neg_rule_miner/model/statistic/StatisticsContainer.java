@@ -17,6 +17,8 @@ import org.json.simple.JSONObject;
 import asu.edu.neg_rule_miner.model.horn_rule.HornRule;
 import asu.edu.neg_rule_miner.model.horn_rule.MultipleGraphHornRule;
 import asu.edu.neg_rule_miner.model.horn_rule.RuleAtom;
+import asu.edu.neg_rule_miner.sparql.SparqlExecutor;
+import asu.edu.neg_rule_miner.rule_generator.HornRuleDiscovery;
 
 public class StatisticsContainer {
 
@@ -116,6 +118,10 @@ public class StatisticsContainer {
 	public static String createJsonReturnStrGet() {
 		//
 
+		if((outputRules ==null) || (outputRules.size() == 0))
+		{
+			return "No rules identified with current configuration parameters";
+		}
 		HashMap<String, ArrayList<String>> temp = new HashMap<String, ArrayList<String>>();
 		
 		MultipleGraphHornRule<String> mapNew1 = (MultipleGraphHornRule<String>) outputRules.get(0);
@@ -149,8 +155,8 @@ public class StatisticsContainer {
 			rulesHead.add(innerRuleDet);
 
 //			System.out.println(rulesHead);
-//			String rule = (String) temp.keySet().toArray()[i];
-//			Set<RuleAtom> ruleAtoms = HornRule.readHornRule(rule);
+
+			
 		}
 		JSONObject finalObj = new JSONObject();
 		finalObj.put("rows", rulesHead);

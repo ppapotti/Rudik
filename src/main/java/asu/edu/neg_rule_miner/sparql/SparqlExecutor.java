@@ -14,6 +14,7 @@ import java.util.Set;
 import org.apache.commons.configuration.Configuration;
 import org.apache.commons.configuration.HierarchicalConfiguration;
 import org.apache.commons.lang3.tuple.Pair;
+import org.apache.jena.query.ResultSet;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -152,6 +153,8 @@ public abstract class SparqlExecutor {
 
 	public abstract void executeQuery(String entity,
 			Graph<String> inputGraphs, Map<String,Set<String>> entity2types);
+	
+	public abstract ResultSet runExtractedQuery(String outputQuery);
 
 	public abstract Set<Pair<String,String>> generateUnionNegativeExamples(Set<String> relations, String typeSubject, 
 			String typeObject, boolean subjectFunction, boolean objectFunction);
@@ -572,6 +575,7 @@ public abstract class SparqlExecutor {
 			Set<RuleAtom> rules, String typeSubject, String typeObject);
 
 	public abstract int executeCountQuery(String inputQuery);
+	
 	public String generateHornRuleQuery(Set<RuleAtom> rules, String typeSubject, 
 			String typeObject, boolean overloaded){
 
@@ -585,13 +589,18 @@ public abstract class SparqlExecutor {
 				query.append(prefix+" ");
 			}
 		}
-		query.append("SELECT DISTINCT ");
+		query.append("SELECT ");
 		for(RuleAtom atom : rules){
 			String rel = atom.getRelation();
 			String sub = atom.getSubject();
 			String obj = atom.getObject();
-			query.append("<"+rel+"(>?"+sub+"<,>?"+obj+"<)>");
+//			query.append("<"+rel+"(>?"+sub+"<,>?"+obj+"<)>");
+			query.append(" ?"+sub+" ?"+obj+" ");
 		}
+		
+//		String kBase = "dbpedia";
+		String prfx = targetPrefix.toString().substring(1, targetPrefix.toString().length()-1);
+//		prfx = prfx.replaceAll("]", "");
 
 		String subject = typeSubject!=null ? "?subject" : "";
 		String object = typeObject!=null ? "?object" : "";
@@ -605,9 +614,9 @@ public abstract class SparqlExecutor {
 
 		query.append(" WHERE {");
 		if(subject.length()>0)
-			query.append(subject+" <"+typePrefix+"> <"+ typeSubject + ">. ");
+			query.append(subject+" <"+typePrefix+"> <"+ prfx + typeSubject + ">. ");
 		if(object.length()>0)
-			query.append(object+" <"+typePrefix+"> <"+ typeObject + ">. ");
+			query.append(object+" <"+typePrefix+"> <"+ prfx + typeObject + ">. ");
 
 		//check if the query contains an inequality
 
@@ -958,5 +967,7 @@ public abstract class SparqlExecutor {
 	public void setNegExamplesLimit(int limit){
 		this.negativeExampleLimit = limit;
 	}
+
+
 
 }

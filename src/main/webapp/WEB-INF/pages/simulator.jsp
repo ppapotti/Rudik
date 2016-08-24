@@ -203,21 +203,63 @@ var rules = [];
 				}
 			});
 	}	
+	function ajaxExecuteRule(currBtnId,currBtnVal){
+		$('#RuleMinerRules_response').val(" ");
+		//$('#RuleMinerItem_response').val(" ");
+		document.getElementById('loader').style.visibility = "visible";
+		disableEntireForm();
+		var url = '/rule_miner/webapi/RuleMiner/ExecuteRule';
+		//var dataString = document.getElementById('RuleMinerItem_request').value;
+		var dataString = {
+				"ruleStr": rules[currBtnId.substring(currBtnId.length-1,currBtnId.length)],
+				"alpha": $("#alphaR").val(),
+				"beta": $("#betaR").val(),
+				"gamma": $("#gammaR").val(),
+				"maxNoRule": $("#maxNoRule").val(),
+				"noOfThreads": $("#noOfThreads").val(),
+				"kBase": $("#kBase").val(),
+				"typeOfSubject": $("#subType").val(),
+				"typeOfObject": $("#objType").val(),
+				"relName": $("#relName").val(),
+				"edgeLimit": $("#edgeLimit").val(),
+				"genLimit": $("#genLimit").val(),
+				"genNegRules": document.getElementById('genNegRules').checked,
+				"useSmartSampling": document.getElementById('useSmartSampling').checked,
+				"alphaSmart": $("#alphaSmart").val(),
+				"betaSmart": $("#betaSmart").val(),
+				"gammaSmart": $("#gammaSmart").val(),
+				"subWeight": $("#subWeight").val(),
+				"objWeight": $("#objWeight").val(),
+				"topK": document.getElementById('topK').checked
+		};
+		
+		$.ajax({
+				type : 'POST',
+				url : url,
+				contentType : 'application/json',
+				data : JSON.stringify(dataString),
+				success : function(opRuleStr) {
+					alert("opRuleStr=="+opRuleStr);
+					$('#exmplDialog').val(opRuleStr);
+				  	$( "#dialogBox" ).dialog( "open" );
+				  	document.getElementById('loader').style.visibility = "hidden";
+					enableEntireForm();
+				},
+				complete : function(res){
+						document.getElementById('loader').style.visibility = "hidden";
+						enableEntireForm();
+				}
+			});
+	}	
 	
-	function clearRulesAndExample()
-	{
-		idx =0;
-	}
 	
 	function ajaxPostRuleMinerItem() {
 		$('#RuleMinerRules_response').val(" ");
-		clearRulesAndExample();
 		//$('#RuleMinerItem_response').val(" ");
 		document.getElementById('loader').style.visibility = "visible";
 		disableEntireForm();
 		var url = '/rule_miner/webapi/RuleMiner';
 		//var dataString = document.getElementById('RuleMinerItem_request').value;
-		
 		var dataString = {
 				"alpha": $("#alphaR").val(),
 				"beta": $("#betaR").val(),
@@ -247,79 +289,55 @@ var rules = [];
 				data : JSON.stringify(dataString),
 				success : function(opData) {
 					$('#RuleMinerItem_response').html(opData);
-					var resultPostJSON = opData;
-					var resultPost = $.parseJSON(resultPostJSON);
-						
-					$.each(resultPost, function (key, value) {
-					  if(key == "rows")
-					  {
-						  $.each(value, function (innerKey, innerVal) {
-						  	$.each(innerVal, function (innerKey1, innerVal1) {
-						  		
-						  		
-								if(((innerKey1.substring(0, 11)).localeCompare("CovExamples")) == 0)
-								{
-									//$('div#foo1').append('<tr><td width="100%">'+ innerVal1 + '</td></tr>');
-									examples[idx]=innerVal1;
-								}
-								if(((innerKey1.substring(0, 6)).localeCompare("RuleID")) == 0)
-								{
-									rules[idx] = innerVal1;
-							  		$('div#foo').append('<tr><td width="80%"><a href= "#" onClick="return openModalWindowForRule(this.id,idx);" id= "diag'+idx+ '" >'+ innerVal1 + '</a></td>'
-									    + '<td width="20%" ><div class="post-date"><input type="radio" id="radioVal'+idx+'" name="radioVal'+idx+'"  value="yes">Valid  </input>' 
-									    + '<input type="radio" id="radioVal'+idx+'" name="radioVal'+idx+'" align="right" value="no">Invalid</input></div></td></tr>');
-								}
-						  		count1++;
-						  	
-						  	});
-						  	idx++;
-						  });
-						  
-						  
-						  /* $.each(value, function (index, titleObj) {
-							  $('div#foo').append('<tr><td width="50%"><a href= "#" onClick="return openModalWindowForRule(this.id);" id= "diag'+count1+ '" >'+ titleObj.title + '</a></td>'
-								    + '<td width="50%"><input type="radio" name="sex" value="yes">Valid  </input>' 
-								    + '<input type="radio" name="sex" value="no">Invalid</input></td></tr>');
-						  	count1++;
-						  }); */
-					  }
-					  if(key == "Gen_Samples")
-					  {
-					  		$('div#foo1').append('<table width="100%"></table>');
-					  		var table = $('div#foo1').children(); 
-				  		 	$.each(value, function (genExKey, genExValue) {
-							  	//alert("For key-"+key+" Value is --"+value);
-							  	var res = genExValue.split("~~");
-							  	table.append('<tr><td width="50%">'+ res[0] + '</td><td width="50%">'+ res[1] + '</td></tr>');
-							  /* 	table.append("<tr><td>a</td><td>b</td></tr>");
-								table.append("<tr><td>c</td><td>d</td></tr>"); */
-					  		}); 
-					  		
-/* 							var table = $("<table/>").addClass('CSSTableGenerator').addWidth;
-							//$.each(data, function(rowIndex, r) {
-							$.each(value, function (genExKey, genExValue) {
-						     var row = $("<tr/>");
-						     var res = genExValue.split("~~");
-								//row.append($("<t"+(rowIndex == 0 ?  "h" : "d")+"/>").text(res[0]));
-						         row.append($('<td width="50%" />').text(res[0]));
-						         row.append($('<td width="50%" />').text(res[1]));
-						         //row.append($("<td"+"/>").text(res[1]));
-							});
-							     table.append(row);
-							 //}); */
-							 
-							 
-					    //$('div#foo1').append(table);
-					  
-					  	alert("For key-"+key+" Value is --"+table);
-					/*   	$.each(value, function (genExKey, genExValue) {
-						  	//alert("For key-"+key+" Value is --"+value);
-						  	var res = genExValue.split("~~");
-						  	$('div#foo1').append('<tr><td width="50%">'+ res[0] + '</td><td width="50%">'+ res[1] + '</td></tr>');
-					  	}); */
-					  	
-					  }
-					});
+					if(opData == "No rules identified with current configuration parameters")
+					{
+						$('#exmplDialog').val(opData);
+					  	$( "#dialogBox" ).dialog( "open" );
+					  	document.getElementById('loader').style.visibility = "hidden";
+						enableEntireForm();
+					}
+					else
+					{
+						var resultPostJSON = opData;
+						var resultPost = $.parseJSON(resultPostJSON);
+							
+						$.each(resultPost, function (key, value) {
+						  if(key == "rows")
+						  {
+							  $.each(value, function (innerKey, innerVal) {
+							  	$.each(innerVal, function (innerKey1, innerVal1) {
+							  		
+							  		
+									if(((innerKey1.substring(0, 11)).localeCompare("CovExamples")) == 0)
+									{
+										//$('div#foo1').append('<tr><td width="100%">'+ innerVal1 + '</td></tr>');
+										examples[idx]=innerVal1;
+									}
+									if(((innerKey1.substring(0, 6)).localeCompare("RuleID")) == 0)
+									{
+										rules[idx] = innerVal1;
+								  		$('div#foo').append('<tr><td width="50%"><a href= "#" onClick="return openModalWindowForRule(this.id,idx);" id= "diag'+idx+ '" >'+ innerVal1 + '</a></td>'
+										    + '<td width="20%" ><div class="post-date"><input type="radio" id="radioVal'+idx+'" name="radioVal'+idx+'"  value="yes">Valid  </input>' 
+										    + '<input type="radio" id="radioVal'+idx+'" name="radioVal'+idx+'" align="right" value="no">Invalid</input></div></td>'
+										    + '<td width="30%" align="right"><button class="button button1" id="execButton'+idx+ '" type="button" onclick="return ajaxExecuteRule(this.id,idx);">Execute</button></td></tr>');
+									}
+							  		count1++;
+							  	
+							  	});
+							  	idx++
+							  });
+						  }
+						  if(key == "Gen_Samples")
+						  {
+						  		$('div#foo1').append('<table width="100%"></table>');
+						  		var table = $('div#foo1').children(); 
+					  		 	$.each(value, function (genExKey, genExValue) {
+								  	var res = genExValue.split("~~");
+								  	table.append('<tr><td width="50%">'+ res[0] + '</td><td width="50%">'+ res[1] + '</td></tr>');
+						  		}); 
+						  }
+						});
+					}
 
 				},
 				complete : function(res){
@@ -327,7 +345,6 @@ var rules = [];
 						enableEntireForm();
 				}
 			});
-			//document.getElementById('loader').style.visibility = "hidden";
 	}
 	</script>
 	

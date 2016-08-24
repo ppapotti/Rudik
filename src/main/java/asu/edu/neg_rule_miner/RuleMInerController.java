@@ -2,10 +2,13 @@ package asu.edu.neg_rule_miner;
 import java.io.StringWriter;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import javax.ws.rs.Consumes;
 import asu.edu.neg_rule_miner.configuration.*;
+import asu.edu.neg_rule_miner.rule_generator.DynamicPruningRuleDiscovery;
 import asu.edu.neg_rule_miner.rule_generator.OneExampleRuleDiscovery;
 
 import javax.ws.rs.GET;
@@ -14,6 +17,7 @@ import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import org.apache.commons.configuration.Configuration;
+import org.apache.commons.lang3.tuple.Pair;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.json.simple.JSONArray;
@@ -115,7 +119,7 @@ public class RuleMInerController {
             obj.writeJSONString(out);
             String jsonText = out.toString();
         	
-            //createJsonReturnStrGet();
+//            createJsonReturnStrTest();
         	
         	return jsonText;
         	
@@ -129,49 +133,37 @@ public class RuleMInerController {
     }
 
    
-	public static String createJsonReturnStrGet()
+	public static String createJsonReturnStrTest()
 	{
-        //
-
-		HashMap<String, ArrayList<String>> temp = new HashMap<String, ArrayList<String>>();
-		List<String> covExm1 = new ArrayList<String>();
-		List<String> covExm2 = new ArrayList<String>();
-		covExm1.add("(http://dbpedia.org/resource/Non_Phixion,http://dbpedia.org/resource/Necro_(rapper))");
-		covExm1.add("(http://dbpedia.org/resource/Az_Yet,http://dbpedia.org/resource/Babyface_(musician))");
-		covExm1.add("(http://dbpedia.org/resource/The_Housemartins,http://dbpedia.org/resource/Norman_Cook)");
-		covExm2.add("(http://dbpedia.org/resource/Luny_Tunes,http://dbpedia.org/resource/DJ_Nelson)");
-		covExm2.add("(http://dbpedia.org/resource/Eli_Young_Band,http://dbpedia.org/resource/Frank_Liddell)");
-
-		temp.put("http://dbpedia.org/ontology/associatedBand(object,subject) & http://dbpedia.org/ontology/associatedMusicalArtist(object,v0) & http://dbpedia.org/ontology/associatedMusicalArtist(v0,v0)",
-				(ArrayList<String>) covExm1);
-		temp.put("http://dbpedia.org/ontology/producer(v0,object) & http://dbpedia.org/ontology/album(v1,v0) & http://dbpedia.org/ontology/producer(v1,subject)",(ArrayList<String>) covExm2);
-
 		
-
-        // Inserting Rules !!!
-		JSONArray rulesHead = new JSONArray();
-		JSONArray ruleIds = new JSONArray();
+		Set<Pair<String, String>> genSamples = new HashSet<Pair<String, String>>();
+		genSamples.add(Pair.of("(http://dbpedia.org/resource/II_Corps_(United_Kingdom)", "http://dbpedia.org/resource/Bernard_Montgomery_1st_Viscount_Montgomery_of_Alamein)"));
+		genSamples.add(Pair.of("http://dbpedia.org/resource/Kidz_in_the_Hall", "http://dbpedia.org/resource/Just_Blaze"));
+		genSamples.add(Pair.of("http://dbpedia.org/resource/Angeldust", "http://dbpedia.org/resource/Klayton"));
+		genSamples.add(Pair.of("http://dbpedia.org/resource/Angel_&_Khriz", "http://dbpedia.org/resource/Daddy_Yankee"));
+		genSamples.add(Pair.of("http://dbpedia.org/resource/The_Oh_Hellos", "http://dbpedia.org/resource/Sufjan_Stevens"));
+		genSamples.add(Pair.of("http://dbpedia.org/resource/Belvision_Studios", "http://dbpedia.org/resource/Raymond_Leblanc"));
+		genSamples.add(Pair.of("http://dbpedia.org/resource/Az_Yet", "http://dbpedia.org/resource/Babyface_musician"));
+		genSamples.add(Pair.of("http://dbpedia.org/resource/Nefew", "http://dbpedia.org/resource/Masta_Ace"));
+		genSamples.add(Pair.of("http://dbpedia.org/resource/Thomasschule_zu_Leipzig", "http://dbpedia.org/resource/Thomas_the_Apostle"));
+		genSamples.add(Pair.of("http://dbpedia.org/resource/Cassiber", "http://dbpedia.org/resource/Chris_Cutler"));
 		
-        for(int i=0;i<temp.size();i++)
-        {
-        	JSONObject innerRuleDet = new JSONObject();
-        	innerRuleDet.put("RuleID"+i, temp.keySet().toArray()[i]);
-        	JSONArray covExamples = new JSONArray();
-        	for(int j=0;j<temp.get(temp.keySet().toArray()[i]).size();j++)
-        	{
-        		covExamples.add(temp.get(temp.keySet().toArray()[i]).get(j));
-        	}
-        	innerRuleDet.put("CovExamples"+i, covExamples);
-        	rulesHead.add(innerRuleDet);
-        	
-        	System.out.println(rulesHead);
-        	
-        }
-        JSONObject finalObj = new JSONObject();
-        finalObj.put("rows", rulesHead);
-        System.out.println(finalObj);
-        
-        return finalObj.toString();
+		for(Pair<String, String> genSampl:genSamples)
+		{
+			String[] tempL,tempR;
+			tempL=(genSampl.getLeft().split(","))[0].split("/");
+			tempR=(genSampl.getRight().split(","))[0].split("/");
+			//System.out.println("LEFT=\t"+genSampl.getLeft()+"\tRight=\t"+genSampl.getRight());
+			System.out.println(tempL[(tempL.length)-1] + "\t" +  tempR[tempR.length-1]);
+		}
+		
+		//("(http://dbpedia.org/resource/II_Corps_(United_Kingdom)","http://dbpedia.org/resource/Bernard_Montgomery_1st_Viscount_Montgomery_of_Alamein)");
+		
+		return "OK";
+//		for(Pair<String, String> genSampl:generationSample)
+//		{
+//			genSamArray.add(genSampl.getLeft());
+//		}
 	}
     
 	
@@ -225,4 +217,28 @@ public class RuleMInerController {
     		return "\n\n<Error>\n\t<Error Message>Please check the passed Input XML !!!!</Error Message>\n<Error> ";
     	}
 	}
+
+	
+	@POST
+	@Path("ExecuteRule")
+	@Produces(MediaType.TEXT_PLAIN)
+	@Consumes(MediaType.APPLICATION_JSON)
+	public String executeRuleForExample(String jsonString) {
+		try {
+			System.out.println("**********UpdateRuleResultString  = " + jsonString);
+			singleRule execQuery = new ObjectMapper().readValue(jsonString, singleRule.class);
+			System.out.println("Results Name  = " + execQuery.getRuleStr());
+			
+			DynamicPruningRuleDiscovery dynaRp = new DynamicPruningRuleDiscovery();
+			String result =  dynaRp.executeQueryForEx(execQuery.getRuleStr());
+			
+			return (result);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return "\n\n<Error>\n\t<Error Message>Please che ck the passed Input XML !!!!</Error Message>\n<Error> ";
+		}
+	}
+	
+
+
 }

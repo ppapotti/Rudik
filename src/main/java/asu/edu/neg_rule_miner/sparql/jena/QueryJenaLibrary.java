@@ -255,6 +255,11 @@ public abstract class QueryJenaLibrary extends SparqlExecutor {
 
 		return examples;
 	}
+	
+	public ResultSet runExtractedQuery(String outputQuery) {
+		// TODO Auto-generated method stub
+		return this.executeQuery(outputQuery);
+	}
 
 	public abstract ResultSet executeQuery(String sparqlQuery);
 

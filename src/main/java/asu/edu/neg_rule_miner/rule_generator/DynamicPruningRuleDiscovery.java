@@ -1,10 +1,13 @@
 package asu.edu.neg_rule_miner.rule_generator;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
 import org.apache.commons.lang3.tuple.Pair;
+import org.apache.jena.query.QuerySolution;
+import org.apache.jena.query.ResultSet;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -23,6 +26,7 @@ import asu.edu.neg_rule_miner.model.statistic.StatisticsContainer;
 import asu.edu.neg_rule_miner.rule_generator.examples_sampling.VariancePopularSampling;
 import asu.edu.neg_rule_miner.rule_generator.score.DynamicScoreComputation;
 import asu.edu.neg_rule_miner.sparql.SparqlExecutor;
+import asu.edu.neg_rule_miner.sparql.jena.remote.QuerySparqlRemoteEndpoint;
 
 
 /**
@@ -39,6 +43,46 @@ public class DynamicPruningRuleDiscovery extends HornRuleDiscovery{
 		super();
 	}
 
+	/*
+	 * Varun Gaur: Changes for Fetching Example on click of 
+	 * execute Horn Rule
+	 */
+	public String executeQueryForEx(String rulesInp)
+	{
+		SparqlExecutor spe = this.getSparqlExecutor();
+		String rule = rulesInp;
+		Set<RuleAtom> ruleAtoms = HornRule.readHornRule(rule);
+		String outputQuery = spe.generateHornRuleQuery(ruleAtoms,"Organisation","Person",true);
+		System.out.println(outputQuery);
+		
+		ResultSet rs =  spe.runExtractedQuery(outputQuery);
+		List<String> resultLst = new ArrayList<String>();
+		
+		while(rs.hasNext()){
+
+			QuerySolution oneResult = rs.next();
+			
+			String op= "";
+			for(RuleAtom rl:ruleAtoms)
+			{
+				op = op + truncatePrfx(rl.getRelation()) + " ~ " + truncatePrfx(oneResult.get(rl.getSubject()).toString()) + " ~ " +
+						truncatePrfx(oneResult.get(rl.getObject()).toString()) + " || " ;
+			}
+			op = op + "\n";
+			resultLst.add(op);
+			
+		}
+		System.out.println("OP--"+rs.getResultVars());
+		
+		return resultLst.toString();
+	}
+	
+	private String truncatePrfx(String ipStr)
+	{
+		return ipStr.split("/")[ipStr.split("/").length-1];
+		
+	}
+	
 	public List<HornRule> discoverPositiveHornRules(Set<Pair<String,String>> negativeExamples, Set<Pair<String,String>> positiveExamples,
 			Set<String> relations, String typeSubject, String typeObject){
 		//switch positive and negative examples
