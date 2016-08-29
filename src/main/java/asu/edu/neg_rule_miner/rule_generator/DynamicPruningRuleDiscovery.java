@@ -16,6 +16,7 @@ import com.google.common.collect.Maps;
 import com.google.common.collect.Sets;
 
 import asu.edu.neg_rule_miner.RuleMinerException;
+import asu.edu.neg_rule_miner.singleRule;
 import asu.edu.neg_rule_miner.configuration.Constant;
 import asu.edu.neg_rule_miner.model.horn_rule.HornRule;
 import asu.edu.neg_rule_miner.model.horn_rule.MultipleGraphHornRule;
@@ -47,34 +48,42 @@ public class DynamicPruningRuleDiscovery extends HornRuleDiscovery{
 	 * Varun Gaur: Changes for Fetching Example on click of 
 	 * execute Horn Rule
 	 */
-	public String executeQueryForEx(String rulesInp)
+	public String executeQueryForEx(String rulesInp,singleRule execQuery)
 	{
-		SparqlExecutor spe = this.getSparqlExecutor();
-		String rule = rulesInp;
-		Set<RuleAtom> ruleAtoms = HornRule.readHornRule(rule);
-		String outputQuery = spe.generateHornRuleQuery(ruleAtoms,"Organisation","Person",true);
-		System.out.println(outputQuery);
-		
-		ResultSet rs =  spe.runExtractedQuery(outputQuery);
-		List<String> resultLst = new ArrayList<String>();
-		
-		while(rs.hasNext()){
-
-			QuerySolution oneResult = rs.next();
+		try
+		{
+			SparqlExecutor spe = this.getSparqlExecutor();
+			String rule = rulesInp;
+			Set<RuleAtom> ruleAtoms = HornRule.readHornRule(rule);
 			
-			String op= "";
-			for(RuleAtom rl:ruleAtoms)
-			{
-				op = op + truncatePrfx(rl.getRelation()) + " ~ " + truncatePrfx(oneResult.get(rl.getSubject()).toString()) + " ~ " +
-						truncatePrfx(oneResult.get(rl.getObject()).toString()) + " || " ;
+			String outputQuery = spe.generateHornRuleQuery(ruleAtoms,execQuery.getTypeOfSubject(),execQuery.getTypeOfObject(),true,execQuery);
+			System.out.println(outputQuery);
+			
+			ResultSet rs =  spe.runExtractedQuery(outputQuery);
+			List<String> resultLst = new ArrayList<String>();
+			
+			while(rs.hasNext()){
+	
+				QuerySolution oneResult = rs.next();
+				
+				String op= "";
+				for(RuleAtom rl:ruleAtoms)
+				{
+					op = op + truncatePrfx(rl.getRelation()) + " ~ " + truncatePrfx(oneResult.get(rl.getSubject()).toString()) + " ~ " +
+							truncatePrfx(oneResult.get(rl.getObject()).toString()) + " || " ;
+				}
+				op = op + "\n";
+				resultLst.add(op);
+				
 			}
-			op = op + "\n";
-			resultLst.add(op);
+			System.out.println("OP--"+rs.getResultVars());
 			
+			return resultLst.toString();
 		}
-		System.out.println("OP--"+rs.getResultVars());
-		
-		return resultLst.toString();
+		catch(Exception e)
+		{
+			return "Exception encountered while fetching data !!!";
+		}
 	}
 	
 	private String truncatePrfx(String ipStr)

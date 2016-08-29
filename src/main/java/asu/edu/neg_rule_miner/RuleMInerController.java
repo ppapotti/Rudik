@@ -227,10 +227,10 @@ public class RuleMInerController {
 		try {
 			System.out.println("**********UpdateRuleResultString  = " + jsonString);
 			singleRule execQuery = new ObjectMapper().readValue(jsonString, singleRule.class);
-			System.out.println("Results Name  = " + execQuery.getRuleStr());
+			System.out.println("Results Name  = " + execQuery.getRuleStr()+ " Sub --"+execQuery.getTypeOfSubject() + " Obj : "+execQuery.getTypeOfObject());
 			
 			DynamicPruningRuleDiscovery dynaRp = new DynamicPruningRuleDiscovery();
-			String result =  dynaRp.executeQueryForEx(execQuery.getRuleStr());
+			String result =  dynaRp.executeQueryForEx(execQuery.getRuleStr(),execQuery);
 			
 			return (result);
 		} catch (Exception e) {

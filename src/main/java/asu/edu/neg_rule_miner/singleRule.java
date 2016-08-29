@@ -12,7 +12,7 @@ import javax.xml.bind.annotation.XmlType;
  *  Author: Varun Gaur
  */
 public class singleRule {
-    
+    private String exmplSet;
 	private String ruleStr;
 	private double alpha;
 	private double beta;
@@ -38,11 +38,12 @@ public class singleRule {
     public singleRule() {
 	}
 
-	public singleRule(String ruleStr, double alpha, double beta, double gamma, double maxNoRule, double noOfThreads,
+	public singleRule(String exmplSet, String ruleStr, double alpha, double beta, double gamma, double maxNoRule, double noOfThreads,
 			String kBase, String typeOfSubject, String typeOfObject, String relName, int edgeLimit, int genLimit,
 			boolean genNegRules, boolean useSmartSampling, double alphaSmart, double betaSmart, double gammaSmart,
 			double subWeight, double objWeight, boolean topK) {
 		super();
+		this.exmplSet = exmplSet;
 		this.ruleStr = ruleStr;
 		this.alpha = alpha;
 		this.beta = beta;
@@ -65,6 +66,14 @@ public class singleRule {
 		this.topK = topK;
 	}
     
+	public String getExmplSet() {
+		return exmplSet;
+	}
+
+	public void setExmplSet(String exmplSet) {
+		this.exmplSet = exmplSet;
+	}
+	
 	public String getRuleStr() {
 		return ruleStr;
 	}

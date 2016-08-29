@@ -10,6 +10,8 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import org.apache.commons.configuration.Configuration;
 import org.apache.commons.configuration.HierarchicalConfiguration;
@@ -25,6 +27,7 @@ import asu.edu.neg_rule_miner.configuration.Constant;
 import asu.edu.neg_rule_miner.model.horn_rule.HornRule;
 import asu.edu.neg_rule_miner.model.horn_rule.RuleAtom;
 import asu.edu.neg_rule_miner.model.rdf.graph.Graph;
+import asu.edu.neg_rule_miner.singleRule;
 
 /**
  * Abstract class to model a Sparql engine endpoint
@@ -577,7 +580,7 @@ public abstract class SparqlExecutor {
 	public abstract int executeCountQuery(String inputQuery);
 	
 	public String generateHornRuleQuery(Set<RuleAtom> rules, String typeSubject, 
-			String typeObject, boolean overloaded){
+			String typeObject, boolean overloaded,singleRule execQuery){
 
 		if(!(rules.size()>0))
 			return null;
@@ -590,21 +593,43 @@ public abstract class SparqlExecutor {
 			}
 		}
 		query.append("SELECT ");
+		String pattern = "(^)(v|V)(\\d+)";
+		
 		for(RuleAtom atom : rules){
 			String rel = atom.getRelation();
 			String sub = atom.getSubject();
 			String obj = atom.getObject();
-//			query.append("<"+rel+"(>?"+sub+"<,>?"+obj+"<)>");
-			query.append(" ?"+sub+" ?"+obj+" ");
+			Pattern rS = Pattern.compile(pattern);
+			Pattern rO = Pattern.compile(pattern);
+			//Matcher sMtch = rS.matcher(sub.toString());
+			//Matcher oMtch = rO.matcher(obj.toString());
+			
+			
+			if((sub.toUpperCase().startsWith("SUB")) || (sub.toUpperCase().startsWith("OBJ")) || (rS.matcher(sub.toString()).find()))
+			{
+				sub = "?" + sub;
+			}
+			else
+			{
+				sub = "<" + sub +">";
+			}
+			
+			if((obj.toUpperCase().startsWith("SUB")) || (obj.toUpperCase().startsWith("OBJ")) || (rO.matcher(obj.toString()).find()))
+			{
+				obj = "?" + obj;
+			}
+			else
+			{
+				obj = "<"+obj+">";
+			}
+			
+			query.append(" " + sub+ " " + obj +" ");
 		}
 		
-//		String kBase = "dbpedia";
 		String prfx = targetPrefix.toString().substring(1, targetPrefix.toString().length()-1);
-//		prfx = prfx.replaceAll("]", "");
 
 		String subject = typeSubject!=null ? "?subject" : "";
 		String object = typeObject!=null ? "?object" : "";
-//		query.append("SELECT DISTINCT "+subject+" "+object);
 
 		/**
 		 * Jena does not work with count and nested query with from
@@ -621,6 +646,29 @@ public abstract class SparqlExecutor {
 		//check if the query contains an inequality
 
 		query.append(this.getHornRuleAtomQuery(rules));
+		
+		//Changes for generating Satisfying and Violating examples !!!!
+		if(execQuery.isGenNegRules())
+		{
+			// Satisfying Sets 
+			if(execQuery.getExmplSet().equals("S"))
+				query.append("FILTER NOT EXISTS {?subject <" + prfx + execQuery.getRelName() + "> ?object . }");
+			
+			// Violating Sets 
+			if(execQuery.getExmplSet().equals("V"))
+				query.append("?subject <"+ prfx + execQuery.getRelName() + "> ?object . ");
+		}
+		else
+		{
+			// Satisfying Sets 
+			if(execQuery.getExmplSet().equals("S"))
+				query.append("?subject <"+ prfx + execQuery.getRelName() + "> ?object . ");
+			
+			// Violating Sets 
+			if(execQuery.getExmplSet().equals("V"))
+				query.append("FILTER NOT EXISTS {?subject <" + prfx + execQuery.getRelName() + "> ?object . }");
+		}
+		
 		query.append("}");
 
 		return query.toString();
@@ -647,8 +695,8 @@ public abstract class SparqlExecutor {
 		/**
 		 * Jena does not work with count and nested query with from
 		 */
-		if(this.graphIri!=null&&graphIri.length()>0)
-			query.append(" FROM "+this.graphIri);
+//		if(this.graphIri!=null&&graphIri.length()>0)
+//			query.append(" FROM "+this.graphIri);
 
 		query.append(" WHERE {");
 		if(subject.length()>0)

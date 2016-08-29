@@ -203,7 +203,7 @@ var rules = [];
 				}
 			});
 	}	
-	function ajaxExecuteRule(currBtnId,currBtnVal){
+	function ajaxExecuteRule(currBtnId,currBtnVal,ExmplSet){
 		$('#RuleMinerRules_response').val(" ");
 		//$('#RuleMinerItem_response').val(" ");
 		document.getElementById('loader').style.visibility = "visible";
@@ -211,6 +211,7 @@ var rules = [];
 		var url = '/rule_miner/webapi/RuleMiner/ExecuteRule';
 		//var dataString = document.getElementById('RuleMinerItem_request').value;
 		var dataString = {
+				"exmplSet": ExmplSet,
 				"ruleStr": rules[currBtnId.substring(currBtnId.length-1,currBtnId.length)],
 				"alpha": $("#alphaR").val(),
 				"beta": $("#betaR").val(),
@@ -239,7 +240,6 @@ var rules = [];
 				contentType : 'application/json',
 				data : JSON.stringify(dataString),
 				success : function(opRuleStr) {
-					alert("opRuleStr=="+opRuleStr);
 					$('#exmplDialog').val(opRuleStr);
 				  	$( "#dialogBox" ).dialog( "open" );
 				  	document.getElementById('loader').style.visibility = "hidden";
@@ -319,7 +319,8 @@ var rules = [];
 								  		$('div#foo').append('<tr><td width="50%"><a href= "#" onClick="return openModalWindowForRule(this.id,idx);" id= "diag'+idx+ '" >'+ innerVal1 + '</a></td>'
 										    + '<td width="20%" ><div class="post-date"><input type="radio" id="radioVal'+idx+'" name="radioVal'+idx+'"  value="yes">Valid  </input>' 
 										    + '<input type="radio" id="radioVal'+idx+'" name="radioVal'+idx+'" align="right" value="no">Invalid</input></div></td>'
-										    + '<td width="30%" align="right"><button class="button button1" id="execButton'+idx+ '" type="button" onclick="return ajaxExecuteRule(this.id,idx);">Execute</button></td></tr>');
+										    + '<td width="30%" align="right"><button class="button button1" id="satfButton'+idx+ '" type="button" onclick="return ajaxExecuteRule(this.id,idx,\'S\');">Satisfying</button></td>'
+										    + '<td width="30%" align="right"><button class="button button1" id="violButton'+idx+ '" type="button" onclick="return ajaxExecuteRule(this.id,idx,\'V\');">Violating</button></td></tr>');
 									}
 							  		count1++;
 							  	
