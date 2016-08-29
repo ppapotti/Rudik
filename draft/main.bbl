@@ -8,8 +8,8 @@ Z.~Abedjan, C.~G. Akcora, M.~Ouzzani, P.~Papotti, and M.~Stonebraker.
 \bibitem{abedjan2014amending}
 Z.~Abedjan and F.~Naumann.
 \newblock Amending rdf entities with new facts.
-\newblock In {\em The Semantic Web: ESWC 2014 Satellite Events}, pages
-  131--143. Springer, 2014.
+\newblock In {\em European Semantic Web Conference}, pages 131--143. Springer,
+  2014.
 
 \bibitem{abedjan2014dfd}
 Z.~Abedjan, P.~Schulze, and F.~Naumann.
@@ -26,7 +26,7 @@ S.~Abiteboul, R.~Hull, and V.~Vianu.
 \bibitem{agrawal1993mining}
 R.~Agrawal, T.~Imieli{\'n}ski, and A.~Swami.
 \newblock Mining association rules between sets of items in large databases.
-\newblock {\em SIGMOD}, 22(2):207--216, 1993.
+\newblock 22(2):207--216, 1993.
 
 \bibitem{banko2007open}
 M.~Banko, M.~J. Cafarella, S.~Soderland, M.~Broadhead, and O.~Etzioni.
@@ -57,6 +57,11 @@ A.~Carlson, J.~Betteridge, B.~Kisiel, B.~Settles, E.~R. Hruschka~Jr, and T.~M.
   Mitchell.
 \newblock Toward an architecture for never-ending language learning.
 \newblock In {\em AAAI}, volume~5, page~3, 2010.
+
+\bibitem{Chen:2016}
+Y.~Chen, S.~Goldberg, D.~Z. Wang, and S.~S. Johri.
+\newblock Ontological pathfinding.
+\newblock In {\em SIGMOD}, pages 835--846, 2016.
 
 \bibitem{chu2013discovering}
 X.~Chu, I.~F. Ilyas, and P.~Papotti.
@@ -92,7 +97,8 @@ X.~Dong, E.~Gabrilovich, G.~Heitz, W.~Horn, N.~Lao, K.~Murphy, T.~Strohmann,
   S.~Sun, and W.~Zhang.
 \newblock Knowledge vault: A web-scale approach to probabilistic knowledge
   fusion.
-\newblock In {\em SIGKDD}, pages 601--610. ACM, 2014.
+\newblock In {\em Proceedings of the 20th ACM SIGKDD international conference
+  on Knowledge discovery and data mining}, pages 601--610. ACM, 2014.
 
 \bibitem{dong2014data}
 X.~L. Dong, E.~Gabrilovich, G.~Heitz, W.~Horn, K.~Murphy, S.~Sun, and W.~Zhang.
@@ -116,10 +122,15 @@ W.~Fan, F.~Geerts, J.~Li, and M.~Xiong.
 \newblock {\em IEEE Transactions on Knowledge and Data Engineering},
   23(5):683--698, 2011.
 
+\bibitem{DBLP:conf/sigmod/FaridRIHC16}
+M.~H. Farid, A.~Roatis, I.~F. Ilyas, H.~Hoffmann, and X.~Chu.
+\newblock {CLAMS:} bringing quality to data lakes.
+\newblock In {\em SIGMOD}, pages 2089--2092, 2016.
+
 \bibitem{galarraga2015fast}
 L.~Gal{\'a}rraga, C.~Teflioudi, K.~Hose, and F.~M. Suchanek.
 \newblock Fast rule mining in ontological knowledge bases with amie+.
-\newblock {\em {PVLDB}}, 24(6):707--730, 2015.
+\newblock {\em The VLDB Journal}, 24(6):707--730, 2015.
 
 \bibitem{gc2015big}
 P.~S. GC, C.~Sun, H.~Zhang, F.~Yang, N.~Rampalli, S.~Prasad, E.~Arcaute,
@@ -211,7 +222,7 @@ C.~Wyss, C.~Giannella, and E.~Robertson.
 \bibitem{zhu2011mining}
 F.~Zhu, Q.~Qu, D.~Lo, X.~Yan, J.~Han, and P.~S. Yu.
 \newblock Mining top-k large structural patterns in a massive network.
-\newblock {\em PVLDB}, 4(11):807--818, 2011.
+\newblock {\em Proceedings of the VLDB Endowment}, 4(11):807--818, 2011.
 
 \bibitem{zou2009distance}
 L.~Zou, L.~Chen, and M.~T. {\"O}zsu.
