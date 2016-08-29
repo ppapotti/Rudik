@@ -1,25 +1,38 @@
 \section{Preliminaries and Definitions} \label{sec:krd_prel}
-The work of this chapter focuses on discovering rules from RDF\footnote{\url{https://www.w3.org/RDF/}} KBs. An RDF KB is
-a database that represents common information through RDF triples $\<s,p,o\>$, where a \emph{subject} is connected to a \emph{object} via a \emph{predicate}. Triples are often called \emph{facts}. As an example, the fact that Scott Eastwood is the child of Clint Eastwood could be represented with the triple $\<Clint\_Eastwood,child,Scott\_Eastwood\>$. 
+We focus on discovering rules from RDF KBs. An RDF KB is
+a database that represents information through RDF triples $\<s,p,o\>$, where a \emph{subject} is connected to a \emph{object} via a \emph{predicate}. Triples are often called \emph{facts}. As an example, the fact that Scott Eastwood is the child of Clint Eastwood could be represented with the triple $\<Clint\_Eastwood,child,Scott\_Eastwood\>$. 
 RDF KB triples respect the following constraints:
-\begin{itemize}
-	\item triple subjects are always \emph{entities}, i.e., concepts from the real world;
-	\item triple objects can be either entities or \emph{literals}. Literals represent primitive types -- numbers, dates, and strings;
-	\item triple predicates specifies real-world relationships between subjects and objects.
-\end{itemize} 
-If we compare the KB model with object oriented programming languages, entities correspond to complex objects with properties and attributes, while literals correspond to primitive types such as integers, chars and strings.
+(i) triple subjects are always \emph{entities}, i.e., concepts from the real world;
+(ii) triple objects can be either entities or \emph{literals}, i.e.,  primitive types such as numbers, dates, and strings;
+(iii) triple predicates specifies real-world relationships between subjects and objects.
+%%%%%%%TO BE REMOVED IF WE NEED MORE SPACE: %%%%%%%
+Entities in the KB model correspond to complex objects with properties and attributes in object oriented programming languages, while literals correspond to primitive types such as integers, chars and strings.
+%%%%%%%%%%
 
-Differently from, e.g., relational databases, KBs do not have a schema that instance data is forced to follow. The set of predicates is unknown a-priori, and adding new predicates is just a matter of inserting new triples having those predicates. Sometimes KBs include \emph{T-Box} facts in order to define classes, domain/co-domain types for predicates, and relationships among classes.
-While the T-Box can be useful in order to check integrity and consistency within a KB, very often such information is incomplete or not present at all. Hence our focus in this thesis is only on the \emph{A-Box}, the set of facts that describe instance data. If on the one hand this model allows great flexibility, on the other hand the likelihood of introducing errors and inconsistencies is much higher than traditional schema-guided databases.
+Differently from relational databases, KBs do not have a schema that defines allowed instance data. 
+The set of predicates is unknown a-priori, and new predicates are added by inserting new triples. % having those predicates. 
+It is evident that this model allows great flexibility, but the likelihood of introducing errors is higher than traditional schema-guided databases.
+While KBs can include \emph{T-Box} facts in order to define classes, domain/co-domain types for predicates, and relationships among classes
+%While the T-Box can specify 
+to check integrity and consistency, in most KBs --including the popular ones we use in our experiments-- such information is missing. % or not present at all. 
+Hence our focus on the \emph{A-Box} facts that describe instance data. 
 
 \subsection{Language} \label{sec:krd_language} 
-Inspired by Inductive Logic Programming~\cite{muggleton1994inductive}, the goal of our work is to discover first-order logical formulas in KBs. More specifically, we target the discovery of \emph{Horn Rules}. A Horn Rule is a disjunction of \emph{atoms} with at most one unnegated atom. When written in the implication form, Horn Rules have one of the following format:
-
+%Inspired by Inductive Logic Programming~\cite{muggleton1994inductive}, 
+The goal of our work is to automatically discover first-order logical formulas in KBs. More specifically, we target the discovery of \emph{Horn Rules}. A Horn Rule is a disjunction of \emph{atoms} with at most one unnegated atom. When written in the implication form, Horn Rules have one of the following format:
+%
 \begin{equation*}
-A_1 \wedge A_2 \wedge \cdots \wedge A_n \Rightarrow B \qquad \qquad A_1 \wedge A_2 \wedge \cdots \wedge A_n \Rightarrow \neg B
-\end{equation*}
-where $A_1 \wedge A_2 \wedge \cdots \wedge A_n$ consists of the \emph{body} of the rule (a conjunction of atoms), while $B$ is the \emph{head} of the rule (a single atom). The head of the rule is either unnegated (left) or negated (right). We call the former \emph{definite clause} or more simply \emph{positive rule}, while the latter \emph{goal clause} or \emph{negative rule}. In the context of KBs, an atom is a predicate connecting two variables, two entities, or an entity and a variable. For simplicity, we represent an atom with the notation $\atom{rel}{a}{b}$, where \texttt{rel} is the name of the predicate, and $a$ and $b$ are either variables or entities. In the context of Horn Rules, all variables appearing in a rule are implicitly universally quantified. Given a Horn Rule $r$, we define $r_{body}$ as the body of the rule, and $r_{head}$ as the head of the rule. We define the variables appearing in the head of the rule as the \emph{target variables}.
-The first rule of Example~\ref{ex:krd_intro} shows a plausible positive rule, while the second rule is a potential negative rule. $a$ and $b$ are the target variables in both cases.
+A_1 \wedge A_2 \wedge \cdots \wedge A_n \Rightarrow B \qquad \qquad A_1 \wedge A_2 \wedge \cdots \wedge A_n \Rightarrow  false 
+\end{equation*} %\neg B
+%
+where $A_1 \wedge A_2 \wedge \cdots \wedge A_n$ consists of the \emph{body} of the rule (a conjunction of atoms), while $B$ is the \emph{head} of the rule (a single atom). The head of the rule is either unnegated (left) or empty (right). We call the former \emph{definite clause} or simply \emph{positive rule}, while the latter \emph{goal clause} or \emph{negative rule}. In the context of KBs, an atom is a predicate connecting two variables, two entities, or an entity and a variable. For simplicity, we represent an atom with the notation $\atom{rel}{a}{b}$, where \texttt{rel} is the name of the predicate, and $a$ and $b$ are either variables or entities. In the context of Horn Rules, all variables appearing in a rule are implicitly universally quantified. Given a Horn Rule $r$, we define $r_{body}$ as the body of the rule, and $r_{head}$ as the head of the rule. We define the variables appearing in the head of the rule as the \emph{target variables}. For the sake of presentation, we write negative rules with an atom in the body rewritten in its negated form in the head. The results is logically equivalent, but emphasises that negative facts can be derived.
+The first rule of Example~\ref{ex:krd_intro} shows a traditional plausible positive rule, where new positive facts are identified with target variables $a$ and $b$.
+% are the target variables.
+The second rule is a negative rule to derive false facts, but if we want it to identify errors in the KB, as in Denial Constraints for relational database~\cite{chu2013discovering}, we rewrite it as 	
+\begin{equation*}
+		 \hspace*{-0.45cm}   \atom{birthDate}{a}{v_0} \wedge \atom{birthDate}{b}{v_1} \wedge v_0 > v_1
+		\wedge \atom{child}{a}{b} \Rightarrow false 
+	\end{equation*}
 
 Furthermore we extend the language in order to include \emph{literals comparison}. A literal comparison is a special atom $\atom{rel}{a}{b}$, where $\texttt{rel} \in \{<,\leq,\neq,>,\geq\}$, and $a$ and $b$ can only be assigned to literal values except if $\texttt{rel}$ is equal to $\neq$. In such a case $a$ and $b$ can be also assigned to entities. We will explain later on in the thesis why this exception is important.
 
@@ -44,7 +57,7 @@ Given a set of pair of entities $E = \{(x_1,y_1),(x_2,y_2),\cdots,(x_n,y_n)\}$ a
 
 \begin{example}
 	Given the negative rule $r$ of Example~\ref{ex:krd_intro} and a KB $\kb$, we denote with $E$ the set of all possible pairs of entities in $\kb$. The coverage of $r$ over $E$ $(C_r(E))$ is the set of all pairs of entities $(x,y) \in \kb$ such that both $x$ and $y$ have the \texttt{birthDate} information and $x$ is born after $y$, while the unbounded coverage of $r$ over $E$ $(U_r(E))$ is the set of all pairs of entities $(x,y)$ such that both $x$ and $y$ have the \texttt{birthDate} information, no matter what the relation between the two birth dates is. 
-\end{example}
+\end{example} 
 
 The unbounded coverage is essential to distinguish between missing and inconsistent information: if for a pair of entities $(x,y)$ the \texttt{birthDate} information is missing for either $x$ or $y$ (or both), we cannot say whether $x$ was born before or after $y$, therefore we cannot state whether
 the negative rule of Example~\ref{ex:krd_intro} covers $(x,y)$ or not. On the other hand, if both $x$ and $y$ have the \texttt{birthDate} information and $x$ is born before $y$, we can affirm that the negative rule of Example~\ref{ex:krd_intro} does not cover $(x,y)$. Given that modern KBs are largely incomplete~\cite{dong2014knowledge,min2013distant}, discriminating between missing and conflicting information becomes of paramount importance.
