@@ -1,12 +1,13 @@
 \section{Introduction}
 %So far, the focus of this thesis has targeted classic web data extraction: we extract entities from semi-structured web sources, along with their attributes, in order to store them in some structured format. A novel research direction is recently focusing on extracting data from web documents to construct knowledge bases (KBs), in order to structurally store entities and relationships among them. Given the different nature of target data, KBs are usually not stored in relational databases. In this chapter we move the attention from classic web data extraction to KBs built from web sources. More specifically, we consider RDF KBs, the most popular format where data is stored as RDF triples.
 
-Building large RDF knowledge bases (KBs) is a popular trend in information extraction.
+Building large RDF knowledge-bases (KBs) is a popular trend in information extraction.
 KBs store information in the form of triples, where a \emph{predicate}, or relation, expresses a binary relation between a \emph{subject} and a \emph{object}. KB triples, often referred as facts, store information about real-world entities and their relationships, such as %``Scott Eastwood is the child of Clint Eastwood",
  ``Michelle Obama is married to Barack Obama", or ``Larry Page is the founder of Google".
 Significant effort has been put in the research community on KBs creation in the last 10 years (\system{DBPedia}~\cite{bizer2009dbpedia}, \system{FreeBase}\cite{bollacker2008freebase}, \system{Wikidata}~\cite{vrandevcic2014wikidata}, \deepdive~\cite{shin2015incremental}, \system{Yago}~\cite{suchanek2008yago}, \system{NELL}~\cite{carlson2010toward}, \system{TextRunner}\cite{banko2007open}) as well as in the industry % and KBs have also attracted interests from the industry, as evident from the ongoing efforts in several companies 
 (e.g., Facebook\footnote{\url{https://developers.facebook.com/docs/graph-api}}, Google~\cite{dong2014knowledge}, Wal-Mart~\cite{deshpande2013building}).
 %ADD POINTER TO knowledge graph?
+%STEFANO: I THINK ONE REFERENCE FOR GOOGLE IS ENOUGH
 
 Unfortunately, due to their creation process, KBs are usually erroneous and incomplete.
 KBs are bootstrapped by extracting information from sources, oftentimes from the Web, with minimal or no human intervention.  This leads to two main problems. First, errors are propagated from the sources, or introduced by the extractors, leading to false facts in the KB. Second, usually KBs do not limit the information of interest with a schema that clearly defines instance data. The set of predicates is unknown a-priori, and adding facts defined on new predicates is just a matter of inserting new triples in the KB without any integrity check.  
@@ -38,10 +39,16 @@ of two different types of rules:
 	\end{equation*}
 	which states that if a person $a$ is parent of person $b$, then $b$ is child of $a$. If the KB has the fact ``Clint Eastwood is the parent of Scott Eastwood", we can infer the fact that ``Scott Eastwood is the child of Clint Eastwood".
 	A negative rule has similar form, but very different semantics:
+	
+	\vspace{-2ex}
+	{\small
 	\begin{equation*}
 		\atom{birthDate}{a}{v_0} \wedge \atom{birthDate}{b}{v_1} \wedge v_0 > v_1 \Rightarrow \neg \atom{child}{a}{b} 
 	\end{equation*}
-	The rule states that a person $b$ cannot be child of $a$ if $a$ was born after $b$. By instantiating the above rule for the \texttt{child} facts in the KB, we may discover erroneous triples stating that a child is born before a parent.
+	} 
+	\vspace{-2ex}
+	
+	\noindent The above rule states that a person $b$ cannot be child of $a$ if $a$ was born after $b$. By instantiating the above rule for the \texttt{child} facts in the KB, we may discover erroneous triples stating that a child is born before a parent.
 \end{example}
 
 While intuitive to humans, the rules above must be manually stated in a KB in order to be enforced, and there are thousands of rules in a large KB with hundreds of predicates~\cite{gc2015big}. Other than enriching and cleaning KBs, negative rules support other use cases. %brings multiple benefits. %, such as automatic reasoning. 
@@ -61,13 +68,19 @@ three main challenges arise when discovering rules for KBs.
 Traditional database techniques for rules discovery make the assumption that data is either clean or has a negligible amount of errors~\cite{abiteboul1995foundations,huhtala1999tane,wyss2001fastfds,chu2013discovering}. We will show that KBs present a high percentage of errors and we need techniques that are noise tolerant.
 
 \myparagraph{Open Word Assumption}
-KBs contain only positive statements, and, without CWA, we cannot derive negative statements as counter examples --  classic databases approaches rely on the presence of positive and negative examples~\cite{muggleton1994inductive} or a fixed schema given as input.  %REFERENCE AND/OR EXPLANATION NEEDED HERE wrt the POS NEG EXAMPLES , if the ONE I PUT OK?
+KBs contain only positive statements, and, without CWA, we cannot derive negative statements as counter examples --  classic databases approaches rely on the presence of positive and negative examples~\cite{dehaspe1999discovery,muggleton1994inductive} or a fixed schema given as input.  
+
+%REFERENCE AND/OR EXPLANATION NEEDED HERE wrt the POS NEG EXAMPLES , if the ONE I PUT OK?
+% STEFANO: ADDED A FURTHER REFERENCE
 
 \myparagraph{Volume}
 %MOVE TO RELATED
 %Classic database discovery algorithms ILP systems cannot cope with large KBs and in order to directly apply existing database techniques would require the materialisation of all possible predicates combinations into relational tables (graph data must be flattened in relational format).  Moreover, 
 Existing approaches for discovery on positive rules in KBs assume that data can fit into memory, something that it is not realistic given the large, and increasing, size of the KB~\cite{abedjan2014amending,galarraga2015fast}. More recent approaches also rely on main memory algorithm and try to solve this problem with distributed architectures ~\cite{Chen:2016,DBLP:conf/sigmod/FaridRIHC16}.
-%IS THE MEMORY ASSUMPTION TRUE FOR Chen:2016,abedjan2014amending??? %%%%%
+
+%IS THE MEMORY ASSUMPTION TRUE FOR Chen:2016,abedjan2014amending??? 
+%STEFANO: YES
+%%%%%
 
 
 %\myparagraph{Novelty} In this chapter 
@@ -98,6 +111,7 @@ Given errors in the data and incompleteness, the ideal solution is a compact set
 %I REMOVED THIS BECAUSE WE ARE NOT REALLY TOUCHING THIS TOPIC IN THE INTRO, but i mention it in the exp now
 
 %WE MAY WANT TO SAY MORE ABOUT HOW SMART WE ARE BY USING OUR SELECTION with set COVER< BUT DO WE REALLY DO BETTER THAN RANKING (with out own scoring)? I DONT REMEMBER IF WE TESTED THIS
+%STEFANO: WELL WE TESTED AGAINST AMIE WHICH IS USING A RANK OF RULES, AND AS RESULT AMIE OUTPUTS MANY RULES, WITH VERY FEW CORRECT. SO YES WE DO BETTER THAN RANKING
 %, which is proven to be $\textsf{NP\mbox{-}complete}$.  
 
 %We will show that properly setting such thresholds is not trivial (see Section~\ref{sec:krd_comparative}), and we incorporate this aspect in the problem definition.
@@ -108,17 +122,18 @@ We give a \texttt{log($k$)} approximation of the problem close in spirit to the 
 %The algorithm we propose in \krd alternates and combines two different phases:
 %\begin{inparaenum}[\itshape(i)]
 %
-materialises the KB as a directed graph, and discovers rules by navigating valid paths. To reduce the use of resources, at each iteration we follow the most promising path in a $A^*$ traversal fashion, allowing the pruning of unpromising paths.	
+materializes the KB as a directed graph, and discovers rules by navigating valid paths. To reduce the use of resources, at each iteration we follow the most promising path in a $A^*$ traversal fashion, allowing the pruning of unpromising paths.	
 %Previous approaches for rules discovery assume that the KB has to fit in main memory to deliver acceptable performance~\cite{abedjan2014amending,galarraga2015fast} (TODO: cite 2 sigmod papers). Unfortunately, KBs nowadays have sizes that can easily exceed hundreds of GBs and previous works require powerful resources to handle them. With our rules generation based on 
-By materialising only the portion of the KB that is needed for the discovery, and generating nodes and edges \emph{on demand}, the disk is accessed only whenever the navigation of a specific path is required. 
+By materializing only the portion of the KB that is needed for the discovery, and generating nodes and edges \emph{on demand}, the disk is accessed only whenever the navigation of a specific path is required. 
 %Moreover, the $A^*$ graph traversal allows the pruning of unpromising paths that are therefore never materialised. Thus 
 The significant reduction of the search space reduces the running time an order of magnitude in the best case scenario. 
 
 \myparagraph{Sampling for Exploration}
 To further improve performance, we also introduce sampling techniques that are aware of the data challenges in KBs. Our sampling leads to the same improvements in execution times than traditional samplings approach, but, as it is design to mitigate the problems in KBs, it can lead to better rules, i.e., a larger number of correct rules in the output and a smaller number of false rules.
+%STEFANO: IS THIS CORRECT? OR DO WE JUST LIMIT THE NUMBER OF FALSE RULES?
 
 
 \vspace{1ex}
-We experimentally verify the performance of rules discovery in \krd using both real-world datasets (Section~\ref{sec:krd_experiments}). The evaluation is carried on the 3 most popular and widely used KBs, namely \dbpedia~\cite{bizer2009dbpedia}, \yago~\cite{suchanek2007yago}, and \wikidata~\cite{vrandevcic2014wikidata}. 
-We show that our problem formulation leads to approximate rules that are better in quality than previous systems and that the search algorithm is general enough to deliver accurate rules both in the positive and negative settings, clearly outperforming state-of-the-art systems in running time. We also show the impact of the proposed optimisation and give an example of application where discovered rules have a beneficial impact when providing representative examples for Machine Learning algorithms.
+We experimentally verify the performance of rules discovery in \krd using real-world datasets (Section~\ref{sec:krd_experiments}). The evaluation is carried on the 3 most popular and widely used KBs, namely \dbpedia~\cite{bizer2009dbpedia}, \yago~\cite{suchanek2007yago}, and \wikidata~\cite{vrandevcic2014wikidata}. 
+We show that our problem formulation leads to approximate rules that are better in quality than previous systems and that the search algorithm is general enough to deliver accurate rules both in the positive and negative settings, clearly outperforming state-of-the-art systems in running time. We also show the impact of the proposed optimization and give an example of application where discovered rules have a beneficial impact when providing representative examples for Machine Learning algorithms.
 % (Section~\ref{sec:krd_deep_dive}).
