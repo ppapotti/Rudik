@@ -40,30 +40,32 @@
 \newlabel{eq:weight_fun}{{1}{4}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {2.4}Problem Definition}{4}}
 \newlabel{sec:krd_prob_def}{{2.4}{4}}
-\citation{galarraga2015fast}
+\citation{galarraga2015fast,Chen:2016}
+\citation{Chen:2016}
 \citation{bizer2009dbpedia}
+\@writefile{toc}{\contentsline {section}{\numberline {3}Rules and Examples Generation}{5}}
+\newlabel{sec:rules_gen}{{3}{5}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.1}Rules Generation}{5}}
+\newlabel{sec:ex_generation}{{3.1}{5}}
 \@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces Graph Portion of \textsc  {DBPedia}\xspace  }}{5}}
 \newlabel{fig:krd_graph_example}{{1}{5}}
-\@writefile{toc}{\contentsline {section}{\numberline {3}Rules Generation}{5}}
-\newlabel{sec:rules_gen}{{3}{5}}
 \citation{dong2014knowledge,galarraga2015fast}
 \citation{galarraga2015fast}
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.1}Input Examples Generation}{6}}
-\newlabel{sec:ex_generation}{{3.1}{6}}
-\citation{abedjan2014amending,galarraga2015fast}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.2}Input Examples Generation}{6}}
+\newlabel{sec:ex_generation}{{3.2}{6}}
 \citation{chvatal1979greedy}
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.2}Literals and Constants}{7}}
+\citation{chvatal1979greedy}
 \@writefile{toc}{\contentsline {section}{\numberline {4}$A^*$ Greedy Algorithm}{7}}
 \newlabel{sec:krd_greedy}{{4}{7}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {4.1}Marginal Weight}{7}}
-\citation{chvatal1979greedy}
+\@writefile{loa}{\contentsline {algocf}{\numberline {1}{\ignorespaces Greedy Rules Selection.}}{7}}
+\newlabel{alg:krd_greedy}{{1}{7}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.2}$A^*$ Graph Traversal}{7}}
 \citation{hart1968formal}
 \citation{abiteboul1995foundations}
-\@writefile{loa}{\contentsline {algocf}{\numberline {1}{\ignorespaces Greedy Rules Selection.}}{8}}
-\newlabel{alg:krd_greedy}{{1}{8}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.2}$A^*$ Graph Traversal}{8}}
 \newlabel{lemma:krd_exp_cov}{{1}{8}}
-\newlabel{def:est_res_wei}{{3}{9}}
+\newlabel{def:est_res_wei}{{3}{8}}
+\citation{galarraga2015fast}
 \newlabel{alg_line:front_nodes}{{2}{9}}
 \newlabel{alg_line:sparql_1}{{3}{9}}
 \newlabel{alg_line:q_r_initialisation}{{4}{9}}
@@ -72,55 +74,58 @@
 \newlabel{alg_line:sparql_2}{{12}{9}}
 \@writefile{loa}{\contentsline {algocf}{\numberline {2}{\ignorespaces \textsf  {RuDiK}\xspace  Rules Discovery.}}{9}}
 \newlabel{alg:krd_a*}{{2}{9}}
-\citation{galarraga2015fast}
+\@writefile{toc}{\contentsline {section}{\numberline {5}Experiments}{9}}
+\newlabel{sec:krd_experiments}{{5}{9}}
 \citation{bizer2009dbpedia}
 \citation{suchanek2007yago}
 \citation{vrandevcic2014wikidata}
 \citation{Chen:2016,DBLP:conf/sigmod/FaridRIHC16}
 \citation{galarraga2015fast}
-\@writefile{toc}{\contentsline {section}{\numberline {5}Experiments}{10}}
-\newlabel{sec:krd_experiments}{{5}{10}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {5.1}Rules Discovery Accuracy}{10}}
 \newlabel{sec:gen_evaluation}{{5.1}{10}}
 \@writefile{lot}{\contentsline {table}{\numberline {1}{\ignorespaces Dataset characteristics.}}{10}}
 \newlabel{tab:krdDatasetDescr}{{1}{10}}
+\@writefile{lot}{\contentsline {table}{\numberline {2}{\ignorespaces Positive Rules Accuracy.}}{10}}
+\newlabel{tab:pos_rules_acc}{{2}{10}}
 \citation{galarraga2015fast}
-\@writefile{lot}{\contentsline {table}{\numberline {2}{\ignorespaces Positive Rules Accuracy.}}{11}}
-\newlabel{tab:pos_rules_acc}{{2}{11}}
-\@writefile{lot}{\contentsline {table}{\numberline {3}{\ignorespaces Negative Rules Accuracy.}}{11}}
-\newlabel{tab:neg_rules_acc}{{3}{11}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {5.2}Comparative Evaluation}{11}}
 \newlabel{sec:krd_comparative}{{5.2}{11}}
+\@writefile{lot}{\contentsline {table}{\numberline {3}{\ignorespaces Negative Rules Accuracy.}}{11}}
+\newlabel{tab:neg_rules_acc}{{3}{11}}
 \@writefile{lot}{\contentsline {table}{\numberline {4}{\ignorespaces \textsf  {AMIE}\xspace  Dataset characteristics.}}{11}}
 \newlabel{tab:AmieDatasetDescr}{{4}{11}}
+\@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces Predictions Accuracy on \textsc  {Yago}\xspace  }}{11}}
+\newlabel{fig:vs_amie_yago}{{2}{11}}
 \citation{galarraga2015fast}
-\@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces Predictions Accuracy on \textsc  {Yago}\xspace  }}{12}}
-\newlabel{fig:vs_amie_yago}{{2}{12}}
-\@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces Predictions Accuracy on \textsc  {DBPedia}\xspace  }}{12}}
-\newlabel{fig:vs_amie_dbpedia}{{3}{12}}
-\@writefile{lot}{\contentsline {table}{\numberline {5}{\ignorespaces Negative Rules vs \textsf  {AMIE}\xspace  .}}{12}}
-\newlabel{tab:vs_amie_neg}{{5}{12}}
-\@writefile{lot}{\contentsline {table}{\numberline {6}{\ignorespaces Run Time vs \textsf  {AMIE}\xspace  .}}{12}}
-\newlabel{tab:amie_runtime}{{6}{12}}
 \citation{abedjan2014amending}
 \citation{Chen:2016}
 \citation{dehaspe1999discovery,muggleton1995inverse}
 \citation{shin2015incremental}
+\@writefile{lot}{\contentsline {table}{\numberline {5}{\ignorespaces Negative Rules vs \textsf  {AMIE}\xspace  .}}{12}}
+\newlabel{tab:vs_amie_neg}{{5}{12}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces Predictions Accuracy on \textsc  {DBPedia}\xspace  }}{12}}
+\newlabel{fig:vs_amie_dbpedia}{{3}{12}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.3}Machine Learning Application}{12}}
+\newlabel{sec:krd_deep_dive}{{5.3}{12}}
+\@writefile{lot}{\contentsline {table}{\numberline {6}{\ignorespaces Run Time vs \textsf  {AMIE}\xspace  .}}{12}}
+\newlabel{tab:amie_runtime}{{6}{12}}
 \citation{abedjan2014amending,galarraga2015fast}
-\@writefile{toc}{\contentsline {subsection}{\numberline {5.3}Machine Learning Application}{13}}
-\newlabel{sec:krd_deep_dive}{{5.3}{13}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.4}Internal Evaluation}{13}}
+\newlabel{sec:krd_int_evaluation}{{5.4}{13}}
 \@writefile{lof}{\contentsline {figure}{\numberline {4}{\ignorespaces \textsf  {DeepDive}\xspace  Application 1K articles}}{13}}
 \newlabel{fig:deep_dive_1k}{{4}{13}}
 \@writefile{lof}{\contentsline {figure}{\numberline {5}{\ignorespaces \textsf  {DeepDive}\xspace  Application 1M articles}}{13}}
 \newlabel{fig:deep_dive_1M}{{5}{13}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {5.4}Internal Evaluation}{13}}
-\newlabel{sec:krd_int_evaluation}{{5.4}{13}}
-\@writefile{lot}{\contentsline {table}{\numberline {7}{\ignorespaces Rules Accuracy without Literals on \textsc  {DBPedia}\xspace  .}}{14}}
-\newlabel{tab:literals_effect}{{7}{14}}
+\@writefile{lot}{\contentsline {table}{\numberline {7}{\ignorespaces Rules Accuracy without Literals on \textsc  {DBPedia}\xspace  .}}{13}}
+\newlabel{tab:literals_effect}{{7}{13}}
 \@writefile{lot}{\contentsline {table}{\numberline {8}{\ignorespaces $maxPathLen$ Parameter Impact on \textsc  {DBPedia}\xspace  .}}{14}}
 \newlabel{tab:rules_len_impact}{{8}{14}}
 \@writefile{lot}{\contentsline {table}{\numberline {9}{\ignorespaces Effect of Negative Examples Generation Strategy on \textsc  {DBPedia}\xspace  .}}{14}}
 \newlabel{tab:random_neg_examples}{{9}{14}}
+\@writefile{lof}{\contentsline {figure}{\numberline {6}{\ignorespaces $\alpha $ Parameter Performance Impact}}{14}}
+\newlabel{fig:alpha_impact}{{6}{14}}
+\@writefile{lof}{\contentsline {figure}{\numberline {7}{\ignorespaces $A^*$ Pruning Runtime Improvement}}{14}}
+\newlabel{fig:pruning_impact}{{7}{14}}
 \citation{abiteboul1995foundations}
 \citation{abedjan2014dfd}
 \citation{huhtala1999tane}
@@ -130,18 +135,14 @@
 \citation{bertossi2011database,chu2013holistic}
 \citation{abedjan2015temporal,kivinen1995approximate}
 \citation{galarraga2015fast}
-\@writefile{lof}{\contentsline {figure}{\numberline {6}{\ignorespaces $\alpha $ Parameter Performance Impact}}{15}}
-\newlabel{fig:alpha_impact}{{6}{15}}
-\@writefile{lof}{\contentsline {figure}{\numberline {7}{\ignorespaces $A^*$ Pruning Runtime Improvement}}{15}}
-\newlabel{fig:pruning_impact}{{7}{15}}
-\@writefile{toc}{\contentsline {section}{\numberline {6}Related Work}{15}}
-\newlabel{sec:krd_related}{{6}{15}}
 \citation{abedjan2014amending}
 \citation{muggleton1994inductive}
 \citation{dehaspe1999discovery}
 \citation{muggleton1995inverse}
 \citation{galarraga2015fast}
 \citation{schoenmackers2010learning}
+\@writefile{toc}{\contentsline {section}{\numberline {6}Related Work}{15}}
+\newlabel{sec:krd_related}{{6}{15}}
 \citation{agrawal1993mining}
 \citation{dong2014data,dong2014knowledge}
 \citation{galarraga2015fast}
@@ -166,6 +167,8 @@
 \bibcite{chvatal1979greedy}{14}
 \bibcite{dehaspe1999discovery}{15}
 \bibcite{deshpande2013building}{16}
+\@writefile{toc}{\contentsline {section}{\numberline {7}Conclusion}{16}}
+\@writefile{toc}{\contentsline {section}{\numberline {8}References}{16}}
 \bibcite{dong2014knowledge}{17}
 \bibcite{dong2014data}{18}
 \bibcite{dong2015knowledge}{19}
@@ -187,8 +190,6 @@
 \bibcite{suchanek2008yago}{35}
 \bibcite{suchanek2009sofie}{36}
 \bibcite{vrandevcic2014wikidata}{37}
-\@writefile{toc}{\contentsline {section}{\numberline {7}Conclusion}{17}}
-\@writefile{toc}{\contentsline {section}{\numberline {8}References}{17}}
 \bibcite{wyss2001fastfds}{38}
 \bibcite{zhu2011mining}{39}
 \bibcite{zou2009distance}{40}
