@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013) (format=pdflatex 2013.12.4)  29 AUG 2016 18:37
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013) (format=pdflatex 2013.12.4)  29 AUG 2016 22:43
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1026,83 +1026,91 @@ Underfull \vbox (badness 2119) has occurred while \output is active []
 
  [2]
 
-LaTeX Font Warning: Command \sc invalid in math mode on input line 46.
+LaTeX Font Warning: Command \sc invalid in math mode on input line 48.
 
 
-LaTeX Font Warning: Command \sc invalid in math mode on input line 46.
+LaTeX Font Warning: Command \sc invalid in math mode on input line 48.
 
 
-LaTeX Font Warning: Command \sc invalid in math mode on input line 46.
+LaTeX Font Warning: Command \sc invalid in math mode on input line 48.
 
 
-LaTeX Font Warning: Command \sc invalid in math mode on input line 47.
+LaTeX Font Warning: Command \sc invalid in math mode on input line 49.
 
 
-LaTeX Font Warning: Command \sc invalid in math mode on input line 47.
+LaTeX Font Warning: Command \sc invalid in math mode on input line 49.
 
 
-LaTeX Font Warning: Command \sc invalid in math mode on input line 47.
+LaTeX Font Warning: Command \sc invalid in math mode on input line 49.
 
 
-LaTeX Font Warning: Command \sc invalid in math mode on input line 47.
+LaTeX Font Warning: Command \sc invalid in math mode on input line 49.
 
 
-LaTeX Font Warning: Command \sc invalid in math mode on input line 47.
+LaTeX Font Warning: Command \sc invalid in math mode on input line 49.
 
 
-LaTeX Font Warning: Command \sc invalid in math mode on input line 47.
-
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-
-
-LaTeX Font Warning: Command \sc invalid in math mode on input line 63.
-
-
-LaTeX Font Warning: Command \sc invalid in math mode on input line 64.
-
-
-LaTeX Font Warning: Command \sc invalid in math mode on input line 64.
-
-
-LaTeX Font Warning: Command \sc invalid in math mode on input line 71.
-
-
-LaTeX Font Warning: Command \sc invalid in math mode on input line 71.
-
-
-LaTeX Font Warning: Command \sc invalid in math mode on input line 71.
+LaTeX Font Warning: Command \sc invalid in math mode on input line 49.
 
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+
+LaTeX Font Warning: Command \sc invalid in math mode on input line 68.
+
+
+LaTeX Font Warning: Command \sc invalid in math mode on input line 69.
+
+
+LaTeX Font Warning: Command \sc invalid in math mode on input line 69.
+
+
+LaTeX Font Warning: Command \sc invalid in math mode on input line 76.
+
+
+LaTeX Font Warning: Command \sc invalid in math mode on input line 76.
+
+
+LaTeX Font Warning: Command \sc invalid in math mode on input line 76.
+
+
+Underfull \vbox (badness 3919) has occurred while \output is active []
 
  [3]
 
-LaTeX Font Warning: Command \sc invalid in math mode on input line 88.
+LaTeX Font Warning: Command \sc invalid in math mode on input line 100.
 
 
-LaTeX Font Warning: Command \sc invalid in math mode on input line 88.
+LaTeX Font Warning: Command \sc invalid in math mode on input line 100.
 
 
-LaTeX Font Warning: Command \sc invalid in math mode on input line 99.
+LaTeX Font Warning: Command \sc invalid in math mode on input line 149.
 
 
-LaTeX Font Warning: Command \sc invalid in math mode on input line 99.
+LaTeX Font Warning: Command \sc invalid in math mode on input line 149.
 
 
-LaTeX Font Warning: Command \sc invalid in math mode on input line 115.
+Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
-LaTeX Font Warning: Command \sc invalid in math mode on input line 119.
+
+LaTeX Font Warning: Command \sc invalid in math mode on input line 176.
 
 
-LaTeX Font Warning: Command \sc invalid in math mode on input line 137.
+LaTeX Font Warning: Command \sc invalid in math mode on input line 180.
 
 
-LaTeX Font Warning: Command \sc invalid in math mode on input line 137.
+LaTeX Font Warning: Command \sc invalid in math mode on input line 199.
 
-) (./include/graph.tex [4]
+
+LaTeX Font Warning: Command \sc invalid in math mode on input line 199.
+
+
+Underfull \vbox (badness 3128) has occurred while \output is active []
+
+ [4])
+(./include/graph.tex
 <include/figure/graph_example.pdf, id=37, 705.63625pt x 249.93375pt>
 File: include/figure/graph_example.pdf Graphic file (type pdf)
 
@@ -1121,10 +1129,7 @@ LaTeX Font Warning: Command \sc invalid in math mode on input line 15.
 
 LaTeX Font Warning: Command \sc invalid in math mode on input line 15.
 
-
-Underfull \vbox (badness 2368) has occurred while \output is active []
-
- [5 <./include/figure/graph_example.pdf>]
+[5 <./include/figure/graph_example.pdf>]
 
 LaTeX Font Warning: Command \sc invalid in math mode on input line 44.
 
@@ -1147,10 +1152,7 @@ LaTeX Font Warning: Command \sc invalid in math mode on input line 49.
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [6]
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-)
+ [6])
 (./include/greedy_algorithm.tex
 Overfull \hbox (89.43265pt too wide) detected at line 19
 \OML/cmm/m/it/9 w[]\U/matha/m/n/9 p\OML/cmm/m/it/9 r\U/matha/m/n/9 q ^^P \OML/c
@@ -1161,7 +1163,7 @@ ha/m/n/9 q ^^P ^^A\OML/cmm/m/it/9  \U/matha/m/n/9 ^^D [] ^^@ \OML/cmm/m/it/9 ^
  []
 
 (./include/algorithm/krd_greedy_algorithm.tex) [7]
-<include/figure/a*_graph_example.pdf, id=68, 1011.78pt x 211.79124pt>
+<include/figure/a*_graph_example.pdf, id=64, 1011.78pt x 211.79124pt>
 File: include/figure/a*_graph_example.pdf Graphic file (type pdf)
 
 <use include/figure/a*_graph_example.pdf>
@@ -1171,7 +1173,7 @@ Package pdftex.def Info: include/figure/a*_graph_example.pdf used on input line
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
-
+ [8]
 Overfull \hbox (7.8125pt too wide) detected at line 68
 \OML/cmm/m/it/9 w[]\U/matha/m/n/9 p\OML/cmm/m/it/9 r\U/matha/m/n/9 q ^^P ^^A\OM
 L/cmm/m/it/9  \U/matha/m/n/9 ^^D [] ^^@ \OML/cmm/m/it/9 ^^L \U/matha/m/n/9 ^^D
@@ -1179,31 +1181,32 @@ L/cmm/m/it/9  \U/matha/m/n/9 ^^D [] ^^@ \OML/cmm/m/it/9 ^^L \U/matha/m/n/9 ^^D
  []
 
 
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [8]
 Overfull \hbox (63.86893pt too wide) detected at line 76
 \OML/cmm/m/it/9 w[]\U/matha/m/n/9 p\OML/cmm/m/it/9 r\U/matha/m/n/9 q ^^P []
  []
 
-(./include/algorithm/krd_a*_algorithm.tex)
+
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
-) [9 <./include/figure/a*_graph_example.pdf>] (./include/evaluation.tex
+
+(./include/algorithm/krd_a*_algorithm.tex))
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [9 <./include/figure/a*_graph_example.pdf>] (./include/evaluation.tex
 Underfull \hbox (badness 10000) in paragraph at lines 12--12
 [][]$\OT1/cmtt/m/n/9 https : / / confluence . ontotext . com / display / OWLIMv
 54 /
  []
 
 
+Underfull \vbox (badness 1558) has occurred while \output is active []
+
+ [10]
 Overfull \hbox (11.49814pt too wide) in paragraph at lines 36--48
  [][] 
  []
 
 
-Underfull \vbox (badness 1558) has occurred while \output is active []
-
- [10]
 Overfull \hbox (24.0336pt too wide) in paragraph at lines 81--91
  [][] 
  []
@@ -1232,8 +1235,8 @@ File: include/figure/vsAmieYago.pdf Graphic file (type pdf)
 <use include/figure/vsAmieYago.pdf>
 Package pdftex.def Info: include/figure/vsAmieYago.pdf used on input line 162.
 (pdftex.def)             Requested size: 167.99927pt x 65.73393pt.
- [12 <./include/figure/vsAmieYago.pdf>]
-<include/figure/vsAmieDBPedia.pdf, id=154, 1059.58568pt x 412.01659pt>
+ [12]
+<include/figure/vsAmieDBPedia.pdf, id=104, 1059.58568pt x 412.01659pt>
 File: include/figure/vsAmieDBPedia.pdf Graphic file (type pdf)
 
 <use include/figure/vsAmieDBPedia.pdf>
@@ -1241,7 +1244,7 @@ Package pdftex.def Info: include/figure/vsAmieDBPedia.pdf used on input line 17
 1.
 (pdftex.def)             Requested size: 167.99927pt x 65.32045pt.
 
-Underfull \vbox (badness 1082) has occurred while \output is active []
+Underfull \vbox (badness 1776) has occurred while \output is active []
 
 
 
@@ -1254,7 +1257,7 @@ Overfull \hbox (46.75645pt too wide) in paragraph at lines 209--224
  [][] 
  []
 
-[13 <./include/figure/vsAmieDBPedia.pdf>]
+[13 <./include/figure/vsAmieYago.pdf> <./include/figure/vsAmieDBPedia.pdf>]
 <include/figure/deepDive1K.pdf, id=211, 999.29984pt x 377.15407pt>
 File: include/figure/deepDive1K.pdf Graphic file (type pdf)
 
@@ -1273,7 +1276,10 @@ Overfull \hbox (48.87442pt too wide) in paragraph at lines 269--280
  [][] 
  []
 
-[14 <./include/figure/deepDive1K.pdf> <./include/figure/deepDive1M.pdf>]
+
+Underfull \vbox (badness 1418) has occurred while \output is active []
+
+ [14 <./include/figure/deepDive1K.pdf> <./include/figure/deepDive1M.pdf>]
 Overfull \hbox (109.86716pt too wide) in paragraph at lines 293--304
  [][] 
  []
@@ -1312,14 +1318,14 @@ Package pdftex.def Info: include/figure/alpha_impact.pdf used on input line 339
 
 LaTeX Warning: Reference `' on page 15 undefined on input line 343.
 
-<include/figure/a*_runtime_improv.pdf, id=333, 869.82411pt x 388.90475pt>
+[15] <include/figure/a*_runtime_improv.pdf, id=336, 869.82411pt x 388.90475pt>
 File: include/figure/a*_runtime_improv.pdf Graphic file (type pdf)
 
 <use include/figure/a*_runtime_improv.pdf>
 Package pdftex.def Info: include/figure/a*_runtime_improv.pdf used on input lin
 e 348.
 (pdftex.def)             Requested size: 240.0pt x 107.30222pt.
-) [15] (./include/related.tex
+) (./include/related.tex
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [16 <./include/figure/alpha_impact.pdf> <./include/figure/a*_runtime_improv.pd
@@ -1328,11 +1334,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 25--25
 [][]$\OT1/cmtt/m/n/9 http : / / www . cs . ox . ac . uk / activities /
  []
 
-
-Underfull \vbox (badness 2503) has occurred while \output is active []
-
-)
-(./include/conclusion.tex) (./main.bbl [17]
+) (./include/conclusion.tex) (./main.bbl [17]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
 ) [18]
@@ -1345,10 +1347,10 @@ LaTeX Warning: There were undefined references.
 
  ) 
 Here is how much of TeX's memory you used:
- 10040 strings out of 493315
- 131952 string characters out of 6137904
- 288870 words of memory out of 5000000
- 13179 multiletter control sequences out of 15000+600000
+ 10041 strings out of 493315
+ 131960 string characters out of 6137904
+ 287878 words of memory out of 5000000
+ 13180 multiletter control sequences out of 15000+600000
  39117 words of font info for 108 fonts, out of 8000000 for 9000
  957 hyphenation exceptions out of 8191
  41i,19n,35p,3257b,573s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -1382,7 +1384,7 @@ ype1/public/mathabx-type1/mathx10.pfb></usr/local/texlive/2013/texmf-dist/fonts
 urw/helvetic/uhvr8a.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/urw/tim
 es/utmb8a.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/urw/times/utmr8a.
 pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on main.pdf (18 pages, 1112281 bytes).
+Output written on main.pdf (18 pages, 1113733 bytes).
 PDF statistics:
  459 PDF objects out of 1000 (max. 8388607)
  309 compressed objects within 4 object streams

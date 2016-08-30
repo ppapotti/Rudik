@@ -33,9 +33,9 @@ of two different types of rules:
 
 \begin{example}\label{ex:krd_intro}
 	Consider a KB with information about parent and child relationships.
-	A positive rule can be:
+	A positive rule $r_1$ can be:
 
-	\vspace{-2ex}
+	\vspace{-1ex}
 	{\small
 	\begin{equation*}
 		\atom{parent}{b}{a} \Rightarrow \atom{child}{a}{b}
@@ -44,9 +44,9 @@ of two different types of rules:
 	\vspace{-2ex}
 
 	which states that if a person $a$ is parent of person $b$, then $b$ is child of $a$. If the KB has the fact ``Clint Eastwood is the parent of Scott Eastwood", we can infer the fact that ``Scott Eastwood is the child of Clint Eastwood".
-	A negative rule has similar form, but very different semantics:
+	A negative rule $r_2$ has similar form, but different semantics:
 	
-	\vspace{-2ex}
+	\vspace{-2.5ex}
 	{\small
 	\begin{equation*}
 		\atom{birthDate}{a}{v_0} \wedge \atom{birthDate}{b}{v_1} \wedge v_0 > v_1 \wedge  \atom{child}{a}{b}  \Rightarrow false
