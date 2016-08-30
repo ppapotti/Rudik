@@ -25,27 +25,39 @@ The goal of our work is to automatically discover first-order logical formulas i
 A_1 \wedge A_2 \wedge \cdots \wedge A_n \Rightarrow B \qquad \qquad A_1 \wedge A_2 \wedge \cdots \wedge A_n \Rightarrow  false 
 \end{equation*} %\neg B
 %
-where $A_1 \wedge A_2 \wedge \cdots \wedge A_n$ consists of the \emph{body} of the rule (a conjunction of atoms), while $B$ is the \emph{head} of the rule (a single atom). The head of the rule is either unnegated (left) or empty (right). We call the former \emph{definite clause} or simply \emph{positive rule}, while the latter \emph{goal clause} or \emph{negative rule}. In the context of KBs, an atom is a predicate connecting two variables, two entities, or an entity and a variable. For simplicity, we represent an atom with the notation $\atom{rel}{a}{b}$, where \texttt{rel} is the name of the predicate, and $a$ and $b$ are either variables or entities. In the context of Horn Rules, all variables appearing in a rule are implicitly universally quantified. Given a Horn Rule $r$, we define $r_{body}$ as the body of the rule, and $r_{head}$ as the head of the rule. We define the variables appearing in the head of the rule as the \emph{target variables}. For the sake of presentation, we write negative rules with an atom in the body rewritten in its negated form in the head. The results is logically equivalent, but emphasises that negative facts can be derived.
-The first rule of Example~\ref{ex:krd_intro} shows a traditional plausible positive rule, where new positive facts are identified with target variables $a$ and $b$.
+where $A_1 \wedge A_2 \wedge \cdots \wedge A_n$ consists of the \emph{body} of the rule (a conjunction of atoms), while $B$ is the \emph{head} of the rule (a single atom). The head of the rule is either unnegated (left) or empty (right). We call the former \emph{definite clause} or simply \emph{positive rule}, as it generates new positive facts, while the latter \emph{goal clause} or \emph{negative rule}, as it identifies false statements. In a KB, an atom is a predicate connecting two variables, two entities, or an entity and a variable. For simplicity, we represent an atom with the notation $\atom{rel}{a}{b}$, where \texttt{rel} is the name of the predicate, and $a$ and $b$ are either variables or entities. In the context of Horn Rules, all variables appearing in a rule are implicitly universally quantified. Given a Horn Rule $r$, we define $r_{body}$ as the body of the rule, and $r_{head}$ as the head of the rule. We define the variables appearing in the head of the rule as the \emph{target variables}. 
+
+For the sake of presentation, we will also write negative rules as definite clauses by rewriting a body atom in its negated form in the head. The result is a logically equivalent formula that emphasises the generation of negative facts.
+The first rule of Example~\ref{ex:krd_intro} shows a traditional positive rule, where new positive facts are identified with target variables $a$ and $b$.
 % are the target variables.
-The second rule is a negative rule to derive false facts, but if we want it to identify errors in the KB, as in Denial Constraints for relational database~\cite{chu2013discovering}, we rewrite it as 	
+The second rule is a negative rule to identify errors, as in Denial constraints for relational data~\cite{chu2013discovering}. However, for other applications, we can rewrite it as a definite clause to derive false facts from the KB:
+
+		\vspace{-3.5ex}
+{\small	
 \begin{equation*}
 		 \hspace*{-0.45cm}   \atom{birthDate}{a}{v_0} \wedge \atom{birthDate}{b}{v_1} \wedge v_0 > v_1
-		\wedge \atom{child}{a}{b} \Rightarrow false 
+		\Rightarrow  \neg \atom{child}{a}{b}  
 	\end{equation*}
+}
+	\vspace{-2.5ex}
 
-Furthermore we extend the language in order to include \emph{literals comparison}. A literal comparison is a special atom $\atom{rel}{a}{b}$, where $\texttt{rel} \in \{<,\leq,\neq,>,\geq\}$, and $a$ and $b$ can only be assigned to literal values except if $\texttt{rel}$ is equal to $\neq$. In such a case $a$ and $b$ can be also assigned to entities. We will explain later on in the thesis why this exception is important.
+As shown in the example, we allow \emph{literals comparisons} in our rules. A literal comparison is a special atom $\atom{rel}{a}{b}$, where $\texttt{rel} \in \{<,\leq,\neq,>,\geq\}$, and $a$ and $b$ can only be assigned to literal values except if $\texttt{rel}$ is equal to $\neq$. In such a case $a$ and $b$ can be also assigned to entities. We will explain later on why this exception is important.
 
 Given a KB $\kb$ and an atom $A=\atom{rel}{a}{b}$ where $a$ and $b$ are two entities, we say that $A$ \emph{holds} over $\kb$ iff $\<a,\texttt{rel},b\> \in \kb$.
-Given a KB $\kb$ and an atom $A=\atom{rel}{a}{b}$ with at least one variable, we say that $A$ can be \emph{instantiated} over $\kb$ if there exists at least one entity from $\kb$ for each variable in $A$ such that if we substitue variables with entities in $A$, $A$ holds over $\kb$. Transitively, given a body of a rule $r_{body}$ and a KB $\kb$, we say that $r_{body}$ can be instantiated over $\kb$ if every atom in $r_{body}$ can be instantiated. 
+Given a KB $\kb$ and an atom $A=\atom{rel}{a}{b}$ with at least one variable, we say that $A$ can be \emph{instantiated} over $\kb$ if there exists at least one entity from $\kb$ for each variable in $A$ such that if we substitute variables with entities in $A$, $A$ holds over $\kb$. Transitively, given a body of a rule $r_{body}$ and a KB $\kb$, we say that $r_{body}$ can be instantiated over $\kb$ if every atom in $r_{body}$ can be instantiated. 
 
-Eventually, we introduce two language biases in order to avoid the explosion of the search space. 
-Following the biases introduced by other approaches for rules discovery in KBs~\cite{galarraga2015fast} (TODO: cite Sigmod Paper Ontological Path...), we introduce such restrictions in order to speed up the discovery process. Language biases introduce a compromise between the expressiveness of target rules and the complexity of the discovery problem. Therefore we define a rule \emph{valid} iff it follows the following constraints.
-\begin{description}
-	\item[Connectivity.] We say that in a rule an atom $A_1$ can be reached by an atom $A_2$ iff $A_1$ and $A_2$ share at least one variable or one entity. The connectivity constraint requires that every atom in a rule must be \emph{transitively} reached by any other atom in the rule.
-	\item[Repetition.] Every variable in a rule must appear at least twice. Since target variables already appear once in the head of the rule, the repetition constraint limited to the body of a rule requires that each variable that is not a target variable must appear at lest twice, while target variables at least once.
-\end{description}
-Language restrictions obviously limit the output of the discovery algorithm to a subset of all plausible rules. We will show in Section~\ref{sec:rules_gen} how these restrictions can significantly speed up the discovery process through a fast disk-based approach that leverages on these limitations.
+%Eventually, we introduce two language biases in order to avoid the explosion of the search space. 
+Following the biases introduced by other approaches for rules discovery in KBs~\cite{galarraga2015fast,Chen:2016}, we adopt two natural restrictions in order to find the compromise between the expressiveness of the rules and the complexity of the discovery problem. We define a rule \emph{valid} iff it follows the following constraints.
+
+\vspace{1ex}
+\noindent {\bf Connectivity.} A rule an atom $A_1$ can be reached by an atom $A_2$ iff $A_1$ and $A_2$ share at least one variable or one entity. The connectivity constraint requires that every atom in a rule must be \emph{transitively} reached by any other atom in the rule.
+
+\vspace{1ex}
+\noindent {\bf Repetition.} Every variable in a rule must appear at least twice. Since target variables already appear once in the head of the rule, the repetition constraint limited to the body of a rule requires that each variable that is not a target variable must be involved in a join or in a literal comparison.
+%appear at least twice, while target variables at least once.
+
+\vspace{0.5ex} %TO BE REMOVED IF WE NEED MORE SPACE
+Language restrictions limit the output of the discovery algorithm to a subset of all plausible rules. We will show in Section~\ref{sec:rules_gen} how these restrictions can significantly speed up the discovery process through a disk-based approach that leverages these limitations.
 
 \subsection{Rules Coverage}
 Given a pair of entities $(x,y)$ from a KB $\kb$ and a Horn Rule $r$, we say that $r_{body}$ \emph{covers} $(x,y)$ if

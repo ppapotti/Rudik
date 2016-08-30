@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013) (format=pdflatex 2013.12.4)  29 AUG 2016 16:41
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013) (format=pdflatex 2013.12.4)  29 AUG 2016 18:37
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1007,7 +1007,14 @@ Underfull \hbox (badness 2245) in paragraph at lines 25--25
 (./include/abstract.tex) (./include/introduction.tex
 Underfull \vbox (badness 6842) has occurred while \output is active []
 
- [1{/usr/local/texlive/2013/texmf-var/fonts/map/pdftex/updmap/pdftex.map}
+
+Overfull \hbox (8.47595pt too wide) detected at line 53
+[]\OML/cmm/m/it/8 a; v[][] \U/matha/m/n/8 ^ []\OML/cmm/m/it/8 b; v[][] \U/matha
+/m/n/8 ^ \OML/cmm/m/it/8 v[] \U/matha/m/n/8 ¡ \OML/cmm/m/it/8 v[] \U/matha/m/n/
+8 ^ []\OML/cmm/m/it/8 a; b[] \U/matha/m/n/8 ñ \OML/cmm/m/it/8 false
+ []
+
+[1{/usr/local/texlive/2013/texmf-var/fonts/map/pdftex/updmap/pdftex.map}
 
 
 ]
@@ -1018,91 +1025,84 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 Underfull \vbox (badness 2119) has occurred while \output is active []
 
  [2]
-Overfull \hbox (19.10422pt too wide) detected at line 35
-| []\OML/cmm/m/it/9 a; v[][] \U/matha/m/n/9 ^ []\OML/cmm/m/it/9 b; v[][] \U/mat
-ha/m/n/9 ^ \OML/cmm/m/it/9 v[] \U/matha/m/n/9 ¡ \OML/cmm/m/it/9 v[] \U/matha/m/
-n/9 ^ []\OML/cmm/m/it/9 a; b[] \U/matha/m/n/9 ñ \OML/cmm/m/it/9 false
- []
+
+LaTeX Font Warning: Command \sc invalid in math mode on input line 46.
 
 
-LaTeX Font Warning: Command \sc invalid in math mode on input line 39.
+LaTeX Font Warning: Command \sc invalid in math mode on input line 46.
 
 
-LaTeX Font Warning: Command \sc invalid in math mode on input line 39.
+LaTeX Font Warning: Command \sc invalid in math mode on input line 46.
 
 
-LaTeX Font Warning: Command \sc invalid in math mode on input line 39.
+LaTeX Font Warning: Command \sc invalid in math mode on input line 47.
 
 
-LaTeX Font Warning: Command \sc invalid in math mode on input line 40.
+LaTeX Font Warning: Command \sc invalid in math mode on input line 47.
 
 
-LaTeX Font Warning: Command \sc invalid in math mode on input line 40.
+LaTeX Font Warning: Command \sc invalid in math mode on input line 47.
 
 
-LaTeX Font Warning: Command \sc invalid in math mode on input line 40.
+LaTeX Font Warning: Command \sc invalid in math mode on input line 47.
 
 
-LaTeX Font Warning: Command \sc invalid in math mode on input line 40.
+LaTeX Font Warning: Command \sc invalid in math mode on input line 47.
 
 
-LaTeX Font Warning: Command \sc invalid in math mode on input line 40.
-
-
-LaTeX Font Warning: Command \sc invalid in math mode on input line 40.
+LaTeX Font Warning: Command \sc invalid in math mode on input line 47.
 
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
 
-LaTeX Font Warning: Command \sc invalid in math mode on input line 51.
+LaTeX Font Warning: Command \sc invalid in math mode on input line 63.
 
 
-LaTeX Font Warning: Command \sc invalid in math mode on input line 52.
+LaTeX Font Warning: Command \sc invalid in math mode on input line 64.
 
 
-LaTeX Font Warning: Command \sc invalid in math mode on input line 52.
+LaTeX Font Warning: Command \sc invalid in math mode on input line 64.
 
 
-LaTeX Font Warning: Command \sc invalid in math mode on input line 59.
+LaTeX Font Warning: Command \sc invalid in math mode on input line 71.
 
 
-LaTeX Font Warning: Command \sc invalid in math mode on input line 59.
+LaTeX Font Warning: Command \sc invalid in math mode on input line 71.
 
 
-LaTeX Font Warning: Command \sc invalid in math mode on input line 59.
-
-[3]
-
-LaTeX Font Warning: Command \sc invalid in math mode on input line 76.
-
-
-LaTeX Font Warning: Command \sc invalid in math mode on input line 76.
-
-
-LaTeX Font Warning: Command \sc invalid in math mode on input line 87.
-
-
-LaTeX Font Warning: Command \sc invalid in math mode on input line 87.
-
-
-LaTeX Font Warning: Command \sc invalid in math mode on input line 103.
-
-
-LaTeX Font Warning: Command \sc invalid in math mode on input line 107.
-
-
-LaTeX Font Warning: Command \sc invalid in math mode on input line 125.
-
-
-LaTeX Font Warning: Command \sc invalid in math mode on input line 125.
+LaTeX Font Warning: Command \sc invalid in math mode on input line 71.
 
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [4])
-(./include/graph.tex
+ [3]
+
+LaTeX Font Warning: Command \sc invalid in math mode on input line 88.
+
+
+LaTeX Font Warning: Command \sc invalid in math mode on input line 88.
+
+
+LaTeX Font Warning: Command \sc invalid in math mode on input line 99.
+
+
+LaTeX Font Warning: Command \sc invalid in math mode on input line 99.
+
+
+LaTeX Font Warning: Command \sc invalid in math mode on input line 115.
+
+
+LaTeX Font Warning: Command \sc invalid in math mode on input line 119.
+
+
+LaTeX Font Warning: Command \sc invalid in math mode on input line 137.
+
+
+LaTeX Font Warning: Command \sc invalid in math mode on input line 137.
+
+) (./include/graph.tex [4]
 <include/figure/graph_example.pdf, id=37, 705.63625pt x 249.93375pt>
 File: include/figure/graph_example.pdf Graphic file (type pdf)
 
@@ -1121,7 +1121,10 @@ LaTeX Font Warning: Command \sc invalid in math mode on input line 15.
 
 LaTeX Font Warning: Command \sc invalid in math mode on input line 15.
 
-[5 <./include/figure/graph_example.pdf>]
+
+Underfull \vbox (badness 2368) has occurred while \output is active []
+
+ [5 <./include/figure/graph_example.pdf>]
 
 LaTeX Font Warning: Command \sc invalid in math mode on input line 44.
 
@@ -1144,7 +1147,10 @@ LaTeX Font Warning: Command \sc invalid in math mode on input line 49.
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [6])
+ [6]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+)
 (./include/greedy_algorithm.tex
 Overfull \hbox (89.43265pt too wide) detected at line 19
 \OML/cmm/m/it/9 w[]\U/matha/m/n/9 p\OML/cmm/m/it/9 r\U/matha/m/n/9 q ^^P \OML/c
@@ -1165,7 +1171,7 @@ Package pdftex.def Info: include/figure/a*_graph_example.pdf used on input line
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [8]
+
 Overfull \hbox (7.8125pt too wide) detected at line 68
 \OML/cmm/m/it/9 w[]\U/matha/m/n/9 p\OML/cmm/m/it/9 r\U/matha/m/n/9 q ^^P ^^A\OM
 L/cmm/m/it/9  \U/matha/m/n/9 ^^D [] ^^@ \OML/cmm/m/it/9 ^^L \U/matha/m/n/9 ^^D
@@ -1173,14 +1179,17 @@ L/cmm/m/it/9  \U/matha/m/n/9 ^^D [] ^^@ \OML/cmm/m/it/9 ^^L \U/matha/m/n/9 ^^D
  []
 
 
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [8]
 Overfull \hbox (63.86893pt too wide) detected at line 76
 \OML/cmm/m/it/9 w[]\U/matha/m/n/9 p\OML/cmm/m/it/9 r\U/matha/m/n/9 q ^^P []
  []
 
-(./include/algorithm/krd_a*_algorithm.tex
+(./include/algorithm/krd_a*_algorithm.tex)
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
-)) [9 <./include/figure/a*_graph_example.pdf>] (./include/evaluation.tex
+) [9 <./include/figure/a*_graph_example.pdf>] (./include/evaluation.tex
 Underfull \hbox (badness 10000) in paragraph at lines 12--12
 [][]$\OT1/cmtt/m/n/9 https : / / confluence . ontotext . com / display / OWLIMv
 54 /
@@ -1373,7 +1382,7 @@ ype1/public/mathabx-type1/mathx10.pfb></usr/local/texlive/2013/texmf-dist/fonts
 urw/helvetic/uhvr8a.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/urw/tim
 es/utmb8a.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/urw/times/utmr8a.
 pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on main.pdf (18 pages, 1112127 bytes).
+Output written on main.pdf (18 pages, 1112281 bytes).
 PDF statistics:
  459 PDF objects out of 1000 (max. 8388607)
  309 compressed objects within 4 object streams

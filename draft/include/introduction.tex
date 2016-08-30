@@ -34,16 +34,22 @@ of two different types of rules:
 \begin{example}\label{ex:krd_intro}
 	Consider a KB with information about parent and child relationships.
 	A positive rule can be:
+
+	\vspace{-2ex}
+	{\small
 	\begin{equation*}
 		\atom{parent}{b}{a} \Rightarrow \atom{child}{a}{b}
 	\end{equation*}
+	} 
+	\vspace{-2ex}
+
 	which states that if a person $a$ is parent of person $b$, then $b$ is child of $a$. If the KB has the fact ``Clint Eastwood is the parent of Scott Eastwood", we can infer the fact that ``Scott Eastwood is the child of Clint Eastwood".
 	A negative rule has similar form, but very different semantics:
 	
 	\vspace{-2ex}
 	{\small
 	\begin{equation*}
-		\atom{birthDate}{a}{v_0} \wedge \atom{birthDate}{b}{v_1} \wedge v_0 > v_1 \Rightarrow \neg \atom{child}{a}{b} 
+		\atom{birthDate}{a}{v_0} \wedge \atom{birthDate}{b}{v_1} \wedge v_0 > v_1 \wedge  \atom{child}{a}{b}  \Rightarrow false
 	\end{equation*}
 	} 
 	\vspace{-2ex}
@@ -76,7 +82,7 @@ KBs contain only positive statements, and, without CWA, we cannot derive negativ
 \myparagraph{Volume}
 %MOVE TO RELATED
 %Classic database discovery algorithms ILP systems cannot cope with large KBs and in order to directly apply existing database techniques would require the materialisation of all possible predicates combinations into relational tables (graph data must be flattened in relational format).  Moreover, 
-Existing approaches for discovery on positive rules in KBs assume that data can fit into memory, something that it is not realistic given the large, and increasing, size of the KB~\cite{abedjan2014amending,galarraga2015fast}. More recent approaches also rely on main memory algorithm and try to solve this problem with distributed architectures ~\cite{Chen:2016,DBLP:conf/sigmod/FaridRIHC16}.
+Existing approaches for discovery on positive rules in KBs assume that data can fit into memory, something that it is not realistic given the large, and increasing, size of the KB~\cite{abedjan2014amending,galarraga2015fast}. More recent approaches also rely on main memory algorithm and try to solve this problem with distributed architectures~\cite{Chen:2016,DBLP:conf/sigmod/FaridRIHC16}.
 
 %IS THE MEMORY ASSUMPTION TRUE FOR Chen:2016,abedjan2014amending??? 
 %STEFANO: YES
