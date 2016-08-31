@@ -3,9 +3,12 @@
 
 Building large RDF knowledge-bases (KBs) is a popular trend in information extraction.
 KBs store information in the form of triples, where a \emph{predicate}, or relation, expresses a binary relation between a \emph{subject} and a \emph{object}. KB triples, often referred as facts, store information about real-world entities and their relationships, such as %``Scott Eastwood is the child of Clint Eastwood",
- ``Michelle Obama is married to Barack Obama", or ``Larry Page is the founder of Google".
+``Michelle Obama is married to Barack Obama", or ``Larry Page is the founder of Google".
 Significant effort has been put in the research community on KBs creation in the last 10 years (\system{DBPedia}~\cite{bizer2009dbpedia}, \system{FreeBase}\cite{bollacker2008freebase}, \system{Wikidata}~\cite{vrandevcic2014wikidata}, \deepdive~\cite{shin2015incremental}, \system{Yago}~\cite{suchanek2008yago}, \system{NELL}~\cite{carlson2010toward}, \system{TextRunner}\cite{banko2007open}) as well as in the industry % and KBs have also attracted interests from the industry, as evident from the ongoing efforts in several companies 
-(e.g., Facebook\footnote{\url{https://developers.facebook.com/docs/graph-api}}, Google~\cite{dong2014knowledge}, Wal-Mart~\cite{deshpande2013building}).
+(e.g., 
+%Facebook
+%\footnote{\url{https://developers.facebook.com/docs/graph-api}}, 
+Google~\cite{dong2014knowledge}, Wal-Mart~\cite{deshpande2013building}).
 %ADD POINTER TO knowledge graph?
 %STEFANO: I THINK ONE REFERENCE FOR GOOGLE IS ENOUGH
 
@@ -34,23 +37,25 @@ of two different types of rules:
 \begin{example}\label{ex:krd_intro}
 	Consider a KB with information about parent and child relationships.
 	A positive rule $r_1$ can be:
-
+	
 	\vspace{-1ex}
 	{\small
-	\begin{equation*}
-		\atom{parent}{b}{a} \Rightarrow \atom{child}{a}{b}
-	\end{equation*}
+		\begin{equation*}
+			\atom{parent}{b}{a} \Rightarrow \atom{child}{a}{b}
+		\end{equation*}
 	} 
 	\vspace{-2ex}
-
-	which states that if a person $a$ is parent of person $b$, then $b$ is child of $a$. If the KB has the fact ``Clint Eastwood is the parent of Scott Eastwood", we can infer the fact that ``Scott Eastwood is the child of Clint Eastwood".
+	
+	\noindent
+	which states that if a person $a$ is parent of person $b$, then $b$ is child of $a$. 
+	%If the KB has the fact ``Clint Eastwood is the parent of Scott Eastwood", we can infer the fact that ``Scott Eastwood is the child of Clint Eastwood".
 	A negative rule $r_2$ has similar form, but different semantics:
 	
 	\vspace{-2.5ex}
-	{\small
-	\begin{equation*}
-		\atom{birthDate}{a}{v_0} \wedge \atom{birthDate}{b}{v_1} \wedge v_0 > v_1 \wedge  \atom{child}{a}{b}  \Rightarrow false
-	\end{equation*}
+	{\scriptsize
+		\begin{equation*}
+			\atom{birthDate}{a}{v_0} \wedge \atom{birthDate}{b}{v_1} \wedge v_0 > v_1 \wedge  \atom{child}{a}{b}  \Rightarrow false
+		\end{equation*}
 	} 
 	\vspace{-2ex}
 	
@@ -73,7 +78,7 @@ three main challenges arise when discovering rules for KBs.
 \myparagraph{Errors}
 Traditional database techniques for rules discovery make the assumption that data is either clean or has a negligible amount of errors~\cite{abiteboul1995foundations,huhtala1999tane,wyss2001fastfds,chu2013discovering}. We will show that KBs present a high percentage of errors and we need techniques that are noise tolerant.
 
-\myparagraph{Open Word Assumption}
+\myparagraph{Open World Assumption}
 KBs contain only positive statements, and, without CWA, we cannot derive negative statements as counter examples --  classic databases approaches rely on the presence of positive and negative examples~\cite{dehaspe1999discovery,muggleton1994inductive} or a fixed schema given as input.  
 
 %REFERENCE AND/OR EXPLANATION NEEDED HERE wrt the POS NEG EXAMPLES , if the ONE I PUT OK?
@@ -103,7 +108,7 @@ the larger is the number of new facts and errors that can be identified, and wit
 We present \krd (\underline{Ru}les \underline{Di}scovery in \underline{K}nowledge Bases), a novel system for the discovery of positive and negative rules %Horn Rules 
 over KBs that addresses the challenges above.  
 \krd is the first system capable of discovering both approximate positive and negative rules without
-  % using the same algorithm. Moreover, classic rules discovery systems 
+% using the same algorithm. Moreover, classic rules discovery systems 
 assuming that the KB fits into memory by exploiting the following contributions.
 %  . We drop such an assumption and propose a disk-based solution that loads into memory only a small portion of the KB. 
 %This is a key point to address the size problem, but also because it enables us to enlarge the expressive power of the considered rules to include comparisons among constants, including inequalities.
@@ -141,5 +146,7 @@ To further improve performance, we also introduce sampling techniques that are a
 
 \vspace{1ex}
 We experimentally verify the performance of rules discovery in \krd using real-world datasets (Section~\ref{sec:krd_experiments}). The evaluation is carried on the 3 most popular and widely used KBs, namely \dbpedia~\cite{bizer2009dbpedia}, \yago~\cite{suchanek2007yago}, and \wikidata~\cite{vrandevcic2014wikidata}. 
-We show that our problem formulation leads to approximate rules that are better in quality than previous systems and that the search algorithm is general enough to deliver accurate rules both in the positive and negative settings, clearly outperforming state-of-the-art systems in running time. We also show the impact of the proposed optimization and demonstrate how negative rules have a beneficial impact when providing representative examples for Machine Learning algorithms.
+We show that our problem formulation leads to approximate rules that are better in quality than previous systems and that the search algorithm delivers accurate rules both in the positive and negative settings, clearly outperforming state-of-the-art systems. We also 
+%show the impact of the proposed optimization and 
+demonstrate how negative rules have a beneficial impact when providing representative examples for Machine Learning algorithms.
 % (Section~\ref{sec:krd_deep_dive}).

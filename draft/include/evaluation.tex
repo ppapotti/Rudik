@@ -5,7 +5,7 @@ We grouped the evaluation into 4 main sub-categories:
 	\item a first set of experiments aims at demonstrating the quality of our output, both for negative and positive rules;
 	\item a second set of experiments compares our method with state-of-the-art systems;
 	\item in the third set of experiments we outline the applicability of rules discovery by enhancing Machine Learning algorithms;
-	\item in the last set of experiments we discuss internal system settings and some KB properties.
+	\item in the last set of experiments we sketch internal system settings and some KB properties.
 \end{inparaenum}
 %DO WE EVALUATE SAMPLING ON A DIFFERENT SECTION?
 
@@ -15,9 +15,9 @@ We evaluated our approach over several popular KBs.
 We downloaded the most up-to-date core facts and loaded them into our SPARQL query engine. We experimented several SPARQL engines, 
 %not relevant discussing sparql engines
 %including \system{Jena ARQ}\footnote{\url{https://jena.apache.org/documentation/query/}}, \system{OWLIM %Lite}\footnote{\url{https://confluence.ontotext.com/display/OWLIMv54/OWLIM-Lite+Installation}}, and %\system{RDF-3x}\footnote{\url{https://code.google.com/archive/p/rdf3x/}}. We also implemented a na\"ive %relational database solution with \system{PostgreSQL}. 
-and eventually we opted for \system{OpenLink Virtuoso}
+and eventually we opted for \system{OpenLink Virtuoso},
 %\footnote{\url{http://virtuoso.openlinksw.com/}}
-, as it was the fastest among all the solutions. 
+as it was the fastest among all the solutions. 
 %\system{Virtuoso} took on average 20 minutes to load a medium size KB (i.e., 10 GB) into its store, and %around 100 milliseconds to execute a single hop query. 
 All experiments are run on a iMac desktop with
 an Intel quad-core i5 at 2.80GHz with 16 GB RAM. We run \system{Virtuoso} server with its SPARQL query endpoint on the same machine, optimised for a 8 GB available RAM.
@@ -25,7 +25,7 @@ an Intel quad-core i5 at 2.80GHz with 16 GB RAM. We run \system{Virtuoso} server
 Our method needs the two input parameters $\alpha$ and $\beta$ of Equation~\ref{eq:weight_fun}. 
 We set $\alpha=0.3$ and $\beta=0.7$ for positive rules, while $\alpha=0.4$ and $\beta=0.6$ for negative rules. We empirically justify this choice in Section~\ref{sec:krd_int_evaluation}.
 %$\alpha$ measures the importance of the coverage over the generation set, while $\beta$ measures the coverage over the validation set. In other words, a high $\alpha$ privileges recall over precision, while a high $\beta$ gives more importance to precision. We can afford a high $\alpha$ and a low $\beta$ when the input KB is accurate and complete. We will show that KBs contain many errors and missing information, therefore we set $\alpha = 0.3$ and $\beta = 0.7$. Increasing $\alpha$ and decreasing $\beta$ means a higher number of output rules with a lower accuracy. 
-We also set the $maxPathLen$ parameter to $3$. This number represents the maximum number of atoms that we can have in the body of a rule. We will show in Section~\ref{sec:krd_int_evaluation} that increasing this parameter does not bring any benefits, as body rules longer than $3$ atoms start to be very complicated and not insightful.
+We also set the $maxPathLen$ parameter to $3$. This number represents the maximum number of atoms that we can have in the body of a rule. We will outline in Section~\ref{sec:krd_int_evaluation} that increasing this parameter does not bring any benefits, as body rules longer than $3$ atoms start to be very complicated and not insightful.
 
 \myparagraph{Evaluation Metrics}
 \krd discovers rules for a given target predicate. For each KB, we chose $5$ representative predicates as follows: we first ordered predicates according to descending popularity (i.e., number of triples having that predicate), and then we picked the top $3$ predicates for which we knew there existed at least one meaningful rule, and other $2$ top predicates for which we did not know whether some meaningful rules existed. We repeated the procedure for each input KB, and for positive and negative rules. Despite working one predicate at time, \krd can also discover rules for the entire KB by listing all predicates in the KB, and discovering rules for each of them. We will show in Section~\ref{sec:krd_comparative} how this can be achieved.
@@ -51,24 +51,24 @@ The full suite of test results, together with all the KBs, induced rules, and an
 The first set of experiments aims at evaluating the accuracy of discovered rules over the 3 most popular and widely used KBs: \dbpedia~\cite{bizer2009dbpedia}, \yago~\cite{suchanek2007yago}, and \wikidata~\cite{vrandevcic2014wikidata}. For each KB we downloaded the most recent version and selected core facts, facts about people, geolocations and transitive \texttt{rdf:type} facts. \wikidata provides only the entire dump, therefore we just eliminated from it no-english literal values. Table~\ref{tab:krdDatasetDescr} shows the characteristics of the 3 KBs.
 
 {\small
-\begin{table}[htb]
-	\centering
-	\caption{Dataset characteristics.}
-	\label{tab:krdDatasetDescr}
-	\begin{small}
-		\begin{tabular}
-			{|>{\centering}m{1.2cm}|>{\centering}m{1.1cm}|>{\centering}m{1.15cm}|c|>{\centering}m{1.5cm}|}
-			\hline
-			\hline
-			{\it KB}&{\it Version}&{\it Size}&{\it  \#Triples}&{\it \#Predicates} \tabularnewline
-			\hline
-			\dbpedia & 3.7 & 10.056GB & 68,364,605 & 1,424 \tabularnewline
-			\yago & 3.0.2 & 7.82GB & 88,360,244 & 74 \tabularnewline
-			\wikidata & 20160229 & 12.32GB & 272,129,814 & 4,108 \tabularnewline
-			\hline
-		\end{tabular}
-	\end{small}
-\end{table}
+	\begin{table}[htb]
+		\centering
+		\caption{Dataset characteristics.}
+		\label{tab:krdDatasetDescr}
+		\begin{small}
+			\begin{tabular}
+				{|>{\centering}m{1.2cm}|>{\centering}m{1.1cm}|>{\centering}m{1.15cm}|c|>{\centering}m{1.5cm}|}
+				\hline
+				\hline
+				{\it KB}&{\it Version}&{\it Size}&{\it  \#Triples}&{\it \#Predicates} \tabularnewline
+				\hline
+				\dbpedia & 3.7 & 10.056GB & 68,364,605 & 1,424 \tabularnewline
+				\yago & 3.0.2 & 7.82GB & 88,360,244 & 74 \tabularnewline
+				\wikidata & 20160229 & 12.32GB & 272,129,814 & 4,108 \tabularnewline
+				\hline
+			\end{tabular}
+		\end{small}
+	\end{table}
 }
 
 %As the figure shows, 
@@ -115,16 +115,16 @@ We evaluated negative rules as the percentage of correct errors discovered for t
 	\caption{Negative Rules Accuracy.}
 	\label{tab:neg_rules_acc}
 	\begin{small}
-	\begin{tabular}{|c|c|c|c|}
-		\hline
-		\hline
-		{\it KB}&{\it Avg. Run Time}&{\it \# Pot. Errors} & {\it Precision} \tabularnewline
-		\hline
-		\dbpedia & 19min, 40sec& 499 & \textbf{92.38}\%\tabularnewline
-		\yago & 10min, 40sec & 2,237& \textbf{90.61}\%\tabularnewline
-		\wikidata & 1h, 5min, 38sec & 1,776 & \textbf{73.99}\%\tabularnewline
-		\hline
-	\end{tabular}
+		\begin{tabular}{|c|c|c|c|}
+			\hline
+			\hline
+			{\it KB}&{\it Avg. Run Time}&{\it \# Pot. Errors} & {\it Precision} \tabularnewline
+			\hline
+			\dbpedia & 19min, 40sec& 499 & \textbf{92.38}\%\tabularnewline
+			\yago & 10min, 40sec & 2,237& \textbf{90.61}\%\tabularnewline
+			\wikidata & 1h, 5min, 38sec & 1,776 & \textbf{73.99}\%\tabularnewline
+			\hline
+		\end{tabular}
 	\end{small}
 \end{table}
 
@@ -348,110 +348,131 @@ The output of \texttt{ManualSampl} and \krd are very similar, meaning that we ca
 \end{figure}
 
 \subsection{Internal Evaluation} ~\label{sec:krd_int_evaluation}
-In this last set of experiments we measured the impact of \krd relevant features in order to quantify the benefit of three main aspects in rules discovery. 
-We run \krd on \dbpedia with different settings than the standard ones.
-We report results on the same top-5 predicates of Section~\ref{sec:gen_evaluation} for both positive and negative rules.
+In this last section we skecth the impact of individual components in \krd.
+Full results on the internal evaluation are not reported in this paper due to space reasons but can be examined on the technical report online at \textbf{TODO: add online link to technical report}.
 
-\myparagraph{Effect of Literals}
-Since previous KB rules discovery approaches exclude literals from the mining~\cite{abedjan2014amending,galarraga2015fast} (TODO: cite Sigmod ontological), we wanted to quantify the impact of having literal rules. Thus we run \krd excluding all literal values. Table~\ref{tab:literals_effect} reports the output precision with and without literals.
-\begin{table}[b]
-	\centering
-	
-	\begin{small}
-		\begin{tabular}{c|c|c|c|c|}
-			\cline{2-5}
-			& \multicolumn{2}{c|}{\textbf{With Literals}} & \multicolumn{2}{c|}{\textbf{Without Literals}} \tabularnewline
-			\hline
-			\multicolumn{1}{ |c| }{\it Type}&{\it Run Time} & {\it Precision} &{\it Run Time} & {\it Precision} \tabularnewline
-			\hline
-			\multicolumn{1}{ |c| }{Positive Rules} & $\sim$35min & \textbf{63.99}\% & $\sim$54min & 60.49\%\tabularnewline
-			\multicolumn{1}{ |c| }{Negative Rules} &  $\sim$20min & \textbf{92.38}\% (499) &$\sim$25min &84.85\% (235) \tabularnewline
-			\hline
-		\end{tabular}
-	\end{small}
-	\caption{Rules Accuracy without Literals on \dbpedia.}
-	\label{tab:literals_effect}
-\end{table}
-Including literal values in the mining has a considerable impact on final accuracy, both for positive and negative rules. The effect is particularly evident for negative rules, where excluding literals involves finding less than half potential errors (numbers in brackets) with a lower precision. \texttt{founder} is the most evident example: \krd discovers 79 potential errors with a 95\% precision with literal rules, while there are not output errors with rules without literals.
-
-Surpisingly, including literals reduces also the running time. This is due to the pruning effect of the $A^*$ search: if we include literals the algorithm can find rather soon valid literal rules, which causes the pruning of several paths on the graph. If we exulted literals instead these paths cannot be pruned and needs to be inspected by the algorithm, which entails a bigger search space.
-
-\myparagraph{Rules Length Impact}
-The $maxPathLen$ parameter fixes the maximum number of atoms allowed in the body of a rule. Low values for $maxPathLen$ may exclude from the search space meaningful rules, while high values may exponentially increase the search space and consequently the running time. Table~\ref{tab:rules_len_impact} reports
-\begin{table}[htt]
-	\centering
-	\caption{$maxPathLen$ Parameter Impact on \dbpedia.}
-	\label{tab:rules_len_impact}
-	\begin{small}
-		\begin{tabular}{c|c|c|c|c|c|c|}
-			\cline{2-7}
-			& \multicolumn{2}{c|}{$MaxPathLen$ = \textbf{2}} & \multicolumn{2}{c|}{$MaxPathLen$ = \textbf{3}} & \multicolumn{2}{c|}{$MaxPathLen$ = \textbf{4}}\tabularnewline
-			\hline
-			\multicolumn{1}{ |c| }{\it Type}&{\it Run Time} & {\it Precision} &{\it Run Time} & {\it Precision} &{\it Run Time} & {\it Precision} \tabularnewline
-			\hline
-			\multicolumn{1}{ |c| }{Positive} & \textbf{$\sim$3min}& 49.17\% & $\sim$35min & \textbf{63.99}\% & & \tabularnewline
-			\multicolumn{1}{ |c| }{Negative} & \textbf{$\sim$56sec} & 90\% (131) & $\sim$20min & \textbf{92.38}\% (499)& & \tabularnewline
-			\hline
-		\end{tabular}
-	\end{small}
-\end{table}
-accuracy values and run times for different $maxPathLen$ settings. If we set $maxPathLen=2$ we observe a significant improvement in running time, at the expense of loosing several meaningful rules. In particular we loose all the rules that involve literals comparison, as these require a minimum of three atoms in the body. This is particularly evident for negative rules, where we spot a fewer number of errors (in round brackets) with a lower precision. At the other side of the spectrum, with $maxPathLen=4$ the search space explodes and \krd was not capable of finishing the computation within 24 hours for each predicate. We therefore report the accuracy of rules discovered in 24 hours of computation. The results are comparable to those computed with $maxPathLen=3$, provided the absence of rules that might have been discovered after 24 hours. Furthermore, we did not notice any new discovered correct rule with body length equal to 4. Rules with length 4 are usually very complex to understand, and when executed over the KB they often return an empty result (i.e., they are useless both for discovering additional information and for identifying inconsistencies). Here a couple of examples of output rules with length 4:
-
-%NOT ESSENTIAL
-%\vspace{-5ex}
-%{\scriptsize
-%	\begin{gather*}
-%		\atom{birthPlace}{a}{v_0} \wedge \atom{areaTotal}{v_0}{v_1} \wedge \atom{viafId}{b}{v_2} \wedge v_1 < v_2 \Rightarrow \neg \atom{academicAdvisor}{a}{b} \\
-%		\atom{foundingYear}{a}{v_2} \wedge \atom{birthPlace}{b}{v_0} \wedge \atom{foundingYear}{v_1}{v_2}  \wedge \atom{foundationPlace}{v_1}{v_0} \Rightarrow \atom{founder}{a}{b}
-%	\end{gather*}
-%}
-%We therefore decided that $maxPathLen=3$ is a good compromise between a reasonable running time and a good output accuracy.
-
-\myparagraph{Negative Examples Generation}
-A key point in \krd is the generation of negative examples with a modified version of the LCWA (Section~\ref{sec:ex_generation}). We therefore evaluate two different strategies to generate negative examples. Given a target predicate $p$ from a KB $\kb$, we call $t_a$ the most common type of entities that are subject of $p$, and $t_b$ the most common type for the object. As an example, if $p=$\texttt{founder}, $t_a=Company$ and $t_b=Person$. We define $k$ as the number of triples having $p$ as predicate in $\kb$ -- $k$ is the cardinality of the positive examples set. The first alternative negative examples generation strategy is \emph{Random}: we randomly select $k$ pairs $(x,y)$ from the cartesian product of all entities $x$ of type $t_a$ and all entities $y$ of type $t_b$, such that the triple $\<x,p,y\> \notin \kb$. The second generation strategy, named ${LCWA}\_Random$, leverages on the LCWA. In $LCWA\_Random$ we randomly pick $k$ pairs $(x,y)$ from the cartesian product of all entities $x$ of type $t_a$ and all entities $y$ of type $t_b$, such that:
-\begin{inparaenum}[\itshape(i)]
-	\item $\<x,p,y'\> \in \kb$, with $y' \neq y$;
-	\item $\<x',p,y\> \in \kb$, with $x' \neq x$;
-	\item $\<x,p,y\> \notin \kb$.
+Here we briefly outline some of the most relevant findings. 
+\begin{inparaenum}[\itshape 1)]
+	\item We show the benefits of including literals in the mining especially for negative rules, where we double the number of errors discoverd with an almost 10\% increase in precision.
+	\item We show that $3$ is the optimal value for the $maxPathLen$ parameter, since with shorter rules we loose several meaningful rules and with longer ones we do not gain anything in precision or errors detected.
+	\item Other than $maxPathLen$ parameter, we empirically validate the choise for $\alpha$ and $\beta$ for both positive and negative settings.
+	\item We prove the validity of our LCWA negative examples generation, which clearly  outperforms in accuracy random generation strategies.
+	\item We quantify the benefits of $A^*$ search algorithm and pruning, where on average the running time is halved.
+	\item Eventually we show the benefits of our set cover problem formulation w.r.t. a ranking based one. 
+	We show that in almost every case good rules are not in the first best 10 ranked, and sometimes there exist good rules that are beyond the 100$th$ best one.
 \end{inparaenum}
-$LCWA\_Random$ is equivalent to \krd generation strategy, minus the constriction that $x$ and $y$ must be connected by a predicate different from $p$. The constraint of having $k$ examples aims at reducing the size of the cartesian product that can easily explode otherwise.
 
-Table~\ref{tab:random_neg_examples} reports the accuracy of discovering negative rules with the three different generation strategies (\krd is our modified LCWA strategy).
-\begin{table}[t]
-	\centering
-	\caption{Effect of Negative Examples Generation Strategy on \dbpedia.}
-	\label{tab:random_neg_examples}
-	\begin{tabular}{|c|c|c|c|c|}
-		\hline
-		\hline
-		{\it Strategy}&{\it \# Potential Errors} & {\it Precision} \tabularnewline
-		\hline
-		\emph{Random} & 247 & \textbf{95.95}\%\tabularnewline
-		\emph{LCWA\_Random} & 263 & 95.82\% \tabularnewline
-		\krd & \textbf{499} & 92.38\%\tabularnewline
-		\hline
-	\end{tabular}
-\end{table}
-\emph{Random} and \emph{LCWA\_Random} strategies show very similar behaviours, with a slightly better precision than \krd. This is because whenever we randomly pick examples from the cartesian product of subject and object, the likelihood of picking entities from a different time period is very high, and negative rules pivoting on time constraints are usually correct.
-As an example, a correct rule for the target predicate \texttt{child} is $\atom{birthDate}{a}{v_0} \wedge \atom{birthDate}{b}{v_1} \wedge v_0 > v_1 \Rightarrow \neg \atom{child}{a}{b}$, stating that whenever a person $a$ is born after a person $b$, then $b$ cannot be child of $a$.
-The likelihood of randomly picking some pairs of persons $(x,y)$ where $x$ is born after $y$ is very high, hence such kind of rules will often be discovered. However these are the \emph{only} kind of rules that random generation strategies are able to find, as shown from the smaller number of errors that they can identify. 
-Instead, the constriction of forcing $x$ and $y$ to be connected by a different predicate generates  negative examples with heterogeneous properties that lead to different results. Rules such as $\atom{parent}{a}{b} \Rightarrow \neg \atom{spouse}{a}{b}$ are very unlikely to be generated with random strategies, since the likelihood of picking two people that are in a parent relation is very low. The generation strategy we adopt in \krd allows the discovery of more types of rules, and not only rules involving time constraints. This has multiple benefits: on the one hand, we discover more rules, which entails discovering a higher number of errors (Table~\ref{tab:random_neg_examples}); on the other hand, different rule types lead to high quality negative examples, that can be used in several applications such as training Machine Learning algorithms (see Section~\ref{sec:krd_deep_dive}).
 
-\myparagraph{Effect of Weight Parameters}
-\begin{figure}[t]
-	\centering
-	\includegraphics[width=0.9\columnwidth]{include/figure/alpha_impact.pdf}
-	\caption{$\alpha$ Parameter Performance Impact}
-	\label{fig:alpha_impact}
-\end{figure}
-Our weight function is ruled by two different parameters: $\alpha$ and $\beta$, with $\alpha \in [0,1]$ and $\beta=1-\alpha$ (Section~\ref{sec:krd_weight_fun}). This experiment aims at establishing the optimal value to assign to $\alpha$ and $\beta$, and to quantify the impact of the two parameters on the overall performance. We recall that $\alpha$ quantifies the relevance of the coverage over the generation set, while $\beta$ is the importance of the coverage over the validation set. In other words, a high $\alpha$ supports high recall over precision, while a high $\beta$ supports a high precision over recall. Figure~\ref{} shows the variation of \textsf{$F_1$-Score} with different values of $\alpha$ for both positive and negative rules on \dbpedia. For each different run, we manually label each output rule as true or false, where the total number of correct rules for each predicate is the union of all possible correct rules over all the runs. We then compute \textsf{Precision}, \textsf{Recall}, and \textsf{$F_1$-Score} at rule level. On the one hand, setting $\alpha=0$ produces an empty output, since we neglect the coverage over the generation set and we are just after rules that do not cover any element of the validation set. On the other hand, setting $\alpha=1$ means chasing rules just based on the coverage over the generation set, no matter what the coverage over the validation set is. This strategy ends up in producing a huge amount of rules (high recall), with very few correct rules (low precision). Correct values lie somewhere in between. For positive rules, the best assignment is $\alpha=0.3$ and $\beta=0.7$. Since discovering correct positive rules is more challenging than negative ones, favoring precision over recall gives the best accuracy. For negative rules instead, the best assignment is $\alpha=0.4$ and $\beta=0.6$. Since negative rules are often correct, we can relax the constraint over precision and be slightly more recall oriented. In both cases, the variation in performance for $\alpha \in [0.1,0.9]$ is anyway limited ($\leq 12\%$), showing the robustness of the set cover problem formulation.
 
-\myparagraph{$A^*$ pruning impact}
-\begin{figure}[b]
-	\centering
-	\includegraphics[width=\columnwidth]{include/figure/a*_runtime_improv.pdf}
-	\caption{$A^*$ Pruning Runtime Improvement}
-	\label{fig:pruning_impact}
-\end{figure}
-Another aspect we wanted to quantify is the benefit brought by the $A^*$ algorithm on the overall running time. Figure~\ref{fig:pruning_impact} shows the running time, for each target predicate, of the $A^*$ algorithm (light-colored bars) against a modified version that first generates the universe of all possible rules, and then apply the greedy set cover algorithm on such a universe (dark-colored bars). For the last two predicates refer to the y-axis labels on the right hand side, as these predicates have a significant higher running time. In the figure \texttt{(P)} refers to positive rules, while \texttt{(N)} to negative rules.
-The $A^*$ strategy allows the pruning of several unpromising paths and avoids the generations of such paths from the disk. This is directly reflected on running times, where we notice an average 50\% improvement. When there exist rules that cover many examples from the generation set (e.g., \texttt{successor (P)}, \texttt{founder (P)}), the algorithm is capable of identifying such rules rather early, thus pruning several unpromising paths that cover a subset examples from the generation set. In such cases the running time improvement is above 70\%.
+
+
+
+
+%CANNOT AFFORD TO INCLUDE ALL INTERNATAL EVALUATION
+%In this last set of experiments we measured the impact of \krd relevant features in order to quantify the benefit of three main aspects in rules discovery. 
+%We run \krd on \dbpedia with different settings than the standard ones.
+%We report results on the same top-5 predicates of Section~\ref{sec:gen_evaluation} for both positive and negative rules.
+%
+%\myparagraph{Effect of Literals}
+%Since previous KB rules discovery approaches exclude literals from the mining~\cite{abedjan2014amending,galarraga2015fast} (TODO: cite Sigmod ontological), we wanted to quantify the impact of having literal rules. Thus we run \krd excluding all literal values. Table~\ref{tab:literals_effect} reports the output precision with and without literals.
+%\begin{table}[b]
+%	\centering
+%	
+%	\begin{small}
+%		\begin{tabular}{c|c|c|c|c|}
+%			\cline{2-5}
+%			& \multicolumn{2}{c|}{\textbf{With Literals}} & \multicolumn{2}{c|}{\textbf{Without Literals}} \tabularnewline
+%			\hline
+%			\multicolumn{1}{ |c| }{\it Type}&{\it Run Time} & {\it Precision} &{\it Run Time} & {\it Precision} \tabularnewline
+%			\hline
+%			\multicolumn{1}{ |c| }{Positive Rules} & $\sim$35min & \textbf{63.99}\% & $\sim$54min & 60.49\%\tabularnewline
+%			\multicolumn{1}{ |c| }{Negative Rules} &  $\sim$20min & \textbf{92.38}\% (499) &$\sim$25min &84.85\% (235) \tabularnewline
+%			\hline
+%		\end{tabular}
+%	\end{small}
+%	\caption{Rules Accuracy without Literals on \dbpedia.}
+%	\label{tab:literals_effect}
+%\end{table}
+%Including literal values in the mining has a considerable impact on final accuracy, both for positive and negative rules. The effect is particularly evident for negative rules, where excluding literals involves finding less than half potential errors (numbers in brackets) with a lower precision. \texttt{founder} is the most evident example: \krd discovers 79 potential errors with a 95\% precision with literal rules, while there are not output errors with rules without literals.
+%
+%Surpisingly, including literals reduces also the running time. This is due to the pruning effect of the $A^*$ search: if we include literals the algorithm can find rather soon valid literal rules, which causes the pruning of several paths on the graph. If we exulted literals instead these paths cannot be pruned and needs to be inspected by the algorithm, which entails a bigger search space.
+%
+%\myparagraph{Rules Length Impact}
+%The $maxPathLen$ parameter fixes the maximum number of atoms allowed in the body of a rule. Low values for $maxPathLen$ may exclude from the search space meaningful rules, while high values may exponentially increase the search space and consequently the running time. Table~\ref{tab:rules_len_impact} reports
+%\begin{table}[htt]
+%	\centering
+%	\caption{$maxPathLen$ Parameter Impact on \dbpedia.}
+%	\label{tab:rules_len_impact}
+%	\begin{small}
+%		\begin{tabular}{c|c|c|c|c|c|c|}
+%			\cline{2-7}
+%			& \multicolumn{2}{c|}{$MaxPathLen$ = \textbf{2}} & \multicolumn{2}{c|}{$MaxPathLen$ = \textbf{3}} & \multicolumn{2}{c|}{$MaxPathLen$ = \textbf{4}}\tabularnewline
+%			\hline
+%			\multicolumn{1}{ |c| }{\it Type}&{\it Run Time} & {\it Precision} &{\it Run Time} & {\it Precision} &{\it Run Time} & {\it Precision} \tabularnewline
+%			\hline
+%			\multicolumn{1}{ |c| }{Positive} & \textbf{$\sim$3min}& 49.17\% & $\sim$35min & \textbf{63.99}\% & & \tabularnewline
+%			\multicolumn{1}{ |c| }{Negative} & \textbf{$\sim$56sec} & 90\% (131) & $\sim$20min & \textbf{92.38}\% (499)& & \tabularnewline
+%			\hline
+%		\end{tabular}
+%	\end{small}
+%\end{table}
+%accuracy values and run times for different $maxPathLen$ settings. If we set $maxPathLen=2$ we observe a significant improvement in running time, at the expense of loosing several meaningful rules. In particular we loose all the rules that involve literals comparison, as these require a minimum of three atoms in the body. This is particularly evident for negative rules, where we spot a fewer number of errors (in round brackets) with a lower precision. At the other side of the spectrum, with $maxPathLen=4$ the search space explodes and \krd was not capable of finishing the computation within 24 hours for each predicate. We therefore report the accuracy of rules discovered in 24 hours of computation. The results are comparable to those computed with $maxPathLen=3$, provided the absence of rules that might have been discovered after 24 hours. Furthermore, we did not notice any new discovered correct rule with body length equal to 4. Rules with length 4 are usually very complex to understand, and when executed over the KB they often return an empty result (i.e., they are useless both for discovering additional information and for identifying inconsistencies). Here a couple of examples of output rules with length 4:
+%
+%%NOT ESSENTIAL
+%%\vspace{-5ex}
+%%{\scriptsize
+%%	\begin{gather*}
+%%		\atom{birthPlace}{a}{v_0} \wedge \atom{areaTotal}{v_0}{v_1} \wedge \atom{viafId}{b}{v_2} \wedge v_1 < v_2 \Rightarrow \neg \atom{academicAdvisor}{a}{b} \\
+%%		\atom{foundingYear}{a}{v_2} \wedge \atom{birthPlace}{b}{v_0} \wedge \atom{foundingYear}{v_1}{v_2}  \wedge \atom{foundationPlace}{v_1}{v_0} \Rightarrow \atom{founder}{a}{b}
+%%	\end{gather*}
+%%}
+%%We therefore decided that $maxPathLen=3$ is a good compromise between a reasonable running time and a good output accuracy.
+%
+%\myparagraph{Negative Examples Generation}
+%A key point in \krd is the generation of negative examples with a modified version of the LCWA (Section~\ref{sec:ex_generation}). We therefore evaluate two different strategies to generate negative examples. Given a target predicate $p$ from a KB $\kb$, we call $t_a$ the most common type of entities that are subject of $p$, and $t_b$ the most common type for the object. As an example, if $p=$\texttt{founder}, $t_a=Company$ and $t_b=Person$. We define $k$ as the number of triples having $p$ as predicate in $\kb$ -- $k$ is the cardinality of the positive examples set. The first alternative negative examples generation strategy is \emph{Random}: we randomly select $k$ pairs $(x,y)$ from the cartesian product of all entities $x$ of type $t_a$ and all entities $y$ of type $t_b$, such that the triple $\<x,p,y\> \notin \kb$. The second generation strategy, named ${LCWA}\_Random$, leverages on the LCWA. In $LCWA\_Random$ we randomly pick $k$ pairs $(x,y)$ from the cartesian product of all entities $x$ of type $t_a$ and all entities $y$ of type $t_b$, such that:
+%\begin{inparaenum}[\itshape(i)]
+%	\item $\<x,p,y'\> \in \kb$, with $y' \neq y$;
+%	\item $\<x',p,y\> \in \kb$, with $x' \neq x$;
+%	\item $\<x,p,y\> \notin \kb$.
+%\end{inparaenum}
+%$LCWA\_Random$ is equivalent to \krd generation strategy, minus the constriction that $x$ and $y$ must be connected by a predicate different from $p$. The constraint of having $k$ examples aims at reducing the size of the cartesian product that can easily explode otherwise.
+%
+%Table~\ref{tab:random_neg_examples} reports the accuracy of discovering negative rules with the three different generation strategies (\krd is our modified LCWA strategy).
+%\begin{table}[t]
+%	\centering
+%	\caption{Effect of Negative Examples Generation Strategy on \dbpedia.}
+%	\label{tab:random_neg_examples}
+%	\begin{tabular}{|c|c|c|c|c|}
+%		\hline
+%		\hline
+%		{\it Strategy}&{\it \# Potential Errors} & {\it Precision} \tabularnewline
+%		\hline
+%		\emph{Random} & 247 & \textbf{95.95}\%\tabularnewline
+%		\emph{LCWA\_Random} & 263 & 95.82\% \tabularnewline
+%		\krd & \textbf{499} & 92.38\%\tabularnewline
+%		\hline
+%	\end{tabular}
+%\end{table}
+%\emph{Random} and \emph{LCWA\_Random} strategies show very similar behaviours, with a slightly better precision than \krd. This is because whenever we randomly pick examples from the cartesian product of subject and object, the likelihood of picking entities from a different time period is very high, and negative rules pivoting on time constraints are usually correct.
+%As an example, a correct rule for the target predicate \texttt{child} is $\atom{birthDate}{a}{v_0} \wedge \atom{birthDate}{b}{v_1} \wedge v_0 > v_1 \Rightarrow \neg \atom{child}{a}{b}$, stating that whenever a person $a$ is born after a person $b$, then $b$ cannot be child of $a$.
+%The likelihood of randomly picking some pairs of persons $(x,y)$ where $x$ is born after $y$ is very high, hence such kind of rules will often be discovered. However these are the \emph{only} kind of rules that random generation strategies are able to find, as shown from the smaller number of errors that they can identify. 
+%Instead, the constriction of forcing $x$ and $y$ to be connected by a different predicate generates  negative examples with heterogeneous properties that lead to different results. Rules such as $\atom{parent}{a}{b} \Rightarrow \neg \atom{spouse}{a}{b}$ are very unlikely to be generated with random strategies, since the likelihood of picking two people that are in a parent relation is very low. The generation strategy we adopt in \krd allows the discovery of more types of rules, and not only rules involving time constraints. This has multiple benefits: on the one hand, we discover more rules, which entails discovering a higher number of errors (Table~\ref{tab:random_neg_examples}); on the other hand, different rule types lead to high quality negative examples, that can be used in several applications such as training Machine Learning algorithms (see Section~\ref{sec:krd_deep_dive}).
+%
+%\myparagraph{Effect of Weight Parameters}
+%\begin{figure}[t]
+%	\centering
+%	\includegraphics[width=0.9\columnwidth]{include/figure/alpha_impact.pdf}
+%	\caption{$\alpha$ Parameter Performance Impact}
+%	\label{fig:alpha_impact}
+%\end{figure}
+%Our weight function is ruled by two different parameters: $\alpha$ and $\beta$, with $\alpha \in [0,1]$ and $\beta=1-\alpha$ (Section~\ref{sec:krd_weight_fun}). This experiment aims at establishing the optimal value to assign to $\alpha$ and $\beta$, and to quantify the impact of the two parameters on the overall performance. We recall that $\alpha$ quantifies the relevance of the coverage over the generation set, while $\beta$ is the importance of the coverage over the validation set. In other words, a high $\alpha$ supports high recall over precision, while a high $\beta$ supports a high precision over recall. Figure~\ref{} shows the variation of \textsf{$F_1$-Score} with different values of $\alpha$ for both positive and negative rules on \dbpedia. For each different run, we manually label each output rule as true or false, where the total number of correct rules for each predicate is the union of all possible correct rules over all the runs. We then compute \textsf{Precision}, \textsf{Recall}, and \textsf{$F_1$-Score} at rule level. On the one hand, setting $\alpha=0$ produces an empty output, since we neglect the coverage over the generation set and we are just after rules that do not cover any element of the validation set. On the other hand, setting $\alpha=1$ means chasing rules just based on the coverage over the generation set, no matter what the coverage over the validation set is. This strategy ends up in producing a huge amount of rules (high recall), with very few correct rules (low precision). Correct values lie somewhere in between. For positive rules, the best assignment is $\alpha=0.3$ and $\beta=0.7$. Since discovering correct positive rules is more challenging than negative ones, favoring precision over recall gives the best accuracy. For negative rules instead, the best assignment is $\alpha=0.4$ and $\beta=0.6$. Since negative rules are often correct, we can relax the constraint over precision and be slightly more recall oriented. In both cases, the variation in performance for $\alpha \in [0.1,0.9]$ is anyway limited ($\leq 12\%$), showing the robustness of the set cover problem formulation.
+%
+%\myparagraph{$A^*$ pruning impact}
+%\begin{figure}[b]
+%	\centering
+%	\includegraphics[width=\columnwidth]{include/figure/a*_runtime_improv.pdf}
+%	\caption{$A^*$ Pruning Runtime Improvement}
+%	\label{fig:pruning_impact}
+%\end{figure}
+%Another aspect we wanted to quantify is the benefit brought by the $A^*$ algorithm on the overall running time. Figure~\ref{fig:pruning_impact} shows the running time, for each target predicate, of the $A^*$ algorithm (light-colored bars) against a modified version that first generates the universe of all possible rules, and then apply the greedy set cover algorithm on such a universe (dark-colored bars). For the last two predicates refer to the y-axis labels on the right hand side, as these predicates have a significant higher running time. In the figure \texttt{(P)} refers to positive rules, while \texttt{(N)} to negative rules.
+%The $A^*$ strategy allows the pruning of several unpromising paths and avoids the generations of such paths from the disk. This is directly reflected on running times, where we notice an average 50\% improvement. When there exist rules that cover many examples from the generation set (e.g., \texttt{successor (P)}, \texttt{founder (P)}), the algorithm is capable of identifying such rules rather early, thus pruning several unpromising paths that cover a subset examples from the generation set. In such cases the running time improvement is above 70\%.
