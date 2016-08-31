@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2014) (preloaded format=pdflatex 2014.12.3)  30 AUG 2016 22:09
+This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2014) (preloaded format=pdflatex 2014.12.3)  30 AUG 2016 22:40
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -999,21 +999,21 @@ LaTeX Font Info:    Try loading font information for U+stmry on input line 15.
 Package xypdf Info: Line width: 0.38pt on input line 15.
 \AtBeginShipoutBox=\box45
 
-Underfull \hbox (badness 2245) in paragraph at lines 25--25
+Underfull \hbox (badness 2245) in paragraph at lines 24--24
 []\crnotice This work is li-censed un-der the Cre-ative Com-mons Attribution-
  []
 
 (./include/abstract.tex) (./include/introduction.tex
-Underfull \vbox (badness 6842) has occurred while \output is active []
-
-
-Overfull \hbox (8.47595pt too wide) detected at line 53
+Overfull \hbox (8.47595pt too wide) detected at line 57
 []\OML/cmm/m/it/8 a; v[][] \U/matha/m/n/8 ^ []\OML/cmm/m/it/8 b; v[][] \U/matha
 /m/n/8 ^ \OML/cmm/m/it/8 v[] \U/matha/m/n/8 ¡ \OML/cmm/m/it/8 v[] \U/matha/m/n/
 8 ^ []\OML/cmm/m/it/8 a; b[] \U/matha/m/n/8 ñ \OML/cmm/m/it/8 false
  []
 
-[1{/usr/local/texlive/2014/texmf-var/fonts/map/pdftex/updmap/pdftex.map}
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [1{/usr/local/texlive/2014/texmf-var/fonts/map/pdftex/updmap/pdftex.map}
 
 
 ]
@@ -1074,7 +1074,7 @@ LaTeX Font Warning: Command \sc invalid in math mode on input line 76.
 LaTeX Font Warning: Command \sc invalid in math mode on input line 76.
 
 
-Underfull \vbox (badness 3919) has occurred while \output is active []
+Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [3]
 
@@ -1105,11 +1105,7 @@ LaTeX Font Warning: Command \sc invalid in math mode on input line 199.
 
 LaTeX Font Warning: Command \sc invalid in math mode on input line 199.
 
-
-Underfull \vbox (badness 3128) has occurred while \output is active []
-
- [4])
-(./include/graph.tex
+[4]) (./include/graph.tex
 <include/figure/graph_example.pdf, id=37, 705.63625pt x 249.93375pt>
 File: include/figure/graph_example.pdf Graphic file (type pdf)
 
@@ -1184,14 +1180,10 @@ Overfull \hbox (63.86893pt too wide) detected at line 76
 \OML/cmm/m/it/9 w[]\U/matha/m/n/9 p\OML/cmm/m/it/9 r\U/matha/m/n/9 q ^^P []
  []
 
-
+(./include/algorithm/krd_a*_algorithm.tex
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
-
-(./include/algorithm/krd_a*_algorithm.tex))
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [9 <./include/figure/a*_graph_example.pdf>] (./include/evaluation.tex
+)) [9 <./include/figure/a*_graph_example.pdf>] (./include/evaluation.tex
 Overfull \hbox (2.09186pt too wide) in paragraph at lines 63--64
  []|\OT1/cmr/m/it/8 #Predicates| 
  []
@@ -1278,7 +1270,7 @@ LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 Here is how much of TeX's memory you used:
  10023 strings out of 493117
  131505 string characters out of 6135433
- 287732 words of memory out of 5000000
+ 287735 words of memory out of 5000000
  13176 multiletter control sequences out of 15000+600000
  38005 words of font info for 107 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
@@ -1313,7 +1305,7 @@ ype1/public/mathabx-type1/mathx10.pfb></usr/local/texlive/2014/texmf-dist/fonts
 urw/helvetic/uhvr8a.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/urw/tim
 es/utmb8a.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/urw/times/utmr8a.
 pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on main.pdf (16 pages, 574643 bytes).
+Output written on main.pdf (16 pages, 574399 bytes).
 PDF statistics:
  433 PDF objects out of 1000 (max. 8388607)
  292 compressed objects within 3 object streams

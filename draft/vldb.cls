@@ -825,7 +825,7 @@
 \@float{copyrightbox}[b]
 \begin{center}
 \setlength{\unitlength}{1pc}
-\begin{picture}(20,6) %Space for copyright notice
+\begin{picture}(20,4.5) %Space for copyright notice
 \put(0,-0.95){\crnotice{\@toappear}}
 \end{picture}
 \end{center}
@@ -1386,7 +1386,8 @@
 % Future proceedings chair, please update the following: 1) conference sequence number, 2) date,
 % 3) location, 4) volume number, 5) Copyright year.
 % \global\boilerplate={This work is licensed under the Creative Commons Attribution-NonCommercial-NoDerivs 3.0 Unported License. To view a copy of this license, visit http://creativecommons.org/licenses/by-nc-nd/3.0/.  Obtain permission prior to any use beyond those covered by the license.  Contact copyright holder by emailing info@vldb.org.  Articles from this volume were invited to present their results at the 42nd International Conference on Very Large Data Bases, September 5th - September 9th 2016, New Delhi, India.}   %%% Changed by VLDB Committee moving to a different copyright statement  -- 17/10/2015    *** Srikanta Bedathur (sbedathur@acm.org)
-\global\boilerplate={This work is licensed under the Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International License.  To view a copy of this license, visit http://creativecommons.org/licenses/by-nc-nd/4.0/.  For any use beyond those covered by this license, obtain permission by emailing info@vldb.org.}
+\global\boilerplate={
+	This work is licensed under the Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International License.  To view a copy of this license, visit http://creativecommons.org/licenses/by-nc-nd/4.0/.  For any use beyond those covered by this license, obtain permission by emailing info@vldb.org.}
 
 \global\conf{Proceedings of the VLDB Endowment,}
 \global\confinfo{Vol. 9, No. 12}
