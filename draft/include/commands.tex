@@ -352,7 +352,9 @@
 \newenvironment{lemma}{\begin{em}
         \refstepcounter{theorem}
         {\vspace{1ex}\noindent\bf Lemma \thelemma:}}{
-        \end{em}\eop} %\hspace*{\fill}\vspace*{1ex}}
+        \end{em}
+        %\eop - remove square from lemmma
+        } %\hspace*{\fill}\vspace*{1ex}}
 \newenvironment{cor}{\begin{em}
         \refstepcounter{theorem}
         {\vspace{1ex}\noindent\bf Corollary \thecor:}}{
@@ -364,8 +366,8 @@
 \newenvironment{definition}{
         \vspace{1ex}
         \refstepcounter{definition}
-        {\noindent\bf Definition {\bf \thedefinition}:}}{\eop
-}
+        {\noindent\bf Definition {\bf \thedefinition}:}}
+%{\eop} remove square at the end of a definition
 
 \newenvironment{ctheorem}[1]{\begin{em}
         \refstepcounter{theorem}
