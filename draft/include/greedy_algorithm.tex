@@ -18,14 +18,14 @@ We follow the intuitions behind the greedy algorithm for weighted set cover by d
 
 \begin{definition}
 	Given a set of rules $R$ and a rule $r$ such that $r \notin R$, the marginal weight of $r$ w.r.t. $R$ is defined as:
-	\begin{equation*}
+	\begin{equation*} \label{eq:mar_weight}
 	w_m(r) = w(R \cup \{r\}) - w(R) 
 	%- \alpha \cdot \frac{\mid C_{r}(G) \setminus C_{R}(G) \mid}{\mid G \mid} + \beta \cdot (\frac{\mid C_{R \cup \{r\}}(V) \mid}{\mid U_{R \cup \{r\}}(V) \mid} - \frac{\mid C_{R}(V) \mid}{\mid U_{R}(V) \mid})
 		\vspace{-0.5ex}
 	\end{equation*}
 \end{definition}
 
-The marginal weight quantifies the total weight increase of adding $r$ to an existing set of rules $R$. In other words, it indicates the contribution of $r$ to $R$ in terms of new elements covered in $G$ and new elements unbounded covered in $V$. Due to the first negative part of the weight, $w_m(r) \in [-\alpha,+\beta]$. Since the set cover problem aims at minimising the total weight, we would never add a rule to the solution if its marginal weight is greater than or equal to $0$.
+The marginal weight quantifies the total weight increase of adding $r$ to an existing set of rules $R$. In other words, it indicates the contribution of $r$ to $R$ in terms of new elements covered in $G$ and new elements unbounded covered in $V$. Due to the first negative part of the weight, $w_m(r) \in [-\alpha,+\beta]$. Since the set cover problem aims at minimizing the total weight, we would never add a rule to the solution if its marginal weight is greater than or equal to $0$.
 
 %\input{include/algorithm/krd_greedy_algorithm}
 
@@ -103,7 +103,7 @@ In other words, expanding $r$ means adding a new atom to the body of $r$. In the
 \end{lemma}
 \vspace{0.5ex}
 
-The above Lemma states that the coverage and unbound coverage of an expansion $r'$ of $r$ are contained in the coverage and unbound coverage of $r$, respectively, and directly derives from the augmentation inference rule for functional dependencies~\cite{abiteboul1995foundations}. 
+The above Lemma states that the coverage and unbounded coverage of an expansion $r'$ of $r$ are contained in the coverage and unbound coverage of $r$, respectively, and directly derives from the augmentation inference rule for functional dependencies~\cite{abiteboul1995foundations}. 
 %In fact, expanding a rule with a new atom to its body makes the rule more selective. 
 %This is equivalent of adding an `AND' condition to a SQL query $q$: the new result will obviously be a subset of the result obtained with $q$.
 %Note that Lemma~\ref{lemma:krd_exp_cov} is equivalent to the 
@@ -116,27 +116,35 @@ The only positive contribution to marginal weights is given by $|C_{R \cup \{r\}
 %CANNOT NOT NOTICE HOW BRUTAL IT"S THIS ESTIMATE!
 
 \begin{definition}\label{def:est_res_wei}
-	Given a rule $r$ and a set of rules $R$, we define the \emph{estimated marginal weight} of $r$ as:
+	Given a \emph{not valid} rule $r$ and a set of rules $R$, we define the \emph{estimated marginal weight} of $r$ as:
 	\begin{equation*}
-	w_m^*(r) = 
-	\begin{cases} - \alpha \cdot \frac{\mid C_{r}(G) \setminus C_{R}(G) \mid}{\mid G \mid} + \beta \cdot (\frac{\mid C_R(V) \mid}{\mid U_{R \cup \{r\}}(V) \mid} - \frac{\mid C_{R}(V) \mid}{\mid U_{R}(V) \mid}) & \mbox{if } r\mbox{ is not valid} \\ w_m(r) & \mbox{if } r\mbox{ is valid} \end{cases}
-		\vspace{-2.5ex}
-		\end{equation*}
+	w_m^*(r) = - \alpha \cdot \frac{\mid C_{r}(G) \setminus C_{R}(G) \mid}{\mid G \mid} + \beta \cdot (\frac{\mid C_R(V) \mid}{\mid U_{R \cup \{r\}}(V) \mid} - \frac{\mid C_{R}(V) \mid}{\mid U_{R}(V) \mid})
+	\end{equation*}
 	%where a rule is valid iff it respects the language biases defined in Section~\ref{sec:krd_language}.
 \end{definition}
 %I AM A BIT CONFUSED BY THE FORMULA, i was expecting a 0 in the first case <<<<<
 
-The estimated marginal weight for a valid rule is equal to the actual marginal weight since a valid rule will not be considered for expansion -- it corresponds to reaching the ending node in the $A^*$ algorithm. Given Lemma~\ref{lemma:krd_exp_cov}, we can easily see that $w_m^*(r) \leq w_m^*(r')$, for any $r'$ expansion of $r$. Thus our marginal weight estimation is admissible.
+The estimated marginal weight for a valid rule instead is equal to the actual marginal weight defined in Equation~\ref{eq:mar_weight}. Valid rules are not considered for expansion, therefore we do not need to estimate their weights since we know the actual ones. Given Lemma~\ref{lemma:krd_exp_cov}, we can easily see that $w_m^*(r) \leq w_m^*(r')$, for any $r'$ expansion of $r$. Thus our marginal weight estimation is admissible.
 
-We use the concept of \emph{frontier nodes} for a rule $r$ ($N_f(r)$). Given a rule $r$, $N_f(r)$ contains the last visited nodes in the paths that correspond to $r_{body}$ from every example graphs covered by $r$. As an example, given $r_{body} = \atom{child}{x}{v_0}$, $N_f(r)$ contains all the entities $v_0$ that are children of $x$, for every $(x,y) \in G$ -- $v_0$ is the last visited node in the path. Expanding a rule $r$ implies navigating a single edge from any frontier node. Algorithm~\ref{alg:krd_a*} shows the modified set cover version that includes $A^*$-like rules generation. The set of frontier nodes is initialized with starting nodes $x$, for every $(x,y) \in G$ (Line~\ref{alg_line:front_nodes}). The algorithm maintains a queue of rules $Q_r$, from which it chooses at each iteration the rule with minimum approximated weight. 
+We use the concept of \emph{frontier nodes} for a rule $r$ ($N_f(r)$). Given a rule $r$, $N_f(r)$ contains the last visited nodes in the paths that correspond to $r_{body}$ from every example graphs covered by $r$. As an example, given $r_{body} = \atom{child}{x}{v_0}$, $N_f(r)$ contains all the entities $v_0$ that are children of $x$, for every $(x,y) \in G$. 
+%-- $v_0$ is the last visited node in the path. 
+Expanding a rule $r$ implies navigating a single edge from any frontier node. Algorithm~\ref{alg:krd_a*} shows the modified set cover version that includes $A^*$-like rules generation. The set of frontier nodes is initialized with starting nodes $x$, for every $(x,y) \in G$ (Line~\ref{alg_line:front_nodes}). The algorithm maintains a queue of rules $Q_r$, from which it chooses at each iteration the rule with minimum approximated weight. 
 %approximated?? <<
-The function \texttt{expandFrontiers} retrieves from the KB all nodes (along with edges) at distance $1$ from frontier nodes and returns the set of all rules generated by this one hop expansion. Such expansions are computed with efficient single-hop SPARQL queries. $Q_r$ is therefore initialized with all rules of length $1$ starting at $x$ (Line~\ref{alg_line:sparql_1}). In the main loop, the algorithm checks if the current best rule $r$ is valid or not. If $r$ is valid, $r$ is added to the output and it is not expanded (Line~\ref{alg_line:valid_rule}). If $r$ is not valid, $r$ is expanded iff the length of its body is less than $maxPathLen$ (Line~\ref{alg_line:exp_condition}). Rules with body greater than or equal to $maxPathLen$ are not expanded as they are not allowed in the output. The termination conditions and the last part of the algorithm are the same of the previous greedy set-cover algorithm. % Algorithm~\ref{alg:krd_greedy}.
+The function \texttt{expandFrontiers} retrieves from the KB all nodes (along with edges) at distance $1$ from frontier nodes and returns the set of all rules generated by this one hop expansion. Such expansions are computed with efficient single-hop SPARQL queries. $Q_r$ is therefore initialized with all rules of length $1$ starting at $x$ (Line~\ref{alg_line:sparql_1}). In the main loop, the algorithm checks if the current best rule $r$ is valid or not. If $r$ is valid, $r$ is added to the output and it is not expanded (Line~\ref{alg_line:valid_rule}). If $r$ is not valid, $r$ is expanded iff the length of its body is less than $maxPathLen$ (Line~\ref{alg_line:exp_condition}). 
+%Rules with body greater than or equal to $maxPathLen$ are not expanded as they are not allowed in the output. 
+The termination conditions and the last part of the algorithm are the same of the previously described greedy set-cover algorithm. % Algorithm~\ref{alg:krd_greedy}.
 
+%to remove vertical space after algorithm
+\setlength{\textfloatsep}{0pt}% Remove \textfloatsep
 \input{include/algorithm/krd_a*_algorithm}
+%restablish some space
+\setlength{\textfloatsep}{5pt}
 
 The simultaneous rules generation and selection of Algorithm~\ref{alg:krd_a*} brings multiple benefits. First, we do not generate the entire graph for every example in $G$. Nodes and edges are generated \emph{on demand}, whenever the algorithm requires their navigation (Line~\ref{alg_line:sparql_2}). If the initial part of a path is not promising according to its estimated weight, the rest of the path will never be materialized. % since there is no need to navigate it. 
-Materializing the graph is an expensive task, since we need to query the disk to retrieve target nodes and edges. Rather than materializing the entire graph and then traversing it, our solution gradually materializes parts of the graph whenever they are needed for navigation (Lines~\ref{alg_line:sparql_1} and~\ref{alg_line:sparql_2}). 
-Second, the weight estimation leads to pruning unpromising rules. If a rule does not cover new elements in $G$ and does not unbound cover new elements in $V$, then its estimated marginal weight is $0$ (Definition~\ref{def:est_res_wei}). A rule with $0$ marginal weight is never picked for expansion.
+%Materializing the graph is an expensive task, since we need to query the disk to retrieve target nodes and edges. 
+Rather than materializing the entire graph and then traversing it, our solution gradually materializes parts of the graph whenever they are needed for navigation (Lines~\ref{alg_line:sparql_1} and~\ref{alg_line:sparql_2}). 
+Second, the weight estimation leads to pruning unpromising rules. If a rule does not cover new elements in $G$ and does not unbounded cover new elements in $V$, then its estimated marginal weight is $0$ and will be pruned away. 
+%A rule with $0$ marginal weight is never picked for expansion.
 %A BIT PUZZLED, we have tons of rules with estimated marginal weight, no? <<<<<<<<
 %, and if it is the algorithm terminates (due to one of the termination conditions). This implies that a rule with $0$ estimated marginal weight is pruned away from the search space, as we will never generate rules from its expansion.
 
