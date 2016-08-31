@@ -44,20 +44,21 @@ We translate a KB $\kb$ into a directed graph: entities and literals are nodes o
 %IS THIS NOTATION NEW HERE???
 Edges are labelled, where the label is the relation $rel$ that connects subject to object in the triple. Figure~\ref{fig:krd_graph_example} shows a portion of \dbpedia~\cite{bizer2009dbpedia} that connects two person in child and parent relationships, along with their dates of birth. The graph represents information for four KB triples (two birth dates, one parent, and one child relation).
 
-The body of a Horn Rule can be seen as a path in the graph. In Figure~\ref{fig:krd_graph_example}, the body $\atom{child}{a}{b} \wedge \atom{parent}{b}{a}$ corresponds to the path \textit{Scott Eastwood} $\rightarrow$ \textit{Clint Eastwood} $\rightarrow$ \textit{Scott Eastwood}. 
-As introduced in Section~\ref{sec:krd_language}, a valid body of a rule contains target variables $a$ and $b$ at least once and every other variable at least twice, also each atom is transitively connected to every other atom. 
-If we allow navigation of edges in any direction (independently of the direction of the edge), we can translate bodies of valid rules to valid paths on the graph.
+The body of a rule can be seen as a path in the graph. In Figure~\ref{fig:krd_graph_example}, the body $\atom{child}{a}{b} \wedge \atom{parent}{b}{a}$ corresponds to the path \textit{Scott Eastwood} $\rightarrow$ \textit{Clint Eastwood} $\rightarrow$ \textit{Scott Eastwood}. 
+As introduced in Section~\ref{sec:krd_language}, a valid body of a rule contains target variables $a$ and $b$ at least once, every other variable at least twice, and atoms are transitively connected. 
+If we allow navigation of edges independently of the edge direction, we can translate bodies of valid rules to valid paths on the graph.
 Given a pair of entities $(x,y)$, a {\em valid body} corresponds to a valid path $p$ on the graph that:
 (i) $p$ starts at the node $x$;
 (ii) $p$ covers $y$ at least once;
 (iii) $p$ ends in $x$, in $y$, or in a different node that has been already covered.
 %I DONT SEE CLEARLY THE TRANSLATION HERE, WHY IT HAS TO END in one of those? I would rather expect as third : p covers an incoming and out coming edge for each node different from x and y  %%%%%%%<<<<<<<<<<<<<<<
-Note how the transitive connection between atoms is always guaranteed by the construction property of a path $p$: for each node $n$ in $p$ there always exists a subpath that connects $n$ to every other node in $p$.
+The transitive connection between atoms is always guaranteed by the construction property of a path $p$: for each node $n$ in $p$ there always exists a subpath that connects $n$ to every other node in $p$.
 
-In other words, given the body of a rule $r_{body}$, $r_{body}$ covers a pair of entities $(x,y)$ iff there exists a valid path on the graph that corresponds to $r_{body}$. This implies that for a pair of entities $(x,y)$, we can generate bodies of all possible valid rules by computing all valid paths from $x$ to $y$ (and vice versa) with a standard BFS. The key point is the ability of navigating each edge in any direction,i.e., turning the original directed graph into an undirected one.
+In other words, given the body of a rule $r_{body}$, $r_{body}$ covers a pair of entities $(x,y)$ iff there exists a valid path on the graph that corresponds to $r_{body}$. This implies that for a pair of entities $(x,y)$, we can generate bodies of all possible valid rules by computing all valid paths from $x$ to $y$ (and vice versa) with a standard BFS. The key point is the ability of navigating each edge in any direction by turning the original directed graph into an undirected one.
 %is the VICE VERSA CORRECT?? <<<<
 %Despite the navigation over an undirected graph
-However, we need to keep track of the original direction of the edges. This is essential when translating paths to Horn Rule bodies. In fact, if we navigate an edge \texttt{rel} between $a$ and $b$, going from $a$ to $b$ produces the atom $\atom{rel}{a}{b}$, while $b$ to $a$ produces the atom $\atom{rel}{b}{a}$. These two atoms are different, as the facts exist in the KB only wrt the original direction of the edge (determined by the position of the variables).
+However, we need to keep track of the original direction of the edges. This is essential when translating paths to rule bodies. In fact, %if we navigate an edge \texttt{rel} between $a$ and $b$, going 
+navigating an edge from $a$ to $b$ produces the atom $\atom{rel}{a}{b}$, while $b$ to $a$ produces $\atom{rel}{b}{a}$. The two atoms are different, as the facts exist in the KB only wrt the original direction of the edge (determined by the position of the variables).
 %NOTICE A FEW CHANGES IN WORDING HERE
 
 One can notice that for two entities $x$ and $y$, there might exist infinite valid paths starting from $x$, since every node can be traversed multiple times. Thus we introduce the $maxPathLen$ parameter that determines the maximum number of edges in the path. When translating paths to Horn Rules, $maxPathLen$ determines the maximum number of atoms that we can have in the body of the rule. This parameter is essential to avoid the discovery of rules with infinite body length and to constraint the search space.
@@ -124,7 +125,7 @@ Suppose that for the above negative rule for president, all examples in $G$ are 
 $$ \atom{bornIn}{a}{x} \wedge x \neq \emph{U.S.A.} \Rightarrow \neg \atom{president}{a}{\emph{U.S.A.}} $$
 %
 To discover such rules, we introduce a refinement of the rule generation.
-For a given rule $r$, we promote a variable $v$ in $r$ to an entity $e$ iff for every $(x,y) \in G$ covered by $r$, $v$ is always instantiated with the same value $e$. In the example above, we can then promote variable $b$ to ``\textit{U.S.A.}'', generating the rule.
+For a given rule $r$, we promote a variable $v$ in $r$ to an entity $e$ iff for every $(x,y) \in G$ covered by $r$, $v$ is always instantiated with the same value $e$. In the example above, we promote variable $b$ to  ``\textit{U.S.A.}''.%}, generating the rule.
 
 
 \subsection{Input Examples Generation} \label{sec:ex_generation}
