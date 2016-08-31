@@ -216,7 +216,7 @@ We can now state the approximate version of the problem.
 
 We can map this problem to the well-known weighted set cover problem, which is proven to be $\textsf{NP\mbox{-}complete}$~\cite{chvatal1979greedy}. The universe corresponds to $G$ and the input sets are all the possible rules defined in $R$.
 
-Since we want to minimize the total weight of the output rules, the approximate version of the discovery problem aims to cover all elements in $G$, and as few as possible elements in $V$. Since for each element $g \in G$ there always exists a rule that covers exactly only $g$ (single-instance rule), an optimal output is always guaranteed to exist. We expect the output to be made of some rules that cover multiple examples in $G$, while remaining examples in $G$ to be covered by single-instance rules. 
+Since we want to minimize the total weight of the output rules, the approximate version of the discovery problem aims to cover all elements in $G$, and as few as possible elements in $V$. Since for each element $g \in G$ there always exists a rule that covers exactly only $g$ (single-instance rule), an admissible solution is always guaranteed to exist. We expect the output to be made of some rules that cover multiple examples in $G$, while remaining examples in $G$ to be covered by single-instance rules. 
 %In the best-case scenario a single rule covers all elements in $G$ and none of the elements in $V$.
 
 %Section~\ref{sec:krd_greedy} will describe a greedy polynomial algorithm to find a good solution for the approximate discovery problem.
