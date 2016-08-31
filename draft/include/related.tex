@@ -5,7 +5,7 @@ We review a few of the most relevant works below.
 
 %\myparagraph{Relational Database Constraints} 
 A significant body of work has addressed the problem of discovering constraints over relational database sources. 
-Due to the presence of a pre-defined schema in relational databases, constraints are enforced based on the the dependencies among the attributes by well-studied formalisms such as 
+Due to the presence of a pre-defined schema in relational databases, constraints are enforced based on the dependencies among the attributes by well-studied formalisms such as 
 Functional Dependencies (FDs)(~\cite{abiteboul1995foundations},~\cite{abedjan2014dfd},~\cite{huhtala1999tane},~\cite{wyss2001fastfds}), Conditional FDs (~\cite{fan2011discovering}) 
 and Denial Constraints (DCs)~\cite{bertossi2011database,chu2013holistic}. It is interesting to note that the positive rules we discover using \krd carry 
 a semantic resemblance to FDs while 
@@ -21,27 +21,33 @@ Despite being directly related to our output and expressing a richer language, F
 \end{inparaenum}
 
 A few FD mining approaches like~\cite{abedjan2015temporal,kivinen1995approximate} that can work with erroneous datasets are still inapplicable to RDF data due to scalability problems.
-Fan et. al.~\cite{FanFDGraphs} laid the theoretical foundations of Functional Dependencies on Graphs (GFDs). They also propose parallel algorithms for GFDs computation and evaluate the accuracy on \yago and \dbpedia. Despite existing a natural correlation between FDs and Horn Rules, the language they propose covers only a portion of our negative rules to detect inconsistencies in graph databases. Moreover their language does not include smart literals comparisons, shown to be vital when detecting errors in KBs.
+Fan et. al.~\cite{FanFDGraphs} laid the theoretical foundations of Functional Dependencies on Graphs (GFDs). 
+%They also propose parallel algorithms for GFDs computation and evaluate the accuracy on \yago and \dbpedia. Despite existing a natural correlation between FDs and Horn Rules, 
+However, the language they propose covers only a portion of our negative rules to detect inconsistencies in graph databases and does not include smart literals comparisons, 
+shown to be vital when detecting errors in KBs.
 
 On the other hand, rule mining approaches specifically aimed towards RDF KBs such as \amie~\cite{galarraga2015fast} and OP algorithm~\cite{Chen:2016} load the entire KB into memory prior to 
 the graph traversal step connecting the predicates incrementally to form the full-fledged rule. In addition to this, neither of these two approaches can afford smart literal comparison. 
 In contrast to them, \krd is disk-based and generates the graph on-demand and can discover rules on a small fraction of the KB examples that not only makes our approach scalable but also helps us 
-accommodate smart literal comparisons from a language perspective. We have not tested our running time against~\cite{Chen:2016} because we could not find an implementation of it, 
+accommodate smart literal comparisons from a language perspective. 
+We have not tested our running time against~\cite{Chen:2016} because we could not find an implementation of it, 
 however it requires a powerful cluster of several machines to split the KB into multiple nodes. 
 We showed in the experimental section how \krd outperforms \amie both in final accuracy and running time.
 
-Our example generation strategy leverages on the Local Closed World Assumption (LCWA). When dealing with incomplete KBs, the LCWA is a popular technique that replaces the canonical Closed World Assumption of standard relational databases. The LCWA has been used in Google Knowledge Vault to estimate the quality of extracted triples~\cite{dong2014data,dong2014knowledge}, \amie~\cite{galarraga2015fast} uses the LCWA to penalise discovered rules, and sometimes the LCWA is used to evaluate the quality of a target KB~\cite{dong2015knowledge}. We see our examples generation strategy as complementary to our approach. It is possible to run \krd with any input examples, no matter how such examples have been generated.
+Our example generation strategy in \krd leverages the popular Local Closed World Assumption (LCWA) to handle incompleteness in KBs. LCWA has been used in Google Knowledge Vault
+~\cite{dong2014data,dong2014knowledge,dong2015knowledge}, \amie~\cite{galarraga2015fast} and helps us run with input example set of all sizes.
+%Our example generation strategy leverages on the Local Closed World Assumption (LCWA). When dealing with incomplete KBs, the LCWA is a popular technique that replaces the canonical Closed World Assumption of standard relational databases. The LCWA has been used in Google Knowledge Vault to estimate the quality of extracted triples~\cite{dong2014data,dong2014knowledge}, \amie~\cite{galarraga2015fast} uses the LCWA to penalise discovered rules, and sometimes the LCWA is used to evaluate the quality of a target KB~\cite{dong2015knowledge}. We see our examples generation strategy as complementary to our approach. It is possible to run \krd with any input examples, no matter how such examples have been generated.
 
 %\myparagraph{KBs Rule Mining} Recently, the focus for constraints and rules discovery is moving towards RDF databases. The closest works to ours are \amie~\cite{galarraga2015fast} and OP algorithm (TODO: cite Ontological Path Finding), which discover positive Horn Rules from RDF KBs with same language biases. They both uses the same discovery algorithm: it first loads the entire KB into memory and then, working one predicate at time, tries to expand rules by connecting a predicate to others that share common variables. Rules are ranked according to a confidence measure that leverages on KBs partial closed world assumption. Our graph generation and navigation technique is similar to their approach, however our examples generation allows us to discover rules on just a small fraction of the KB. This is beneficial not only from a scalability point of view (see Section~\ref{sec:krd_comparative}), but also from the language perspective: neither of the two approaches can afford smart literals comparisons. We have not tested our running time against (TODO: cite Ontological Path Finding) because we could not find an implementation of it, however it requires a powerful cluster of several machines to split the KB into multiple nodes. We showed in the experimental section how \krd outperforms \amie both in final accuracy and running time.
 
-\cite{abedjan2014amending} is an instance-level approach that discovers new facts for specific entities rather than generic variables contrary to which the rules generated by \krd are 
+\cite{abedjan2014amending} is an instance-level approach that discovers new facts for specific entities contrary to which the rules generated by \krd are 
 generic and can be instantiated with several instances thus being capable of generating several highly precise facts.~\cite{DBLP:conf/sigmod/FaridRIHC16} is a modern system to discover Conditional Denial Constraints (CDCs) from RDF Data. Differently from other systems, it includes literals in its language. CDCs can be directly mapped to our negative rules, however there is not a general correlation between CDCs and positive rules. Another major difference of
 our setting is the hardware: our disk-based approach is designed to handle large KBs with limited memory resources, while ~\cite{DBLP:conf/sigmod/FaridRIHC16} works on a distributed environment with a total of 832 GB RAM memory.
 
 To the best of our knowledge, \krd is the first approach that is generic enough to use the same algorithm to discover both positive and negative rules in RDF KBs.
 
 %\myparagraph{Inductive Logic Programming} 
-Inductive Logic Programming (ILP) is a sub-field of Machine Learning and Logic Programming which investigates the inductive construction of first-order Horn Rules from examples and background knowledge, usually expressed through logic formalisms~\cite{muggleton1994inductive}. \krd can be seen as an ILP system where the KB is the background knowledge, and the generation and validation sets correspond to positive and negative training examples.
+%Inductive Logic Programming (ILP) is a sub-field of Machine Learning and Logic Programming which investigates the inductive construction of first-order Horn Rules from examples and background knowledge, usually expressed through logic formalisms~\cite{muggleton1994inductive}. \krd can be seen as an ILP system where the KB is the background knowledge, and the generation and validation sets correspond to positive and negative training examples.
 
 %\system{WARMR} is an ILP system that discovers frequent patterns (expressed through DATALOG queries) that succeed with respect to a sufficient number of examples~\cite{dehaspe1999discovery}. When translated to databases, such patterns correspond to conjunctive queries. \system{ALEPH}\footnote{\url{http://www.cs.ox.ac.uk/activities/machinelearning/Aleph/aleph}} is an available ILP system that is based on Prolog Inverse Entailment~\cite{muggleton1995inverse}. \system{ALEPH} works iteratively, by selecting examples from the background knowledge. It first constructs the most specific clause that entails the example selected (\emph{bottom clause}), and then searches for some subset of the literals in the bottom clause that has the \emph{best score} in order to define more general rules. The system allows the user to choose among several scoring functions. 
 
