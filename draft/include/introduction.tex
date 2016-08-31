@@ -4,7 +4,7 @@
 Building large RDF knowledge-bases (KBs) is a popular trend in information extraction.
 KBs store information in the form of triples, where a \emph{predicate}, or relation, expresses a binary relation between a \emph{subject} and a \emph{object}. KB triples, often referred as facts, store information about real-world entities and their relationships, such as %``Scott Eastwood is the child of Clint Eastwood",
 ``Michelle Obama is married to Barack Obama", or ``Larry Page is the founder of Google".
-Significant effort has been put in the research community on KBs creation in the last 10 years (\system{DBPedia}~\cite{bizer2009dbpedia}, \system{FreeBase}\cite{bollacker2008freebase}, \system{Wikidata}~\cite{vrandevcic2014wikidata}, \deepdive~\cite{shin2015incremental}, \system{Yago}~\cite{suchanek2008yago}, \system{NELL}~\cite{carlson2010toward}, \system{TextRunner}\cite{banko2007open}) as well as in the industry % and KBs have also attracted interests from the industry, as evident from the ongoing efforts in several companies 
+Significant effort has been put on KBs creation in the last 10 years in the research community (\system{DBPedia}~\cite{bizer2009dbpedia}, \system{FreeBase}\cite{bollacker2008freebase}, \system{Wikidata}~\cite{vrandevcic2014wikidata}, \deepdive~\cite{shin2015incremental}, \system{Yago}~\cite{suchanek2008yago}, \system{NELL}~\cite{carlson2010toward}, \system{TextRunner}\cite{banko2007open}) as well as in the industry % and KBs have also attracted interests from the industry, as evident from the ongoing efforts in several companies 
 (e.g., 
 %Facebook
 %\footnote{\url{https://developers.facebook.com/docs/graph-api}}, 
@@ -19,7 +19,7 @@ Since \emph{closed world assumption} (CWA) does not hold~\cite{dong2014knowledge
 
 As a direct consequence, the amount of errors and incompleteness in KBs is significantly larger than classic databases~\cite{suchanek2009sofie}.
 Since KBs are large, e.g., \wikidata has more than $1$B facts and $300$M different entities, %\footnote{\url{https://query.wikidata.org/}}. 
-checking all triples to find errors or add new facts cannot be done manually and tools are needed to assist humans in the KBs curation. 
+checking all triples to find errors or add new facts cannot be done manually. % and tools are needed to assist humans in the KBs curation. 
 A natural approach to assist curators of KBs is to discover %However, KBs carry such a big amount of information that they can be mined to discover 
 \emph{declarative rules} that can be executed over the KBs to improve the quality of the data~\cite{Chen:2016,abedjan2014amending,galarraga2015fast}. However, these approaches so far have focused on the discovery of rules to derive new facts only, while for the first time
 % , and this is the problem we study in
@@ -52,7 +52,7 @@ of two different types of rules:
 	A negative rule $r_2$ has similar form, but different semantics:
 	
 	\vspace{-2.5ex}
-	{\scriptsize
+	{\small
 		\begin{equation*}
 			\atom{birthDate}{a}{v_0} \wedge \atom{birthDate}{b}{v_1} \wedge v_0 > v_1 \wedge  \atom{child}{a}{b}  \Rightarrow false
 		\end{equation*}
@@ -87,7 +87,7 @@ KBs contain only positive statements, and, without CWA, we cannot derive negativ
 \myparagraph{Volume}
 %MOVE TO RELATED
 %Classic database discovery algorithms ILP systems cannot cope with large KBs and in order to directly apply existing database techniques would require the materialisation of all possible predicates combinations into relational tables (graph data must be flattened in relational format).  Moreover, 
-Existing approaches for discovery on positive rules in KBs assume that data can fit into memory, something that it is not realistic given the large, and increasing, size of the KB~\cite{abedjan2014amending,galarraga2015fast}. More recent approaches also rely on main memory algorithm and try to solve this problem with distributed architectures~\cite{Chen:2016,DBLP:conf/sigmod/FaridRIHC16}.
+Existing approaches for discovery of positive rules in KBs assume that data can fit into memory, something that it is not realistic given the large, and increasing, size of the KB~\cite{abedjan2014amending,galarraga2015fast}. More recent approaches also rely on main memory algorithm and try to solve this problem with distributed architectures~\cite{Chen:2016,DBLP:conf/sigmod/FaridRIHC16}.
 
 %IS THE MEMORY ASSUMPTION TRUE FOR Chen:2016,abedjan2014amending??? 
 %STEFANO: YES
@@ -128,19 +128,19 @@ Given errors in the data and incompleteness, the ideal solution is a compact set
 %We will show that properly setting such thresholds is not trivial (see Section~\ref{sec:krd_comparative}), and we incorporate this aspect in the problem definition.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+\myparagraph{Examples Generation}
+Positive and negative examples for a predicate are crucial for our approach and determine the ultimate quality of the rules. However, crafting a large number of examples is a tedious exercise that requires manual work. Moreover, to effectively steer the algorithm towards useful rules, the examples must have properties, such as the existence of at least a meaningful path between pairs of entities in each example. We design an algorithm for examples generation that is aware of the errors and inconsistency in the KB. Our generated examples lead to better rules than examples obtained with baseline approaches. %
+
 \myparagraph{Search Algorithm}
 We give a \texttt{log($k$)} approximation of the problem close in spirit to the greedy algorithm for set cover, where $k$ is the maximum number of positive examples covered by a single rule. We discover the rules to feed the algorithm by judiciously using the memory. The algorithm incrementally 
-%The algorithm we propose in \krd alternates and combines two different phases:
-%\begin{inparaenum}[\itshape(i)]
-%
 materializes the KB as a directed graph, and discovers rules by navigating valid paths. To reduce the use of resources, at each iteration we follow the most promising path in a $A^*$ traversal fashion, allowing the pruning of unpromising paths.	
 %Previous approaches for rules discovery assume that the KB has to fit in main memory to deliver acceptable performance~\cite{abedjan2014amending,galarraga2015fast} (TODO: cite 2 sigmod papers). Unfortunately, KBs nowadays have sizes that can easily exceed hundreds of GBs and previous works require powerful resources to handle them. With our rules generation based on 
 By materializing only the portion of the KB that is needed for the discovery, and generating nodes and edges \emph{on demand}, the disk is accessed only whenever the navigation of a specific path is required. 
 %Moreover, the $A^*$ graph traversal allows the pruning of unpromising paths that are therefore never materialised. Thus 
 The significant reduction of the search space reduces the running time an order of magnitude in the best case scenario. 
 
-\myparagraph{Sampling for Exploration}
-To further improve performance, we also introduce sampling techniques that are aware of the data challenges in KBs. Our sampling leads to the same improvements in execution times than traditional samplings approach, but, as it is design to mitigate the problems in KBs, it can lead to better rules, i.e., a larger number of correct rules in the output and a smaller number of false rules.
+%\myparagraph{Sampling for Exploration}
+%To further improve performance, we also introduce sampling techniques that are aware of the data challenges in KBs. Our sampling leads to the same improvements in execution times than traditional samplings approach, but, as it is design to mitigate the problems in KBs, it can lead to better rules, i.e., a larger number of correct rules in the output and a smaller number of false rules.
 %STEFANO: IS THIS CORRECT? OR DO WE JUST LIMIT THE NUMBER OF FALSE RULES?
 
 
