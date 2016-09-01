@@ -1,3 +1,4 @@
+\vspace{-1ex}
 \section{Preliminaries and Definitions} \label{sec:krd_prel}
 We focus on discovering rules from RDF KBs. An RDF KB is
 a database that represents information through RDF triples $\<s,p,o\>$, where a \emph{subject} is connected to a \emph{object} via a \emph{predicate}. Triples are often called \emph{facts}. For example, the fact that Scott Eastwood is the child of Clint Eastwood could be represented through the triple $\<Clint\_Eastwood,child,Scott\_Eastwood\>$. 
@@ -20,6 +21,7 @@ While KBs can include \emph{T-Box} facts in order to define classes, domain/co-d
 to check integrity and consistency, in most KBs -- including the ones we use in our experiments -- such information is missing. % or not present at all. 
 Hence our focus is on the \emph{A-Box} facts that describe instance data. 
 
+\vspace{-1ex}
 \subsection{Language} \label{sec:krd_language} 
 %Inspired by Inductive Logic Programming~\cite{muggleton1994inductive}, 
 Our goal is to automatically discover first-order logical formulas in KBs. More specifically, we target the discovery of \emph{Horn Rules}. A Horn Rule is a disjunction of \emph{atoms} with at most one unnegated atom. When written in the implication form, Horn Rules have one of the following format:

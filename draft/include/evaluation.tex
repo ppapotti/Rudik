@@ -21,7 +21,11 @@ We carried out an extensive experimental evaluation of our approach and grouped 
 %\system{Virtuoso} took on average 20 minutes to load a medium size KB (i.e., 10 GB) into its store, and %around 100 milliseconds to execute a single hop query. 
 We ran experiments over the latest core facts derived from several KBs. All experiments were run on a desktop with a quad-core i5 CPU at 2.80GHz and 16GB RAM. We used \system{OpenLink Virtuoso}, optimized for 8GB RAM, with its SPARQL query endpoint on the same machine.
 
-In the following, parameters $\alpha$ and $\beta$ of Equation~\ref{eq:weight_fun} were set to  $\alpha=0.3$ and $\beta=0.7$ for positive rules, and to $\alpha=0.4$ and $\beta=0.6$ for negative rules. We also use a  $maxPathLen$ parameter indicating the number of atoms in each of the rules to be discovered that is set to $3$. We analyze the role of these parameters in Section~\ref{sec:krd_int_evaluation}. 
+In the following, parameters $\alpha$ and $\beta$ of Equation~\ref{eq:weight_fun} were set to  $\alpha=0.3$ and $\beta=0.7$ for positive rules, and to $\alpha=0.4$ and $\beta=0.6$ for negative rules. 
+%We also use a $maxPathLen$ parameter indicating the maximum number of atoms in each of the rules to be discovered that is set to $3$. 
+We also set to $3$ the $maxPathLen$ parameter, which indicates the maximum number of atoms 
+admissible in the body of a rule.
+We analyze the role of these parameters in Section~\ref{sec:krd_int_evaluation}. 
 \begin{comment}
 Our method needs the two input parameters $\alpha$ and $\beta$ of Equation~\ref{eq:weight_fun}. 
 We set $\alpha=0.3$ and $\beta=0.7$ for positive rules, while $\alpha=0.4$ and $\beta=0.6$ for negative rules. We empirically justify this choice in Section~\ref{sec:krd_int_evaluation}.
@@ -398,12 +402,12 @@ A recent system~\cite{Chen:2016} implements \amie algorithm with a focus on scal
 The main goal of this set of experiments is to demonstrate the applicability of our approach in providing Machine Learning (ML) algorithms meaningful training examples.
 We chose \deepdive~\cite{shin2015incremental}, a ML framework to construct KBs. \deepdive extracts entities and relations from text articles via distant supervision. The key idea behind distant supervision is to use an external source of information (e.g., a KB) to provide training examples for a supervised algorithm. For example, \deepdive can extract mentions of married couples from text documents. In such a scenario \deepdive uses as a first step \dbpedia to label some pairs of entities as \emph{true} positive (those pairs of married couples that can be found in \dbpedia). 
 %These labelled examples are then used to construct a factor graph, similar to Markov Logic, that will predict labels on the rest of candidates. 
-Unfortunately, KBs only provide positive examples. Hence in \deepdive the burden of creating negative examples is left to the user. % through manual rules definition.
+Unfortunately, KBs directly provide positive examples only. Hence in \deepdive the burden of creating negative examples is left to the user. % through manual rules definition.
 
 \begin{figure}[b]
 	\centering
 	\vspace{1ex}
-	\includegraphics[width=.9\columnwidth]{include/figure/deepDive1K.pdf}
+	\includegraphics[width=.95\columnwidth]{include/figure/deepDive1K.pdf}
 	\vspace{-2ex}
 	\caption{\deepdive Application 1K articles}
 	\label{fig:deep_dive_1k}
@@ -423,7 +427,7 @@ The lack of evidence in the training data also explains the missing points for \
 
 \begin{figure}[t]
 	\centering
-	\includegraphics[width=.9\columnwidth]{include/figure/deepDive1M.pdf}
+	\includegraphics[width=.95\columnwidth]{include/figure/deepDive1M.pdf}
 		\vspace{-1ex}
 	\caption{\deepdive Application 1M articles}
 	\label{fig:deep_dive_1M}
