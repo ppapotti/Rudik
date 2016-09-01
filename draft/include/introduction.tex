@@ -97,12 +97,12 @@ Existing approaches for discovery of positive rules in KBs assume that data can 
 
 
 %\myparagraph{Novelty} In this chapter 
-
+\vspace{1ex}
 We advocate that a rule discovery system should be designed to discover {\em approximate rules} since errors and incompleteness are in the nature of the KBs. Also, the main memory constraint not only reduces the applicability of the system, but also forces limitations on the {\em expressive power} of the language in order to reduce the search space.
 %we design a disk-based solution, to overcome the main memory limitation and enable the discovery of rules
 %with a more expressive rule language. 
-In fact, the larger the number of patterns is that can be expressed in the rules, %and the coverage of the facts in the KB. Larger coverage lead to more 
-the larger the number of new facts and errors is that can be identified, and with increasing precision. However, this comes with a computational cost, as the search space quickly becomes much larger. For this reason, existing approaches for mining positive rules prune aggressively the search space, and rely on a simple language% without values comparisons
+In fact, the larger is the number of patterns that can be expressed in the rules, %and the coverage of the facts in the KB. Larger coverage lead to more 
+the larger is the number of new facts and errors that can be identified, and with increasing precision. However, this comes with a computational cost, as the search space quickly becomes much larger. For this reason, existing approaches for mining positive rules prune aggressively the search space, and rely on a simple language% without values comparisons
 ~\cite{Chen:2016,abedjan2014amending,galarraga2015fast}.
 %MAKE SURE TO CITE  the demo DBLP:conf/sigmod/FaridRIHC16, they discover negative rules, but there is not paper, therefore no baseline%%%%%%%%%%
 
@@ -115,11 +115,11 @@ assuming that the KB fits into memory by exploiting the following contributions.
 %  . We drop such an assumption and propose a disk-based solution that loads into memory only a small portion of the KB. 
 %This is a key point to address the size problem, but also because it enables us to enlarge the expressive power of the considered rules to include comparisons among constants, including inequalities.
 
-%\vspace{1ex}
+\vspace{0.5ex}
 \myparagraph{Problem Definition}
-We formally define the problem of rules discovery over erroneous and incomplete KBs. The input of the problem consists of a target predicate, from which we identify sets of positive and negative examples.  In contrast with traditional ranking of rules based on a measure of support~\cite{dehaspe1999discovery,galarraga2015fast,schoenmackers2010learning}, our  problem definition aims at the identification of a subset of approximate rules. % to be exposed to the user. 
+We formally define the problem of rule discovery over erroneous and incomplete KBs. The input of the problem consists of a target predicate, from which we identify sets of positive and negative examples.  In contrast with traditional ranking of rules based on a measure of support~\cite{dehaspe1999discovery,galarraga2015fast,schoenmackers2010learning}, our  problem definition aims at the identification of a subset of approximate rules. % to be exposed to the user. 
 Given errors in the data and incompleteness, the ideal solution is a compact set of rules that cover the majority of the positive examples, and as few negative examples as possible. We map the problem to the %well-known 
-weighted set cover problem.
+weighted set cover problem (Section~\ref{sec:krd_prel}).
 
 %The main benefit of such an approach is to relieve the user from the manual validation of all approximate rules, as they  can be huge in number, or from the definition of a suitable threshold that separates good and bad rules. 
 %I REMOVED THIS BECAUSE WE ARE NOT REALLY TOUCHING THIS TOPIC IN THE INTRO, but i mention it in the exp now
@@ -131,26 +131,38 @@ weighted set cover problem.
 %We will show that properly setting such thresholds is not trivial (see Section~\ref{sec:krd_comparative}), and we incorporate this aspect in the problem definition.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+\vspace{0.5ex}
 \myparagraph{Examples Generation}
-Positive and negative examples for a predicate are crucial for our approach and determine the ultimate quality of the rules. However, crafting a large number of examples is a tedious exercise that requires manual work. Moreover, to effectively steer the algorithm towards useful rules, the examples must have properties, such as the existence of at least a meaningful path between pairs of entities in each example. We design an algorithm for examples generation that is aware of the errors and inconsistency in the KB. Our generated examples lead to better rules than examples obtained with baseline approaches. %
+Positive and negative examples for a target predicate are crucial for our approach as they determine the ultimate quality of the rules. However, crafting a large number of examples is a tedious exercise that requires manual work. Moreover, to effectively steer the algorithm towards useful rules, the examples must have properties, such as the existence of at least a meaningful path between pairs of entities in each example. We design an algorithm for examples generation that is aware of the errors and inconsistency in the KB. Our generated examples lead to better rules than examples obtained with alternative approaches (Section~\ref{sec:rules_gen}). %
 
+
+\vspace{0.5ex}
 \myparagraph{Search Algorithm}
-We give a \texttt{log($k$)} approximation of the problem close in spirit to the greedy algorithm for set cover, where $k$ is the maximum number of positive examples covered by a single rule. We discover the rules to feed the algorithm by judiciously using the memory. The algorithm incrementally 
-materializes the KB as a directed graph, and discovers rules by navigating paths. To reduce the use of resources, at each iteration we follow the most promising path in a $A^*$ traversal fashion, allowing the pruning of unpromising paths.	
+We give a \texttt{log($k$)}-approximation algorithm for the discovery problem, % close in spirit to the greedy algorithm for set cover, 
+where $k$ is the maximum number of positive examples covered by a single rule. We discover the rules to feed the algorithm by judiciously using the memory. The algorithm incrementally 
+materializes the KB as a graph, and discovers rules by navigating paths. To reduce the use of resources, at each iteration we follow the most promising path in a $A^*$ traversal fashion, allowing the pruning of unpromising paths.	
 %Previous approaches for rules discovery assume that the KB has to fit in main memory to deliver acceptable performance~\cite{abedjan2014amending,galarraga2015fast} (TODO: cite 2 sigmod papers). Unfortunately, KBs nowadays have sizes that can easily exceed hundreds of GBs and previous works require powerful resources to handle them. With our rules generation based on 
-By materializing only the portion of the KB that is needed for the discovery, and generating nodes and edges \emph{on demand}, the disk is accessed only whenever the navigation of a specific path is required. 
+By materializing only the portion of the KB that is needed for the discovery, and generating nodes and edges \emph{on demand}, the disk is accessed only whenever the navigation of a specific path is required (Section~\ref{sec:krd_greedy}). 
 %Moreover, the $A^*$ graph traversal allows the pruning of unpromising paths that are therefore never materialised. Thus 
-%The significant reduction of the search space reduces the running time an order of magnitude in the best case scenario. 
-Differently from previous approaches, \krd enables the discovery for KBs that do not fit in memory while delivering more accurate rules.
+The greedy traversal of the search space reduces the running time an order of magnitude in the best case, and its low memory footprint enables the discovery for KBs that do not fit into memory.
+
 
 %\myparagraph{Sampling for Exploration}
 %To further improve performance, we also introduce sampling techniques that are aware of the data challenges in KBs. Our sampling leads to the same improvements in execution times than traditional samplings approach, but, as it is design to mitigate the problems in KBs, it can lead to better rules, i.e., a larger number of correct rules in the output and a smaller number of false rules.
 %STEFANO: IS THIS CORRECT? OR DO WE JUST LIMIT THE NUMBER OF FALSE RULES?
 
-
 \vspace{1ex}
-We experimentally verify the performance of rules discovery in \krd using real-world datasets (Section~\ref{sec:krd_experiments}). The evaluation is carried on the three most popular and widely used KBs, namely \dbpedia~\cite{bizer2009dbpedia}, \yago~\cite{suchanek2007yago}, and \wikidata~\cite{vrandevcic2014wikidata}. 
-We show that our problem formulation leads to approximate rules that are better in quality than previous systems and that the search algorithm delivers accurate rules both in the positive and negative settings, clearly outperforming state-of-the-art systems. We also 
+We experimentally test the performance of rule discovery in \krd by using real-world datasets (Section~\ref{sec:krd_experiments}). The evaluation is carried on  three popular and widely used KBs, namely \dbpedia~\cite{bizer2009dbpedia}, \yago~\cite{suchanek2007yago}, and \wikidata~\cite{vrandevcic2014wikidata}. 
+We show that our problem formulation together with our 
+%that are better in quality than previous systems and that the 
+search algorithm deliver accurate rules, 
+with a relative increase in average precision of 45\% both in the positive and in the negative settings.
+Also, \krd performs consistency with KBs of every size, while other systems cannot scale of fail altogether. % due clearly outperforming state-of-the-art systems . 
+We also 
 %show the impact of the proposed optimization and 
 demonstrate how negative rules have a beneficial impact when providing representative examples for Machine Learning algorithms.
 % (Section~\ref{sec:krd_deep_dive}).
+
+
+
+
