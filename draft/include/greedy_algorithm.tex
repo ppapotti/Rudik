@@ -3,7 +3,7 @@
 We introduce a greedy approach to solve the approximate version of the discovery problem (Section~\ref{sec:krd_prob_def}). The algorithm combines two phases:
 \begin{inparaenum}[\itshape(i)]
 	\item it solves the set cover problem with a greedy strategy;
-	\item it discovers new rules by navigating the graph in a $A^*$ search fashion.
+	\item it discovers new rules by navigating the graph in an $A^*$ search fashion.
 	%, allowing the pruning of unpromising paths.	
 \end{inparaenum}
 
@@ -118,7 +118,7 @@ The only positive contribution to marginal weights is given by $|C_{R \cup \{r\}
 \begin{definition}\label{def:est_res_wei}
 	Given a \emph{not valid} rule $r$ and a set of rules $R$, we define the \emph{estimated marginal weight} of $r$ as:
 	\begin{equation*}
-	w_m^*(r) = - \alpha \cdot \frac{\mid \hspace{-0.5ex} C_{r}(G) \setminus C_{R}(G) \hspace{-0.5ex} \mid}{\mid \hspace{-0.5ex} G \hspace{-0.5ex} \mid} + \beta \cdot (\frac{\mid \hspace{-0.5ex} C_R(V) \hspace{-0.5ex} \mid + \textbf{0}}{\mid \hspace{-0.5ex} U_{R \cup \{r\}}(V) \hspace{-0.5ex} \mid} - \frac{\mid \hspace{-0.5ex} C_{R}(V) \hspace{-0.5ex} \mid}{\mid \hspace{-0.5ex} U_{R}(V) \hspace{-0.5ex} \mid})
+	w_m^*(r) = - \alpha \cdot \frac{\mid \hspace{-0.5ex} C_{r}(G) \setminus C_{R}(G) \hspace{-0.5ex} \mid}{\mid \hspace{-0.5ex} G \hspace{-0.5ex} \mid} + \beta \cdot (\frac{\mid \hspace{-0.5ex} C_R(V) \hspace{-0.5ex} \mid}{\mid \hspace{-0.5ex} U_{R \cup \{r\}}(V) \hspace{-0.5ex} \mid} - \frac{\mid \hspace{-0.5ex} C_{R}(V) \hspace{-0.5ex} \mid}{\mid \hspace{-0.5ex} U_{R}(V) \hspace{-0.5ex} \mid})
 	\end{equation*}
 	%where a rule is valid iff it respects the language biases defined in Section~\ref{sec:krd_language}.
 \end{definition}
