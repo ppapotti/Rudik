@@ -223,13 +223,13 @@ Removing literals and \texttt{rdf:type} triples drastically reduce the size of t
 %along with their scores 
 -- 75 output rules in \yago, and 6090 in \dbpedia. We followed their experimental setting and picked the first 30 best rules according to their score. We then picked the rules produced by our approach on the head predicate of the 30 best rules output of \amie. 
 
-Figure~\ref{fig:vs_amie_yago} plots the total number of new unique predictions (x-axis) versus the aggregated precision (y-axis) on \yago. 
-It is crucial to note that in \krd that we drop the conventional ranking mechanism and rather opt to use a scoring function that discovers only inherently meaningful rules with enough support that is also reflected in the high precision (85\% before the last rule, with more than 80K predictions) we obtain with a concise rule set .
+Figures~\ref{fig:vs_amie_yago} and ~\ref{fig:vs_amie_dbpedia} plot the total number of new unique predictions (x-axis) versus the aggregated precision (y-axis) on \yago and \dbpedia respectively. 
+It is crucial to note that in \krd that we drop the conventional ranking mechanism and rather opt to use a scoring function that discovers only inherently meaningful rules with enough support that is also reflected in the high precision we obtain with a concise rule set in both \yago and \dbpedia .
 
- \amie outputs produces many more predictions (262K vs 102K), but with a significant lower accuracy. This is because, many good rules are preceded by meaningless ones in the ranking, and it is not clear how to set a proper $k$ in order to get the best top $k$ rules. Hence  \krd instead understands that in some cases meaningful rules do not exist, and it outputs something only when it has a strong confidence.
+ \amie outputs produces many more predictions, but with a significant lower accuracy. This is because, many good rules are preceded by meaningless ones in the ranking, and it is not clear how to set a proper $k$ in order to get the best top $k$ rules. Hence  \krd instead understands that in some cases meaningful rules do not exist, and it outputs a rule only when it has a strong confidence.
 %is more conservative and produces much less rules than \amie. We noticed that for every predicate \amie always discovers more than one rule, while there are several predicates where the output of our algorithm is empty since none of the plausible rules has enough support. 
 As a consequence, \krd outputs just 11 rules for 8 target predicates on the entire \yago -- for the remaining predicates \krd does not find any rule with enough support.  In fact if we limit the output of \amie to the best 11 rules (same output of our approach), the final accuracy is still 29\% below our approach, with just 10K more predictions.
-
+%The only point where \amie outperforms our approach is upon \dbpedia when we consider the top $3$ rules: the third rule discovered by \amie is indeed a universally true rule that produces more than 11K correct predictions.
 %NOT ESSENTIAL
 %The precision of each rule is computed as described above with a minor modification: whenever a rule is unknown with its new predictions, we first check the existence of the new induced facts in a newer version of the KB. This is possible because the \amie dataset does not contain the most up to date versions. If a new fact does not appear neither in a newer version nor on the Web, it is evaluated as false.
 
@@ -254,7 +254,7 @@ As a consequence, \krd outputs just 11 rules for 8 target predicates on the enti
 	\label{fig:vs_amie_dbpedia}
 \end{figure}
 
-Figure~\ref{fig:vs_amie_dbpedia} shows the same evaluation on \dbpedia. \dbpedia has a richer set of relations, therefore also \krd is capable of producing 30 rules in output. Despite the same number of rules, once again our approach leads to a lower number of predictions (26K vs 41K) with a significant higher accuracy (85\% vs 74\%). The only point where \amie outperforms our approach is when we consider the top $3$ rules: the third rule discovered by \amie is indeed a universally true rule that produces more than 11K correct predictions.
+%Figure~\ref{fig:vs_amie_dbpedia} shows the same evaluation on \dbpedia. \dbpedia has a richer set of relations, therefore also \krd is capable of producing 30 rules in output. Despite the same number of rules, once again our approach leads to a lower number of predictions (26K vs 41K) with a significant higher accuracy (85\% vs 74\%). The only point where \amie outperforms our approach is when we consider the top $3$ rules: the third rule discovered by \amie is indeed a universally true rule that produces more than 11K correct predictions.
 
 \myparagraph{Negative Rules}
 As a second set of comparative experiments we used \amie to discover negative rules. \amie is not designed to work in this setting, and can discover rules only for predicates explicitly stated in the KB. Therefore we proceeded as follows: we sampled the top 5 most popular predicates in each KB and we created for each predicate a set of negative examples as explained in Section~\ref{sec:ex_generation}. For each negative example we added a new fact to the KB connecting the two entities with the \emph{negation} of the predicate. 
