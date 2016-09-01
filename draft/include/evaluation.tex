@@ -259,7 +259,7 @@ As a consequence, \krd outputs just 11 rules for 8 target predicates on the enti
 \myparagraph{Negative Rules}
 As a second set of comparative experiments we used \amie to discover negative rules. \amie is not designed to work in this setting, and can discover rules only for predicates explicitly stated in the KB. Therefore we proceeded as follows: we sampled the top 5 most popular predicates in each KB and we created for each predicate a set of negative examples as explained in Section~\ref{sec:ex_generation}. For each negative example we added a new fact to the KB connecting the two entities with the \emph{negation} of the predicate. 
 %For example, we added a \texttt{notSpouse} predicate connecting each pair of people who are not married according to our negative examples generation technique. We then run \amie on these new created predicates. 
-The evaluation of negative rules is then carried out as explained before: we generate potential errors in the KB, and we manually evaluated the precision of such errors. Table~\ref{tab:vs_amie_neg} shows the results on the two KBs.
+%The evaluation of negative rules is then carried out as explained before: we generate potential errors in the KB, and we manually evaluated the precision of such errors. 
 \begin{table}[t]
 	\centering
 	\caption{Negative Rules vs \amie.}
@@ -277,7 +277,8 @@ The evaluation of negative rules is then carried out as explained before: we gen
 		\end{tabular}
 	\end{small}
 \end{table}
-\krd outperforms \amie in both cases of almost 20\%. This is because for the negation of a predicate, we use the actual predicate as counter examples. \amie instead is not aware that the actual predicate provides counter examples for the negation of it, hence it is much less precise. In fact the output of \amie consists in a high number of rules for each predicate (often more than 30), and in many cases \amie produces same rules for both positive and negative scenarios. 
+Table~\ref{tab:vs_amie_neg} shows that \krd outperforms \amie in both cases with a precision gain of almost 20\%.
+% This is because for the negation of a predicate, we use the actual predicate as counter examples. \amie instead is not aware that the actual predicate provides counter examples for the negation of it, hence it is much less precise. In fact the output of \amie consists in a high number of rules for each predicate (often more than 30), and in many cases \amie produces same rules for both positive and negative scenarios. 
 %As an example, \amie outputs that if a country $a$ exports a good $b$, then $a$ imports $b$ and $a$ does not import $b$. 
 
 %NOT ESSENTIAL
