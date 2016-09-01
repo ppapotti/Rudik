@@ -336,23 +336,25 @@
 \newcommand{\nthesection}{\arabic{section}}
 \newcounter{theorem}%[section]
 \renewcommand{\thetheorem}{\arabic{theorem}}
-\newcounter{prop}[section]
-\renewcommand{\theprop}{\nthesection.\arabic{theorem}}
-\newcounter{lemma}[section]
+\newcounter{lemma}%[section]
 \renewcommand{\thelemma}{\nthesection.\arabic{theorem}}
+\newcounter{prop}
+\renewcommand{\theprop}{\nthesection.\arabic{theorem}}
 \newcounter{cor}
 \renewcommand{\thecor}{\arabic{theorem}}
 \newenvironment{theorem}{\begin{em}
         \refstepcounter{theorem}
         {\vspace{1ex} \noindent\bf  Theorem  \thetheorem:}}{
         \end{em}\eop} %\hspace*{\fill}\vspace*{1ex}}
-\newenvironment{prop}{\begin{em}
-        \refstepcounter{theorem}
-        {\vspace{1ex}\noindent \bf Proposition \thetheorem:}}{
-        \end{em}\eop}%\hspace*{\fill}\vspace*{1ex}}
 \newenvironment{lemma}{\begin{em}
         \refstepcounter{theorem}
-        {\vspace{1ex}\noindent\bf Lemma \thelemma:}}{
+        {\vspace{1ex}\noindent \bf Lemma \thetheorem:}}{
+        \end{em}
+        %\eop
+        }%\hspace*{\fill}\vspace*{1ex}}
+\newenvironment{prop}{\begin{em}
+        \refstepcounter{theorem}
+        {\vspace{1ex}\noindent\bf Prop \thelemma:}}{
         \end{em}
         %\eop - remove square from lemmma
         } %\hspace*{\fill}\vspace*{1ex}}
@@ -361,7 +363,7 @@
         {\vspace{1ex}\noindent\bf Corollary \thecor:}}{
         \end{em}\eop} %\hspace*{\fill}\vspace*{1ex}}
 
-\newcounter{definition}[section]
+\newcounter{definition}
 %\renewcommand{\thedefinition}{\nthesection.\arabic{definition}}
 \renewcommand{\thedefinition}{\arabic{definition}}
 \newenvironment{definition}{
@@ -375,7 +377,7 @@
         {\vspace{1ex}\noindent\bf  Theorem  {\bf \thetheorem} #1: }}{
         \end{em}\eop}
 
-\newcounter{alg}[section]
+\newcounter{alg}%[section]
 \renewcommand{\thealg}{\nthesection.\arabic{alg}}
 \newenvironment{alg}[1]{
         \refstepcounter{alg}
