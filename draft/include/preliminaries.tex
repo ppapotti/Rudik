@@ -32,7 +32,7 @@ where $A_1 \wedge A_2 \wedge \cdots \wedge A_n$ consists of the \emph{body} of t
 An atom is a predicate connecting two variables, two entities, or an entity and a variable. For simplicity, we represent an atom with the notation $\atom{rel}{a}{b}$, where \texttt{rel} is a predicate, and $a$ and $b$ are either variables or entities. 
 %NOT ESSENTIAL
 %In the context of Horn Rules, all variables appearing in a rule are implicitly universally quantified.
-Given a Horn Rule $r$, we define $r_{body}$ and $r_{head}$ as the body and the head of the rule. We define the variables appearing in the head of the rule as the \emph{target variables}. 
+Given a Horn Rule $r$, we define $r_{body}$ and $r_{head}$ as the body and the head of the rule, respectively. We define the variables appearing in the head of the rule as the \emph{target variables}. 
 For the sake of presentation, we will also write negative rules as definite clauses by rewriting a body atom in its negated form in the head. The result is a logically equivalent formula that emphasizes the generation of negative facts.
 
 \begin{example}\label{ex:ex2}
@@ -75,7 +75,7 @@ to a subset of plausible rules. We will show in Section~\ref{sec:rules_gen} how 
 
 \subsection{Rules Coverage}
 Given a pair of entities $(x,y)$ from a KB $\kb$ and a Horn Rule $r$, we say that $r_{body}$ \emph{covers} $(x,y)$ if
-$(x,y) \models r_{body}$. In other words, given a Horn Rule $r = r_{body} \Rightarrow \atom{r}{a}{b}$, $r_{body}$ covers a pair of entities $(x,y) \in \kb$ iff we can substitute $a$ with $x$, $b$ with $y$, and the rest of the body can be instantiated over $\kb$. Given a set of pair of entities $E = \{(x_1,y_1),(x_2,y_2),\cdots,(x_n,y_n)\}$ and a rule $r$, we denote by $C_r(E)$ the \emph{coverage} of $r_{body}$ over $E$ as the set of elements in $E$ covered by $r_{body}$: $C_r(E)=\{(x,y) \in E | (x,y) \models r_{body}\}$.
+$(x,y) \models r_{body}$. In other words, given a Horn Rule $r : r_{body} \Rightarrow \atom{r}{a}{b}$, $r_{body}$ covers a pair of entities $(x,y) \in \kb$ iff we can substitute $a$ with $x$, $b$ with $y$, and the rest of the body can be instantiated over $\kb$. Given a set of pair of entities $E = \{(x_1,y_1),(x_2,y_2),\cdots,(x_n,y_n)\}$ and a rule $r$, we denote by $C_r(E)$ the \emph{coverage} of $r_{body}$ over $E$ as the set of elements in $E$ covered by $r_{body}$: $C_r(E)=\{(x,y) \in E | (x,y) \models r_{body}\}$.
 
 Given the body $r_{body}$ of a Horn Rule $r$, we denote by $r^{*}_{body}$ the \emph{unbounded body} of $r$. The unbounded body of a rule is obtained by keeping only atoms that contain a target variable and substituting such atoms with new atoms where the target variable is paired with a new unique variable. As an example, given $r_{body} = \texttt{rel}_1\texttt{(}a,v_0\texttt{)} \wedge \texttt{rel}_2\texttt{(}v_0,b\texttt{)}$ where $a$ and $b$ are the target variables, $r^{*}_{body} = \texttt{rel}_1\texttt{(}a,v_i\texttt{)} \wedge \texttt{rel}_2\texttt{(}v_{ii},b\texttt{)}$.
 While in $r_{body}$ the target variables are bounded to be connected by variable $v_0$, in $r^{*}_{body}$, the target variables are not bounded.
@@ -98,6 +98,9 @@ We can now define the coverage and the unbounded coverage for a set of rules $R=
 \begin{equation*}
 	C_R(E) = \bigcup \limits_{r \in R} C_r(E) \qquad U_R(E) = \bigcup \limits_{r \in R} U_r(E) 	\end{equation*}
 \vspace{-2mm}
+
+
+\section{Rule Discovery} \label{sec:problem}
 
 Our problem tackles the discovery of %positive (negative) 
 rules for a {\em target predicate} given as input. We uniquely identify a predicate with two different sets of pairs of entities.
