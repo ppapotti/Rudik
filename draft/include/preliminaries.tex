@@ -1,6 +1,6 @@
 \section{Preliminaries and Definitions} \label{sec:krd_prel}
 We focus on discovering rules from RDF KBs. An RDF KB is
-a database that represents information through RDF triples $\<s,p,o\>$, where a \emph{subject} is connected to a \emph{object} via a \emph{predicate}. Triples are often called \emph{facts}. For example, the fact that Scott Eastwood is the child of Clint Eastwood could be represented with the triple $\<Clint\_Eastwood,child,Scott\_Eastwood\>$. 
+a database that represents information through RDF triples $\<s,p,o\>$, where a \emph{subject} is connected to a \emph{object} via a \emph{predicate}. Triples are often called \emph{facts}. For example, the fact that Scott Eastwood is the child of Clint Eastwood could be represented through the triple $\<Clint\_Eastwood,child,Scott\_Eastwood\>$. 
 RDF KB triples respect three constraints:
 \begin{inparaenum}[(i)]
 	\item triple subjects are always \emph{entities}, i.e., concepts from the real world;
@@ -42,7 +42,7 @@ For the sake of presentation, we will also write negative rules as definite clau
 	\vspace{-3.5ex}
 	{\small	
 		\begin{equation*}
-			\atom{birthDate}{a}{v_0} \wedge \atom{birthDate}{b}{v_1} \wedge v_0 > v_1
+			\atom{birthDate}{a}{v_0} \wedge \atom{birthDate}{b}{v_i} \wedge v_0 > v_i
 			\Rightarrow  \neg \atom{child}{a}{b}  
 		\end{equation*}
 	}
@@ -74,7 +74,7 @@ Language restrictions limit the output of the discovery algorithm to a subset of
 Given a pair of entities $(x,y)$ from a KB $\kb$ and a Horn Rule $r$, we say that $r_{body}$ \emph{covers} $(x,y)$ if
 $(x,y) \models r_{body}$. In other words, given a Horn Rule $r = r_{body} \Rightarrow \atom{r}{a}{b}$, $r_{body}$ covers a pair of entities $(x,y) \in \kb$ iff we can substitute $a$ with $x$, $b$ with $y$, and the rest of the body can be instantiated over $\kb$. Given a set of pair of entities $E = \{(x_1,y_1),(x_2,y_2),\cdots,(x_n,y_n)\}$ and a rule $r$, we denote by $C_r(E)$ the \emph{coverage} of $r_{body}$ over $E$ as the set of elements in $E$ covered by $r_{body}$: $C_r(E)=\{(x,y) \in E | (x,y) \models r_{body}\}$.
 
-Given the body $r_{body}$ of a Horn Rule $r$, we denote by $r^{*}_{body}$ the \emph{unbounded body} of $r$. The unbounded body of a rule is obtained by keeping only atoms that contain a target variable and substituting such atoms with new atoms where the target variable is paired with a new unique variable. As an example, given $r_{body} = \texttt{rel}_1\texttt{(}a,v_0\texttt{)} \wedge \texttt{rel}_2\texttt{(}v_0,b\texttt{)}$ where $a$ and $b$ are the target variables, $r^{*}_{body} = \texttt{rel}_1\texttt{(}a,v_1\texttt{)} \wedge \texttt{rel}_2\texttt{(}v_2,b\texttt{)}$.
+Given the body $r_{body}$ of a Horn Rule $r$, we denote by $r^{*}_{body}$ the \emph{unbounded body} of $r$. The unbounded body of a rule is obtained by keeping only atoms that contain a target variable and substituting such atoms with new atoms where the target variable is paired with a new unique variable. As an example, given $r_{body} = \texttt{rel}_1\texttt{(}a,v_0\texttt{)} \wedge \texttt{rel}_2\texttt{(}v_0,b\texttt{)}$ where $a$ and $b$ are the target variables, $r^{*}_{body} = \texttt{rel}_1\texttt{(}a,v_i\texttt{)} \wedge \texttt{rel}_2\texttt{(}v_{ii},b\texttt{)}$.
 While in $r_{body}$ the target variables are bounded to be connected by variable $v_0$, in $r^{*}_{body}$, the target variables are not bounded.
 Given a set of pair of entities $E = \{(x_1,y_1),(x_2,y_2),\cdots,(x_n,y_n)\}$ and a rule $r$, we denote by $U_r(E)$ the \emph{unbounded coverage} of $r^{*}_{body}$ over $E$ as the set of elements in $E$ covered by $r^{*}_{body}$: $U_r(E)=\{(x,y) \in E | (x,y) \models r^{*}_{body}\}$. Note that, given a set $E$, $C_r(E) \subseteq U_r(E)$. 
 %In other words, the unbounded coverage of a rule over $E$ always contains all the elements of the coverage over $E$.
@@ -128,7 +128,7 @@ The exact solution is a set of rules that covers all examples in $G$, and none o
 			\atom{livesIn}{a}{v_0} \wedge \atom{livesIn}{b}{v_0} \Rightarrow  \atom{couple}{a}{b}  
 		\end{equation*}
 		\begin{equation*}
-			\atom{hasChild}{a}{v_1} \wedge \atom{hasChild}{b}{v_1} \Rightarrow  \atom{couple}{a}{b}  
+			\atom{hasChild}{a}{v_i} \wedge \atom{hasChild}{b}{v_i} \Rightarrow  \atom{couple}{a}{b}  
 		\end{equation*}
 	}
 	\vspace{-3mm}	
@@ -138,7 +138,7 @@ The exact solution is a set of rules that covers all examples in $G$, and none o
 \end{example} 
 
 \vspace{1ex}	
-In the problem definition, the solution minimizes the number of rules in the output to avoid precise rules covering only one pair, which are not useful when applied on the entire KB. Note in fact that given a pair of entities $(x,y)$, there is always a Horn Rule whose body covers only $(x,y)$ by assigning target variables to $x$ and $y$ (e.g., {\small $\atom{hasChild}{Michelle}{v_1} \wedge \atom{hasChild}{Barack}{v_1} \Rightarrow  \atom{couple}{Michelle}{Barack}$}).
+In the problem definition, the solution minimizes the number of rules in the output to avoid precise rules covering only one pair, which are not useful when applied on the entire KB. Note in fact that given a pair of entities $(x,y)$, there is always a Horn Rule whose body covers only $(x,y)$ by assigning target variables to $x$ and $y$ (e.g., {\small $\atom{hasChild}{Michelle}{v_i} \wedge \atom{hasChild}{Barack}{v_i} \Rightarrow  \atom{couple}{Michelle}{Barack}$}).
 
 
 %\vspace{1ex}	

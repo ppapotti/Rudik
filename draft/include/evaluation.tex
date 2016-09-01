@@ -61,7 +61,7 @@ Therefore negative rules will always discover many correct negative facts. Howev
 %Furthermore, a potential error is evaluated as actual error whenever a single atom in the rule is incorrect, no matter if the atom is in the body or the head of the rule. For the negative rule $\atom{child}{a}{b} \Rightarrow \neg \atom{spouse}{a}{b}$, a specific instantiation $(a,b)$ is an actual error if either $b$ is not an actual \texttt{child} of $a$, or $b$ is not an actual \texttt{spouse} of $a$. As we will explain further below, negative rules cannot point exactly where the error is, but they give a hint that something is wrong and needs to be further inspected.
 \end{comment}
 
-The full suite of test results, together with all the KBs, induced rules, and annotated gold standard examples and rules is available online(\textbf{TODO: add footnote online appendix or technical report}).
+The full suite of test results, together with all the KBs, induced rules, and annotated gold standard examples and rules is available online at \url{http://bit.ly/2csROsc}.
 
 \subsection{Quality of Rule Discovery} \label{sec:gen_evaluation}
 The first set of experiments aimed at evaluating the accuracy of discovered rules over three popular KBs: \dbpedia~\cite{bizer2009dbpedia}, \yago~\cite{suchanek2007yago}, and \wikidata~\cite{vrandevcic2014wikidata}. 
@@ -69,8 +69,8 @@ The first set of experiments aimed at evaluating the accuracy of discovered rule
 Table~\ref{tab:krdDatasetDescr} shows the characteristics of the KBs.
 
 {\small
-\begin{table}[htb]
-\vspace{-2ex}
+\begin{table}[b]
+%\vspace{-2ex}
 	\centering
 	\caption{Dataset characteristics.}
 	\label{tab:krdDatasetDescr}
@@ -139,8 +139,8 @@ The $maxPathLen$ parameter also impacts the running time. The longer the rule, t
 %Negative rules are very useful to discover inconsistencies in the KB. 
 We evaluated negative rules as the percentage of correct errors discovered for the top 5 predicates in each KB. Table~\ref{tab:neg_rules_acc} shows, for each KB, the total number of potential erroneous triples discovered with the rules, whereas the precision is computed as the percentage of actual errors among potential errors.
 
-\begin{table}[hb]
-\vspace{-3ex}
+\begin{table}[b]
+\vspace{-2ex}
 	\centering
 	\caption{Negative Rules Accuracy.}
 	\label{tab:neg_rules_acc}
@@ -157,7 +157,6 @@ We evaluated negative rules as the percentage of correct errors discovered for t
 	\end{tabular}
 	\end{small}
 \end{table}
-\vspace{-1ex}
 
 
 Negative rules have better accuracy than positive ones. 
@@ -240,6 +239,16 @@ Removing literals and \texttt{rdf:type} triples drastically reduce the size of t
 
 %After computing type domain and co-domain for each predicate, we run our approach sequentially on every predicate. Furthermore we set the $maxPathLen$ parameter to 2, since this is the default setting for \amie.
 
+\begin{figure}[b]
+	\centering
+	\vspace{1ex}
+	\includegraphics[width=.9\columnwidth]{include/figure/vsAmieYago.pdf}
+	\vspace{-2ex}
+	\caption{Predictions Accuracy on \yago}
+	\label{fig:vs_amie_yago}
+\end{figure}
+
+
 \amie discovers 
 %a huge amount of rules 
 %along with their scores 
@@ -248,17 +257,8 @@ Removing literals and \texttt{rdf:type} triples drastically reduce the size of t
 
 \begin{figure}[t]
 	\centering
-	\includegraphics[width=.9\columnwidth]{include/figure/vsAmieYago.pdf}
-	\vspace{-2ex}
-	\caption{Predictions Accuracy on \yago}
-	\label{fig:vs_amie_yago}
-\end{figure}
-\vspace{-1ex}
-
-\begin{figure}[htb]
-	\centering
 	\includegraphics[width=.9\columnwidth]{include/figure/vsAmieDBPedia.pdf}
-	\vspace{-2ex}
+	\vspace{-1ex}
 	\caption{Predictions Accuracy on \dbpedia}
 	\label{fig:vs_amie_dbpedia}
 \end{figure}
@@ -315,7 +315,6 @@ For example, we added a \texttt{notSpouse} predicate connecting each pair of peo
 		\end{tabular}
 	\end{small}
 \end{table}
-\vspace{-2ex}
 
 
 Table~\ref{tab:vs_amie_neg} shows that \krd outperforms \amie in both cases with a precision gain of almost 20\%. The drop in quality for \krd wrt the ones showed in Section~\ref{sec:gen_evaluation} is because we are using the \amie modified KBs which do not contain literals
@@ -396,16 +395,18 @@ We chose \deepdive~\cite{shin2015incremental}, a ML framework to construct KBs. 
 %These labelled examples are then used to construct a factor graph, similar to Markov Logic, that will predict labels on the rest of candidates. 
 Unfortunately, KBs only provide positive examples. Hence in \deepdive the burden of creating negative examples is left to the user. % through manual rules definition.
 
-In this set of experiments, we created negative examples with the rules obtained on \dbpedia with \krd. We then compared the output of \deepdive upon its spouse example trained with different sets of negative examples.
-%\footnote{\url{http://deepdive.stanford.edu/}}, where the goal is to extract mentions of married people from text articles
- %We used \deepdive spouse showcase example. \deepdive already provides some negative rules to generate negative examples (e.g., if two people appear in a sentence connected by the words \textit{brother} or \textit{sister} then they are not married). We therefore compare the output of \deepdive using our generated negative examples and the ones generated with \deepdive rules. 
-\begin{figure}[htb]
+\begin{figure}[b]
 	\centering
+	\vspace{2ex}
 	\includegraphics[width=.9\columnwidth]{include/figure/deepDive1K.pdf}
 	\vspace{-2ex}
 	\caption{\deepdive Application 1K articles}
 	\label{fig:deep_dive_1k}
 \end{figure}
+
+In this set of experiments, we created negative examples with the rules obtained on \dbpedia with \krd. We then compared the output of \deepdive upon its spouse example trained with different sets of negative examples.
+%\footnote{\url{http://deepdive.stanford.edu/}}, where the goal is to extract mentions of married people from text articles
+ %We used \deepdive spouse showcase example. \deepdive already provides some negative rules to generate negative examples (e.g., if two people appear in a sentence connected by the words \textit{brother} or \textit{sister} then they are not married). We therefore compare the output of \deepdive using our generated negative examples and the ones generated with \deepdive rules. 
 
 Figure~\ref{fig:deep_dive_1k} shows \deepdive accuracy plot run on 1K input documents. The accuracy plot shows the fraction of correct positive predictions over total predictions (y-axis), for each output probability value (x-axis). The perfect algorithm, marked by the dotted blue line, would predict all facts with a probability of 1 and zero facts with an output probability of 0.
 % which is the idealistic expected behavior marked by the dotted blue line. 
@@ -415,10 +416,10 @@ The best algorithm deflects the least from the blue dotted line, and this is our
 The figure shows 4 lines other than the ideal one. \krd is the output of \deepdive using our approach to generate negative examples. \texttt{OnlyPos} uses only positive examples from \dbpedia, \texttt{Manual} uses positive examples from \dbpedia and manually defined rules to generate negative examples, while \texttt{ManualSampl} uses only a sample of the manually generated negative examples in size equal to positive examples. We observe that \texttt{OnlyPos} and \texttt{Manual} do not provide valid training, as the former has only positive examples and labels everything as true, while the latter has many more negative examples than positive and labels everything as false. \texttt{ManualSampl} is the clear winner, while our approach suffers from the absence of data: over the input 1K articles, we could find only 20 positive and 15 negative examples from \dbpedia.
 The lack of evidence in the training data also explains the missing points for \krd in the chart, where there were no predictions in the probability range 25-45\%.
 
-\begin{figure}[htb]
+\begin{figure}[t]
 	\centering
 	\includegraphics[width=.9\columnwidth]{include/figure/deepDive1M.pdf}
-		\vspace{-2ex}
+		\vspace{-1ex}
 	\caption{\deepdive Application 1M articles}
 	\label{fig:deep_dive_1M}
 \end{figure}
@@ -431,7 +432,7 @@ The output of \texttt{ManualSampl} and \krd are very similar, meaning that we ca
 
 \subsection{Internal Evaluation} ~\label{sec:krd_int_evaluation}
 In this last section we sketch the impact of individual components in \krd.
-Full results on the internal evaluation are not reported due to space reasons but can be found in the technical report online at \textbf{TODO: add online link to technical report}.
+Full results on the internal evaluation are not reported due to space reasons but can be found in the technical report online at \url{http://bit.ly/2bDZO9F}.
 
 Here we briefly outline some of the most relevant findings. 
 \begin{inparaenum}[\itshape 1)]

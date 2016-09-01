@@ -2,9 +2,11 @@
 %So far, the focus of this thesis has targeted classic web data extraction: we extract entities from semi-structured web sources, along with their attributes, in order to store them in some structured format. A novel research direction is recently focusing on extracting data from web documents to construct knowledge bases (KBs), in order to structurally store entities and relationships among them. Given the different nature of target data, KBs are usually not stored in relational databases. In this chapter we move the attention from classic web data extraction to KBs built from web sources. More specifically, we consider RDF KBs, the most popular format where data is stored as RDF triples.
 
 Building large RDF knowledge-bases (KBs) is a popular trend in information extraction.
-KBs store information in the form of triples, where a \emph{predicate}, or relation, expresses a binary relation between a \emph{subject} and a \emph{object}. KB triples, often referred as facts, store information about real-world entities and their relationships, such as %``Scott Eastwood is the child of Clint Eastwood",
+KBs store information in the form of triples, where a \emph{predicate}, or relation, expresses a binary relation between a \emph{subject} and a \emph{object}. KB triples, called facts, store information about real-world entities and their relationships, such as %``Scott Eastwood is the child of Clint Eastwood",
 ``Michelle Obama is married to Barack Obama", or ``Larry Page is the founder of Google".
-Significant effort has been put on KBs creation in the last 10 years in the research community (\system{DBPedia}~\cite{bizer2009dbpedia}, \system{FreeBase}\cite{bollacker2008freebase}, \system{Wikidata}~\cite{vrandevcic2014wikidata}, \deepdive~\cite{shin2015incremental}, \system{Yago}~\cite{suchanek2007yago}, \system{NELL}~\cite{carlson2010toward}, \system{TextRunner}\cite{banko2007open}) as well as in the industry % and KBs have also attracted interests from the industry, as evident from the ongoing efforts in several companies 
+Significant effort has been put on KBs creation in the last 10 years in the research community (\system{DBPedia}~\cite{bizer2009dbpedia}, \system{FreeBase}\cite{bollacker2008freebase}, \system{Wikidata}~\cite{vrandevcic2014wikidata}, \deepdive~\cite{shin2015incremental}, \system{Yago}~\cite{suchanek2007yago}, 
+%\system{NELL}~\cite{carlson2010toward}, 
+\system{TextRunner}\cite{banko2007open}) as well as in the industry % and KBs have also attracted interests from the industry, as evident from the ongoing efforts in several companies 
 (e.g., 
 %Facebook
 %\footnote{\url{https://developers.facebook.com/docs/graph-api}}, 
@@ -17,7 +19,7 @@ KBs are bootstrapped by extracting information from sources, oftentimes from the
 Since \emph{closed world assumption} (CWA) does not hold~\cite{dong2014data,galarraga2015fast}, we cannot assume that a missing fact is false, but rather we should label it as \emph{unknown} (\emph{open world assumption}).
 
 
-As a direct consequence, the amount of errors and incompleteness in KBs is significantly larger than classic databases~\cite{suchanek2009sofie}.
+As a direct consequence, the amount of errors and incompleteness in KBs is significantly larger than in classic databases~\cite{suchanek2009sofie}.
 Since KBs are large, e.g., \wikidata has more than $1$B facts and $300$M different entities, %\footnote{\url{https://query.wikidata.org/}}. 
 checking all triples to find errors or add new facts cannot be done manually. % and tools are needed to assist humans in the KBs curation. 
 A natural approach to assist curators of KBs is to discover %However, KBs carry such a big amount of information that they can be mined to discover 
@@ -54,7 +56,7 @@ of two different types of rules:
 	\vspace{-2.5ex}
 	{\small
 		\begin{equation*}
-			\atom{birthDate}{a}{v_0} \wedge \atom{birthDate}{b}{v_1} \wedge v_0 > v_1 \wedge  \atom{child}{a}{b}  \Rightarrow false
+			\atom{birthDate}{a}{v_0} \wedge \atom{birthDate}{b}{v_i} \wedge v_0 > v_i \wedge  \atom{child}{a}{b}  \Rightarrow false
 		\end{equation*}
 	} 
 	\vspace{-2ex}
@@ -99,8 +101,8 @@ Existing approaches for discovery of positive rules in KBs assume that data can 
 We advocate that a rule discovery system should be designed to discover {\em approximate rules} since errors and incompleteness are in the nature of the KBs. Also, the main memory constraint not only reduces the applicability of the system, but also forces limitations on the {\em expressive power} of the language in order to reduce the search space.
 %we design a disk-based solution, to overcome the main memory limitation and enable the discovery of rules
 %with a more expressive rule language. 
-In fact, the larger is the number of patterns that can be expressed in the rules, %and the coverage of the facts in the KB. Larger coverage lead to more 
-the larger is the number of new facts and errors that can be identified, and with increasing precision. However, this comes with a computational cost, as the search space quickly becomes much larger. For this reason, existing approaches for mining positive rules prune aggressively the search space, and rely on a simple language% without values comparisons
+In fact, the larger the number of patterns is that can be expressed in the rules, %and the coverage of the facts in the KB. Larger coverage lead to more 
+the larger the number of new facts and errors is that can be identified, and with increasing precision. However, this comes with a computational cost, as the search space quickly becomes much larger. For this reason, existing approaches for mining positive rules prune aggressively the search space, and rely on a simple language% without values comparisons
 ~\cite{Chen:2016,abedjan2014amending,galarraga2015fast}.
 %MAKE SURE TO CITE  the demo DBLP:conf/sigmod/FaridRIHC16, they discover negative rules, but there is not paper, therefore no baseline%%%%%%%%%%
 
@@ -113,10 +115,11 @@ assuming that the KB fits into memory by exploiting the following contributions.
 %  . We drop such an assumption and propose a disk-based solution that loads into memory only a small portion of the KB. 
 %This is a key point to address the size problem, but also because it enables us to enlarge the expressive power of the considered rules to include comparisons among constants, including inequalities.
 
-\vspace{1ex}
+%\vspace{1ex}
 \myparagraph{Problem Definition}
 We formally define the problem of rules discovery over erroneous and incomplete KBs. The input of the problem consists of a target predicate, from which we identify sets of positive and negative examples.  In contrast with traditional ranking of rules based on a measure of support~\cite{dehaspe1999discovery,galarraga2015fast,schoenmackers2010learning}, our  problem definition aims at the identification of a subset of approximate rules. % to be exposed to the user. 
-Given errors in the data and incompleteness, the ideal solution is a compact set of rules that cover the majority of the positive examples, and as few negative examples as possible. We map the problem to the well-known weighted set cover problem.
+Given errors in the data and incompleteness, the ideal solution is a compact set of rules that cover the majority of the positive examples, and as few negative examples as possible. We map the problem to the %well-known 
+weighted set cover problem.
 
 %The main benefit of such an approach is to relieve the user from the manual validation of all approximate rules, as they  can be huge in number, or from the definition of a suitable threshold that separates good and bad rules. 
 %I REMOVED THIS BECAUSE WE ARE NOT REALLY TOUCHING THIS TOPIC IN THE INTRO, but i mention it in the exp now
@@ -145,7 +148,7 @@ The significant reduction of the search space reduces the running time an order 
 
 
 \vspace{1ex}
-We experimentally verify the performance of rules discovery in \krd using real-world datasets (Section~\ref{sec:krd_experiments}). The evaluation is carried on the 3 most popular and widely used KBs, namely \dbpedia~\cite{bizer2009dbpedia}, \yago~\cite{suchanek2007yago}, and \wikidata~\cite{vrandevcic2014wikidata}. 
+We experimentally verify the performance of rules discovery in \krd using real-world datasets (Section~\ref{sec:krd_experiments}). The evaluation is carried on the three most popular and widely used KBs, namely \dbpedia~\cite{bizer2009dbpedia}, \yago~\cite{suchanek2007yago}, and \wikidata~\cite{vrandevcic2014wikidata}. 
 We show that our problem formulation leads to approximate rules that are better in quality than previous systems and that the search algorithm delivers accurate rules both in the positive and negative settings, clearly outperforming state-of-the-art systems. We also 
 %show the impact of the proposed optimization and 
 demonstrate how negative rules have a beneficial impact when providing representative examples for Machine Learning algorithms.
