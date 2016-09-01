@@ -32,7 +32,7 @@ where $A_1 \wedge A_2 \wedge \cdots \wedge A_n$ consists of the \emph{body} of t
 %NOT ESSENTIAL
 %In the context of Horn Rules, all variables appearing in a rule are implicitly universally quantified.
 Given a Horn Rule $r$, we define $r_{body}$ and $r_{head}$ as the body and the head of the rule. We define the variables appearing in the head of the rule as the \emph{target variables}. 
-For the sake of presentation, we will also write negative rules as definite clauses by rewriting a body atom in its negated form in the head. The result is a logically equivalent formula that emphasises the generation of negative facts.
+For the sake of presentation, we will also write negative rules as definite clauses by rewriting a body atom in its negated form in the head. The result is a logically equivalent formula that emphasizes the generation of negative facts.
 
 \begin{example}\label{ex:ex2}
 	Rule $r_1$ in Example~\ref{ex:krd_intro} is a traditional positive rule, where new positive facts are identified with target variables $a$ and $b$.
@@ -68,7 +68,9 @@ We define a rule \emph{valid} iff it satisfies the following constraints.
 %appear at least twice, while target variables at least once.
 
 %\vspace{0.5ex} %TO BE REMOVED IF WE NEED MORE SPACE
-Language restrictions limit the output of the discovery algorithm to a subset of plausible rules. We will show in Section~\ref{sec:rules_gen} how these restrictions enable us to speed up the discovery process. % through a disk-based approach that leverages these limitations.
+Language restrictions limit the algorithm output 
+%of the discovery algorithm 
+to a subset of plausible rules. We will show in Section~\ref{sec:rules_gen} how these restrictions enable us to speed up the discovery process. % through a disk-based approach that leverages these limitations.
 
 \subsection{Rules Coverage}
 Given a pair of entities $(x,y)$ from a KB $\kb$ and a Horn Rule $r$, we say that $r_{body}$ \emph{covers} $(x,y)$ if
@@ -104,7 +106,7 @@ We will explain in Section~\ref{sec:ex_generation} how to generate these two set
 %it is true that we require a target predicate as input, however 
 we can apply our setting for every predicate in the KB and compute rules for each of them (see Section~\ref{sec:krd_comparative}).
 
-We can now formalise the \emph{exact discovery problem}.
+We can now formalize the \emph{exact discovery problem}.
 \begin{definition}
 	Given a KB $\kb$, two sets of pairs of entities $G$ and $V$ from $\kb$ such that $G \cap V = \emptyset$, and a universe of Horn Rules $R$, a solution for the \emph{exact discovery problem} is a subset $R'$ of $R$  such that:
 	
@@ -161,11 +163,13 @@ We therefore define a \emph{weight} to be associated with a rule. % as follows.
 	\begin{equation} \label{eq:weight_fun}
 		w(r) = \alpha \cdot (1-\frac{\mid C_{r}(G)\mid}{\mid G \mid}) +\beta \cdot (\frac{\mid C_{r}(V) \mid}{\mid U_{r}(V)\mid})
 	\end{equation}
-	with $\alpha,\beta \in [0,1]$ and $\alpha + \beta = 1$. 
+	with $\alpha,\beta \in [0,1]$ and $\alpha + \beta = 1$, thus $w(r) \in [0,1]$. 
 \end{definition}
 %I SUGGEST TO KEEP ONLY ALPHA AND HAVE 1-ALPHA INSTEAD OF BETA%%%%%%%
 
-The weight is a value between $0$ and $1$ that captures the quality of a rule w.r.t. $G$ and $V$: the better the rule, the lower the weight -- a perfect rule covering all elements of $G$ and none of $V$ would have a weight of $0$.
+The weight 
+%is a value between $0$ and $1$ that 
+captures the quality of a rule w.r.t. $G$ and $V$: the better the rule, the lower the weight -- a perfect rule covering all elements of $G$ and none of $V$ would have a weight of $0$.
 %this change must be correct. IF the one covering ONE CORRECT EXAMPLE in G and 0 in V is a perfect rule, we risk to have a solution with 0 cost but with tons of meaningless rules  %%%%%%%%%
 %
 The weight is made of two components normalized by the two parameters $\alpha$ and $\beta$.
@@ -194,7 +198,7 @@ while a a high $\alpha$ champions the recall as the discovered rules identify as
 \end{example}
 
 \begin{definition}
-	Given a set of rules $R$, the weight for $R$ is defined as:
+	Given a set of rules $R$, the weight for $R$ is:
 	\begin{equation*}
 		w(R) = \alpha \cdot (1-\frac{\mid C_{R}(G)\mid}{\mid G \mid}) +\beta \cdot (\frac{\mid C_{R}(V) \mid}{\mid U_{R}(V)\mid})
 	\end{equation*}
