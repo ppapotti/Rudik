@@ -18,7 +18,7 @@ This model allows great flexibility, but the likelihood of introducing errors is
 While KBs can include \emph{T-Box} facts in order to define classes, domain/co-domain types for predicates, and relationships among classes
 %While the T-Box can specify 
 to check integrity and consistency, in most KBs -- including the ones we use in our experiments -- such information is missing. % or not present at all. 
-Hence our focus on the \emph{A-Box} facts that describe instance data. 
+Hence our focus is on the \emph{A-Box} facts that describe instance data. 
 
 \subsection{Language} \label{sec:krd_language} 
 %Inspired by Inductive Logic Programming~\cite{muggleton1994inductive}, 
@@ -28,7 +28,8 @@ Our goal is to automatically discover first-order logical formulas in KBs. More 
 	A_1 \wedge A_2 \wedge \cdots \wedge A_n \Rightarrow B \qquad \qquad A_1 \wedge A_2 \wedge \cdots \wedge A_n \Rightarrow  false 
 \end{equation*} %\neg B
 %
-where $A_1 \wedge A_2 \wedge \cdots \wedge A_n$ consists of the \emph{body} of the rule (a conjunction of atoms), while $B$ is the \emph{head} of the rule (a single atom). The head of the rule is either unnegated (left) or empty (right). We call the former \emph{definite clause} or simply \emph{positive rule}, as it generates new positive facts, while the latter \emph{goal clause} or \emph{negative rule}, as it identifies false statements. In a KB, an atom is a predicate connecting two variables, two entities, or an entity and a variable. For simplicity, we represent an atom with the notation $\atom{rel}{a}{b}$, where \texttt{rel} is a predicate, and $a$ and $b$ are either variables or entities. 
+where $A_1 \wedge A_2 \wedge \cdots \wedge A_n$ consists of the \emph{body} of the rule (a conjunction of atoms) and $B$ is the \emph{head} of the rule (a single atom). The head of the rule is either unnegated (left) or empty (right). We call the former \emph{definite clause} or simply \emph{positive rule}, as it generates new positive facts, while the latter \emph{goal clause} or \emph{negative rule}, as it identifies false statements. %In a KB, 
+An atom is a predicate connecting two variables, two entities, or an entity and a variable. For simplicity, we represent an atom with the notation $\atom{rel}{a}{b}$, where \texttt{rel} is a predicate, and $a$ and $b$ are either variables or entities. 
 %NOT ESSENTIAL
 %In the context of Horn Rules, all variables appearing in a rule are implicitly universally quantified.
 Given a Horn Rule $r$, we define $r_{body}$ and $r_{head}$ as the body and the head of the rule. We define the variables appearing in the head of the rule as the \emph{target variables}. 
@@ -55,7 +56,7 @@ Given a KB $\kb$ and an atom $A=\atom{rel}{a}{b}$ where $a$ and $b$ are two enti
 Given a KB $\kb$ and an atom $A=\atom{rel}{a}{b}$ with at least one variable, we say that $A$ can be \emph{instantiated} over $\kb$ if there exists at least one entity from $\kb$ for each variable in $A$ such that if we substitute variables with entities in $A$, $A$ holds over $\kb$. Transitively, given a body of a rule $r_{body}$ and a KB $\kb$, we say that $r_{body}$ can be instantiated over $\kb$ if every atom in $r_{body}$ can be instantiated. 
 
 %Eventually, we introduce two language biases in order to avoid the explosion of the search space. 
-Following the biases introduced by other approaches for rules discovery in KBs~\cite{galarraga2015fast,Chen:2016}, we adopt also two constraints on the variables in the rules.
+Following the biases introduced by other approaches for rule discovery in KBs~\cite{galarraga2015fast,Chen:2016}, we adopt also two constraints on the variables in the rules.
 % as a compromise between the expressiveness of the rules and the complexity of the discovery problem. 
 We define a rule \emph{valid} iff it satisfies the following constraints.
 

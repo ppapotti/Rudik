@@ -38,19 +38,24 @@ The algorithm stops when one of the following termination conditions are met:
 \begin{inparaenum} [\itshape1)]
 	\item $R$ is empty -- all the rules have been included in the solution;
 	\item $R_{opt}$ covers all elements of $G$;
-	\item the minimum marginal weight is greater than or equal to $0$ -- among the remaining rules in $R$, none of them has a negative marginal weight.
+	\item the minimum marginal weight is greater than or equal to $0$, i.e., among the remaining rules in $R$, none of them has a negative marginal weight.
 	%, hence the current solution is the one with the minimum weight.
 \end{inparaenum}
 %WE CAN ELIMINATE THE NEXT SENTENCE IF WE NEED SPACE
+The marginal weight is greater than or equal to $0$ whenever 
+(i) the rule does not cover new elements in $G$, and (ii) it does not unbounded cover new elements in $V$. 
 If the second termination condition is not met, there may exist examples in $G$ that are not covered by $R_{opt}$. In such a case the algorithm will augment $R_{opt}$ with single-instance rules (rules that cover only one example), one for each element in $G$ not covered by $R_{opt}$.
 %WILL? do we do it? <<<<<<<<
 
-Since the coverage of a rule is always contained in its unbounded coverage, the marginal weight is greater than or equal to $0$ whenever the rule does not cover new elements in $G$ and does not unbounded cover new elements in $V$. 
+%Since the coverage of a rule is always contained in its unbounded coverage, 
 %UNBOUND COVER? then below should be unbound covered, i guess <<<
 %More specifically, a rule $r$ has a negative marginal weight iff the sum of its new elements covered in $G$ with its new elements unbounded covered in $V$ is strictly greater than its new elements covered in $V$ multiplied by some $\gamma$, where $\gamma$ depends on how we set $\alpha$ and $\beta$.
 
 The greedy solution guarantees a \texttt{log($k$)} approximation
-to the optimal solution~\cite{chvatal1979greedy}, where $k$ is the largest number of elements covered in $G$ by a rule in $R$ -- $k$ is at most $|G|$. If the output rules in the final solution cover disjoint sets of $G$, then the greedy solution coincides with the optimal one.
+to the optimal solution~\cite{chvatal1979greedy}, where $k$ is the largest number of elements covered in $G$ by a rule in $R$ and $k$ is at most $|G|$. 
+If the optimal solution is made of 
+%output rules in the final solution cover 
+rules that cover disjoint sets over $G$, then the greedy solution coincides with the optimal one.
 
 \subsection{$A^*$ Graph Traversal}
 The greedy algorithm for weighted set cover assumes that the universe of rules $R$ has been generated.
@@ -76,7 +81,7 @@ To generate $R$, we need to traverse all valid paths from a node $x$ to a node $
 	%if we include $r$ in the solution, %before inspecting other potential rules, then 
 	there is no need to generate any other rule. In fact, any other candidate rule will not cover new elements in $G$, therefore their marginal weights will be greater than or equal to $0$. 
 	%Hence any other rule will not be part of the solution. 
-	Thus the creation and navigation of edges \texttt{livesIn} in $g_1$, \texttt{worksAt} in $g_2$, and \texttt{partner} in $g_2$ become worthless.
+	Thus the creation and navigation of edges \texttt{livesIn} in $g_1$, \texttt{worksAt} in $g_2$, and \texttt{partner} in $g_2$ become redundant.
 \end{example}
 
 		\vspace{0.5ex}
@@ -84,7 +89,7 @@ Based on the above observation, we avoid the generation of the entire universe $
 the $A^*$ graph traversal algorithm~\cite{hart1968formal}. 
 Given an input weighted graph, $A^*$ computes the smallest cost path from a starting node $s$ to an ending node $t$. At each iteration, $A^*$ maintains a queue of partial paths starting from $s$, and it expands one of these paths based on an \emph{estimation} of the cost to reach $t$. The path with the best estimation is expanded and added to the paths queue. The algorithm keeps iterating until one of the partial paths reaches $t$. 
 
-We discover rules with a similar technique. For each example $(x,y) \in G$, we start the navigation from $x$. We keep a queue of not valid rules, % (Section~\ref{sec:krd_language}), 
+We discover rules with a similar technique. For each example $(x,y) \in G$, we start the navigation from $x$. We keep a queue of not valid rules (Section~\ref{sec:krd_language}), 
 and at each iteration we consider the rule with the minimum marginal weight, which corresponds to paths in the example graphs. 
 We expand the rule by following the edges, and we add the new founded rules to the queue of not valid rules. Differently from $A^*$, we do not stop when a rule (path) reaches the node $y$. Whenever a rule becomes valid, we add the rule to the solution and we do not expand it any further. The algorithm keeps looking for plausible paths until one of the termination conditions of the greedy cover algorithm is met. %Algorithm~\ref{alg:krd_greedy} is met.
 
@@ -126,7 +131,7 @@ The only positive contribution to marginal weights is given by $|C_{R \cup \{r\}
 
 The estimated marginal weight for a valid rule instead is equal to the actual marginal weight defined in Equation~\ref{eq:mar_weight}. Valid rules are not considered for expansion, therefore we do not need to estimate their weights since we know the actual ones. Given Lemma~\ref{lemma:krd_exp_cov}, we can easily see that $w_m^*(r) \leq w_m^*(r')$, for any $r'$ expansion of $r$. Thus our marginal weight estimation is admissible.
 
-We use the concept of \emph{frontier nodes} for a rule $r$ ($N_f(r)$). Given a rule $r$, $N_f(r)$ contains the last visited nodes in the paths that correspond to $r_{body}$ from every example graphs covered by $r$. As an example, given $r_{body} = \atom{child}{x}{v_0}$, $N_f(r)$ contains all the entities $v_0$ that are children of $x$, for every $(x,y) \in G$. 
+We use the concept of \emph{frontier nodes} for a rule $r$, namely $N_f(r)$. Given a rule $r$, $N_f(r)$ contains the last visited nodes in the paths that correspond to $r_{body}$ from every example graphs covered by $r$. As an example, given $r_{body} = \atom{child}{x}{v_0}$, $N_f(r)$ contains all the entities $v_0$ that are children of $x$, for every $(x,y) \in G$. 
 %-- $v_0$ is the last visited node in the path. 
 Expanding a rule $r$ implies navigating a single edge from any frontier node. Algorithm~\ref{alg:krd_a*} shows the modified set cover version that includes $A^*$-like rules generation. The set of frontier nodes is initialized with starting nodes $x$, for every $(x,y) \in G$ (Line~\ref{alg_line:front_nodes}). The algorithm maintains a queue of rules $Q_r$, from which it chooses at each iteration the rule with minimum approximated weight. 
 %approximated?? <<
