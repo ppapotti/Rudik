@@ -345,15 +345,14 @@ We found other available systems to discover rules in KBs. \cite{abedjan2014amen
 ~\cite{Chen:2016} implements \amie algorithm with a focus on scalability. They do not introduce any novelty in the algorithmic part, but just a clever way of splitting the KB into multiple cluster nodes so that the computation can be run in parallel. The output is the same as \amie. Eventually we did not compare with classic Inductive Logic Programming systems~\cite{dehaspe1999discovery,muggleton1995inverse}, as these are already significantly outperformed by \amie both in accuracy and running time.
 
 \subsection{Machine Learning Application} \label{sec:krd_deep_dive}
-The main goal of this set of experiments is to prove the applicability of our approach in providing Machine Learning algorithms meaningful training examples.
+The main goal of this set of experiments is to demonstrate the applicability of our approach in providing Machine Learning algorithms meaningful training examples.
 We chose \deepdive~\cite{shin2015incremental}, a Machine Learning approach to incrementally construct KBs. \deepdive extracts entities and relations from text articles via distant supervision. The key idea behind distant supervision is to use an external source of information (e.g., a KB) to provide training examples for a supervised algorithm. For example, the main showcase in \deepdive extracts mentions of married couples from text documents. In such a scenario \deepdive uses as a first step \dbpedia in order to label some pairs of entities as \emph{true} positive (those pairs of married couples that can be found in \dbpedia). 
 %These labelled examples are then used to construct a factor graph, similar to Markov Logic, that will predict labels on the rest of candidates. 
 Unfortunately, a KB can only provide positive examples. Hence in \deepdive the burden of creating negative examples is left to the user through manual rules definition.
 
-In this set of experiments we will use our negative rules on \dbpedia to generate negative examples, and we will compare the output of \deepdive trained with different set of negative examples. We used \deepdive spouse showcase example
+In this set of experiments we will use our negative rules on \dbpedia to generate negative examples, and we will compare the output of \deepdive upon its showcase spouse example trained with different sets of negative examples.
 %\footnote{\url{http://deepdive.stanford.edu/}}, where the goal is to extract mentions of married people from text articles
-. \deepdive already provides some negative rules to generate negative examples (e.g., if two people appear in a sentence connected by the words \textit{brother} or \textit{sister} then they are not married). We therefore compare the output of \deepdive using our generated negative examples and the ones generated with \deepdive rules. 
-
+ %We used \deepdive spouse showcase example. \deepdive already provides some negative rules to generate negative examples (e.g., if two people appear in a sentence connected by the words \textit{brother} or \textit{sister} then they are not married). We therefore compare the output of \deepdive using our generated negative examples and the ones generated with \deepdive rules. 
 \begin{figure}[b]
 	\centering
 	\includegraphics[width=.9\columnwidth]{include/figure/deepDive1K.pdf}
@@ -361,22 +360,23 @@ In this set of experiments we will use our negative rules on \dbpedia to generat
 	\label{fig:deep_dive_1k}
 \end{figure}
 
-Figure~\ref{fig:deep_dive_1k} shows \deepdive accuracy plot run on 1K input documents. The accuracy plot shows the ratio of correct positive predictions over positive and negative predications (y-axis), for each probability output value (x-axis). The dotted blue line represents the ideal situation, where the system finds high number of evidence positive predictions for higher probability output values -- when the output probability is 0 there should not be positive predictions. The plot is computed over a test set, while the system is trained over a separated training set. The figure shows 4 lines other than the ideal ones. \krd is the output of \deepdive using our approach to generate negative examples. \texttt{OnlyPos} uses only positive examples from \dbpedia, \texttt{Manual} uses positive examples from \dbpedia and manually defined rules to generate negative examples, while \texttt{ManualSampl} uses only a sample of the manually generated negative examples in size equal to positive examples. The first observation is that \texttt{OnlyPos} and \texttt{Manual} do not provide valid training, as the former has only positive examples and labels everything as true, while the latter has many more negative examples than positive and labels everything as false. \texttt{ManualSampl} is the clear winner, while our approach suffers mostly the absence of data: over the input 1K articles, we could find only 20 positive and 15 negative examples from \dbpedia.
-The lack of enough evidence in the training data also explains the missing points for \krd in the chart, where there are not predictions in the probability range 25-45\%.
+Figure~\ref{fig:deep_dive_1k} shows \deepdive accuracy plot run on 1K input documents. The accuracy plot shows the fraction of correct positive predictions over total predictions (y-axis), for each output probability value (x-axis). It is evident that all the facts should be predicted with a probability of 1 by the perfect algorithm and zero facts should be predicted at an output probability of 0 which is the idealistic expected behavior marked by the dotted blue line. The best algorithm deflects the least from the blue dotted line and this serves as our evaluation metric.
+%The dotted blue line represents the ideal situation, where the system finds high number of evidence positive predictions for higher probability output values -- when the output probability is 0 there should not be positive predictions. 
+%The plot is computed over a test set, while the system is trained over a separated training set. 
+The figure shows 4 lines other than the ideal ones. \krd is the output of \deepdive using our approach to generate negative examples. \texttt{OnlyPos} uses only positive examples from \dbpedia, \texttt{Manual} uses positive examples from \dbpedia and manually defined rules to generate negative examples, while \texttt{ManualSampl} uses only a sample of the manually generated negative examples in size equal to positive examples. The first observation is that \texttt{OnlyPos} and \texttt{Manual} do not provide valid training, as the former has only positive examples and labels everything as true, while the latter has many more negative examples than positive and labels everything as false. \texttt{ManualSampl} is the clear winner, while our approach suffers mostly from the absence of data: over the input 1K articles, we could find only 20 positive and 15 negative examples from \dbpedia.
+The lack of enough evidence in the training data also explains the missing points for \krd in the chart, where there are no predictions in the probability range 25-45\%.
 
 If we extend the input to 1M articles, things change drastically (Figure~\ref{fig:deep_dive_1M}). All the three approaches except \texttt{OnlyPos} can successfully drive \deepdive in the training, with the examples provided with \krd leading to a slightly better result. This is because of the quality of the negative examples: our negative rules generate representative examples that can help \deepdive in understanding discriminatory features between positive and negative labels.
 The output of \texttt{ManualSampl} and \krd are very similar, meaning that we can use our approach to simulate user behaviour and provide negative examples at zero cost. 
 %NOT ESSENTIAL
 %With manually defined rules the number of generated examples is significantly higher ($23$K vs $5$K generated with \krd), however the results are very similar since a small number of significant examples is enough to provide complete evidence for the training. 
 %This confirms the main finding of this experiment: as long as we have an external source of information with a decent coverage over the input articles, users do not need to worry about providing rules to generate negative examples.
-
 \begin{figure}[t]
 	\centering
 	\includegraphics[width=.9\columnwidth]{include/figure/deepDive1M.pdf}
 	\caption{\deepdive Application 1M articles}
 	\label{fig:deep_dive_1M}
 \end{figure}
-
 \subsection{Internal Evaluation} ~\label{sec:krd_int_evaluation}
 In this last section we skecth the impact of individual components in \krd.
 Full results on the internal evaluation are not reported in this paper due to space reasons but can be examined on the technical report online at \textbf{TODO: add online link to technical report}.
