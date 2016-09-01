@@ -388,7 +388,7 @@ memory. However, when we deal with real KBs (\yago 3*), the KB could not even be
 We found other available systems to discover rules in KBs. In~\cite{abedjan2014amending}, the system discovers %new facts at the instance level, hence 
 rules that are less generic than our approach. On \amie \yago 2, it discovers 2K new facts with a precision lower than 70\%, while the best rule we discover on \yago 2 already produces more than 4K facts with a 100\% precision. 
 %are we using the same KB? 
-A recent system~\cite{Chen:2016} implements \amie algorithm with a focus on scalability. They do not modify the mining part, but split the KB into multiple cluster nodes to run in parallel. The output is the same as \amie. We did not compare with classic Inductive Logic Programming systems~\cite{dehaspe1999discovery,muggleton1995inverse}, as these are already significantly outperformed by \amie both in accuracy and running time.
+A recent system~\cite{Chen:2016} implements \amie algorithm with a focus on scalability. They do not modify the mining part, but split the KB into multiple cluster nodes to run in parallel. The output is the same as \amie. We did not compare with classic Inductive Logic Programming systems~\cite{dehaspe1999discovery}, as these are already significantly outperformed by \amie both in accuracy and running time.
 
 \subsection{Machine Learning Application} \label{sec:krd_deep_dive}
 The main goal of this set of experiments is to demonstrate the applicability of our approach in providing Machine Learning (ML) algorithms meaningful training examples.
