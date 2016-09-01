@@ -247,7 +247,7 @@ As a consequence, \krd outputs just 11 rules for 8 target predicates on the enti
 %NOT ESSENTIAL
 %Moreover, our approach can also simulate \amie if we are more interested in recall. By modifying the $\alpha$ and $\beta$ parameters, we can obtain a higher number of predictions in output, at the expense of accuracy. 
 
-\begin{figure}[b]
+\begin{figure}[htb]
 	\centering
 	\includegraphics[width=.9\columnwidth]{include/figure/vsAmieDBPedia.pdf}
 	\caption{Predictions Accuracy on \dbpedia}
@@ -260,7 +260,7 @@ As a consequence, \krd outputs just 11 rules for 8 target predicates on the enti
 As a second set of comparative experiments we used \amie to discover negative rules. \amie is not designed to work in this setting, and can discover rules only for predicates explicitly stated in the KB. Therefore we proceeded as follows: we sampled the top 5 most popular predicates in each KB and we created for each predicate a set of negative examples as explained in Section~\ref{sec:ex_generation}. For each negative example we added a new fact to the KB connecting the two entities with the \emph{negation} of the predicate. 
 %For example, we added a \texttt{notSpouse} predicate connecting each pair of people who are not married according to our negative examples generation technique. We then run \amie on these new created predicates. 
 %The evaluation of negative rules is then carried out as explained before: we generate potential errors in the KB, and we manually evaluated the precision of such errors. 
-\begin{table}[t]
+\begin{table}[htb]
 	\centering
 	\caption{Negative Rules vs \amie.}
 	\label{tab:vs_amie_neg}
@@ -309,7 +309,7 @@ We report here the running time of \amie compared to our approach. Note that num
 %		\end{tabular}
 %	\end{small}
 %\end{table}
-\begin{table}[b]
+\begin{table}[htb]
 	\centering
 	\caption{Run Time vs \amie.}
 	\label{tab:amie_runtime}
@@ -353,7 +353,7 @@ Unfortunately, a KB can only provide positive examples. Hence in \deepdive the b
 In this set of experiments we will use our negative rules on \dbpedia to generate negative examples, and we will compare the output of \deepdive upon its showcase spouse example trained with different sets of negative examples.
 %\footnote{\url{http://deepdive.stanford.edu/}}, where the goal is to extract mentions of married people from text articles
  %We used \deepdive spouse showcase example. \deepdive already provides some negative rules to generate negative examples (e.g., if two people appear in a sentence connected by the words \textit{brother} or \textit{sister} then they are not married). We therefore compare the output of \deepdive using our generated negative examples and the ones generated with \deepdive rules. 
-\begin{figure}[b]
+\begin{figure}[htb]
 	\centering
 	\includegraphics[width=.9\columnwidth]{include/figure/deepDive1K.pdf}
 	\caption{\deepdive Application 1K articles}
@@ -371,14 +371,14 @@ The output of \texttt{ManualSampl} and \krd are very similar, meaning that we ca
 %NOT ESSENTIAL
 %With manually defined rules the number of generated examples is significantly higher ($23$K vs $5$K generated with \krd), however the results are very similar since a small number of significant examples is enough to provide complete evidence for the training. 
 %This confirms the main finding of this experiment: as long as we have an external source of information with a decent coverage over the input articles, users do not need to worry about providing rules to generate negative examples.
-\begin{figure}[t]
+\begin{figure}[htb]
 	\centering
 	\includegraphics[width=.9\columnwidth]{include/figure/deepDive1M.pdf}
 	\caption{\deepdive Application 1M articles}
 	\label{fig:deep_dive_1M}
 \end{figure}
 \subsection{Internal Evaluation} ~\label{sec:krd_int_evaluation}
-In this last section we skecth the impact of individual components in \krd.
+In this last section we sketch the impact of individual components in \krd.
 Full results on the internal evaluation are not reported in this paper due to space reasons but can be examined on the technical report online at \textbf{TODO: add online link to technical report}.
 
 Here we briefly outline some of the most relevant findings. 
@@ -391,13 +391,6 @@ Here we briefly outline some of the most relevant findings.
 	\item Eventually we show the benefits of our set cover problem formulation w.r.t. a ranking based one. 
 	We show that the best rules need not necessarily be among the top-10, and sometimes there exist good rules that are beyond the 100$th$ one in the ranked set thus emphasizing upon the fragility in ranking mechanisms.
 \end{inparaenum}
-
-
-
-
-
-
-
 %CANNOT AFFORD TO INCLUDE ALL INTERNATAL EVALUATION
 %In this last set of experiments we measured the impact of \krd relevant features in order to quantify the benefit of three main aspects in rule discovery. 
 %We run \krd on \dbpedia with different settings than the standard ones.
