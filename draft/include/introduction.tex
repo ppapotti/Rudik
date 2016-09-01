@@ -107,7 +107,7 @@ the larger is the number of new facts and errors that can be identified, and wit
 %MAKE SURE TO CITE  the demo DBLP:conf/sigmod/FaridRIHC16, they discover negative rules, but there is not paper, therefore no baseline%%%%%%%%%%
 
 \vspace{1ex}
-We present \krd (\underline{Ru}les \underline{Di}scovery in \underline{K}nowledge Bases), a novel system for the discovery of positive and negative rules %Horn Rules 
+We present \krd (\underline{Ru}le \underline{Di}scovery in \underline{K}nowledge Bases), a novel system for the discovery of positive and negative rules %Horn Rules 
 over KBs that addresses the challenges above.  
 \krd is the first system capable of discovering both approximate positive and negative rules without
 % using the same algorithm. Moreover, classic rules discovery systems 
@@ -133,14 +133,14 @@ weighted set cover problem (Section~\ref{sec:krd_prel}).
 
 \vspace{0.5ex}
 \myparagraph{Examples Generation}
-Positive and negative examples for a target predicate are crucial for our approach as they determine the ultimate quality of the rules. However, crafting a large number of examples is a tedious exercise that requires manual work. Moreover, to effectively steer the algorithm towards useful rules, the examples must have properties, such as the existence of at least a meaningful path between pairs of entities in each example. We design an algorithm for examples generation that is aware of the errors and inconsistency in the KB. Our generated examples lead to better rules than examples obtained with alternative approaches (Section~\ref{sec:rules_gen}). %
+Positive and negative examples for a target predicate are crucial for our approach as they determine the ultimate quality of the rules. However, crafting a large number of examples is a tedious exercise that requires manual work. Moreover, to effectively steer the algorithm towards useful rules, the examples must have properties, such as the existence of at least a predicate between pairs of entities in each example. We design an algorithm for examples generation that is aware of the errors and inconsistency in the KB. Our generated examples lead to better rules than examples obtained with alternative approaches (Section~\ref{sec:rules_gen}). %
 
 
 \vspace{0.5ex}
 \myparagraph{Search Algorithm}
 We give a \texttt{log($k$)}-approximation algorithm for the discovery problem, % close in spirit to the greedy algorithm for set cover, 
 where $k$ is the maximum number of positive examples covered by a single rule. We discover the rules to feed the algorithm by judiciously using the memory. The algorithm incrementally 
-materializes the KB as a graph, and discovers rules by navigating paths. To reduce the use of resources, at each iteration we follow the most promising path in a $A^*$ traversal fashion, allowing the pruning of unpromising paths.	
+materializes the KB as a graph, and discovers rules by navigating paths. To reduce the use of resources, at each iteration we follow the most promising path in the $A^*$ traversal fashion, allowing the pruning of unpromising paths.	
 %Previous approaches for rules discovery assume that the KB has to fit in main memory to deliver acceptable performance~\cite{abedjan2014amending,galarraga2015fast} (TODO: cite 2 sigmod papers). Unfortunately, KBs nowadays have sizes that can easily exceed hundreds of GBs and previous works require powerful resources to handle them. With our rules generation based on 
 By materializing only the portion of the KB that is needed for the discovery, and generating nodes and edges \emph{on demand}, the disk is accessed only whenever the navigation of a specific path is required (Section~\ref{sec:krd_greedy}). 
 %Moreover, the $A^*$ graph traversal allows the pruning of unpromising paths that are therefore never materialised. Thus 
