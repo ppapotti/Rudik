@@ -1,7 +1,12 @@
 \section{Conclusion}
 
-Extend rules with temporal and local information.
+We have designed and implemented \krd as a unified memory efficient rule discovery system which can mine both positive and negative rules. We have experimentally demonstrated that our disk-based approach is scalable and can work with training sets of any size. In addition, experiments show that we can generate a concise set of meaningful rules with a very high precision that can not only identify potential errors in the KBs but also discover new facts that can serve as representative training data to the machine learning algorithms.
 
-Combine positive and negative rules: if a positive and negative rule identifies same triples, then one of them must be wrong.
+An ongoing work is to alleviate the runtime of rule discovery by performing smart sampling of the input training instances while not compromising on the quality of the mined rules. We also plan to discern between a positive and a negative rule predicting the same set of facts from the KB as this implies that only one of the rules holds. This can also be an indirect approach to handle the incompleteness of the KBs that remains a huge challenge.
 
-Introduce functions and smarter literals comparison: if two people are not born in the same century, then they cannot be married.
+In the future, we want to extend \krd to mine rules from free web text which is not as structured as KBs. We would like to discover more expressive rules that can exploit temporal information through smarter analysis of literals. For instance "if two people are not born in the same century, then they cannot be married" is an example rule that requires non-trivial analysis of temporal information. 
+%Extend rules with temporal and local information.
+
+%Combine positive and negative rules: if a positive and negative rule identifies same triples, then one of them must be wrong.
+
+%Introduce functions and smarter literals comparison: if two people are not born in the same century, then they cannot be married.
