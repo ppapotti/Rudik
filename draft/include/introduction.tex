@@ -140,7 +140,7 @@ Positive and negative examples for a target predicate are crucial for our approa
 \myparagraph{Search Algorithm}
 We give a \texttt{log($k$)}-approximation algorithm for the discovery problem, % close in spirit to the greedy algorithm for set cover, 
 where $k$ is the maximum number of positive examples covered by a single rule. We discover the rules to feed the algorithm by judiciously using the memory. The algorithm incrementally 
-materializes the KB as a graph, and discovers rules by navigating paths. To reduce the use of resources, at each iteration we follow the most promising path in the $A^*$ traversal fashion, allowing the pruning of unpromising paths.	
+materializes the KB as a graph, and discovers rules by navigating its paths. To reduce the use of resources, at each iteration we follow the most promising path in the $A^*$ traversal fashion, allowing the pruning of unpromising paths.	
 %Previous approaches for rules discovery assume that the KB has to fit in main memory to deliver acceptable performance~\cite{abedjan2014amending,galarraga2015fast} (TODO: cite 2 sigmod papers). Unfortunately, KBs nowadays have sizes that can easily exceed hundreds of GBs and previous works require powerful resources to handle them. With our rules generation based on 
 By materializing only the portion of the KB that is needed for the discovery, and generating nodes and edges \emph{on demand}, the disk is accessed only whenever the navigation of a specific path is required (Section~\ref{sec:krd_greedy}). 
 %Moreover, the $A^*$ graph traversal allows the pruning of unpromising paths that are therefore never materialised. Thus 
@@ -156,8 +156,8 @@ We experimentally test the performance of rule discovery in \krd by using real-w
 We show that our problem formulation together with our 
 %that are better in quality than previous systems and that the 
 search algorithm deliver accurate rules, 
-with a relative increase in average precision of 45\% both in the positive and in the negative settings.
-Also, \krd performs consistency with KBs of every size, while other systems cannot scale of fail altogether. % due clearly outperforming state-of-the-art systems . 
+with a relative increase in average precision of 45\% both in the positive and in the negative settings w.r.t. state-of-the-art systems.
+Also, \krd performs consistency with KBs of every size, while other systems cannot scale or fail altogether. % due clearly outperforming state-of-the-art systems . 
 We also 
 %show the impact of the proposed optimization and 
 demonstrate how negative rules have a beneficial impact when providing representative examples for Machine Learning algorithms.
