@@ -320,7 +320,7 @@ For example, we added a \texttt{notSpouse} predicate connecting each pair of peo
 \end{table}
 
 
-Table~\ref{tab:vs_amie_neg} shows that \krd outperforms \amie in both cases with a precision gain of almost 20\%. The drop in quality for \krd wrt the ones showed in Section~\ref{sec:gen_evaluation} is because we are using the \amie modified KBs which do not contain literals.
+Table~\ref{tab:vs_amie_neg} shows that \krd outperforms \amie in both cases with a precision gain of almost 20\%. The drop in quality for \krd w.r.t. the ones showed in Section~\ref{sec:gen_evaluation} is because we are using the \amie modified KBs which do not contain literals.
 Numbers in brackets show the sample of unknown triples manually annotated. 
 % This is because for the negation of a predicate, we use the actual predicate as counter examples. \amie instead is not aware that the actual predicate provides counter examples for the negation of it, hence it is much less precise. In fact the output of \amie consists in a high number of rules for each predicate (often more than 30), and in many cases \amie produces same rules for both positive and negative scenarios. 
 %As an example, \amie outputs that if a country $a$ exports a good $b$, then $a$ imports $b$ and $a$ does not import $b$. 
