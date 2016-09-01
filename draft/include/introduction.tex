@@ -14,7 +14,7 @@ Google~\cite{dong2014data}, Wal-Mart~\cite{deshpande2013building}).
 
 Unfortunately, due to their creation process, KBs are usually erroneous and incomplete.
 KBs are bootstrapped by extracting information from sources, oftentimes from the Web, with minimal or no human intervention.  This leads to two main problems. First, errors are propagated from the sources, or introduced by the extractors, leading to false facts in the KB. Second, usually KBs do not limit the information of interest with a schema that clearly defines instance data. The set of predicates is unknown a-priori, and adding facts defined on new predicates is just a matter of inserting new triples in the KB without any integrity check.  
-Since \emph{closed world assumption} (CWA) does not hold~\cite{dong2014knowledge,galarraga2015fast}, we cannot assume that a missing fact is false, but rather we should label it as \emph{unknown} (\emph{open world assumption}).
+Since \emph{closed world assumption} (CWA) does not hold~\cite{dong2014data,galarraga2015fast}, we cannot assume that a missing fact is false, but rather we should label it as \emph{unknown} (\emph{open world assumption}).
 
 
 As a direct consequence, the amount of errors and incompleteness in KBs is significantly larger than classic databases~\cite{suchanek2009sofie}.
@@ -115,7 +115,7 @@ assuming that the KB fits into memory by exploiting the following contributions.
 
 \vspace{1ex}
 \myparagraph{Problem Definition}
-We formally define the problem of rules discovery over erroneous and incomplete KBs. The input of the problem consists of a target predicate, from which we identify sets of positive and negative examples.  In contrast with traditional ranking of rules based on a measure of support~\cite{dehaspe1999discovery,galarraga2015fast,muggleton1995inverse,schoenmackers2010learning}, our  problem definition aims at the identification of a subset of approximate rules. % to be exposed to the user. 
+We formally define the problem of rules discovery over erroneous and incomplete KBs. The input of the problem consists of a target predicate, from which we identify sets of positive and negative examples.  In contrast with traditional ranking of rules based on a measure of support~\cite{dehaspe1999discovery,galarraga2015fast,schoenmackers2010learning}, our  problem definition aims at the identification of a subset of approximate rules. % to be exposed to the user. 
 Given errors in the data and incompleteness, the ideal solution is a compact set of rules that cover the majority of the positive examples, and as few negative examples as possible. We map the problem to the well-known weighted set cover problem.
 
 %The main benefit of such an approach is to relieve the user from the manual validation of all approximate rules, as they  can be huge in number, or from the definition of a suitable threshold that separates good and bad rules. 

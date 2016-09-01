@@ -146,7 +146,7 @@ Differently from classic database scenarios, we cannot assume that what is not s
 This implies that we cannot take two entities that are not related by a property and assume that together they form a negative example. 
 
 To mitigate this problem, and generate negative examples that are likely to be correct (true false facts), we are after entities that are more likely to be complete in their information. For this task, we %make use of a popular technique for KBs: 
-exploit the \emph{Local-Closed World Assumption} (\emph{LCWA})~\cite{dong2014knowledge,galarraga2015fast}. LCWA states that if a KB contains one or more object values for a given subject and predicate, then it contains all possible values. For example, if a KB contains one or more children of Clint Eastwood, then it contains all his children. This is always true for \emph{functional} predicates (e.g., \texttt{capital}), 
+exploit the \emph{Local-Closed World Assumption} (\emph{LCWA})~\cite{dong2014data,galarraga2015fast}. LCWA states that if a KB contains one or more object values for a given subject and predicate, then it contains all possible values. For example, if a KB contains one or more children of Clint Eastwood, then it contains all his children. This is always true for \emph{functional} predicates (e.g., \texttt{capital}), 
 % (predicates such as \texttt{capital} where the subject can have at most one object value), 
 while it might not hold for non-functional ones (e.g., \texttt{child}). 
 KBs contain many non-functional predicates, we therefore extend the definition of LCWA by considering the dual aspect: if a KB contains one or more subject values for a given object and predicate, then it contains all values. 
