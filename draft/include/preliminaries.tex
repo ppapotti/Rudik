@@ -158,9 +158,9 @@ The exact solution may therefore be a set of rules where every rule covers only 
 % difficult to use and understand.
 
 \subsection{Weight Function} \label{sec:krd_weight_fun}
-Given the errors and missing information in both $G$ and $V$, we drop the strict requirement of the coverage of $G$ and $V$. However, coverage is a strong indicator of quality: good rules should cover several examples in $G$, while covering several elements in $V$ is an indication of potentially incorrect rules, as we assume that errors are always a minority in the data. 
+Given errors and missing information in both $G$ and $V$, we drop the requirement of perfectly covering the sets with the rules. However, coverage is a strong indicator of quality: good rules should cover several examples in $G$, while covering several elements in $V$ is an indication of incorrect rules, as we assume that errors are always a minority in the data. 
 % we want to limit the coverage over $V$ to the minimum possible. 
-We therefore define a \emph{weight} to be associated with a rule. % as follows.
+We model these ideas in a \emph{weight} associated with a rule. % as follows.
 
 %I REWRITE TO INCLUDE ALSO G IN THE SCORE, WHICH IS WHAT WE DO. THERE IS NO GUARANTEE THAT WE COVER ALL G %%%%%%%%%%%%<<<<<<<<<<<
 
@@ -226,7 +226,7 @@ We can now state the approximate version of the problem.
 
 We can map this problem to the well-known weighted set cover problem, which is proven to be $\textsf{NP\mbox{-}complete}$~\cite{chvatal1979greedy}. The universe corresponds to $G$ and the input sets are all the possible rules defined in $R$.
 
-Since we want to minimize the total weight of the output rules, the approximate version of the discovery problem aims to cover all elements in $G$, and as few as possible elements in $V$. Since for each element $g \in G$ there always exists a rule that covers exactly only $g$ (single-instance rule), an admissible solution is always guaranteed to exist. We expect the output to be made of some rules that cover multiple examples in $G$, while remaining examples in $G$ to be covered by single-instance rules. 
+Since we want to minimize the total weight of the output rules, the approximate version of the discovery problem aims to cover all elements in $G$, and as few as possible elements in $V$. Since for each element $g \in G$ there always exists a rule that covers exactly only $g$ (single-instance rule), an admissible solution is always guaranteed to exist. We expect the output to be made of some rules that cover multiple examples in $G$, with the remaining examples in $G$ to be covered by single-instance rules. 
 %In the best-case scenario a single rule covers all elements in $G$ and none of the elements in $V$.
 
 %Section~\ref{sec:krd_greedy} will describe a greedy polynomial algorithm to find a good solution for the approximate discovery problem.
