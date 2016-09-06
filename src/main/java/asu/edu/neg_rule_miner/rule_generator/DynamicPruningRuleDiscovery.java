@@ -8,6 +8,8 @@ import java.util.Set;
 import org.apache.commons.lang3.tuple.Pair;
 import org.apache.jena.query.QuerySolution;
 import org.apache.jena.query.ResultSet;
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -62,23 +64,61 @@ public class DynamicPruningRuleDiscovery extends HornRuleDiscovery{
 			ResultSet rs =  spe.runExtractedQuery(outputQuery);
 			List<String> resultLst = new ArrayList<String>();
 			
+			JSONObject  finalDataObj = new JSONObject();
+			
+			JSONArray Column_Headers = new JSONArray();
+			JSONArray dataOp = new JSONArray();
+			
+			for(RuleAtom rl:ruleAtoms)
+			{
+				JSONArray Column_Sub_Headers = new JSONArray();
+				JSONArray subObjPair = new JSONArray();
+				subObjPair.add(rl.getSubject());
+				subObjPair.add(rl.getObject());
+				Column_Sub_Headers.add(truncatePrfx(rl.getRelation()));
+				Column_Sub_Headers.add(subObjPair);
+				Column_Headers.add(Column_Sub_Headers);
+				//op = op + truncatePrfx(rl.getRelation()) + " ~ " + truncatePrfx(oneResult.get(rl.getSubject()).toString()) + " ~ " +
+				//		truncatePrfx(oneResult.get(rl.getObject()).toString()) + " || " ;
+			}
+			
+			finalDataObj.put("Column_Headers",Column_Headers );
+			
+			
+			int cnt = 1;
+			
 			while(rs.hasNext()){
-	
-				QuerySolution oneResult = rs.next();
 				
+				JSONObject  innerObj = new JSONObject();
+				QuerySolution oneResult = rs.next();
+				JSONArray dataForTable = new JSONArray();
 				String op= "";
 				for(RuleAtom rl:ruleAtoms)
 				{
 					op = op + truncatePrfx(rl.getRelation()) + " ~ " + truncatePrfx(oneResult.get(rl.getSubject()).toString()) + " ~ " +
 							truncatePrfx(oneResult.get(rl.getObject()).toString()) + " || " ;
+					
+					//Updating Data!!!
+					dataForTable.add(truncatePrfx(oneResult.get(rl.getSubject()).toString()));
+					dataForTable.add(truncatePrfx(oneResult.get(rl.getObject()).toString()));
+					
 				}
+				
+				innerObj.put("data", dataForTable);
+				dataOp.add(innerObj);
+				cnt++;
 				op = op + "\n";
 				resultLst.add(op);
 				
 			}
-			System.out.println("OP--"+rs.getResultVars());
 			
-			return resultLst.toString();
+			//System.out.println("O22P");
+			finalDataObj.put("Data_For_Table", dataOp);
+			
+			
+			System.out.println("OP--"+finalDataObj.toString());
+			
+			return finalDataObj.toString();
 		}
 		catch(Exception e)
 		{
@@ -88,7 +128,10 @@ public class DynamicPruningRuleDiscovery extends HornRuleDiscovery{
 	
 	private String truncatePrfx(String ipStr)
 	{
-		return ipStr.split("/")[ipStr.split("/").length-1];
+		if(ipStr.split("/")[ipStr.split("/").length-1].equals("XMLSchema#date"))
+			return ipStr.substring(0, ipStr.indexOf('^'));
+		else
+			return ipStr.split("/")[ipStr.split("/").length-1];
 		
 	}
 	
