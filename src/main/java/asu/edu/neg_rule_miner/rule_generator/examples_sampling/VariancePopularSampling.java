@@ -1,5 +1,10 @@
 package asu.edu.neg_rule_miner.rule_generator.examples_sampling;
 
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
@@ -20,21 +25,40 @@ import asu.edu.neg_rule_miner.configuration.ConfigurationFacility;
 import asu.edu.neg_rule_miner.model.rdf.graph.Edge;
 import asu.edu.neg_rule_miner.model.rdf.graph.Graph;
 
+import weka.classifiers.Classifier;
+import weka.classifiers.trees.RandomTree;
+import weka.clusterers.SimpleKMeans;
+import weka.core.AdditionalMeasureProducer;
+import weka.core.Capabilities;
+import weka.core.DistanceFunction;
+import weka.core.Instance;
+import weka.core.Instances;
+import weka.core.Option;
+import weka.core.OptionHandler;
+import weka.core.Randomizable;
+import weka.core.RevisionUtils;
+import weka.core.TechnicalInformation;
+import weka.core.TechnicalInformationHandler;
+import weka.core.Utils;
+import weka.core.WeightedInstancesHandler;
+import weka.core.converters.ConverterUtils.DataSource;
+import weka.core.TechnicalInformation.Field;
+import weka.core.TechnicalInformation.Type;
 
 
 public class VariancePopularSampling {
 	
 	double alpha, beta, gamma, subWeight, objWeight;
 	int subjectLimit, objectLimit;
-	boolean isTopK; // to indicate whether it is topK sampling or uniform sampling
+	String samplingMode; // to indicate whether it is topK sampling or uniform sampling
 	
-	public VariancePopularSampling(double alpha, double beta, double gamma, double subWeight, double objWeight, int subjectLimit, int objectLimit, boolean isTopK){
+	public VariancePopularSampling(double alpha, double beta, double gamma, double subWeight, double objWeight, int subjectLimit, int objectLimit, String samplingMode){
 		this.alpha = alpha;
 		this.beta = beta;
 		this.gamma = gamma;
 		this.subWeight = subWeight;
 		this.objWeight = objWeight;
-		this.isTopK = isTopK;
+		this.samplingMode = samplingMode;
 		if(subjectLimit < 0)
 			this.subjectLimit = 2; // only for the computation of functionality, doesn't effect the example generation for actual in-degree & out-degree
 //			this.subjectLimit = (int)Double.POSITIVE_INFINITY;
@@ -122,6 +146,87 @@ public class VariancePopularSampling {
 	       } 
 	       return sortedHashMap;
 	  }
+	
+	public HashMap<Integer,Set<Pair<String,String>>> kMeans(HashMap<Pair<String,String>,Double> scorePerPair, int numClusters){
+		String fileName = "kMeansInput";
+		File fout = new File(fileName+".arff");
+		if (fout.exists()){
+			fout.delete();
+		}
+		int numDimensions = 1; // 1 for variant 1 where we cluster the scores
+		String ARFF_HEADER = 
+				"@relation kMeansInput\n\n";
+		ARFF_HEADER +=
+				"@attribute score numeric\n" ;
+		ARFF_HEADER += "\n";
+		ARFF_HEADER += "@data\n\n";
+		try(FileWriter fw = new FileWriter(fileName+".arff", true);
+			    BufferedWriter bw = new BufferedWriter(fw);
+			    PrintWriter out = new PrintWriter(bw))
+			{
+			    out.println(ARFF_HEADER);
+			    for(Double score:scorePerPair.values()){
+			    	out.println(score);
+			    }
+			    out.flush();
+				out.close();
+			} catch (IOException e) {
+			    //exception handling left as an exercise for the reader
+			}
+		try{
+			SimpleKMeans kmeans = new SimpleKMeans();
+
+	        //DistanceFunction df = new weka.core.ManhattanDistance();
+	        DistanceFunction df = new weka.core.EuclideanDistance();
+	        kmeans.setDistanceFunction(df);
+	        kmeans.setSeed(10);
+
+	        kmeans.setPreserveInstancesOrder(true);
+	        kmeans.setNumClusters(numClusters);
+	        String arffFile = fileName+".arff";
+	        DataSource source = new DataSource(arffFile);
+	        Instances instances = source.getDataSet();
+
+	        //inst.setDataset(instances);
+	        kmeans.buildClusterer(instances);
+	        System.out.println(kmeans.displayStdDevsTipText());
+
+	        // This array returns the cluster number (starting with 0) for each instance
+	        // The array has as many elements as the number of instances
+	        int[] assignments = kmeans.getAssignments();
+
+	        int i=0;
+	        HashMap<Double,Integer> clusters = new HashMap<Double,Integer>();
+	        for(int clusterNum : assignments) {
+	            clusters.put(instances.instance(i).value(0), clusterNum); //If this is right everything is right
+	          //  System.out.println("Instance "+(i+1)+" -> Cluster "+clusterNum);
+	            i++;
+	        }
+	        HashMap<Integer,Set<Pair<String,String>>> resultClusters = new HashMap<Integer,Set<Pair<String,String>>>();
+	        Iterator it = scorePerPair.entrySet().iterator();
+	        while (it.hasNext()) {
+	            Map.Entry pair = (Map.Entry)it.next();
+	            Pair<String,String> entityPair = (Pair<String, String>) pair.getKey();
+	            Double score = (Double) pair.getValue();
+	            int clusterId = clusters.get(score);
+	            Set<Pair<String,String>> clusterSet;
+	            if(resultClusters.containsKey(clusterId))
+	            	clusterSet = resultClusters.get(clusterId);	            
+	            else
+	            	clusterSet = new HashSet<Pair<String,String>>();
+	            clusterSet.add(entityPair);
+	            resultClusters.put(clusterId, clusterSet); 
+	            it.remove(); // avoids a ConcurrentModificationException
+	        }
+
+	        return resultClusters;
+
+		}
+		catch(Exception e){
+			e.printStackTrace();
+		}
+		return null;
+	}
 
 	public Set<Pair<String,String>> sampleExamples(Set<Pair<String,String>> allExamples, Graph<String> graph, 
 			int genExamplesLimit){
@@ -225,6 +330,44 @@ public class VariancePopularSampling {
 			scorePerPair.put(example, pairScore);
 		}
 		
+		if(samplingMode.equals("stratified")){
+			int numClusters = 6;
+			int numEntityPairs = scorePerPair.size();
+			HashMap<Integer,Set<Pair<String,String>>> clusters = kMeans(scorePerPair, numClusters); //iterator in kMeans destroyed scorePerPair by now	
+			//stratified sampling proportional to the cluster size per cluster draw
+			int remSize = genExamplesLimit;
+			for(int clusterNum : clusters.keySet()){
+				Set<Pair<String,String>> entityPairs = clusters.get(clusterNum);
+				int entityPairsSize = entityPairs.size();
+				int proportionalSize = (int)Math.ceil(entityPairsSize * (double)genExamplesLimit / (double)numEntityPairs);		
+				if(numEntityPairs <= genExamplesLimit)
+					proportionalSize = entityPairsSize-1;
+				if(proportionalSize > remSize)
+					proportionalSize = remSize;
+				remSize -= proportionalSize;
+				//Modified Fisher-Yates algorithm to pick random entity pairs within each cluster
+				int[] randomIndices = new int[entityPairsSize];
+				for(int j=0; j<entityPairsSize; j++){
+					randomIndices[j] = j;
+				}
+				for(int j=0; j<proportionalSize; j++){
+					int Min = j+1;
+					if(Min>=entityPairsSize)
+						Min = entityPairsSize-1;
+					int Max = entityPairsSize-1;
+					int swapIndex = Min + (int)(Math.random() * (Max - Min));
+					//swap j with swapIndex
+					int temp = randomIndices[j];
+					randomIndices[j] = randomIndices[swapIndex];
+					randomIndices[swapIndex] = temp;
+				}
+				for(int j=0; j<proportionalSize; j++){
+					Object[] entityPairArray = entityPairs.toArray();
+					sampleSet.add((Pair<String, String>) entityPairArray[randomIndices[j]]);
+				}
+			}
+			return sampleSet;
+		}
 		HashMap<Pair<String,String>,Double> sortedScorePerPair = sortByValues(scorePerPair);
 		int count = 0;
 		for(Double value:sortedScorePerPair.values()){
@@ -234,7 +377,7 @@ public class VariancePopularSampling {
 		int keyNum = 0;
 		HashSet<String> seenSet = new HashSet<String>();
 		//Adding code for uniform sampling
-		if(!isTopK){
+		if(samplingMode.equals("uniform")){
 			int totalSize = sortedScorePerPair.size();
 			int sampleInterval = totalSize/genExamplesLimit;
 			if(sampleInterval ==0)
@@ -258,7 +401,7 @@ public class VariancePopularSampling {
 				keyNum++;
 			}
 		}
-		else{
+		else if(samplingMode.equals("topK")){
 			for(Pair<String,String> key:sortedScorePerPair.keySet()){
 				if(keyNum >= genExamplesLimit)
 					break;
@@ -270,7 +413,7 @@ public class VariancePopularSampling {
 				keyNum++;
 			}
 		}
-
+		
 		return sampleSet;
 	}
 
@@ -285,7 +428,7 @@ public class VariancePopularSampling {
 		String entity = "http://dbpedia.org/resource/Barack_Obama";
 
 		Set<Edge<String>> edges = graph.getNeighbours(entity);
-		VariancePopularSampling vps = new VariancePopularSampling(0.5, 0.4, 0.1, 0.5, 0.5, -1, -1, true); //alpha, beta, gamma, subWeight, objWeight, isTopK
+		VariancePopularSampling vps = new VariancePopularSampling(0.5, 0.4, 0.1, 0.5, 0.5, -1, -1, "topK"); //alpha, beta, gamma, subWeight, objWeight, isTopK
 	//	vps.sampleExamples(allExamples, graph, genExamplesLimit);
 
 		for(Edge<String> oneEdge : edges){

@@ -44,7 +44,7 @@ public abstract class HornRuleDiscovery implements HornRuleDiscoveryInterface{
 	
 	Double objWeightSmart = null;
 	
-	Boolean isTopK = null;
+	String samplingMode = null;
 
 	private final static Logger LOGGER = 
 			LoggerFactory.getLogger(OneExampleRuleDiscovery.class.getName());
@@ -296,8 +296,8 @@ public abstract class HornRuleDiscovery implements HornRuleDiscoveryInterface{
 		this.objWeightSmart = obj_weight;
 	}
 	
-	public void setIsTopK(boolean isTopKValue){
-		this.isTopK = isTopKValue;
+	public void setSamplingMode(String samplingMode){
+		this.samplingMode = samplingMode;
 	}
 
 }

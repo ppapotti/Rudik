@@ -283,7 +283,7 @@ public class DynamicPruningRuleDiscovery extends HornRuleDiscovery{
 
 		if(generationSmartLimit != null && generationSmartLimit > 0){
 			//double alpha = 0.1, beta = 0.1, gamma = 0.8, subWeight = 0.5, objWeight = 0.5;
-			VariancePopularSampling sampling = new VariancePopularSampling(alphaSmart, betaSmart, gammaSmart, subWeightSmart, objWeightSmart, this.getSparqlExecutor().getSubjectLimit(), this.getSparqlExecutor().getObjectLimit(), isTopK);
+			VariancePopularSampling sampling = new VariancePopularSampling(alphaSmart, betaSmart, gammaSmart, subWeightSmart, objWeightSmart, this.getSparqlExecutor().getSubjectLimit(), this.getSparqlExecutor().getObjectLimit(), samplingMode);
 			Set<Pair<String,String>> sampledExamples = 
 					sampling.sampleExamples(generationExamples, generationNodesGraph, generationSmartLimit);
 			generationExamples.clear();

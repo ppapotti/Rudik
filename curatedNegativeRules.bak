@@ -1,0 +1,494 @@
+http://dbpedia.org/ontology/birthYear(object,v0) & >(v0,v1) & http://dbpedia.org/ontology/foundingYear(subject,v1)-true
+http://dbpedia.org/ontology/associatedMusicalArtist(object,subject) & http://dbpedia.org/ontology/associatedMusicalArtist(object,v0) & http://dbpedia.org/ontology/bandMember(v0,v0)-false
+http://dbpedia.org/ontology/associatedMusicalArtist(v0,object) & http://dbpedia.org/ontology/writer(v1,v0) & http://dbpedia.org/ontology/producer(v1,subject)-false
+http://dbpedia.org/ontology/artist(v0,subject) & http://dbpedia.org/ontology/recordedIn(v0,v1) & http://dbpedia.org/ontology/birthPlace(object,v1)-false
+http://dbpedia.org/ontology/producer(v0,subject) & http://dbpedia.org/ontology/recordedIn(v0,v1) & http://dbpedia.org/ontology/birthPlace(object,v1)-false
+http://dbpedia.org/ontology/producer(v0,object) & http://dbpedia.org/ontology/album(v1,v0) & http://dbpedia.org/ontology/producer(v1,subject)-false
+http://dbpedia.org/ontology/producer(subject,object) & http://dbpedia.org/ontology/album(v1,v0) & http://dbpedia.org/ontology/producer(v1,subject)-false
+http://dbpedia.org/ontology/bandMember(v0,v0) & http://dbpedia.org/ontology/associatedMusicalArtist(object,subject) & http://dbpedia.org/ontology/associatedMusicalArtist(object,v0)-false
+http://dbpedia.org/ontology/associatedBand(v0,subject) & http://dbpedia.org/ontology/associatedBand(v0,object), http://dbpedia.org/ontology/associatedBand(v0,v0) & http://dbpedia.org/ontology/birthPlace(object,v1) & http://dbpedia.org/ontology/artist(v0,subject) & http://dbpedia.org/ontology/recordedIn(v0,v1)-false
+http://dbpedia.org/ontology/producer(v0,subject) & http://dbpedia.org/ontology/associatedBand(v1,object) & http://dbpedia.org/ontology/writer(v0,v1)-true
+http://dbpedia.org/ontology/associatedMusicalArtist(object,subject) & http://dbpedia.org/ontology/bandMember(v0,object) & http://dbpedia.org/ontology/formerBandMember(v0,v0)-false
+http://dbpedia.org/ontology/writer(v0,object) & http://dbpedia.org/ontology/previousWork(v0,v1) & http://dbpedia.org/ontology/artist(v1,subject)-false
+http://dbpedia.org/ontology/spouse(v0,object) & http://dbpedia.org/ontology/parent(subject,v0) & http://dbpedia.org/ontology/parent(subject,object)-true
+http://dbpedia.org/ontology/spouse(v0,object) & http://dbpedia.org/ontology/parent(subject,v0) & http://dbpedia.org/ontology/parent(subject,object)-true
+http://dbpedia.org/ontology/spouse(v0,object) & http://dbpedia.org/ontology/parent(subject,v0) & http://dbpedia.org/ontology/parent(subject,object)-true
+http://dbpedia.org/ontology/influenced(subject,object)-true
+http://dbpedia.org/ontology/deathPlace(subject,v0) & http://dbpedia.org/ontology/nationality(subject,v0) & http://dbpedia.org/ontology/influencedBy(subject,object)-false
+http://dbpedia.org/ontology/nationality(subject,v0) & http://dbpedia.org/ontology/residence(subject,v0) & http://dbpedia.org/ontology/doctoralAdvisor(subject,object)-false
+http://dbpedia.org/ontology/doctoralAdvisor(subject,object) & http://dbpedia.org/ontology/deathPlace(object,v0) & http://dbpedia.org/ontology/citizenship(subject,v0)-false
+http://dbpedia.org/ontology/deathPlace(subject,v0) & http://dbpedia.org/ontology/residence(subject,v0) & http://dbpedia.org/ontology/doctoralAdvisor(subject,object)-false
+http://dbpedia.org/ontology/areaTotal(object,v0) & >(v0,v1) & http://dbpedia.org/ontology/areaCode(subject,v1)-false
+http://dbpedia.org/ontology/country(subject,object) & http://dbpedia.org/ontology/location(v0,object) & http://dbpedia.org/ontology/foundationPlace(v0,object)-false
+http://dbpedia.org/ontology/district(subject,v0) & !=(v1,v0) & http://dbpedia.org/ontology/isPartOf(v1,object)-false
+http://dbpedia.org/ontology/country(object,http://dbpedia.org/resource/United_Kingdom) & !=(http://dbpedia.org/resource/United_Kingdom,http://dbpedia.org/resource/England) & http://dbpedia.org/ontology/country(subject,http://dbpedia.org/resource/England)-true
+http://dbpedia.org/ontology/areaTotal(object,v0) & >(v0,v1) & http://dbpedia.org/ontology/areaCode(subject,v1)-false
+http://dbpedia.org/ontology/district(subject,v0) & !=(v1,v0) & http://dbpedia.org/ontology/isPartOf(v1,object)-false
+http://dbpedia.org/ontology/areaTotal(object,v0) & >(v0,v1) & http://dbpedia.org/ontology/areaCode(subject,v1)-false
+http://dbpedia.org/ontology/distanceToLondon(subject,v0) & >(v0,v1) & http://dbpedia.org/ontology/PopulatedPlace/areaTotal(object,v1)-false
+http://dbpedia.org/ontology/country(subject,object) & http://dbpedia.org/ontology/birthPlace(v0,object) & http://dbpedia.org/ontology/residence(v0,object)-false
+http://dbpedia.org/ontology/areaTotal(object,v0) & >(v0,v1) & http://dbpedia.org/ontology/areaCode(subject,v1)-false
+http://dbpedia.org/ontology/associatedMusicalArtist(v0,subject) & http://dbpedia.org/ontology/associatedBand(v0,v0) & http://dbpedia.org/ontology/associatedMusicalArtist(object,v0)-false
+http://dbpedia.org/ontology/associatedBand(v0,subject) & http://dbpedia.org/ontology/associatedMusicalArtist(v0,v0) & http://dbpedia.org/ontology/bandMember(v0,object)-false
+http://dbpedia.org/ontology/associatedBand(object,subject) & http://dbpedia.org/ontology/associatedMusicalArtist(object,v0) & http://dbpedia.org/ontology/associatedMusicalArtist(v0,v0)-false
+http://dbpedia.org/ontology/producer(v0,object) & http://dbpedia.org/ontology/album(v1,v0) & http://dbpedia.org/ontology/producer(v1,subject)-false
+http://dbpedia.org/ontology/associatedMusicalArtist(object,subject) & http://dbpedia.org/ontology/associatedMusicalArtist(object,v0) & http://dbpedia.org/ontology/bandMember(v0,v0)-false
+http://dbpedia.org/ontology/producer(v0,subject) & http://dbpedia.org/ontology/album(v0,v1) & http://dbpedia.org/ontology/producer(v1,object)-false
+http://dbpedia.org/ontology/associatedMusicalArtist(object,subject) & http://dbpedia.org/ontology/associatedMusicalArtist(object,v0) & http://dbpedia.org/ontology/bandMember(v0,v0)-false
+http://dbpedia.org/ontology/artist(v0,subject) & http://dbpedia.org/ontology/recordedIn(v0,v1) & http://dbpedia.org/ontology/birthPlace(object,v1)-false
+http://dbpedia.org/ontology/producer(v0,object) & http://dbpedia.org/ontology/album(v1,v0) & http://dbpedia.org/ontology/producer(v1,subject)-false
+http://dbpedia.org/ontology/associatedBand(v0,subject) & http://dbpedia.org/ontology/associatedMusicalArtist(v0,v0) & http://dbpedia.org/ontology/bandMember(v0,object)-false
+http://dbpedia.org/ontology/writer(v0,object) & http://dbpedia.org/ontology/artist(v0,subject)-false
+http://dbpedia.org/ontology/producer(v0,subject) & http://dbpedia.org/ontology/recordedIn(v0,v1) & http://dbpedia.org/ontology/birthPlace(object,v1)-false
+http://dbpedia.org/ontology/associatedBand(v0,object) & http://dbpedia.org/ontology/associatedBand(v0,v0) & http://dbpedia.org/ontology/associatedBand(v0,subject)-false
+http://dbpedia.org/ontology/artist(v0,subject) & http://dbpedia.org/ontology/recordedIn(v0,v1) & http://dbpedia.org/ontology/hometown(object,v1)-false
+http://dbpedia.org/ontology/birthYear(object,v0) & >(v0,v1) & http://dbpedia.org/ontology/foundingYear(subject,v1)-true
+http://dbpedia.org/ontology/associatedMusicalArtist(object,subject) & http://dbpedia.org/ontology/associatedMusicalArtist(object,v0) & http://dbpedia.org/ontology/bandMember(v0,v0)-false
+http://dbpedia.org/ontology/artist(v0,subject) & http://dbpedia.org/ontology/recordedIn(v0,v1) & http://dbpedia.org/ontology/birthPlace(object,v1)-false
+http://dbpedia.org/ontology/artist(v0,subject) & http://dbpedia.org/ontology/recordedIn(v0,v1) & http://dbpedia.org/ontology/hometown(object,v1)-false
+http://dbpedia.org/ontology/spouse(v0,object) & http://dbpedia.org/ontology/parent(subject,v0) & http://dbpedia.org/ontology/parent(subject,object)-true
+http://dbpedia.org/ontology/spouse(v0,object) & http://dbpedia.org/ontology/parent(subject,v0) & http://dbpedia.org/ontology/parent(subject,object)-true
+http://dbpedia.org/ontology/spouse(v0,object) & http://dbpedia.org/ontology/parent(subject,v0) & http://dbpedia.org/ontology/parent(subject,object)-true
+http://dbpedia.org/ontology/spouse(v0,object) & http://dbpedia.org/ontology/parent(subject,v0)-true
+http://dbpedia.org/ontology/spouse(subject,v0) & http://dbpedia.org/ontology/parent(object,v0) & http://dbpedia.org/ontology/parent(object,subject)-true
+http://dbpedia.org/ontology/birthPlace(subject,v0) & http://dbpedia.org/ontology/restingPlace(subject,v0) & http://dbpedia.org/ontology/successor(object,subject)-true
+http://dbpedia.org/ontology/spouse(v0,object) & http://dbpedia.org/ontology/parent(subject,v0)-true
+http://dbpedia.org/ontology/spouse(subject,v0) & http://dbpedia.org/ontology/parent(object,v0) & http://dbpedia.org/ontology/parent(object,subject)-true
+http://dbpedia.org/ontology/deathDate(object,v0) & <(v0,v1) & http://dbpedia.org/ontology/birthYear(subject,v1)-true
+http://dbpedia.org/ontology/spouse(v0,object) & http://dbpedia.org/ontology/parent(subject,v0) & http://dbpedia.org/ontology/parent(subject,object)-true
+http://dbpedia.org/ontology/spouse(subject,v0) & http://dbpedia.org/ontology/parent(object,v0) & http://dbpedia.org/ontology/parent(object,subject)-true
+http://dbpedia.org/ontology/successor(subject,object) & http://dbpedia.org/ontology/successor(object,v0) & http://dbpedia.org/ontology/successor(subject,v0)-true
+http://dbpedia.org/ontology/birthPlace(subject,v0) & http://dbpedia.org/ontology/deathPlace(object,v0) & http://dbpedia.org/ontology/predecessor(subject,object)-true
+http://dbpedia.org/ontology/spouse(subject,v0) & http://dbpedia.org/ontology/parent(object,v0) & http://dbpedia.org/ontology/predecessor(object,subject)-true
+http://dbpedia.org/ontology/birthPlace(object,v0) & http://dbpedia.org/ontology/birthPlace(subject,v0) & http://dbpedia.org/ontology/predecessor(object,subject)-true
+http://dbpedia.org/ontology/spouse(v0,subject) & http://dbpedia.org/ontology/parent(object,v0) & http://dbpedia.org/ontology/successor(subject,object)-true
+http://dbpedia.org/ontology/spouse(object,v0) & http://dbpedia.org/ontology/parent(subject,v0) & http://dbpedia.org/ontology/successor(object,subject)-true
+http://dbpedia.org/ontology/spouse(v0,object) & http://dbpedia.org/ontology/parent(subject,v0) & http://dbpedia.org/ontology/predecessor(subject,object)-true
+http://dbpedia.org/ontology/spouse(v0,object) & http://dbpedia.org/ontology/parent(subject,v0)-true
+http://dbpedia.org/ontology/deathDate(object,v0) & <(v0,v1) & http://dbpedia.org/ontology/birthYear(subject,v1)-true
+http://dbpedia.org/ontology/spouse(subject,v0) & http://dbpedia.org/ontology/parent(object,v0) & http://dbpedia.org/ontology/parent(object,subject)-true
+http://dbpedia.org/ontology/successor(subject,object) & http://dbpedia.org/ontology/successor(object,v0) & http://dbpedia.org/ontology/successor(subject,v0)-true
+http://dbpedia.org/ontology/birthPlace(object,v0) & http://dbpedia.org/ontology/birthPlace(subject,v0) & http://dbpedia.org/ontology/predecessor(subject,object)-true
+http://dbpedia.org/ontology/spouse(subject,v0) & http://dbpedia.org/ontology/parent(object,v0) & http://dbpedia.org/ontology/predecessor(object,subject)-true
+http://dbpedia.org/ontology/influenced(subject,object)-true
+http://dbpedia.org/ontology/influenced(subject,object)-true
+http://dbpedia.org/ontology/field(object,v0) & http://dbpedia.org/ontology/knownFor(object,v0) & http://dbpedia.org/ontology/influencedBy(subject,object)-false
+http://dbpedia.org/ontology/doctoralAdvisor(object,subject)-true
+http://dbpedia.org/ontology/academicAdvisor(object,subject)-true
+http://dbpedia.org/ontology/doctoralStudent(subject,object)-true
+http://dbpedia.org/ontology/field(object,v0) & http://dbpedia.org/ontology/knownFor(object,v0) & http://dbpedia.org/ontology/influencedBy(subject,object)-false
+http://dbpedia.org/ontology/influenced(subject,object)-true
+http://dbpedia.org/ontology/birthDate(object,v0) & >(v0,v1) & http://dbpedia.org/ontology/birthDate(subject,v1)-true
+http://dbpedia.org/ontology/academicAdvisor(v0,object) & http://dbpedia.org/ontology/notableStudent(object,v0) & http://dbpedia.org/ontology/doctoralAdvisor(subject,object)-false
+http://dbpedia.org/ontology/award(object,v0) & http://dbpedia.org/ontology/award(subject,v0) & http://dbpedia.org/ontology/doctoralAdvisor(subject,object)-false
+http://dbpedia.org/ontology/field(object,v0) & http://dbpedia.org/ontology/knownFor(object,v0) & http://dbpedia.org/ontology/influencedBy(subject,object)-false
+http://dbpedia.org/ontology/academicAdvisor(object,subject), http://dbpedia.org/ontology/doctoralAdvisor(object,subject)-true
+http://dbpedia.org/ontology/academicAdvisor(subject,v0) & http://dbpedia.org/ontology/notableStudent(v0,subject) & http://dbpedia.org/ontology/influenced(subject,object)-true
+http://dbpedia.org/ontology/influencedBy(subject,v0) & http://dbpedia.org/ontology/stateOfOrigin(v0,v1) & http://dbpedia.org/ontology/birthPlace(object,v1)-false
+http://dbpedia.org/ontology/birthDate(object,v0) & >(v0,v1) & http://dbpedia.org/ontology/birthDate(subject,v1)-true
+http://dbpedia.org/ontology/academicAdvisor(v0,object) & http://dbpedia.org/ontology/notableStudent(object,v0) & http://dbpedia.org/ontology/doctoralAdvisor(subject,object)-false
+http://dbpedia.org/ontology/doctoralAdvisor(subject,object) & http://dbpedia.org/ontology/nationality(object,v0) & http://dbpedia.org/ontology/nationality(subject,v0)-false
+http://dbpedia.org/ontology/notableStudent(subject,v0) & http://dbpedia.org/ontology/birthYear(v0,v1) & http://dbpedia.org/ontology/birthYear(object,v1)-true
+http://dbpedia.org/ontology/influencedBy(subject,v0) & http://dbpedia.org/ontology/influencedBy(v1,v0) & http://dbpedia.org/ontology/influenced(v1,object)-false
+http://dbpedia.org/ontology/influencedBy(v0,subject) & http://dbpedia.org/ontology/influencedBy(v1,v0) & http://dbpedia.org/ontology/influencedBy(v1,object)-true
+http://dbpedia.org/ontology/doctoralAdvisor(object,subject), http://dbpedia.org/ontology/notableStudent(subject,object)-true
+http://dbpedia.org/ontology/birthYear(object,v0) & http://dbpedia.org/ontology/birthYear(v1,v0) & http://dbpedia.org/ontology/doctoralStudent(subject,v1)-true
+http://dbpedia.org/ontology/birthDate(subject,v0) & <(v0,v1) & http://dbpedia.org/ontology/birthDate(object,v1)-true
+http://dbpedia.org/ontology/birthPlace(subject,v0) & http://dbpedia.org/ontology/nationality(subject,v0) & http://dbpedia.org/ontology/doctoralAdvisor(subject,object)-false
+http://dbpedia.org/ontology/doctoralAdvisor(subject,object) & http://dbpedia.org/ontology/academicAdvisor(v0,object) & http://dbpedia.org/ontology/notableStudent(object,v0)-false
+http://dbpedia.org/ontology/influenced(subject,object), http://dbpedia.org/ontology/notableStudent(subject,object)-true
+http://dbpedia.org/ontology/doctoralAdvisor(subject,object) & http://dbpedia.org/ontology/award(object,v0) & http://dbpedia.org/ontology/award(subject,v0)-false
+http://dbpedia.org/ontology/doctoralAdvisor(object,subject)-true
+http://dbpedia.org/ontology/influencedBy(subject,object) & http://dbpedia.org/ontology/birthPlace(object,v0) & http://dbpedia.org/ontology/birthPlace(subject,v0)-false
+http://dbpedia.org/ontology/field(subject,v0) & http://dbpedia.org/ontology/knownFor(subject,v0) & http://dbpedia.org/ontology/doctoralAdvisor(subject,object)-false
+http://dbpedia.org/ontology/birthYear(object,v0) & http://dbpedia.org/ontology/birthYear(v1,v0) & http://dbpedia.org/ontology/doctoralStudent(subject,v1)-true
+http://dbpedia.org/ontology/birthDate(subject,v0) & <(v0,v1) & http://dbpedia.org/ontology/birthDate(object,v1)-true
+http://dbpedia.org/ontology/birthPlace(subject,v0) & http://dbpedia.org/ontology/nationality(subject,v0) & http://dbpedia.org/ontology/doctoralAdvisor(subject,object)-false
+http://dbpedia.org/ontology/doctoralAdvisor(subject,object) & http://dbpedia.org/ontology/academicAdvisor(v0,object) & http://dbpedia.org/ontology/notableStudent(object,v0)-false
+http://dbpedia.org/ontology/doctoralAdvisor(object,subject)-true
+http://dbpedia.org/ontology/doctoralAdvisor(subject,object) & http://dbpedia.org/ontology/award(object,v0) & http://dbpedia.org/ontology/award(subject,v0)-false
+http://dbpedia.org/ontology/influenced(subject,object)-true
+http://dbpedia.org/ontology/influencedBy(subject,object) & http://dbpedia.org/ontology/birthPlace(object,v0) & http://dbpedia.org/ontology/birthPlace(subject,v0)-false
+http://dbpedia.org/ontology/notableStudent(subject,object)-true
+http://dbpedia.org/ontology/doctoralStudent(subject,v0) & http://dbpedia.org/ontology/birthYear(v0,v1) & http://dbpedia.org/ontology/birthYear(object,v1)-true
+http://dbpedia.org/ontology/country(object,http://dbpedia.org/resource/United_Kingdom) & !=(http://dbpedia.org/resource/United_Kingdom,http://dbpedia.org/resource/England) & http://dbpedia.org/ontology/country(subject,http://dbpedia.org/resource/England)-true
+http://dbpedia.org/ontology/country(object,http://dbpedia.org/resource/United_Kingdom) & !=(http://dbpedia.org/resource/United_Kingdom,http://dbpedia.org/resource/England) & http://dbpedia.org/ontology/country(subject,http://dbpedia.org/resource/England)-true
+http://dbpedia.org/ontology/country(object,http://dbpedia.org/resource/United_Kingdom) & !=(http://dbpedia.org/resource/United_Kingdom,http://dbpedia.org/resource/England) & http://dbpedia.org/ontology/country(subject,http://dbpedia.org/resource/England)-true
+http://dbpedia.org/ontology/country(object,http://dbpedia.org/resource/United_Kingdom) & !=(http://dbpedia.org/resource/United_Kingdom,http://dbpedia.org/resource/England) & http://dbpedia.org/ontology/country(subject,http://dbpedia.org/resource/England)-true
+http://dbpedia.org/ontology/country(object,http://dbpedia.org/resource/United_Kingdom) & !=(http://dbpedia.org/resource/United_Kingdom,http://dbpedia.org/resource/England) & http://dbpedia.org/ontology/country(subject,http://dbpedia.org/resource/England)-true
+http://dbpedia.org/ontology/country(object,http://dbpedia.org/resource/United_Kingdom) & !=(http://dbpedia.org/resource/United_Kingdom,http://dbpedia.org/resource/England) & http://dbpedia.org/ontology/country(subject,http://dbpedia.org/resource/England)-true
+http://dbpedia.org/ontology/country(object,http://dbpedia.org/resource/United_Kingdom) & !=(http://dbpedia.org/resource/United_Kingdom,http://dbpedia.org/resource/England) & http://dbpedia.org/ontology/country(subject,http://dbpedia.org/resource/England)-true
+http://dbpedia.org/ontology/successor(v0,subject) & http://dbpedia.org/ontology/president(object,v0)-true
+http://dbpedia.org/ontology/activeYearsStartYear(object,v0) & <(v0,v1) & http://dbpedia.org/ontology/activeYearsStartYear(subject,v1)-true
+http://dbpedia.org/ontology/birthPlace(subject,v0) & http://dbpedia.org/ontology/birthPlace(object,v0) & http://dbpedia.org/ontology/spouse(subject,object)-true
+http://dbpedia.org/ontology/successor(v0,object) & http://dbpedia.org/ontology/president(subject,v0)-false
+http://dbpedia.org/ontology/birthDate(object,v0) & <(v0,v1) & http://dbpedia.org/ontology/birthYear(subject,v1)-true
+http://dbpedia.org/ontology/successor(v0,subject) & http://dbpedia.org/ontology/primeMinister(v1,v0) & http://dbpedia.org/ontology/successor(v1,object)-false
+http://dbpedia.org/ontology/activeYearsStartYear(object,v0) & <(v0,v1) & http://dbpedia.org/ontology/activeYearsStartYear(subject,v1)-true
+http://dbpedia.org/ontology/successor(v0,subject) & http://dbpedia.org/ontology/president(v1,v0) & http://dbpedia.org/ontology/successor(object,v1)-false
+http://dbpedia.org/ontology/birthDate(object,v0) & <(v0,v1) & http://dbpedia.org/ontology/birthYear(subject,v1)-true
+http://dbpedia.org/ontology/successor(v0,subject) & http://dbpedia.org/ontology/primeMinister(v1,v0) & http://dbpedia.org/ontology/successor(v1,object)-false
+http://dbpedia.org/ontology/genre(object,v0) & http://dbpedia.org/ontology/stylisticOrigin(v1,v0) & http://dbpedia.org/ontology/genre(subject,v1)-true
+http://dbpedia.org/ontology/deathPlace(subject,v0) & http://dbpedia.org/ontology/country(subject,v0) & http://dbpedia.org/ontology/successor(subject,object)-false
+http://dbpedia.org/ontology/successor(object,v0) & http://dbpedia.org/ontology/country(v0,v1) & http://dbpedia.org/ontology/deathPlace(subject,v1)-false
+http://dbpedia.org/ontology/successor(v0,subject) & http://dbpedia.org/ontology/president(v1,v0) & http://dbpedia.org/ontology/successor(object,v1)-false
+http://dbpedia.org/ontology/birthDate(object,v0) & <(v0,v1) & http://dbpedia.org/ontology/birthYear(subject,v1)-true
+http://dbpedia.org/ontology/activeYearsStartYear(object,v0) & <(v0,v1) & http://dbpedia.org/ontology/activeYearsStartYear(subject,v1)-true
+http://dbpedia.org/ontology/deathPlace(subject,v0) & http://dbpedia.org/ontology/country(subject,v0) & http://dbpedia.org/ontology/successor(subject,object)-false
+http://dbpedia.org/ontology/genre(subject,v0) & http://dbpedia.org/ontology/stylisticOrigin(v0,v1) & http://dbpedia.org/ontology/genre(object,v1)-true
+http://dbpedia.org/ontology/birthPlace(subject,v0) & http://dbpedia.org/ontology/birthPlace(object,v0) & http://dbpedia.org/ontology/spouse(subject,object)-true
+http://dbpedia.org/ontology/successor(object,v0) & http://dbpedia.org/ontology/country(v0,v1) & http://dbpedia.org/ontology/deathPlace(subject,v1)-false
+http://dbpedia.org/ontology/activeYearsStartDate(subject,v0) & http://dbpedia.org/ontology/activeYearsEndDate(subject,v0) & http://dbpedia.org/ontology/successor(object,subject)-false
+http://dbpedia.org/ontology/associatedMusicalArtist(object,v0) & http://dbpedia.org/ontology/formerBandMember(v0,v0) & http://dbpedia.org/ontology/associatedBand(v0,subject)-false
+http://dbpedia.org/ontology/associatedMusicalArtist(object,subject) & http://dbpedia.org/ontology/genre(object,v0) & http://dbpedia.org/ontology/musicFusionGenre(v0,v0)-false
+http://dbpedia.org/ontology/associatedMusicalArtist(v0,object) & http://dbpedia.org/ontology/writer(v1,v0) & http://dbpedia.org/ontology/producer(v1,subject)-false
+http://dbpedia.org/ontology/associatedMusicalArtist(v0,subject) & http://dbpedia.org/ontology/album(v1,v0) & http://dbpedia.org/ontology/producer(v1,object)-false
+http://dbpedia.org/ontology/hometown(object,v0) & http://dbpedia.org/ontology/deathPlace(v1,v0) & http://dbpedia.org/ontology/associatedBand(v1,subject)-false
+http://dbpedia.org/ontology/associatedMusicalArtist(http://dbpedia.org/resource/Bill_Laswell,http://dbpedia.org/resource/Bill_Laswell) & http://dbpedia.org/ontology/producer(v0,http://dbpedia.org/resource/Bill_Laswell) & http://dbpedia.org/ontology/artist(v0,subject)-false
+http://dbpedia.org/ontology/parent(subject,object), http://dbpedia.org/ontology/spouse(v0,object) & http://dbpedia.org/ontology/parent(subject,v0) & http://dbpedia.org/ontology/successor(object,subject)-true
+http://dbpedia.org/ontology/spouse(v0,object) & http://dbpedia.org/ontology/parent(subject,v0) & http://dbpedia.org/ontology/predecessor(subject,object)-true
+http://dbpedia.org/ontology/parent(subject,object)-true
+http://dbpedia.org/ontology/spouse(v0,object) & http://dbpedia.org/ontology/spouse(object,v0) & http://dbpedia.org/ontology/parent(object,subject)-true
+http://dbpedia.org/ontology/spouse(subject,v0) & http://dbpedia.org/ontology/parent(object,v0) & http://dbpedia.org/ontology/successor(subject,object)-true
+http://dbpedia.org/ontology/birthPlace(object,v0) & http://dbpedia.org/ontology/deathPlace(subject,v0) & http://dbpedia.org/ontology/predecessor(object,subject)-true
+http://dbpedia.org/ontology/birthPlace(subject,v0) & http://dbpedia.org/ontology/deathPlace(object,v0) & http://dbpedia.org/ontology/predecessor(subject,object)-true
+http://dbpedia.org/ontology/spouse(v0,object) & http://dbpedia.org/ontology/parent(subject,v0), http://dbpedia.org/ontology/spouse(subject,v0) & http://dbpedia.org/ontology/parent(object,v0) & http://dbpedia.org/ontology/parent(object,subject)-true
+http://dbpedia.org/ontology/predecessor(subject,object) & http://dbpedia.org/ontology/deathPlace(object,v0) & http://dbpedia.org/ontology/restingPlace(object,v0)-true
+http://dbpedia.org/ontology/doctoralAdvisor(subject,object)-false
+http://dbpedia.org/ontology/doctoralAdvisor(object,subject), http://dbpedia.org/ontology/influenced(subject,object)-true
+http://dbpedia.org/ontology/notableStudent(subject,object)-true
+http://dbpedia.org/ontology/doctoralAdvisor(v0,subject) & http://dbpedia.org/ontology/birthYear(v0,v1) & http://dbpedia.org/ontology/birthYear(object,v1)-true
+http://dbpedia.org/ontology/doctoralStudent(subject,v0) & http://dbpedia.org/ontology/birthYear(v0,v1) & http://dbpedia.org/ontology/birthYear(object,v1)-true
+http://dbpedia.org/ontology/field(object,v0) & http://dbpedia.org/ontology/knownFor(v1,v0) & http://dbpedia.org/ontology/influencedBy(v1,subject)-false
+http://dbpedia.org/ontology/academicAdvisor(subject,v0) & http://dbpedia.org/ontology/notableStudent(v0,subject) & http://dbpedia.org/ontology/academicAdvisor(object,subject)-true
+http://dbpedia.org/ontology/influencedBy(object,subject)-true
+http://dbpedia.org/ontology/birthYear(subject,v0) & <(v0,v1) & http://dbpedia.org/ontology/birthYear(object,v1)-true
+http://dbpedia.org/ontology/academicAdvisor(v0,object) & http://dbpedia.org/ontology/notableStudent(object,v0) & http://dbpedia.org/ontology/doctoralAdvisor(subject,object)-false
+http://dbpedia.org/ontology/doctoralAdvisor(object,subject)-true
+http://dbpedia.org/ontology/influencedBy(subject,object) & http://dbpedia.org/ontology/influencedBy(v0,object) & http://dbpedia.org/ontology/notableIdea(v0,v0)-false
+http://dbpedia.org/ontology/author(v0,object) & http://dbpedia.org/ontology/country(v0,http://dbpedia.org/resource/United_States) & http://dbpedia.org/ontology/birthPlace(subject,http://dbpedia.org/resource/United_States)-false
+http://dbpedia.org/ontology/notableStudent(subject,v0) & http://dbpedia.org/ontology/birthYear(v0,v1) & http://dbpedia.org/ontology/birthYear(object,v1)-true
+http://dbpedia.org/ontology/academicAdvisor(object,v0) & http://dbpedia.org/ontology/notableStudent(v0,object) & http://dbpedia.org/ontology/academicAdvisor(object,subject)-true
+http://dbpedia.org/ontology/influencedBy(v0,subject) & http://dbpedia.org/ontology/birthYear(v0,v1) & http://dbpedia.org/ontology/birthYear(object,v1)-true
+http://dbpedia.org/ontology/doctoralStudent(object,v0) & http://dbpedia.org/ontology/doctoralAdvisor(v0,v1) & http://dbpedia.org/ontology/doctoralStudent(subject,v1)-true
+http://dbpedia.org/ontology/county(v0,object) & http://dbpedia.org/ontology/localAuthority(v0,object) & http://dbpedia.org/ontology/country(subject,object)-false
+http://dbpedia.org/ontology/areaTotal(object,v0) & >(v0,v1) & http://dbpedia.org/ontology/areaCode(subject,v1)-false
+http://dbpedia.org/ontology/county(v0,object) & http://dbpedia.org/ontology/localAuthority(v0,object) & http://dbpedia.org/ontology/country(subject,object)-false
+http://dbpedia.org/ontology/areaTotal(object,v0) & >(v0,v1) & http://dbpedia.org/ontology/areaCode(subject,v1)-false
+http://dbpedia.org/ontology/birthYear(subject,v0) & http://dbpedia.org/ontology/serviceStartYear(http://dbpedia.org/resource/Bob_Dole,v0) & http://dbpedia.org/ontology/successor(http://dbpedia.org/resource/Bob_Dole,object)-false
+http://dbpedia.org/ontology/successor(v0,subject) & http://dbpedia.org/ontology/president(object,v0)-false
+http://dbpedia.org/ontology/birthYear(subject,1942-01-01^^http://www.w3.org/2001/XMLSchema#gYear) & =(1942-01-01^^http://www.w3.org/2001/XMLSchema#gYear,1942-01-01^^http://www.w3.org/2001/XMLSchema#gYear) & http://dbpedia.org/ontology/serviceStartYear(object,1942-01-01^^http://www.w3.org/2001/XMLSchema#gYear)-false
+http://dbpedia.org/ontology/successor(object,v0) & http://dbpedia.org/ontology/president(subject,v0)-false
+http://dbpedia.org/ontology/president(object,v0) & http://dbpedia.org/ontology/serviceStartYear(v0,1942-01-01^^http://www.w3.org/2001/XMLSchema#gYear) & http://dbpedia.org/ontology/birthYear(subject,1942-01-01^^http://www.w3.org/2001/XMLSchema#gYear)-false
+http://dbpedia.org/ontology/successor(v0,object) & http://dbpedia.org/ontology/serviceStartYear(v0,v1) & http://dbpedia.org/ontology/birthYear(subject,v1)-true
+http://dbpedia.org/ontology/activeYearsStartYear(object,v0) & <(v0,v1) & http://dbpedia.org/ontology/activeYearsStartYear(subject,v1)-true
+http://dbpedia.org/ontology/associate(subject,v0) & http://dbpedia.org/ontology/associate(v0,object) & http://dbpedia.org/ontology/associate(subject,object)-false
+http://dbpedia.org/ontology/associatedBand(object,subject) & http://dbpedia.org/ontology/associatedMusicalArtist(object,v0) & http://dbpedia.org/ontology/associatedMusicalArtist(v0,v0)-false
+http://dbpedia.org/ontology/associatedBand(object,subject) & http://dbpedia.org/ontology/associatedBand(object,v0) & http://dbpedia.org/ontology/formerBandMember(v0,v0)-false
+http://dbpedia.org/ontology/producer(v0,object) & http://dbpedia.org/ontology/album(v1,v0) & http://dbpedia.org/ontology/producer(v1,subject), http://dbpedia.org/ontology/writer(v0,object) & http://dbpedia.org/ontology/artist(v0,subject)-false
+http://dbpedia.org/ontology/birthPlace(object,v0) & http://dbpedia.org/ontology/recordedIn(v1,v0) & http://dbpedia.org/ontology/artist(v1,subject)-false
+http://dbpedia.org/ontology/producer(v0,object) & http://dbpedia.org/ontology/previousWork(v0,v0) & http://dbpedia.org/ontology/artist(v0,subject)-false
+http://dbpedia.org/ontology/artist(v0,subject) & http://dbpedia.org/ontology/recordedIn(v0,v1) & http://dbpedia.org/ontology/hometown(object,v1)-false
+http://dbpedia.org/ontology/writer(v0,object) & http://dbpedia.org/ontology/previousWork(v0,v1) & http://dbpedia.org/ontology/associatedBand(v1,subject)-false
+http://dbpedia.org/ontology/associatedMusicalArtist(v0,subject) & http://dbpedia.org/ontology/formerBandMember(v0,v0) & http://dbpedia.org/ontology/bandMember(v0,object)-false
+http://dbpedia.org/ontology/associatedBand(v0,object) & http://dbpedia.org/ontology/associatedBand(v0,v0) & http://dbpedia.org/ontology/associatedBand(v0,subject)-false
+http://dbpedia.org/ontology/associatedMusicalArtist(object,subject) & http://dbpedia.org/ontology/associatedMusicalArtist(object,v0) & http://dbpedia.org/ontology/bandMember(v0,v0)-false
+http://dbpedia.org/ontology/writer(v0,object) & http://dbpedia.org/ontology/artist(v0,subject)-false
+http://dbpedia.org/ontology/producer(v0,object) & http://dbpedia.org/ontology/album(v1,v0) & http://dbpedia.org/ontology/producer(v1,subject), http://dbpedia.org/ontology/associatedBand(v0,subject) & http://dbpedia.org/ontology/musicComposer(http://dbpedia.org/resource/Water_(1985_film),v0) & http://dbpedia.org/ontology/producer(http://dbpedia.org/resource/Water_(1985_film),object)-false
+http://dbpedia.org/ontology/birthYear(object,v0) & http://dbpedia.org/ontology/activeYearsStartYear(v1,v0) & http://dbpedia.org/ontology/associatedBand(v1,subject)-false
+http://dbpedia.org/ontology/artist(v0,subject) & http://dbpedia.org/ontology/writer(v0,v1) & http://dbpedia.org/ontology/associatedMusicalArtist(object,v1)-false
+http://dbpedia.org/ontology/producer(v0,subject) & http://dbpedia.org/ontology/genre(v0,http://dbpedia.org/resource/Rapping) & http://dbpedia.org/ontology/occupation(object,http://dbpedia.org/resource/Rapping)-false
+http://dbpedia.org/ontology/genre(object,v0) & http://dbpedia.org/ontology/derivative(v0,v0) & http://dbpedia.org/ontology/genre(subject,v0)-false
+http://dbpedia.org/ontology/associatedMusicalArtist(object,subject) & http://dbpedia.org/ontology/associatedMusicalArtist(object,v0) & http://dbpedia.org/ontology/bandMember(v0,v0)-false
+http://dbpedia.org/ontology/associatedMusicalArtist(v0,object) & http://dbpedia.org/ontology/writer(v1,v0) & http://dbpedia.org/ontology/producer(v1,subject)-false
+http://dbpedia.org/ontology/artist(v0,subject) & http://dbpedia.org/ontology/recordedIn(v0,v1) & http://dbpedia.org/ontology/birthPlace(object,v1)-false
+http://dbpedia.org/ontology/associatedBand(v0,object) & http://dbpedia.org/ontology/associatedBand(v0,v0) & http://dbpedia.org/ontology/associatedBand(v0,subject)-false
+http://dbpedia.org/ontology/associatedMusicalArtist(object,object) & http://dbpedia.org/ontology/producer(v0,object) & http://dbpedia.org/ontology/artist(v0,subject)-false
+http://dbpedia.org/ontology/producer(v0,subject) & http://dbpedia.org/ontology/recordedIn(v0,v1) & http://dbpedia.org/ontology/birthPlace(object,v1)-false
+http://dbpedia.org/ontology/producer(v0,object) & http://dbpedia.org/ontology/album(v1,v0) & http://dbpedia.org/ontology/producer(v1,subject)-false
+http://dbpedia.org/ontology/genre(subject,v0) & !=(v0,v1) & http://dbpedia.org/ontology/genre(object,v1)-false
+http://dbpedia.org/ontology/associatedBand(v0,object) & http://dbpedia.org/ontology/associatedBand(v0,v0) & http://dbpedia.org/ontology/associatedBand(v0,subject)-false
+http://dbpedia.org/ontology/producer(v0,subject) & http://dbpedia.org/ontology/recordedIn(v0,v1) & http://dbpedia.org/ontology/birthPlace(object,v1)-false
+http://dbpedia.org/ontology/associatedMusicalArtist(object,subject) & http://dbpedia.org/ontology/associatedMusicalArtist(object,v0) & http://dbpedia.org/ontology/bandMember(v0,v0)-false
+http://dbpedia.org/ontology/associatedMusicalArtist(v0,object) & http://dbpedia.org/ontology/writer(v1,v0) & http://dbpedia.org/ontology/producer(v1,subject)-false
+http://dbpedia.org/ontology/artist(v0,subject) & http://dbpedia.org/ontology/recordedIn(v0,v1) & http://dbpedia.org/ontology/birthPlace(object,v1)-false
+http://dbpedia.org/ontology/producer(v0,object) & http://dbpedia.org/ontology/album(v1,v0) & http://dbpedia.org/ontology/producer(v1,subject)-false
+http://dbpedia.org/ontology/writer(v0,object) & http://dbpedia.org/ontology/subsequentWork(v0,v1) & http://dbpedia.org/ontology/artist(v1,subject)-false
+http://dbpedia.org/ontology/spouse(v0,object) & http://dbpedia.org/ontology/parent(subject,v0) & http://dbpedia.org/ontology/parent(subject,object)-true
+http://dbpedia.org/ontology/spouse(v0,object) & http://dbpedia.org/ontology/parent(subject,v0) & http://dbpedia.org/ontology/parent(subject,object)-true
+http://dbpedia.org/ontology/spouse(subject,v0) & http://dbpedia.org/ontology/parent(object,v0) & http://dbpedia.org/ontology/successor(subject,object)-true
+http://dbpedia.org/ontology/parent(subject,object)-true
+http://dbpedia.org/ontology/predecessor(v0,object) & http://dbpedia.org/ontology/monarch(v1,v0) & http://dbpedia.org/ontology/successor(subject,v1)-false
+http://dbpedia.org/ontology/predecessor(v0,object) & http://dbpedia.org/ontology/monarch(v1,v0) & http://dbpedia.org/ontology/successor(v1,subject)-false
+http://dbpedia.org/ontology/parent(subject,object), http://dbpedia.org/ontology/spouse(v0,object) & http://dbpedia.org/ontology/parent(subject,v0)-true
+http://dbpedia.org/ontology/parent(subject,object)-true
+http://dbpedia.org/ontology/parent(v0,object) & http://dbpedia.org/ontology/successor(object,v0) & http://dbpedia.org/ontology/parent(object,subject)-true
+http://dbpedia.org/ontology/deathPlace(object,v0) & http://dbpedia.org/ontology/restingPlace(object,v0) & http://dbpedia.org/ontology/successor(object,subject)-true
+http://dbpedia.org/ontology/birthPlace(object,v0) & http://dbpedia.org/ontology/deathPlace(object,v0) & http://dbpedia.org/ontology/predecessor(object,subject)-true
+http://dbpedia.org/ontology/spouse(subject,v0) & http://dbpedia.org/ontology/parent(object,v0) & http://dbpedia.org/ontology/parent(object,subject)-true
+http://dbpedia.org/ontology/spouse(subject,v0) & http://dbpedia.org/ontology/parent(object,v0) & http://dbpedia.org/ontology/successor(subject,object)-true
+http://dbpedia.org/ontology/deathPlace(subject,v0) & http://dbpedia.org/ontology/restingPlace(subject,v0) & http://dbpedia.org/ontology/successor(object,subject)-true
+http://dbpedia.org/ontology/successor(object,subject) & http://dbpedia.org/ontology/spouse(v0,object) & http://dbpedia.org/ontology/parent(subject,v0)-true
+http://dbpedia.org/ontology/parent(subject,object)-true
+http://dbpedia.org/ontology/spouse(subject,v0) & http://dbpedia.org/ontology/parent(object,v0)-true
+http://dbpedia.org/ontology/birthYear(subject,v0) & >(v0,v1) & http://dbpedia.org/ontology/deathDate(object,v1)-true
+http://dbpedia.org/ontology/genre(object,v0) & http://dbpedia.org/ontology/stylisticOrigin(v1,v0) & http://dbpedia.org/ontology/genre(subject,v1)-false
+http://dbpedia.org/ontology/successor(object,v0) & http://dbpedia.org/ontology/monarch(v1,v0) & http://dbpedia.org/ontology/successor(subject,v1)-false
+http://dbpedia.org/ontology/successor(v0,object) & http://dbpedia.org/ontology/monarch(v1,v0) & http://dbpedia.org/ontology/successor(subject,v1)-false
+http://dbpedia.org/ontology/birthPlace(subject,v0) & http://dbpedia.org/ontology/deathPlace(object,v0) & http://dbpedia.org/ontology/predecessor(subject,object)-true
+http://dbpedia.org/ontology/successor(subject,v0) & http://dbpedia.org/ontology/monarch(v0,v1) & http://dbpedia.org/ontology/predecessor(v1,object)-false
+http://dbpedia.org/ontology/successor(subject,v0) & http://dbpedia.org/ontology/monarch(v0,v1) & http://dbpedia.org/ontology/predecessor(object,v1)-false
+http://dbpedia.org/ontology/successor(subject,v0) & http://dbpedia.org/ontology/monarch(v0,v1) & http://dbpedia.org/ontology/parent(v1,object)-false
+http://dbpedia.org/ontology/parent(subject,object)-true
+http://dbpedia.org/ontology/spouse(subject,v0) & http://dbpedia.org/ontology/predecessor(v1,v0) & http://dbpedia.org/ontology/spouse(object,v1)-true
+http://dbpedia.org/ontology/successor(subject,object) & http://dbpedia.org/ontology/parent(object,subject)-true
+http://dbpedia.org/ontology/birthYear(subject,v0) & >(v0,v1) & http://dbpedia.org/ontology/deathDate(object,v1)-true
+http://dbpedia.org/ontology/genre(object,v0) & http://dbpedia.org/ontology/stylisticOrigin(v1,v0) & http://dbpedia.org/ontology/genre(subject,v1)-false
+http://dbpedia.org/ontology/successor(object,v0) & http://dbpedia.org/ontology/monarch(v1,v0) & http://dbpedia.org/ontology/successor(subject,v1)-false
+http://dbpedia.org/ontology/deathPlace(object,v0) & http://dbpedia.org/ontology/restingPlace(object,v0) & http://dbpedia.org/ontology/predecessor(subject,object)-true
+http://dbpedia.org/ontology/spouse(subject,v0) & http://dbpedia.org/ontology/parent(object,v0) & http://dbpedia.org/ontology/parent(object,subject)-true
+http://dbpedia.org/ontology/doctoralAdvisor(v0,object) & http://dbpedia.org/ontology/doctoralStudent(object,v0) & http://dbpedia.org/ontology/doctoralAdvisor(subject,object)-false
+http://dbpedia.org/ontology/nationality(subject,v0) & http://dbpedia.org/ontology/deathPlace(subject,v0) & http://dbpedia.org/ontology/doctoralAdvisor(subject,object)-false
+http://dbpedia.org/ontology/doctoralAdvisor(v0,subject) & http://dbpedia.org/ontology/doctoralStudent(subject,v0) & http://dbpedia.org/ontology/doctoralAdvisor(subject,object)-false
+http://dbpedia.org/ontology/nationality(subject,v0) & http://dbpedia.org/ontology/nationality(object,v0) & http://dbpedia.org/ontology/doctoralAdvisor(subject,object)-false
+http://dbpedia.org/ontology/doctoralStudent(subject,object)-true
+http://dbpedia.org/ontology/academicAdvisor(v0,object) & http://dbpedia.org/ontology/notableStudent(object,v0) & http://dbpedia.org/ontology/doctoralAdvisor(subject,object)-false
+http://dbpedia.org/ontology/influencedBy(v0,subject) & http://dbpedia.org/ontology/influencedBy(v1,v0) & http://dbpedia.org/ontology/influencedBy(v1,object)-true
+http://dbpedia.org/ontology/doctoralAdvisor(object,subject)-true
+http://dbpedia.org/ontology/influencedBy(subject,v0) & http://dbpedia.org/ontology/influencedBy(v1,v0) & http://dbpedia.org/ontology/influenced(v1,object)-false
+http://dbpedia.org/ontology/influenced(subject,object)-true
+http://dbpedia.org/ontology/doctoralAdvisor(subject,object)-false
+http://dbpedia.org/ontology/doctoralAdvisor(object,subject)-true
+http://dbpedia.org/ontology/influenced(subject,object)-false
+http://dbpedia.org/ontology/influencedBy(object,subject)-true
+http://dbpedia.org/ontology/doctoralStudent(subject,object)-true
+http://dbpedia.org/ontology/birthYear(subject,v0) & <(v0,v1) & http://dbpedia.org/ontology/birthYear(object,v1)-true
+http://dbpedia.org/ontology/academicAdvisor(v0,object) & http://dbpedia.org/ontology/notableStudent(object,v0) & http://dbpedia.org/ontology/doctoralAdvisor(subject,object)-false
+http://dbpedia.org/ontology/doctoralAdvisor(subject,object) & http://dbpedia.org/ontology/academicAdvisor(http://dbpedia.org/resource/Antonio_Signorini,object) & http://dbpedia.org/ontology/doctoralStudent(http://dbpedia.org/resource/Antonio_Signorini,http://dbpedia.org/resource/Antonio_Signorini)-false
+http://dbpedia.org/ontology/influencedBy(subject,object) & http://dbpedia.org/ontology/influenced(object,v0) & http://dbpedia.org/ontology/influencedBy(subject,v0)-false
+http://dbpedia.org/ontology/notableStudent(subject,v0) & http://dbpedia.org/ontology/academicAdvisor(v0,subject) & http://dbpedia.org/ontology/academicAdvisor(object,subject)-true
+http://dbpedia.org/ontology/influencedBy(subject,v0) & http://dbpedia.org/ontology/influencedBy(v1,v0) & http://dbpedia.org/ontology/influenced(v1,object)-false
+http://dbpedia.org/ontology/doctoralStudent(v0,object) & http://dbpedia.org/ontology/field(v0,v1) & http://dbpedia.org/ontology/knownFor(subject,v1)-false
+http://dbpedia.org/ontology/academicAdvisor(v0,object) & http://dbpedia.org/ontology/doctoralStudent(subject,v0) & http://dbpedia.org/ontology/doctoralAdvisor(v0,subject)-false
+http://dbpedia.org/ontology/academicAdvisor(v0,object) & http://dbpedia.org/ontology/doctoralAdvisor(v0,subject) & http://dbpedia.org/ontology/doctoralAdvisor(object,subject)-true
+http://dbpedia.org/ontology/influenced(subject,v0) & http://dbpedia.org/ontology/birthYear(v0,v1) & http://dbpedia.org/ontology/birthYear(object,v1)-true
+http://dbpedia.org/ontology/birthYear(subject,v0) & <(v0,v1) & http://dbpedia.org/ontology/birthDate(object,v1)-true
+http://dbpedia.org/ontology/academicAdvisor(v0,object) & http://dbpedia.org/ontology/notableStudent(object,v0) & http://dbpedia.org/ontology/doctoralAdvisor(subject,object)-false
+http://dbpedia.org/ontology/influencedBy(subject,object) & http://dbpedia.org/ontology/influencedBy(v0,object) & http://dbpedia.org/ontology/influenced(v0,object)-false
+http://dbpedia.org/ontology/birthPlace(subject,v0) & http://dbpedia.org/ontology/nationality(subject,v0) & http://dbpedia.org/ontology/doctoralAdvisor(subject,object)-false
+http://dbpedia.org/ontology/doctoralAdvisor(subject,object) & http://dbpedia.org/ontology/award(object,v0) & http://dbpedia.org/ontology/award(subject,v0)-false
+http://dbpedia.org/ontology/influencedBy(subject,object) & http://dbpedia.org/ontology/birthPlace(object,v0) & http://dbpedia.org/ontology/birthPlace(subject,v0)-false
+http://dbpedia.org/ontology/academicAdvisor(object,subject)-true
+http://dbpedia.org/ontology/citizenship(subject,v0) & http://dbpedia.org/ontology/largestCity(v0,v1) & http://dbpedia.org/ontology/birthPlace(object,v1)-false
+http://dbpedia.org/ontology/academicAdvisor(v0,object) & http://dbpedia.org/ontology/doctoralAdvisor(v0,subject) & http://dbpedia.org/ontology/doctoralAdvisor(object,subject)-true
+http://dbpedia.org/ontology/academicAdvisor(v0,object) & http://dbpedia.org/ontology/doctoralStudent(subject,v0) & http://dbpedia.org/ontology/doctoralAdvisor(v0,subject)-true
+http://dbpedia.org/ontology/academicAdvisor(object,v0) & http://dbpedia.org/ontology/notableStudent(subject,v0)-true
+http://dbpedia.org/ontology/birthDate(subject,v0) & <(v0,v1) & http://dbpedia.org/ontology/birthDate(object,v1)-true
+http://dbpedia.org/ontology/doctoralAdvisor(subject,object) & http://dbpedia.org/ontology/academicAdvisor(v0,object) & http://dbpedia.org/ontology/notableStudent(object,v0)-false
+http://dbpedia.org/ontology/influencedBy(subject,object) & http://dbpedia.org/ontology/influencedBy(v0,object) & http://dbpedia.org/ontology/influenced(v0,object)-false
+http://dbpedia.org/ontology/birthPlace(subject,v0) & http://dbpedia.org/ontology/nationality(subject,v0) & http://dbpedia.org/ontology/doctoralAdvisor(subject,object)-false
+http://dbpedia.org/ontology/doctoralAdvisor(subject,object) & http://dbpedia.org/ontology/award(object,v0) & http://dbpedia.org/ontology/award(subject,v0)-false
+http://dbpedia.org/ontology/doctoralAdvisor(object,subject)-true
+http://dbpedia.org/ontology/influencedBy(subject,object) & http://dbpedia.org/ontology/field(object,v0) & http://dbpedia.org/ontology/knownFor(object,v0)-false
+http://dbpedia.org/ontology/academicAdvisor(object,subject)-true
+http://dbpedia.org/ontology/influencedBy(v0,subject) & http://dbpedia.org/ontology/influenced(v0,v1) & http://dbpedia.org/ontology/influencedBy(v1,object)-false
+http://dbpedia.org/ontology/doctoralStudent(subject,v0) & http://dbpedia.org/ontology/birthYear(v0,v1) & http://dbpedia.org/ontology/birthYear(object,v1)-true
+http://dbpedia.org/ontology/notableStudent(subject,v0) & http://dbpedia.org/ontology/birthYear(v0,v1) & http://dbpedia.org/ontology/birthYear(object,v1)-true
+http://dbpedia.org/ontology/birthYear(subject,v0) & <(v0,v1) & http://dbpedia.org/ontology/birthDate(object,v1)-true
+http://dbpedia.org/ontology/doctoralAdvisor(subject,object) & http://dbpedia.org/ontology/academicAdvisor(v0,object) & http://dbpedia.org/ontology/notableStudent(object,v0)-false
+http://dbpedia.org/ontology/doctoralAdvisor(subject,object) & http://dbpedia.org/ontology/nationality(object,v0) & http://dbpedia.org/ontology/nationality(subject,v0)-false
+http://dbpedia.org/ontology/influencedBy(subject,object) & http://dbpedia.org/ontology/influencedBy(v0,object) & http://dbpedia.org/ontology/influenced(v0,object)-false
+http://dbpedia.org/ontology/academicAdvisor(v0,object) & http://dbpedia.org/ontology/academicAdvisor(v0,v1) & http://dbpedia.org/ontology/almaMater(subject,v1)-true
+http://dbpedia.org/ontology/doctoralAdvisor(object,subject)-true
+http://dbpedia.org/ontology/notableStudent(subject,v0) & http://dbpedia.org/ontology/birthYear(v0,v1) & http://dbpedia.org/ontology/birthYear(object,v1)-true
+http://dbpedia.org/ontology/district(subject,v0) & !=(v1,v0) & http://dbpedia.org/ontology/isPartOf(v1,object)-false
+http://dbpedia.org/ontology/country(object,http://dbpedia.org/resource/United_Kingdom) & !=(http://dbpedia.org/resource/United_Kingdom,http://dbpedia.org/resource/England) & http://dbpedia.org/ontology/country(subject,http://dbpedia.org/resource/England)-true
+http://dbpedia.org/ontology/country(subject,object) & http://dbpedia.org/ontology/birthPlace(v0,object) & http://dbpedia.org/ontology/memberOfParliament(object,v0)-false
+http://dbpedia.org/ontology/county(v0,object) & http://dbpedia.org/ontology/localAuthority(v0,object) & http://dbpedia.org/ontology/country(subject,object)-false
+http://dbpedia.org/ontology/country(object,http://dbpedia.org/resource/United_Kingdom) & !=(http://dbpedia.org/resource/United_Kingdom,http://dbpedia.org/resource/England) & http://dbpedia.org/ontology/country(subject,http://dbpedia.org/resource/England)-true
+http://dbpedia.org/ontology/country(subject,object) & http://dbpedia.org/ontology/memberOfParliament(object,v0) & http://dbpedia.org/ontology/birthPlace(v0,object)-false
+http://dbpedia.org/ontology/country(subject,object) & http://dbpedia.org/ontology/county(v0,object) & http://dbpedia.org/ontology/localAuthority(v0,object)-false
+http://dbpedia.org/ontology/PopulatedPlace/areaTotal(object,v0) & <(v0,v1) & http://dbpedia.org/ontology/areaTotal(subject,v1)-false
+http://dbpedia.org/ontology/country(object,http://dbpedia.org/resource/United_Kingdom) & !=(http://dbpedia.org/resource/United_Kingdom,http://dbpedia.org/resource/England) & http://dbpedia.org/ontology/country(subject,http://dbpedia.org/resource/England)-true
+http://dbpedia.org/ontology/country(subject,object) & http://dbpedia.org/ontology/county(v0,object) & http://dbpedia.org/ontology/localAuthority(v0,object)-false
+http://dbpedia.org/ontology/country(object,http://dbpedia.org/resource/United_Kingdom) & !=(http://dbpedia.org/resource/United_Kingdom,http://dbpedia.org/resource/England) & http://dbpedia.org/ontology/country(subject,http://dbpedia.org/resource/England)-true
+http://dbpedia.org/ontology/country(subject,object) & http://dbpedia.org/ontology/county(v0,object) & http://dbpedia.org/ontology/localAuthority(v0,object)-false
+http://dbpedia.org/ontology/country(object,v0) & !=(v0,v1) & http://dbpedia.org/ontology/country(subject,v1)-true
+http://dbpedia.org/ontology/birthDate(subject,v0) & >(v0,v1) & http://dbpedia.org/ontology/deathDate(object,v1)-true
+http://dbpedia.org/ontology/president(v0,object) & http://dbpedia.org/ontology/birthYear(v0,v1) & http://dbpedia.org/ontology/birthYear(subject,v1)-false
+http://dbpedia.org/ontology/president(v0,object) & http://dbpedia.org/ontology/birthYear(v0,v1) & http://dbpedia.org/ontology/birthYear(subject,v1)-false
+http://dbpedia.org/ontology/birthYear(subject,v0) & http://dbpedia.org/ontology/serviceEndYear(http://dbpedia.org/resource/George_H._W._Bush,v0) & http://dbpedia.org/ontology/successor(http://dbpedia.org/resource/George_H._W._Bush,object)-false
+http://dbpedia.org/ontology/relative(v0,object) & http://dbpedia.org/ontology/occupation(v0,http://dbpedia.org/resource/United_States) & http://dbpedia.org/ontology/birthPlace(subject,http://dbpedia.org/resource/United_States)-false
+http://dbpedia.org/ontology/serviceStartYear(object,v0) & <(v0,v1) & http://dbpedia.org/ontology/serviceStartYear(subject,v1), http://dbpedia.org/ontology/successor(object,v0) & http://dbpedia.org/ontology/president(subject,v0)-true
+http://dbpedia.org/ontology/serviceStartYear(subject,v0) & http://dbpedia.org/ontology/serviceStartYear(v1,v0) & http://dbpedia.org/ontology/successor(object,v1)-true
+http://dbpedia.org/ontology/birthDate(object,v0) & <(v0,v1) & http://dbpedia.org/ontology/birthDate(subject,v1)-true
+http://dbpedia.org/ontology/genre(object,v0) & http://dbpedia.org/ontology/stylisticOrigin(v1,v0) & http://dbpedia.org/ontology/genre(subject,v1)-true
+http://dbpedia.org/ontology/birthDate(subject,v0) & >(v0,v1) & http://dbpedia.org/ontology/birthDate(object,v1)-true
+http://dbpedia.org/ontology/successor(object,v0) & http://dbpedia.org/ontology/country(v0,v1) & http://dbpedia.org/ontology/deathPlace(subject,v1)-false
+http://dbpedia.org/ontology/activeYearsStartDate(subject,v0) & http://dbpedia.org/ontology/activeYearsEndDate(subject,v0) & http://dbpedia.org/ontology/successor(object,subject)-true
+http://dbpedia.org/ontology/genre(subject,v0) & http://dbpedia.org/ontology/stylisticOrigin(v0,v1) & http://dbpedia.org/ontology/genre(object,v1)-true
+http://dbpedia.org/ontology/president(subject,v0) & http://dbpedia.org/ontology/birthYear(v0,v1) & http://dbpedia.org/ontology/birthYear(object,v1)-false
+http://dbpedia.org/ontology/successor(v0,object) & http://dbpedia.org/ontology/primeMinister(v0,v1) & http://dbpedia.org/ontology/successor(v1,subject)-false
+http://dbpedia.org/ontology/deathPlace(subject,v0) & http://dbpedia.org/ontology/country(subject,v0) & http://dbpedia.org/ontology/successor(subject,object)-false
+http://dbpedia.org/ontology/religion(object,v0) & http://dbpedia.org/ontology/religion(subject,v0) & http://dbpedia.org/ontology/successor(object,subject)-true
+http://dbpedia.org/ontology/birthDate(subject,v0) & >(v0,v1) & http://dbpedia.org/ontology/birthDate(object,v1)-true
+http://dbpedia.org/ontology/activeYearsStartYear(object,v0) & <(v0,v1) & http://dbpedia.org/ontology/activeYearsStartYear(subject,v1)-true
+http://dbpedia.org/ontology/president(subject,v0) & http://dbpedia.org/ontology/birthYear(v0,v1) & http://dbpedia.org/ontology/birthYear(object,v1)-false
+http://dbpedia.org/ontology/birthPlace(subject,v0) & http://dbpedia.org/ontology/residence(v1,v0) & http://dbpedia.org/ontology/parent(v1,object)-false
+http://dbpedia.org/ontology/genre(subject,v0) & http://dbpedia.org/ontology/stylisticOrigin(v0,v1) & http://dbpedia.org/ontology/genre(object,v1)-true
+http://dbpedia.org/ontology/activeYearsStartDate(subject,v0) & http://dbpedia.org/ontology/activeYearsEndDate(subject,v0) & http://dbpedia.org/ontology/successor(object,subject)-true
+http://dbpedia.org/ontology/deathPlace(subject,v0) & http://dbpedia.org/ontology/country(v1,v0) & http://dbpedia.org/ontology/successor(object,v1)-false
+http://dbpedia.org/ontology/associatedBand(v0,subject) & http://dbpedia.org/ontology/deathPlace(v0,v1) & http://dbpedia.org/ontology/hometown(object,v1)-false
+http://dbpedia.org/ontology/associatedMusicalArtist(object,subject) & http://dbpedia.org/ontology/associatedMusicalArtist(object,v0) & http://dbpedia.org/ontology/formerBandMember(v0,v0)-false
+http://dbpedia.org/ontology/associatedBand(v0,object) & http://dbpedia.org/ontology/associatedBand(v0,v0) & http://dbpedia.org/ontology/associatedMusicalArtist(v0,subject)-false
+http://dbpedia.org/ontology/associatedMusicalArtist(v0,subject) & http://dbpedia.org/ontology/associatedMusicalArtist(v0,v0) & http://dbpedia.org/ontology/associatedMusicalArtist(object,v0)-false
+http://dbpedia.org/ontology/nationality(object,http://dbpedia.org/resource/United_States) & http://dbpedia.org/ontology/residence(v1,http://dbpedia.org/resource/United_States) & http://dbpedia.org/ontology/keyPerson(subject,v1)-false
+http://dbpedia.org/ontology/commander(v0,object) & http://dbpedia.org/ontology/territory(v0,http://dbpedia.org/resource/Ottoman_Empire) & http://dbpedia.org/ontology/country(subject,http://dbpedia.org/resource/Ottoman_Empire)-false
+http://dbpedia.org/ontology/associatedMusicalArtist(object,subject) & http://dbpedia.org/ontology/associatedBand(object,v0) & http://dbpedia.org/ontology/associatedMusicalArtist(v0,subject)-false
+http://dbpedia.org/ontology/associatedBand(v0,subject) & http://dbpedia.org/ontology/musicComposer(v1,v0) & http://dbpedia.org/ontology/producer(v1,object)-false
+http://dbpedia.org/ontology/birthPlace(object,v0) & http://dbpedia.org/ontology/recordedIn(v1,v0) & http://dbpedia.org/ontology/producer(v1,subject)-false
+http://dbpedia.org/ontology/bandMember(v0,object) & http://dbpedia.org/ontology/formerBandMember(v0,v0) & http://dbpedia.org/ontology/associatedMusicalArtist(v0,subject)-false
+http://dbpedia.org/ontology/artist(v0,subject) & http://dbpedia.org/ontology/subsequentWork(v1,v0) & http://dbpedia.org/ontology/writer(v1,object)-false
+http://dbpedia.org/ontology/associatedBand(v0,subject) & http://dbpedia.org/ontology/associatedBand(v0,v0) & http://dbpedia.org/ontology/formerBandMember(v0,object)-false
+http://dbpedia.org/ontology/associatedBand(object,v0) & http://dbpedia.org/ontology/associatedMusicalArtist(v0,v0) & http://dbpedia.org/ontology/associatedBand(v0,subject)-false
+http://dbpedia.org/ontology/associatedBand(v0,subject) & http://dbpedia.org/ontology/activeYearsStartYear(v0,1995-01-01^^http://www.w3.org/2001/XMLSchema#gYear) & http://dbpedia.org/ontology/birthYear(object,1995-01-01^^http://www.w3.org/2001/XMLSchema#gYear)-false
+http://dbpedia.org/ontology/producer(v0,subject) & http://dbpedia.org/ontology/genre(v0,v1) & http://dbpedia.org/ontology/occupation(object,v1)-false
+http://dbpedia.org/ontology/associatedBand(object,subject) & http://dbpedia.org/ontology/associatedMusicalArtist(object,v0) & http://dbpedia.org/ontology/associatedBand(v0,v0)-false
+http://dbpedia.org/ontology/genre(subject,v0) & http://dbpedia.org/ontology/occupation(v1,v0) & http://dbpedia.org/ontology/associatedMusicalArtist(object,v1)-false
+http://dbpedia.org/ontology/genre(object,v0) & http://dbpedia.org/ontology/musicSubgenre(v0,v0) & http://dbpedia.org/ontology/genre(subject,v0)-false
+http://dbpedia.org/ontology/spouse(v0,object) & http://dbpedia.org/ontology/parent(subject,v0) & http://dbpedia.org/ontology/successor(object,subject)-true
+http://dbpedia.org/ontology/spouse(v0,object) & http://dbpedia.org/ontology/spouse(subject,v0) & http://dbpedia.org/ontology/predecessor(subject,object)-true
+http://dbpedia.org/ontology/activeYearsEndYear(object,v0) & http://dbpedia.org/ontology/deathYear(object,v0) & http://dbpedia.org/ontology/parent(object,subject)-true
+http://dbpedia.org/ontology/birthPlace(subject,v0) & http://dbpedia.org/ontology/restingPlace(object,v0) & http://dbpedia.org/ontology/successor(object,subject)-true
+http://dbpedia.org/ontology/parent(object,v0) & http://dbpedia.org/ontology/spouse(v0,subject) & http://dbpedia.org/ontology/successor(subject,object)-true
+http://dbpedia.org/ontology/birthPlace(object,v0) & http://dbpedia.org/ontology/deathPlace(subject,v0) & http://dbpedia.org/ontology/parent(object,subject)-true
+http://dbpedia.org/ontology/parent(object,v0) & http://dbpedia.org/ontology/spouse(v0,subject) & http://dbpedia.org/ontology/parent(object,subject)-true
+http://dbpedia.org/ontology/successor(subject,object) & http://dbpedia.org/ontology/predecessor(object,subject) & http://dbpedia.org/ontology/parent(object,subject)-true
+http://dbpedia.org/ontology/deathPlace(object,v0) & http://dbpedia.org/ontology/deathPlace(subject,v0) & http://dbpedia.org/ontology/parent(object,subject)-true
+http://dbpedia.org/ontology/commander(v0,subject) & http://dbpedia.org/ontology/isPartOfMilitaryConflict(v0,http://dbpedia.org/resource/Mughal_Empire) & http://dbpedia.org/ontology/deathPlace(object,http://dbpedia.org/resource/Mughal_Empire)-false
+http://dbpedia.org/ontology/activeYearsStartYear(object,v0) & http://dbpedia.org/ontology/activeYearsEndYear(object,v0) & http://dbpedia.org/ontology/parent(object,subject)-true
+http://dbpedia.org/ontology/parent(v0,object) & http://dbpedia.org/ontology/predecessor(v0,object) & http://dbpedia.org/ontology/parent(object,subject)-true
+http://dbpedia.org/ontology/parent(subject,v0) & http://dbpedia.org/ontology/successor(v0,subject) & http://dbpedia.org/ontology/parent(object,subject)-true
+http://dbpedia.org/ontology/successor(subject,v0) & http://dbpedia.org/ontology/leader(v1,v0) & http://dbpedia.org/ontology/party(object,v1)-false
+http://dbpedia.org/ontology/birthPlace(object,v0) & http://dbpedia.org/ontology/deathPlace(subject,v0) & http://dbpedia.org/ontology/predecessor(subject,object)-true
+http://dbpedia.org/ontology/deathYear(object,v0) & http://dbpedia.org/ontology/activeYearsEndYear(object,v0) & http://dbpedia.org/ontology/parent(object,subject)-true
+http://dbpedia.org/ontology/genre(subject,v0) & http://dbpedia.org/ontology/musicFusionGenre(v0,v1) & http://dbpedia.org/ontology/genre(object,v1)-false
+http://dbpedia.org/ontology/deathDate(object,v0) & http://dbpedia.org/ontology/deathYear(object,v0) & http://dbpedia.org/ontology/successor(subject,object)-false
+http://dbpedia.org/ontology/spouse(subject,v0) & http://dbpedia.org/ontology/parent(object,v0) & http://dbpedia.org/ontology/child(v0,object)-true
+http://dbpedia.org/ontology/predecessor(subject,object) & http://dbpedia.org/ontology/spouse(v0,object) & http://dbpedia.org/ontology/parent(subject,v0)-true
+http://dbpedia.org/ontology/predecessor(subject,object) & http://dbpedia.org/ontology/restingPlace(object,v0) & http://dbpedia.org/ontology/birthPlace(object,v0)-true
+http://dbpedia.org/ontology/termPeriod(object,v0) & http://dbpedia.org/ontology/office(v0,v1) & http://dbpedia.org/ontology/orderInOffice(subject,v1)-false
+http://dbpedia.org/ontology/successor(subject,object) & http://dbpedia.org/ontology/parent(object,v0) & http://dbpedia.org/ontology/spouse(subject,v0)-true
+http://dbpedia.org/ontology/office(object,v0) & http://dbpedia.org/ontology/orderInOffice(subject,v0) & http://dbpedia.org/ontology/successor(subject,object)-true
+http://dbpedia.org/ontology/spouse(object,v0) & http://dbpedia.org/ontology/parent(subject,v0)-true
+http://dbpedia.org/ontology/parent(object,v0) & http://dbpedia.org/ontology/parent(v0,subject)-true
+http://dbpedia.org/ontology/party(subject,v0) & http://dbpedia.org/ontology/mergedIntoParty(v1,v0) & http://dbpedia.org/ontology/party(object,v1)-false
+http://dbpedia.org/ontology/monarch(v0,object) & http://dbpedia.org/ontology/serviceStartYear(v0,v1) & http://dbpedia.org/ontology/birthYear(subject,v1)-false
+http://dbpedia.org/ontology/predecessor(object,subject) & http://dbpedia.org/ontology/parent(object,v0) & http://dbpedia.org/ontology/parent(subject,v0)-true
+http://dbpedia.org/ontology/birthPlace(object,v0) & http://dbpedia.org/ontology/restingPlace(object,v0) & http://dbpedia.org/ontology/predecessor(subject,object)-true
+http://dbpedia.org/ontology/successor(subject,v0) & http://dbpedia.org/ontology/monarch(v0,v1) & http://dbpedia.org/ontology/successor(v1,object)-false
+http://dbpedia.org/ontology/notableWork(object,v0) & http://dbpedia.org/ontology/series(v1,v0) & http://dbpedia.org/ontology/spouse(subject,v1)-false
+http://dbpedia.org/ontology/spouse(object,v0) & http://dbpedia.org/ontology/spouse(subject,v0) & http://dbpedia.org/ontology/successor(object,subject)-true
+http://dbpedia.org/ontology/predecessor(subject,object) & http://dbpedia.org/ontology/parent(v0,object) & http://dbpedia.org/ontology/spouse(subject,v0)-true
+http://dbpedia.org/ontology/spouse(object,v0) & http://dbpedia.org/ontology/spouse(subject,v0) & http://dbpedia.org/ontology/successor(subject,object)-true
+http://dbpedia.org/ontology/successor(v0,object) & http://dbpedia.org/ontology/primeMinister(v0,v1) & http://dbpedia.org/ontology/successor(subject,v1)-false
+http://dbpedia.org/ontology/deathYear(object,v0) & http://dbpedia.org/ontology/activeYearsEndYear(object,v0) & http://dbpedia.org/ontology/parent(subject,object)-true
+http://dbpedia.org/ontology/spouse(v0,object) & http://dbpedia.org/ontology/activeYearsEndYear(v0,v1) & http://dbpedia.org/ontology/birthYear(subject,v1)-false
+http://dbpedia.org/ontology/spouse(subject,v0) & http://dbpedia.org/ontology/spouse(v0,subject) & http://dbpedia.org/ontology/parent(object,subject)-true
+http://dbpedia.org/ontology/parent(object,v0) & http://dbpedia.org/ontology/spouse(v0,subject) & http://dbpedia.org/ontology/predecessor(object,subject)-true
+http://dbpedia.org/ontology/successor(subject,object) & http://dbpedia.org/ontology/parent(object,v0) & http://dbpedia.org/ontology/successor(v0,subject)-true
+http://dbpedia.org/ontology/spouse(subject,v0) & http://dbpedia.org/ontology/parent(v0,v1) & http://dbpedia.org/ontology/spouse(object,v1)-true
+http://dbpedia.org/ontology/successor(object,v0) & http://dbpedia.org/ontology/monarch(v1,v0) & http://dbpedia.org/ontology/successor(v1,subject)-false
+http://dbpedia.org/ontology/spouse(object,v0) & http://dbpedia.org/ontology/predecessor(v0,v1) & http://dbpedia.org/ontology/spouse(subject,v1)-true
+http://dbpedia.org/ontology/predecessor(object,subject) & http://dbpedia.org/ontology/parent(object,v0) & http://dbpedia.org/ontology/predecessor(subject,v0)-true
+http://dbpedia.org/ontology/doctoralAdvisor(v0,object) & http://dbpedia.org/ontology/notableStudent(object,v0) & http://dbpedia.org/ontology/doctoralAdvisor(subject,object)-false
+http://dbpedia.org/ontology/doctoralAdvisor(subject,object) & http://dbpedia.org/ontology/doctoralAdvisor(v0,object) & http://dbpedia.org/ontology/notableStudent(object,v0)-false
+http://dbpedia.org/ontology/doctoralAdvisor(subject,object) & http://dbpedia.org/ontology/doctoralAdvisor(http://dbpedia.org/resource/Nazir_Ahmed_(physicist),object) & http://dbpedia.org/ontology/influencedBy(http://dbpedia.org/resource/Nazir_Ahmed_(physicist),object)-false
+http://dbpedia.org/ontology/field(object,v0) & http://dbpedia.org/ontology/field(subject,v0) & http://dbpedia.org/ontology/doctoralAdvisor(subject,object)-false
+http://dbpedia.org/ontology/doctoralAdvisor(subject,object) & http://dbpedia.org/ontology/doctoralAdvisor(object,v0) & http://dbpedia.org/ontology/doctoralAdvisor(subject,v0)-false
+http://dbpedia.org/ontology/field(object,v0) & http://dbpedia.org/ontology/mainInterest(v1,v0) & http://dbpedia.org/ontology/influencedBy(subject,v1)-false
+http://dbpedia.org/ontology/doctoralStudent(subject,v0) & http://dbpedia.org/ontology/doctoralAdvisor(v0,subject) & http://dbpedia.org/ontology/doctoralAdvisor(subject,object)-false
+http://dbpedia.org/ontology/doctoralAdvisor(subject,object) & http://dbpedia.org/ontology/doctoralStudent(v0,object) & http://dbpedia.org/ontology/doctoralAdvisor(subject,v0) -false
+http://dbpedia.org/ontology/influencedBy(http://dbpedia.org/resource/Gunnar_Nordström,object) & http://dbpedia.org/ontology/influenced(http://dbpedia.org/resource/Gunnar_Nordström,object) & http://dbpedia.org/ontology/influencedBy(subject,object)-false
+http://dbpedia.org/ontology/deathPlace(object,v0) & http://dbpedia.org/ontology/deathPlace(subject,v0) & http://dbpedia.org/ontology/doctoralAdvisor(subject,object)-false
+http://dbpedia.org/ontology/birthPlace(object,v0) & http://dbpedia.org/ontology/deathPlace(object,v0) & http://dbpedia.org/ontology/influencedBy(subject,object)-false
+http://dbpedia.org/ontology/birthPlace(subject,v0) & http://dbpedia.org/ontology/citizenship(subject,v0) & http://dbpedia.org/ontology/doctoralStudent(object,subject)-false
+http://dbpedia.org/ontology/doctoralStudent(subject,v0) & http://dbpedia.org/ontology/deathYear(v0,v1) & http://dbpedia.org/ontology/deathYear(object,v1)-true
+http://dbpedia.org/ontology/influencedBy(v0,object) & http://dbpedia.org/ontology/influencedBy(v0,v1) & http://dbpedia.org/ontology/notableStudent(subject,v1)-false
+http://dbpedia.org/ontology/influenced(subject,v0) & http://dbpedia.org/ontology/stateOfOrigin(v0,v1) & http://dbpedia.org/ontology/nationality(object,v1)-false
+http://dbpedia.org/ontology/academicAdvisor(v0,subject) & http://dbpedia.org/ontology/influencedBy(v1,v0) & http://dbpedia.org/ontology/influencedBy(v1,object)-false
+http://dbpedia.org/ontology/notableStudent(subject,v0) & http://dbpedia.org/ontology/deathYear(v0,v1) & http://dbpedia.org/ontology/deathYear(object,v1)-true
+http://dbpedia.org/ontology/field(subject,v0) & http://dbpedia.org/ontology/field(object,v0) & http://dbpedia.org/ontology/academicAdvisor(object,subject)-true
+http://dbpedia.org/ontology/birthPlace(subject,v0) & http://dbpedia.org/ontology/residence(object,v0) & http://dbpedia.org/ontology/citizenship(object,v0)-false
+http://dbpedia.org/ontology/birthPlace(subject,v0) & http://dbpedia.org/ontology/nationality(subject,v0) & http://dbpedia.org/ontology/doctoralStudent(subject,object)-true
+http://dbpedia.org/ontology/knownFor(subject,v0) & http://dbpedia.org/ontology/knownFor(v1,v0) & http://dbpedia.org/ontology/doctoralAdvisor(object,v1)-false
+http://dbpedia.org/ontology/doctoralAdvisor(subject,object) & http://dbpedia.org/ontology/doctoralStudent(object,object)-false
+http://dbpedia.org/ontology/influenced(subject,v0) & http://dbpedia.org/ontology/nationality(v0,v1) & http://dbpedia.org/ontology/residence(object,v1)-false
+http://dbpedia.org/ontology/academicAdvisor(v0,subject) & http://dbpedia.org/ontology/notableStudent(subject,v0) & http://dbpedia.org/ontology/notableStudent(subject,object)-true
+http://dbpedia.org/ontology/notableStudent(subject,v0) & http://dbpedia.org/ontology/academicAdvisor(v0,subject) & http://dbpedia.org/ontology/notableStudent(subject,object)-true
+http://dbpedia.org/ontology/doctoralAdvisor(object,v0) & http://dbpedia.org/ontology/citizenship(v0,v1) & http://dbpedia.org/ontology/residence(subject,v1)-false
+http://dbpedia.org/ontology/residence(subject,v0) & http://dbpedia.org/ontology/citizenship(v1,v0) & http://dbpedia.org/ontology/doctoralStudent(v1,object)-false
+http://dbpedia.org/ontology/doctoralAdvisor(subject,object) & http://dbpedia.org/ontology/birthPlace(object,v0) & http://dbpedia.org/ontology/nationality(subject,v0)-false
+http://dbpedia.org/ontology/influencedBy(subject,object) & http://dbpedia.org/ontology/influencedBy(http://dbpedia.org/resource/Hilary_Putnam,object) & http://dbpedia.org/ontology/notableIdea(http://dbpedia.org/resource/Hilary_Putnam,http://dbpedia.org/resource/Hilary_Putnam)-false
+http://dbpedia.org/ontology/doctoralAdvisor(subject,object) & http://dbpedia.org/ontology/residence(object,v0) & http://dbpedia.org/ontology/residence(subject,v0)-false
+http://dbpedia.org/ontology/birthYear(object,v0) & http://dbpedia.org/ontology/birthYear(v1,v0) & http://dbpedia.org/ontology/doctoralAdvisor(v1,subject)-true
+http://dbpedia.org/ontology/doctoralAdvisor(subject,object) & http://dbpedia.org/ontology/doctoralAdvisor(v0,object) & http://dbpedia.org/ontology/doctoralStudent(v0,v0)-false
+http://dbpedia.org/ontology/knownFor(object,v0) & http://dbpedia.org/ontology/deathPlace(v1,v0) & http://dbpedia.org/ontology/doctoralStudent(subject,v1)-false
+http://dbpedia.org/ontology/doctoralAdvisor(v0,subject) & http://dbpedia.org/ontology/doctoralAdvisor(v1,v0) & http://dbpedia.org/ontology/academicAdvisor(v1,object)-true
+http://dbpedia.org/ontology/academicAdvisor(v0,object) & http://dbpedia.org/ontology/notableStudent(v1,v0) & http://dbpedia.org/ontology/notableStudent(subject,v1)-true
+http://dbpedia.org/ontology/knownFor(object,v0) & http://dbpedia.org/ontology/field(v1,v0) & http://dbpedia.org/ontology/academicAdvisor(v1,subject)-false
+http://dbpedia.org/ontology/influencedBy(subject,v0) & http://dbpedia.org/ontology/influenced(v1,v0) & http://dbpedia.org/ontology/influencedBy(v1,object)-true
+http://dbpedia.org/ontology/residence(object,v0) & http://dbpedia.org/ontology/nationality(v1,v0) & http://dbpedia.org/ontology/influenced(subject,v1)-false
+http://dbpedia.org/ontology/academicAdvisor(v0,object) & http://dbpedia.org/ontology/academicAdvisor(v0,v1) & http://dbpedia.org/ontology/doctoralStudent(subject,v1)-true
+http://dbpedia.org/ontology/academicAdvisor(v0,object) & http://dbpedia.org/ontology/academicAdvisor(v0,v1) & http://dbpedia.org/ontology/doctoralAdvisor(v1,subject)-true
+http://dbpedia.org/ontology/academicAdvisor(v0,object) & http://dbpedia.org/ontology/doctoralAdvisor(v0,v1) & http://dbpedia.org/ontology/doctoralStudent(subject,v1)-true
+http://dbpedia.org/ontology/citizenship(subject,v0) & http://dbpedia.org/ontology/largestCity(v0,http://dbpedia.org/resource/New_York_City) & http://dbpedia.org/ontology/birthPlace(object,http://dbpedia.org/resource/New_York_City)-false
+http://dbpedia.org/ontology/influencedBy(v0,object) & http://dbpedia.org/ontology/influencedBy(v0,v1) & http://dbpedia.org/ontology/influencedBy(v1,subject)-true
+http://dbpedia.org/ontology/doctoralAdvisor(v0,subject) & http://dbpedia.org/ontology/deathPlace(v0,v1) & http://dbpedia.org/ontology/residence(object,v1)-false
+http://dbpedia.org/ontology/country(subject,object) & http://dbpedia.org/ontology/country(http://dbpedia.org/resource/Saundby,object) & http://dbpedia.org/ontology/district(http://dbpedia.org/resource/Saundby,object)-false
+http://dbpedia.org/ontology/birthPlace(v0,object) & http://dbpedia.org/ontology/memberOfParliament(object,v0) & http://dbpedia.org/ontology/country(subject,object)-false
+http://dbpedia.org/ontology/country(subject,object) & http://dbpedia.org/ontology/birthPlace(v0,object) & http://dbpedia.org/ontology/associatedBand(v0,v0)-false
+http://dbpedia.org/ontology/populationTotal(subject,v0) & >(v0,v1) & http://dbpedia.org/ontology/PopulatedPlace/areaTotal(object,v1)-false
+http://dbpedia.org/ontology/areaTotal(subject,v0) & >(v0,v1) & http://dbpedia.org/ontology/PopulatedPlace/areaTotal(object,v1)-false
+http://dbpedia.org/ontology/president(v0,object) & http://dbpedia.org/ontology/region(v0,v1) & http://dbpedia.org/ontology/birthPlace(subject,v1)-false
+http://dbpedia.org/ontology/birthYear(subject,v0) & http://dbpedia.org/ontology/birthDate(subject,v0) & http://dbpedia.org/ontology/associate(subject,object)-false
+http://dbpedia.org/ontology/successor(v0,subject) & http://dbpedia.org/ontology/primeMinister(object,v0)-false
+http://dbpedia.org/ontology/successor(subject,object) & http://dbpedia.org/ontology/associate(v0,object) & http://dbpedia.org/ontology/associate(subject,v0)-false
+http://dbpedia.org/ontology/activeYearsEndDate(object,v0) & <(v0,v1) & http://dbpedia.org/ontology/activeYearsStartDate(subject,v1)-true
+http://dbpedia.org/ontology/successor(subject,v0) & http://dbpedia.org/ontology/governor(v0,v1) & http://dbpedia.org/ontology/successor(object,v1)-false
+http://dbpedia.org/ontology/birthYear(subject,v0) & =(v0,v0) & http://dbpedia.org/ontology/serviceStartYear(object,v0)-true
+http://dbpedia.org/ontology/birthYear(subject,v0) & http://dbpedia.org/ontology/serviceEndYear(v1,v0) & http://dbpedia.org/ontology/president(v1,object)-true
+http://dbpedia.org/ontology/birthPlace(object,http://dbpedia.org/resource/California_(Belinda_Carlisle_song)) & http://dbpedia.org/ontology/genre(http://dbpedia.org/resource/California_(Belinda_Carlisle_song),http://dbpedia.org/resource/Pop_music) & http://dbpedia.org/ontology/genre(subject,http://dbpedia.org/resource/Pop_music)-false
+http://dbpedia.org/ontology/genre(object,v0) & http://dbpedia.org/ontology/musicFusionGenre(v0,v1) & http://dbpedia.org/ontology/genre(subject,v1)-false
+http://dbpedia.org/ontology/relation(subject,object) & http://dbpedia.org/ontology/relation(v0,object) & http://dbpedia.org/ontology/child(subject,v0)-false
+http://dbpedia.org/ontology/monarch(subject,v0) & http://dbpedia.org/ontology/successor(v1,v0) & http://dbpedia.org/ontology/parent(object,v1)-false
+http://dbpedia.org/ontology/birthPlace(subject,v0) & http://dbpedia.org/ontology/stateOfOrigin(v1,v0) & http://dbpedia.org/ontology/child(v1,object)-false
+http://dbpedia.org/ontology/activeYearsEndDate(subject,v0) & http://dbpedia.org/ontology/activeYearsStartDate(subject,v0) & http://dbpedia.org/ontology/successor(object,subject)-false
+http://dbpedia.org/ontology/president(subject,v0) & http://dbpedia.org/ontology/relative(http://dbpedia.org/resource/Julie_Nixon_Eisenhower,v0) & http://dbpedia.org/ontology/child(object,http://dbpedia.org/resource/Julie_Nixon_Eisenhower)-false
+http://dbpedia.org/ontology/deathPlace(subject,v0) & http://dbpedia.org/ontology/restingPlace(http://dbpedia.org/resource/Naile_Sultan,v0) & http://dbpedia.org/ontology/parent(http://dbpedia.org/resource/Naile_Sultan,object)-false
+http://dbpedia.org/ontology/birthDate(subject,v0) & >(v0,v1) & http://dbpedia.org/ontology/birthYear(object,v1)-true
+http://dbpedia.org/ontology/child(v0,object) & http://dbpedia.org/ontology/associate(v0,http://dbpedia.org/resource/Samuel_Hayes_(settler)) & http://dbpedia.org/ontology/spouse(subject,http://dbpedia.org/resource/Samuel_Hayes_(settler))-false
+http://dbpedia.org/ontology/party(subject,v0) & http://dbpedia.org/ontology/otherParty(v1,v0) & http://dbpedia.org/ontology/child(v1,object)-false
+http://dbpedia.org/ontology/successor(v0,object) & http://dbpedia.org/ontology/deputy(v1,v0) & http://dbpedia.org/ontology/successor(subject,v1)-true
+http://dbpedia.org/ontology/deathDate(subject,v0) & http://dbpedia.org/ontology/activeYearsEndDate(subject,v0) & http://dbpedia.org/ontology/spouse(object,subject)-true
+http://dbpedia.org/ontology/genre(object,v0) & http://dbpedia.org/ontology/derivative(v0,http://dbpedia.org/resource/Pinoy_rock) & http://dbpedia.org/ontology/genre(subject,http://dbpedia.org/resource/Pinoy_rock)-true
+http://dbpedia.org/ontology/serviceStartYear(subject,v0) & >(v0,v1) & http://dbpedia.org/ontology/activeYearsStartDate(object,v1)-true
+http://dbpedia.org/ontology/relative(subject,http://dbpedia.org/resource/The_O.C._(season_4)) & http://dbpedia.org/ontology/lastAppearance(subject,http://dbpedia.org/resource/The_O.C._(season_4)) & http://dbpedia.org/ontology/relative(subject,object)-false
+http://dbpedia.org/ontology/relative(subject,object) & http://dbpedia.org/ontology/series(object,http://dbpedia.org/resource/Big_Love) & http://dbpedia.org/ontology/starring(http://dbpedia.org/resource/Big_Love,http://dbpedia.org/resource/Big_Love)-false
+http://dbpedia.org/ontology/birthPlace(subject,v0) & http://dbpedia.org/ontology/residence(http://dbpedia.org/resource/Chelsea_Clinton,v0) & http://dbpedia.org/ontology/parent(http://dbpedia.org/resource/Chelsea_Clinton,object)-false
+http://dbpedia.org/ontology/deathDate(object,v0) & http://dbpedia.org/ontology/deathYear(object,v0) & http://dbpedia.org/ontology/spouse(subject,object)-true
+http://dbpedia.org/ontology/relative(subject,object) & http://dbpedia.org/ontology/lastAppearance(object,http://dbpedia.org/resource/The_O.C._(season_4)) & http://dbpedia.org/ontology/relative(subject,http://dbpedia.org/resource/The_O.C._(season_4))-false
+http://dbpedia.org/ontology/primeMinister(subject,v0) & http://dbpedia.org/ontology/president(v0,v1) & http://dbpedia.org/ontology/successor(object,v1)-false
+http://dbpedia.org/ontology/spouse(subject,v0) & http://dbpedia.org/ontology/successor(http://dbpedia.org/resource/Matthew_Marvin,_Jr.,v0) & http://dbpedia.org/ontology/spouse(object,http://dbpedia.org/resource/Matthew_Marvin,_Jr.)-true
+http://dbpedia.org/ontology/successor(v0,object) & http://dbpedia.org/ontology/serviceStartYear(v0,1942-01-01^^http://www.w3.org/2001/XMLSchema#gYear) & http://dbpedia.org/ontology/birthYear(subject,1942-01-01^^http://www.w3.org/2001/XMLSchema#gYear)-false
+http://dbpedia.org/ontology/genre(object,v0) & http://dbpedia.org/ontology/derivative(v0,v1) & http://dbpedia.org/ontology/genre(subject,v1)-true
+http://dbpedia.org/ontology/successor(v0,object) & http://dbpedia.org/ontology/monarch(subject,v0)-false
+http://dbpedia.org/ontology/country(object,v0) & http://dbpedia.org/ontology/capital(v0,v1) & http://dbpedia.org/ontology/birthPlace(subject,v1)-false
+http://dbpedia.org/ontology/president(subject,v0) & http://dbpedia.org/ontology/birthYear(v0,1913-01-01^^http://www.w3.org/2001/XMLSchema#gYear) & http://dbpedia.org/ontology/birthYear(object,1913-01-01^^http://www.w3.org/2001/XMLSchema#gYear)-false
+http://dbpedia.org/ontology/birthPlace(subject,v0) & http://dbpedia.org/ontology/deathPlace(subject,v0) & http://dbpedia.org/ontology/spouse(subject,object)-true
+http://dbpedia.org/ontology/child(subject,v0) & http://dbpedia.org/ontology/child(v0,subject) & http://dbpedia.org/ontology/successor(subject,object)-false
+http://dbpedia.org/ontology/successor(v0,object) & http://dbpedia.org/ontology/associate(v0,v1) & http://dbpedia.org/ontology/spouse(subject,v1)-false
+http://dbpedia.org/ontology/birthPlace(subject,v0) & http://dbpedia.org/ontology/region(subject,v0) & http://dbpedia.org/ontology/successor(subject,object)-false
+http://dbpedia.org/ontology/birthPlace(object,v0) & http://dbpedia.org/ontology/birthPlace(subject,v0) & http://dbpedia.org/ontology/spouse(subject,object)-true
+http://dbpedia.org/ontology/deathPlace(subject,v0) & http://dbpedia.org/ontology/restingPlace(v1,v0) & http://dbpedia.org/ontology/parent(v1,object)-false
+http://dbpedia.org/ontology/parent(v0,object) & http://dbpedia.org/ontology/residence(v0,v1) & http://dbpedia.org/ontology/birthPlace(subject,v1)-false

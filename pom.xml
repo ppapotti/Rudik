@@ -130,6 +130,18 @@
 			<version>9.1-901-1.jdbc4</version>
 		</dependency>
 
+		<dependency>
+    		<groupId>vamsi</groupId>
+    		<artifactId>vamsi</artifactId>
+    		<version>0.1</version>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/org.pentaho.pentaho-commons/pentaho-package-manager -->
+		<dependency>
+    		<groupId>org.pentaho.pentaho-commons</groupId>
+    		<artifactId>pentaho-package-manager</artifactId>
+    		<version>1.0.5</version>
+		</dependency>
+
 	</dependencies>
 
 	<!-- Build configuration -->

@@ -205,11 +205,11 @@ public class HornRule {
 
 		for(RuleAtom rule:this.rules){
 			String subject = rule.getSubject();
-			if(!subject.equals(HornRule.START_NODE)&&!subject.equals(HornRule.END_NODE)){
+			if(!subject.equals(HornRule.START_NODE)&&!subject.equals(HornRule.END_NODE)&&subject.matches("^v[0-9]$")){
 				subject = "v"+(variablesSize-Integer.parseInt(subject.replaceAll("v", "")));
 			}
 			String object = rule.getObject();
-			if(!object.equals(HornRule.START_NODE)&&!object.equals(HornRule.END_NODE)){
+			if(!object.equals(HornRule.START_NODE)&&!object.equals(HornRule.END_NODE)&&object.matches("^v[0-9]$")){
 				object = "v"+(variablesSize-Integer.parseInt(object.replaceAll("v", "")));
 			}
 			alternativeRulesAtom.add(new RuleAtom(subject, rule.getRelation(), object));

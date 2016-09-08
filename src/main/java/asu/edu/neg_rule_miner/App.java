@@ -27,6 +27,23 @@ public class App
 	private final static Logger LOGGER = LoggerFactory.getLogger(App.class.getName());
 	public static void main( String[] args ) throws IOException
 	{
+		int ruleSign = 1; // INDICATE 1 FOR POSITIVE AND 0 FOR NEGATIVE RULES	
+		
+		boolean annotationCleanUp = true; //false by default
+		if(annotationCleanUp){
+			if(ruleSign == 0){
+				StatisticsContainer.setFileName(new File("statisticsFile"));
+				StatisticsContainer.setAnnotatedRuleFile(new File("curatedNegativeRules"));
+			}
+			else if(ruleSign==1){
+				StatisticsContainer.setFileName(new File("statisticsFilePositive"));
+				StatisticsContainer.setAnnotatedRuleFile(new File("curatedPositiveRules"));
+			}
+	//		
+			
+			StatisticsContainer.postAnnotationCleanUp();
+			return;
+		}
 		
 		//		relations.add("http://dbpedia.org/ontology/founder");
 		//		relations.add("http://dbpedia.org/ontology/foundedBy");
@@ -228,158 +245,295 @@ public class App
 //		
 //				String typeSubject = "http://dbpedia.org/ontology/Person";
 //				String typeObject = "http://dbpedia.org/ontology/Person";
-				
+		
 				DynamicPruningRuleDiscovery naive = new DynamicPruningRuleDiscovery();
-				StatisticsContainer.setFileName(new File("statisticsFile"));
 
+				if(ruleSign==0){
+					StatisticsContainer.setAnnotatedRuleFile(new File("curatedNegativeRules")); //for -ve rules only
+					StatisticsContainer.setFileName(new File("statisticsFile"));
+				}
+				else if(ruleSign==1){
+					StatisticsContainer.setAnnotatedRuleFile(new File("curatedPositiveRules")); //for +ve rules only
+					StatisticsContainer.setFileName(new File("statisticsFilePositive"));
+				}
 			ArrayList<Set<String>> relationList;
 			ArrayList<String> subjectList, objectList;
+			int expRuns =0;
+			double alpha, beta, gamma, subWeight, objWeight;
+			String samplingMode;
 			
-			for(int sign =0; sign<1; sign++){
-				
-				for(int i=1; i<2; i++){
-					Set<String> relations = Sets.newHashSet();
-					String typeSubject, typeObject;
-					ArrayList<Integer> limitSet = new ArrayList<Integer>();
-					typeSubject = ""; typeObject = "";
-					if(i==0 && sign ==0){
-						relations.add("http://dbpedia.org/ontology/founder");
-						relations.add("http://dbpedia.org/ontology/foundedBy");
-						typeSubject = "http://dbpedia.org/ontology/Organisation";
-						typeObject ="http://dbpedia.org/ontology/Person";
-					}
-					else if(i==1 && sign ==0){
-						relations.add("http://dbpedia.org/ontology/spouse");
-						typeSubject = "http://dbpedia.org/ontology/Person";
-						typeObject ="http://dbpedia.org/ontology/Person";
-					}
-					else if(i==2 && sign ==0){
-						relations.add("http://dbpedia.org/ontology/academicAdvisor");
-						typeSubject = "http://dbpedia.org/ontology/Person";
-						typeObject ="http://dbpedia.org/ontology/Person";
-					}
-					else if(i==3 && sign ==0){
-						relations.add("http://dbpedia.org/ontology/ceremonialCounty");
-						typeSubject = "http://dbpedia.org/ontology/PopulatedPlace";
-						typeObject ="http://dbpedia.org/ontology/Region";
-					}
-					else if(i==4 && sign ==0){
-						relations.add("http://dbpedia.org/ontology/child");
-						typeSubject = "http://dbpedia.org/ontology/Person";
-						typeObject ="http://dbpedia.org/ontology/Person";
-					}
-					else if(i==0 && sign ==1){
-						relations.add("http://dbpedia.org/ontology/founder");
-						relations.add("http://dbpedia.org/ontology/foundedBy");
-						typeSubject = "http://dbpedia.org/ontology/Organisation";
-						typeObject ="http://dbpedia.org/ontology/Person";
-					}
-					else if(i==1 && sign ==1){
-						relations.add("http://dbpedia.org/ontology/spouse");
-						typeSubject = "http://dbpedia.org/ontology/Person";
-						typeObject ="http://dbpedia.org/ontology/Person";
-					}
-					else if(i==2 && sign ==1){
-						relations.add("http://dbpedia.org/ontology/successor");
-						typeSubject = "http://dbpedia.org/ontology/Person";
-						typeObject ="http://dbpedia.org/ontology/Person";
-					}
-					else if(i==3 && sign ==1){
-						relations.add("http://dbpedia.org/ontology/academicAdvisor");
-						typeSubject = "http://dbpedia.org/ontology/Person";
-						typeObject ="http://dbpedia.org/ontology/Person";
-					}
-					else if(i==4 && sign ==1){
-						relations.add("http://dbpedia.org/ontology/child");
-						typeSubject = "http://dbpedia.org/ontology/Person";
-						typeObject ="http://dbpedia.org/ontology/Person";
-					}
-					//		for(int i=0; i<1; i++){
-					
-					
-						limitSet.add(-1); // child has to be the last entry
-//					limitSet.add(1);
-//						limitSet.add(2);
-//						limitSet.add(5);
-//						limitSet.add(10);
-//					
-//					limitSet.add(20);
-//					limitSet.add(50);
-//					limitSet.add(100); 
+			for(expRuns =0; expRuns < 9; expRuns++){
+				if(expRuns==0){
+					alpha = -1; beta =-1; gamma =-1; subWeight = -1; objWeight =-1;
+					samplingMode="random";
+				}
+				else if(expRuns==1){
+					alpha = 0.1; beta =0.0; gamma =0.9; subWeight = 0.5; objWeight =0.5;
+					samplingMode="stratified";
+				}
+				else if(expRuns==2){
+					alpha = 0.9; beta =0.0; gamma =0.1; subWeight = 0.5; objWeight =0.5;
+					samplingMode="stratified";
+				}
+				else if(expRuns==3){
+					alpha = 0.5; beta =0.0; gamma =0.5; subWeight = 0.5; objWeight =0.5;
+					samplingMode="stratified";
+				}
+				else if(expRuns==4){
+					alpha = 0.05; beta =0.1; gamma =0.85; subWeight = 0.5; objWeight =0.5;
+					samplingMode="stratified";
+				}
+				else if(expRuns==5){
+					alpha = 0.85; beta =0.1; gamma =0.05; subWeight = 0.5; objWeight =0.5;
+					samplingMode="stratified";
+				}
+				else if(expRuns==6){
+					alpha = 0.45; beta =0.1; gamma =0.45; subWeight = 0.5; objWeight =0.5;
+					samplingMode="stratified";
+				}
+				else if(expRuns==7){
+					alpha = 0.1; beta =0.8; gamma =0.1; subWeight = 0.5; objWeight =0.5;
+					samplingMode="stratified";
+				}
+				else{
+					alpha = 0.4; beta =0.3; gamma =0.3; subWeight = 0.5; objWeight =0.5;
+					samplingMode="stratified";
+				}
+		/*		if(expRuns==0){
+					alpha = 0.1; beta =0.0; gamma =0.9; subWeight = 0.5; objWeight =0.5;
+					samplingMode="topK";
+				}
+				else if(expRuns==1){
+					alpha = 0.1; beta =0.0; gamma =0.9; subWeight = 0.5; objWeight =0.5;
+					samplingMode="uniform";
+				}
+				else if(expRuns==2){
+					alpha = 0.9; beta =0.0; gamma =0.1; subWeight = 0.5; objWeight =0.5;
+					samplingMode="topK";
+				}
+				else if(expRuns==3){
+					alpha = 0.9; beta =0.0; gamma =0.1; subWeight = 0.5; objWeight =0.5;
+					samplingMode="uniform";
+				}
+				else if(expRuns==4){
+					alpha = 0.5; beta =0.0; gamma =0.5; subWeight = 0.5; objWeight =0.5;
+					samplingMode="topK";
+				}
+				else if(expRuns==5){
+					alpha = 0.5; beta =0.0; gamma =0.5; subWeight = 0.5; objWeight =0.5;
+					samplingMode="uniform";
+				}
+				else if(expRuns==6){
+					alpha = 0.05; beta =0.1; gamma =0.85; subWeight = 0.5; objWeight =0.5;
+					samplingMode="topK";
+				}
+				else if(expRuns==7){
+					alpha = 0.05; beta =0.1; gamma =0.85; subWeight = 0.5; objWeight =0.5;
+					samplingMode="uniform";
+				}
+				else if(expRuns==8){
+					alpha = 0.85; beta =0.1; gamma =0.05; subWeight = 0.5; objWeight =0.5;
+					samplingMode="topK";
+				}
+				else if(expRuns==9){
+					alpha = 0.85; beta =0.1; gamma =0.05; subWeight = 0.5; objWeight =0.5;
+					samplingMode="uniform";
+				}
+				else if(expRuns==10){
+					alpha = 0.45; beta =0.1; gamma =0.45; subWeight = 0.5; objWeight =0.5;
+					samplingMode="topK";
+				}
+				else if(expRuns==11){
+					alpha = 0.45; beta =0.1; gamma =0.45; subWeight = 0.5; objWeight =0.5;
+					samplingMode="uniform";
+				}
+				else if(expRuns==12){
+					alpha = 0.1; beta =0.8; gamma =0.1; subWeight = 0.5; objWeight =0.5;
+					samplingMode="topK";
+				}
+				else if(expRuns==13){
+					alpha = 0.1; beta =0.8; gamma =0.1; subWeight = 0.5; objWeight =0.5;
+					samplingMode="uniform";
+				}
+				else if(expRuns==14){
+					alpha = 0.4; beta =0.3; gamma =0.3; subWeight = 0.5; objWeight =0.5;
+					samplingMode="topK";
+				}
+				else{
+					alpha = 0.4; beta =0.3; gamma =0.3; subWeight = 0.5; objWeight =0.5;
+					samplingMode="uniform";
+				}
+			*/	
+				StatisticsContainer.writeExpHeader(alpha, beta, gamma, samplingMode, ruleSign);
+				for(int sign=ruleSign; sign<ruleSign+1; sign++){
+					int relStart = 0;
+					int relLimit = 5;
+					for(int i=relStart; i<relLimit; i++){
 						
-						//naive.setGenerationSmartLimit(10);
-					
-					for(int l=0;l<limitSet.size();l++){
-						int limitSubject = limitSet.get(l);
-						int limitObject = limitSet.get(l);
-						naive.setSubjectLimit(limitSubject);
-						naive.setObjectLimit(limitObject);
-						ArrayList<Integer> genLimitSet = new ArrayList<Integer>();
-						genLimitSet.add(-1);
-//					//	if(limitSubject==1 || limitSubject == 5){
-//							genLimitSet.add(5);
-			//				genLimitSet.add(10);
-			//			genLimitSet.add(20);
-//						genLimitSet.add(50);
-//							genLimitSet.add(100);
-//							genLimitSet.add(500);
-//							genLimitSet.add(1000);
-					//	}	
-						ArrayList<Integer> smartLimitSet = new ArrayList<Integer>();
-						smartLimitSet.add(5);
-//						smartLimitSet.add(10);
-//						smartLimitSet.add(20);
-//						smartLimitSet.add(50);
-//						smartLimitSet.add(100);
-//						smartLimitSet.add(500);
-//						smartLimitSet.add(1000);
-//						smartLimitSet.add(-1);
-						for(int g=0; g<genLimitSet.size(); g++){
-							int posLimit, negLimit;
-							if(sign == 1){
-								posLimit = genLimitSet.get(g);
-								negLimit = -1;
+							Set<String> relations = Sets.newHashSet();
+							String typeSubject, typeObject;
+							ArrayList<Integer> limitSet = new ArrayList<Integer>();
+							typeSubject = ""; typeObject = "";
+							if(i==0 && sign ==0){
+								relations.add("http://dbpedia.org/ontology/founder");
+								relations.add("http://dbpedia.org/ontology/foundedBy");
+								typeSubject = "http://dbpedia.org/ontology/Organisation";
+								typeObject ="http://dbpedia.org/ontology/Person";
 							}
-							else{
-								negLimit = genLimitSet.get(g);
-								posLimit = -1;
+							else if(i==1 && sign ==0){
+								relations.add("http://dbpedia.org/ontology/spouse");
+								typeSubject = "http://dbpedia.org/ontology/Person";
+								typeObject ="http://dbpedia.org/ontology/Person";
 							}
-							for(int n=0; n<smartLimitSet.size(); n++){
-								int smartLimit = smartLimitSet.get(n);
-								double alpha = 0.1, beta =0.1, gamma =0.8, subWeight = 0.5, objWeight =0.5;
-								boolean isTopK = false;
-								naive.setGenerationSmartLimit(smartLimit); // limit on the example number from smartSampling
-								naive.setSmartWeights(alpha, beta, gamma, subWeight, objWeight); // alpha, beta, gamma, subWeight, objWeight
-								naive.setIsTopK(isTopK); // if true, top-K sampling, else uniform sampling
-								String id = relations+"_"+limitSubject+"_"+limitObject+"_"+posLimit+"_"+negLimit+"_"+smartLimit+"_"+alpha
-										             +"_"+beta+"_"+gamma+"_"+isTopK;
-								StatisticsContainer.initialiseContainer(id);
-
-
-								Set<Pair<String,String>> negativeExamples;
-								if(negLimit == -1)
-									negativeExamples = naive.generateNegativeExamples(relations, typeSubject, typeObject); //-1 indicates no pruning on the negative example set
-								else
-									negativeExamples = naive.generateNegativeExamples(relations, typeSubject, typeObject, negLimit);
-								Set<Pair<String,String>> positiveExamples;
-								if(posLimit == -1)
-									positiveExamples = naive.generatePositiveExamples(relations, typeSubject, typeObject); //-1 indicates no pruning on the positive example set
-								else
-									positiveExamples = naive.generatePositiveExamples(relations, typeSubject, typeObject, posLimit);
-
-								if(sign == 0)
-									naive.discoverNegativeHornRules(negativeExamples, positiveExamples, relations, typeSubject, typeObject);
-								else
-									naive.discoverPositiveHornRules(negativeExamples, positiveExamples, relations, typeSubject, typeObject);
-								StatisticsContainer.printStatistics();
+							else if(i==2 && sign ==0){
+								relations.add("http://dbpedia.org/ontology/academicAdvisor");
+								typeSubject = "http://dbpedia.org/ontology/Person";
+								typeObject ="http://dbpedia.org/ontology/Person";
+							}						
+							else if(i==3 && sign ==0){
+								relations.add("http://dbpedia.org/ontology/child");
+								typeSubject = "http://dbpedia.org/ontology/Person";
+								typeObject ="http://dbpedia.org/ontology/Person";
 							}
+							else if(i==4 && sign ==0){
+								relations.add("http://dbpedia.org/ontology/ceremonialCounty");
+								typeSubject = "http://dbpedia.org/ontology/PopulatedPlace";
+								typeObject ="http://dbpedia.org/ontology/Region";
+							}
+							else if(i==0 && sign ==1){
+								relations.add("http://dbpedia.org/ontology/founder");
+								relations.add("http://dbpedia.org/ontology/foundedBy");
+								typeSubject = "http://dbpedia.org/ontology/Organisation";
+								typeObject ="http://dbpedia.org/ontology/Person";
+							}
+							else if(i==1 && sign ==1){
+								relations.add("http://dbpedia.org/ontology/spouse");
+								typeSubject = "http://dbpedia.org/ontology/Person";
+								typeObject ="http://dbpedia.org/ontology/Person";
+							}
+							else if(i==2 && sign ==1){
+								relations.add("http://dbpedia.org/ontology/successor");
+								typeSubject = "http://dbpedia.org/ontology/Person";
+								typeObject ="http://dbpedia.org/ontology/Person";
+							}
+							else if(i==3 && sign ==1){
+								relations.add("http://dbpedia.org/ontology/academicAdvisor");
+								typeSubject = "http://dbpedia.org/ontology/Person";
+								typeObject ="http://dbpedia.org/ontology/Person";
+							}
+							else if(i==4 && sign ==1){
+								relations.add("http://dbpedia.org/ontology/child");
+								typeSubject = "http://dbpedia.org/ontology/Person";
+								typeObject ="http://dbpedia.org/ontology/Person";
+							}
+							//		for(int i=0; i<1; i++){
 							
-						}
-						
-					}
+							
+								limitSet.add(-1); // child has to be the last entry
+//							limitSet.add(1);
+//								limitSet.add(2);
+//								limitSet.add(5);
+//								limitSet.add(10);
+//							
+//							limitSet.add(20);
+//							limitSet.add(50);
+//							limitSet.add(100); 
+								
+								//naive.setGenerationSmartLimit(10);
+							
+							for(int l=0;l<limitSet.size();l++){
+								int limitSubject = limitSet.get(l);
+								int limitObject = limitSet.get(l);
+								naive.setSubjectLimit(limitSubject);
+								naive.setObjectLimit(limitObject);
+								ArrayList<Integer> genLimitSet = new ArrayList<Integer>();
+								if(expRuns==0){	
+									genLimitSet.add(5);
+									genLimitSet.add(10);
+									genLimitSet.add(20);
+									genLimitSet.add(50);
+									genLimitSet.add(100);
+									genLimitSet.add(500);
+									genLimitSet.add(1000);
+								}
+								else{
+									genLimitSet.add(-1);
+								}								
+//							//	if(limitSubject==1 || limitSubject == 5){
+									
+							//	}	
+								ArrayList<Integer> smartLimitSet = new ArrayList<Integer>();
+								if(expRuns==0){
+									smartLimitSet.add(-1);
+								}
+								else{
+									
+									smartLimitSet.add(5);
+									smartLimitSet.add(10);
+									smartLimitSet.add(20);	
+									smartLimitSet.add(50);
+									smartLimitSet.add(100);
+									smartLimitSet.add(500);																	
+									smartLimitSet.add(1000);
+								}
+								
+								for(int g=0; g<genLimitSet.size(); g++){									
+										int posLimit, negLimit;
+										if(sign == 1){
+											posLimit = genLimitSet.get(g);
+											negLimit = -1;
+										}
+										else{
+											negLimit = genLimitSet.get(g);
+											posLimit = -1;
+										}
+										for(int n=0; n<smartLimitSet.size(); n++){
+											int smartLimit = smartLimitSet.get(n);
+											int numRandRunNumber = 1;
+											if(smartLimit==-1)
+												numRandRunNumber=5;
+											int randStart = 0;
+//											if(expRuns == 0 && i==1 && genLimitSet.get(g)==500)
+//												randStart = 4;
+											for(int numRandomRuns = randStart; numRandomRuns < numRandRunNumber; numRandomRuns++){
+												naive.setGenerationSmartLimit(smartLimit); // limit on the example number from smartSampling
+												naive.setSmartWeights(alpha, beta, gamma, subWeight, objWeight); // alpha, beta, gamma, subWeight, objWeight
+												naive.setSamplingMode(samplingMode); // topK, uniform or stratified
+												String id = relations+"_"+limitSubject+"_"+limitObject+"_"+posLimit+"_"+negLimit+"_"+smartLimit+"_"+alpha
+														             +"_"+beta+"_"+gamma+"_"+samplingMode;
+												StatisticsContainer.initialiseContainer(id);
+												Set<Pair<String,String>> negativeExamples;
+												if(negLimit == -1)
+													negativeExamples = naive.generateNegativeExamples(relations, typeSubject, typeObject); //-1 indicates no pruning on the negative example set
+												else
+													negativeExamples = naive.generateNegativeExamples(relations, typeSubject, typeObject, negLimit);
+												Set<Pair<String,String>> positiveExamples;
+												if(posLimit == -1)
+													positiveExamples = naive.generatePositiveExamples(relations, typeSubject, typeObject); //-1 indicates no pruning on the positive example set
+												else
+													positiveExamples = naive.generatePositiveExamples(relations, typeSubject, typeObject, posLimit);
 
+												if(sign == 0)
+													naive.discoverNegativeHornRules(negativeExamples, positiveExamples, relations, typeSubject, typeObject);
+												else
+													naive.discoverPositiveHornRules(negativeExamples, positiveExamples, relations, typeSubject, typeObject);
+												StatisticsContainer.printStatistics();
+												StatisticsContainer.annotateRules();
+											}
+											
+										}
+									
+								}
+								
+							}
+						
+						
+
+					}
 				}
 			}
+			
+	
 			
 //			//set smart sampling limit
 //			int limit = 10;
