@@ -1,4 +1,4 @@
-\section{Rules and Examples Generation} \label{sec:rules_gen}
+\section{Rule and Example Generation} \label{sec:rules_gen}
 This and the following Section are the main technical contributions of the paper. In this Section we describe how to generate the universe of all possible rules, while in the next Section we propose a greedy approximated solution to our weighted set cover problem.
 
 In this Section we assume that examples are given, and then show how positive and negative examples can be computed. However, our approach is independent on how $G$ and $V$ are generated: they could be manually crafted by domain experts, with significant additional manual effort.
@@ -105,7 +105,7 @@ Once the universe of all possible rules has been generated (along with coverages
 %
 %A future direction we are working on exploits exactly this point: how to select a small number of representative examples in order to reduce the size of $G$, without significantly affecting the quality of the output.
 \vspace{-1ex}
-\subsubsection*{Generating More Atoms Types}
+\subsubsection*{Generating More Atom Types}
 
 %\vspace{-1ex}
 
@@ -146,7 +146,7 @@ For a given rule $r$, we promote a variable $v$ in $r$ to an entity $e$ iff for 
 %In the example above, we promote variable $b$ to  ``\textit{U.S.A.}''.%}, generating the rule.
 
 
-\subsection{Input Examples Generation} \label{sec:ex_generation}
+\subsection{Input Example Generation} \label{sec:ex_generation}
 Given a KB $\kb$ and a predicate $rel \in \kb$, we automatically build a generation set $G$ and a validation set $V$ as follows. 
 $G$ consists of positive examples for the target predicate $rel$. It consists in all pairs of entities $(x,y)$ such that $\<x,rel,y\> \in \kb$.
 %, e.g., for target predicate is \texttt{child}, it consists of all pairs of entities in a child relation.

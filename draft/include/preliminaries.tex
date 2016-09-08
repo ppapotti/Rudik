@@ -1,12 +1,12 @@
-\vspace{-1ex}
+\vspace{-0.5ex}
 \section{Preliminaries and Definitions} \label{sec:krd_prel}
 We focus on discovering rules from RDF KBs. An RDF KB is
-a database that represents information through RDF triples $\<s,p,o\>$, where a \emph{subject} is connected to a \emph{object} via a \emph{predicate}. Triples are often called \emph{facts}. For example, the fact that Scott Eastwood is the child of Clint Eastwood could be represented through the triple $\<Clint\_Eastwood,child,Scott\_Eastwood\>$. 
+a database that represents information through RDF triples $\<s,p,o\>$, where a \emph{subject} is connected to an \emph{object} via a \emph{predicate}. Triples are often called \emph{facts}. For example, the fact that Scott Eastwood is the child of Clint Eastwood could be represented through the triple $\<Clint\_Eastwood,child,Scott\_Eastwood\>$. 
 RDF KB triples respect three constraints:
 \begin{inparaenum}[(i)]
 	\item triple subjects are always \emph{entities}, i.e., concepts from the real world;
 	\item triple objects can be either entities or \emph{literals}, i.e.,  primitive types such as numbers, dates, and strings;
-	\item triple predicates specifies real-world relationships between subjects and objects.
+	\item triple predicates specify real-world relationships between subjects and objects.
 \end{inparaenum}
 %%%%%%%TO BE REMOVED IF WE NEED MORE SPACE: %%%%%%%
 %Entities in the KB model correspond to complex objects with properties and attributes in object oriented programming languages, while literals correspond to primitive types such as integers, chars and strings.
@@ -21,16 +21,16 @@ While KBs can include \emph{T-Box} facts in order to define classes, domain/co-d
 to check integrity and consistency, in most KBs -- including the ones we use in our experiments -- such information is missing. % or not present at all. 
 Hence our focus is on the \emph{A-Box} facts that describe instance data. 
 
-\vspace{-1ex}
+%\vspace{-1ex}
 \subsection{Language} \label{sec:krd_language} 
 %Inspired by Inductive Logic Programming~\cite{muggleton1994inductive}, 
-Our goal is to automatically discover first-order logical formulas in KBs. More specifically, we target the discovery of \emph{Horn Rules}. A Horn Rule is a disjunction of \emph{atoms} with at most one unnegated atom. When written in the implication form, Horn Rules have one of the following format:
+Our goal is to automatically discover first-order logical formulas in KBs. More specifically, we target the discovery of \emph{Horn Rules}. A Horn Rule is a disjunction of \emph{atoms} with at most one unnegated atom. When written in the implication form, Horn Rules have one of the following formats:
 %
 \begin{equation*}
 	A_1 \wedge A_2 \wedge \cdots \wedge A_n \Rightarrow B \qquad \qquad A_1 \wedge A_2 \wedge \cdots \wedge A_n \Rightarrow  false 
 \end{equation*} %\neg B
 %
-where $A_1 \wedge A_2 \wedge \cdots \wedge A_n$ consists of the \emph{body} of the rule (a conjunction of atoms) and $B$ is the \emph{head} of the rule (a single atom). The head of the rule is either unnegated (left) or empty (right). We call the former \emph{definite clause} or simply \emph{positive rule}, as it generates new positive facts, while the latter \emph{goal clause} or \emph{negative rule}, as it identifies false statements. %In a KB, 
+where $A_1 \wedge A_2 \wedge \cdots \wedge A_n$ is the \emph{body} of the rule (a conjunction of atoms) and $B$ is the \emph{head} of the rule (a single atom). The head of the rule is either unnegated (left) or empty (right). We call the former \emph{definite clause} or simply \emph{positive rule}, as it generates new positive facts, while the latter \emph{goal clause} or \emph{negative rule}, as it identifies false statements. %In a KB, 
 An atom is a predicate connecting two variables, two entities, or an entity and a variable. For simplicity, we represent an atom with the notation $\atom{rel}{a}{b}$, where \texttt{rel} is a predicate, and $a$ and $b$ are either variables or entities. 
 %NOT ESSENTIAL
 %In the context of Horn Rules, all variables appearing in a rule are implicitly universally quantified.
@@ -52,7 +52,7 @@ For the sake of presentation, we will also write negative rules as definite clau
 	\vspace{-2.5ex}
 \end{example} 
 
-As shown in the example, we allow \emph{literals comparisons} in our rules. A literal comparison is a special atom $\atom{rel}{a}{b}$, where $\texttt{rel} \in \{<,\leq,\neq,>,\geq\}$, and $a$ and $b$ can only be assigned to literal values except if $\texttt{rel}$ is equal to $\neq$. In such a case $a$ and $b$ can be also assigned to entities. We will explain later on why this exception is important.
+As shown in the example, we allow \emph{literal comparisons} in our rules. A literal comparison is a special atom $\atom{rel}{a}{b}$, where $\texttt{rel} \in \{<,\leq,\neq,>,\geq\}$, and $a$ and $b$ can only be assigned to literal values except if $\texttt{rel}$ is equal to $\neq$. In such a case $a$ and $b$ can be also assigned to entities. We will explain later on why this exception is important.
 
 Given a KB $\kb$ and an atom $A=\atom{rel}{a}{b}$ where $a$ and $b$ are two entities, we say that $A$ \emph{holds} over $\kb$ iff $\<a,\texttt{rel},b\> \in \kb$.
 Given a KB $\kb$ and an atom $A=\atom{rel}{a}{b}$ with at least one variable, we say that $A$ can be \emph{instantiated} over $\kb$ if there exists at least one entity from $\kb$ for each variable in $A$ such that if we substitute variables with entities in $A$, $A$ holds over $\kb$. Transitively, given a body of a rule $r_{body}$ and a KB $\kb$, we say that $r_{body}$ can be instantiated over $\kb$ if every atom in $r_{body}$ can be instantiated. 
@@ -75,7 +75,7 @@ Language restrictions limit the algorithm output
 %of the discovery algorithm 
 to a subset of plausible rules. We will show in Section~\ref{sec:rules_gen} how these restrictions enable us to speed up the discovery process. % through a disk-based approach that leverages these limitations.
 
-\subsection{Rules Coverage}
+\subsection{Rule Coverage}
 Given a pair of entities $(x,y)$ from a KB $\kb$ and a Horn Rule $r$, we say that $r_{body}$ \emph{covers} $(x,y)$ if
 $(x,y) \models r_{body}$. In other words, given a Horn Rule $r : r_{body} \Rightarrow \atom{r}{a}{b}$, $r_{body}$ covers a pair of entities $(x,y) \in \kb$ iff we can substitute $a$ with $x$, $b$ with $y$, and the rest of the body can be instantiated over $\kb$. Given a set of pair of entities $E = \{(x_1,y_1),(x_2,y_2),\cdots,(x_n,y_n)\}$ and a rule $r$, we denote by $C_r(E)$ the \emph{coverage} of $r_{body}$ over $E$ as the set of elements in $E$ covered by $r_{body}$: $C_r(E)=\{(x,y) \in E | (x,y) \models r_{body}\}$.
 
