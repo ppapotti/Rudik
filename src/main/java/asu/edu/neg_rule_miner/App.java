@@ -50,6 +50,8 @@ public class App
 			dbPrefix = "http://yago-knowledge.org/resource/";
 		else if(rm.getkBase().equals("wikidata"))
 			dbPrefix = "http://www.wikidata.org/entity/";
+		else if(rm.getkBase().equals("freebase"))
+			dbPrefix  = "http://rdf.freebase.com/ns/";
 		else
 			dbPrefix = "http://dbpedia.org/ontology/";
 		

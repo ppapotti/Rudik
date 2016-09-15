@@ -637,6 +637,7 @@ var rules = [];
 								<option value="dbpedia">DBpedia</option>
 								<option value="yago">Yago</option>
 								<option value="wikidata">Wikidata</option>
+								<option value="wikidata">freebase</option>
 						</select></td>
 					</tr>
 					<tr height="20%">
