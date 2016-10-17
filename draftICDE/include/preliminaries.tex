@@ -126,7 +126,7 @@ we can apply our setting for every predicate in the KB and compute rules for eac
 
 We can now formalize the \emph{exact discovery problem}.
 \begin{definition}
-	Given a KB $\kb$, two sets of pairs of entities $G$ and $V$ from $\kb$ with $G \cap V = \emptyset$, and a universe of Horn Rules $R$, a solution for the \emph{exact discovery problem} is a subset $R'$ of $R$  s.t.:
+	Given a KB $\kb$, two sets of pairs of entities $G$ and $V$ from $\kb$ with $G \cap V = \emptyset$, and all the valid Horn Rules $R$ for $\kb$, a solution for the \emph{exact discovery problem} is a subset $R'$ of $R$  s.t.:
 	
 	\vspace{-6mm}	
 	\begin{equation*}
@@ -216,7 +216,7 @@ The second component is the ratio between number of pairs $(x,y)$ in $V$ where $
 	\end{equation*}
 \end{definition}
 
-Weights enable the modeling  of the presence of errors in KBs. We will show in the experimental evaluation that several semantically correct rules have a significant coverage over $V$, which corresponds to errors in the KB. 
+Weights enable the modeling of the presence of errors in KBs. We will show in the experimental evaluation that several semantically correct rules have a significant coverage over $V$, which corresponds to errors in the KB. 
 %The exact discovery problem implies the absence of errors in the input KB, however such an assumption is too strong for KBs built from external web sources~\cite{dong2014knowledge,shin2015incremental,suchanek2007yago} where inconsistencies are common~\cite{suchanek2009sofie}.
 
 \vspace{-1ex}	
@@ -225,17 +225,21 @@ Weights enable the modeling  of the presence of errors in KBs. We will show in t
 We can now state the approximate version of the problem.
 
 \begin{definition}
-	Given a KB $\kb$, two sets of pair of entities $G$ and $V$ from $\kb$ with $G \cap V = \emptyset$, a universe of rules $R$, and a $w$ weight function for $R$, a solution for the \emph{approximate discovery problem} is a subset $R'$ of $R$  such that:
+	Given a KB $\kb$, two sets of pair of entities $G$ and $V$ from $\kb$ with $G \cap V = \emptyset$, all the valid Horn Rules $R$ for $\kb$, and a $w$ weight function for $R$, a solution for the \emph{approximate discovery problem} is a subset $R'$ of $R$  such that:
 %
 	$$R_{opt}=\underset{w(R')}{\operatorname{argmin}}(R'|R'(G) = G)$$
 \end{definition}
 \vspace{-1ex}	
 
-Since we want to minimize the total weight of the output rules, the approximate version of the discovery problem aims to cover all elements in $G$, and as few as possible elements in $V$. Since for each element $g \in G$ there always exists a rule that covers exactly only $g$ (single-instance rule), an admissible solution is always guaranteed to exist. 
+%Since we want to minimize the total weight of the output rules, 
+The approximate version of the discovery problem aims to identify the rules that cover all elements in $G$ and as few as possible elements in $V$. Since we do not want overfitting rules, we do not generate in $R$ rules with constants only in the target variables.
+%for each element $g \in G$ there always exists a rule that covers exactly only $g$ (single-instance rule), an admissible solution is guaranteed to exist. 
 %We expect the output to be made of some rules that cover multiple examples in $G$, with the remaining examples in $G$ to be covered by single-instance rules. 
 %In the best-case scenario a single rule covers all elements in $G$ and none of the elements in $V$.
 
-We can map this problem to the well-known weighted set cover problem, which is proven to be $\textsf{NP\mbox{-}complete}$~\cite{chvatal1979greedy}. The universe corresponds to $G$ and the input sets are all the possible rules defined in $R$. %TODO
+We can map this problem to the {\em weighted set cover problem}, which is proven to be NP--complete~\cite{chvatal1979greedy}. The reduction follows immediately from the following mapping: 
+the set of elements (universe) corresponds to the generation examples in $G$, the input sets are identify by the rules defined in $R$, the nonnegative weight
+function $w: r \rightarrow {\rm I\!R}$ is $w(r)$ in Definition 2, and the cost of $R$ is defined to be its total weight, according to Definition 3. %TODO
 
 
 %Section~\ref{sec:krd_greedy} will describe a greedy polynomial algorithm to find a good solution for the approximate discovery problem.
