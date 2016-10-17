@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013) (format=pdflatex 2013.12.4)  16 OCT 2016 17:27
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013) (format=pdflatex 2013.12.4)  17 OCT 2016 08:55
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -957,14 +957,14 @@ LaTeX Font Info:    Try loading font information for U+stmry on input line 14.
 (/usr/local/texlive/2013/texmf-dist/tex/latex/stmaryrd/Ustmry.fd)
 Package xypdf Info: Line width: 0.39998pt on input line 14.
 \AtBeginShipoutBox=\box44
-LaTeX Font Info:    Calculating math sizes for size <11> on input line 25.
-LaTeX Font Info:    Try loading font information for OMS+ptm on input line 25.
+LaTeX Font Info:    Calculating math sizes for size <11> on input line 30.
+LaTeX Font Info:    Try loading font information for OMS+ptm on input line 30.
 
 (/usr/local/texlive/2013/texmf-dist/tex/latex/psnfss/omsptm.fd
 File: omsptm.fd 
 )
 LaTeX Font Info:    Font shape `OMS/ptm/m/n' in size <10> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 25.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 30.
 
 (./include/abstract.tex
 LaTeX Font Info:    Try loading font information for OT1+phv on input line 2.
@@ -976,22 +976,15 @@ LaTeX Font Info:    Font shape `OT1/phv/bx/n' in size <9> not available
 (Font)              Font shape `OT1/phv/b/n' tried instead on input line 2.
 )
 (./include/introduction.tex
-LaTeX Font Info:    Try loading font information for OT1+pcr on input line 46.
+LaTeX Font Info:    Try loading font information for OT1+pcr on input line 48.
 
 (/usr/local/texlive/2013/texmf-dist/tex/latex/psnfss/ot1pcr.fd
 File: ot1pcr.fd 2001/06/04 font definitions for OT1/pcr.
-)
-Overfull \hbox (36.44843pt too wide) detected at line 60
-[]\OML/cmm/m/it/9 a; v[][] \U/matha/m/n/9 ^ []\OML/cmm/m/it/9 b; v[][] \U/matha
-/m/n/9 ^ \OML/cmm/m/it/9 v[] \U/matha/m/n/9 ¡ \OML/cmm/m/it/9 v[] \U/matha/m/n/
-9 ^ []\OML/cmm/m/it/9 a; b[] \U/matha/m/n/9 ñ \OML/cmm/m/it/9 false
- []
-
-[1{/usr/local/texlive/2013/texmf-var/fonts/map/pdftex/updmap/pdftex.map}
+) [1{/usr/local/texlive/2013/texmf-var/fonts/map/pdftex/updmap/pdftex.map}
 
 
 ]
-Underfull \hbox (badness 4967) in paragraph at lines 140--148
+Underfull \hbox (badness 4967) in paragraph at lines 146--157
 []\OT1/ptm/b/n/10 Rule Dis-cov-ery Al-go-rithm. \OT1/ptm/m/n/10 We give a \OT1/
 pcr/m/n/10 log($\OML/cmm/m/it/10 k$\OT1/pcr/m/n/10 )\OT1/ptm/m/n/10 -
  []
@@ -1011,13 +1004,14 @@ Underfull \hbox (badness 1701) in paragraph at lines 3--14
 \OT1/ptm/m/n/10 Clint East-wood could be rep-re-sented through the triple
  []
 
-[2]
+
 Overfull \hbox (14.56033pt too wide) detected at line 50
 []\OML/cmm/m/it/9 a; v[][] \U/matha/m/n/9 ^ []\OML/cmm/m/it/9 b; v[][] \U/matha
 /m/n/9 ^ \OML/cmm/m/it/9 v[] \U/matha/m/n/9 ¡ \OML/cmm/m/it/9 v[] \U/matha/m/n/
 9 ñ  []\OML/cmm/m/it/9 a; b[]
  []
 
+[2]
 
 LaTeX Font Warning: Command \sc invalid in math mode on input line 57.
 
@@ -1063,13 +1057,13 @@ LaTeX Font Warning: Command \sc invalid in math mode on input line 88.
 
 LaTeX Font Warning: Command \sc invalid in math mode on input line 88.
 
+
+LaTeX Font Warning: Command \sc invalid in math mode on input line 119.
+
+
+LaTeX Font Warning: Command \sc invalid in math mode on input line 119.
+
 [3]
-
-LaTeX Font Warning: Command \sc invalid in math mode on input line 119.
-
-
-LaTeX Font Warning: Command \sc invalid in math mode on input line 119.
-
 
 LaTeX Font Warning: Command \sc invalid in math mode on input line 170.
 
@@ -1088,7 +1082,7 @@ LaTeX Font Warning: Command \sc invalid in math mode on input line 223.
 
 LaTeX Font Warning: Command \sc invalid in math mode on input line 223.
 
-[4]) (./include/graph.tex
+) (./include/graph.tex [4]
 <include/figure/graph_example.pdf, id=36, 705.63625pt x 249.93375pt>
 File: include/figure/graph_example.pdf Graphic file (type pdf)
 
@@ -1119,10 +1113,7 @@ LaTeX Font Warning: Command \sc invalid in math mode on input line 175.
 
 LaTeX Font Warning: Command \sc invalid in math mode on input line 175.
 
-) (./include/greedy_algorithm.tex
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [6]
+) (./include/greedy_algorithm.tex [6]
 <include/figure/a*_graph_example.pdf, id=59, 1011.78pt x 211.79124pt>
 File: include/figure/a*_graph_example.pdf Graphic file (type pdf)
 
@@ -1130,13 +1121,14 @@ File: include/figure/a*_graph_example.pdf Graphic file (type pdf)
 Package pdftex.def Info: include/figure/a*_graph_example.pdf used on input line
  68.
 (pdftex.def)             Requested size: 250.52075pt x 52.4403pt.
- [7 <./include/figure/a*_graph_example.pdf>]
+
 Overfull \hbox (0.67578pt too wide) detected at line 127
 \OML/cmm/m/it/10 w[]\U/matha/m/n/10 p\OML/cmm/m/it/10 r\U/matha/m/n/10 q ^^P ^^
 A\OML/cmm/m/it/10  \U/matha/m/n/10 ^^D [] ^^@ \OML/cmm/m/it/10 ^^L \U/matha/m/
 n/10 ^^D p[] ^^A []q
  []
 
+[7 <./include/figure/a*_graph_example.pdf>]
 (./include/algorithm/krd_a*_algorithm.tex
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <6.25002> not available
 (Font)              Font shape `OT1/ptm/b/n' tried instead on input line 21.
@@ -1160,12 +1152,12 @@ Overfull \hbox (4.7018pt too wide) in paragraph at lines 90--90
  []|\OT1/ptm/m/n/9 20160229| 
  []
 
-[9]
+
 Underfull \hbox (badness 10000) in paragraph at lines 214--221
 []\OT1/ptm/m/n/10 We com-pared our rule dis-cov-ery method against
  []
 
-<include/figure/vsAmieYago.pdf, id=89, 483.80327pt x 201.26662pt>
+[9] <include/figure/vsAmieYago.pdf, id=89, 483.80327pt x 201.26662pt>
 File: include/figure/vsAmieYago.pdf Graphic file (type pdf)
 
 <use include/figure/vsAmieYago.pdf>
@@ -1179,18 +1171,17 @@ File: include/figure/vsAmieDBPedia.pdf Graphic file (type pdf)
 Package pdftex.def Info: include/figure/vsAmieDBPedia.pdf used on input line 26
 7.
 (pdftex.def)             Requested size: 227.74333pt x 95.84805pt.
- [10 <./include/figure/vsAmieYago.pdf> <./include/figure/vsAmieDBPedia.pdf>]
 LaTeX Font Info:    Font shape `OT1/phv/m/it' in size <9> not available
 (Font)              Font shape `OT1/phv/m/sl' tried instead on input line 370.
-
-<include/figure/deepDive1K.pdf, id=203, 980.46115pt x 379.6436pt>
+ [10 <./include/figure/vsAmieYago.pdf> <./include/figure/vsAmieDBPedia.pdf>]
+<include/figure/deepDive1K.pdf, id=204, 980.46115pt x 379.6436pt>
 File: include/figure/deepDive1K.pdf Graphic file (type pdf)
 
 <use include/figure/deepDive1K.pdf>
 Package pdftex.def Info: include/figure/deepDive1K.pdf used on input line 410.
 (pdftex.def)             Requested size: 240.39659pt x 93.08011pt.
 
-<include/figure/deepDive1M.pdf, id=204, 980.73303pt x 393.32132pt>
+<include/figure/deepDive1M.pdf, id=205, 980.73303pt x 393.32132pt>
 File: include/figure/deepDive1M.pdf Graphic file (type pdf)
 
 <use include/figure/deepDive1M.pdf>
@@ -1201,9 +1192,8 @@ Underfull \hbox (badness 2495) in paragraph at lines 436--441
 \OT1/ptm/m/n/10 dras-ti-cally (Fig-ure 6[]). All the three ap-proaches ex-cept
  []
 
-[11 <./include/figure/deepDive1K.pdf>]) (./include/related.tex)
-(./include/conclusion.tex) (./mainIcde.bbl [12 <./include/figure/deepDive1M.pdf
->])
+) (./include/related.tex [11 <./include/figure/deepDive1K.pdf> <./include/figur
+e/deepDive1M.pdf>]) (./include/conclusion.tex) (./mainIcde.bbl [12])
 
 ** Conference Paper **
 Before submitting the final camera ready copy, remember to:
@@ -1215,42 +1205,47 @@ Before submitting the final camera ready copy, remember to:
  uses only Type 1 fonts and that every step in the generation
  process uses the appropriate paper size.
 
-[13] (./mainIcde.aux) ) 
+[13
+
+] (./mainIcde.aux)
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
+ ) 
 Here is how much of TeX's memory you used:
- 10347 strings out of 493315
- 140355 string characters out of 6137904
- 283726 words of memory out of 5000000
- 13473 multiletter control sequences out of 15000+600000
- 78787 words of font info for 180 fonts, out of 8000000 for 9000
+ 10353 strings out of 493315
+ 140404 string characters out of 6137904
+ 285725 words of memory out of 5000000
+ 13477 multiletter control sequences out of 15000+600000
+ 82143 words of font info for 182 fonts, out of 8000000 for 9000
  957 hyphenation exceptions out of 8191
  38i,19n,35p,3261b,548s stack positions out of 5000i,500n,10000p,200000b,80000s
-{/usr/local/texlive/2013/texmf-dist/fonts/enc/dvips/base
-/8r.enc}</usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi
-10.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5
-.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.p
-fb></usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb
-></usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi9.pfb><
-/usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></u
-sr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/
-local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/loc
-al/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/local/
-texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/t
-exlive/2013/texmf-dist/fonts/type1/public/mathabx-type1/matha10.pfb></usr/local
-/texlive/2013/texmf-dist/fonts/type1/public/mathabx-type1/matha5.pfb></usr/loca
-l/texlive/2013/texmf-dist/fonts/type1/public/mathabx-type1/matha6.pfb></usr/loc
-al/texlive/2013/texmf-dist/fonts/type1/public/mathabx-type1/matha7.pfb></usr/lo
-cal/texlive/2013/texmf-dist/fonts/type1/public/mathabx-type1/matha8.pfb></usr/l
-ocal/texlive/2013/texmf-dist/fonts/type1/public/mathabx-type1/matha9.pfb></usr/
-local/texlive/2013/texmf-dist/fonts/type1/public/mathabx-type1/mathx10.pfb></us
-r/local/texlive/2013/texmf-dist/fonts/type1/urw/courier/ucrr8a.pfb></usr/local/
-texlive/2013/texmf-dist/fonts/type1/urw/helvetic/uhvb8a.pfb></usr/local/texlive
-/2013/texmf-dist/fonts/type1/urw/helvetic/uhvr8a.pfb></usr/local/texlive/2013/t
-exmf-dist/fonts/type1/urw/helvetic/uhvro8a.pfb></usr/local/texlive/2013/texmf-d
-ist/fonts/type1/urw/times/utmb8a.pfb></usr/local/texlive/2013/texmf-dist/fonts/
-type1/urw/times/utmbi8a.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/urw
-/times/utmr8a.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/urw/times/utm
-ri8a.pfb>
-Output written on mainIcde.pdf (13 pages, 478280 bytes).
+{/usr/local/texlive/2013/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/local/t
+exlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/te
+xlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb></usr/local/texl
+ive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/local/texliv
+e/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/local/texlive/
+2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi9.pfb></usr/local/texlive/20
+13/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2013
+/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/local/texlive/2013/te
+xmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/texlive/2013/texmf
+-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/local/texlive/2013/texmf-di
+st/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2013/texmf-dis
+t/fonts/type1/public/mathabx-type1/matha10.pfb></usr/local/texlive/2013/texmf-d
+ist/fonts/type1/public/mathabx-type1/matha5.pfb></usr/local/texlive/2013/texmf-
+dist/fonts/type1/public/mathabx-type1/matha6.pfb></usr/local/texlive/2013/texmf
+-dist/fonts/type1/public/mathabx-type1/matha7.pfb></usr/local/texlive/2013/texm
+f-dist/fonts/type1/public/mathabx-type1/matha8.pfb></usr/local/texlive/2013/tex
+mf-dist/fonts/type1/public/mathabx-type1/matha9.pfb></usr/local/texlive/2013/te
+xmf-dist/fonts/type1/public/mathabx-type1/mathx10.pfb></usr/local/texlive/2013/
+texmf-dist/fonts/type1/urw/courier/ucrr8a.pfb></usr/local/texlive/2013/texmf-di
+st/fonts/type1/urw/helvetic/uhvb8a.pfb></usr/local/texlive/2013/texmf-dist/font
+s/type1/urw/helvetic/uhvr8a.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1
+/urw/helvetic/uhvro8a.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/urw/t
+imes/utmb8a.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/urw/times/utmbi
+8a.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></u
+sr/local/texlive/2013/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
+Output written on mainIcde.pdf (13 pages, 478114 bytes).
 PDF statistics:
  424 PDF objects out of 1000 (max. 8388607)
  285 compressed objects within 3 object streams
