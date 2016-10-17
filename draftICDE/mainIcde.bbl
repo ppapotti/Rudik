@@ -1,0 +1,165 @@
+\begin{thebibliography}{10}
+
+\bibitem{abedjan2015temporal}
+Z.~Abedjan, C.~G. Akcora, M.~Ouzzani, P.~Papotti, and M.~Stonebraker.
+\newblock Temporal rules discovery for web data cleaning.
+\newblock {\em PVLDB}, 9(4):336--347, 2015.
+
+\bibitem{abedjan2014amending}
+Z.~Abedjan and F.~Naumann.
+\newblock Amending {RDF} entities with new facts.
+\newblock In {\em ESWC}, pages 131--143, 2014.
+
+\bibitem{abiteboul1995foundations}
+S.~Abiteboul, R.~Hull, and V.~Vianu.
+\newblock {\em Foundations of Databases}.
+\newblock Addison-Wesley, 1995.
+
+\bibitem{agrawal1993mining}
+R.~Agrawal, T.~Imieli\'{n}ski, and A.~Swami.
+\newblock Mining association rules between sets of items in large databases.
+\newblock {\em SIGMOD Rec.}, 22(2):207--216, 1993.
+
+\bibitem{banko2007open}
+M.~Banko, M.~J. Cafarella, S.~Soderland, M.~Broadhead, and O.~Etzioni.
+\newblock Open information extraction for the web.
+\newblock In {\em IJCAI}, pages 2670--2676, 2007.
+
+\bibitem{bizer2009dbpedia}
+C.~Bizer, J.~Lehmann, G.~Kobilarov, S.~Auer, C.~Becker, R.~Cyganiak, and
+  S.~Hellmann.
+\newblock {DB}pedia-{A} crystallization point for the web of data.
+\newblock {\em Web Semantics: science, services and agents on the WWW},
+  7(3):154--165, 2009.
+
+\bibitem{bollacker2008freebase}
+K.~Bollacker, C.~Evans, P.~Paritosh, T.~Sturge, and J.~Taylor.
+\newblock Freebase: a collaboratively created graph database for structuring
+  human knowledge.
+\newblock In {\em SIGMOD}, pages 1247--1250, 2008.
+
+\bibitem{Chen:2016}
+Y.~Chen, S.~Goldberg, D.~Z. Wang, and S.~S. Johri.
+\newblock Ontological pathfinding.
+\newblock In {\em SIGMOD}, pages 835--846, 2016.
+
+\bibitem{chu2013discovering}
+X.~Chu, I.~F. Ilyas, and P.~Papotti.
+\newblock Discovering denial constraints.
+\newblock {\em {PVLDB}}, 6(13):1498--1509, 2013.
+
+\bibitem{chvatal1979greedy}
+V.~Chvatal.
+\newblock A greedy heuristic for the set-covering problem.
+\newblock {\em Mathematics of operations research}, 4(3):233--235, 1979.
+
+\bibitem{dehaspe1999discovery}
+L.~Dehaspe and H.~Toivonen.
+\newblock Discovery of frequent datalog patterns.
+\newblock {\em Data mining and knowledge discovery}, 3(1):7--36, 1999.
+
+\bibitem{deshpande2013building}
+O.~Deshpande, D.~S. Lamba, M.~Tourn, S.~Das, S.~Subramaniam, A.~Rajaraman,
+  V.~Harinarayan, and A.~Doan.
+\newblock Building, maintaining, and using knowledge bases: a report from the
+  trenches.
+\newblock In {\em SIGMOD}, pages 1209--1220, 2013.
+
+\bibitem{dong2014data}
+X.~L. Dong, E.~Gabrilovich, G.~Heitz, W.~Horn, K.~Murphy, S.~Sun, and W.~Zhang.
+\newblock From data fusion to knowledge fusion.
+\newblock {\em PVLDB}, 7(10):881--892, 2014.
+
+\bibitem{fan2011discovering}
+W.~Fan, F.~Geerts, J.~Li, and M.~Xiong.
+\newblock Discovering conditional functional dependencies.
+\newblock {\em TODS}, 23(5):683--698, 2011.
+
+\bibitem{FanFDGraphs}
+W.~Fan, Y.~Wu, and J.~Xu.
+\newblock Functional dependencies for graphs.
+\newblock In {\em SIGMOD}, pages 1843--1857, 2016.
+
+\bibitem{DBLP:conf/sigmod/FaridRIHC16}
+M.~H. Farid, A.~Roatis, I.~F. Ilyas, H.~Hoffmann, and X.~Chu.
+\newblock {CLAMS:} bringing quality to data lakes.
+\newblock In {\em SIGMOD}, pages 2089--2092, 2016.
+
+\bibitem{galarraga2015fast}
+L.~Gal{\'a}rraga, C.~Teflioudi, K.~Hose, and F.~M. Suchanek.
+\newblock Fast rule mining in ontological knowledge bases with {AMIE+}.
+\newblock {\em The VLDB Journal}, 24(6):707--730, 2015.
+
+\bibitem{gc2015big}
+P.~S. GC, C.~Sun, H.~Zhang, F.~Yang, N.~Rampalli, S.~Prasad, E.~Arcaute,
+  G.~Krishnan, R.~Deep, V.~Raghavendra, et~al.
+\newblock Why big data industrial systems need rules and what we can do about
+  it.
+\newblock In {\em SIGMOD}, pages 265--276, 2015.
+
+\bibitem{hart1968formal}
+P.~E. Hart, N.~J. Nilsson, and B.~Raphael.
+\newblock A formal basis for the heuristic determination of minimum cost paths.
+\newblock {\em IEEE transactions on Systems Science and Cybernetics},
+  4(2):100--107, 1968.
+
+\bibitem{huhtala1999tane}
+Y.~Huhtala, J.~K{\"a}rkk{\"a}inen, P.~Porkka, and H.~Toivonen.
+\newblock {TANE}: An efficient algorithm for discovering functional and
+  approximate dependencies.
+\newblock {\em The computer journal}, 42(2):100--111, 1999.
+
+\bibitem{kivinen1995approximate}
+J.~Kivinen and H.~Mannila.
+\newblock Approximate inference of functional dependencies from relations.
+\newblock {\em Theoretical Computer Science}, 149(1):129--149, 1995.
+
+\bibitem{min2013distant}
+B.~Min, R.~Grishman, L.~Wan, C.~Wang, and D.~Gondek.
+\newblock Distant supervision for relation extraction with an incomplete
+  knowledge base.
+\newblock In {\em HLT-NAACL}, pages 777--782, 2013.
+
+\bibitem{muggleton1994inductive}
+S.~Muggleton and L.~De~Raedt.
+\newblock Inductive logic programming: Theory and methods.
+\newblock {\em The Journal of Logic Programming}, 19:629--679, 1994.
+
+\bibitem{richardson2006markov}
+M.~Richardson and P.~Domingos.
+\newblock Markov logic networks.
+\newblock {\em Machine learning}, 62(1-2):107--136, 2006.
+
+\bibitem{schoenmackers2010learning}
+S.~Schoenmackers, O.~Etzioni, D.~S. Weld, and J.~Davis.
+\newblock Learning first-order horn clauses from web text.
+\newblock In {\em Empirical Methods in Natural Language Processing}, pages
+  1088--1098, 2010.
+
+\bibitem{shin2015incremental}
+J.~Shin, S.~Wu, F.~Wang, C.~De~Sa, C.~Zhang, and C.~R{\'e}.
+\newblock Incremental knowledge base construction using {DeepDive}.
+\newblock {\em PVLDB}, 8(11):1310--1321, 2015.
+
+\bibitem{suchanek2007yago}
+F.~M. Suchanek, G.~Kasneci, and G.~Weikum.
+\newblock {YAGO}: A core of semantic knowledge unifying wordnet and wikipedia.
+\newblock In {\em {WWW}}, pages 697--706, 2007.
+
+\bibitem{suchanek2009sofie}
+F.~M. Suchanek, M.~Sozio, and G.~Weikum.
+\newblock {SOFIE}: A self-organizing framework for information extraction.
+\newblock In {\em WWW}, pages 631--640, 2009.
+
+\bibitem{vrandevcic2014wikidata}
+D.~Vrande{\v{c}}i{\'c} and M.~Kr{\"o}tzsch.
+\newblock Wikidata: A free collaborative knowledgebase.
+\newblock {\em Communications of the ACM}, 57(10):78--85, 2014.
+
+\bibitem{wyss2001fastfds}
+C.~Wyss, C.~Giannella, and E.~Robertson.
+\newblock Fast{FDs}: A heuristic-driven, depth-first algorithm for mining
+  functional dependencies from relation instances.
+\newblock In {\em DaWaK}, pages 101--110, 2001.
+
+\end{thebibliography}
