@@ -5,7 +5,7 @@ We carried out an extensive experimental evaluation of our approach and grouped 
 	\item demonstrating the quality of our output for positive and negative rules;
 	\item comparing our method with the state-of-the-art systems;
 	\item showing the applicability of rule discovery in Machine Learning algorithms with representative training data;
-	\item testing the role of the parameters in the system settings and some KB properties.
+	\item testing the role of the parameters in the system. % settings and some KB properties.
 \end{inparaenum}
 %DO WE EVALUATE SAMPLING ON A DIFFERENT SECTION?
 
@@ -21,10 +21,11 @@ We carried out an extensive experimental evaluation of our approach and grouped 
 %\system{Virtuoso} took on average 20 minutes to load a medium size KB (i.e., 10 GB) into its store, and %around 100 milliseconds to execute a single hop query. 
 We ran experiments over the latest core facts derived from several KBs. All experiments were run on a desktop with a quad-core i5 CPU at 2.80GHz and 16GB RAM. We used \system{OpenLink Virtuoso}, optimized for 8GB RAM, with its SPARQL query endpoint on the same machine.
 
-In the following, parameters $\alpha$ and $\beta$ of Equation~\ref{eq:weight_fun} were set to  $\alpha=0.3$ and $\beta=0.7$ for positive rules, and to $\alpha=0.4$ and $\beta=0.6$ for negative rules. 
+%In the following, 
+Parameters $\alpha$ and $\beta$ of Equation~\ref{eq:weight_fun} were set to  $\alpha=0.3$ and $\beta=0.7$ for positive rules, and to $\alpha=0.4$ and $\beta=0.6$ for negative rules. 
 %We also use a $maxPathLen$ parameter indicating the maximum number of atoms in each of the rules to be discovered that is set to $3$. 
-We also set to $3$ the $maxPathLen$ parameter, which indicates the maximum number of atoms 
-admissible in the body of a rule.
+We set the maximum number of atoms 
+admissible in the body of a rule ($maxPathLen$) to $3$.
 We analyze the role of these parameters in Section~\ref{sec:krd_int_evaluation}. 
 \begin{comment}
 Our method needs the two input parameters $\alpha$ and $\beta$ of Equation~\ref{eq:weight_fun}. 
@@ -34,16 +35,17 @@ We also set the $maxPathLen$ parameter to $3$. This number represents the maximu
 \end{comment}
 
 \myparagraph{Evaluation Metrics}
-We evaluated the effectiveness of \krd in its ability to discover both positive and negative rules. The set of predicates for evaluation were chosen separately in the case of positive and negative rules from each KB as follows.
-For each KB, we first ordered predicates according to descending popularity (i.e., number of triples having that predicate). We then picked the top $3$ predicates for which we knew there existed at least one meaningful rule, and other $2$ top predicates for which we did not know whether some meaningful rules existed or not. 
+We evaluated the effectiveness of \krd in discovering both positive and negative rules. The set of predicates for evaluation were chosen separately in the case of positive and negative rules from each KB.
+For every KB, we first ordered predicates according to descending popularity (i.e., number of triples having that predicate). We then picked the top $3$ predicates for which we knew there existed at least one meaningful rule, and other $2$ top predicates for which we did not know whether some meaningful rules existed or not. 
 %: we picked $5$ popular predicates occurring in a majority of triples out of which the top $3$ are known to have at least one meaningful rule, while there is no prior knowledge about the rules for the next 2 predicates. 
 
 The evaluation of the discovered rules 
 %discovered by \krd and the baseline algorithms we compare against 
-was done for both positive and negative rules according to the state of the art for rule quality evaluation~\cite{galarraga2015fast}. If a rule was clearly semantically correct, we marked all its new predictions as true. If a rule was unknown, we randomly sampled 30 affected pairs, either as new facts (for positive rules) or as violations (for negative rules), 
+%was done for both positive and negative rules 
+has been done according to the state of the art for rule quality evaluation~\cite{galarraga2015fast}. If a rule was clearly semantically correct, we marked all its results over triples as true. If a rule correctness was unknown, we randomly sampled 30 triples either among the new facts (for positive rules) or among the errors (for negative rules), 
 %new predictions likely to be violating rule head 
 and manually checked them. % against the Web. 
-The \emph{precision} of a rule is then computed as the ratio of true assertions out of true and false assertions. 
+The \emph{precision} of a rule is then computed as the ratio of correct assertions out of all assertions. 
 %The subtle difference is that the sample set of tentatively violating predictions to be evaluated are generated differently for positive and negative rules. As an example, for the positive rule $\atom{spouse}{a}{v0} \wedge \atom{child}{v0}{b} \Rightarrow \atom{child}{a}{b}$, we retrieve all those pairs  $(a,b)$ such that $b$ is the child of $v0$ and $v0$ is the spouse of $a$ but $b$ is not the child of $a$. In the case of the negative rule, $\atom{child}{a}{b} \Rightarrow \neg \atom{spouse}{a}{b}$, we retrieve all those pairs $(a,b)$ such that $b$ is \texttt{child} of $a$ and $a$ is \texttt{spouse} with $b$.
 \begin{comment}
 \krd discovers rules for a given target predicate. For each KB, we chose $5$ representative predicates as follows: we first ordered predicates according to descending popularity (i.e., number of triples having that predicate), and then we picked the top $3$ predicates for which we knew there existed at least one meaningful rule, and other $2$ top predicates for which we did not know whether some meaningful rules existed or not. We repeated the procedure for each input KB, and for both positive and negative rules. Despite working with one predicate at a time, \krd can also discover rules for the entire KB by enumerating all the predicates in the KB, and discovering rules for each of them. We will show in Section~\ref{sec:krd_comparative} how this can be achieved.
@@ -65,16 +67,10 @@ Therefore negative rules will always discover many correct negative facts. Howev
 %Furthermore, a potential error is evaluated as actual error whenever a single atom in the rule is incorrect, no matter if the atom is in the body or the head of the rule. For the negative rule $\atom{child}{a}{b} \Rightarrow \neg \atom{spouse}{a}{b}$, a specific instantiation $(a,b)$ is an actual error if either $b$ is not an actual \texttt{child} of $a$, or $b$ is not an actual \texttt{spouse} of $a$. As we will explain further below, negative rules cannot point exactly where the error is, but they give a hint that something is wrong and needs to be further inspected.
 \end{comment}
 
-The full suite of test results, together with all the KBs, induced rules, and annotated gold standard examples and rules is available online at \url{http://bit.ly/2csROsc}.
+Full test results, including KBs, induced rules, annotated examples and rules are available at \url{http://bit.ly/2csROsc}.
 
-\vspace{-1ex}
-\subsection{Quality of Rule Discovery} \label{sec:gen_evaluation}
-\vspace{-1ex}
-The first set of experiments aimed at evaluating the accuracy of discovered rules over three popular KBs: \dbpedia~\cite{bizer2009dbpedia}, \yago~\cite{suchanek2007yago}, and \wikidata~\cite{vrandevcic2014wikidata}. 
-%For each KB we downloaded the most recent version and selected core facts, facts about people, geolocations and transitive \texttt{rdf:type} facts. \wikidata provides the entire dump alone; therefore we just eliminated from it all the non-English literal values. 
-Table~\ref{tab:krdDatasetDescr} shows the characteristics of the KBs.
 
-\vspace{1ex}
+%\vspace{-1ex}
 {\small
 \begin{table}[thb]
 	\centering
@@ -96,8 +92,15 @@ Table~\ref{tab:krdDatasetDescr} shows the characteristics of the KBs.
 \end{table}
 }
 
+\vspace{-1ex}
+\subsection{Quality of Rule Discovery} \label{sec:gen_evaluation}
+\vspace{-1ex}
+The first set of experiments aimed at evaluating the accuracy of discovered rules over three popular KBs: \dbpedia~\cite{bizer2009dbpedia}, \yago~\cite{suchanek2007yago}, and \wikidata~\cite{vrandevcic2014wikidata}. 
+%For each KB we downloaded the most recent version and selected core facts, facts about people, geolocations and transitive \texttt{rdf:type} facts. \wikidata provides the entire dump alone; therefore we just eliminated from it all the non-English literal values. 
+Table~\ref{tab:krdDatasetDescr} shows the characteristics of the KBs.
+
 %As the figure shows, 
-The size of the KB is important as loading the entire KB in memory is not feasible unless we either have HW with large amount of memory~\cite{Chen:2016,DBLP:conf/sigmod/FaridRIHC16},  or we artificially shrink the KB by eliminating all the literals~\cite{galarraga2015fast}. In our disk-based approach only a small portion of the KB is loaded in memory, therefore we discover rules with limited HW resources. Also, we can retain the literals, which are crucial for the value comparison in our rules. While \krd mines rules for a given target predicate, it discovers rules over the entire KB if the input is the universal set of predicates from the KB. This is further elaborated in Section~\ref{sec:krd_comparative}.
+The size of the KB is important as loading the entire KB in memory is not feasible unless we either have HW with large amount of memory~\cite{Chen:2016,DBLP:conf/sigmod/FaridRIHC16}, or we shrink the KB by eliminating all the literals~\cite{galarraga2015fast}. In our approach, only a small portion of the KB is loaded in memory, thus we can afford to (i) discover rules with commodity machines HW resources, (ii) retain the literals, which are crucial for the value comparison in our rules. While \krd mines rules for a given target predicate at a time, it discovers rules over the entire KB given its set of predicates. This is further elaborated in Section~\ref{sec:krd_comparative}.
 
 
 \myparagraph{Positive Rule Discovery} 
@@ -149,7 +152,7 @@ The $maxPathLen$ parameter also impacts the running time. The longer the rule, t
 We evaluated negative rules as the percentage of correct errors discovered for the top 5 predicates in each KB. Table~\ref{tab:neg_rules_acc} shows, for each KB, the total number of potential erroneous triples discovered with the rules, whereas the precision is computed as the percentage of actual errors among potential errors. Numbers in brackets show the sample of unknown triples manually annotated.
 
 \vspace{1ex}
-\begin{table}[b]
+\begin{table}[htb]
 	\centering
 	\caption{Negative Rule Accuracy.}
 	\label{tab:neg_rules_acc}
