@@ -459,6 +459,7 @@ The output of \texttt{ManualSampl} and \krd are very similar, meaning that we ca
 
 \vspace{-1ex}
 \subsection{Internal Evaluation} \label{sec:krd_int_evaluation}
+\vspace{-1ex}
 We briefly outline the most relevant findings when studying the impact of individual components in \krd.
 Full results on the internal evaluation %are not reported due to space reasons but 
 can be found in the technical report online at \url{http://bit.ly/2bDZO9F}.
@@ -479,10 +480,12 @@ can be found in the technical report online at \url{http://bit.ly/2bDZO9F}.
 	\end{tabular}
 \end{table}
 
-
-\noindent \myparagraph{LCWA} We demonstrate the validity of our LCWA-based generation of negative examples, which clearly outperforms random generation strategies in terms of accuracy.
-Table~\ref{tab:random_neg_examples} reports the accuracy of discovering negative rules with the three different generation strategies: \krd generation strategy, random (randomly select $k$ pairs $(x,y)$ from the Cartesian product s.t. triple $\<x,p,y\> \notin \kb$), LCWA (\krd generation strategy without the constraint that $x$ and $y$ must be connected by a predicate different from $p$).
-\emph{Random} and \emph{LCWA\_Random} strategies show very similar behaviors, with a slightly better precision than \krd. This is because whenever we randomly pick examples from the Cartesian product of subject and object, the likelihood of picking entities from a different time period is very high, and negative rules pivoting on time constraints are usually correct. Instead, the constriction of forcing $x$ and $y$ to be connected by a different predicate generates  negative examples with heterogeneous properties that lead to different results. Rules such as $\atom{parent}{a}{b} \Rightarrow  \atom{notSpouse}{a}{b}$ are very unlikely to be generated with random strategies, since the likelihood of picking two people that are in a parent relation is very low. The generation strategy we adopt in \krd allows the discovery of more types of rules, and not only rules involving time constraints. 
+\noindent \myparagraph{LCWA} We study the effect of the LCWA assumption for the generation of negative examples.
+%, which clearly outperforms random generation strategies in terms of accuracy.
+Given a predicate $p$, we tested three different generation strategies: \krd generation strategy (as detailed in Section~\ref{sec:ex_generation}), Random (randomly select $k$ pairs $(x,y)$ from the Cartesian product s.t. triple $\<x,p,y\> \notin \kb$), LCWA (\krd strategy without the constraint that $x$ and $y$ must be connected by a predicate different from $p$).
+Table~\ref{tab:random_neg_examples} reports the results for the discovered rules. 
+\emph{Random} and \emph{LCWA\_Random} show similar behavior, with a slightly better precision than \krd. This is because whenever we randomly pick examples from the Cartesian product of subject and object, the likelihood of picking entities from a different time period is very high, and negative rules pivoting on time constraints are usually correct. Instead, by forcing $x$ and $y$ to be connected with different predicate generates semantically related examples that lead to different results. Rules such as $\atom{parent}{a}{b} \Rightarrow  \atom{notSpouse}{a}{b}$ are not generated with random strategies, since the likelihood of picking two people that are in a parent relation is very low. 
+%The strategy we adopt in \krd enables the discovery of more types of rules, and not only rules involving time constraints. 
 
 
 \noindent \myparagraph{Literals} Including literals in the mining is especially beneficial for negative rules, where we double the number of errors discovered with a 10\% increase in precision.
