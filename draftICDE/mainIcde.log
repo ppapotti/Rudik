@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013) (format=pdflatex 2013.12.4)  17 OCT 2016 17:00
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013) (format=pdflatex 2013.12.4)  17 OCT 2016 17:31
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -957,14 +957,14 @@ LaTeX Font Info:    Try loading font information for U+stmry on input line 14.
 (/usr/local/texlive/2013/texmf-dist/tex/latex/stmaryrd/Ustmry.fd)
 Package xypdf Info: Line width: 0.39998pt on input line 14.
 \AtBeginShipoutBox=\box44
-LaTeX Font Info:    Calculating math sizes for size <11> on input line 30.
-LaTeX Font Info:    Try loading font information for OMS+ptm on input line 30.
+LaTeX Font Info:    Calculating math sizes for size <11> on input line 25.
+LaTeX Font Info:    Try loading font information for OMS+ptm on input line 25.
 
 (/usr/local/texlive/2013/texmf-dist/tex/latex/psnfss/omsptm.fd
 File: omsptm.fd 
 )
 LaTeX Font Info:    Font shape `OMS/ptm/m/n' in size <10> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 30.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 25.
 
 (./include/abstract.tex
 LaTeX Font Info:    Try loading font information for OT1+phv on input line 2.
@@ -1113,10 +1113,10 @@ File: include/figure/a*_graph_example.pdf Graphic file (type pdf)
 
 <use include/figure/a*_graph_example.pdf>
 Package pdftex.def Info: include/figure/a*_graph_example.pdf used on input line
- 68.
+ 72.
 (pdftex.def)             Requested size: 250.52075pt x 52.4403pt.
  [6 <./include/figure/a*_graph_example.pdf>]
-Overfull \hbox (0.67578pt too wide) detected at line 127
+Overfull \hbox (0.67578pt too wide) detected at line 130
 \OML/cmm/m/it/10 w[]\U/matha/m/n/10 p\OML/cmm/m/it/10 r\U/matha/m/n/10 q ^^P ^^
 A\OML/cmm/m/it/10  \U/matha/m/n/10 ^^D [] ^^@ \OML/cmm/m/it/10 ^^L \U/matha/m/
 n/10 ^^D p[] ^^A []q
@@ -1124,29 +1124,29 @@ n/10 ^^D p[] ^^A []q
 
 (./include/algorithm/krd_a*_algorithm.tex
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <6.25002> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 21.
-)) (./include/evaluation.tex [7]
-Overfull \hbox (3.68321pt too wide) in paragraph at lines 88--88
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 20.
+) [7]) (./include/evaluation.tex
+Overfull \hbox (3.68321pt too wide) in paragraph at lines 90--90
  []|\OT1/ptm/m/sc/9 DBPedia| 
  []
 
 
-Overfull \hbox (4.53041pt too wide) in paragraph at lines 88--88
+Overfull \hbox (4.53041pt too wide) in paragraph at lines 90--90
  []|\OT1/ptm/m/n/9 10.056GB| 
  []
 
 
-Overfull \hbox (6.14915pt too wide) in paragraph at lines 90--90
+Overfull \hbox (6.14915pt too wide) in paragraph at lines 92--92
  []|\OT1/ptm/m/sc/9 Wikidata| 
  []
 
 
-Overfull \hbox (4.7018pt too wide) in paragraph at lines 90--90
+Overfull \hbox (4.7018pt too wide) in paragraph at lines 92--92
  []|\OT1/ptm/m/n/9 20160229| 
  []
 
 [8]
-Underfull \hbox (badness 10000) in paragraph at lines 214--221
+Underfull \hbox (badness 10000) in paragraph at lines 218--225
 []\OT1/ptm/m/n/10 We com-pared our rule dis-cov-ery method against
  []
 
@@ -1154,35 +1154,35 @@ Underfull \hbox (badness 10000) in paragraph at lines 214--221
 File: include/figure/vsAmieYago.pdf Graphic file (type pdf)
 
 <use include/figure/vsAmieYago.pdf>
-Package pdftex.def Info: include/figure/vsAmieYago.pdf used on input line 252.
+Package pdftex.def Info: include/figure/vsAmieYago.pdf used on input line 257.
 (pdftex.def)             Requested size: 227.74333pt x 94.74272pt.
 
 <include/figure/vsAmieDBPedia.pdf, id=87, 465.91118pt x 196.08286pt>
 File: include/figure/vsAmieDBPedia.pdf Graphic file (type pdf)
 
 <use include/figure/vsAmieDBPedia.pdf>
-Package pdftex.def Info: include/figure/vsAmieDBPedia.pdf used on input line 26
-7.
+Package pdftex.def Info: include/figure/vsAmieDBPedia.pdf used on input line 27
+2.
 (pdftex.def)             Requested size: 227.74333pt x 95.84805pt.
  [9 <./include/figure/vsAmieYago.pdf>]
 LaTeX Font Info:    Font shape `OT1/phv/m/it' in size <9> not available
-(Font)              Font shape `OT1/phv/m/sl' tried instead on input line 370.
+(Font)              Font shape `OT1/phv/m/sl' tried instead on input line 375.
 
 <include/figure/deepDive1K.pdf, id=145, 980.46115pt x 379.6436pt>
 File: include/figure/deepDive1K.pdf Graphic file (type pdf)
 
 <use include/figure/deepDive1K.pdf>
-Package pdftex.def Info: include/figure/deepDive1K.pdf used on input line 410.
+Package pdftex.def Info: include/figure/deepDive1K.pdf used on input line 418.
 (pdftex.def)             Requested size: 240.39659pt x 93.08011pt.
  [10 <./include/figure/vsAmieDBPedia.pdf> <./include/figure/deepDive1K.pdf>]
 <include/figure/deepDive1M.pdf, id=269, 980.73303pt x 393.32132pt>
 File: include/figure/deepDive1M.pdf Graphic file (type pdf)
 
 <use include/figure/deepDive1M.pdf>
-Package pdftex.def Info: include/figure/deepDive1M.pdf used on input line 430.
+Package pdftex.def Info: include/figure/deepDive1M.pdf used on input line 438.
 (pdftex.def)             Requested size: 240.39659pt x 96.40958pt.
 
-Underfull \hbox (badness 2495) in paragraph at lines 436--441
+Underfull \hbox (badness 2495) in paragraph at lines 444--449
 \OT1/ptm/m/n/10 dras-ti-cally (Fig-ure 6[]). All the three ap-proaches ex-cept
  []
 
@@ -1201,13 +1201,13 @@ Before submitting the final camera ready copy, remember to:
 
 [12] (./mainIcde.aux) ) 
 Here is how much of TeX's memory you used:
- 10351 strings out of 493315
- 140378 string characters out of 6137904
- 285723 words of memory out of 5000000
- 13475 multiletter control sequences out of 15000+600000
- 80931 words of font info for 180 fonts, out of 8000000 for 9000
+ 10345 strings out of 493315
+ 140329 string characters out of 6137904
+ 284723 words of memory out of 5000000
+ 13471 multiletter control sequences out of 15000+600000
+ 77575 words of font info for 178 fonts, out of 8000000 for 9000
  957 hyphenation exceptions out of 8191
- 38i,19n,35p,3261b,548s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 38i,19n,35p,3261b,550s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/local/texlive/2013/texmf-dist/fonts/enc/dvips/base
 /8r.enc}</usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi
 10.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5
@@ -1234,7 +1234,7 @@ ist/fonts/type1/urw/times/utmb8a.pfb></usr/local/texlive/2013/texmf-dist/fonts/
 type1/urw/times/utmbi8a.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/urw
 /times/utmr8a.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/urw/times/utm
 ri8a.pfb>
-Output written on mainIcde.pdf (12 pages, 476312 bytes).
+Output written on mainIcde.pdf (12 pages, 476530 bytes).
 PDF statistics:
  420 PDF objects out of 1000 (max. 8388607)
  282 compressed objects within 3 object streams
