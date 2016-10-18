@@ -6,37 +6,39 @@ We review some of the most relevant works below.
 
 %\myparagraph{Relational Database Constraints} 
 A significant body of work has addressed the problem of discovering constraints over relational data. 
-Due to the presence of a pre-defined schema, dependencies are discovered over the attributes and encoded into formalisms such as 
-Functional Dependencies (FDs)~\cite{abiteboul1995foundations,huhtala1999tane,wyss2001fastfds}, Conditional FDs~\cite{fan2011discovering} 
-and Denial Constraints (DCs)~\cite{chu2013discovering}. 
+%Due to the presence of a pre-defined schema, 
+Dependencies are discovered over the attributes of a given schema and encoded into formalisms, such as 
+Functional Dependencies~\cite{abiteboul1995foundations,huhtala1999tane} 
+and Denial Constraints~\cite{chu2013discovering}. 
 %
 %It is interesting to note that the Our positive rules  to FDs while a close parallel can be drawn between our negative rules and DCs.
 %
 %Functional Dependencies (FDs), a formalism to express relations and dependencies among attributes, has been studied in constraints discovery literature for more than 20 years~\cite{abiteboul1995foundations}, with a recent focus on performance~\cite{abedjan2014dfd}. FDs can be grouped into two strands: the schema-level approaches~\cite{huhtala1999tane} (similar to our positive rules discovery), and the instance-driven approaches~\cite{wyss2001fastfds}. More recently, Conditional FDs extend standard FDs by enforcing patterns of semantically related constants~\cite{fan2011discovering}. In the context of inconsistencies discovery for relational data, Denial Constrains (DCs) are the current state-of-the-art techniques~\cite{chu2013discovering}. DCs are a universally quantified first order logic formalism to express constraints over relational data, and they are directly related to our negative output rules. Efficient DCs algorithms have been proposed for data cleaning and consistent query answering~\cite{bertossi2011database,chu2013holistic}. 
 %Despite being directly related to our output and expressing a richer language, 
-However, techniques for FDs and DCs discovery cannot be applied to RDF databases for three main reasons:
+However, these techniques cannot be applied to KBs for three main reasons:
 \begin{inparaenum}[\itshape(i)]
 	\item the schema-less nature of RDF data and the open world assumption; % which no longer holds on RDF KBs;
 	\item traditional approaches rely on the assumption that data is either clean or has a negligible amount of errors, which is not the case with KBs;
 	\item even when the algorithms are designed to support more errors~\cite{abedjan2015temporal,kivinen1995approximate}, there are scalability issues on large RDF dataset: a direct application of relational database techniques on RDF KBs requires the materialization of all possible predicate combinations into relational tables.
 \end{inparaenum}
-
+%
 %A few FD mining approaches like~\cite{abedjan2015temporal,kivinen1995approximate} that can work with erroneous datasets are still inapplicable to RDF data due to scalability problems.
 Recently, Fan et. al.~\cite{FanFDGraphs} laid the theoretical foundations of Functional Dependencies on Graphs. % (GFDs). 
 %They also propose parallel algorithms for GFDs computation and evaluate the accuracy on \yago and \dbpedia. Despite existing a natural correlation between FDs and Horn Rules, 
 However, their language covers only a portion of our negative rules %to detect inconsistencies 
 and does not include smart literal comparisons, which we have shown to be useful when detecting errors in KBs.
 
-To the best of our knowledge, \krd is the first approach that is generic enough %to use the same algorithm 
+%To the best of our knowledge, 
+\krd is the first approach that is generic enough %to use the same algorithm 
 to discover both positive and negative rules in RDF KBs.
-Rule mining approaches specifically designed for positive rule discovery in RDF KBs, such as \amie~\cite{galarraga2015fast} and OP algorithm~\cite{Chen:2016}, load the entire KB into memory prior to 
+Rule mining approaches designed for positive rule discovery in RDF KBs, such as \amie~\cite{galarraga2015fast} and OP algorithm~\cite{Chen:2016}, load the entire KB into memory prior to 
 the graph traversal step. %connecting the predicates incrementally to form the full-fledged rule. In addition to this, 
-This is a strong constraint for their applicability over large KBs, and neither of these two approaches can afford smart literal comparison. 
-In contrast to them, \krd is disk-based. By generating the graph on-demand, it can discover rules on a small fraction of the KB examples. This makes our approach scalable and the low memory footprint enables a bigger search space with rules that can have literal comparisons. % from a language perspective. 
+This is a constraint for their applicability over large KBs, and neither of these two approaches can afford value comparison. 
+In contrast to them, by generating the graph on-demand, \krd discovers rules on a small fraction of the KB. This makes it scalable and the low memory footprint enables a bigger search space with rules that can have literal comparisons. % from a language perspective. 
 %however it requires a powerful cluster of several machines to split the KB into multiple nodes. 
 We showed in the experimental section how \krd outperforms \amie both in final accuracy and running time.
-In contrast with recent approaches~\cite{DBLP:conf/sigmod/FaridRIHC16}, our algorithm was designed to run on a single node in a commodity machine. We therefore have not tested our running time against a distributed environment. %~\cite{Chen:2016} because we could not find an implementation for it and 
-Finally, \cite{abedjan2014amending} recommends new facts to be added to the KB by using association rule mining techniques. Their rules are made only of constants and are therefore less general than the rules generated by \krd.
+%In contrast with recent approaches~\cite{DBLP:conf/sigmod/FaridRIHC16,Chen:2016}, our algorithm was designed to run on a single node in a commodity machine. %We therefore have not tested our running time against a distributed environment. %~\cite{Chen:2016} because we could not find an implementation for it and 
+Finally, \cite{abedjan2014amending} recommends new facts by using association rule mining techniques. Their rules are made only of constants and are therefore less general than the rules generated by \krd.
 % are generic and can be instantiated with several instances thus being capable of generating several highly precise facts.
 
 %Our example generation strategy leverages the Local Closed World Assumption (LCWA) to handle incompleteness in KBs, as done in previous works~\cite{dong2014data,dong2015knowledge}, \amie~\cite{Chen:2016,galarraga2015fast}.
@@ -54,12 +56,21 @@ Finally, \cite{abedjan2014amending} recommends new facts to be added to the KB b
 
 %\system{WARMR} is an ILP system that discovers frequent patterns (expressed through DATALOG queries) that succeed with respect to a sufficient number of examples~\cite{dehaspe1999discovery}. When translated to databases, such patterns correspond to conjunctive queries. \system{ALEPH}\footnote{\url{http://www.cs.ox.ac.uk/activities/machinelearning/Aleph/aleph}} is an available ILP system that is based on Prolog Inverse Entailment~\cite{muggleton1995inverse}. \system{ALEPH} works iteratively, by selecting examples from the background knowledge. It first constructs the most specific clause that entails the example selected (\emph{bottom clause}), and then searches for some subset of the literals in the bottom clause that has the \emph{best score} in order to define more general rules. The system allows the user to choose among several scoring functions. 
 
-ILP systems such as \system{WARMR}~\cite{dehaspe1999discovery} and \system{ALEPH}\footnote{\url{https://www.cs.ox.ac.uk/activities/machinelearning/Aleph/aleph}} are designed to work under the closed world assumption and require the definition of positive and negative examples. \amie outperforms these two systems~\cite{galarraga2015fast}, but shows scalability issues when dealing medium-size KBs. Moreover, %one of the main limitations of 
-classic ILP systems assume high-quality, error-free training examples as input. 
-We showed how this assumption does not hold in KBs. \system{Sherlock}~\cite{schoenmackers2010learning} is an ILP system that extracts first-order Horn Rules 
-from Web text. While making \krd extensible to free text rather than relying on a well-defined KB is an interesting future work, 
-the statistical significance estimate used by 
-\system{Sherlock} needs a threshold to discover meaningful rules. Several ILP systems inspired from Association Rule Mining~\cite{agrawal1993mining} also use thresholds for support and confidence that are non-trivial to set (Section~\ref{sec:krd_comparative}). We avoid the use of a threshold in \krd and rely on a weighted set cover problem formulation that outputs only rules contributing to the coverage of the generation set while minimizing the coverage of the validation set.
+ILP systems such as \system{WARMR}~\cite{dehaspe1999discovery} and \system{ALEPH}\footnote{\url{https://www.cs.ox.ac.uk/activities/machinelearning/Aleph/aleph}} are designed to work under the CWA and require the definition of positive and negative error-free examples.
+%, but shows scalability issues when dealing medium-size KBs. Moreover, %one of the main limitations of 
+%classic ILP systems assume high-quality, error-free training examples as input. 
+It has been showed how this assumption does not hold in KBs and that  \amie outperforms these two systems~\cite{galarraga2015fast}. 
+\system{Sherlock}~\cite{schoenmackers2010learning} is an ILP system that extracts first-order Horn Rules 
+from Web text. While extending \krd to free text %rather than relying on a well-defined KB 
+is an interesting future work, the statistical significance estimate used by 
+% needs a threshold to discover meaningful rules. 
+As in other ILP systems inspired from Association Rule Mining~\cite{agrawal1993mining}, also \system{Sherlock} relies on thresholds for support and confidence that are non-trivial to set (Section~\ref{sec:krd_comparative}). We avoid thresholds in \krd and rely on a set cover problem formulation that outputs only rules contributing to the coverage of the generation set while minimizing the coverage of the validation set.
+
+Finally, recent efforts from the ML community address the absence of negative training data through approaches like one-class learning and generative adversarial networks~\cite{goodfellow2014generative}. The negative training examples are created using a generative model that is iteratively refined by the feedback obtained by a discriminative model (classifier). 
+%  A severe limitation of this model is its inability to work with minimum training data as the discriminator can overfit in such scenarios and the generative model inherently needs several iterations to depart from a poorly guessed prior parameters for the negative examples. This does not however preclude the fact that ML
+It would be interesting to integrate these ML approaches with the discovery of declarative rules, as we do in \krd.
+%  ideas approaches lack expressibility and are orthogonal to our idea of mining well-understood rules that are easy to apply and verify.
+
 
 %\system{Sherlock}~\cite{schoenmackers2010learning} is an interesting ILP system that learns first-order Horn Rules from Web text. One of the key advantage of \system{Sherlock} is being unsupervised: it does not require negative training examples. It uses statistical significance and statistical relevance in order to discover rules that exceeds a given threshold. Differently from our setting, \system{Sherlock} is specifically designed to learn Horn Rules from open domain facts that are extracted from the Web. An interesting future direction is to adapt \krd to discover rules from relations extracted from free text rather than on a well-defined KB.
 

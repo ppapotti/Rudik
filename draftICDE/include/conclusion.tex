@@ -1,11 +1,11 @@
 \section{Conclusion}
 %We have designed and implemented 
-We presented \krd, a disk-based rule discovery system that mines both positive and negative declarative rules on noisy and incomplete RDF KBs. Positive rules identify new valid facts for the KB, while negative rules identify errors. 
+We presented \krd, a robust rule discovery system that mines both positive and negative declarative rules on noisy and incomplete RDF KBs. Positive rules identify new valid facts for the KB, while negative rules identify errors. 
 We experimentally demonstrated that our approach generates concise sets of meaningful rules with high precision,
 is scalable, and can work with KBs of large size. 
 Also, we showed that negative rules not only identify potential errors in KBs, but also generate representative training data for ML algorithms.
 
-Interesting open questions are related to the support of interactive discovery of the rules. It is not clear if and how it is possible to drastically reduce the runtime of the discovery with sampling of the input training instances while not compromising on the quality of the mined rules. 
+Interesting open questions are related to the interactive discovery of the rules. It is not clear if and how it is possible to drastically reduce the runtime of the discovery with sampling of the input training instances while not compromising on the quality of the mined rules. 
 %We also plan to discern between a positive and a negative rule predicting the same set of facts from the KB as this implies that only one of the rules holds. 
 %This can also be an indirect approach to handle the incompleteness of the KBs that remains a huge challenge.
 %In the future, we want to extend \krd to mine rules from free web text which is not as structured as KBs. 
