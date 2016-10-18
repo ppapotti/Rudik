@@ -84,7 +84,7 @@ Full test results, including KBs, induced rules, annotated examples and rules ar
 			{\it KB}&{\it Version}&{\it Size}&{\it  \#Triples}&{\it \#Predicates} \tabularnewline
 			\hline
 			\dbpedia & 3.7 & 10.056GB & 68,364,605 & 1,424 \tabularnewline
-			\yago & 3.0.2 & 7.82GB & 88,360,244 & 74 \tabularnewline
+			\yago 3 & 3.0.2 & 7.82GB & 88,360,244 & 74 \tabularnewline
 			\wikidata & 20160229 & 12.32GB & 272,129,814 & 4,108 \tabularnewline
 			\hline
 		\end{tabular}
@@ -114,7 +114,7 @@ The size of the KB is important as loading the entire KB in memory is not feasib
 		{\it KB}&{\it Avg. Run Time}&{\it Avg. Precision}&{\it \# Annotations} \tabularnewline
 		\hline
 		\dbpedia & 34min, 56sec & \textbf{63.99}\% & 139\tabularnewline
-		\yago &  59min, 25sec & \textbf{62.86}\% & 150\tabularnewline
+		\yago 3 &  59min, 25sec & \textbf{62.86}\% & 150\tabularnewline
 		\wikidata &  2h, 21min, 34sec & \textbf{73.33}\% & 180\tabularnewline
 		\hline
 	\end{tabular}
@@ -164,7 +164,7 @@ Parameter $maxPathLen$  also impacts the running time. The longer the rule, the 
 		{\it KB}&{\it Avg. Run Time}&{\it \# Pot. Errors} & {\it Precision} \tabularnewline
 		\hline
 		\dbpedia & 19min, 40sec& 499 (84) & \textbf{92.38}\%\tabularnewline
-		\yago & 10min, 40sec & 2,237 (90) & \textbf{90.61}\%\tabularnewline
+		\yago 3 & 10min, 40sec & 2,237 (90) & \textbf{90.61}\%\tabularnewline
 		\wikidata & 1h, 5min, 38sec & 1,776 (105)& \textbf{73.99}\%\tabularnewline
 		\hline
 	\end{tabular}
@@ -241,7 +241,7 @@ It then outputs all possible rules that exceed a given threshold and ranks them 
 			{\it KB}&{\it Size}&{\it  \#Triples}&{\it \#Predicates}&{\it \#}\texttt{rdf:type}\tabularnewline
 			\hline
 			\dbpedia & 551M & 7M & 10,342 & 22.2M \tabularnewline
-			\yago & 48M & 948.3K & 38 & 77.9M  \tabularnewline
+			\yago 2 & 48M & 948.3K & 38 & 77.9M  \tabularnewline
 			\hline
 		\end{tabular}
 	\end{small}
@@ -251,7 +251,7 @@ Given its in-memory implementation, \amie went out of memory for the KBs of Tabl
 %~\footnote{\url{www.mpi-inf.mpg.de/departments/databases-and-information-systems/research/yago-naga/amie/}}
 %These versions consist of the core facts of the KB, without literals and \texttt{rdf:type} facts. Table~\ref{tab:AmieDatasetDescr} summarizes the characteristics of these datasets.
 %
-Removing literals and \texttt{rdf:type} triples drastically reduce the size of the KB. Since our approach needs type information (for the generation of $G$ and $V$ and for the discovery of inequality atoms), we run \amie on its original dataset, while for our algorithm we used the \amie dataset plus \texttt{rdf:type} triples. Last column of Table~\ref{tab:AmieDatasetDescr} reports the number of triples added to the original \amie dataset.
+Removing literals and \texttt{rdf:type} triples drastically reduce the size of the KB. Since our approach needs type information (for the generation of $G$ and $V$ and for the discovery of inequality atoms), we run \amie on its original datasets, while for our algorithm we used the \amie dataset plus \texttt{rdf:type} triples. Last column of Table~\ref{tab:AmieDatasetDescr} reports the number of triples added to the original \amie dataset.
 
 \myparagraph{Positive Rules Comparison} We first compared against \amie on its natural setting: positive rule discovery. \amie takes as input an entire KB, and discovers rules for every predicate in the KB. We adapted \krd to this setting as follows: we first list all the predicates in the KB that connect a \emph{subject} to an \emph{object}. We then computed %the most common type 
 for both subject and object %. The most common type is 
@@ -264,7 +264,7 @@ the most popular \texttt{rdf:type} that is not super class of any other most pop
 	\vspace{1ex}
 	\includegraphics[width=.9\columnwidth]{include/figure/vsAmieYago.pdf}
 	\vspace{-2ex}
-	\caption{Accuracy for new facts identified by executing rules according to descending score on  \yago (no literals).}
+	\caption{Accuracy for new facts identified by executing rules according to descending score on  \yago 2 (no literals).}
 	\label{fig:vs_amie_yago}
 \end{figure}
 
@@ -329,7 +329,7 @@ For example, we added a \texttt{notSpouse} predicate connecting each pair of peo
 			\multicolumn{1}{ |c| }{\it KB}&{\it \# Errors} & {\it Precision} &{\it \# Errors} & {\it Precision} \tabularnewline
 			\hline
 			\multicolumn{1}{ |c| }{\dbpedia} & 457 (157) & 38.85\% & 148 (73) & \textbf{57.76}\%\tabularnewline
-			\multicolumn{1}{ |c| }{\yago} & 633 (100) & 48.81\% & 550 (35) & \textbf{68.73}\%\tabularnewline
+			\multicolumn{1}{ |c| }{\yago 2} & 633 (100) & 48.81\% & 550 (35) & \textbf{68.73}\%\tabularnewline
 			\hline
 		\end{tabular}
 	\end{small}
@@ -374,7 +374,7 @@ Running times for \amie are different from~\cite{galarraga2015fast}, where it wa
 \begin{table}[htb]
 %\vspace{-3ex}
 	\centering
-	\caption{Run Time vs \amie.}
+	\caption{Total Run Time Comparison.}
 	\label{tab:amie_runtime}
 	\begin{small}
 		\begin{tabular}
@@ -389,13 +389,13 @@ Running times for \amie are different from~\cite{galarraga2015fast}, where it wa
 			\dbpedia 3.8& 237 (649) & $>15$h & 8h,10m & 37s  \tabularnewline
 			\wikidata & 118 (430) & $>25$h & 8h,2m & 11s  \tabularnewline
 			\hline
-			\yago 3*& 72 & - & 2h,35m & 128s  \tabularnewline
+			\yago 3 & 72 & - & 2h,35m & 128s  \tabularnewline
 			\hline
 		\end{tabular}
 	\end{small}
 \end{table}
 
-Table~\ref{tab:amie_runtime} reports the running time on different KBs. The first five KBs are \amie modified versions, while \yago 3* is complete \yago, including literals and \texttt{rdf:type}. 
+Table~\ref{tab:amie_runtime} reports the running time on different KBs. The first five KBs are \amie modified versions, while \yago 3 includes literals and \texttt{rdf:type}. 
 The second column shows the total number of predicates for which \amie produced at least one rule before getting stuck, while in brackets we report the total number of predicates in the KB.
 %????analyzed<<<<<<<<CORRECT?<<<<<<<<<<'
 %
@@ -403,7 +403,7 @@ The second column shows the total number of predicates for which \amie produced 
 %For a fair comparison we run our algorithm only on those predicates for which \amie could produce at least one rule. 
 The third and fourth columns report the total running time of the two approaches. Despite being disk-based, \krd successfully completes the task faster than \amie in all cases, except for \yago 2. This is because of the very small size of this KB, which fits in 
 %main 
-memory. However, when we deal with complete KBs (\yago 3*), the KB could not even be loaded due to out of memory errors. The last column reports the running time to compute \texttt{rdf:type} information for all predicates in the KB. 
+memory. However, when we deal with complete KBs (\yago 3), the KB could not even be loaded due to out of memory errors. The last column reports the running time to compute \texttt{rdf:type} information for all predicates in the KB. 
 %This time is negligible w.r.t. the total running time. 
 %The running time justifies our disk-based strategy: \krd can successfully discover rules for any size KB on any machine.
 
@@ -459,7 +459,7 @@ The output of \texttt{ManualSampl} and \krd are very similar, meaning that we ca
 
 \vspace{-1ex}
 \subsection{Internal Evaluation} \label{sec:krd_int_evaluation}
-We briefly outline some of the most relevant findings when studying the impact of individual components in \krd.
+We briefly outline the most relevant findings when studying the impact of individual components in \krd.
 Full results on the internal evaluation %are not reported due to space reasons but 
 can be found in the technical report online at \url{http://bit.ly/2bDZO9F}.
 
