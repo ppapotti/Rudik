@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013) (format=pdflatex 2013.12.4)  17 OCT 2016 16:23
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013) (format=pdflatex 2013.12.4)  17 OCT 2016 17:00
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1102,10 +1102,10 @@ LaTeX Font Warning: Command \sc invalid in math mode on input line 152.
 
 [5]
 
-LaTeX Font Warning: Command \sc invalid in math mode on input line 180.
+LaTeX Font Warning: Command \sc invalid in math mode on input line 173.
 
 
-LaTeX Font Warning: Command \sc invalid in math mode on input line 180.
+LaTeX Font Warning: Command \sc invalid in math mode on input line 173.
 
 ) (./include/greedy_algorithm.tex
 <include/figure/a*_graph_example.pdf, id=56, 1011.78pt x 211.79124pt>
@@ -1125,10 +1125,7 @@ n/10 ^^D p[] ^^A []q
 (./include/algorithm/krd_a*_algorithm.tex
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <6.25002> not available
 (Font)              Font shape `OT1/ptm/b/n' tried instead on input line 21.
-)) (./include/evaluation.tex
-Underfull \vbox (badness 1874) has occurred while \output is active []
-
- [7]
+)) (./include/evaluation.tex [7]
 Overfull \hbox (3.68321pt too wide) in paragraph at lines 88--88
  []|\OT1/ptm/m/sc/9 DBPedia| 
  []
@@ -1206,7 +1203,7 @@ Before submitting the final camera ready copy, remember to:
 Here is how much of TeX's memory you used:
  10351 strings out of 493315
  140378 string characters out of 6137904
- 286723 words of memory out of 5000000
+ 285723 words of memory out of 5000000
  13475 multiletter control sequences out of 15000+600000
  80931 words of font info for 180 fonts, out of 8000000 for 9000
  957 hyphenation exceptions out of 8191
@@ -1237,7 +1234,7 @@ ist/fonts/type1/urw/times/utmb8a.pfb></usr/local/texlive/2013/texmf-dist/fonts/
 type1/urw/times/utmbi8a.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/urw
 /times/utmr8a.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/urw/times/utm
 ri8a.pfb>
-Output written on mainIcde.pdf (12 pages, 475922 bytes).
+Output written on mainIcde.pdf (12 pages, 476312 bytes).
 PDF statistics:
  420 PDF objects out of 1000 (max. 8388607)
  282 compressed objects within 3 object streams

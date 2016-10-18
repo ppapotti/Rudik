@@ -155,36 +155,54 @@ $V$ consists of counter (negative) examples for the target predicate.
 These are more complicated to generate because of the open world assumption in KBs. 
 Differently from classic databases, we cannot assume that what is not stated in a KB is false (closed world assumption), thus everything that is not stated is $unknown$. % rather than false. 
 %This implies that 
-Since the likelihood of two random selected entities to be a positive example is extremely low, one possible simple way of creating negative examples is to randomly select pairs of entities. However, randomly selected entities have no guarantees to show meaningful paths when we discover negative examples ($V$ is used as the generation set).
+However, since the likelihood of two random selected entities to be a positive example is extremely low, one possible simple way of creating false facts is to randomly select pairs from the cartesian product of the entities. While this process gives negative examples with very high precision, only a very small fraction of these entity pairs are semantically related, something that for positive examples is guaranteed since pairs in $G$ are always connected at least by the target predicate. This semantic aspect has strong effects in the ultimate applications that use the generated negative examples. In fact, unrelated entities have less meaningful paths than semantically related entities and this is reflected in lower quality in the experimental results. 
+%when we discover negative examples ($V$ is used as the generation set).
 %We cannot take two entities that are not related by a property and assume that they form a negative example. 
 
-To mitigate this problem, and generate negative examples that are likely to be correct (true false facts), we are after entities that are more likely to be complete in their information. For this task, we %make use of a popular technique for KBs: 
-exploit the \emph{Local-Closed World Assumption} (\emph{LCWA})~\cite{dong2014data,galarraga2015fast}. LCWA states that if a KB contains one or more object values for a given subject and predicate, then it contains all possible values. For example, if a KB contains one or more children of Clint Eastwood, then it contains all his children. This is always true for \emph{functional} predicates (e.g., \texttt{capital}), 
+To generate negative examples that are likely to be correct (true false facts) and that are semantically related in the KB, we mine the facts to identify the entities that are more likely to be complete. This process is done exploiting and extending the popular notion of \emph{Local-Closed World Assumption} (\emph{LCWA})~\cite{dong2014data,galarraga2015fast}. 
+%
+LCWA states that if a KB contains one or more object values for a given subject and predicate, then it contains all possible values. For example, if a KB contains one or more children of Clint Eastwood, then it contains all his children. This is always true for \emph{functional} predicates (e.g., \texttt{capital}), 
 % (predicates such as \texttt{capital} where the subject can have at most one object value), 
 while it might not hold for non-functional ones (e.g., \texttt{child}). 
-%%%%%%%% COMMENTED BY PAOLO IN ICDE
-%KBs contain many non-functional predicates, we therefore extend the definition of LCWA by considering the dual aspect: if a KB contains one or more subject values for a given object and predicate, then it contains all values. 
-%NOT CLEAR WHY THE DUAL WILL HOLD, is this new? standard? why this depends on the large presence of "non-functional predicates"? <<<
-%check next sentence, rewritten heavily
-Given entities that are likely to be complete, we could generate negative examples taking the union of entities satisfying the LCWA: 
+We extend this intuition also to predicates rather than entities. If a KB contains a relation between two entities $x$ and $y$, then it contains all relations between $x$ and $y$.
+
+Now that we can identify entities that are likely to be complete, we generate negative examples taking the union of entities satisfying the LCWA: 
 for a predicate $rel$, a negative example is a pair $(x,y)$ where either $x$ is the subject of one or more triples $\<x,rel,y'\>$ with $y \neq y'$, or $y$ is the object of one or more triples $\<x',rel,y\>$ with $x \neq x'$. 
 For example, if $rel=\texttt{child}$, a negative example is a pair $(x,y)$ s.t. $x$ has some children in the KB who are not $y$, or $y$ is the child of someone who is not $x$. %By considering the union of the two LCWA aspects we do not restrict predicates to be functional (such as in~\cite{galarraga2015fast}). 
 %not sure what is an aspect in the sentence above
+Moreover, for a candidate negative example over entities $(x,y)$, $x$ must be connected to $y$ via a predicate that is different from the target predicate. In other words, given a KB $\kb$ and a target predicate $rel$, $(x,y)$ is a negative examples if $\<x,rel',y\> \in \kb$, with $rel' \neq rel$. 
+These restrictions make the size of $V$ of the same order of magnitude of $G$ (see Section~\ref{sec:krd_experiments}), and guarantees that, for every $(x,y) \in V$, $x$ and $y$ are related by at least one predicate.
 
-The number of negative examples generated with the above technique is extremely large; for a target \texttt{child} predicate it is close to the cartesian product of all the people having a child with all the people having a parent. 
-% PROBLEM IN THE NEXT SENTENCE; I DON T BUY/UNDERSTAND THE JUSTIFICATION, WHY THEY NEED TO HAVE COMPARABLE SIZE? IS IT A REQUIREMENT OF THE ALGORITHM? IS IT RELATED TO THE WEIGHING SCHEME? WHAT HAPPENS IF THIS DOES NOT HAPPEN? <<<<<<<<<<<<<
-However, to apply the same approach for positive and negative rules discovery, we require $G$ and $V$ to be of comparable sizes. 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-Instead of randomly selecting a subset, we introduce a further constraint that significantly reduces the size of $V$. 
 
-Given a candidate negative example over entities $(x,y)$, $x$ must be connected to $y$ via a predicate that is different from the target predicate. In other words, given a KB $\kb$ and a target predicate $rel$, $(x,y)$ is a negative examples if $\<x,rel',y\> \in \kb$, with $rel' \neq rel$. This intuition exploits the LCWA for predicates rather than for entities. If a KB contains a relation between two entities $x$ and $y$, then it contains all relations between $x$ and $y$.
-%. If $x$ and $y$ are in a relation that is not the target predicate, then 
-%and $x$ and $y$ are not connected by the target predicate. % in the real world. 
-This restriction makes the size of $V$ of the same order of magnitude of $G$ (see Section~\ref{sec:krd_experiments}), and guarantees the existence of a path between $x$ and $y$, for every $(x,y) \in V$. 
-%Since $V$ becomes the generation set in the negative rules discovery, $V$ should be small in size and it must guarantee the existence of a path between pairs of entities in each example. 
-Such a property is guaranteed in $G$, since pairs are always connected at least by the target predicate.
-%For positive examples, the existence of a path was already guaranteed since pairs in $G$ are always connected at least by the target predicate.
 
+%% %%%%%%%%% COMMENTED BY PAOLO IN ICDE
+%To mitigate this problem, and generate negative examples that are likely to be correct (true false facts), we are after entities that are more likely to be complete in their information. For this task, we %make use of a popular technique for KBs: 
+%exploit the \emph{Local-Closed World Assumption} (\emph{LCWA})~\cite{dong2014data,galarraga2015fast}. LCWA states that if a KB contains one or more object values for a given subject and predicate, then it contains all possible values. For example, if a KB contains one or more children of Clint Eastwood, then it contains all his children. This is always true for \emph{functional} predicates (e.g., \texttt{capital}), 
+%% (predicates such as \texttt{capital} where the subject can have at most one object value), 
+%while it might not hold for non-functional ones (e.g., \texttt{child}). 
+%%%%%%%%% COMMENTED BY PAOLO IN ICDE
+%%KBs contain many non-functional predicates, we therefore extend the definition of LCWA by considering the dual aspect: if a KB contains one or more subject values for a given object and predicate, then it contains all values. 
+%%NOT CLEAR WHY THE DUAL WILL HOLD, is this new? standard? why this depends on the large presence of "non-functional predicates"? <<<
+%%check next sentence, rewritten heavily
+%Given entities that are likely to be complete, we could generate negative examples taking the union of entities satisfying the LCWA: 
+%for a predicate $rel$, a negative example is a pair $(x,y)$ where either $x$ is the subject of one or more triples $\<x,rel,y'\>$ with $y \neq y'$, or $y$ is the object of one or more triples $\<x',rel,y\>$ with $x \neq x'$. 
+%For example, if $rel=\texttt{child}$, a negative example is a pair $(x,y)$ s.t. $x$ has some children in the KB who are not $y$, or $y$ is the child of someone who is not $x$. %By considering the union of the two LCWA aspects we do not restrict predicates to be functional (such as in~\cite{galarraga2015fast}). 
+%%not sure what is an aspect in the sentence above
+%
+%The number of negative examples generated with the above technique is extremely large; for a target \texttt{child} predicate it is close to the cartesian product of all the people having a child with all the people having a parent. 
+%% PROBLEM IN THE NEXT SENTENCE; I DON T BUY/UNDERSTAND THE JUSTIFICATION, WHY THEY NEED TO HAVE COMPARABLE SIZE? IS IT A REQUIREMENT OF THE ALGORITHM? IS IT RELATED TO THE WEIGHING SCHEME? WHAT HAPPENS IF THIS DOES NOT HAPPEN? <<<<<<<<<<<<<
+%However, to apply the same approach for positive and negative rules discovery, we require $G$ and $V$ to be of comparable sizes. 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%Instead of randomly selecting a subset, we introduce a further constraint that significantly reduces the size of $V$. 
+%
+%Given a candidate negative example over entities $(x,y)$, $x$ must be connected to $y$ via a predicate that is different from the target predicate. In other words, given a KB $\kb$ and a target predicate $rel$, $(x,y)$ is a negative examples if $\<x,rel',y\> \in \kb$, with $rel' \neq rel$. This intuition exploits the LCWA for predicates rather than for entities. If a KB contains a relation between two entities $x$ and $y$, then it contains all relations between $x$ and $y$.
+%%. If $x$ and $y$ are in a relation that is not the target predicate, then 
+%%and $x$ and $y$ are not connected by the target predicate. % in the real world. 
+%This restriction makes the size of $V$ of the same order of magnitude of $G$ (see Section~\ref{sec:krd_experiments}), and guarantees the existence of a path between $x$ and $y$, for every $(x,y) \in V$. 
+%%Since $V$ becomes the generation set in the negative rules discovery, $V$ should be small in size and it must guarantee the existence of a path between pairs of entities in each example. 
+%Such a property is guaranteed in $G$, since pairs are always connected at least by the target predicate.
+%%For positive examples, the existence of a path was already guaranteed since pairs in $G$ are always connected at least by the target predicate.
+%
 %Ultimately $V$ is generated by using both constraints. 
 \begin{example}
 	A negative example $(x,y)$ for the target predicate \texttt{child} has the following characteristics:
