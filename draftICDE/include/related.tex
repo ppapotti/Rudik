@@ -18,20 +18,20 @@ However, techniques for FDs and DCs discovery cannot be applied to RDF databases
 \begin{inparaenum}[\itshape(i)]
 	\item the schema-less nature of RDF data and the open world assumption; % which no longer holds on RDF KBs;
 	\item traditional approaches rely on the assumption that data is either clean or has a negligible amount of errors, which is not the case with KBs;
-	\item even when the algorithms are designed to support more errors~\cite{abedjan2015temporal,kivinen1995approximate}, scalability issues on large RDF dataset: a direct application of relational database techniques on RDF KBs requires the materilization of all possible predicate combinations into relational tables.
+	\item even when the algorithms are designed to support more errors~\cite{abedjan2015temporal,kivinen1995approximate}, there are scalability issues on large RDF dataset: a direct application of relational database techniques on RDF KBs requires the materialization of all possible predicate combinations into relational tables.
 \end{inparaenum}
 
 %A few FD mining approaches like~\cite{abedjan2015temporal,kivinen1995approximate} that can work with erroneous datasets are still inapplicable to RDF data due to scalability problems.
 Recently, Fan et. al.~\cite{FanFDGraphs} laid the theoretical foundations of Functional Dependencies on Graphs. % (GFDs). 
 %They also propose parallel algorithms for GFDs computation and evaluate the accuracy on \yago and \dbpedia. Despite existing a natural correlation between FDs and Horn Rules, 
 However, their language covers only a portion of our negative rules %to detect inconsistencies 
-and does not include smart literals comparisons, which we have shown to be useful when detecting errors in KBs.
+and does not include smart literal comparisons, which we have shown to be useful when detecting errors in KBs.
 
 To the best of our knowledge, \krd is the first approach that is generic enough %to use the same algorithm 
 to discover both positive and negative rules in RDF KBs.
 Rule mining approaches specifically designed for positive rule discovery in RDF KBs, such as \amie~\cite{galarraga2015fast} and OP algorithm~\cite{Chen:2016}, load the entire KB into memory prior to 
 the graph traversal step. %connecting the predicates incrementally to form the full-fledged rule. In addition to this, 
-This is a strong constraints for their applicability over large KBs, and neither of these two approaches can afford smart literal comparison. 
+This is a strong constraint for their applicability over large KBs, and neither of these two approaches can afford smart literal comparison. 
 In contrast to them, \krd is disk-based. By generating the graph on-demand, it can discover rules on a small fraction of the KB examples. This makes our approach scalable and the low memory footprint enables a bigger search space with rules that can have literal comparisons. % from a language perspective. 
 %however it requires a powerful cluster of several machines to split the KB into multiple nodes. 
 We showed in the experimental section how \krd outperforms \amie both in final accuracy and running time.

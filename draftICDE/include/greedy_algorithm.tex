@@ -3,7 +3,7 @@
 We introduce a greedy approach to solve the approximate version of the discovery problem (Section~\ref{sec:krd_prob_def}). The algorithm combines two phases:
 \begin{inparaenum}[\itshape(i)]
 	\item it solves the set cover problem with a greedy strategy;
-	\item it discovers new rules by navigating the graph in an $A^*$ search fashion.
+	\item it discovers new rules by navigating the graph in the $A^*$ search fashion.
 	%, allowing the pruning of unpromising paths.	
 \end{inparaenum}
 
@@ -36,7 +36,7 @@ The marginal weight quantifies the total weight increase of adding $r$ to an exi
 The algorithm for greedy rule selection is then straightforward:
 given a generation set $G$, a validation set $V$, and the universe of all possible rules $R$, the algorithm picks at each iteration the rule $r$ with minimum marginal weight and add it to the solution $R_{opt}$.
 %takes as input the generation set $G$, the validation set $V$, and the universe of all possible rules $R$. The set of output rules $R_{opt}$ is first assigned to an empty set. At each iteration, the algorithm picks from $R$ the rule $r$ with the minimum marginal weight, and it adds $r$ to $R_{opt}$, $r$ is then removed from $R$. 
-The algorithm stops when one of the following termination conditions are met:
+The algorithm stops when one of the following termination conditions is met:
 \begin{inparaenum} [\itshape1)]
 	\item $R$ is empty -- all the rules have been included in the solution;
 	\item $R_{opt}$ covers all elements of $G$;
@@ -94,7 +94,7 @@ Given an input weighted graph, $A^*$ computes the smallest cost path from a star
 
 We discover rules with a similar technique. For each example $(x,y) \in G$, we start the navigation from $x$. We keep a queue of not valid rules (Section~\ref{sec:krd_language}), 
 and at each iteration we consider the rule with the minimum marginal weight, which corresponds to paths in the example graphs. 
-We expand the rule by following the edges, and we add the new founded rules to the queue of not valid rules. Differently from $A^*$, we do not stop when a rule (path) reaches the node $y$. Whenever a rule becomes valid, we add the rule to the solution and we do not expand it any further. The algorithm keeps looking for plausible paths until one of the termination conditions of the greedy cover algorithm is met. %Algorithm~\ref{alg:krd_greedy} is met.
+We expand the rule by following the edges, and we add the new founded rules to the queue of not valid rules. Differently from $A^*$, we do not stop when a rule (path) reaches the node $y$ (i.e., becomes valid). Whenever a rule becomes valid, we add the rule to the solution and we do not expand it any further. The algorithm keeps looking for plausible paths until one of the termination conditions of the greedy cover algorithm is met. %Algorithm~\ref{alg:krd_greedy} is met.
 
 A crucial point in $A^*$ is the definition of the estimation cost. To guarantee the solution to be optimal, the estimation must be \emph{admissible}, i.e., the estimated cost must be less than or equal to the actual cost. 
 For example, for the shortest route problem, an admissible estimation is the straight-line distance to the goal for every node, as it is physically the smallest distance between any two points. In our setting, given a rule that is not yet valid and needs to be expanded, we define an admissible estimation of the marginal weight.
@@ -120,7 +120,7 @@ The above Lemma states that the coverage and unbounded coverage of an expansion 
 %\begin{equation*}
 %w_m(r) = - \alpha \cdot \frac{\mid C_{r}(G) \setminus C_{R}(G) \mid}{\mid G \mid} + \beta \cdot (\frac{\mid C_{R \cup \{r\}}(V) \mid}{\mid U_{R \cup \{r\}}(V) \mid} - \frac{\mid C_{R}(V) \mid}{\mid U_{R}(V) \mid})
 %\end{equation*}
-The only positive contribution to marginal weights is given by $|C_{R \cup \{r\}}(V)|$. $|C_{R \cup \{r\}}(V)|$ is equivalent to $|C_{R}(V)| + |C_r(V) \setminus C_R(V)|$, thus if we set $|C_r(V) \setminus C_R(V)|=0$ for any $r$ that is not valid, we guarantee an admissible estimation of the marginal weight. We therefore estimate the coverage over the validation set to be $0$ for any rule that can be further expanded, since expanding the rule may bring its coverage to $0$.
+The only positive contribution to marginal weights is given by $|C_{R \cup \{r\}}(V)|$. $|C_{R \cup \{r\}}(V)|$ is equivalent to $|C_{R}(V)| + |C_r(V) \setminus C_R(V)|$, thus if we set $|C_r(V) \setminus C_R(V)|=0$ for any $r$ that is not valid, we guarantee an admissible estimation of the marginal weight. We therefore estimate the coverage over the validation set to be $0$ for any rule that can be further expanded, since expanding the rule may bring the coverage to $0$.
 %CANNOT NOT NOTICE HOW BRUTAL IT"S THIS ESTIMATE!
 
 \begin{definition}\label{def:est_res_wei}
@@ -145,8 +145,7 @@ The estimated marginal weight for a valid rule instead is equal to the actual ma
 
 We use the concept of \emph{frontier nodes} for a rule $r$, namely $N_f(r)$. Given a rule $r$, $N_f(r)$ contains the last visited nodes in the paths that correspond to $r_{body}$ from every example graphs covered by $r$. As an example, given $r_{body} = \atom{child}{x}{v_0}$, $N_f(r)$ contains all the entities $v_0$ that are children of $x$, for every $(x,y) \in G$. 
 %-- $v_0$ is the last visited node in the path. 
-Expanding a rule $r$ implies navigating a single edge from any frontier node. Algorithm~\ref{alg:krd_a*} shows the modified set cover version that includes $A^*$-like rule generation. The set of frontier nodes is initialized with starting nodes $x$, for every $(x,y) \in G$ (Line~\ref{alg_line:front_nodes}). The algorithm maintains a queue of rules $Q_r$, from which it chooses at each iteration the rule with minimum approximated weight. 
-%approximated?? <<
+Expanding a rule $r$ implies navigating a single edge from any frontier node. Algorithm~\ref{alg:krd_a*} shows the modified set cover version that includes $A^*$-like rule generation. The set of frontier nodes is initialized with starting nodes $x$, for every $(x,y) \in G$ (Line~\ref{alg_line:front_nodes}). The algorithm maintains a queue of rules $Q_r$, from which it chooses at each iteration the rule with minimum estimated weight. 
 The function \texttt{expandFrontiers} retrieves from the KB all nodes (along with edges) at distance $1$ from frontier nodes and returns the set of all rules generated by this one hop expansion. Such expansions are computed with single-hop SPARQL queries. $Q_r$ is therefore initialized with all rules of length $1$ starting at $x$ (Line~\ref{alg_line:sparql_1}). In the main loop, the algorithm checks if the current best rule $r$ is valid or not. If $r$ is valid, $r$ is added to the output and it is not expanded (Line~\ref{alg_line:valid_rule}). If $r$ is not valid, $r$ is expanded iff the length of its body is less than $maxPathLen$ (Line~\ref{alg_line:exp_condition}). 
 %Rules with body greater than or equal to $maxPathLen$ are not expanded as they are not allowed in the output. 
 The termination conditions and the last part of the algorithm are the same of the previously described greedy set-cover algorithm. % Algorithm~\ref{alg:krd_greedy}.
@@ -154,7 +153,7 @@ The termination conditions and the last part of the algorithm are the same of th
 The simultaneous rule generation and selection of Algorithm~\ref{alg:krd_a*} brings multiple benefits. First, we do not generate the entire graph for every example in $G$. Nodes and edges are generated \emph{on demand}, whenever the algorithm requires their navigation (Line~\ref{alg_line:sparql_2}). If the initial part of a path is not promising according to its estimated weight, the rest of the path will never be materialized. % since there is no need to navigate it. 
 %Materializing the graph is an expensive task, since we need to query the disk to retrieve target nodes and edges. 
 Rather than materializing the entire graph and then traversing it, our solution gradually materializes parts of the graph whenever they are needed for navigation (Lines~\ref{alg_line:sparql_1} and~\ref{alg_line:sparql_2}). 
-Second, the weight estimation leads to pruning unpromising rules. If a rule does not cover new elements in $G$ and does not unbounded cover new elements in $V$, then its estimated marginal weight is $0$ and will be pruned away. 
+Second, the weight estimation leads to pruning unpromising rules. If a rule does not cover new elements in $G$ and does not unbounded cover new elements in $V$, then its estimated marginal weight is $0$ and will be pruned. 
 %A rule with $0$ marginal weight is never picked for expansion.
 %A BIT PUZZLED, we have tons of rules with estimated marginal weight, no? <<<<<<<<
 %, and if it is the algorithm terminates (due to one of the termination conditions). This implies that a rule with $0$ estimated marginal weight is pruned away from the search space, as we will never generate rules from its expansion.

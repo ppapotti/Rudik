@@ -25,7 +25,7 @@ As a direct consequence, the amount of errors and incompleteness in KBs is usual
 Since KBs are large, e.g., \wikidata has more than $1$B facts and $300$M different entities, %\footnote{\url{https://query.wikidata.org/}}. 
 checking all triples to find errors or to add new facts cannot be done manually. % and tools are needed to assist humans in the KBs curation. 
 A natural approach to assist curators of KBs is to discover %However, KBs carry such a big amount of information that they can be mined to discover 
-\emph{declarative rules} that can be executed over the KBs to improve the quality of the data~\cite{Chen:2016,abedjan2014amending,galarraga2015fast}. However, these approaches so far have focused on the discovery of rules to derive new facts only, while for the first time
+\emph{declarative rules} that can be executed over the KB to improve the quality of the data~\cite{Chen:2016,abedjan2014amending,galarraga2015fast}. However, these approaches so far have focused on the discovery of rules to derive new facts only, while for the first time
 % , and this is the problem we study in
 %inspected to find additional information or constraints over existing data. 
 %this paper.
@@ -63,7 +63,7 @@ of two different types of rules:
 	} 
 	\vspace{-4ex}
 	
-	\noindent It states that person $b$ cannot be child of $a$ if $a$ was born after $b$. By instantiating the rule for the \texttt{child} facts, we identify erroneous triples stating that a child is born before a parent.
+	\noindent It states that person $b$ cannot be child of $a$ if $a$ was born after $b$. By instantiating the rule for \texttt{child} facts, we identify erroneous triples stating that a child is born before a parent.
 \end{example}
 
 While intuitive to humans, the rules above must be manually stated in a KB to be enforced, and there are thousands of rules in a large KB with hundreds of predicates~\cite{gc2015big}. Other than enriching and cleaning KBs, negative rules support other use cases. %brings multiple benefits. %, such as automatic reasoning. 
@@ -93,7 +93,7 @@ counter examples.
 \noindent \myparagraph{Volume}
 %MOVE TO RELATED
 %Classic database discovery algorithms ILP systems cannot cope with large KBs and in order to directly apply existing database techniques would require the materialisation of all possible predicates combinations into relational tables (graph data must be flattened in relational format).  Moreover, 
-Existing approaches for discovery of positive rules in KBs assume that data can fit into main memory~\cite{abedjan2014amending,galarraga2015fast,Chen:2016,DBLP:conf/sigmod/FaridRIHC16}. Given the large and increasing size of the KBs, these approaches aggressively prune the search space by focusing on a simple language.
+Existing approaches for discovery of positive rules in KBs assume that data can fit into main memory~\cite{abedjan2014amending,galarraga2015fast,Chen:2016,DBLP:conf/sigmod/FaridRIHC16}. Given the large and increasing size of KBs, these approaches aggressively prune the search space by focusing on a simple language.
 %The memory constraint leads to 
 %which leads to very aggressive pruning of the search space 
 %More recent approaches also rely on in-memory algorithms and try to solve this problem with distributed architectures~\cite{Chen:2016,DBLP:conf/sigmod/FaridRIHC16}.
@@ -102,7 +102,7 @@ Existing approaches for discovery of positive rules in KBs assume that data can 
 
 %\myparagraph{Novelty} In this chapter 
 %\vspace{1ex}
-We advocate that a rule discovery system should be designed to discover {\em approximate rules} since errors and incompleteness are in the nature of the KBs. The rule language should also allow value comparisons to increase its {\em expressive power}.
+We advocate that a rule discovery system should be designed to discover {\em approximate rules} since errors and incompleteness are in the nature of KBs. The rule language should also allow value comparisons to increase its {\em expressive power}.
 % Also, the in-memory constraint not only reduces the applicability of the system, but also forces limitations on the {\em expressive power} of the language in order to reduce the search space.
 %we design a disk-based solution, to overcome the main memory limitation and enable the discovery of rules
 %with a more expressive rule language. 
@@ -113,7 +113,7 @@ the larger is the number of new facts and errors that can be identified, and wit
 %MAKE SURE TO CITE  the demo DBLP:conf/sigmod/FaridRIHC16, they discover negative rules, but there is not paper, therefore no baseline%%%%%%%%%%
 
 %\vspace{1ex}
-We present \krd (\underline{Ru}le \underline{Di}scovery in \underline{K}nowledge Bases), a novel system for the discovery of positive and negative rules %Horn Rules 
+We present \krd (\underline{Ru}le \underline{Di}scovery in \underline{K}nowledge Bases), a novel system for the robust discovery of positive and negative rules %Horn Rules 
 over KBs that addresses the challenges above.  
 \krd is the first system capable of discovering both approximate positive and negative rules without
 % using the same algorithm. Moreover, classic rules discovery systems 
@@ -145,7 +145,7 @@ Positive and negative examples for a target predicate are crucial to our approac
 %\vspace{0.5ex}
 \myparagraph{Rule Discovery Algorithm}
 We give a \texttt{log($k$)}-approximation algorithm for the rule discovery problem, % close in spirit to the greedy algorithm for set cover, 
-where $k$ is the maximum number of input positive examples covered by a single rule. We discover the rules in the algorithm by judiciously using the memory. The algorithm incrementally 
+where $k$ is the maximum number of input positive examples covered by a single rule. We discover rules by judiciously using the memory. The algorithm incrementally 
 materializes the KB as a graph, and discovers rules by navigating its paths. To reduce the use of resources, at each iteration we follow the most promising path in the $A^*$ traversal fashion. %, pruning unpromising paths.	
 %Previous approaches for rules discovery assume that the KB has to fit in main memory to deliver acceptable performance~\cite{abedjan2014amending,galarraga2015fast} (TODO: cite 2 sigmod papers). Unfortunately, KBs nowadays have sizes that can easily exceed hundreds of GBs and previous works require powerful resources to handle them. With our rules generation based on 
 By materializing only the portion of the KB that is needed for the discovery, 

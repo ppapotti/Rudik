@@ -1,7 +1,7 @@
 \vspace{-0.5ex}
 \section{Preliminaries and Definitions} \label{sec:krd_prel}
 We focus on discovering rules from RDF KBs. An RDF KB is
-a database that represents information through RDF triples $\<s,p,o\>$, where a \emph{subject} is connected to an \emph{object} via a \emph{predicate}. Triples are often called \emph{facts}. For example, the fact that Scott Eastwood is the child of Clint Eastwood could be represented through the triple $\<Clint\_Eastwood,child,Scott\_Eastwood\>$. 
+a database that represents information through RDF triples $\<s,p,o\>$, where a \emph{subject} ($s$) is connected to an \emph{object} ($o$) via a \emph{predicate} ($p$). Triples are often called \emph{facts}. For example, the fact that Scott Eastwood is the child of Clint Eastwood could be represented through the triple $\<Clint\_Eastwood,child,Scott\_Eastwood\>$. 
 RDF KB triples respect three constraints:
 \begin{inparaenum}[(i)]
 	\item triple subjects are always \emph{entities}, i.e., concepts from the real world;
@@ -62,7 +62,7 @@ As shown in the example, we allow \emph{literal comparisons} in our rules. A lit
 
 Given a KB $\kb$ and an atom $A=\atom{rel}{a}{b}$ where $a$ and $b$ are two entities, we say that $A$ \emph{holds} over $\kb$ iff $\<a,\texttt{rel},b\> \in \kb$.
 Given %a KB $\kb$ and 
-an atom $A=\atom{rel}{a}{b}$ with at least one variable, we say that $A$ can be \emph{instantiated} over $\kb$ if there exists at least one entity from $\kb$ for each variable in $A$ s.t. if we substitute variables with entities in $A$, $A$ holds over $\kb$. Transitively, %given a body of a rule $r_{body}$, % and a KB $\kb$,
+an atom $A=\atom{rel}{a}{b}$ with at least one variable, we say that $A$ can be \emph{instantiated} over $\kb$ if there exists at least one entity from $\kb$ for each variable in $A$ s.t. if we substitute all variables in $A$ with these entities, $A$ holds over $\kb$. Transitively, %given a body of a rule $r_{body}$, % and a KB $\kb$,
 we say that $r_{body}$ can be instantiated over $\kb$ if every atom in $r_{body}$ can be instantiated. 
 
 %Eventually, we introduce two language biases in order to avoid the explosion of the search space. 
@@ -73,12 +73,12 @@ we define a rule \emph{valid} iff it satisfies the following constraints.
 
 \noindent {\bf Connectivity.} An atom $A_1$ can be reached by an atom $A_2$ iff $A_1$ and $A_2$ share at least one variable or one entity. 
 %The connectivity constraint requires that 
-Every atom in a rule must be \emph{transitively} reached by any other atom in the rule.
+In a valid rule, every atom in must be \emph{transitively} reachable by any other atom in the rule.
 %OR VIA A LITERAL COMPARISON??? %%%%%%%%%%%%%%%
 
 \noindent {\bf Repetition.} Every variable in a rule must appear at least twice. Since target variables already appear once in the head of the rule, 
 %the repetition constraint limited to the body of a rule requires that 
-each variable that is not a target variable must be involved in a join or in a literal comparison.
+each variable that is not a target variable must be involved in a join or in a literal comparison (i.e., must appear at least twice).
 %appear at least twice, while target variables at least once.
 
 Language restrictions limit the algorithm output 
@@ -104,7 +104,7 @@ The unbounded coverage is essential to distinguish between missing and inconsist
 %therefore we cannot state whether the negative rule %of Example~\ref{ex:krd_intro} covers $(x,y)$ or not.
 But if both $x$ and $y$ have the \texttt{DOB} information and $x$ is born before $y$, we can affirm that $r_2'$ does not cover $(x,y)$. Given that KBs are largely incomplete~\cite{min2013distant}, discriminating between missing and conflicting information is of paramount importance.
 %
-We define the coverage and the unbounded coverage for a set of rules $R=\{r_1,r_2,\cdots,r_n\}$ as the union of individual coverages:
+We extend the definition of coverage and unbounded coverage to a set of rules $R=\{r_1,r_2,\cdots,r_n\}$ as the union of individual coverages:
 
 \vspace{-6mm}	
 \begin{equation*}
@@ -136,7 +136,7 @@ We can now formalize the \emph{exact discovery problem}.\newline
 
 \begin{example}
 	Consider the discovery of positive rules for the predicate {\tt couple} between two persons using as examples the Obama family. A positive example is (Michelle, Barack) and a negative example their daughters (Malia, Natasha). 
-	Given four positive rules:
+	Given three positive rules:
 	
 	\vspace{-4ex}	
 	{\small	
@@ -157,13 +157,13 @@ We can now formalize the \emph{exact discovery problem}.\newline
 	\vspace{-3ex}	
 	
 	\noindent
-	The first rule, $R_{1}$ states that two persons are a couple if the live in the same place, while the second rule $R_{2}$ states that they are a couple if they have a child in common. Both the rules cover the positive example, but $R_{1}$ covers also the negative one as they live in the same place. $R_{2}$ is an exact solution. Contrary to both of them, the third rule $R_{3}$ explicitly mentions the values of the entities in its head and body. Though it is also an exact solution, it overfits the given positive example. % as all of them live in the same place. 
+	The first rule, $R_{1}$ states that two persons are a couple if the live in the same place, while the second rule $R_{2}$ states that they are a couple if they have a child in common. Both the rules cover the positive example, but $R_{1}$ covers also the negative one as Obama's daughters live in the same place. $R_{2}$ is an exact solution. Contrary to both of them, the third rule $R_{3}$ explicitly mentions the values of the entities in its head and body. Though it is also an exact solution, it overfits the given positive examples. % as all of them live in the same place. 
 \end{example} 
 
 The exact solution is a set of rules that covers all examples in $G$ and none of the examples in $V$. It also minimizes the number of rules in the output to avoid overfitting rules covering only one pair, as rules like $R_{3}$ are not useful when applied on the entire KB. In fact, given a pair of entities $(x,y)$, there is always an overfitting Horn Rule whose body covers only $(x,y)$ by assigning target variables to $x$ and $y$ as $R_{3}$ does.
 
 Unfortunately, the exact problem definition is not robust to the %leads to poor rules because of the 
-data problems in KBs. Even if a valid rule exists semantically, missing information or errors for the examples in $G$ and $V$ can lead to faulty coverage, e.g., the rule misses a good example because a child relation is missing for M. Obama. %) or covers a negative one (). 
+data quality problems in KBs. Even if a valid rule exists semantically, missing information or errors for the examples in $G$ and $V$ can lead to faulty coverage, e.g., the rule misses a good example because a child relation is missing for M. Obama. %) or covers a negative one (). 
 The exact solution may therefore be a set of rules where every rule covers only one example in $G$ and none in $V$, ultimately leading to a set of overfitting rules.
 %STEFANO CHECK CAREFULLY THE SENTENCEs ABOVE. WE report in some exp that we find zero rules, but rules with at least one tuple should be identified. We need to say somewhere the 1% threshold%%%%%%%%%%%%%%%%%%<<<<<<<<------------------------<<<<<<<<<-------
 % difficult to use and understand.
@@ -212,7 +212,7 @@ while a a high $\alpha$ champions the recall as the discovered rules cover as ma
 	%The two components of $w_r$ are computed as follow:
 The first component of $w_r$ is computed as 1 minus the number of pairs $(x,y)$ in $G$ where
 		$x$ is born after $y$ divided by the number of elements in $G$.
-The second component is the ratio between number of pairs $(x,y)$ in $V$ where $x$ is born after $y$ and number of pairs $(x,y)$ in $V$ where the birthdate for both $x$ and $y$ is in $\kb$.
+The second component is the ratio between number of pairs $(x,y)$ in $V$ where $x$ is born after $y$ and number of pairs $(x,y)$ in $V$ where the birth date for both $x$ and $y$ is in $\kb$.
 \end{example}
 
 \begin{definition}
@@ -238,13 +238,13 @@ We can now state the approximate version of the problem.
 \vspace{-1ex}	
 
 %Since we want to minimize the total weight of the output rules, 
-The approximate version of the discovery problem aims to identify the rules that cover all elements in $G$ and as few as possible elements in $V$. Since we do not want overfitting rules, we do not generate in $R$ rules with constants only in the target variables.
+The approximate version of the discovery problem aims to identify rules that cover all elements in $G$ and as few as possible elements in $V$. Since we do not want overfitting rules, we do not generate in $R$ rules having constants in both target variables.
 %for each element $g \in G$ there always exists a rule that covers exactly only $g$ (single-instance rule), an admissible solution is guaranteed to exist. 
 %We expect the output to be made of some rules that cover multiple examples in $G$, with the remaining examples in $G$ to be covered by single-instance rules. 
 %In the best-case scenario a single rule covers all elements in $G$ and none of the elements in $V$.
 
 We can map this problem to the {\em weighted set cover problem}, which is proven to be NP--complete~\cite{chvatal1979greedy}. The reduction follows immediately from the following mapping: 
-the set of elements (universe) corresponds to the generation examples in $G$, the input sets are identify by the rules defined in $R$, the nonnegative weight
+the set of elements (universe) corresponds to the generation examples in $G$, the input sets are identify by the rules defined in $R$, the non-negative weight
 function $w: r \rightarrow {\rm I\!R}$ is $w(r)$ in Definition 2, and the cost of $R$ is defined to be its total weight, according to Definition 3. %TODO
 
 
