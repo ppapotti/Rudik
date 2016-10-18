@@ -19,7 +19,8 @@
       
       	$R_{opt} \gets \emptyset$\;
       	$N_f \gets \{x | (x,y) \in G\}$\; \label{alg_line:front_nodes}
-      	$Q_r \gets \expFron(N_f)$; $\quad$\tcp{SPARQL} \label{alg_line:sparql_1}
+      	$Q_r \gets \expFron(N_f)$\; \label{alg_line:sparql_1}
+      	%$\quad$\tcp{SPARQL}%
       	$r \gets \underset{w_m^*(r)}{\operatorname{argmin}}(r \in Q_r)$\; \label{alg_line:q_r_initialisation}
       	\Repeat{$Q_r = \emptyset \vee C_{R_{opt}}(G) = G \vee w_m^*(r) \geq 0$}
       	{
@@ -32,7 +33,8 @@
       			\If{$\length(r_{body}) < maxPathLen$ \label{alg_line:exp_condition}}
       			{
       				$N_f \gets \frontiers(r)$\;
-      				$Q_r \gets Q_r \cup \expFron(N_f)$; $\quad$\tcp{SPARQL} \label{alg_line:sparql_2}
+      				$Q_r \gets Q_r \cup \expFron(N_f)$\;  \label{alg_line:sparql_2}
+	      			%$\quad$\tcp{SPARQL}
       			}
       		}
       		$r \gets \underset{w_m^*(r)}{\operatorname{argmin}}(r \in Q_r)$\;
