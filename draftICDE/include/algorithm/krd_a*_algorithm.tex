@@ -21,7 +21,7 @@
       	$N_f \gets \{x | (x,y) \in G\}$\; \label{alg_line:front_nodes}
       	$Q_r \gets \expFron(N_f)$\; \label{alg_line:sparql_1}
       	%$\quad$\tcp{SPARQL}%
-      	$r \gets \underset{w_m^*(r)}{\operatorname{argmin}}(r \in Q_r)$\; \label{alg_line:q_r_initialisation}
+      	$r \gets \underset{r \in Q_r}{\operatorname{argmin}}(w_m^*(r))$\; \label{alg_line:q_r_initialisation}
       	\Repeat{$Q_r = \emptyset \vee C_{R_{opt}}(G) = G \vee w_m^*(r) \geq 0$}
       	{
       		$Q_r \gets Q_r \setminus \{r\}$\;
@@ -37,7 +37,7 @@
 	      			%$\quad$\tcp{SPARQL}
       			}
       		}
-      		$r \gets \underset{w_m^*(r)}{\operatorname{argmin}}(r \in Q_r)$\;
+      		$r \gets \underset{r \in Q_r}{\operatorname{argmin}}(w_m^*(r))$\;
       	}
       	\If{$C_{R_{opt}}(G) \neq G$}{
       		$R_{opt} \gets R_{opt} \cup \sinInRule(G \setminus C_{R_{opt}}(G))$\;
