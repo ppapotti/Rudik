@@ -196,9 +196,9 @@ captures the quality of a rule w.r.t. $G$ and $V$: the better the rule, the lowe
 The weight is made of two components normalized by the two parameters $\alpha$ and $\beta$.
 The first component captures the coverage over the generation set $G$ -- the ratio between the coverage of $r$ over $G$ and $G$ itself.
 	%If $r$ covers all elements in $G$, this component is $0$ because of the subtraction from $1$.
-The second component quantifies the coverage of $r$ over $V$. The coverage over $V$ is divided by the unbounded coverage of $r$ over $V$
-%, instead of the total elements in $V$, 
+The second component quantifies the coverage of $r$ over $V$. The coverage over $V$ is divided by the unbounded coverage of $r$ over $V$, instead of the total elements in $V$, 
 because some elements in $V$ might not have the predicates stated in $r_{body}$.
+Intuitively, we restrict $V$ with unbounded coverage to validate on ``qualifying" examples that have the information tested by the rule's body.
 	%because for those elements in $V$ that do not have predicates stated in $r_{body}$ we cannot be sure whether such elements are not covered by $r$. 
 	%NOT CLEAR WHY WE CANNOT BE SURE :( %%%%%%%
 %	Thus we divide the coverage over $V$ by the unbounded coverage of $r$ over $V$. 
