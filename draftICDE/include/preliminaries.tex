@@ -124,7 +124,8 @@ We will explain in Section~\ref{sec:ex_generation} how to generate these two set
 %it is true that we require a target predicate as input, however 
 we can apply our setting for every predicate in the KB and compute rules for each of them (see Section~\ref{sec:krd_comparative}).
 
-We can now formalize the \emph{exact discovery problem}.\newline
+We can now formalize the \emph{exact discovery problem}. %\newline
+
 \begin{definition}
 	Given a KB $\kb$, two sets of pairs of entities $G$ and $V$ from $\kb$ with $G \cap V = \emptyset$, and all the valid Horn Rules $R$ for $\kb$, a solution for the \emph{exact discovery problem} is a subset $R'$ of $R$  s.t.:
 	
@@ -150,7 +151,7 @@ We can now formalize the \emph{exact discovery problem}.\newline
 		\vspace{-3ex}	
 		\begin{equation*}
 			\begin{split}
-			R_{3}:	\atom{hasChild}{Michelle}{v_i} \wedge  \atom{hasChild}{Barack}{v_i} \Rightarrow \\ \atom{couple}{Michelle}{Barack}
+			R_{3}:	\atom{hasChild}{Michelle}{Malia} \wedge  \atom{hasChild}{Barack}{Malia} \\ \Rightarrow \atom{couple}{Michelle}{Barack}
 			\end{split}
 		\end{equation*}
 	}

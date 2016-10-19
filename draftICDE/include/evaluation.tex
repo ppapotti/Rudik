@@ -492,7 +492,7 @@ Table~\ref{tab:random_neg_examples} reports the results for the discovered rules
 
 \noindent \myparagraph{Path Length} $maxPathLen=3$ is the optimal value for the parameter: with smaller values we lose several meaningful rules, and with bigger values we do not gain in precision while increasing the election time by an order of magnitude. % or errors detected.
 
-\noindent \myparagraph{Weight Parameters} An empirically validation supports the choice of the values used for $\alpha$ and $\beta$ in both positive and negative settings. High $\alpha$ leads to higher recall with lower precision. In both positive and negative settings, the variation in performance for $\alpha \in [0.1,0.9]$ is anyway limited ($\leq 12\%$), showing the robustness of the set cover problem formulation.
+\noindent \myparagraph{Weight Parameters} We empirically validated the choice of the values used for $\alpha$ and $\beta$ in positive and negative settings. High $\alpha$ leads to higher recall with lower precision. In both positive and negative settings, the variation in performance for $\alpha \in [0.1,0.9]$ is anyway limited ($\leq 12\%$), showing the robustness of the set cover problem formulation.
 
 \noindent \myparagraph{Search} The $A^*$ search algorithm and pruning reduces by more than 50\% the average running time with peaks of an order of magnitude compared to a baseline algorithm that generates all possible rules and applies the greedy algorithm on it.
 
