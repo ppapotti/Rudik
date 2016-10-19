@@ -131,7 +131,7 @@ We can now formalize the \emph{exact discovery problem}. %\newline
 	
 	\vspace{-6mm}	
 	\begin{equation*}
-		R_{opt}=\underset{|R'|}{\operatorname{argmin}}(R'|(C_{R'}(G) = G) \wedge (C_{R'}(V) \cap V = \emptyset) )	\end{equation*}
+		R_{opt}=\underset{R'|(C_{R'}(G) = G) \wedge (C_{R'}(V) \cap V = \emptyset)}{\operatorname{argmin}}(|R'|)	\end{equation*}
 	\end{definition}
 	\vspace{-1ex}	
 
@@ -234,7 +234,7 @@ We can now state the approximate version of the problem.
 \begin{definition}
 	Given a KB $\kb$, two sets of pair of entities $G$ and $V$ from $\kb$ with $G \cap V = \emptyset$, all the valid Horn Rules $R$ for $\kb$, and a $w$ weight function for $R$, a solution for the \emph{approximate discovery problem} is a subset $R'$ of $R$  such that:
 %
-	$$R_{opt}=\underset{w(R')}{\operatorname{argmin}}(R'|R'(G) = G)$$
+	$$R_{opt}=\underset{R'|R'(G) = G}{\operatorname{argmin}}(w(R'))$$
 \end{definition}
 \vspace{-1ex}	
 
