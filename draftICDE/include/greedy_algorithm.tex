@@ -28,7 +28,7 @@ We follow the intuitions behind the greedy algorithm for weighted set cover by d
 \end{definition}
 
 The marginal weight quantifies the total weight increase of adding $r$ to an existing set of rules $R$. In other words, it indicates the contribution of $r$ to $R$ in terms of new elements covered in $G$ and new elements unbounded covered in $V$. 
-%Due to the first negative part of the weight, $w_m(r) \in [-\alpha,+\beta]$. 
+%Due to the first negative part of the marginal weight, $w_m(r) \in [-\alpha,+\beta]$. 
 Since the set cover problem aims at minimizing the total weight, we would never add a rule to the solution if its marginal weight is greater than or equal to $0$.
 
 %\input{include/algorithm/krd_greedy_algorithm}
@@ -134,7 +134,8 @@ The only positive contribution to marginal weights is given by $|C_{R \cup \{r\}
 \end{definition}
 %I AM A BIT CONFUSED BY THE FORMULA, i was expecting a 0 in the first case <<<<<
 
-The estimated marginal weight for a valid rule instead is equal to the actual marginal weight defined in Equation~\ref{eq:mar_weight}. Valid rules are not considered for expansion, therefore we do not need to estimate their weights since we know the actual ones. Given Lemma~\ref{lemma:krd_exp_cov}, we can easily see that $w_m^*(r) \leq w_m^*(r')$, for any $r'$ expansion of $r$. Thus our marginal weight estimation is admissible.
+The estimated marginal weight for a valid rule instead is equal to the actual marginal weight defined in Equation~\ref{eq:mar_weight}. Valid rules are not considered for expansion, therefore we do not need to estimate their weights since we know the actual ones. Given Lemma~\ref{lemma:krd_exp_cov}, we can easily see that $w_m^*(r) \leq w_m^*(r')$, for any $r'$ expansion of $r$. Thus our marginal weight estimation is admissible. 
+%Due to the first negative part of the marginal weight, $w_m^*(r) \in [-\alpha,+\beta]$. 
 
 
 
