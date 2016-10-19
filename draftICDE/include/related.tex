@@ -1,8 +1,8 @@
 \section{Related Work} \label{sec:krd_related}
 
-Our work %is inspired by Inductive Logic Programming, but 
-uses techniques from dependencies discovery in relational databases, KBs construction, and mining graph patterns. 
-We review some of the most relevant works below.
+%Our work %is inspired by Inductive Logic Programming, but 
+%uses techniques from dependencies discovery in relational databases, KBs construction, and mining graph patterns. 
+%We review some of the most relevant works below.
 
 %\myparagraph{Relational Database Constraints} 
 A significant body of work has addressed the problem of discovering constraints over relational data. 
@@ -66,9 +66,9 @@ is an interesting future work, the statistical significance estimate used by
 % needs a threshold to discover meaningful rules. 
 As in other ILP systems inspired from Association Rule Mining~\cite{agrawal1993mining}, also \system{Sherlock} relies on thresholds for support and confidence that are non-trivial to set (Section~\ref{sec:krd_comparative}). We avoid thresholds in \krd and rely on a set cover problem formulation that outputs only rules contributing to the coverage of the generation set while minimizing the coverage of the validation set.
 
-Finally, recent efforts from the ML community address the absence of negative training data through approaches like one-class learning and generative adversarial networks~\cite{goodfellow2014generative}. The negative training examples are created using a generative model that is iteratively refined by the feedback obtained by a discriminative model (classifier). 
+Finally, recent efforts from the ML community address the absence of negative training data through approaches like one-class learning and generative adversarial networks~\cite{goodfellow2014generative}. The negative training examples are created with a generative model that is iteratively refined by the feedback obtained by a classifier. %discriminative model (classifier). 
 %  A severe limitation of this model is its inability to work with minimum training data as the discriminator can overfit in such scenarios and the generative model inherently needs several iterations to depart from a poorly guessed prior parameters for the negative examples. This does not however preclude the fact that ML
-As the generation of negative examples is orthogonal to our rule mining algorithm, it would be interesting to integrate these ML approaches for the discovery of declarative rules. %, as we do in \krd.
+As the generation of negative examples is orthogonal to our mining algorithm, it would be interesting to integrate these ML approaches for the discovery of declarative rules. %, as we do in \krd.
 %  ideas approaches lack expressibility and are orthogonal to our idea of mining well-understood rules that are easy to apply and verify.
 
 

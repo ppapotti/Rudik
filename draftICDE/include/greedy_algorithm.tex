@@ -98,7 +98,7 @@ We discover rules with a similar technique. For each example $(x,y) \in G$, we s
 and at each iteration we consider the rule with the minimum marginal weight, which corresponds to paths in the example graphs. 
 We expand the rule by following the edges, and we add the new founded rules to the queue of not valid rules. Unlike $A^*$, we do not stop when a rule (path) reaches the node $y$ (i.e., becomes valid). Whenever a rule becomes valid, we add the rule to the solution and we do not expand it any further. The algorithm keeps looking for plausible paths until one of the termination conditions of the greedy cover algorithm is met. %Algorithm~\ref{alg:krd_greedy} is met.
 
-A crucial point in $A^*$ is the definition of the estimation cost. To guarantee the solution to be optimal, the estimation must be \emph{admissible}, i.e., the estimated cost must be less than or equal to the actual cost. 
+A crucial point in $A^*$ is the definition of the estimation cost. To guarantee the solution to be optimal, the estimation must be \emph{admissible}~\cite{hart1968formal}, i.e., the estimated cost must be less than or equal to the actual cost. 
 For example, for the shortest route problem, an admissible estimation is the straight-line distance to the goal for every node, as it is physically the smallest distance between any two points. In our setting, given a rule that is not yet valid and needs to be expanded, we define an admissible estimation of the marginal weight.
 
 \begin{definition}

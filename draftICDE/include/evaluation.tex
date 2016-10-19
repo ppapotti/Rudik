@@ -482,15 +482,16 @@ can be found in the technical report online at \url{http://bit.ly/2bDZO9F}.
 
 \noindent \myparagraph{LCWA} We study the effect of the LCWA assumption for the generation of negative examples.
 %, which clearly outperforms random generation strategies in terms of accuracy.
-Given a predicate $p$, we tested three different generation strategies: \krd generation strategy (as detailed in Section~\ref{sec:ex_generation}), Random (randomly select $k$ pairs $(x,y)$ from the Cartesian product s.t. triple $\<x,p,y\> \notin \kb$), LCWA (\krd strategy without the constraint that $x$ and $y$ must be connected by a predicate different from $p$).
+Given a predicate $p$, we tested three different generation strategies: \krd strategy (as detailed in Section~\ref{sec:ex_generation}), Random (randomly select $k$ pairs $(x,y)$ from the Cartesian product s.t. triple $\<x,p,y\> \notin \kb$), and LCWA (\krd strategy without the constraint that $x$ and $y$ must be connected by a predicate different from $p$).
 Table~\ref{tab:random_neg_examples} reports the results for the discovered rules. 
-\emph{Random} and \emph{LCWA\_Random} show similar behavior, with a slightly better precision than \krd. This is because whenever we randomly pick examples from the Cartesian product of subject and object, the likelihood of picking entities from a different time period is very high, and negative rules pivoting on time constraints are usually correct. Instead, by forcing $x$ and $y$ to be connected with different predicate generates semantically related examples that lead to different results. Rules such as $\atom{parent}{a}{b} \Rightarrow  \atom{notSpouse}{a}{b}$ are not generated with random strategies, since the likelihood of picking two people that are in a parent relation is very low. 
+\emph{Random} and \emph{LCWA\_Random} show similar behavior, with a slightly better precision than \krd. This is because whenever we randomly pick examples from the Cartesian product of subject and object, the likelihood of picking entities from a different time period is very high, and negative rules pivoting on time constraints are usually correct. Instead, by forcing $x$ and $y$ to be connected with different predicate, we generate semantically related examples that lead to different rules. Rules such as $\atom{parent}{a}{b} \Rightarrow  \atom{notSpouse}{a}{b}$ are not generated with random strategies, since the likelihood of picking two people that are in a parent relation is very low. 
+While we use LCWA in our default configuration, the results show the robustness of the algorithm w.r.t. the quality of the negative examples.
 %The strategy we adopt in \krd enables the discovery of more types of rules, and not only rules involving time constraints. 
 
 
 \noindent \myparagraph{Literals} Including literals in the mining is especially beneficial for negative rules, where we double the number of errors discovered with a 10\% increase in precision.
 
-\noindent \myparagraph{Path Length} $maxPathLen=3$ is the optimal value for the parameter: with smaller values we lose several meaningful rules, and with bigger values we do not gain in precision while increasing the election time by an order of magnitude. % or errors detected.
+\noindent \myparagraph{Path Length} $maxPathLen=3$ is the optimal value for the parameter: with smaller values we lose several meaningful rules, and with bigger values we do not gain in precision while  the execution time increases by an order of magnitude. % or errors detected.
 
 \noindent \myparagraph{Weight Parameters} We empirically validated the choice of the values used for $\alpha$ and $\beta$ in positive and negative settings. High $\alpha$ leads to higher recall with lower precision. In both positive and negative settings, the variation in performance for $\alpha \in [0.1,0.9]$ is anyway limited ($\leq 12\%$), showing the robustness of the set cover problem formulation.
 
