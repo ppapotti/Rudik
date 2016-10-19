@@ -94,7 +94,7 @@ Given an input weighted graph, $A^*$ computes the smallest cost path from a star
 
 We discover rules with a similar technique. For each example $(x,y) \in G$, we start the navigation from $x$. We keep a queue of not valid rules (Section~\ref{sec:krd_language}), 
 and at each iteration we consider the rule with the minimum marginal weight, which corresponds to paths in the example graphs. 
-We expand the rule by following the edges, and we add the new founded rules to the queue of not valid rules. Differently from $A^*$, we do not stop when a rule (path) reaches the node $y$ (i.e., becomes valid). Whenever a rule becomes valid, we add the rule to the solution and we do not expand it any further. The algorithm keeps looking for plausible paths until one of the termination conditions of the greedy cover algorithm is met. %Algorithm~\ref{alg:krd_greedy} is met.
+We expand the rule by following the edges, and we add the new founded rules to the queue of not valid rules. Unlike $A^*$, we do not stop when a rule (path) reaches the node $y$ (i.e., becomes valid). Whenever a rule becomes valid, we add the rule to the solution and we do not expand it any further. The algorithm keeps looking for plausible paths until one of the termination conditions of the greedy cover algorithm is met. %Algorithm~\ref{alg:krd_greedy} is met.
 
 A crucial point in $A^*$ is the definition of the estimation cost. To guarantee the solution to be optimal, the estimation must be \emph{admissible}, i.e., the estimated cost must be less than or equal to the actual cost. 
 For example, for the shortest route problem, an admissible estimation is the straight-line distance to the goal for every node, as it is physically the smallest distance between any two points. In our setting, given a rule that is not yet valid and needs to be expanded, we define an admissible estimation of the marginal weight.
@@ -111,7 +111,7 @@ In other words, expanding $r$ means adding a new atom to the body of $r$. In the
 \end{lemma}
 
 
-The above Lemma states that the coverage and unbounded coverage of an expansion $r'$ of $r$ are contained in the coverage and unbound coverage of $r$, respectively, and directly derives from the augmentation inference rule for functional dependencies~\cite{abiteboul1995foundations}. 
+The above Lemma states that the coverage and unbounded coverage of an expansion $r'$ of $r$ are contained in the coverage and unbounded coverage of $r$, respectively, and directly derives from the augmentation inference rule for functional dependencies~\cite{abiteboul1995foundations}. 
 %In fact, expanding a rule with a new atom to its body makes the rule more selective. 
 %This is equivalent of adding an `AND' condition to a SQL query $q$: the new result will obviously be a subset of the result obtained with $q$.
 %Note that Lemma~\ref{lemma:krd_exp_cov} is equivalent to the 
