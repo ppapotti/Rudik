@@ -67,16 +67,16 @@ rules that cover disjoint sets over $G$, then the greedy solution coincides with
 The greedy algorithm for weighted set cover assumes that the universe of rules $R$ has been generated.
 %, so that we can iteratively pick the rule with minimum marginal weight. 
 To generate $R$, we need to traverse all valid paths from a node $x$ to a node $y$, for every pair $(x,y) \in G$. But do we really need all possible paths for every example in $G$?
-		\vspace{-1.5ex}
+	%	\vspace{-1.5ex}
 
-	\begin{figure}[htb]
+	\begin{figure}%[htb]
 		\centering
 		\includegraphics[width=0.99\columnwidth]{include/figure/a*_graph_example.pdf}	
-		\vspace{-4ex}
+		\vspace{-5ex}
 		\caption{Two positive examples.}
 	\label{fig:positive_examples}
+		\vspace{-0.5ex}
 \end{figure}
-		\vspace{-1.5ex}
 
 \begin{example}
 	Consider the scenario where we are mining positive rules for the target predicate \texttt{spouse}. The generation set $G$ includes two examples $g_1$ and $g_2$, Figure~\ref{fig:positive_examples} shows the corresponding KB graphs. % for the two examples. 

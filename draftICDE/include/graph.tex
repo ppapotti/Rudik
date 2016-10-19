@@ -219,7 +219,10 @@ These restrictions make the size of $V$ of the same order of magnitude of $G$ (s
 To enhance the quality of the input examples and avoid cases of mixed types, 
 we require that for every example pair $(x,y)$ in either $G$ or $V$, $x$ and $y$ are always of the same \emph{type}. 
 %ADDED BY STEFANO
-Note that even when the LCWA does not hold, its negative impact is relatively low. In fact our negative examples are a subset of the cartesian product of all entities minus positive examples, and since the cartesian product contains very few positive examples (errors), also a subset of it will contain a limited amount of errors. We will validate this assumption in Section~\ref{sec:krd_int_evaluation}.
+Note that even when the LCWA does not hold, the generated negative examples are still useful for the discovery of rules. % its negative impact is relatively low. 
+In fact, our negative examples are a subset of the Cartesian product of all relevant entities minus positive examples. The Cartesian product always contains some positive examples because of the missing predicates among entities, but this is a very low percentage.
+% (errors), also a subset of it will contain a limited amount of errors. 
+We experimentally validate these observation in Section~\ref{sec:krd_int_evaluation}.
 %we introduce the \emph{type} restriction when generating $G$ and $V$. The type restriction requires that for every example pair $(x,y)$ belonging to either $G$ or $V$, $x$ and $y$ are always of the same type across the pairs. 
 %All KBs include entity types. % (often through the \texttt{rdf:type} statement), therefore we make use of this information. 
 %For example, $G$ and $V$ for a target \texttt{child} predicate are two sets of pairs, where each pair consists in two entities of type person. The type information can be manually provided or, as we will see in Section~\ref{sec:krd_comparative}, we can automatically compute it from the KB.
