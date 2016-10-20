@@ -234,7 +234,7 @@ We can now state the approximate version of the problem.
 \begin{definition}
 	Given a KB $\kb$, two sets of pair of entities $G$ and $V$ from $\kb$ with $G \cap V = \emptyset$, all the valid Horn Rules $R$ for $\kb$, and a $w$ weight function for $R$, a solution for the \emph{approximate discovery problem} is a subset $R'$ of $R$  such that:
 %
-	$$R_{opt}=\underset{R'}{\operatorname{argmin}}(w(R') | R'(G) = G)$$
+	$$R_{opt}=\underset{R'}{\operatorname{argmin}}(w(R') | C_{R'}(G) = G)$$
 \end{definition}
 \vspace{-1ex}	
 
