@@ -1,0 +1,52 @@
+{\singlespacing
+  \begin{algorithm}[t]\small
+      \SetKwInOut{Input}{input}
+      \SetKwInOut{Output}{output}
+      
+      \SetKwFunction{expFron}{expandFrontiers}
+      \SetKwFunction{frontiers}{frontiers}
+      \SetKwFunction{isValid}{isValid}
+      \SetKwFunction{length}{length}
+      \SetKwFunction{sinInRule}{singleInstanceRule}
+      
+	
+      \SetKwData{mannot}{$\mathcal{M}_{annot}$}
+	
+      \Input{$G$ -- generation set}
+      \Input{$V$ -- validation set}
+      \Input{$maxPathLen$ -- maximum rule body length}
+      \Output{$R_{opt}$ -- greedy set cover solution}
+      
+      	$R_{opt} \gets \emptyset$\;
+      	$N_f \gets \{x | (x,y) \in G\}$\; \label{alg_line:front_nodes}
+      	$Q_r \gets \expFron(N_f)$\; \label{alg_line:sparql_1}
+      	%$\quad$\tcp{SPARQL}%
+      	$r \gets \underset{r \in Q_r}{\operatorname{argmin}}(w_m^*(r))$\; \label{alg_line:q_r_initialisation}
+      	\Repeat{$Q_r = \emptyset \vee C_{R_{opt}}(G) = G \vee w_m^*(r) \geq 0$}
+      	{
+      		$Q_r \gets Q_r \setminus \{r\}$\;
+      		\If{$\isValid(r)$}{
+      			$R_{opt} \gets R_{opt} \cup \{r\}$\; \label{alg_line:valid_rule}
+      		}
+      		\Else{
+      			\tcp{rules expansion}
+      			\If{$\length(r_{body}) < maxPathLen$ \label{alg_line:exp_condition}}
+      			{
+      				$N_f \gets \frontiers(r)$\;
+      				$Q_r \gets Q_r \cup \expFron(N_f)$\;  \label{alg_line:sparql_2}
+	      			%$\quad$\tcp{SPARQL}
+      			}
+      		}
+      		$r \gets \underset{r \in Q_r}{\operatorname{argmin}}(w_m^*(r))$\;
+      	}
+      	\If{$C_{R_{opt}}(G) \neq G$}{
+      		$R_{opt} \gets R_{opt} \cup \sinInRule(G \setminus C_{R_{opt}}(G))$\;
+      		
+      	}
+  
+  \Return{$R_{opt}$}
+  \caption{\krd Rule Discovery.}
+  \label{alg:krd_a*}
+  \end{algorithm}
+}
+\vspace{-2ex}
