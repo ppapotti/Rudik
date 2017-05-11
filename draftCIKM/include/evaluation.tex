@@ -1,10 +1,10 @@
 \section{Experiments} \label{sec:krd_experiments}
 We implemented the above techniques in \krd, our system for \underline{Ru}le \underline{Di}scovery in \underline{K}nowledge Bases.
-We carried out an extensive experimental evaluation of our approach and grouped the results in four main sub-categories: 
+We carried out an extensive experimental evaluation of our approach and grouped the results in three main sub-categories: 
 \begin{inparaenum}[\itshape(i)]
 	\item demonstrating the quality of our output for positive and negative rules;
 	\item comparing our method with the state-of-the-art systems;
-	\item showing the applicability of rule discovery in Machine Learning algorithms with representative training data;
+%%%%JOURNAL%	\item showing the applicability of rule discovery in Machine Learning algorithms with representative training data;
 	\item testing the role of the parameters in the system. % settings and some KB properties.
 \end{inparaenum}
 %DO WE EVALUATE SAMPLING ON A DIFFERENT SECTION?
@@ -22,7 +22,8 @@ We carried out an extensive experimental evaluation of our approach and grouped 
 We ran experiments over the latest core facts derived from several KBs. All experiments were run on a desktop with a quad-core i5 CPU at 2.80GHz and 16GB RAM. We used \system{OpenLink Virtuoso}, optimized for 8GB RAM, with its SPARQL query endpoint on the same machine.
 
 %In the following, 
-Parameters $\alpha$ and $\beta$ of Equation~\ref{eq:weight_fun} were set to  $\alpha=0.3$ and $\beta=0.7$ for positive rules, and to $\alpha=0.4$ and $\beta=0.6$ for negative rules. 
+Parameters %%%%JOURNAL%$\alpha$ and $\beta$ %%%%JOURNAL%of Equation~\ref{eq:weight_fun} 
+were set to  $\alpha=0.3$ and $\beta=0.7$ for positive rules, and to $\alpha=0.4$ and $\beta=0.6$ for negative rules. 
 %We also use a $maxPathLen$ parameter indicating the maximum number of atoms in each of the rules to be discovered that is set to $3$. 
 We set the maximum number of atoms 
 admissible in the body of a rule ($maxPathLen$) to $3$.
@@ -47,6 +48,10 @@ has been done according to the state of the art for rule quality evaluation~\cit
 and manually checked them. % against the Web. 
 The \emph{precision} of a rule is then computed as the ratio of correct assertions out of all assertions. 
 %The subtle difference is that the sample set of tentatively violating predictions to be evaluated are generated differently for positive and negative rules. As an example, for the positive rule $\atom{spouse}{a}{v0} \wedge \atom{child}{v0}{b} \Rightarrow \atom{child}{a}{b}$, we retrieve all those pairs  $(a,b)$ such that $b$ is the child of $v0$ and $v0$ is the spouse of $a$ but $b$ is not the child of $a$. In the case of the negative rule, $\atom{child}{a}{b} \Rightarrow \neg \atom{spouse}{a}{b}$, we retrieve all those pairs $(a,b)$ such that $b$ is \texttt{child} of $a$ and $a$ is \texttt{spouse} with $b$.
+Full test results, including annotated examples and rules are available at \url{http://***double-blind***}.
+% \url{http://bit.ly/2csROsc}.
+
+
 \begin{comment}
 \krd discovers rules for a given target predicate. For each KB, we chose $5$ representative predicates as follows: we first ordered predicates according to descending popularity (i.e., number of triples having that predicate), and then we picked the top $3$ predicates for which we knew there existed at least one meaningful rule, and other $2$ top predicates for which we did not know whether some meaningful rules existed or not. We repeated the procedure for each input KB, and for both positive and negative rules. Despite working with one predicate at a time, \krd can also discover rules for the entire KB by enumerating all the predicates in the KB, and discovering rules for each of them. We will show in Section~\ref{sec:krd_comparative} how this can be achieved.
 
@@ -67,7 +72,6 @@ Therefore negative rules will always discover many correct negative facts. Howev
 %Furthermore, a potential error is evaluated as actual error whenever a single atom in the rule is incorrect, no matter if the atom is in the body or the head of the rule. For the negative rule $\atom{child}{a}{b} \Rightarrow \neg \atom{spouse}{a}{b}$, a specific instantiation $(a,b)$ is an actual error if either $b$ is not an actual \texttt{child} of $a$, or $b$ is not an actual \texttt{spouse} of $a$. As we will explain further below, negative rules cannot point exactly where the error is, but they give a hint that something is wrong and needs to be further inspected.
 \end{comment}
 
-Full test results, including KBs, induced rules, annotated examples and rules are available at \url{http://bit.ly/2csROsc}.
 
 
 %\vspace{-1ex}
@@ -75,6 +79,7 @@ Full test results, including KBs, induced rules, annotated examples and rules ar
 \begin{table}[thb]
 	\centering
 	\caption{Dataset characteristics.}
+	\vspace{-2ex}
 	\label{tab:krdDatasetDescr}
 	\begin{small}
 		\begin{tabular}
@@ -90,11 +95,11 @@ Full test results, including KBs, induced rules, annotated examples and rules ar
 		\end{tabular}
 	\end{small}
 \end{table}
+\vspace{-2ex}
 }
 
-\vspace{-1ex}
 \subsection{Quality of Rule Discovery in \krd} \label{sec:gen_evaluation}
-\vspace{-1ex}
+\vspace{-0.2ex}
 The first set of experiments aimed at evaluating the accuracy of discovered rules over three popular KBs: \dbpedia~\cite{bizer2009dbpedia}, \yago~\cite{suchanek2007yago}, and \wikidata~\cite{vrandevcic2014wikidata}. 
 %For each KB we downloaded the most recent version and selected core facts, facts about people, geolocations and transitive \texttt{rdf:type} facts. \wikidata provides the entire dump alone; therefore we just eliminated from it all the non-English literal values. 
 Table~\ref{tab:krdDatasetDescr} shows the characteristics of these KBs.
@@ -106,6 +111,7 @@ The size of the KB is important as loading the entire KB in memory is not feasib
 %\vspace{-2ex}
 	\centering
 	\caption{\krd Positive Rule Accuracy.}
+		\vspace{-2ex}
 	\label{tab:pos_rules_acc}
 	\begin{small}
 	\begin{tabular}{|c|c|c|c|c|}
@@ -120,7 +126,7 @@ The size of the KB is important as loading the entire KB in memory is not feasib
 	\end{tabular}
 	\end{small}
 \end{table}
-\vspace{-1ex}
+%\vspace{-1ex}
 
 
 \myparagraph{Positive Rules \krd} 
@@ -156,6 +162,7 @@ Parameter $maxPathLen$  also impacts the running time. The longer the rule, the 
 \begin{table}[htb]
 	\centering
 	\caption{\krd Negative Rule Accuracy.}
+			\vspace{-2ex}
 	\label{tab:neg_rules_acc}
 	\begin{small}
 	\begin{tabular}{|c|c|c|c|}
@@ -233,6 +240,7 @@ It then outputs all possible rules that exceed a given threshold and ranks them 
 %\vspace{-3ex}
 	\centering
 	\caption{\amie Dataset characteristics.}
+			\vspace{-2ex}
 	\label{tab:AmieDatasetDescr}
 	\begin{small}
 		\begin{tabular}{|c|c|c|c|c|c|}
@@ -320,6 +328,7 @@ For example, we added a \texttt{notSpouse} predicate connecting each pair of peo
 %\vspace{-3ex}
 	\centering
 	\caption{Negative Rules vs \amie.}
+			\vspace{-2ex}
 	\label{tab:vs_amie_neg}
 	\begin{small}
 		\begin{tabular}{c|c|c|c|c|}
@@ -375,6 +384,7 @@ Running times for \amie are different from~\cite{galarraga2015fast}, where it wa
 %\vspace{-3ex}
 	\centering
 	\caption{Total Run Time Comparison.}
+			\vspace{-2ex}
 	\label{tab:amie_runtime}
 	\begin{small}
 		\begin{tabular}
@@ -463,11 +473,13 @@ A recent system~\cite{Chen:2016} implements \amie algorithm with a focus on scal
 \vspace{-1ex}
 We briefly outline the most relevant findings when studying the impact of individual components in \krd.
 Full results on the internal evaluation %are not reported due to space reasons but 
-can be found in the technical report online at \url{http://bit.ly/2bDZO9F}.
+can be found  at \url{http://***double-blind***}.
+%in the technical report online at \url{http://bit.ly/2bDZO9F}.
 
 \begin{table}[htb]
 	\centering
 	\caption{Effect of Negative Examples Generation Strategy on \dbpedia.}
+			\vspace{-2ex}
 	\label{tab:random_neg_examples}
 	\begin{tabular}{|c|c|c|c|c|}
 		\hline
