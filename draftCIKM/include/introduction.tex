@@ -21,22 +21,24 @@ and let users add facts defined on new predicates by simply inserting new triple
 Since \emph{closed world assumption} (CWA) does not hold~\cite{dong2014data,galarraga2015fast}, we cannot assume that a missing fact is false %%%%%%%%%JOURNAL% , but rather we should label it as \emph{unknown} 
 (\emph{open world assumption}).
 
-As a direct consequence, the amount of errors and incompleteness in KBs is usually significant, with up to 30\% errors for facts derived from the Web% is significantly larger than in classic databases
+As a %%%%%%%%%JOURNAL%direct 
+consequence, the amount of errors and incompleteness in KBs is usually significant, with up to 30\% errors for facts derived from the Web% is significantly larger than in classic databases
 ~\cite{abedjan2015temporal,suchanek2009sofie}.
 Since KBs are large, e.g., \wikidata has more than $1$B facts and $300$M different entities, %\footnote{\url{https://query.wikidata.org/}}. 
 checking all triples to find errors or to add new facts cannot be done manually. % and tools are needed to assist humans in the KBs curation. 
 A natural approach to assist curators of KBs is to discover %However, KBs carry such a big amount of information that they can be mined to discover 
-\emph{declarative rules} that can be executed over the KB to improve the quality of the data~\cite{Chen:2016,abedjan2014amending,galarraga2015fast}. However, these approaches so far have focused on the discovery of rules to derive new facts only, while %%%%%%%%%JOURNAL% for the first time
+\emph{declarative rules} that can be executed over the KB to improve the quality of the data~\cite{Chen:2016,abedjan2014amending,galarraga2015fast}. 
+%%%%%%%%%JOURNAL%However, these approaches have focused on the discovery of rules to derive new facts, while %%%%%%%%%JOURNAL% for the first time
 % , and this is the problem we study in
 %inspected to find additional information or constraints over existing data. 
 %this paper.
 % we investigate the problem of discovering \emph{declarative rules} over RDF KBs. 
 %More specifically, 
-we target the discovery %of first-order Horn Rules constrained by some language biases, introducing 
+We target the discovery %of first-order Horn Rules constrained by some language biases, introducing 
 of two different types of rules:
 \begin{inparaenum}[\itshape(i)]
-	\item {\em positive rules}, used to enrich the KB with new facts and thus increase its coverage of the reality;
-	\item {\em negative rules}, used to spot logical inconsistencies and identify erroneous triples.
+	\item {\em positive rules} to enrich the KB with new facts and thus increase its coverage; %%%%%%%%%JOURNAL% of the reality;
+	\item {\em negative rules} to spot logical inconsistencies and identify erroneous triples.
 \end{inparaenum}
 
 \begin{example}\label{ex:krd_intro}
@@ -67,7 +69,14 @@ of two different types of rules:
 	\noindent It states that person $b$ cannot be child of $a$ if $a$ was born after $b$. By instantiating the rule for \texttt{child} facts, we identify erroneous triples stating that a child is born before a parent.
 \end{example}
 
-While intuitive to humans, the rules above must be manually stated in a KB to be enforced, and there are thousands of rules in a large KB with hundreds of predicates~\cite{gc2015big}. 
+While intuitive to humans, the rules above must be manually stated in a KB to be enforced, and there are thousands of rules in a large KB~\cite{gc2015big}.
+%\myparagraph{Novelty} In this chapter 
+%\vspace{1ex}
+A rule discovery system should therefore discover both positive and negative rules. 
+%However, this comes with a computational cost, as the search space quickly becomes much larger. For this reason, existing approaches for mining positive rules prune aggressively the search space, and rely on a simple language% without values comparisons
+%~\cite{Chen:2016,abedjan2014amending,galarraga2015fast}.
+%MAKE SURE TO CITE  the demo DBLP:conf/sigmod/FaridRIHC16, they discover negative rules, but there is not paper, therefore no baseline%%%%%%%%%%
+%%%%%%%%%JOURNAL% with hundreds of predicates 
 %%%%%%%%%JOURNAL% Other than enriching and cleaning KBs, negative rules support other use cases. %brings multiple benefits. %, such as automatic reasoning. 
 %We can discover negative facts (absent in KBs), bringing the KB world a step closer to the classic database CWA. 
 %%%%%%%%%JOURNAL% We will show how such rules 
@@ -95,31 +104,19 @@ counter examples.
 \noindent \myparagraph{Volume}
 %MOVE TO RELATED
 %Classic database discovery algorithms ILP systems cannot cope with large KBs and in order to directly apply existing database techniques would require the materialisation of all possible predicates combinations into relational tables (graph data must be flattened in relational format).  Moreover, 
-Existing approaches for discovery of positive rules in KBs assume that data can fit into main memory~\cite{abedjan2014amending,galarraga2015fast,Chen:2016,DBLP:conf/sigmod/FaridRIHC16}. Given the large and increasing size of KBs, these approaches aggressively prune the search space by focusing on a simple language.
+Existing approaches for rule discovery assume that data fit into main memory~\cite{abedjan2014amending,galarraga2015fast,Chen:2016,DBLP:conf/sigmod/FaridRIHC16}. Given the large and increasing size of KBs, these approaches aggressively prune the search space by focusing on a simple language.
 %The memory constraint leads to 
 %which leads to very aggressive pruning of the search space 
 %More recent approaches also rely on in-memory algorithms and try to solve this problem with distributed architectures~\cite{Chen:2016,DBLP:conf/sigmod/FaridRIHC16}.
 
-
-
-%\myparagraph{Novelty} In this chapter 
-%\vspace{1ex}
-We advocate that a rule discovery system should be designed to discover {\em approximate rules} since errors and incompleteness are in the nature of KBs. The rule language should also allow value comparisons to increase its {\em expressive power}.
-% Also, the in-memory constraint not only reduces the applicability of the system, but also forces limitations on the {\em expressive power} of the language in order to reduce the search space.
-%we design a disk-based solution, to overcome the main memory limitation and enable the discovery of rules
-%with a more expressive rule language. 
-In fact, the larger is the number of patterns that can be expressed in the rules, %and the coverage of the facts in the KB. Larger coverage lead to more 
-the larger is the number of new facts and errors that can be identified, and with increasing precision. 
-%However, this comes with a computational cost, as the search space quickly becomes much larger. For this reason, existing approaches for mining positive rules prune aggressively the search space, and rely on a simple language% without values comparisons
-%~\cite{Chen:2016,abedjan2014amending,galarraga2015fast}.
-%MAKE SURE TO CITE  the demo DBLP:conf/sigmod/FaridRIHC16, they discover negative rules, but there is not paper, therefore no baseline%%%%%%%%%%
-
 %\vspace{1ex}
 We present \krd (\underline{Ru}le \underline{Di}scovery in \underline{K}nowledge Bases), a novel system for the robust discovery of positive and negative rules %Horn Rules 
-over KBs that addresses the challenges above.  
-\krd is the first system capable of discovering both approximate positive and negative rules without
-% using the same algorithm. Moreover, classic rules discovery systems 
-assuming that the KB fits into memory by exploiting the following contributions.
+over KBs that addresses these challenges.
+\krd is the first system capable of discovering both {\em positive and negative rules} over noisy and incomplete KBs. 
+%Such rules are {\em approximate}, i.e., they do not have to hold exactly, since errors and incompleteness are in the nature of KBs. 
+Moreover, by relying on disk based algorithms, \krd discovers rules with a richer language that allows value comparisons. This increase in the {\em expressive power} enables a larger number of patterns that can be expressed in the rules, 
+and therefore a larger number of new facts and errors that can be identified. %, and with increasing precision. 
+These results are achieved by exploiting the following contributions.
 %  . We drop such an assumption and propose a disk-based solution that loads into memory only a small portion of the KB. 
 %This is a key point to address the size problem, but also because it enables us to enlarge the expressive power of the considered rules to include comparisons among constants, including inequalities.
 
@@ -169,10 +166,13 @@ the disk is accessed only whenever the navigation of a specific path is required
 
 %\vspace{0.5ex}
 We experimentally %%%%%%%%%JOURNAL% test the performance of rule discovery in 
-\krd by using real-world datasets (Section~\ref{sec:krd_experiments}). The evaluation is carried on  three popular and widely used KBs, namely \dbpedia~\cite{bizer2009dbpedia}, \yago~\cite{suchanek2007yago}, and \wikidata~\cite{vrandevcic2014wikidata}. 
-We show that our problem formulation together with our 
+\krd %%%%%%%%%JOURNAL%by using real-world datasets. The evaluation is carried 
+on  three popular and widely used KBs, namely \dbpedia~\cite{bizer2009dbpedia}, \yago~\cite{suchanek2007yago}, and \wikidata~\cite{vrandevcic2014wikidata} (Section~\ref{sec:krd_experiments}). 
+We show that our system
+%%%%%%%%%JOURNAL%problem formulation together with our 
 %that are better in quality than previous systems and that the 
-search algorithm delivers accurate rules, 
+%%%%%%%%%JOURNAL%search algorithm 
+delivers accurate rules, 
 with a relative increase in average precision by 45\% both in the positive and in the negative settings w.r.t. state-of-the-art systems.
 Also, \krd performs consistently well with KBs of all sizes, while other systems cannot scale or fail altogether. % due clearly outperforming state-of-the-art systems . 
 %%%%%%%%%JOURNAL% We also 

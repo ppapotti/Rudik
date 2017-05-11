@@ -1,6 +1,7 @@
-\vspace{-0.5ex}
+\vspace{-1ex}
 \section{Preliminaries}%%%%%%%%%JOURNAL%  and Definitions} 
 \label{sec:krd_prel}
+\vspace{-0.2ex}
 We focus on discovering rules from RDF KBs. An RDF KB is
 a database that represents information through RDF triples $\<s,p,o\>$, where a \emph{subject} ($s$) is connected to an \emph{object} ($o$) via a \emph{predicate} ($p$). Triples are often called \emph{facts}. For example, the fact that Scott Eastwood is the child of Clint Eastwood could be represented through the triple $\<Clint\_Eastwood,child,Scott\_Eastwood\>$. 
 RDF KB triples respect three constraints:
@@ -20,12 +21,12 @@ and new predicates can be added by inserting triples. % having those predicates.
 This model allows great flexibility, but the likelihood of introducing errors is higher than traditional schema-guided databases.
 While KBs can include \emph{T-Box} facts to define classes, domain/co-domain types for predicates, and relationships among classes
 %While the T-Box can specify 
-to check integrity and consistency, in most KBs -- including the ones we use in our experiments -- such information is missing. % or not present at all. 
+to check integrity and consistency, in most KBs -- including the ones used in our experiments -- such information is missing. % or not present at all. 
 Hence our focus is on the \emph{A-Box} facts that describe instance data. 
 
 \vspace{-1ex}
 \subsection{Language} \label{sec:krd_language} 
-\vspace{-1ex}
+\vspace{-0.2ex}
 Our goal is to automatically discover 
 %first-order logical formulas in KBs. More specifically, we target the discovery of 
 \emph{Horn Rules} in KBs. A Horn Rule is a disjunction of \emph{atoms} with at most one unnegated atom. When written in the implication form, Horn Rules have one of the following formats:
@@ -34,30 +35,32 @@ Our goal is to automatically discover
 	A_1 \wedge A_2 \wedge \cdots \wedge A_n \Rightarrow B \qquad \qquad A_1 \wedge A_2 \wedge \cdots \wedge A_n \Rightarrow  false 
 \end{equation*} %\neg B
 %
-where $A_1 \wedge A_2 \wedge \cdots \wedge A_n$ is the \emph{body} of the rule (a conjunction of atoms) and $B$ is the \emph{head} of the rule (a single atom). The head of the rule is either unnegated (left) or empty (right). We call the former \emph{definite clause} or simply \emph{positive rule}, as it generates new 
+where $A_1 \wedge A_2 \wedge \cdots \wedge A_n$ is the \emph{body} of the rule (a conjunction of atoms) and $B$ is the \emph{head} of the rule (a single atom). The head of the rule is either unnegated (left) or empty (right). We call the former \emph{definite clause} or \emph{positive rule}, as it generates new 
 %positive 
-facts, while the latter \emph{goal clause} or \emph{negative rule}, as it identifies false statements. %In a KB, 
-An atom is a predicate connecting two variables, two entities, or an entity and a variable. For simplicity, we represent an atom with the notation $\atom{rel}{a}{b}$, where \texttt{rel} is a predicate, and $a$ and $b$ are either variables or entities. 
+facts (e.g., $r_1$ in Example~\ref{ex:krd_intro}). We call the latter \emph{goal clause} or \emph{negative rule} (e.g., $r_2$ in Example~\ref{ex:krd_intro}), as it identifies incorrect facts, similarly to denial constraints for relational data~\cite{chu2013discovering}. %In a KB, 
+An atom is a predicate connecting two variables, two entities, or an entity and a variable. For simplicity, we represent an atom with the notation $\atom{rel}{a}{b}$, where \texttt{rel} is a predicate, and $a$, $b$ are either variables or entities. 
 %NOT ESSENTIAL
 %In the context of Horn Rules, all variables appearing in a rule are implicitly universally quantified.
-Given a Horn Rule $r$, we define $r_{body}$ and $r_{head}$ as the body and the head of the rule, respectively. We define the variables appearing in the head of the rule as the \emph{target variables}. 
-For the sake of presentation, we will also write negative rules as definite clauses by rewriting a body atom %in its negated form 
-in the head. The result is a logically equivalent formula that emphasizes the generation of negative facts.
-
-\begin{example}\label{ex:ex2}
-	Rule $r_1$ in Example~\ref{ex:krd_intro} is a traditional positive rule, where new positive facts are identified with target variables $a$ and $b$.
-	% are the target variables.
-	Rule $r_2$ is a negative rule to identify errors, as in denial constraints for relational data~\cite{chu2013discovering}. However, for other applications, we can rewrite it as a definite clause to derive false facts from the KB and obtain $r_2'$:
-	
-	\vspace{-4ex}
-	{\small	
-		\begin{equation*}
-			\atom{DOB}{a}{v_0} \wedge \atom{DOB}{b}{v_i} \wedge v_0 > v_i
-			\Rightarrow  \atom{notChild}{a}{b}  
-		\end{equation*}
-	}
-	\vspace{-3.5ex}
-\end{example} 
+Given a rule $r$, we define $r_{body}$ and $r_{head}$ as the body and the head of the rule, respectively. We define the variables in the head of the rule as the \emph{target variables}. 
+%%%%%%%%%JOURNAL%For the sake of presentation, we will also write negative rules as definite clauses by rewriting a body atom %in its negated form 
+%%%%%%%%%JOURNAL%in the head. The result is a logically equivalent formula that emphasizes the generation of negative facts.
+%
+%\begin{example}\label{ex:ex2}
+%	Rule $r_1$ in Example~\ref{ex:krd_intro} is a traditional positive rule, where new positive facts are identified with target variables $a$ and $b$.
+%	% are the target variables.
+%	Rule $r_2$ is a negative rule to identify errors.
+%	
+%%	 However, for other applications, we can rewrite it as a definite clause to derive false facts from the KB and obtain $r_2'$:
+%%	
+%%	\vspace{-4ex}
+%%	{\small	
+%%		\begin{equation*}
+%%			\atom{DOB}{a}{v_0} \wedge \atom{DOB}{b}{v_i} \wedge v_0 > v_i
+%%			\Rightarrow  \atom{notChild}{a}{b}  
+%%		\end{equation*}
+%%	}
+%%	\vspace{-3.5ex}
+%\end{example} 
 
 As shown in the example, we allow \emph{literal comparisons} in our rules. A literal comparison is a special atom $\atom{rel}{a}{b}$, where $\texttt{rel} \in \{<,\leq,\neq,>,\geq\}$, and $a$ and $b$ can only be assigned to literal values except if $\texttt{rel}$ is equal to $\neq$. In such a case $a$ and $b$ can be also assigned to entities. We will explain later on why this exception is important.
 
@@ -79,17 +82,17 @@ In a valid rule, every atom in must be \emph{transitively} reachable by any othe
 
 \noindent {\bf Repetition.} Every variable in a rule must appear at least twice. Since target variables already appear once in the head of the rule, 
 %the repetition constraint limited to the body of a rule requires that 
-each variable that is not a target variable must be involved in a join or in a literal comparison (i.e., must appear at least twice).
+each variable that is not a target variable must be involved in a join or in a literal comparison.  
+%%%%%%%%%JOURNAL%%%%%% (i.e., must appear at least twice).
 %appear at least twice, while target variables at least once.
 
-Language restrictions limit the algorithm output 
-to a subset of plausible rules. We will show in Section~\ref{sec:rules_gen} how these restrictions enable us to speed up the discovery process. % through a disk-based approach that leverages these limitations.
+%%%%%%%%%JOURNAL%Language restrictions limit the algorithm output  to a subset of plausible rules. We will show in Section~\ref{sec:rules_gen} how these restrictions enable us to speed up the discovery process. % through a disk-based approach that leverages these limitations.
 
 \vspace{-1ex}
 \subsection{Rule Coverage}
-\vspace{-1ex}
+\vspace{-0.2ex}
 Given a pair of entities $(x,y)$ from a KB $\kb$ and a Horn Rule $r$, we say that $r_{body}$ \emph{covers} $(x,y)$ if
-$(x,y) \models r_{body}$. In other words, given a Horn Rule $r : r_{body} \Rightarrow \atom{r}{a}{b}$, $r_{body}$ covers a pair of entities $(x,y) \in \kb$ iff we can substitute $a$ with $x$, $b$ with $y$, and the rest of the body can be instantiated over $\kb$. Given a set of pair of entities $E = \{(x_1,y_1),(x_2,y_2),\cdots,(x_n,y_n)\}$ and a rule $r$, we denote by $C_r(E)$ the \emph{coverage} of $r_{body}$ over $E$ as the set of elements in $E$ covered by $r_{body}$: $C_r(E)=\{(x,y) \in E | (x,y) \models r_{body}\}$.
+$(x,y) \models r_{body}$. In other words, given a rule $r : r_{body} \Rightarrow \atom{r}{a}{b}$, $r_{body}$ covers a pair of entities $(x,y) \in \kb$ iff we can substitute $a$ with $x$, $b$ with $y$, and the rest of the body can be instantiated over $\kb$. Given a set of pair of entities $E = \{(x_1,y_1),(x_2,y_2),\cdots,(x_n,y_n)\}$ and a rule $r$, we denote by $C_r(E)$ the \emph{coverage} of $r_{body}$ over $E$ as the set of elements in $E$ covered by $r_{body}$: $C_r(E)=\{(x,y) \in E | (x,y) \models r_{body}\}$.
 
 Given the body $r_{body}$ of a rule $r$, we denote by $r^{*}_{body}$ the \emph{unbounded body} of $r$. The unbounded body of a rule is obtained by keeping only atoms that contain a target variable and substituting such atoms with new atoms where the target variable is paired with a new unique variable. As an example, given $r_{body} = \texttt{rel}_1\texttt{(}a,v_0\texttt{)} \wedge \texttt{rel}_2\texttt{(}v_0,b\texttt{)}$ where $a$ and $b$ are the target variables, $r^{*}_{body} = \texttt{rel}_1\texttt{(}a,v_i\texttt{)} \wedge \texttt{rel}_2\texttt{(}v_{ii},b\texttt{)}$.
 While in $r_{body}$ the target variables are bounded to be connected by variable $v_0$, in $r^{*}_{body}$, the target variables are not bounded.
@@ -97,7 +100,7 @@ Given a set of pair of entities $E = \{(x_1,y_1),(x_2,y_2),\cdots,(x_n,y_n)\}$ a
 %In other words, the unbounded coverage of a rule over $E$ always contains all the elements of the coverage over $E$.
 
 \begin{example}
-	Given rule $r_2'$ of Example~\ref{ex:ex2} and a KB $\kb$, we denote with $E$ the set of all possible pairs of entities in $\kb$. The coverage of $r_2'$ over $E$ $(C_r(E))$ is the set of all pairs of entities $(x,y) \in \kb$ s.t. both $x$ and $y$ have the \texttt{DOB} information and $x$ is born after $y$. The unbounded coverage of $r$ over $E$ $(U_r(E))$ is the set of all pairs of entities $(x,y)$ s.t. both $x$ and $y$ have the \texttt{DOB} information, no matter what the relation between the two birth dates is. 
+	Given rule $r_2$ of Example~\ref{ex:ex1} and a KB $\kb$, we denote with $E$ the set of all possible pairs of entities in $\kb$. The coverage of $r_2'$ over $E$ $(C_r(E))$ is the set of all pairs of entities $(x,y) \in \kb$ s.t. both $x$ and $y$ have the \texttt{DOB} information and $x$ is born after $y$. The unbounded coverage of $r$ over $E$ $(U_r(E))$ is the set of all pairs of entities $(x,y)$ s.t. both $x$ and $y$ have the \texttt{DOB} information, no matter what the relation between the two birth dates is. 
 \end{example} 
 
 \vspace{0.5ex}

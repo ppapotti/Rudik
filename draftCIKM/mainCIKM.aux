@@ -39,73 +39,72 @@
 \citation{suchanek2007yago}
 \citation{vrandevcic2014wikidata}
 \citation{chu2013discovering}
+\citation{galarraga2015fast,Chen:2016}
 \@writefile{toc}{\contentsline {section}{\numberline {2}Preliminaries}{2}{section.2}}
 \newlabel{sec:krd_prel}{{2}{2}{Preliminaries}{section.2}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {2.1}Language}{2}{subsection.2.1}}
 \newlabel{sec:krd_language}{{2.1}{2}{Language}{subsection.2.1}{}}
-\newlabel{ex:ex2}{{1}{2}{}{theorem.2.1}{}}
-\citation{galarraga2015fast,Chen:2016}
 \citation{min2013distant}
 \citation{abedjan2014amending,galarraga2015fast}
 \@writefile{toc}{\contentsline {subsection}{\numberline {2.2}Rule Coverage}{3}{subsection.2.2}}
 \@writefile{toc}{\contentsline {section}{\numberline {3}Robust Rule Discovery}{3}{section.3}}
 \newlabel{sec:problem}{{3}{3}{Robust Rule Discovery}{section.3}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.1}Weight Function}{3}{subsection.3.1}}
+\newlabel{sec:krd_weight_fun}{{3.1}{3}{Weight Function}{subsection.3.1}{}}
 \citation{chvatal1979greedy}
 \citation{bizer2009dbpedia}
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.1}Weight Function}{4}{subsection.3.1}}
-\newlabel{sec:krd_weight_fun}{{3.1}{4}{Weight Function}{subsection.3.1}{}}
 \newlabel{eq:weight_fun}{{1}{4}{}{equation.3.1}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {3.2}Problem Definition}{4}{subsection.3.2}}
 \newlabel{sec:krd_prob_def}{{3.2}{4}{Problem Definition}{subsection.3.2}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces Graph example of \textsc  {DBPedia}\xspace  for four triples.\relax }}{4}{figure.caption.3}}
+\providecommand*\caption@xref[2]{\@setref\relax\@undefined{#1}}
+\newlabel{fig:krd_graph_example}{{1}{4}{Graph example of \dbpedia for four triples.\relax }{figure.caption.3}{}}
 \@writefile{toc}{\contentsline {section}{\numberline {4}Rule and Example Generation}{4}{section.4}}
 \newlabel{sec:rules_gen}{{4}{4}{Rule and Example Generation}{section.4}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {4.1}Rule Generation}{4}{subsection.4.1}}
 \newlabel{sec:rules_generation}{{4.1}{4}{Rule Generation}{subsection.4.1}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces Graph example of \textsc  {DBPedia}\xspace  for four triples.\relax }}{5}{figure.caption.3}}
-\providecommand*\caption@xref[2]{\@setref\relax\@undefined{#1}}
-\newlabel{fig:krd_graph_example}{{1}{5}{Graph example of \dbpedia for four triples.\relax }{figure.caption.3}{}}
 \citation{muggleton1994inductive}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.2}Input Example Generation}{5}{subsection.4.2}}
+\newlabel{sec:ex_generation}{{4.2}{5}{Input Example Generation}{subsection.4.2}{}}
 \citation{dong2014data,galarraga2015fast}
 \citation{chvatal1979greedy}
 \citation{chvatal1979greedy}
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.2}Input Example Generation}{6}{subsection.4.2}}
-\newlabel{sec:ex_generation}{{4.2}{6}{Input Example Generation}{subsection.4.2}{}}
 \@writefile{toc}{\contentsline {section}{\numberline {5}Discovery Algorithm}{6}{section.5}}
 \newlabel{sec:krd_greedy}{{5}{6}{Discovery Algorithm}{section.5}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces Two positive examples.\relax }}{6}{figure.caption.4}}
+\newlabel{fig:positive_examples}{{2}{6}{Two positive examples.\relax }{figure.caption.4}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {5.1}Marginal Weight}{6}{subsection.5.1}}
 \newlabel{eq:mar_weight}{{1}{6}{}{theorem.5.1}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.2}$A^*$ Graph Traversal}{6}{subsection.5.2}}
 \citation{hart1968formal}
 \citation{hart1968formal}
 \citation{abiteboul1995foundations}
-\@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces Two positive examples.\relax }}{7}{figure.caption.4}}
-\newlabel{fig:positive_examples}{{2}{7}{Two positive examples.\relax }{figure.caption.4}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {5.2}$A^*$ Graph Traversal}{7}{subsection.5.2}}
 \newlabel{lemma:krd_exp_cov}{{4}{7}{}{theorem.5.4}{}}
+\newlabel{alg_line:front_nodes}{{2}{7}{$A^*$ Graph Traversal}{AlgoLine.1.2}{}}
+\newlabel{alg_line:sparql_1}{{3}{7}{$A^*$ Graph Traversal}{AlgoLine.1.3}{}}
+\newlabel{alg_line:q_r_initialisation}{{4}{7}{$A^*$ Graph Traversal}{AlgoLine.1.4}{}}
+\newlabel{alg_line:valid_rule}{{8}{7}{$A^*$ Graph Traversal}{AlgoLine.1.8}{}}
+\newlabel{alg_line:exp_condition}{{10}{7}{$A^*$ Graph Traversal}{AlgoLine.1.10}{}}
+\newlabel{alg_line:sparql_2}{{12}{7}{$A^*$ Graph Traversal}{AlgoLine.1.12}{}}
+\@writefile{loa}{\contentsline {algocf}{\numberline {1}{\ignorespaces \textsf  {RuDiK}\xspace  Rule Discovery.\relax }}{7}{algocf.1}}
+\newlabel{alg:krd_a*}{{1}{7}{$A^*$ Graph Traversal}{algocf.1}{}}
 \newlabel{def:est_res_wei}{{5}{7}{}{theorem.5.5}{}}
 \citation{galarraga2015fast}
 \citation{bizer2009dbpedia}
 \citation{suchanek2007yago}
 \citation{vrandevcic2014wikidata}
-\newlabel{alg_line:front_nodes}{{2}{8}{$A^*$ Graph Traversal}{AlgoLine.1.2}{}}
-\newlabel{alg_line:sparql_1}{{3}{8}{$A^*$ Graph Traversal}{AlgoLine.1.3}{}}
-\newlabel{alg_line:q_r_initialisation}{{4}{8}{$A^*$ Graph Traversal}{AlgoLine.1.4}{}}
-\newlabel{alg_line:valid_rule}{{8}{8}{$A^*$ Graph Traversal}{AlgoLine.1.8}{}}
-\newlabel{alg_line:exp_condition}{{10}{8}{$A^*$ Graph Traversal}{AlgoLine.1.10}{}}
-\newlabel{alg_line:sparql_2}{{12}{8}{$A^*$ Graph Traversal}{AlgoLine.1.12}{}}
-\@writefile{loa}{\contentsline {algocf}{\numberline {1}{\ignorespaces \textsf  {RuDiK}\xspace  Rule Discovery.\relax }}{8}{algocf.1}}
-\newlabel{alg:krd_a*}{{1}{8}{$A^*$ Graph Traversal}{algocf.1}{}}
+\citation{Chen:2016,DBLP:conf/sigmod/FaridRIHC16}
+\citation{galarraga2015fast}
 \@writefile{toc}{\contentsline {section}{\numberline {6}Experiments}{8}{section.6}}
 \newlabel{sec:krd_experiments}{{6}{8}{Experiments}{section.6}{}}
 \@writefile{lot}{\contentsline {table}{\numberline {1}{\ignorespaces Dataset characteristics.\relax }}{8}{table.caption.6}}
 \newlabel{tab:krdDatasetDescr}{{1}{8}{Dataset characteristics.\relax }{table.caption.6}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {6.1}Quality of Rule Discovery in \textsf  {RuDiK}\xspace  }{8}{subsection.6.1}}
 \newlabel{sec:gen_evaluation}{{6.1}{8}{Quality of Rule Discovery in \krd }{subsection.6.1}{}}
-\citation{Chen:2016,DBLP:conf/sigmod/FaridRIHC16}
+\@writefile{lot}{\contentsline {table}{\numberline {2}{\ignorespaces \textsf  {RuDiK}\xspace  Positive Rule Accuracy.\relax }}{8}{table.caption.7}}
+\newlabel{tab:pos_rules_acc}{{2}{8}{\krd Positive Rule Accuracy.\relax }{table.caption.7}{}}
 \citation{galarraga2015fast}
 \citation{galarraga2015fast}
-\citation{galarraga2015fast}
-\@writefile{lot}{\contentsline {table}{\numberline {2}{\ignorespaces \textsf  {RuDiK}\xspace  Positive Rule Accuracy.\relax }}{9}{table.caption.7}}
-\newlabel{tab:pos_rules_acc}{{2}{9}{\krd Positive Rule Accuracy.\relax }{table.caption.7}{}}
 \@writefile{lot}{\contentsline {table}{\numberline {3}{\ignorespaces \textsf  {RuDiK}\xspace  Negative Rule Accuracy.\relax }}{9}{table.caption.8}}
 \newlabel{tab:neg_rules_acc}{{3}{9}{\krd Negative Rule Accuracy.\relax }{table.caption.8}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {6.2}Comparative Evaluation}{9}{subsection.6.2}}
@@ -113,6 +112,9 @@
 \@writefile{lot}{\contentsline {table}{\numberline {4}{\ignorespaces \textsf  {AMIE}\xspace  Dataset characteristics.\relax }}{9}{table.caption.9}}
 \newlabel{tab:AmieDatasetDescr}{{4}{9}{\amie Dataset characteristics.\relax }{table.caption.9}{}}
 \citation{galarraga2015fast}
+\citation{abedjan2014amending}
+\citation{Chen:2016}
+\citation{dehaspe1999discovery}
 \@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces Accuracy for new facts identified by executing rules according to descending score on \textsc  {Yago}\xspace  2 (no literals).\relax }}{10}{figure.caption.10}}
 \newlabel{fig:vs_amie_yago}{{3}{10}{Accuracy for new facts identified by executing rules according to descending score on \yago 2 (no literals).\relax }{figure.caption.10}{}}
 \@writefile{lof}{\contentsline {figure}{\numberline {4}{\ignorespaces Accuracy for errors identified by executing rules according to descending score on \textsc  {DBPedia}\xspace  (no literals).\relax }}{10}{figure.caption.11}}
@@ -121,9 +123,8 @@
 \newlabel{tab:vs_amie_neg}{{5}{10}{Negative Rules vs \amie .\relax }{table.caption.12}{}}
 \@writefile{lot}{\contentsline {table}{\numberline {6}{\ignorespaces Total Run Time Comparison.\relax }}{10}{table.caption.13}}
 \newlabel{tab:amie_runtime}{{6}{10}{Total Run Time Comparison.\relax }{table.caption.13}{}}
-\citation{abedjan2014amending}
-\citation{Chen:2016}
-\citation{dehaspe1999discovery}
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.3}Internal Evaluation}{10}{subsection.6.3}}
+\newlabel{sec:krd_int_evaluation}{{6.3}{10}{Internal Evaluation}{subsection.6.3}{}}
 \citation{abiteboul1995foundations,huhtala1999tane}
 \citation{chu2013discovering}
 \citation{abedjan2015temporal,kivinen1995approximate}
@@ -131,16 +132,15 @@
 \citation{galarraga2015fast}
 \citation{Chen:2016}
 \citation{abedjan2014amending}
-\@writefile{toc}{\contentsline {subsection}{\numberline {6.3}Internal Evaluation}{11}{subsection.6.3}}
-\newlabel{sec:krd_int_evaluation}{{6.3}{11}{Internal Evaluation}{subsection.6.3}{}}
-\@writefile{lot}{\contentsline {table}{\numberline {7}{\ignorespaces Effect of Negative Examples Generation Strategy on \textsc  {DBPedia}\xspace  .\relax }}{11}{table.caption.14}}
-\newlabel{tab:random_neg_examples}{{7}{11}{Effect of Negative Examples Generation Strategy on \dbpedia .\relax }{table.caption.14}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {7}Related Work}{11}{section.7}}
-\newlabel{sec:krd_related}{{7}{11}{Related Work}{section.7}{}}
 \citation{dehaspe1999discovery}
 \citation{galarraga2015fast}
 \citation{schoenmackers2010learning}
 \citation{agrawal1993mining}
+\@writefile{lot}{\contentsline {table}{\numberline {7}{\ignorespaces Effect of Negative Examples Generation Strategy on \textsc  {DBPedia}\xspace  .\relax }}{11}{table.caption.14}}
+\newlabel{tab:random_neg_examples}{{7}{11}{Effect of Negative Examples Generation Strategy on \dbpedia .\relax }{table.caption.14}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {7}Related Work}{11}{section.7}}
+\newlabel{sec:krd_related}{{7}{11}{Related Work}{section.7}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {8}Conclusion}{11}{section.8}}
 \citation{abedjan2015temporal}
 \bibstyle{abbrv}
 \bibdata{DA}
@@ -178,6 +178,5 @@
 \newlabel{tocindent2}{0pt}
 \newlabel{tocindent3}{0pt}
 \providecommand\NAT@force@numbers{}\NAT@force@numbers
-\@writefile{toc}{\contentsline {section}{\numberline {8}Conclusion}{12}{section.8}}
 \@writefile{toc}{\contentsline {section}{References}{12}{section*.16}}
 \newlabel{TotPages}{{12}{12}{}{page.12}{}}
