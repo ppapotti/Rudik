@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013) (format=pdflatex 2013.12.4)  10 MAY 2017 18:30
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013) (format=pdflatex 2013.12.4)  11 MAY 2017 09:45
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1111,15 +1111,7 @@ subscribe by emailing sympa@lirmm.fr with 'subscribe <list> <firstname name>'
 ) (/usr/local/texlive/2013/texmf-dist/tex/latex/multirow/multirow.sty
 \bigstrutjot=\dimen205
 )
-\c@myTheorem=\count153
-\c@myDefinition=\count154
-\c@myExample=\count155
-\c@ccc=\count156
-\c@prop=\count157
-\c@cor=\count158
-\c@alg=\count159
-\c@arule=\count160
-\c@claim=\count161
+\c@ccc=\count153
 )
 (./mainCIKM.aux)
 \openout1 = `mainCIKM.aux'.
@@ -1187,7 +1179,7 @@ Package: nameref 2012/10/27 v2.43 Cross-referencing by name of section
 (/usr/local/texlive/2013/texmf-dist/tex/generic/oberdiek/gettitlestring.sty
 Package: gettitlestring 2010/12/03 v1.4 Cleanup title references (HO)
 )
-\c@section@level=\count162
+\c@section@level=\count154
 )
 LaTeX Info: Redefining \ref on input line 15.
 LaTeX Info: Redefining \pageref on input line 15.
@@ -1200,16 +1192,16 @@ LaTeX Info: Redefining \nameref on input line 15.
 
 (/usr/local/texlive/2013/texmf-dist/tex/context/base/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count163
+\scratchcounter=\count155
 \scratchdimen=\dimen206
 \scratchbox=\box49
-\nofMPsegments=\count164
-\nofMParguments=\count165
+\nofMPsegments=\count156
+\nofMParguments=\count157
 \everyMPshowfont=\toks44
-\MPscratchCnt=\count166
+\MPscratchCnt=\count158
 \MPscratchDim=\dimen207
-\MPnumerator=\count167
-\makeMPintoPDFobject=\count168
+\MPnumerator=\count159
+\makeMPintoPDFobject=\count160
 \everyMPtoPDFconversion=\toks45
 ) (/usr/local/texlive/2013/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
 Package: epstopdf-base 2010/02/09 v2.5 Base part for package epstopdf
@@ -1295,81 +1287,75 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
 
-LaTeX Font Warning: Command \sc invalid in math mode on input line 67.
+LaTeX Font Warning: Command \sc invalid in math mode on input line 73.
 
 
-LaTeX Font Warning: Command \sc invalid in math mode on input line 67.
+LaTeX Font Warning: Command \sc invalid in math mode on input line 73.
 
 
-LaTeX Font Warning: Command \sc invalid in math mode on input line 67.
+LaTeX Font Warning: Command \sc invalid in math mode on input line 73.
 
 
-LaTeX Font Warning: Command \sc invalid in math mode on input line 69.
+LaTeX Font Warning: Command \sc invalid in math mode on input line 75.
 
 
-LaTeX Font Warning: Command \sc invalid in math mode on input line 69.
+LaTeX Font Warning: Command \sc invalid in math mode on input line 75.
 
 
-LaTeX Font Warning: Command \sc invalid in math mode on input line 69.
+LaTeX Font Warning: Command \sc invalid in math mode on input line 75.
 
 
-LaTeX Font Warning: Command \sc invalid in math mode on input line 70.
-
-
-LaTeX Font Warning: Command \sc invalid in math mode on input line 94.
-
-
-LaTeX Font Warning: Command \sc invalid in math mode on input line 95.
-
-
-LaTeX Font Warning: Command \sc invalid in math mode on input line 95.
+LaTeX Font Warning: Command \sc invalid in math mode on input line 76.
 
 [2.2]
 
-LaTeX Font Warning: Command \sc invalid in math mode on input line 103.
+LaTeX Font Warning: Command \sc invalid in math mode on input line 100.
 
 
-LaTeX Font Warning: Command \sc invalid in math mode on input line 103.
+LaTeX Font Warning: Command \sc invalid in math mode on input line 101.
 
 
-LaTeX Font Warning: Command \sc invalid in math mode on input line 103.
+LaTeX Font Warning: Command \sc invalid in math mode on input line 101.
 
 
-LaTeX Font Warning: Command \sc invalid in math mode on input line 134.
+LaTeX Font Warning: Command \sc invalid in math mode on input line 111.
 
 
-LaTeX Font Warning: Command \sc invalid in math mode on input line 134.
+LaTeX Font Warning: Command \sc invalid in math mode on input line 111.
 
 
-LaTeX Font Warning: Command \sc invalid in math mode on input line 134.
+LaTeX Font Warning: Command \sc invalid in math mode on input line 146.
 
 
-LaTeX Font Warning: Command \sc invalid in math mode on input line 187.
+LaTeX Font Warning: Command \sc invalid in math mode on input line 146.
 
 
-LaTeX Font Warning: Command \sc invalid in math mode on input line 187.
+LaTeX Font Warning: Command \sc invalid in math mode on input line 146.
 
 [3.3]
 
-LaTeX Warning: Reference `ex:ex2' on page 4 undefined on input line 216.
+LaTeX Font Warning: Command \sc invalid in math mode on input line 206.
 
 
-LaTeX Font Warning: Command \sc invalid in math mode on input line 216.
+LaTeX Font Warning: Command \sc invalid in math mode on input line 206.
 
 
-LaTeX Font Warning: Command \sc invalid in math mode on input line 220.
+LaTeX Font Warning: Command \sc invalid in math mode on input line 236.
 
 
-LaTeX Font Warning: Command \sc invalid in math mode on input line 239.
+LaTeX Font Warning: Command \sc invalid in math mode on input line 240.
 
 
-LaTeX Font Warning: Command \sc invalid in math mode on input line 239.
+LaTeX Font Warning: Command \sc invalid in math mode on input line 260.
 
 
-LaTeX Font Warning: Command \sc invalid in math mode on input line 239.
+LaTeX Font Warning: Command \sc invalid in math mode on input line 260.
+
+
+LaTeX Font Warning: Command \sc invalid in math mode on input line 260.
 
 ) (./include/graph.tex
-<include/figure/graph_example.pdf, id=209, 705.63625pt x 249.93375pt>
+<include/figure/graph_example.pdf, id=208, 705.63625pt x 249.93375pt>
 File: include/figure/graph_example.pdf Graphic file (type pdf)
 
 <use include/figure/graph_example.pdf>
@@ -1408,9 +1394,6 @@ LaTeX Font Warning: Command \sc invalid in math mode on input line 174.
 LaTeX Font Warning: Command \sc invalid in math mode on input line 174.
 
 ) (./include/greedy_algorithm.tex
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `math shift' on input line 65.
@@ -1423,7 +1406,7 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `math shift' on input line 65.
 
-<include/figure/a*_graph_example.pdf, id=259, 1011.78pt x 211.79124pt>
+<include/figure/a*_graph_example.pdf, id=258, 1011.78pt x 211.79124pt>
 File: include/figure/a*_graph_example.pdf Graphic file (type pdf)
 
 <use include/figure/a*_graph_example.pdf>
@@ -1460,14 +1443,14 @@ Overfull \hbox (10.18767pt too wide) in paragraph at lines 111--122
  [][] 
  []
 
-[8.8] <include/figure/vsAmieYago.pdf, id=370, 483.80327pt x 201.26662pt>
+[8.8] <include/figure/vsAmieYago.pdf, id=369, 483.80327pt x 201.26662pt>
 File: include/figure/vsAmieYago.pdf Graphic file (type pdf)
 
 <use include/figure/vsAmieYago.pdf>
 Package pdftex.def Info: include/figure/vsAmieYago.pdf used on input line 265.
 (pdftex.def)             Requested size: 217.03127pt x 90.28659pt.
 
-<include/figure/vsAmieDBPedia.pdf, id=371, 465.91118pt x 196.08286pt>
+<include/figure/vsAmieDBPedia.pdf, id=370, 465.91118pt x 196.08286pt>
 File: include/figure/vsAmieDBPedia.pdf Graphic file (type pdf)
 
 <use include/figure/vsAmieDBPedia.pdf>
@@ -1493,158 +1476,21 @@ Package atveryend Info: Empty hook `AfterLastShipout' on input line 49.
 
 (./mainCIKM.aux)
 Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 49.
-
-
- *File List*
-  acmart.cls    2016/12/03 v1.25 Typesetting articles for Association of Comput
-ing Machinery
- xkeyval.sty    2012/10/14 v2.6b package option processing (HA)
- xkeyval.tex    2012/10/14 v2.6b key=value parser (HA)
-  amsart.cls    2009/07/02 v2.20.1
- amsmath.sty    2013/01/14 v2.14 AMS math features
- amstext.sty    2000/06/29 v2.01
-  amsgen.sty    1999/11/30 v2.0
-  amsbsy.sty    1999/11/29 v1.2d
-  amsopn.sty    1999/12/14 v2.01 operator names
-    umsa.fd    2013/01/14 v3.01 AMS symbols A
-amsfonts.sty    2013/01/14 v3.01 Basic AMSFonts support
-microtype.sty    2013/05/23 v2.5a Micro-typographical refinements (RS)
-microtype-pdftex.def    2013/05/23 v2.5a Definitions specific to pdftex (RS)
-microtype.cfg    2013/05/23 v2.5a microtype main configuration file (RS)
-totpages.sty    2005/09/19 v2.00 Totpages Package (muewi)
-everyshi.sty    2001/05/15 v3.00 EveryShipout Package (MS)
- environ.sty    2013/04/01 v0.3 A new environment syntax
-trimspaces.sty    2009/09/17 v1.1 Trim spaces around a token list
-  natbib.sty    2010/09/13 8.31b (PWD, AO)
-hyperref.sty    2012/11/06 v6.83m Hypertext links for LaTeX
-hobsub-hyperref.sty    2012/05/28 v1.13 Bundle oberdiek, subset hyperref (HO)
-hobsub-generic.sty    2012/05/28 v1.13 Bundle oberdiek, subset generic (HO)
-  hobsub.sty    2012/05/28 v1.13 Construct package bundles (HO)
-infwarerr.sty    2010/04/08 v1.3 Providing info/warning/error messages (HO)
- ltxcmds.sty    2011/11/09 v1.22 LaTeX kernel commands for general use (HO)
-ifluatex.sty    2010/03/01 v1.3 Provides the ifluatex switch (HO)
-  ifvtex.sty    2010/03/01 v1.5 Detect VTeX and its facilities (HO)
- intcalc.sty    2007/09/27 v1.1 Expandable calculations with integers (HO)
-   ifpdf.sty    2011/01/30 v2.3 Provides the ifpdf switch (HO)
-etexcmds.sty    2011/02/16 v1.5 Avoid name clashes with e-TeX commands (HO)
-kvsetkeys.sty    2012/04/25 v1.16 Key value parser (HO)
-kvdefinekeys.sty    2011/04/07 v1.3 Define keys (HO)
-pdftexcmds.sty    2011/11/29 v0.20 Utility functions of pdfTeX for LuaTeX (HO)
-pdfescape.sty    2011/11/25 v1.13 Implements pdfTeX's escape features (HO)
-bigintcalc.sty    2012/04/08 v1.3 Expandable calculations on big integers (HO)
-  bitset.sty    2011/01/30 v1.1 Handle bit-vector datatype (HO)
-uniquecounter.sty    2011/01/30 v1.2 Provide unlimited unique counter (HO)
-letltxmacro.sty    2010/09/02 v1.4 Let assignment for LaTeX macros (HO)
- hopatch.sty    2012/05/28 v1.2 Wrapper for package hooks (HO)
-xcolor-patch.sty    2011/01/30 xcolor patch
-atveryend.sty    2011/06/30 v1.8 Hooks at the very end of document (HO)
-atbegshi.sty    2011/10/05 v1.16 At begin shipout hook (HO)
-refcount.sty    2011/10/16 v3.4 Data extraction from label references (HO)
- hycolor.sty    2011/01/30 v1.7 Color options for hyperref/bookmark (HO)
- ifxetex.sty    2010/09/12 v0.6 Provides ifxetex conditional
- auxhook.sty    2011/03/04 v1.3 Hooks for auxiliary files (HO)
-kvoptions.sty    2011/06/30 v3.11 Key value format for package options (HO)
-  pd1enc.def    2012/11/06 v6.83m Hyperref: PDFDocEncoding definition (HO)
-hyperref.cfg    2002/06/06 v1.2 hyperref configuration of TeXLive
-     url.sty    2006/04/12  ver 3.3  Verb mode for urls, etc.
- hpdftex.def    2012/11/06 v6.83m Hyperref driver for pdfTeX
-rerunfilecheck.sty    2011/04/15 v1.7 Rerun checks for auxiliary files (HO)
-graphicx.sty    1999/02/16 v1.0f Enhanced LaTeX Graphics (DPC,SPQR)
-graphics.sty    2009/02/05 v1.0o Standard LaTeX Graphics (DPC,SPQR)
-    trig.sty    1999/03/16 v1.09 sin cos tan (DPC)
-graphics.cfg    2010/04/23 v1.9 graphics configuration of TeX Live
-  pdftex.def    2011/05/27 v0.06d Graphics/color for pdfTeX
-  xcolor.sty    2007/01/21 v2.11 LaTeX color extensions (UK)
-   color.cfg    2007/01/18 v1.5 color configuration of teTeX/TeXLive
-geometry.sty    2010/09/12 v5.6 Page Geometry
-manyfoot.sty    2005/09/11 v1.10 Many Footnote Levels Package (NCC)
-nccfoots.sty    2005/02/03 v1.2 NCC Footnotes Package (NCC)
-textcomp.sty    2005/09/27 v1.99g Standard LaTeX package
-  ts1enc.def    2001/06/05 v3.0e (jk/car/fm) Standard LaTeX file
- caption.sty    2013/05/02 v3.3-89 Customizing captions (AR)
-caption3.sty    2013/05/02 v1.6-88 caption3 kernel (AR)
-   float.sty    2001/11/08 v1.3d Float enhancements (AL)
- comment.sty    
-fancyhdr.sty    
-include/commands.tex
-latexsym.sty    1998/08/17 v2.2e Standard LaTeX package (lasy symbols)
- amssymb.sty    2013/01/14 v3.01 AMS font symbols
-colortbl.sty    2012/02/13 v1.0a Color table columns (DPC)
-   array.sty    2008/09/09 v2.4c Tabular extension package (FMi)
-  epsfig.sty    1999/02/16 v1.7a (e)psfig emulation (SPQR)
-  xspace.sty    2009/10/20 v1.13 Space after command names (DPC,MH)
-subfigure.sty    2002/03/15 v2.1.5 subfigure package
-subfigure.cfg
-enumerate.sty    1999/03/05 v3.00 enumerate extensions (DPC)
-      xy.sty    2012/05/24 Xy-pic version 3.8.8
-booktabs.sty    2005/04/14 v1.61803 publication quality tables
- balance.sty    1999/02/23 4.3 (PWD)
-stmaryrd.sty    1994/03/03 St Mary's Road symbol package
-  pifont.sty    2005/04/12 PSNFSS-v9.2a Pi font support (SPQR) 
-    upzd.fd    2001/06/04 font definitions for U/pzd.
-    upsy.fd    2001/06/04 font definitions for U/psy.
-  hhline.sty    1994/05/23 v2.03 Table rule package (DPC)
- mathabx.sty    2003/07/29 v0.0 Non-standard LaTeX package mathabx
-pdfpages.sty    2012/08/31 v0.4t Insert pages of external PDF documents (AM)
-  ifthen.sty    2001/05/26 v1.1c Standard LaTeX ifthen package (DPC)
-    calc.sty    2007/08/22 v4.3 Infix arithmetic (KKT,FJ)
- eso-pic.sty    2010/10/06 v2.0c eso-pic (RN)
-pppdftex.def    2012/08/31 v0.4t Pdfpages driver for pdfTeX (AM)
-paralist.sty    2002/03/18 v2.3b Extended list environments (BS)
-setspace.sty    2011/12/19 v6.7a set line spacing
-algorithm2e.sty    2013/01/06 v5.00 algorithms environments
- relsize.sty    2013/03/29 ver 4.1
-multirow.sty    
-  ts1cmr.fd    1999/05/25 v2.5h Standard LaTeX font definitions
-    umsa.fd    2013/01/14 v3.01 AMS symbols A
-    umsb.fd    2013/01/14 v3.01 AMS symbols B
-   ulasy.fd    1998/08/17 v2.2e LaTeX symbol font definitions
-  Ustmry.fd
-  mt-cmr.cfg    2013/05/19 v2.2 microtype config. file: Computer Modern Roman (
-RS)
- nameref.sty    2012/10/27 v2.43 Cross-referencing by name of section
-gettitlestring.sty    2010/12/03 v1.4 Cleanup title references (HO)
-mainCIKM.out
-mainCIKM.out
-supp-pdf.mkii
-epstopdf-base.sty    2010/02/09 v2.5 Base part for package epstopdf
-  grfext.sty    2010/08/19 v1.1 Manage graphics extensions (HO)
-epstopdf-sys.cfg    2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Live
-  mt-msa.cfg    2006/02/04 v1.1 microtype config. file: AMS symbols (a) (RS)
-  mt-msb.cfg    2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
-include/abstract.tex
-include/introduction.tex
-include/preliminaries.tex
-include/graph.tex
-include/figure/graph_example.pdf
-include/greedy_algorithm.tex
-include/figure/a*_graph_example.pdf
-include/algorithm/krd_a*_algorithm.tex
-include/evaluation.tex
-include/figure/vsAmieYago.pdf
-include/figure/vsAmieDBPedia.pdf
-include/related.tex
-include/conclusion.tex
-mainCIKM.bbl
- ***********
-
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 49.
 Package rerunfilecheck Info: File `mainCIKM.out' has not changed.
 (rerunfilecheck)             Checksum: FEC4AFF10436B0F4BA457CA32AFBC305;1308.
 
+
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
-
-
-LaTeX Warning: There were undefined references.
 
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 49.
  ) 
 Here is how much of TeX's memory you used:
- 18310 strings out of 493315
- 260824 string characters out of 6137904
- 483619 words of memory out of 5000000
- 20817 multiletter control sequences out of 15000+600000
- 37449 words of font info for 234 fonts, out of 8000000 for 9000
+ 18212 strings out of 493315
+ 259867 string characters out of 6137904
+ 482432 words of memory out of 5000000
+ 20711 multiletter control sequences out of 15000+600000
+ 37881 words of font info for 238 fonts, out of 8000000 for 9000
  1118 hyphenation exceptions out of 8191
  60i,19n,94p,3265b,703s stack positions out of 5000i,500n,10000p,200000b,80000s
 pdfTeX warning (dest): name{Hfootnote.1} has been referenced but does not exi
@@ -1681,10 +1527,10 @@ pe1/public/mathabx-type1/matha8.pfb></usr/local/texlive/2013/texmf-dist/fonts/t
 ype1/public/mathabx-type1/matha9.pfb></usr/local/texlive/2013/texmf-dist/fonts/
 type1/public/mathabx-type1/mathx10.pfb></usr/local/texlive/2013/texmf-dist/font
 s/type1/public/cm-super/sfrm0700.pfb>
-Output written on mainCIKM.pdf (12 pages, 552245 bytes).
+Output written on mainCIKM.pdf (12 pages, 552484 bytes).
 PDF statistics:
- 670 PDF objects out of 1000 (max. 8388607)
- 574 compressed objects within 6 object streams
+ 669 PDF objects out of 1000 (max. 8388607)
+ 573 compressed objects within 6 object streams
  135 named destinations out of 1000 (max. 500000)
  35005 words of extra memory for PDF output out of 35830 (max. 10000000)
 

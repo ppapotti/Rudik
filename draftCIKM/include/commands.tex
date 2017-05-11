@@ -43,27 +43,27 @@
 %\usepackage{algorithm}
 
 
-\let\olditemize\itemize
-\renewcommand{\itemize}{
-  \vspace*{-0.5ex}
-  \olditemize
-  \setlength{\itemsep}{1pt}
-  \setlength{\parskip}{0pt}
-  \setlength{\parsep}{0pt}
-}
-\let\oldenumerate\enumerate
-\renewcommand{\enumerate}{
-  \vspace*{-0.5ex}
-  \oldenumerate
-  \setlength{\itemsep}{1pt}
-  \setlength{\parskip}{0pt}
-  \setlength{\parsep}{0pt}
-}
+%\let\olditemize\itemize
+%\renewcommand{\itemize}{
+%  \vspace*{-0.5ex}
+%  \olditemize
+%  \setlength{\itemsep}{1pt}
+%  \setlength{\parskip}{0pt}
+%  \setlength{\parsep}{0pt}
+%}
+%\let\oldenumerate\enumerate
+%\renewcommand{\enumerate}{
+%  \vspace*{-0.5ex}
+%  \oldenumerate
+%  \setlength{\itemsep}{1pt}
+%  \setlength{\parskip}{0pt}
+%  \setlength{\parsep}{0pt}
+%}
 
-\newtheorem{myTheorem}{\textbf{Theorem}}
-\newtheorem{myDefinition}{Definition}
-\newtheorem{myExample}{\textbf{Example}}
-
+%\newtheorem{myTheorem}{\textbf{Theorem}}
+%\newtheorem{myDefinition}{Definition}
+%%\newtheorem{myExample}{\textbf{Example}}
+%
 \newcommand{\myparagraph}[1]{{\bf #1.}}
 
 %\renewcommand{\algorithmicrequire}{\textbf{Input:}}
@@ -318,133 +318,133 @@
 \newcommand{\E}{{\cal E}}
 \newcommand{\eop}{\hspace*{\fill}\mbox{$\Box$}\vspace{1ex}}     % End of proof
 %\newcounter{example}
-\renewcommand{\theexample}{\arabic{example}}
+%\renewcommand{\theexample}{\arabic{example}}
 %\newenvironment{example}{
 %        \vspace{1ex}
 %        \refstepcounter{example}
 %        {\noindent\bf Example \theexample:}}{
 %        %\eop
 %        }
-\def\copyrightspace{}
-\renewcommand{\ni}{\noindent}
-\newcommand{\comlore}[1]{\begin{minipage}{3in}\fbox{\fbox{\parbox[t]{3in}{{\vspace{2mm}\noindent \bf COMM(LORE):~
-{ #1}\hfill  END.}}}}\end{minipage}\\}
-\newcommand{\comwenfei}[1]{\begin{minipage}{3in}\fbox{\fbox{\parbox[t]{3in}{{\vspace{2mm}\noindent \bf COMM(WENFEI):~
-{ #1}\hfill  END.}}}}\end{minipage}\\}
-\newcommand{\comshuai}[1]{\begin{minipage}{3in}\fbox{\fbox{\parbox[t]{3in}{{\vspace{2mm}\noindent \bf COMM(SHUAI):~
-{ #1}\hfill  END.}}}}\end{minipage}\\}
-\newcommand{\nthesection}{\arabic{section}}
-%\newcounter{theorem}%[section]
-\renewcommand{\thetheorem}{\arabic{theorem}}
-%\newcounter{lemma}%[section]
-\renewcommand{\thelemma}{\nthesection.\arabic{theorem}}
-\newcounter{prop}
-\renewcommand{\theprop}{\nthesection.\arabic{theorem}}
-\newcounter{cor}
-\renewcommand{\thecor}{\arabic{theorem}}
-%\newenvironment{theorem}{\begin{em}
+%\def\copyrightspace{}
+%\renewcommand{\ni}{\noindent}
+%\newcommand{\comlore}[1]{\begin{minipage}{3in}\fbox{\fbox{\parbox[t]{3in}{{\vspace{2mm}\noindent \bf COMM(LORE):~
+%{ #1}\hfill  END.}}}}\end{minipage}\\}
+%\newcommand{\comwenfei}[1]{\begin{minipage}{3in}\fbox{\fbox{\parbox[t]{3in}{{\vspace{2mm}\noindent \bf COMM(WENFEI):~
+%{ #1}\hfill  END.}}}}\end{minipage}\\}
+%\newcommand{\comshuai}[1]{\begin{minipage}{3in}\fbox{\fbox{\parbox[t]{3in}{{\vspace{2mm}\noindent \bf COMM(SHUAI):~
+%{ #1}\hfill  END.}}}}\end{minipage}\\}
+%\newcommand{\nthesection}{\arabic{section}}
+%%\newcounter{theorem}%[section]
+%\renewcommand{\thetheorem}{\arabic{theorem}}
+%%\newcounter{lemma}%[section]
+%\renewcommand{\thelemma}{\nthesection.\arabic{theorem}}
+%\newcounter{prop}
+%\renewcommand{\theprop}{\nthesection.\arabic{theorem}}
+%\newcounter{cor}
+%\renewcommand{\thecor}{\arabic{theorem}}
+%%\newenvironment{theorem}{\begin{em}
+%%        \refstepcounter{theorem}
+%%        {\vspace{1ex} \noindent\bf  Theorem  \thetheorem:}}{
+%%        \end{em}\eop} %\hspace*{\fill}\vspace*{1ex}}
+%%\newenvironment{lemma}{\begin{em}
+%%        \refstepcounter{theorem}
+%%        {\vspace{1ex}\noindent \bf Lemma \thetheorem:}}{
+%%        \end{em}
+%%        %\eop
+%%        }%\hspace*{\fill}\vspace*{1ex}}
+%\newenvironment{prop}{\begin{em}
 %        \refstepcounter{theorem}
-%        {\vspace{1ex} \noindent\bf  Theorem  \thetheorem:}}{
-%        \end{em}\eop} %\hspace*{\fill}\vspace*{1ex}}
-%\newenvironment{lemma}{\begin{em}
-%        \refstepcounter{theorem}
-%        {\vspace{1ex}\noindent \bf Lemma \thetheorem:}}{
+%        {\vspace{1ex}\noindent\bf Prop \thelemma:}}{
 %        \end{em}
-%        %\eop
-%        }%\hspace*{\fill}\vspace*{1ex}}
-\newenvironment{prop}{\begin{em}
-        \refstepcounter{theorem}
-        {\vspace{1ex}\noindent\bf Prop \thelemma:}}{
-        \end{em}
-        %\eop - remove square from lemmma
-        } %\hspace*{\fill}\vspace*{1ex}}
-\newenvironment{cor}{\begin{em}
-        \refstepcounter{theorem}
-        {\vspace{1ex}\noindent\bf Corollary \thecor:}}{
-        \end{em}\eop} %\hspace*{\fill}\vspace*{1ex}}
-
-%\newcounter{definition}
-%\renewcommand{\thedefinition}{\nthesection.\arabic{definition}}
-\renewcommand{\thedefinition}{\arabic{definition}}
-%\newenvironment{definition}{
+%        %\eop - remove square from lemmma
+%        } %\hspace*{\fill}\vspace*{1ex}}
+%\newenvironment{cor}{\begin{em}
+%        \refstepcounter{theorem}
+%        {\vspace{1ex}\noindent\bf Corollary \thecor:}}{
+%        \end{em}\eop} %\hspace*{\fill}\vspace*{1ex}}
+%
+%%\newcounter{definition}
+%%\renewcommand{\thedefinition}{\nthesection.\arabic{definition}}
+%\renewcommand{\thedefinition}{\arabic{definition}}
+%%\newenvironment{definition}{
+%%        \vspace{1ex}
+%%        \refstepcounter{definition}
+%%        {\noindent\bf Definition {\bf \thedefinition}:}}
+%%{\eop} remove square at the end of a definition
+%
+%\newenvironment{ctheorem}[1]{\begin{em}
+%        \refstepcounter{theorem}
+%        {\vspace{1ex}\noindent\bf  Theorem  {\bf \thetheorem} #1: }}{
+%        \end{em}\eop}
+%
+%\newcounter{alg}%[section]
+%\renewcommand{\thealg}{\nthesection.\arabic{alg}}
+%\newenvironment{alg}[1]{
+%        \refstepcounter{alg}
+%        {\vspace{1ex}\noindent\bf Algorithm \thealg:\, #1}}{
+%        \vspace*{1ex}}
+%\newcounter{arule}
+%\renewcommand{\thearule}{\arabic{arule}}
+%\newenvironment{arule}{
+%        \vspace{0.6ex}
+%        \refstepcounter{arule}
+%        {\noindent \em Rule \thearule:}}{
+%        }
+%\newcounter{claim}
+%\renewcommand{\theclaim}{\arabic{claim}}
+%\newenvironment{claim}{
+%        \vspace{0.6ex}
+%        \refstepcounter{claim}
+%        {\noindent\em Claim \theclaim:}}{
+%        }
+%
+%%\newenvironment{proof}{
+%%        \vspace{0.5ex}
+%%        {\noindent\bf Proof:}}{\eop\vspace{1ex}}
+%\newenvironment{proofS}{
 %        \vspace{1ex}
-%        \refstepcounter{definition}
-%        {\noindent\bf Definition {\bf \thedefinition}:}}
-%{\eop} remove square at the end of a definition
-
-\newenvironment{ctheorem}[1]{\begin{em}
-        \refstepcounter{theorem}
-        {\vspace{1ex}\noindent\bf  Theorem  {\bf \thetheorem} #1: }}{
-        \end{em}\eop}
-
-\newcounter{alg}%[section]
-\renewcommand{\thealg}{\nthesection.\arabic{alg}}
-\newenvironment{alg}[1]{
-        \refstepcounter{alg}
-        {\vspace{1ex}\noindent\bf Algorithm \thealg:\, #1}}{
-        \vspace*{1ex}}
-\newcounter{arule}
-\renewcommand{\thearule}{\arabic{arule}}
-\newenvironment{arule}{
-        \vspace{0.6ex}
-        \refstepcounter{arule}
-        {\noindent \em Rule \thearule:}}{
-        }
-\newcounter{claim}
-\renewcommand{\theclaim}{\arabic{claim}}
-\newenvironment{claim}{
-        \vspace{0.6ex}
-        \refstepcounter{claim}
-        {\noindent\em Claim \theclaim:}}{
-        }
-
-%\newenvironment{proof}{
-%        \vspace{0.5ex}
-%        {\noindent\bf Proof:}}{\eop\vspace{1ex}}
-\newenvironment{proofS}{
-        \vspace{1ex}
-        {\noindent\bf Proof sketch:\ }}{\eop\vspace{1ex}}
-
-%\newcommand{\proofs}{\sstab{\bf Proof sketch.\ }\xspace}
-\newcommand{\MP}{matching pattern\xspace}
-\newcommand{\MPs}{matching patterns\xspace}
-\newcommand{\SP}{table pattern\xspace}
-\newcommand{\SPs}{table patterns\xspace}
-
-\newcommand{\algpd}{\textsc{PDiscovery}}
-\newcommand{\algtval}{\textsc{CrowdTypeVal}}
-
+%        {\noindent\bf Proof sketch:\ }}{\eop\vspace{1ex}}
+%
+%%\newcommand{\proofs}{\sstab{\bf Proof sketch.\ }\xspace}
+%\newcommand{\MP}{matching pattern\xspace}
+%\newcommand{\MPs}{matching patterns\xspace}
+%\newcommand{\SP}{table pattern\xspace}
+%\newcommand{\SPs}{table patterns\xspace}
+%
+%\newcommand{\algpd}{\textsc{PDiscovery}}
+%\newcommand{\algtval}{\textsc{CrowdTypeVal}}
+%
 \newcommand{\kb}{{\sc kb}\xspace}
 \newcommand{\kbs}{{\sc kb}s\xspace}
-
+%
 \newcommand{\val}[1]{\textsf{#1}\xspace}
-\newcommand{\uk}{{\sc uk}\xspace}
-\newcommand{\us}{{\sc us}\xspace}
+%\newcommand{\uk}{{\sc uk}\xspace}
+%\newcommand{\us}{{\sc us}\xspace}
 \newcommand{\krd}{\val{RuDiK}}
-%\newcommand{\sys}{\krd}
-\newcommand{\REP}{{\sc REP}\xspace}
-\newcommand{\TRX}{{\sc TRX}\xspace}
-
+\newcommand{\sys}{\krd}
+%\newcommand{\REP}{{\sc REP}\xspace}
+%\newcommand{\TRX}{{\sc TRX}\xspace}
+%
 \newcommand{\system}[1]{\textsf{#1}\xspace}
-\newcommand{\id}{\kw{id}}
-\newcommand{\get}{{\sc get}}
-\newcommand{\op}{\kw{op}}
-\newcommand{\equ}{\kw{eq}}
-
-\newcommand{\recall}{\kw{recall}}
-\newcommand{\precision}{\kw{precision}}
-\newcommand{\fmeasure}{\kw{F}-\kw{measure}}
-\newcommand{\noi}{\kw{noi\%}}
-
-\newcommand{\hosp}{{\sc hosp}\xspace}
-\newcommand{\bus}{{\sc bus}\xspace}
-\newcommand{\zip}{{\sc zip}\xspace}
-
-\makeatletter
-    \newcommand\figcaption{\def\@captype{figure}\caption}
-    \newcommand\tabcaption{\def\@captype{table}\caption}
-\makeatother
-
+%\newcommand{\id}{\kw{id}}
+%\newcommand{\get}{{\sc get}}
+%\newcommand{\op}{\kw{op}}
+%\newcommand{\equ}{\kw{eq}}
+%
+%\newcommand{\recall}{\kw{recall}}
+%\newcommand{\precision}{\kw{precision}}
+%\newcommand{\fmeasure}{\kw{F}-\kw{measure}}
+%\newcommand{\noi}{\kw{noi\%}}
+%
+%\newcommand{\hosp}{{\sc hosp}\xspace}
+%\newcommand{\bus}{{\sc bus}\xspace}
+%\newcommand{\zip}{{\sc zip}\xspace}
+%
+%\makeatletter
+%    \newcommand\figcaption{\def\@captype{figure}\caption}
+%    \newcommand\tabcaption{\def\@captype{table}\caption}
+%\makeatother
+%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%% FROM JIAN HE %%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

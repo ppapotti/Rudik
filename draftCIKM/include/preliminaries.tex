@@ -42,8 +42,14 @@ An atom is a predicate connecting two variables, two entities, or an entity and 
 %NOT ESSENTIAL
 %In the context of Horn Rules, all variables appearing in a rule are implicitly universally quantified.
 Given a rule $r$, we define $r_{body}$ and $r_{head}$ as the body and the head of the rule, respectively. We define the variables in the head of the rule as the \emph{target variables}. 
-%%%%%%%%%JOURNAL%For the sake of presentation, we will also write negative rules as definite clauses by rewriting a body atom %in its negated form 
-%%%%%%%%%JOURNAL%in the head. The result is a logically equivalent formula that emphasizes the generation of negative facts.
+%%%%%%%%%JOURNAL%For the sake of presentation, 
+We also write negative rules as definite clauses by rewriting a body atom %in its negated form 
+in the head. The result is a logically equivalent formula that emphasizes the generation of negative facts.
+In Example~\ref{ex:krd_intro}, $r_1$ is a positive rule, where new positive facts are identified with target variables $a$ and $b$.
+Rule $r_2$ is a negative rule to identify errors; we can rewrite it as a definite clause to derive false facts from the KB and obtain $r_2'$:
+\begin{equation*}
+	\atom{DOB}{a}{v_0} \wedge \atom{DOB}{b}{v_i} \wedge v_0 > v_i \Rightarrow  \atom{notChild}{a}{b}  
+\end{equation*} 
 %
 %\begin{example}\label{ex:ex2}
 %	Rule $r_1$ in Example~\ref{ex:krd_intro} is a traditional positive rule, where new positive facts are identified with target variables $a$ and $b$.
@@ -70,10 +76,10 @@ an atom $A=\atom{rel}{a}{b}$ with at least one variable, we say that $A$ can be 
 we say that $r_{body}$ can be instantiated over $\kb$ if every atom in $r_{body}$ can be instantiated. 
 
 %Eventually, we introduce two language biases in order to avoid the explosion of the search space. 
-Following the biases introduced by other approaches for rule discovery in KBs~\cite{galarraga2015fast,Chen:2016}, 
+%%%%%%%%%JOURNAL%%Following the biases introduced by other approaches for rule discovery in KBs~\cite{galarraga2015fast,Chen:2016}, 
 %we adopt also two constraints on the variables in the rules.
 % as a compromise between the expressiveness of the rules and the complexity of the discovery problem. 
-we define a rule \emph{valid} iff it satisfies the following constraints.
+As in other approaches~\cite{galarraga2015fast,Chen:2016}, we define a rule \emph{valid} iff it satisfies the following constraints.
 
 \noindent {\bf Connectivity.} An atom $A_1$ can be reached by an atom $A_2$ iff $A_1$ and $A_2$ share at least one variable or one entity. 
 %The connectivity constraint requires that 
@@ -95,88 +101,100 @@ Given a pair of entities $(x,y)$ from a KB $\kb$ and a Horn Rule $r$, we say tha
 $(x,y) \models r_{body}$. In other words, given a rule $r : r_{body} \Rightarrow \atom{r}{a}{b}$, $r_{body}$ covers a pair of entities $(x,y) \in \kb$ iff we can substitute $a$ with $x$, $b$ with $y$, and the rest of the body can be instantiated over $\kb$. Given a set of pair of entities $E = \{(x_1,y_1),(x_2,y_2),\cdots,(x_n,y_n)\}$ and a rule $r$, we denote by $C_r(E)$ the \emph{coverage} of $r_{body}$ over $E$ as the set of elements in $E$ covered by $r_{body}$: $C_r(E)=\{(x,y) \in E | (x,y) \models r_{body}\}$.
 
 Given the body $r_{body}$ of a rule $r$, we denote by $r^{*}_{body}$ the \emph{unbounded body} of $r$. The unbounded body of a rule is obtained by keeping only atoms that contain a target variable and substituting such atoms with new atoms where the target variable is paired with a new unique variable. As an example, given $r_{body} = \texttt{rel}_1\texttt{(}a,v_0\texttt{)} \wedge \texttt{rel}_2\texttt{(}v_0,b\texttt{)}$ where $a$ and $b$ are the target variables, $r^{*}_{body} = \texttt{rel}_1\texttt{(}a,v_i\texttt{)} \wedge \texttt{rel}_2\texttt{(}v_{ii},b\texttt{)}$.
-While in $r_{body}$ the target variables are bounded to be connected by variable $v_0$, in $r^{*}_{body}$, the target variables are not bounded.
+While in $r_{body}$ the target variables are bounded to be connected by variable $v_0$, in $r^{*}_{body}$ %, the target variables 
+they are unbounded.
 Given a set of pair of entities $E = \{(x_1,y_1),(x_2,y_2),\cdots,(x_n,y_n)\}$ and a rule $r$, we denote by $U_r(E)$ the \emph{unbounded coverage} of $r^{*}_{body}$ over $E$ as the set of elements in $E$ covered by $r^{*}_{body}$: $U_r(E)=\{(x,y) \in E | (x,y) \models r^{*}_{body}\}$. Note that, given a set $E$, $C_r(E) \subseteq U_r(E)$. 
 %In other words, the unbounded coverage of a rule over $E$ always contains all the elements of the coverage over $E$.
 
 \begin{example}
-	Given rule $r_2$ of Example~\ref{ex:krd_intro} and a KB $\kb$, we denote with $E$ the set of all possible pairs of entities in $\kb$. The coverage of $r_2'$ over $E$ $(C_r(E))$ is the set of all pairs of entities $(x,y) \in \kb$ s.t. both $x$ and $y$ have the \texttt{DOB} information and $x$ is born after $y$. The unbounded coverage of $r$ over $E$ $(U_r(E))$ is the set of all pairs of entities $(x,y)$ s.t. both $x$ and $y$ have the \texttt{DOB} information, no matter what the relation between the two birth dates is. 
+	%Given rule $r_2$ of Example~\ref{ex:krd_intro} and a KB $\kb$, 
+	We denote with $E$ the set of all possible pairs of entities in $\kb$. The coverage of $r_2'$ over $E$ $(C_r(E))$ is the set of all pairs of entities $(x,y) \in \kb$ s.t. both $x$ and $y$ have the \texttt{DOB} information and $x$ is born after $y$. The unbounded coverage of $r$ over $E$ $(U_r(E))$ is the set of all pairs of entities $(x,y)$ s.t. both $x$ and $y$ have the \texttt{DOB} information, no matter what the relation between the two birth dates is. 
 \end{example} 
 
-\vspace{0.5ex}
-The unbounded coverage is essential to distinguish between missing and inconsistent information: if for a pair of entities $(x,y)$ the \texttt{DOB} information is missing for either $x$ or $y$ (or both), we cannot say whether $x$ was born before or after $y$. 
+%\vspace{0.5ex}
+The unbounded coverage is essential to distinguish between missing and inconsistent information: if for a pair of entities $(x,y)$ the \texttt{DOB} is missing for either $x$ or $y$ (or both), we cannot say whether $x$ was born before or after $y$. 
 %therefore we cannot state whether the negative rule %of Example~\ref{ex:krd_intro} covers $(x,y)$ or not.
-But if both $x$ and $y$ have the \texttt{DOB} information and $x$ is born before $y$, we can affirm that $r_2'$ does not cover $(x,y)$. Given that KBs are largely incomplete~\cite{min2013distant}, discriminating between missing and conflicting information is of paramount importance.
+But if both $x$ and $y$ have the \texttt{DOB} and $x$ is born before $y$, we can affirm that $r_2'$ does not cover $(x,y)$. Given that KBs are largely incomplete~\cite{min2013distant}, discriminating between missing and conflicting information is %of paramount
+ important.
 %
 We extend the definition of coverage and unbounded coverage to a set of rules $R=\{r_1,r_2,\cdots,r_n\}$ as the union of individual coverages:
 
-\vspace{-6mm}	
+\vspace{-3mm}	
 \begin{equation*}
 	C_R(E) = \bigcup \limits_{r \in R} C_r(E) \qquad U_R(E) = \bigcup \limits_{r \in R} U_r(E) 	\end{equation*}
 \vspace{-3mm}
 
 
 \section{Robust Rule Discovery} \label{sec:problem}
-
-Our problem tackles the discovery of %positive (negative) 
-rules for a {\em target predicate} given as input. We characterize a predicate with two different sets of pairs of entities.
+%Our problem tackles discovery %positive (negative)  rules for a 
+We define the discovery for a {\em target predicate} given as input. 
+To obtain all rules for a given KB, %As in other approaches~\cite{abedjan2014amending,galarraga2015fast}, 
+we compute rules for every predicate in it. % and compute rules for each of them. % (see Section~
+We characterize a predicate with two sets of pairs of entities.
 %
 The \emph{generation set} $G$ contains examples for the target predicate, 
 while the \emph{validation set} $V$ contains counter examples for the target predicate.
-For example, in the discovery of positive rules for the {\tt child} predicate, $G$ contains examples of real pairs of parents and children and $V$ contains pairs of people who {\em are not} in a child relation. In case we want to identify errors in the {\tt child} predicate, the sets of examples are the same, but they switch role. For the discovery of negative rules for {\tt child}, $G$ contains pairs of people not in a child relation and $V$ contains examples of real pairs.
-We will explain in Section~\ref{sec:ex_generation} how to generate these two sets for a given predicate. Note that our approach is not less generic than those for mining rules for an entire KB (e.g.,~\cite{abedjan2014amending,galarraga2015fast}): 
+Consider the discovery of positive rules for the {\tt child} predicate; $G$ contains examples of real pairs of parents and children and $V$ contains pairs of people who {\em are not} in a child relation. If we want to identify errors in the {\tt child} predicate, the sets of examples are the same, but they switch role. To discover negative rules for {\tt child}, $G$ contains pairs of people not in a child relation and $V$ contains real pairs.
+We explain in Section~\ref{sec:ex_generation} how to generate these two sets for a given predicate. 
+%Note that our approach is not less generic than those mining rules for an entire KB: 
 %it is true that we require a target predicate as input, however 
-we can apply our setting for every predicate in the KB and compute rules for each of them (see Section~\ref{sec:krd_comparative}).
+%\ref{sec:krd_comparative}).
 
-We can now formalize the \emph{exact discovery problem}. %\newline
+We now formalize the \emph{exact discovery problem}. %\newline
 
 \begin{definition}
 	Given a KB $\kb$, two sets of pairs of entities $G$ and $V$ from $\kb$ with $G \cap V = \emptyset$, and all the valid Horn Rules $R$ for $\kb$, a solution for the \emph{exact discovery problem} is a subset $R'$ of $R$  s.t.:
 	
-	\vspace{-6mm}	
+	\vspace{-4mm}	
 	\begin{equation*}
-		R_{opt}=\underset{R'}{\operatorname{argmin}}(size(R') | (C_{R'}(G) = G) \wedge (C_{R'}(V) \cap V = \emptyset))	\end{equation*}
+		\underset{R'}{\operatorname{argmin}}(size(R') | (C_{R'}(G) = G) \wedge (C_{R'}(V) \cap V = \emptyset))	\end{equation*}
 	\end{definition}
 	\vspace{-1ex}	
 
+The exact solution is a set of rules that covers all pairs in $G$ and none of the pairs in $V$. It minimizes the number of rules in the output ({\em size(R')}) to avoid overfitting rules covering only one pair, as such rules %like $R_{3}$ 
+have very little impact when applied on the KB. In fact, given a pair of entities $(x,y)$, there is always an overfitting rule whose body covers them by assigning target variables to $x$ and $y$ as shown next. %$R_{3}$ does.
+
+
 \begin{example}
-	Consider the discovery of positive rules for the predicate {\tt couple} between two persons using as examples the Obama family. A positive example is (Michelle, Barack) and a negative example their daughters (Malia, Natasha). 
+	Consider the discovery of positive rules for the predicate {\tt couple} between two persons using as example the Obama family. A positive example is (Michelle, Barack) and a negative example is their daughters (Malia, Natasha). 
 	Given three positive rules:
 	
-	\vspace{-4ex}	
+	\vspace{-2ex}	
 	{\small	
 		\begin{equation*}
 		R_{1}:	\atom{livesIn}{a}{v_0} \wedge \atom{livesIn}{b}{v_0} \Rightarrow  \atom{couple}{a}{b}  
 		\end{equation*}
-			\vspace{-3ex}	
+			\vspace{-2ex}	
 		\begin{equation*}
 		R_{2}:	\atom{hasChild}{a}{v_i} \wedge \atom{hasChild}{b}{v_i} \Rightarrow  \atom{couple}{a}{b}  
 		\end{equation*}
-		\vspace{-3ex}	
+		\vspace{-2ex}	
 		\begin{equation*}
 			\begin{split}
 			R_{3}:	\atom{hasChild}{Michelle}{Malia} \wedge  \atom{hasChild}{Barack}{Malia} \\ \Rightarrow \atom{couple}{Michelle}{Barack}
 			\end{split}
 		\end{equation*}
 	}
-	\vspace{-3ex}	
+	\vspace{-2ex}	
 	
 	\noindent
-	The first rule, $R_{1}$ states that two persons are a couple if the live in the same place, while the second rule $R_{2}$ states that they are a couple if they have a child in common. Both the rules cover the positive example, but $R_{1}$ covers also the negative one as Obama's daughters live in the same place. $R_{2}$ is an exact solution. Contrary to both of them, the third rule $R_{3}$ explicitly mentions the values of the entities in its head and body. Though it is also an exact solution, it overfits the given positive examples. % as all of them live in the same place. 
+	Rule $R_{1}$ states that two persons are a couple if the live in the same place, while rule $R_{2}$ states that they are a couple if they have a child in common. Both rules cover the positive example, but $R_{1}$ covers also the negative one.
+	% as also the daughters live in the same place. 
+	$R_{2}$ is an exact solution. Rule $R_{3}$ explicitly mentions entity values in its head and body. It is also an exact solution, but overfits the given positive example. % as all of them live in the same place. 
 \end{example} 
 
-The exact solution is a set of rules that covers all examples in $G$ and none of the examples in $V$. It also minimizes the number of rules in the output ({\em size(R')}) to avoid overfitting rules covering only one pair, as rules like $R_{3}$ are not useful when applied on the entire KB. In fact, given a pair of entities $(x,y)$, there is always an overfitting Horn Rule whose body covers only $(x,y)$ by assigning target variables to $x$ and $y$ as $R_{3}$ does.
-
-Unfortunately, the exact problem definition is not robust to the %leads to poor rules because of the 
-data quality problems in KBs. Even if a valid rule exists semantically, missing information or errors for the examples in $G$ and $V$ can lead to faulty coverage, e.g., the rule misses a good example because a child relation is missing for M. Obama. %) or covers a negative one (). 
-The exact solution may therefore be a set of rules where every rule covers only one example in $G$ and none in $V$, ultimately leading to a set of overfitting rules.
+The example highlights that the exact discovery problem is not robust to %leads to poor rules because of the 
+data quality problems in KBs. Even if a valid rule exists semantically, missing triples or errors for the examples in $G$ and $V$ can lead to faulty coverage, e.g., the rule misses a good example because a child relation is missing for M. Obama. %) or covers a negative one (). 
+In the worst case, %the exact solution may collapse to a set of rules where 
+every rule in the exact solution would cover only one example in $G$, % and none in $V$, 
+i.e., a set of overfitting rules with very little effect on the KB.
 %STEFANO CHECK CAREFULLY THE SENTENCEs ABOVE. WE report in some exp that we find zero rules, but rules with at least one tuple should be identified. We need to say somewhere the 1% threshold%%%%%%%%%%%%%%%%%%<<<<<<<<------------------------<<<<<<<<<-------
 % difficult to use and understand.
 
 \vspace{-1ex}	
 \subsection{Weight Function} \label{sec:krd_weight_fun}
-\vspace{-1ex}	
-Given errors and missing information in both $G$ and $V$, we drop the requirement of perfectly covering the sets with the rules. However, coverage is a strong indicator of quality: good rules should cover several examples in $G$, while covering several elements in $V$ is an indication of incorrect rules.
+\vspace{-0.2ex}	
+Given errors and missing information in both $G$ and $V$, we drop the requirement of exactly covering the sets with the rules. However, coverage is a strong indicator of quality: good rules should cover several examples in $G$, while covering several elements in $V$ is an indication of incorrect rules.
 %, as we assume that errors are always a minority in the data. 
 % we want to limit the coverage over $V$ to the minimum possible. 
 We model these ideas as a \emph{weight} associated with every rule. % as follows.
@@ -184,6 +202,7 @@ We model these ideas as a \emph{weight} associated with every rule. % as follows
 %I REWRITE TO INCLUDE ALSO G IN THE SCORE, WHICH IS WHAT WE DO. THERE IS NO GUARANTEE THAT WE COVER ALL G %%%%%%%%%%%%<<<<<<<<<<<
 
 \begin{definition}
+\label{def:cost}
 	Given a KB $\kb$, two sets of pair of entities $G$ and $V$ from $\kb$ with $G \cap V = \emptyset$, and a Horn Rule $r$, the {\em weight of $r$} is defined as follow:
 	\begin{equation} \label{eq:weight_fun}
 		w(r) = \alpha \cdot (1-\frac{\mid C_{r}(G)\mid}{\mid G \mid}) +\beta \cdot (\frac{\mid C_{r}(V) \mid}{\mid U_{r}(V)\mid})
@@ -213,7 +232,8 @@ while a high $\alpha$ champions the recall as the discovered rules cover as many
 %remember to state this in exp
 
 \begin{example}
-	Consider again rule $r_2'$ of Example~\ref{ex:ex2} and two sets of pairs of entities $G$ and $V$ from a KB $\kb$. 
+	Consider again rule $r_2'$ %of Example~\ref{ex:ex2} 
+	and two sets of pairs of entities $G$ and $V$ from a KB $\kb$. 
 	%The two components of $w_r$ are computed as follow:
 The first component of $w_r$ is computed as 1 minus the number of pairs $(x,y)$ in $G$ where
 		$x$ is born after $y$ divided by the number of elements in $G$.
@@ -221,6 +241,7 @@ The second component is the ratio between number of pairs $(x,y)$ in $V$ where $
 \end{example}
 
 \begin{definition}
+\label{def:totCost}
 	Given a set of rules $R$, the {\em weight for $R$} is:
 	\begin{equation*}
 		w(R) = \alpha \cdot (1-\frac{\mid C_{R}(G)\mid}{\mid G \mid}) +\beta \cdot (\frac{\mid C_{R}(V) \mid}{\mid U_{R}(V)\mid})
@@ -238,7 +259,7 @@ We can now state the approximate version of the problem.
 \begin{definition}
 	Given a KB $\kb$, two sets of pair of entities $G$ and $V$ from $\kb$ with $G \cap V = \emptyset$, all the valid Horn Rules $R$ for $\kb$, and a $w$ weight function for $R$, a solution for the \emph{approximate discovery problem} is a subset $R'$ of $R$  such that:
 %
-	$$R_{opt}=\underset{R'}{\operatorname{argmin}}(w(R') | C_{R'}(G) = G)$$
+	$$\underset{R'}{\operatorname{argmin}}(w(R') | C_{R'}(G) = G)$$
 \end{definition}
 \vspace{-1ex}	
 
@@ -250,7 +271,8 @@ The approximate version of the discovery problem aims to identify rules that cov
 
 We can map this problem to the {\em weighted set cover problem}, which is proven to be NP--complete~\cite{chvatal1979greedy}. The reduction follows immediately from the following mapping: 
 the set of elements (universe) corresponds to the generation examples in $G$, the input sets are identify by the rules defined in $R$, the non-negative weight
-function $w: r \rightarrow {\rm I\!R}$ is $w(r)$ in Definition 2, and the cost of $R$ is defined to be its total weight, according to Definition 3. %TODO
+function $w: r \rightarrow {\rm I\!R}$ is $w(r)$ in Definition~\ref{def:cost}, and the cost of $R$ is defined to be its total weight, according to Definition~\ref{def:totCost}. %TODO
+
 
 
 %Section~\ref{sec:krd_greedy} will describe a greedy polynomial algorithm to find a good solution for the approximate discovery problem.
