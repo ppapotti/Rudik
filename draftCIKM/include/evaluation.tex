@@ -22,7 +22,7 @@ We carried out an extensive experimental evaluation of our approach and grouped 
 We ran experiments over the latest core facts derived from several KBs. All experiments were run on a desktop with a quad-core i5 CPU at 2.80GHz and 16GB RAM. We used \system{OpenLink Virtuoso}, optimized for 8GB RAM, with its SPARQL query endpoint on the same machine.
 
 %In the following, 
-Parameters %%%%JOURNAL%$\alpha$ and $\beta$ %%%%JOURNAL%of Equation~\ref{eq:weight_fun} 
+Weight parameters %%%%JOURNAL%$\alpha$ and $\beta$ %%%%JOURNAL%of Equation~\ref{eq:weight_fun} 
 were set to  $\alpha=0.3$ and $\beta=0.7$ for positive rules, and to $\alpha=0.4$ and $\beta=0.6$ for negative rules. 
 %We also use a $maxPathLen$ parameter indicating the maximum number of atoms in each of the rules to be discovered that is set to $3$. 
 We set the maximum number of atoms 
@@ -48,7 +48,7 @@ has been done according to the state of the art for rule quality evaluation~\cit
 and manually checked them. % against the Web. 
 The \emph{precision} of a rule is then computed as the ratio of correct assertions out of all assertions. 
 %The subtle difference is that the sample set of tentatively violating predictions to be evaluated are generated differently for positive and negative rules. As an example, for the positive rule $\atom{spouse}{a}{v0} \wedge \atom{child}{v0}{b} \Rightarrow \atom{child}{a}{b}$, we retrieve all those pairs  $(a,b)$ such that $b$ is the child of $v0$ and $v0$ is the spouse of $a$ but $b$ is not the child of $a$. In the case of the negative rule, $\atom{child}{a}{b} \Rightarrow \neg \atom{spouse}{a}{b}$, we retrieve all those pairs $(a,b)$ such that $b$ is \texttt{child} of $a$ and $a$ is \texttt{spouse} with $b$.
-Full test results, including annotated examples and rules are available at \url{http://***double-blind***}.
+Full test results, including annotated examples and rules, are available at \url{http://***double-blind***}.
 % \url{http://bit.ly/2csROsc}.
 
 
@@ -100,12 +100,14 @@ Therefore negative rules will always discover many correct negative facts. Howev
 
 \subsection{Quality of Rule Discovery in \krd} \label{sec:gen_evaluation}
 \vspace{-0.2ex}
-The first set of experiments aimed at evaluating the accuracy of discovered rules over three popular KBs: \dbpedia~\cite{bizer2009dbpedia}, \yago~\cite{suchanek2007yago}, and \wikidata~\cite{vrandevcic2014wikidata}. 
+The first set of experiments evaluated the accuracy of discovered rules over three popular KBs: \dbpedia, \yago, and \wikidata. 
 %For each KB we downloaded the most recent version and selected core facts, facts about people, geolocations and transitive \texttt{rdf:type} facts. \wikidata provides the entire dump alone; therefore we just eliminated from it all the non-English literal values. 
 Table~\ref{tab:krdDatasetDescr} shows the characteristics of these KBs.
 
 %As the figure shows, 
-The size of the KB is important as loading the entire KB in memory is not feasible unless we either have HW with large amount of memory~\cite{Chen:2016,DBLP:conf/sigmod/FaridRIHC16}, or we shrink the KB by eliminating all the literals~\cite{galarraga2015fast}. In our approach, only a small portion of the KB is loaded in memory, thus we can afford to (i) discover rules with commodity HW resources, (ii) retain the literals, which are crucial for the literals comparison in our rules. While \krd mines rules for a given target predicate at a time, it could also discover rules over the entire KB given its set of predicates. This is further elaborated in Section~\ref{sec:krd_comparative}.
+The size of the KB is important as loading the entire KB in memory requires to either use large amount of memory~\cite{Chen:2016,DBLP:conf/sigmod/FaridRIHC16}, or to shrink the KB by eliminating the literals~\cite{galarraga2015fast}. In our approach, only a small portion of the KB is loaded in memory, thus we can afford to (i) discover rules with commodity HW resources, (ii) retain the literals, which are crucial for obtaining expressive rules. %the literals comparison in our rules. 
+While \krd mines rules for a given target predicate at a time, it could also discover rules over the entire KB given its set of predicates. 
+%This is further elaborated in Section~\ref{sec:krd_comparative}.
 
 \begin{table}[ht]
 %\vspace{-2ex}
@@ -133,7 +135,9 @@ The size of the KB is important as loading the entire KB in memory is not feasib
 We first evaluate the precision for the positive rules on the top 5 predicates for each KB. 
 The number of new induced facts varies significantly from rule to rule.
 % -- a rule with literals comparison produces a very high number of facts. In order 
-To avoid the overall precision to be dominated by such rules, we first compute the precision for each rule as explained above, and then average values over all induced rules.
+To avoid the overall precision to be dominated by such rules, we first compute the precision for each rule, 
+%as explained above, 
+and then average values over all induced rules.
 Table~\ref{tab:pos_rules_acc} reports precision values, along with predicates average running time.
 Column \emph{\# Annotations}  reports the size of the sample of manually annotated triples.
 
@@ -180,14 +184,15 @@ Parameter $maxPathLen$  also impacts the running time. The longer the rule, the 
 
 \myparagraph{Negative Rules \krd} 
 %Negative rules are very useful to discover inconsistencies in the KB. 
-We evaluated negative rules as the percentage of correct errors discovered for the top 5 predicates in each KB. Table~\ref{tab:neg_rules_acc} shows, for each KB, the total number of potential erroneous triples discovered with our output rules, whereas the precision is computed as the percentage of actual errors among potential errors. Numbers in brackets show the sample of unknown triples manually annotated.
+We evaluated negative rules as the percentage of correct errors discovered for the top 5 predicates in each KB. Table~\ref{tab:neg_rules_acc} shows, for each KB, the total number of potential erroneous triples discovered with our output rules, whereas the precision is computed as the percentage of actual errors among potential errors. Numbers in brackets show the sample of %unknown 
+triples manually annotated.
 
 Negative rules have better accuracy than positive ones. 
 This is due to the fact that negative rules exist more often then positive rules.
 % completeness of the validation set: for negative rules the validation set is the universe of all possible counter examples stated in the KB, whereas for positive rules the validation set is a small fraction of it. %Therefore negative rules are usually better validated than positive ones. 
 %As expected, for the manually curated \wikidata, the precision of the rules is higher, and the absolute number of errors identified is lower because it does not contain as many errors as \dbpedia and \yago.
 %For example, we identify the same rule that two people with same gender cannot be married both in \yago and \wikidata. Such a rule has a 94\% precision in \yago, while the accuracy in \wikidata is 57\%.
- \yago has the highest number of errors; for example, there are $9,057$ cases in the online \yago where a child is born before the parent. 
+ \yago has the highest number of errors; for example, there are 9,057 cases in the online \yago where a child is born before the parent. 
 %We cannot point exactly where the error is -- there could be an error in one of the birth dates or an error in the parent relation -- but we can affirm that at least one of these values is wrong and send them to human evaluators to spot the inconsistency.
 %
 Differently from positive rules, literals play a key role in negative rules. In fact, several correct negative rules rely on temporal aspects in which something cannot happen before/after something else. Temporal information are usually expressed through dates, years, or other primitive types that are represented as literal values in KBs.
@@ -196,7 +201,8 @@ Discovering negative rules is faster than discovering positive rules
 %.This is due to the time spent executing 
 because of the different nature of the examples covered by validation queries. 
 Whenever we identify a candidate rule, we execute the body of the rule against the KB with a SPARQL query to compute its coverage over the validation set. 
-These queries are faster for negative rules since the validation set is simply all the entities directly connected by the target predicate, whereas in the positive case the validation set corresponds to counter examples that do not have this property and are more expensive to evaluate for SPARQL engines.
+These queries are faster for negative rules since the validation set is simply all the entities directly connected by the target predicate, whereas in the positive case the validation set corresponds to counter examples that do not have this property and are more expensive to evaluate.
+% for SPARQL engines.
 %, as discussed in Section~\ref{sec:ex_generation}.
 
 %DO NOT SHOW RULES EXAMPLES
@@ -287,11 +293,11 @@ the most popular \texttt{rdf:type} that is not super class of any other most pop
 	\centering
 	\includegraphics[width=.9\columnwidth]{include/figure/vsAmieDBPedia.pdf}
 	\vspace{-2ex}
-	\caption{Accuracy for errors identified by executing rules according to descending score on \dbpedia (no literals).}
+	\caption{Accuracy for new facts identified by executing rules according to descending score on \dbpedia (no literals).}
 	\label{fig:vs_amie_dbpedia}
 \end{figure}
 
-For this evaluation, we plot the total cumulative number of new unique predictions (x-axis) versus the aggregated precision (y-axis) when incrementally including in the solution the rules according to their descending score. Figures~\ref{fig:vs_amie_yago} and \ref{fig:vs_amie_dbpedia} report the results
+For this evaluation, we plot the total cumulative number of new unique facts (x-axis) versus the aggregated precision (y-axis) when incrementally including in the solution the rules according to their descending score. Figures~\ref{fig:vs_amie_yago} and \ref{fig:vs_amie_dbpedia} report the results
 on \yago and \dbpedia, respectively. 
 Rules from \amie produce more predictions, but with a significant lower accuracy in both KBs. This is because many good rules are preceded by meaningless ones in the ranking, and it is not clear how to set a proper $k$ to get the best top $k$ rules. 
 In \krd, instead of the conventional ranking mechanism, we use a scoring function that discovers only inherently meaningful rules with enough support. 
@@ -413,7 +419,7 @@ The second column shows the total number of predicates for which \amie produced 
 %For a fair comparison we run our algorithm only on those predicates for which \amie could produce at least one rule. 
 The third and fourth columns report the total running time of the two approaches. Despite being disk-based, \krd successfully completes the task faster than \amie in all cases, except for \yago 2. This is because of the very small size of this KB, which fits in 
 %main 
-memory. However, when we deal with complete KBs (\yago 3), the KB could not even be loaded due to out of memory errors. The last column reports the running time to compute \texttt{rdf:type} information for all predicates in the KB. 
+memory. However, when we deal with complete KBs (\yago 3), the KB could not even be loaded due to out of memory errors. The last column reports the running time to compute \texttt{rdf:type} information for all predicates. % in the KB. 
 %This time is negligible w.r.t. the total running time. 
 %The running time justifies our disk-based strategy: \krd can successfully discover rules for any size KB on any machine.
 
@@ -470,7 +476,7 @@ A recent system~\cite{Chen:2016} implements \amie algorithm with a focus on scal
 
 \vspace{-1ex}
 \subsection{Internal Evaluation} \label{sec:krd_int_evaluation}
-\vspace{-1ex}
+\vspace{-0.2ex}
 We briefly outline the most relevant findings when studying the impact of individual components in \krd.
 Full results on the internal evaluation %are not reported due to space reasons but 
 can be found  at \url{http://***double-blind***}.
