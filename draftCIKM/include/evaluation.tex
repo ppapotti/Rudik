@@ -1,6 +1,7 @@
 \section{Experiments} \label{sec:krd_experiments}
 We implemented the above techniques in \krd, our system for \underline{Ru}le \underline{Di}scovery in \underline{K}nowledge Bases.
-We carried out an extensive experimental evaluation of our approach and grouped the results in three main sub-categories: 
+We carried out an %%%%JOURNAL%%extensive 
+experimental evaluation of our approach and grouped the results in three categories: 
 \begin{inparaenum}[\itshape(i)]
 	\item demonstrating the quality of our output for positive and negative rules;
 	\item comparing our method with the state-of-the-art systems;
@@ -19,8 +20,9 @@ We carried out an extensive experimental evaluation of our approach and grouped 
 %\footnote{\url{http://virtuoso.openlinksw.com/}}
 %as it was the fastest among all the solutions. 
 %\system{Virtuoso} took on average 20 minutes to load a medium size KB (i.e., 10 GB) into its store, and %around 100 milliseconds to execute a single hop query. 
-We ran experiments over the latest core facts derived from several KBs. All experiments were run on a desktop with a quad-core i5 CPU at 2.80GHz and 16GB RAM. We used \system{OpenLink Virtuoso}, optimized for 8GB RAM, with its SPARQL query endpoint on the same machine.
-
+%%%%JOURNAL%%We ran experiments over the latest core facts derived from several KBs. All 
+Experiments were run on a desktop with a quad-core i5 CPU at 2.80GHz and 16GB RAM. We used \system{OpenLink Virtuoso}, optimized for 8GB RAM, with its SPARQL query endpoint on the same machine.
+%%%%JOURNAL%%
 %In the following, 
 Weight parameters %%%%JOURNAL%$\alpha$ and $\beta$ %%%%JOURNAL%of Equation~\ref{eq:weight_fun} 
 were set to  $\alpha=0.3$ and $\beta=0.7$ for positive rules, and to $\alpha=0.4$ and $\beta=0.6$ for negative rules. 
@@ -36,14 +38,15 @@ We also set the $maxPathLen$ parameter to $3$. This number represents the maximu
 \end{comment}
 
 \myparagraph{Evaluation Metrics}
-We evaluated the effectiveness of \krd in discovering both positive and negative rules. The set of predicates for evaluation were chosen separately in the case of positive and negative rules from each KB.
+We evaluated the effectiveness of \krd in discovering both positive and negative rules. 
+%%%%JOURNAL%%The set of predicates for evaluation were chosen separately in the case of positive and negative rules from each KB.
 For every KB, we first ordered predicates according to descending popularity (i.e., number of triples having that predicate). We then picked the top $3$ predicates for which we knew there existed at least one meaningful rule, and other $2$ top predicates for which we did not know whether some meaningful rules existed or not. 
 %: we picked $5$ popular predicates occurring in a majority of triples out of which the top $3$ are known to have at least one meaningful rule, while there is no prior knowledge about the rules for the next 2 predicates. 
 
 The evaluation of the discovered rules 
 %discovered by \krd and the baseline algorithms we compare against 
 %was done for both positive and negative rules 
-has been done according to the state of the art for rule quality evaluation~\cite{galarraga2015fast}. If a rule was clearly semantically correct, we marked all its results over triples as true. If a rule correctness was unknown, we randomly sampled 30 triples either among the new facts (for positive rules) or among the errors (for negative rules), 
+has been done according to the best practice for rule evaluation~\cite{galarraga2015fast}. If a rule was clearly semantically correct, we marked all its results over triples as true. If a rule correctness was unknown, we randomly sampled 30 triples either among the new facts (for positive rules) or among the errors (for negative rules), 
 %new predictions likely to be violating rule head 
 and manually checked them. % against the Web. 
 The \emph{precision} of a rule is then computed as the ratio of correct assertions out of all assertions. 
@@ -233,14 +236,14 @@ These queries are faster for negative rules since the validation set is simply a
 
 \vspace{-1ex}
 \subsection{Comparative Evaluation} \label{sec:krd_comparative}
-\vspace{-1ex}
-We compared our methods against \amie~\cite{galarraga2015fast}, the state-of-the-art positive rule discovery system for KBs.
+\vspace{-0.5ex}
+We compared our methods against \amie~\cite{galarraga2015fast}, a state-of-the-art positive rule discovery system for KBs.
 %
-\amie loads the entire KB into memory and discovers positive rules for every predicate. % in the KB. 
+\amie loads the KB into memory and discovers positive rules for every predicate. % in the KB. 
 %\amie lists all the predicates in the KB and inserts each of them as head of the rule. Once the head is filled, the system tries to expand the rule by pivoting on one of the variables of the current predicate and looks for predicates sharing the same variable with high coverage in the KB. 
 %The coverage of a rule is penalized with the partial closed world assumption, where the set of negative examples for a given pair $(x,y)$ and a target predicate $p$ is all those pairs where $x$ is connected through $p$ to an entity different from $y$. 
 %Differently from us, 
-It then outputs all possible rules that exceed a given threshold and ranks them according to a coverage function.
+It then outputs all rules that exceed a given threshold and ranks them according to a coverage function.
 
 \begin{table}[htb]
 %\vspace{-3ex}
@@ -267,7 +270,9 @@ Given its in-memory implementation, \amie went out of memory for the KBs of Tabl
 %
 Removing literals and \texttt{rdf:type} triples drastically reduce the size of the KB. Since our approach needs type information (for the generation of $G$ and $V$ and for the discovery of inequality atoms), we run \amie on its original datasets, while for our algorithm we used the \amie dataset plus \texttt{rdf:type} triples. Last column of Table~\ref{tab:AmieDatasetDescr} reports the number of triples added to the original \amie dataset.
 
-\myparagraph{Positive Rules Comparison} We first compared against \amie on its natural setting: positive rule discovery. \amie takes as input an entire KB, and discovers rules for every predicate in the KB. We adapted \krd to this setting as follows: we first list all the predicates in the KB that connect a \emph{subject} to an \emph{object}. We then computed %the most common type 
+\myparagraph{Positive Rules Comparison} We first compared against \amie on its natural setting: positive rule discovery. 
+%\amie takes as input an entire KB, and discovers rules for every predicate in the KB. 
+For this setting, we ran \krd as follows: we first list all the predicates in the KB that connect a \emph{subject} to an \emph{object}. We then computed %the most common type 
 for both subject and object %. The most common type is 
 the most popular \texttt{rdf:type} that is not super class of any other most popular type. We finally ran our approach sequentially on every predicate, with $maxPathLen=2$ (\amie default setting).
 
@@ -275,7 +280,7 @@ the most popular \texttt{rdf:type} that is not super class of any other most pop
 
 \begin{figure}[htb]
 	\centering
-	\vspace{1ex}
+%	\vspace{1ex}
 	\includegraphics[width=.9\columnwidth]{include/figure/vsAmieYago.pdf}
 	\vspace{-2ex}
 	\caption{Accuracy for new facts identified by executing rules according to descending score on  \yago 2 (no literals).}
@@ -297,9 +302,11 @@ the most popular \texttt{rdf:type} that is not super class of any other most pop
 	\label{fig:vs_amie_dbpedia}
 \end{figure}
 
-For this evaluation, we plot the total cumulative number of new unique facts (x-axis) versus the aggregated precision (y-axis) when incrementally including in the solution the rules according to their descending score. Figures~\ref{fig:vs_amie_yago} and \ref{fig:vs_amie_dbpedia} report the results
+Figures~\ref{fig:vs_amie_yago} and \ref{fig:vs_amie_dbpedia} report the results
 on \yago and \dbpedia, respectively. 
-Rules from \amie produce more predictions, but with a significant lower accuracy in both KBs. This is because many good rules are preceded by meaningless ones in the ranking, and it is not clear how to set a proper $k$ to get the best top $k$ rules. 
+%For this evaluation, 
+We plot the total cumulative number of new unique facts (x-axis) versus the aggregated precision (y-axis) when incrementally including in the solution the rules according to their descending score. 
+Rules from \amie produce more predictions, but with significant lower accuracy in both KBs. This is because many good rules are preceded by meaningless ones in the ranking, and it is not clear how to set a proper $k$ to get the best ones. % top $k$ rules. 
 In \krd, instead of the conventional ranking mechanism, we use a scoring function that discovers only inherently meaningful rules with enough support. 
 %This approach is beneficial for the discovery, as shown  by the high precision we obtain %with a concise rule set 
 %in both \yago and \dbpedia.
@@ -326,7 +333,9 @@ As a consequence, \krd outputs just 11 rules for 8 target predicates on the enti
 
 \myparagraph{Negative Rules Comparison}
 %We used \amie also to discover negative rules. 
-\amie is not designed to discover negative rules, and can mine rules only for predicates explicitly stated in the KB. To use it as a baseline, we created a set of negative examples as explained in Section~\ref{sec:ex_generation} for each predicate in the top-5. To let \amie mine this information, for each negative example we added a new fact to the KB by connecting the two entities with the \emph{negation} of the predicate. 
+%\amie is not designed to discover negative rules, and can mine rules only for predicates explicitly stated in the KB. 
+To use \amie as a baseline for negative rules discovery, we created a set of negative examples as explained in Section~\ref{sec:ex_generation} for each predicate in the top-5. %To let \amie mine this information, 
+For each negative example, we added a new fact to the KB by connecting the two entities with the \emph{negation} of the predicate. 
 For example, we added a \texttt{notSpouse} predicate connecting each pair of people who are not married according to our generation technique. We then run \amie on these new predicates. 
 %The evaluation of negative rules is then carried out as explained before: we generate potential errors in the KB, and we manually evaluated the precision of such errors. 
 
@@ -362,7 +371,7 @@ Numbers in brackets show the number of triples manually annotated.
 
 \myparagraph{Running Time}
 %We report the running time of \amie compared to our approach. 
-Running times for \amie are different from~\cite{galarraga2015fast}, where it was run on a 48GB RAM server. On our machine, \amie could finish the computation  on \yago 2, while for other KBs it got stuck after some time. For these cases, we stopped the computation if there were no changes in the output for more than 2 hours.
+On our machine, \amie could finish the computation  on \yago 2, while for other KBs it got stuck after some time. For these cases, we stopped the computation if there were no changes in the output for more than 2 hours. Running times for \amie are different from~\cite{galarraga2015fast}, where it was run on a 48GB RAM server. 
 
 %HERE WE DO NOT REPORT THE KB SIZE OTHERWISE THE TABLE IS TOO BIG
 %\begin{table}[t]
@@ -427,7 +436,9 @@ memory. However, when we deal with complete KBs (\yago 3), the KB could not even
 We found other available systems to discover rules in KBs. In~\cite{abedjan2014amending}, the system discovers %new facts at the instance level, hence 
 rules that are less general than our approach; on \yago 2, it discovers 2K new facts with a precision lower than 70\%, while the best rule we discover on \yago 2 already produces more than 4K facts with a 100\% precision. 
 %are we using the same KB? 
-A recent system~\cite{Chen:2016} implements \amie algorithm with a focus on scalability. They do not modify the mining part, but split the KB into multiple cluster nodes to run in parallel. The output is the same as \amie. We did not compare with classic Inductive Logic Programming systems~\cite{dehaspe1999discovery}, as these are already significantly outperformed by \amie both in accuracy and running time.
+A recent system~\cite{Chen:2016} implements \amie algorithm with a focus on scalability. They do not modify the mining part
+%%%%%%%%%JOURNAL , but split the KB into multiple cluster nodes to run in parallel. The 
+and the output is the same as \amie. We did not compare with classic Inductive Logic Programming systems~\cite{dehaspe1999discovery}, as these are already significantly outperformed by \amie both in accuracy and running time.
 
 %%%%%%%%%JOURNAL
 %\vspace{-1ex}
@@ -478,7 +489,7 @@ A recent system~\cite{Chen:2016} implements \amie algorithm with a focus on scal
 \subsection{Internal Evaluation} \label{sec:krd_int_evaluation}
 \vspace{-0.2ex}
 We briefly outline the most relevant findings when studying the impact of individual components in \krd.
-Full results on the internal evaluation %are not reported due to space reasons but 
+Full results %%%%%%%%%JOURNAL on the internal evaluation %are not reported due to space reasons but 
 can be found  at \url{http://***double-blind***}.
 %in the technical report online at \url{http://bit.ly/2bDZO9F}.
 
@@ -501,10 +512,12 @@ can be found  at \url{http://***double-blind***}.
 
 \noindent \myparagraph{LCWA} We study the effect of the LCWA assumption for the generation of negative examples.
 %, which clearly outperforms random generation strategies in terms of accuracy.
-Given a predicate $p$, we tested three different generation strategies: \krd strategy (as detailed in Section~\ref{sec:ex_generation}), Random (randomly select $k$ pairs $(x,y)$ from the Cartesian product s.t. triple $\<x,p,y\> \notin \kb$), and LCWA (\krd strategy without the constraint that $x$ and $y$ must be connected by a predicate different from $p$).
-Table~\ref{tab:random_neg_examples} reports the results for the discovered rules. 
-\emph{Random} and \emph{LCWA\_Random} show similar behavior, with a slightly better precision than \krd. This is because whenever we randomly pick examples from the Cartesian product of subject and object, the likelihood of picking entities from a different time period is very high, and negative rules pivoting on time constraints are usually correct. Instead, by forcing $x$ and $y$ to be connected with different predicate, we generate semantically related examples that lead to different rules. Rules such as $\atom{parent}{a}{b} \Rightarrow  \atom{notSpouse}{a}{b}$ are not generated with random strategies, since the likelihood of picking two people that are in a parent relation is very low. 
-While we use LCWA in our default configuration, the results show the robustness of the algorithm w.r.t. the quality of the negative examples.
+Given a predicate $p$, we tested three different generation strategies: \krd strategy (Section~\ref{sec:ex_generation}), Random (randomly select $k$ pairs $(x,y)$ from the Cartesian product s.t. triple $\<x,p,y\> \notin \kb$), and LCWA (\krd strategy without the constraint that $x$ and $y$ must be connected by a predicate different from $p$).
+Table~\ref{tab:random_neg_examples} reports the results for the discovered rules. \krd strategy leads to the rules that can capture most errors.
+\emph{Random} and \emph{LCWA\_Random} show similar behavior, with slightly better precision than \krd. This is because whenever we randomly pick examples, %%%%%%%%%%JOURNAL from the Cartesian product of subject and object, 
+the likelihood of picking entities from a different time period is very high, and negative rules pivoting on time constraints are usually correct. Instead, by forcing $x$ and $y$ to be connected with different predicate, we generate semantically related examples. %%%%%%%%%%JOURNAL that lead to different rules. 
+Rules such as $\atom{parent}{a}{b} \Rightarrow  \atom{notSpouse}{a}{b}$ are not generated with random strategies, since the likelihood of picking two people that are in a parent relation is very low. 
+%%%%%%%%%JOURNALWhile we use LCWA in our default configuration, the results show the robustness of the algorithm w.r.t. the quality of the negative examples.
 %The strategy we adopt in \krd enables the discovery of more types of rules, and not only rules involving time constraints. 
 
 
