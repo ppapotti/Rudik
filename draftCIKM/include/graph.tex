@@ -7,7 +7,7 @@ We start by assuming that the positive and the negative examples are given, and 
 
 %In the following we discuss 
 We detail the discovery of positive rules having true facts in $G$ and false facts in $V$.
-In the dual problem of negative rule discovery our approach remains unchanged, we just switch the roles of $G$ and $V$. The generation set $G$ is formed out of negative examples (false facts), while the validation set $V$ is built from the positive examples (true facts). 
+In the dual problem of negative rule discovery our approach remains unchanged, we just switch the roles of $G$ and $V$. The generation set $G$ is formed out of false facts, while the validation set $V$ is built from true facts. 
 %Now it should be more clear why we introduced the second constraint of LCWA on predicates. 
 %THIS CAN/SHOULD BE AT BEGINNING OF SEC 3 <<<<<<<<<<
 %A crucial role in our approach is played by the two input sets $G$ and $V$, used to generate and validate rules. We will show that discovering negative rules is the dual problem of discovering positive rules, therefore we assume to be in the setting of generating positive rules.
@@ -66,7 +66,7 @@ If we allow navigation of edges independently of the edge direction, we can tran
 %The transitive connection between atoms is always guaranteed by the construction property of a path $p$: for each node $n$ in $p$ there always exists a subpath that connects $n$ to every other node in $p$.
 %
 %In other words, 
-Given the body of a rule $r_{body}$, $r_{body}$ covers a pair of entities $(x,y)$ iff there exists a valid path on the graph that corresponds to $r_{body}$. This implies that for a pair of entities $(x,y)$, we can generate bodies of all possible valid rules by computing all valid paths from $x$ to $y$ (and vice versa) with a standard BFS. The key point is the ability to navigate each edge in any direction by turning the original directed graph into an undirected one.
+Given the body of a rule $r_{body}$, $r_{body}$ covers a pair of entities $(x,y)$ iff there exists a valid path on the graph that corresponds to $r_{body}$. This implies that for a pair of entities $(x,y)$, we can generate bodies of all possible valid rules by computing all valid paths starting at $x$ with a standard BFS. The key point is the ability to navigate each edge in any direction by turning the original directed graph into an undirected one.
 %is the VICE VERSA CORRECT?? <<<<
 %Despite the navigation over an undirected graph
 However, we need to keep track of the original direction of the edges. This is essential while translating paths to rule bodies. In fact, %if we navigate an edge \texttt{rel} between $a$ and $b$, going 
@@ -87,7 +87,7 @@ We now describe the two main steps in our generation of the universe of all poss
 
 \noindent \myparagraph{1. Create Paths}
 %The main advantage of inspecting just the generation set $G$ is the capability of loading only a small portion of the graph that is currently needed. 
-Given a pair of entities $(x,y)$, we retrieve from the KB all nodes at a distance smaller than $maxPathLen$ from $x$ or $y$, along with their edges. The retrieval is done recursively: we maintain a queue of entities, and for each entity in the queue we execute a SPARQL query against the KB to get all entities (and edges) at distance $1$ from the current entity -- we call these queries \emph{single hop queries}. At the $n$-th step, we add the new found entities to the queue iff they are at a distance less than $maxPathLen-n$ from $x$ or $y$ and they have not been visited before. The queue is initialized with $x$ and $y$. 
+Given a pair of entities $(x,y)$, we retrieve from the KB all nodes at a distance smaller than $maxPathLen$ from $x$ or $y$, along with their edges. The retrieval is done recursively: we maintain a queue of entities, and for each entity in the queue we execute a SPARQL query against the KB to get all entities (and edges) at distance $1$ from the current entity -- we call these queries \emph{single hop queries}. At the $n$-th step, we add the new found entities to the queue iff they are at a distance less than ($maxPathLen-n$) from $x$ or $y$ and they have not been visited before. The queue is initialized with $x$ and $y$. 
 %By doing so we retrieve a small portion of the entire KB, the only one needed to discover rules that cover $(x,y)$. 
 %We show in the experimental section that SPARQL engines are very fast at executing single hop queries. %DO WE REALLY SHOW IT?? <<<<
 %
@@ -113,7 +113,7 @@ Once the universe of all possible rules has been generated (along with coverages
 %A future direction we are working on exploits exactly this point: how to select a small number of representative examples in order to reduce the size of $G$, without significantly affecting the quality of the output.
 %\vspace{-1ex}
 
-One of our goals is to discover expressive rules. We therefore generate different atom types as detailed next.
+Since one of our goals is to increase the expressive power of discovered rules, we generate different atom types as detailed next.
 
 %\vspace{-1ex}
 %\vspace{0.5ex}
@@ -137,7 +137,7 @@ Besides equality comparisons, we add `$>$',`$\geq$',`$<$',`$\leq$' relationships
 \noindent \myparagraph{Not equal variables}
 The ``not equal'' operator introduced for literals is useful for entities as well. 
 Consider the rule:
-$$ \atom{bornIn}{a}{x} \wedge x \neq b \Rightarrow \atom{notPresident}{a}{b} $$
+$$ \atom{bornIn}{a}{x} \wedge x \neq b \Rightarrow \neg \atom{president}{a}{b} $$
 It states that if a person $a$ is born in a country that is different from $b$, then $a$ cannot be the president of $b$.
 %The rule holds for most of the countries in the world. 
 One way to consider inequalities among entities is to add edges among all pairs of entities in the graph. However, this strategy is inefficient and would lead to many meaningless rules. To limit the search space while aiming at meaningful rules, we use the \texttt{rdf:type} triples associated to entities. We add an inequality edge in the input example graph only between pairs of entities of the same type (as in the example above). %, e.g., they belong to the same conceptual category. 
@@ -148,7 +148,7 @@ Finally, we allow the discovery of rules with constant selections. % (entities).
 Suppose that for the above president rule, all examples in $G$ are people born in ``\textit{U.S.A.}'', and there is at least one country for which this rule is not valid. 
 According to our problem statement, the right rule is therefore:
 %
-$$ \atom{bornIn}{a}{x} \wedge x \neq \emph{U.S.A.} \Rightarrow \atom{notPresident}{a}{\emph{U.S.A.}} $$
+$$ \atom{bornIn}{a}{x} \wedge x \neq \emph{U.S.A.} \Rightarrow \neg \atom{president}{a}{\emph{U.S.A.}} $$
 %
 To discover such atoms, %we introduce a refinement of the rule generation.
 %For a given rule $r$, 
@@ -181,7 +181,7 @@ For example, if $rel=\texttt{child}$, a negative example is a pair $(x,y)$ s.t. 
 %not sure what is an aspect in the sentence above
 Moreover, for a candidate negative example over entities $(x,y)$, $x$ must be connected to $y$ via a predicate that is different from the target predicate. In other words, given a KB $\kb$ and a target predicate $rel$, $(x,y)$ is a negative examples if $\<x,rel',y\> \in \kb$, with $rel' \neq rel$. 
 These restrictions make the size of $V$ of the same order of magnitude of $G$, %%%%%JOURNAL% (see Section~\ref{sec:krd_experiments}), 
-and guarantees that, for every $(x,y) \in V$, $x$ and $y$ are related by at least one predicate.
+and guarantees that, for every $(x,y) \in V$, $x$ and $y$ are semantically related by at least one predicate.
 
 
 

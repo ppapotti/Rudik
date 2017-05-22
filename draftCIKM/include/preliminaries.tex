@@ -21,7 +21,7 @@ and new predicates can be added by inserting triples. % having those predicates.
 This model allows great flexibility, but the likelihood of introducing errors is higher than traditional schema-guided databases.
 While KBs can include \emph{T-Box} facts to define classes, domain/co-domain types for predicates, and relationships among classes
 %While the T-Box can specify 
-to check integrity and consistency, in most KBs -- including the ones used in our experiments -- such information is missing. % or not present at all. 
+to check integrity, in most KBs -- including the ones used in our experiments -- such information is missing. % or not present at all. 
 Hence our focus is on the \emph{A-Box} facts that describe instance data. 
 
 \vspace{-1ex}
@@ -32,24 +32,25 @@ Our goal is to automatically discover
 \emph{Horn Rules} in KBs. A Horn Rule is a disjunction of \emph{atoms} with at most one unnegated atom. When written in the implication form, Horn Rules have one of the following formats:
 %
 \begin{equation*}
-	A_1 \wedge A_2 \wedge \cdots \wedge A_n \Rightarrow B \qquad \qquad A_1 \wedge A_2 \wedge \cdots \wedge A_n \Rightarrow  false 
+	A_1 \wedge A_2 \wedge \cdots \wedge A_n \Rightarrow B \qquad \qquad A_1 \wedge A_2 \wedge \cdots \wedge A_n \Rightarrow  \neg B
 \end{equation*} %\neg B
 %
-where $A_1 \wedge A_2 \wedge \cdots \wedge A_n$ is the \emph{body} of the rule (a conjunction of atoms) and $B$ is the \emph{head} of the rule (a single atom). The head of the rule is either unnegated (left) or empty (right). We call the former \emph{definite clause} or \emph{positive rule}, as it generates new 
+where $A_1 \wedge A_2 \wedge \cdots \wedge A_n$ is the \emph{body} of the rule (a conjunction of atoms) and $B$ ($\neg B$) is the \emph{head} of the rule (a single atom). The head of the rule is either unnegated (left) or negated (right). We call the former \emph{definite clause} or \emph{positive rule}, as it generates new 
 %positive 
 facts (e.g., $r_1$ in Example~\ref{ex:krd_intro}). We call the latter \emph{goal clause} or \emph{negative rule} (e.g., $r_2$ in Example~\ref{ex:krd_intro}), as it identifies incorrect facts, similarly to denial constraints for relational data~\cite{chu2013discovering}. %In a KB, 
-An atom is a predicate connecting two variables, two entities, or an entity and a variable. For simplicity, we represent an atom with the notation $\atom{rel}{a}{b}$, where \texttt{rel} is a predicate, and $a$, $b$ are either variables or entities. 
+An atom is a predicate connecting two variables, two entities, or an entity and a variable. For simplicity, we represent an atom with the notation $\atom{rel}{a}{b}$, where \texttt{rel} is a predicate from the KB, and $a$, $b$ are either variables or entities. 
 %NOT ESSENTIAL
 %In the context of Horn Rules, all variables appearing in a rule are implicitly universally quantified.
 Given a rule $r$, we define $r_{body}$ and $r_{head}$ as the body and the head of the rule, respectively. We define the variables in the head of the rule as the \emph{target variables}. 
 %%%%%%%%%JOURNAL%For the sake of presentation, 
-We also write negative rules as definite clauses by rewriting a body atom %in its negated form 
-in the head. The result is a logically equivalent formula that emphasizes the generation of negative facts.
+%We also write negative rules as definite clauses by rewriting a body atom %in its negated form 
+%in the head. The result is a logically equivalent formula that emphasizes the generation of negative facts.
 In Example~\ref{ex:krd_intro}, $r_1$ is a positive rule, where new positive facts are identified with target variables $a$ and $b$.
-Rule $r_2$ is a negative rule to identify errors; we can rewrite it as a definite clause to derive false facts from the KB and obtain $r_2'$:
-\begin{equation*}
-	\atom{DOB}{a}{v_0} \wedge \atom{DOB}{b}{v_i} \wedge v_0 > v_i \Rightarrow  \atom{notChild}{a}{b}  
-\end{equation*} 
+Rule $r_2$ instead is a negative rule to identify errors, where errors are related to target variables $a$ and $b$.
+%we can rewrite it as a definite clause to derive false facts from the KB and obtain $r_2'$:
+%\begin{equation*}
+%	\atom{DOB}{a}{v_0} \wedge \atom{DOB}{b}{v_i} \wedge v_0 > v_i \Rightarrow  \atom{notChild}{a}{b}  
+%\end{equation*} 
 %
 %\begin{example}\label{ex:ex2}
 %	Rule $r_1$ in Example~\ref{ex:krd_intro} is a traditional positive rule, where new positive facts are identified with target variables $a$ and $b$.
@@ -68,7 +69,7 @@ Rule $r_2$ is a negative rule to identify errors; we can rewrite it as a definit
 %%	\vspace{-3.5ex}
 %\end{example} 
 
-As shown in the example, we allow \emph{literal comparisons} in our rules. A literal comparison is a special atom $\atom{rel}{a}{b}$, where $\texttt{rel} \in \{<,\leq,\neq,>,\geq\}$, and $a$ and $b$ can only be assigned to literal values except if $\texttt{rel}$ is equal to $\neq$. In such a case $a$ and $b$ can be also assigned to entities. We will explain later on why this exception is important.
+As shown in $r_2$, we allow \emph{literal comparisons} in our rules. A literal comparison is a special atom $\atom{rel}{a}{b}$, where $\texttt{rel} \in \{<,\leq,\neq,>,\geq\}$, and $a$ and $b$ can only be assigned to literal values except if $\texttt{rel}$ is equal to $\neq$. In such a case $a$ and $b$ can be also assigned to entities. We will explain later on why this exception is important.
 
 Given a KB $\kb$ and an atom $A=\atom{rel}{a}{b}$ where $a$ and $b$ are two entities, we say that $A$ \emph{holds} over $\kb$ iff $\<a,\texttt{rel},b\> \in \kb$.
 Given %a KB $\kb$ and 
@@ -109,18 +110,17 @@ Given a set of pair of entities $E = \{(x_1,y_1),(x_2,y_2),\cdots,(x_n,y_n)\}$ a
 
 \begin{example}
 	%Given rule $r_2$ of Example~\ref{ex:krd_intro} and a KB $\kb$, 
-	We denote with $E$ the set of all possible pairs of entities in $\kb$. The coverage of $r_2'$ over $E$ $(C_r(E))$ is the set of all pairs of entities $(x,y) \in \kb$ s.t. both $x$ and $y$ have the \texttt{DOB} information and $x$ is born after $y$. The unbounded coverage of $r$ over $E$ $(U_r(E))$ is the set of all pairs of entities $(x,y)$ s.t. both $x$ and $y$ have the \texttt{DOB} information, no matter what the relation between the two birth dates is. 
+	We denote with $E$ the set of all possible pairs of entities in $\kb$. The coverage of $r_2$ of Example~\ref{ex:krd_intro} over $E$ $(C_r(E))$ is the set of all pairs of entities $(x,y) \in \kb$ s.t. both $x$ and $y$ have the \texttt{DOB} information and $x$ is born after $y$. The unbounded coverage of $r$ over $E$ $(U_r(E))$ is the set of all pairs of entities $(x,y)$ s.t. both $x$ and $y$ have the \texttt{DOB} information, no matter what the relation between the two birth dates is. 
 \end{example} 
 
 %\vspace{0.5ex}
 The unbounded coverage is essential to distinguish between missing and inconsistent information: if for a pair of entities $(x,y)$ the \texttt{DOB} is missing for either $x$ or $y$ (or both), we cannot say whether $x$ was born before or after $y$. 
 %therefore we cannot state whether the negative rule %of Example~\ref{ex:krd_intro} covers $(x,y)$ or not.
-But if both $x$ and $y$ have the \texttt{DOB} and $x$ is born before $y$, we can affirm that $r_2'$ does not cover $(x,y)$. Given that KBs are largely incomplete~\cite{min2013distant}, discriminating between missing and conflicting information is %of paramount
- important.
+But if both $x$ and $y$ have the \texttt{DOB} and $x$ is born before $y$, we can affirm that $r_2$ does not cover $(x,y)$. Given that KBs are largely incomplete~\cite{min2013distant}, discriminating between missing and conflicting information is %of paramount
+ essential.
 %
 We extend the definition of coverage and unbounded coverage to a set of rules $R=\{r_1,r_2,\cdots,r_n\}$ as the union of individual coverages:
 
-\vspace{-3mm}	
 \begin{equation*}
 	C_R(E) = \bigcup \limits_{r \in R} C_r(E) \qquad U_R(E) = \bigcup \limits_{r \in R} U_r(E) 	\end{equation*}
 \vspace{-3mm}
@@ -135,7 +135,7 @@ We characterize a predicate with two sets of pairs of entities.
 %
 The \emph{generation set} $G$ contains examples for the target predicate, 
 while the \emph{validation set} $V$ contains counter examples for the target predicate.
-Consider the discovery of positive rules for the {\tt child} predicate; $G$ contains examples of real pairs of parents and children and $V$ contains pairs of people who {\em are not} in a child relation. If we want to identify errors in the {\tt child} predicate, the sets of examples are the same, but they switch role. To discover negative rules for {\tt child}, $G$ contains pairs of people not in a child relation and $V$ contains real pairs.
+Consider the discovery of positive rules for the {\tt child} predicate; $G$ contains examples of real pairs of parents and children and $V$ contains pairs of people who {\em are not} in a child relation. If we want to identify errors in the {\tt child} predicate (negative rules), the sets of examples are the same, but they switch role. To discover negative rules for {\tt child}, $G$ contains pairs of people not in a child relation and $V$ contains real pairs.
 We explain in Section~\ref{sec:ex_generation} how to generate these two sets for a given predicate. 
 %Note that our approach is not less generic than those mining rules for an entire KB: 
 %it is true that we require a target predicate as input, however 
@@ -152,15 +152,15 @@ We now formalize the \emph{exact discovery problem}. %\newline
 	\end{definition}
 	\vspace{-1ex}	
 
-The exact solution is a set of rules that covers all pairs in $G$ and none of the pairs in $V$. It minimizes the number of rules in the output ({\em size(R')}) to avoid overfitting rules covering only one pair, as such rules %like $R_{3}$ 
-have very little impact when applied on the KB. In fact, given a pair of entities $(x,y)$, there is always an overfitting rule whose body covers them by assigning target variables to $x$ and $y$ as shown next. %$R_{3}$ does.
+The exact solution is the minimal set of rules that covers all pairs in $G$ and none of the pairs in $V$. It minimizes the number of rules in the output ($size(R')$) to avoid overfitting rules covering only one pair, as such rules %like $R_{3}$ 
+have very little impact when applied on the KB. In fact, given a pair of entities $(x,y)$, there is always an overfitting rule whose body covers only $(x,y)$ by assigning target variables to $x$ and $y$ as shown next. %$R_{3}$ does.
 
 
 \begin{example}
 	Consider the discovery of positive rules for the predicate {\tt couple} between two persons using as example the Obama family. A positive example is (Michelle, Barack) and a negative example is their daughters (Malia, Natasha). 
-	Given three positive rules:
+	Given three rules:
 	
-	\vspace{-2ex}	
+	\vspace{-1ex}	
 	{\small	
 		\begin{equation*}
 		R_{1}:	\atom{livesIn}{a}{v_0} \wedge \atom{livesIn}{b}{v_0} \Rightarrow  \atom{couple}{a}{b}  
@@ -169,14 +169,14 @@ have very little impact when applied on the KB. In fact, given a pair of entitie
 		\begin{equation*}
 		R_{2}:	\atom{hasChild}{a}{v_i} \wedge \atom{hasChild}{b}{v_i} \Rightarrow  \atom{couple}{a}{b}  
 		\end{equation*}
-		\vspace{-2ex}	
+		\vspace{-1ex}	
 		\begin{equation*}
 			\begin{split}
 			R_{3}:	\atom{hasChild}{Michelle}{Malia} \wedge  \atom{hasChild}{Barack}{Malia} \\ \Rightarrow \atom{couple}{Michelle}{Barack}
 			\end{split}
 		\end{equation*}
 	}
-	\vspace{-2ex}	
+	\vspace{-1ex}	
 	
 	\noindent
 	Rule $R_{1}$ states that two persons are a couple if the live in the same place, while rule $R_{2}$ states that they are a couple if they have a child in common. Both rules cover the positive example, but $R_{1}$ covers also the negative one.
@@ -233,12 +233,12 @@ while a high $\alpha$ champions the recall by favoring rules covering more gener
 %remember to state this in exp
 
 \begin{example}
-	Consider again rule $r_2'$ %of Example~\ref{ex:ex2} 
+	Consider again rule $r_2$ of Example~\ref{ex:krd_intro} 
 	and two sets of pairs of entities $G$ and $V$ from a KB $\kb$. 
 	%The two components of $w_r$ are computed as follow:
 The first component of $w_r$ is computed as 1 minus the number of pairs $(x,y)$ in $G$ where
 		$x$ is born after $y$ divided by the number of elements in $G$.
-The second component is the ratio between number of pairs $(x,y)$ in $V$ where $x$ is born after $y$ and number of pairs $(x,y)$ in $V$ where the birth date for both $x$ and $y$ is in $\kb$.
+The second component is the ratio between number of pairs $(x,y)$ in $V$ where $x$ is born after $y$ and number of pairs $(x,y)$ in $V$ where the birth date for both $x$ and $y$ is known in $\kb$.
 \end{example}
 
 \begin{definition}
@@ -249,12 +249,11 @@ The second component is the ratio between number of pairs $(x,y)$ in $V$ where $
 	\end{equation*}
 \end{definition}
 
-Weights enable the modeling of the presence of errors in KBs. We will show in the experimental evaluation that several semantically correct rules have a significant coverage over $V$, which corresponds to errors in the KB. 
+Weights enable the modelling of the presence of errors in KBs. We will show in the experimental evaluation that several semantically correct rules have a significant coverage over $V$, which corresponds to potential errors in the KB. 
 %The exact discovery problem implies the absence of errors in the input KB, however such an assumption is too strong for KBs built from external web sources~\cite{dong2014knowledge,shin2015incremental,suchanek2007yago} where inconsistencies are common~\cite{suchanek2009sofie}.
 
 \vspace{-1ex}	
-\subsection{Problem Definition} \label{sec:krd_prob_def}
-\vspace{-1ex}	
+\subsection{Problem Definition} \label{sec:krd_prob_def}	
 We can now state the approximate version of the problem.
 
 \begin{definition}

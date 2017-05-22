@@ -79,7 +79,7 @@ Therefore negative rules will always discover many correct negative facts. Howev
 
 %\vspace{-1ex}
 {\small
-\begin{table}[thb]
+\begin{table}[t]
 	\centering
 	\caption{Dataset characteristics.}
 	\vspace{-2ex}
@@ -112,7 +112,7 @@ The size of the KB is important as loading the entire KB in memory requires to e
 While \krd mines rules for a given target predicate at a time, it could also discover rules over the entire KB given its set of predicates. 
 %This is further elaborated in Section~\ref{sec:krd_comparative}.
 
-\begin{table}[ht]
+\begin{table}[b]
 %\vspace{-2ex}
 	\centering
 	\caption{\krd Positive Rule Accuracy.}
@@ -165,7 +165,7 @@ Parameter $maxPathLen$  also impacts the running time. The longer the rule, the 
 %We will show in the next Section how we can be much faster if we set to 2 atoms the maximum length of the rule. In the next chapter we will discuss some future directions to significantly cut down the running time based on the above observations.
 
 
-%\vspace{1ex}
+\vspace{-1ex}
 \begin{table}[htb]
 	\centering
 	\caption{\krd Negative Rule Accuracy.}
@@ -245,7 +245,7 @@ We compared our methods against \amie~\cite{galarraga2015fast}, a state-of-the-a
 %Differently from us, 
 It then outputs all rules that exceed a given threshold and ranks them according to a coverage function.
 
-\begin{table}[htb]
+\begin{table}[t]
 %\vspace{-3ex}
 	\centering
 	\caption{\amie Dataset characteristics.}
@@ -278,12 +278,12 @@ the most popular \texttt{rdf:type} that is not super class of any other most pop
 
 %After computing type domain and co-domain for each predicate, we run our approach sequentially on every predicate. Furthermore we set the $maxPathLen$ parameter to 2, since this is the default setting for \amie.
 
-\begin{figure}[htb]
+\begin{figure}[b]
 	\centering
 %	\vspace{1ex}
 	\includegraphics[width=.9\columnwidth]{include/figure/vsAmieYago.pdf}
 	\vspace{-2ex}
-	\caption{Accuracy for new facts identified by executing rules according to descending score on  \yago 2 (no literals).}
+	\caption{Accuracy for new facts identified by executing rules in descending score on  \yago 2 (no literals).}
 	\label{fig:vs_amie_yago}
 \end{figure}
 
@@ -293,14 +293,6 @@ the most popular \texttt{rdf:type} that is not super class of any other most pop
 %along with their scores 
 75 output rules in \yago, and 6090 in \dbpedia. We followed their experimental setting and picked the first 30 best rules according to their score. We then picked the rules produced by our approach on the same head predicate of the 30 best rules output of \amie. 
 %I DON T UNDERSTAND LAST SENTENCE
-
-\begin{figure}[ht]
-	\centering
-	\includegraphics[width=.9\columnwidth]{include/figure/vsAmieDBPedia.pdf}
-	\vspace{-2ex}
-	\caption{Accuracy for new facts identified by executing rules according to descending score on \dbpedia (no literals).}
-	\label{fig:vs_amie_dbpedia}
-\end{figure}
 
 Figures~\ref{fig:vs_amie_yago} and \ref{fig:vs_amie_dbpedia} report the results
 on \yago and \dbpedia, respectively. 
@@ -330,6 +322,13 @@ As a consequence, \krd outputs just 11 rules for 8 target predicates on the enti
 
 
 %Figure~\ref{fig:vs_amie_dbpedia} shows the same evaluation on \dbpedia. \dbpedia has a richer set of relations, therefore also \krd is capable of producing 30 rules in output. Despite the same number of rules, once again our approach leads to a lower number of predictions (26K vs 41K) with a significant higher accuracy (85\% vs 74\%). The only point where \amie outperforms our approach is when we consider the top $3$ rules: the third rule discovered by \amie is indeed a universally true rule that produces more than 11K correct predictions.
+\begin{figure}[t]
+	\centering
+	\includegraphics[width=.9\columnwidth]{include/figure/vsAmieDBPedia.pdf}
+	\vspace{-2ex}
+	\caption{Accuracy for new facts identified by executing rules in descending score on \dbpedia (no literals).}
+	\label{fig:vs_amie_dbpedia}
+\end{figure}
 
 \myparagraph{Negative Rules Comparison}
 %We used \amie also to discover negative rules. 
@@ -395,7 +394,7 @@ On our machine, \amie could finish the computation  on \yago 2, while for other 
 %		\end{tabular}
 %	\end{small}
 %\end{table}
-\begin{table}[htb]
+\begin{table}[b]
 %\vspace{-3ex}
 	\centering
 	\caption{Total Run Time Comparison.}
@@ -489,36 +488,42 @@ and the output is the same as \amie. We did not compare with classic Inductive L
 \subsection{Internal Evaluation} \label{sec:krd_int_evaluation}
 \vspace{-0.2ex}
 We briefly outline the most relevant findings when studying the impact of individual components in \krd.
-Full results %%%%%%%%%JOURNAL on the internal evaluation %are not reported due to space reasons but 
-can be found  at \url{http://***double-blind***}.
+Full results and explanations%%%%%%%%%JOURNAL on the internal evaluation 
+are not reported due to space reasons but 
+can be found  at TODO: \url{http://***double-blind***}.
 %in the technical report online at \url{http://bit.ly/2bDZO9F}.
 
-\begin{table}[htb]
-	\centering
-	\caption{Effect of Negative Examples Generation Strategy on \dbpedia.}
-			\vspace{-2ex}
-	\label{tab:random_neg_examples}
-	\begin{tabular}{|c|c|c|c|c|}
-		\hline
-		\hline
-		{\it Strategy}&{\it \# Potential Errors} & {\it Precision} \tabularnewline
-		\hline
-		\emph{Random} & 247 & \textbf{95.95}\%\tabularnewline
-		\emph{LCWA\_Random} & 263 & 95.82\% \tabularnewline
-		\krd & \textbf{499} & 92.38\%\tabularnewline
-		\hline
-	\end{tabular}
-\end{table}
+\noindent \myparagraph{Machine Learning Application} We prove the applicability of our approach by providing Machine Learning algorithms menaningful training examples.
+We use \krd to compute negative examples for distant supervision in \deepdive, showing significantly better results than using only positive examples 
+and comparable results with high quality manually crafted examples.
 
-\noindent \myparagraph{LCWA} We study the effect of the LCWA assumption for the generation of negative examples.
-%, which clearly outperforms random generation strategies in terms of accuracy.
-Given a predicate $p$, we tested three different generation strategies: \krd strategy (Section~\ref{sec:ex_generation}), Random (randomly select $k$ pairs $(x,y)$ from the Cartesian product s.t. triple $\<x,p,y\> \notin \kb$), and LCWA (\krd strategy without the constraint that $x$ and $y$ must be connected by a predicate different from $p$).
-Table~\ref{tab:random_neg_examples} reports the results for the discovered rules. \krd strategy leads to the rules that can capture most errors.
-\emph{Random} and \emph{LCWA\_Random} show similar behavior, with slightly better precision than \krd. This is because whenever we randomly pick examples, %%%%%%%%%%JOURNAL from the Cartesian product of subject and object, 
-the likelihood of picking entities from a different time period is very high, and negative rules pivoting on time constraints are usually correct. Instead, by forcing $x$ and $y$ to be connected with different predicate, we generate semantically related examples. %%%%%%%%%%JOURNAL that lead to different rules. 
-Rules such as $\atom{parent}{a}{b} \Rightarrow  \atom{notSpouse}{a}{b}$ are not generated with random strategies, since the likelihood of picking two people that are in a parent relation is very low. 
-%%%%%%%%%JOURNALWhile we use LCWA in our default configuration, the results show the robustness of the algorithm w.r.t. the quality of the negative examples.
-%The strategy we adopt in \krd enables the discovery of more types of rules, and not only rules involving time constraints. 
+\noindent \myparagraph{LCWA} We show that our examples generation strategy based on the LCWA leads to better rules than randomly computed examples due to the semantic relevance of generated pairs. 
+
+%\begin{table}[htb]
+%	\centering
+%	\caption{Effect of Negative Examples Generation Strategy on \dbpedia.}
+%	\vspace{-2ex}
+%	\label{tab:random_neg_examples}
+%	\begin{tabular}{|c|c|c|c|c|}
+%		\hline
+%		\hline
+%		{\it Strategy}&{\it \# Potential Errors} & {\it Precision} \tabularnewline
+%		\hline
+%		\emph{Random} & 247 & \textbf{95.95}\%\tabularnewline
+%		\emph{LCWA\_Random} & 263 & 95.82\% \tabularnewline
+%		\krd & \textbf{499} & 92.38\%\tabularnewline
+%		\hline
+%	\end{tabular}
+%\end{table}
+%We study the effect of the LCWA assumption for the generation of negative examples.
+%%, which clearly outperforms random generation strategies in terms of accuracy.
+%Given a predicate $p$, we tested three different generation strategies: \krd strategy (Section~\ref{sec:ex_generation}), Random (randomly select $k$ pairs $(x,y)$ from the Cartesian product s.t. triple $\<x,p,y\> \notin \kb$), and LCWA (\krd strategy without the constraint that $x$ and $y$ must be connected by a predicate different from $p$).
+%Table~\ref{tab:random_neg_examples} reports the results for the discovered rules. \krd strategy leads to the rules that can capture most errors.
+%\emph{Random} and \emph{LCWA\_Random} show similar behavior, with slightly better precision than \krd. This is because whenever we randomly pick examples, %%%%%%%%%%JOURNAL from the Cartesian product of subject and object, 
+%the likelihood of picking entities from a different time period is very high, and negative rules pivoting on time constraints are usually correct. Instead, by forcing $x$ and $y$ to be connected with different predicate, we generate semantically related examples. %%%%%%%%%%JOURNAL that lead to different rules. 
+%Rules such as $\atom{parent}{a}{b} \Rightarrow  \atom{notSpouse}{a}{b}$ are not generated with random strategies, since the likelihood of picking two people that are in a parent relation is very low. 
+%%%%%%%%%%JOURNALWhile we use LCWA in our default configuration, the results show the robustness of the algorithm w.r.t. the quality of the negative examples.
+%%The strategy we adopt in \krd enables the discovery of more types of rules, and not only rules involving time constraints. 
 
 
 \noindent \myparagraph{Literals} Including literals in the mining is especially beneficial for negative rules, where we double the number of errors discovered with a 10\% increase in precision.

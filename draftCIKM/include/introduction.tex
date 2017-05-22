@@ -1,7 +1,9 @@
 \section{Introduction}
 %So far, the focus of this thesis has targeted classic web data extraction: we extract entities from semi-structured web sources, along with their attributes, in order to store them in some structured format. A novel research direction is recently focusing on extracting data from web documents to construct knowledge bases (KBs), in order to structurally store entities and relationships among them. Given the different nature of target data, KBs are usually not stored in relational databases. In this chapter we move the attention from classic web data extraction to KBs built from web sources. More specifically, we consider RDF KBs, the most popular format where data is stored as RDF triples.
 
-Building large RDF knowledge-bases (KBs) is a popular trend in information extraction.
+Building large 
+%RDF%
+knowledge-bases (KBs) has become a popular trend in information extraction.
 KBs store information in the form of triples, where a \emph{predicate}, or relation, expresses a binary relation between a \emph{subject} and a \emph{object}. KB triples, called facts, store information about real-world entities and their relationships, such as %``Scott Eastwood is the child of Clint Eastwood",
 ``Michelle Obama is married to Barack Obama", or ``Larry Page is the founder of Google".
 Significant effort has been put on KBs creation in the last 10 years in the research community (\system{DBPedia}~\cite{bizer2009dbpedia}, \system{FreeBase}\cite{bollacker2008freebase}, \system{Wikidata}~\cite{vrandevcic2014wikidata}, \deepdive~\cite{shin2015incremental}, \system{Yago}~\cite{suchanek2007yago}, 
@@ -15,10 +17,10 @@ Google~\cite{dong2014data}, Wal-Mart~\cite{deshpande2013building}).
 Unfortunately, due to their creation process, KBs are usually erroneous and incomplete.
 KBs are bootstrapped by extracting information from sources 
 %%%%%%%%%JOURNAL% oftentimes from the Web, 
-with minimal or no human intervention.  This leads to two problems. First, false facts in the KB are propagated from the sources, or introduced by the extractors. Second, usually KBs do not limit the information of interest with a schema
+with minimal or no human intervention.  This leads to two main problems. First, false facts in the KB are propagated from the sources, or introduced by the extractors. Second, usually KBs do not limit the information of interest with a schema
 % that clearly defines instance data. The set of predicates is unknown a-priori, 
 and let users add facts defined on new predicates by simply inserting new triples. % without any integrity check.  
-Since \emph{closed world assumption} (CWA) does not hold~\cite{dong2014data,galarraga2015fast}, we cannot assume that a missing fact is false %%%%%%%%%JOURNAL% , but rather we should label it as \emph{unknown} 
+Since \emph{closed world assumption} (CWA) does not longer hold in KBs ~\cite{dong2014data,galarraga2015fast}, we cannot assume that a missing fact is false %%%%%%%%%JOURNAL% , but rather we should label it as \emph{unknown} 
 (\emph{open world assumption}).
 
 As a %%%%%%%%%JOURNAL%direct 
@@ -34,7 +36,7 @@ A natural approach to assist curators of KBs is to discover %However, KBs carry 
 %this paper.
 % we investigate the problem of discovering \emph{declarative rules} over RDF KBs. 
 %More specifically, 
-We target the discovery %of first-order Horn Rules constrained by some language biases, introducing 
+In this paper we target the discovery %of first-order Horn Rules constrained by some language biases, introducing 
 of two different types of rules:
 \begin{inparaenum}[\itshape(i)]
 	\item {\em positive rules} to enrich the KB with new facts and thus increase its coverage; %%%%%%%%%JOURNAL% of the reality;
@@ -45,26 +47,26 @@ of two different types of rules:
 	Consider a KB with information about parent and child relationships.
 	A positive rule $r_1$ can be:
 	
-	\vspace{-2.5ex}
+	\vspace{-2ex}
 	{\small
 		\begin{equation*}
 			\atom{parent}{b}{a} \Rightarrow \atom{child}{a}{b}
 		\end{equation*}
 	} 
-	\vspace{-4ex}
+	\vspace{-2ex}
 	
 	\noindent
 	It states that if a person $a$ is parent of person $b$, then $b$ is child of $a$. 
 	%If the KB has the fact ``Clint Eastwood is the parent of Scott Eastwood", we can infer the fact that ``Scott Eastwood is the child of Clint Eastwood".
 	A negative rule $r_2$ has similar form, but different semantics ({\em DOB} stands for Date Of Birth):
 	
-	\vspace{-3ex}
+	\vspace{-2ex}
 	{\small
 		\begin{equation*}
-			\atom{DOB}{a}{v_0} \wedge \atom{DOB}{b}{v_i} \wedge v_0 > v_i \wedge  \atom{child}{a}{b}  \Rightarrow false
+			\atom{DOB}{a}{v_0} \wedge \atom{DOB}{b}{v_i} \wedge v_0 > v_i  \Rightarrow \neg \atom{child}{a}{b}
 		\end{equation*}
 	} 
-	\vspace{-4ex}
+	\vspace{-2ex}
 	
 	\noindent It states that person $b$ cannot be child of $a$ if $a$ was born after $b$. By instantiating the rule for \texttt{child} facts, we identify erroneous triples stating that a child is born before a parent.
 \end{example}
@@ -124,8 +126,8 @@ These results are achieved by exploiting the following contributions.
 \myparagraph{Problem Definition}
 We formally define the problem of rule discovery over erroneous and incomplete KBs. 
 %%%%%%%%%JOURNAL% The input of the problem consists of a target predicate, from which we identify sets of positive and negative examples.  
-In contrast to the traditional ranking of a large set of rules based on a measure of support~\cite{dehaspe1999discovery,galarraga2015fast,schoenmackers2010learning}, our problem definition aims at the identification of a compact subset of approximate rules. % to be exposed to the user. 
-Given errors in the data and incompleteness, the ideal solution is a compact set of rules that cover the majority of the positive examples, and as few negative examples as possible. We map the problem to the %well-known 
+In contrast to the traditional ranking of a large set of rules based on a measure of support~\cite{dehaspe1999discovery,galarraga2015fast,schoenmackers2010learning}, our problem definition aims at the identification of a compact subset of approximated rules. % to be exposed to the user. 
+Given errors in the data and incompleteness, the ideal solution is a compact set of rules that cover the majority of input positive examples, and as few input negative examples as possible. We map the problem to the %well-known 
 weighted set cover problem (Section~\ref{sec:problem}).
 
 %The main benefit of such an approach is to relieve the user from the manual validation of all approximate rules, as they  can be huge in number, or from the definition of a suitable threshold that separates good and bad rules. 
@@ -142,7 +144,7 @@ weighted set cover problem (Section~\ref{sec:problem}).
 \myparagraph{Example Generation}
 Positive and negative examples for a target predicate are crucial to our approach as they determine the ultimate quality of the rules. However, crafting a large number of examples is a tedious exercise that requires manual work. 
 %%%%%%%%%JOURNAL% Moreover, to effectively steer the algorithm towards useful rules, the input examples must have properties, such as the existence of at least a predicate between pairs of entities in each example. 
-We design an algorithm for example generation that is aware of the errors and inconsistency in the KB. Our generated examples lead to better rules than examples obtained with alternative approaches (Section~\ref{sec:rules_gen}). %
+We design an algorithm for example generation that is aware of inconsistencies in the KB. Our generated examples lead to better rules than examples obtained with alternative approaches (Section~\ref{sec:rules_gen}). %
 
 
 %\vspace{0.5ex}
@@ -165,7 +167,7 @@ the disk is accessed only whenever the navigation of a specific path is required
 %STEFANO: IS THIS CORRECT? OR DO WE JUST LIMIT THE NUMBER OF FALSE RULES?
 
 %\vspace{0.5ex}
-We experimentally %%%%%%%%%JOURNAL% test the performance of rule discovery in 
+We experimentally test the performance of %rule discovery in 
 \krd %%%%%%%%%JOURNAL%by using real-world datasets. The evaluation is carried 
 on  three popular and widely used KBs, namely \dbpedia~\cite{bizer2009dbpedia}, \yago~\cite{suchanek2007yago}, and \wikidata~\cite{vrandevcic2014wikidata} (Section~\ref{sec:krd_experiments}). 
 We show that our system
