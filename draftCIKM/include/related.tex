@@ -5,7 +5,7 @@
 %We review some of the most relevant works below.
 
 %\myparagraph{Relational Database Constraints} 
-A significant body of work has addressed the problem of discovering constraints over relational data. 
+A significant body of work has addressed the problem of discovering constraints over {\em relational data}. 
 %Due to the presence of a pre-defined schema, 
 Dependencies are discovered over the attributes of a given schema and encoded into formalisms, such as 
 Functional Dependencies~\cite{abiteboul1995foundations} %%%%JOURNAL%% ,huhtala1999tane} 
@@ -19,14 +19,14 @@ However, these techniques cannot be applied to KBs for three main reasons:
 \begin{inparaenum}[\itshape(i)]
 	\item the schema-less nature of RDF data and the open world assumption; % which no longer holds on RDF KBs;
 	\item traditional approaches rely on the assumption that data is either clean or has a negligible amount of errors, which is not the case with KBs;
-	\item even when the algorithms are designed to support more errors~\cite{abedjan2015temporal,kivinen1995approximate}, there are scalability issues on large RDF dataset: a direct application of relational database techniques on RDF KBs requires the materialization of all possible predicate combinations into relational tables.
+	\item even when the algorithms are designed to support more errors~\cite{abedjan2015temporal,kivinen1995approximate}, there are scalability issues on large RDF datasets: a direct application of relational database techniques on RDF KBs requires the materialization of all possible predicate combinations into relational tables.
 \end{inparaenum}
 %
 %A few FD mining approaches like~\cite{abedjan2015temporal,kivinen1995approximate} that can work with erroneous datasets are still inapplicable to RDF data due to scalability problems.
 Recently, Fan et. al.~\cite{FanFDGraphs} laid the theoretical foundations of Functional Dependencies on Graphs. % (GFDs). 
 %They also propose parallel algorithms for GFDs computation and evaluate the accuracy on \yago and \dbpedia. Despite existing a natural correlation between FDs and Horn Rules, 
 However, their language covers only a portion of our negative rules %to detect inconsistencies 
-and does not include smart literal comparisons, which we have shown to be useful when detecting errors in KBs.
+and does not include general literal comparisons, which we have shown to be useful when detecting errors in KBs.
 
 %To the best of our knowledge, 
 \krd is the first approach that is generic enough %to use the same algorithm 
@@ -62,10 +62,10 @@ ILP systems such as \system{WARMR}~\cite{dehaspe1999discovery} and \system{ALEPH
 It has been showed how this assumption does not hold in KBs and that  \amie outperforms these two systems~\cite{galarraga2015fast}. 
 \system{Sherlock}~\cite{schoenmackers2010learning} is an ILP system that extracts first-order Horn Rules 
 from Web text. While extending \krd to free text %rather than relying on a well-defined KB 
-is an interesting future work, the statistical significance estimate used by 
-% needs a threshold to discover meaningful rules. 
-As in other ILP systems inspired from Association Rule Mining~\cite{agrawal1993mining}, also \system{Sherlock} relies on thresholds for support and confidence that are non-trivial to set (Section~\ref{sec:krd_comparative}). We avoid thresholds in \krd and rely on a set cover problem formulation that outputs only rules contributing to the coverage of the generation set while minimizing the coverage of the validation set.
-
+is an interesting future work, the statistical significance estimate needs a threshold to discover meaningful rules. 
+%As in other ILP systems inspired from Association Rule Mining~\cite{agrawal1993mining}, also \system{Sherlock} relies on thresholds for support and confidence that are non-trivial to set (Section~\ref{sec:krd_comparative}). We avoid thresholds in \krd and rely on a set cover problem formulation that outputs only rules contributing to the coverage of the generation set while minimizing the coverage of the validation set.
+Detection of semantic errors in KBs has also been tackled by using ILP methods to discover axioms concerning properties? domain and
+range restrictions that identify contradictions~\cite{Topper:2012}. Another approach identifies outliers after grouping subjects by type (for example, for ``population'' it groups by city and state)~\cite{Wienand2014}. Both methods are orthogonal to our negative rules.
 %%%%%%%%%JOURNAL% Finally, recent efforts from the ML community address the absence of negative training data through approaches like one-class learning and generative adversarial networks~\cite{goodfellow2014generative}. The negative training examples are created with a generative model that is iteratively refined by the feedback obtained by a classifier. %discriminative model (classifier). 
 %  A severe limitation of this model is its inability to work with minimum training data as the discriminator can overfit in such scenarios and the generative model inherently needs several iterations to depart from a poorly guessed prior parameters for the negative examples. This does not however preclude the fact that ML
 %%%%%%%%%JOURNAL% As the generation of negative examples is orthogonal to our mining algorithm, it would be interesting to integrate these ML approaches for the discovery of declarative rules. %, as we do in \krd.
