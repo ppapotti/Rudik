@@ -179,7 +179,7 @@ We extend this intuition also to predicates rather than entities. If a KB contai
 Under this assumption, we can identify entities that are likely to be complete and generate negative examples taking the union of entities satisfying the LCWA. For a predicate $rel$, a negative example is a pair $(x,y)$ where either $x$ is the subject of one or more triples $\<x,rel,y'\>$ with $y \neq y'$, or $y$ is the object of one or more triples $\<x',rel,y\>$ with $x \neq x'$. 
 For example, if $rel=\texttt{child}$, a negative example is a pair $(x,y)$ s.t. $x$ has some children in the KB who are not $y$, or $y$ is the child of someone who is not $x$. %By considering the union of the two LCWA aspects we do not restrict predicates to be functional (such as in~\cite{galarraga2015fast}). 
 %not sure what is an aspect in the sentence above
-Moreover, for a candidate negative example over entities $(x,y)$, $x$ must be connected to $y$ via a predicate that is different from the target predicate. In other words, given a KB $\kb$ and a target predicate $rel$, $(x,y)$ is a negative examples if $\<x,rel',y\> \in \kb$, with $rel' \neq rel$. 
+Moreover, for a candidate negative example over entities $(x,y)$, $x$ must be connected to $y$ via a predicate that is different from the target predicate. In other words, given a KB $\kb$ and a target predicate $rel$, $(x,y)$ is a negative example if $\<x,rel',y\> \in \kb$, with $rel' \neq rel$. 
 These restrictions make the size of $V$ of the same order of magnitude of $G$, %%%%%JOURNAL% (see Section~\ref{sec:krd_experiments}), 
 and guarantees that, for every $(x,y) \in V$, $x$ and $y$ are semantically related by at least one predicate.
 
