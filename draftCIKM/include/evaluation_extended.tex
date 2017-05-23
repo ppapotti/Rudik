@@ -413,9 +413,12 @@ rules that are less general than our approach; on \yago 2, it discovers 2K new f
 %are we using the same KB? 
 A recent system~\cite{Chen:2016} implements \amie algorithm with a focus on scalability. They do not modify the mining part, but split the KB into multiple cluster nodes to run in parallel. The output is the same as \amie. We did not compare with classic Inductive Logic Programming systems~\cite{dehaspe1999discovery}, as these are already significantly outperformed by \amie both in accuracy and running time.
 
-\vspace{-1ex}
-\subsection{Machine Learning Application} \label{sec:krd_deep_dive}
-\vspace{-1ex}
+\subsection{Internal Evaluation} \label{sec:krd_int_evaluation}
+
+In this technical report we present extended findings of individual components in \krd.
+More specifically, we deeply dig on 6 different aspects that characterize our approach.
+
+\noindent \myparagraph{Machine Learning Application}
 The goal of these experiments is to demonstrate the applicability of our approach in providing Machine Learning (ML) algorithms meaningful training examples.
 We chose \deepdive~\cite{shin2015incremental}, a ML framework for information extraction. \deepdive extracts entities and relations from text articles via distant supervision. The key idea behind distant supervision is to use an external source of information (e.g., a KB) to provide training examples for a supervised algorithm. For example, \deepdive can extract mentions of married couples from text documents. In such a scenario, it uses %as a first step 
 \dbpedia to label some pairs of entities as \emph{true} positive (pairs of married couples that can be found in \dbpedia). 
@@ -456,12 +459,6 @@ The output of \texttt{ManualSampl} and \krd are very similar, meaning that we ca
 %NOT ESSENTIAL
 %With manually defined rules the number of generated examples is significantly higher ($23$K vs $5$K generated with \krd), however the results are very similar since a small number of significant examples is enough to provide complete evidence for the training. 
 %This confirms the main finding of this experiment: as long as we have an external source of information with a decent coverage over the input articles, users do not need to worry about providing rules to generate negative examples.
-
-\vspace{-1ex}
-\subsection{Internal Evaluation} \label{sec:krd_int_evaluation}
-\vspace{-1ex}
-In this technical report we present extended findings of individual components in \krd.
-More specifically, we deeply dig on 6 different aspects that characterize our approach.
 
 %We briefly outline the most relevant findings when studying the impact of individual components in \krd.
 %Full results on the internal evaluation %are not reported due to space reasons but 
