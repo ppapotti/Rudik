@@ -4,7 +4,7 @@
 Building large 
 %RDF%
 knowledge-bases (KBs) has become a popular trend in information extraction.
-KBs store information in the form of triples, where a \emph{predicate}, or relation, expresses a binary relation between a \emph{subject} and a \emph{object}. KB triples, called facts, store information about real-world entities and their relationships, such as %``Scott Eastwood is the child of Clint Eastwood",
+KBs store information in the form of triples, where a \emph{predicate}, or relation, expresses a binary relation between a \emph{subject} and an \emph{object}. KB triples, called facts, store information about real-world entities and their relationships, such as %``Scott Eastwood is the child of Clint Eastwood",
 ``Michelle Obama is married to Barack Obama", or ``Larry Page is the founder of Google".
 Significant effort has been put on KBs creation in the last 10 years in the research community (\system{DBPedia}~\cite{bizer2009dbpedia}, \system{FreeBase}\cite{bollacker2008freebase}, \system{Wikidata}~\cite{vrandevcic2014wikidata}, \deepdive~\cite{shin2015incremental}, \system{Yago}~\cite{suchanek2007yago}, 
 %\system{NELL}~\cite{carlson2010toward}, 
@@ -20,7 +20,7 @@ KBs are bootstrapped by extracting information from sources
 with minimal or no human intervention.  This leads to two main problems. First, false facts in the KB are propagated from the sources, or introduced by the extractors. Second, usually KBs do not limit the information of interest with a schema
 % that clearly defines instance data. The set of predicates is unknown a-priori, 
 and let users add facts defined on new predicates by simply inserting new triples. % without any integrity check.  
-Since \emph{closed world assumption} (CWA) does not longer hold in KBs ~\cite{dong2014data,galarraga2015fast}, we cannot assume that a missing fact is false %%%%%%%%%JOURNAL% , but rather we should label it as \emph{unknown} 
+Since \emph{closed world assumption} (CWA) does no longer hold in KBs ~\cite{dong2014data,galarraga2015fast}, we cannot assume that a missing fact is false %%%%%%%%%JOURNAL% , but rather we should label it as \emph{unknown} 
 (\emph{open world assumption}).
 
 As a %%%%%%%%%JOURNAL%direct 
