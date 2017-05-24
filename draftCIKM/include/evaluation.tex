@@ -146,12 +146,12 @@ While \krd mines rules for a given target predicate at a time, it could also dis
 	\begin{tabular}{|c|c|c|c|c|}
 		\hline
 		\hline
-		{\it KB}&{\it Avg. Run Time}&{\it Avg. Precision All Predicates}&{\it \# Annotations} \tabularnewline
-	       & &{\it  (Predicates with Rules)}& \tabularnewline
+		{\it KB}&{\it Avg.}&{\it Avg. Precision All Predicates}&{\it \# Annotations} \tabularnewline
+	       &{\it Run Time} &{\it  (Predicates with Rules)}& \tabularnewline
 		\hline
-		\dbpedia & 34min, 56sec & \textbf{63.99}\% (\textbf{95.83}\%)& 139\tabularnewline
-		\yago 3 &  59min, 25sec & \textbf{62.86}\% (\textbf{96.37}\%)& 150\tabularnewline
-		\wikidata &  2h, 21min, 34sec & \textbf{73.33}\% (\textbf{98.13}\%)& 180\tabularnewline
+		\dbpedia & 35min & 63.99\% (\textbf{97.14}\%)& 139\tabularnewline
+		\yago 3 &  59min & 62.86\% (\textbf{84.44}\%)& 150\tabularnewline
+		\wikidata &  2h, 21min & 73.33\% (\textbf{98.95}\%)& 180\tabularnewline
 		\hline
 	\end{tabular}
 	\end{small}
@@ -178,7 +178,7 @@ Discovering perfect positive rules is a hard task, mostly because there is no gu
 %, as there are many people who are born in the same place of a company and have not founded the company
 . However this rule has a very high coverage over the generation set (many companies' founders founded their company in their birth place), and a very low coverage over the validation set -- among the cartesian product of all the people and companies, a very small fraction includes people and companies born and founded in the same place. Despite such hard cases, our approach is always capable of producing correct rules for those predicates for which we knew there existed some valid rules. 
 \end{comment}
-Some predicates, such as \texttt{academicAdvisor}, \texttt{child}, and \texttt{spouse}, have a precision above $95\%$ in all KBs, but average precision values are brought down by few predicates, such as \texttt{founder}, where meaningful positive rules probably do not exist at all. In other terms, when a rule existed, the system was able to find it, but it was not able to recognize cases where no positive rules existed. However, it suffices to read the rules to recognize that they are semantically wrong and should be discarded, i.e., it is immediate for a human to see that it is not possible to derive a founder from the information on persons and companies.  %in the KBs
+Some predicates, such as \texttt{academicAdvisor}, \texttt{child}, and \texttt{spouse}, have a precision above $95\%$ in all KBs (values in brackets of third column), but average precision values are brought down by few predicates, such as \texttt{founder}, where meaningful positive rules probably do not exist at all. In other terms, when a rule existed, the system was able to find it, but it was not able to recognize cases where no positive rules existed. However, it suffices to read the rules to recognize that they are semantically wrong and should be discarded, i.e., it is immediate for a human to see that it is not possible to derive a founder from the information on persons and companies.  %in the KBs
 
 The running time is influenced by the size of the KB with the number of triples and the number of predicates. %\krd is slower in \wikidata, which is the biggest KB.
  The more predicates we have in the KB, the more alternative paths we test while traversing the graph.
