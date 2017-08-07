@@ -26,7 +26,7 @@
 <!-- 			</parameters> -->
 			<class>asu.edu.neg_rule_miner.sparql.jena.remote.QuerySparqlRemoteEndpoint</class>
 			<parameters>
-				<sparql_endpoint>http://dbpedia.org/sparql</sparql_endpoint>
+				<sparql_endpoint>http://localhost:8890/sparql</sparql_endpoint>
 			</parameters>
 <!-- 			<class>asu.edu.neg_rule_miner.sparql.jena.tbd.QueryJenaRDFAPI</class> -->
 <!-- 			<parameters> -->
@@ -41,7 +41,7 @@
 <!-- 					</parameters> -->
 <!-- 				</sparql_back_up> -->
 <!-- 			</parameters> -->
-			<graph_iri>http://localhost:8890/sparql</graph_iri>
+			<graph_iri>http://dbpedia.org</graph_iri>
 			<!-- prefix to be specified in the sparql query -->
 			<relation_prefix>
 				<prefix>
