@@ -1,0 +1,12 @@
+relation: 	[http://dbpedia.org/ontology/openingDate]
+Subject: 	null
+Object: 	null
+----------------------------Negative output rules----------------------------
+>(object,v0) & http://dbpedia.org/ontology/openingDate(subject,v0)	 	0.2555055950130295
+----------------------------Positive output rules----------------------------
+http://dbpedia.org/ontology/owningOrganisation(subject,v0) & http://dbpedia.org/ontology/censusYear(v0,v1) & <(object,v1)	 	1.0
+http://dbpedia.org/ontology/numberOfTracks(subject,v0) & http://dbpedia.org/ontology/passengersPerYear(v1,v0) & http://dbpedia.org/ontology/openingDate(v1,object)	 	0.005173099880620772
+http://dbpedia.org/ontology/owningOrganisation(subject,v0) & http://dbpedia.org/ontology/type(v1,v0) & http://dbpedia.org/ontology/openingDate(v1,object)	 	0.0693345742205677
+---------------------------------End----------------------------------------------
+ 
+ 

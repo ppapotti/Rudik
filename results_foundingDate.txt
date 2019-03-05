@@ -1,0 +1,10 @@
+relation: 	[http://dbpedia.org/ontology/foundingDate]
+Subject: 	null
+Object: 	null
+----------------------------Negative output rules----------------------------
+http://dbpedia.org/ontology/dissolutionDate(subject,object)	 	0.8077324973876698
+----------------------------Positive output rules----------------------------
+<(object,v0) & http://dbpedia.org/ontology/foundingDate(subject,v0)	 	1.0
+---------------------------------End----------------------------------------------
+ 
+ 

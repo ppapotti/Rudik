@@ -1,0 +1,9 @@
+relation: 	[http://dbpedia.org/ontology/startDate]
+Subject: 	null
+Object: 	null
+----------------------------Negative output rules----------------------------
+----------------------------Positive output rules----------------------------
+<(object,v0) & http://dbpedia.org/ontology/startDate(subject,v0)	 	1.0
+---------------------------------End----------------------------------------------
+ 
+ 

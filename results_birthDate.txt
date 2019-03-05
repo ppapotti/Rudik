@@ -1,0 +1,16 @@
+relation: 	[http://dbpedia.org/ontology/birthDate]
+Subject: 	null
+Object: 	null
+----------------------------Negative output rules----------------------------
+>(object,v0) & http://dbpedia.org/ontology/activeYearsStartDate(subject,v0)	 	0.9476925992608737
+>(object,v0) & http://dbpedia.org/ontology/deathDate(subject,v0)	 	0.041666666666666664
+http://dbpedia.org/ontology/predecessor(v0,subject) & http://dbpedia.org/ontology/activeYearsStartDate(v0,v1) & >(object,v1)	 	0.9709708737864078
+>(object,v0) & http://dbpedia.org/ontology/activeYearsStartDate(v1,v0) & http://dbpedia.org/ontology/successor(subject,v1)	 	0.9374765654293213
+http://dbpedia.org/ontology/deathDate(subject,object)	 	0.25121910672725256
+
+----------------------------Positive output rules----------------------------
+<(object,v0) & http://dbpedia.org/ontology/deathDate(subject,v0)	 	1.0
+
+---------------------------------End----------------------------------------------
+ 
+ 

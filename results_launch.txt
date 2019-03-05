@@ -1,0 +1,10 @@
+relation: 	[http://dbpedia.org/ontology/launch]
+Subject: 	null
+Object: 	null
+----------------------------Negative output rules----------------------------
+>(object,v0) & http://dbpedia.org/ontology/port1DockingDate(subject,v0)	 	0.7745098039215687
+----------------------------Positive output rules----------------------------
+<(object,v0) & http://dbpedia.org/ontology/port1DockingDate(subject,v0)	 	1.0
+---------------------------------End----------------------------------------------
+ 
+ 

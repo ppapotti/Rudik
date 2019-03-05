@@ -36,7 +36,11 @@
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+		<mainClass>asu.edu.rule_mine.rudik.Rudik2_simpleClustering</mainClass>
 	</properties>
+
+
 
 	<dependencies>
 		<dependency>
@@ -107,10 +111,11 @@
 			<version>3.1</version>
 		</dependency>
 
+
 		<dependency>
-			<groupId>com.google.guava</groupId>
-			<artifactId>guava</artifactId>
-			<version>17.0</version>
+    		<groupId>com.google.guava</groupId>
+    		<artifactId>guava</artifactId>
+    		<version>19.0</version>
 		</dependency>
 
 		<dependency>
@@ -194,14 +199,14 @@
 				</executions>
 			</plugin>
 
-			<!-- Forces the compiler to 1.7 (source and target) -->
+			<!-- Forces the compiler to 1.8 (source and target) -->
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
 				<version>3.1</version>
 				<configuration>
-					<source>1.7</source>
-					<target>1.7</target>
+					<source>1.8</source>
+					<target>1.8</target>
 				</configuration>
 			</plugin>
 
@@ -246,6 +251,43 @@
 					</reportPlugins>
 				</configuration>
 			</plugin>
+
+			<plugin>
+			    <groupId>org.apache.maven.plugins</groupId>
+			    <artifactId>maven-shade-plugin</artifactId>
+			    <version>2.3</version>
+			    <configuration>
+			        <createDependencyReducedPom>true</createDependencyReducedPom>
+			        <filters>
+			            <filter>
+			                <artifact>*:*</artifact>
+			                <excludes>
+			                    <exclude>META-INF/*.SF</exclude>
+			                    <exclude>META-INF/*.DSA</exclude>
+			                    <exclude>META-INF/*.RSA</exclude>
+			                </excludes>
+			            </filter>
+			        </filters>
+			    </configuration>
+			    <executions>
+			        <execution>
+			            <phase>package</phase>
+			            <goals>
+			                <goal>shade</goal>
+			            </goals>
+			            <configuration>
+			                <transformers>
+			                    <transformer implementation="org.apache.maven.plugins.shade.resource.ServicesResourceTransformer"/>
+			                    <transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
+			                        <mainClass>asu.edu.rule_miner.rudik.Rudik2_simpleClustering
+</mainClass>
+			                    </transformer>
+			                </transformers>
+			            </configuration>
+			        </execution>
+			    </executions>
+			</plugin>
+
 
 		</plugins>
 	</build>
