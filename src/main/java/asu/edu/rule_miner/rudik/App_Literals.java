@@ -31,7 +31,7 @@ public class App_Literals
 	public static void main( String[] args ) throws IOException
 	{
 
-		relations = Sets.newHashSet("http://dbpedia.org/ontology/completionDate"); 
+		relations = Sets.newHashSet("http://dbpedia.org/ontology/launchDate"); 
    		DynamicPruningRuleDiscovery naive = new DynamicPruningRuleDiscovery();
 	   
    		Set<Pair<String,String>> negativeExamples = Sets.newHashSet();
@@ -87,7 +87,6 @@ public class App_Literals
    		writer.write("---------------------------------End----------------------------------------------" + "\n \n \n");
    		writer.close();
 
-	
    		}
 	}
 }

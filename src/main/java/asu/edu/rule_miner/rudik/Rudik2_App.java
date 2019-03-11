@@ -77,13 +77,13 @@ public class Rudik2_App
 	public static final String organisation_type = "http://dbpedia.org/ontology/Organisation";
 	public static final String person_type = "http://dbpedia.org/ontology/Person";
 
- 	//public static final Set<String> relations = Sets.newHashSet("http://dbpedia.org/ontology/foundedBy");
-	//public static final String typeSubject = "http://dbpedia.org/ontology/Agent";
-	//public static final String typeObject = "http://dbpedia.org/ontology/Agent";
+ 	public static final Set<String> relations = Sets.newHashSet("http://dbpedia.org/ontology/foundedBy");
+	public static final String typeSubject = "http://dbpedia.org/ontology/Agent";
+	public static final String typeObject = "http://dbpedia.org/ontology/Agent";
 
-  	public static final Set<String> relations = Sets.newHashSet("http://dbpedia.org/ontology/spouse");
-	public static final String typeSubject = "http://dbpedia.org/ontology/Person";
-	public static final String typeObject = "http://dbpedia.org/ontology/Person";
+  	//public static final Set<String> relations = Sets.newHashSet("http://dbpedia.org/ontology/spouse");
+	//public static final String typeSubject = "http://dbpedia.org/ontology/Person";
+	//public static final String typeObject = "http://dbpedia.org/ontology/Person";
 
 
  // 	public static final Set<String> relations = Sets.newHashSet("http://dbpedia.org/ontology/vicePresident");
@@ -599,10 +599,10 @@ public class Rudik2_App
 			                	// if (currentTypes_sub.contains(organisation_type) && currentTypes_obj.contains(person_type))
 			                	// 	wr_2.write(tmp + "\n");			                	
 			                	for (final String type_ : currentTypes_sub) 
-		                			if (type_.contains(ontology_prefix) && !type_.contains(agent_type) && !type_.contains(typeSubject)) 
+		                			if (type_.contains(ontology_prefix) && !type_.contains(agent_type) && !type_.contains(typeSubject) && !type_.contains(person_type)) 
 		                    			entity2types_sub.put(type_, entity2types_sub.getOrDefault(type_, 0) + 1);
 				                for (final String type_ : currentTypes_obj) 
-			    	            	if (type_.contains(ontology_prefix) && !type_.contains(agent_type) && !type_.contains(typeObject)) 
+			    	            	if (type_.contains(ontology_prefix) && !type_.contains(agent_type) && !type_.contains(typeObject) && !type_.contains(person_type)) 
 		            		        	entity2types_obj.put(type_, entity2types_obj.getOrDefault(type_, 0) + 1);
 			            	}
 			            }
@@ -615,10 +615,10 @@ public class Rudik2_App
 			                	// 	wr_2.write(tmp + "\n");	
 			                	
 			                	for (final String type_ : currentTypes_sub) 
-		                			if (type_.contains(ontology_prefix) && !type_.contains(agent_type) && !type_.contains(typeSubject)) 
+		                			if (type_.contains(ontology_prefix) && !type_.contains(agent_type) && !type_.contains(typeSubject) && !type_.contains(person_type)) 
 		                    			entity2types_sub.put(type_, entity2types_sub.getOrDefault(type_, 0) + 1);
 				                for (final String type_ : currentTypes_obj) 
-			    	            	if (type_.contains(ontology_prefix) && !type_.contains(agent_type) && !type_.contains(typeObject)) 
+			    	            	if (type_.contains(ontology_prefix) && !type_.contains(agent_type) && !type_.contains(typeObject) && !type_.contains(person_type)) 
 		            		        	entity2types_obj.put(type_, entity2types_obj.getOrDefault(type_, 0) + 1);
 		            		    
 			            	}
@@ -679,14 +679,12 @@ public class Rudik2_App
 			}
 			
 	    }
+	    
+	    Map<HornRule,Double> outputRules_negative = naive.discoverNegativeHornRules(negativeExamples, positiveExamples, relations, typeSubject, typeObject);
 
-	
-  
-	    naive.discoverNegativeHornRules(negativeExamples, positiveExamples, relations, typeSubject, typeObject);
+	    Map<HornRule,Double> outputRules_positive = naive.discoverPositiveHornRules(negativeExamples, positiveExamples, relations, typeSubject, typeObject);
 
-	    naive.discoverPositiveHornRules(negativeExamples, positiveExamples, relations, typeSubject, typeObject);
-
-		// extend_and_write_xml("deathPlace", "score_deathPlace.xml", entity2types_sub, entity2types_obj, outputRules_positive, outputRules_negative, naive);
+		extend_and_write_xml("foundedBy", "score_foundedBy1.xml", entity2types_sub, entity2types_obj, outputRules_positive, outputRules_negative, naive);
 		//write_xml("foundedBy", "foundedBy_cluster.xml", outputRules_positive, outputRules_negative);
 
 		// load_rules_from_xml("score_foundedBy.xml");

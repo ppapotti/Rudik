@@ -198,7 +198,7 @@ public class DynamicPruningRuleDiscovery extends HornRuleDiscovery{
         LOGGER.debug("Computing next rules for current best rule...");
         //compute next plausible negative rules
         final Set<MultipleGraphHornRule<String>> newPlausibleRules = 
-            currBestRule.nextPlausibleRules(super.maxRuleLen, negativeCoverageThreshold);
+            currBestRule.nextPlausibleRules(super.maxRuleLen, negativeCoverageThreshold,relations.toArray()[0].toString());
 
         //destroy the materialised resources for the rule
         currBestRule.dematerialiseRule();

@@ -1,5 +1,6 @@
 package asu.edu.rule_miner.rudik.model.horn_rule;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
@@ -58,8 +59,9 @@ public class MultipleGraphHornRule<T> extends HornRule{
 	 * @param threshold
 	 * @return
 	 */
-	public Set<MultipleGraphHornRule<T>> nextPlausibleRules(int maxAtomThreshold, int minRuleSupport){
-
+	public Set<MultipleGraphHornRule<T>> nextPlausibleRules(int maxAtomThreshold, int minRuleSupport, String relation){
+		String []rels = relation.split("/");
+		String relation_name = rels[rels.length-1];
 		Set<MultipleGraphHornRule<T>> nextPlausibleRules = Sets.newHashSet();
 
 		boolean succ = this.initialiseBoundingVariable();
@@ -91,10 +93,9 @@ public class MultipleGraphHornRule<T> extends HornRule{
 				return this.nextOneHopPlausibleRules(maxAtomThreshold, minRuleSupport, obligedVariable);
 		}
 		
-	    String[] comparison_rls = {"<","<=","=",">",">="};
-	    String [] vals = {"v0","v1"};
-	    List<String> compare_rels = Arrays.asList(comparison_rls);
-	    List<String> variables = Arrays.asList(vals);
+	    List<String> compare_rels = new ArrayList<String>(Arrays.asList("<","<=","=",">",">="));
+	    List<String> variables = new ArrayList<String>(Arrays.asList("v0","v1"));
+	    List<String> literal_preds = new ArrayList<String>(Arrays.asList("birthDate","deathDate", "releaseDate","foundingDate","launchDate","openingDate"));
 
 		Map<RuleAtom,Boolean> rule2newVariable = Maps.newHashMap();
 		Map<RuleAtom,Set<Pair<T,T>>> rule2coveredExamples = Maps.newHashMap();
@@ -131,10 +132,10 @@ public class MultipleGraphHornRule<T> extends HornRule{
 					if(rules.contains(newRule))
 						continue;
 			          
-					if (compare_rels.contains(label) && variables.contains(currentVariable) && variables.contains(newVariable)) {
-			        	  continue;
-			          }
-					
+					if (literal_preds.contains(relation_name))
+						if (compare_rels.contains(label) && variables.contains(currentVariable) && variables.contains(newVariable)) 
+							continue;
+			          
 					//TO DO: different check
 					if(currentVariable.equals(newVariable)&&!(endNode.equals(e.getNodeSource())))
 						continue;

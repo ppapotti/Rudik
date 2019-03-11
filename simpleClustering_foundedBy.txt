@@ -1,0 +1,952 @@
+relation: 	[http://dbpedia.org/ontology/foundedBy]
+Main types for Subjects: 	[http://dbpedia.org/ontology/Non-ProfitOrganisation, http://dbpedia.org/ontology/Organisation, http://dbpedia.org/ontology/PeriodicalLiterature, http://dbpedia.org/ontology/RecordLabel, http://dbpedia.org/ontology/EducationalInstitution, http://dbpedia.org/ontology/School, http://dbpedia.org/ontology/WrittenWork, http://dbpedia.org/ontology/Broadcaster, http://dbpedia.org/ontology/Work, http://dbpedia.org/ontology/Company]
+Main types for Objects: 	[http://dbpedia.org/ontology/Organisation, http://dbpedia.org/ontology/Place, http://dbpedia.org/ontology/MusicalArtist, http://dbpedia.org/ontology/Location, http://dbpedia.org/ontology/Scientist, http://dbpedia.org/ontology/Person, http://dbpedia.org/ontology/Artist, http://dbpedia.org/ontology/Company, http://dbpedia.org/ontology/PopulatedPlace, http://dbpedia.org/ontology/OfficeHolder]
+-----------------------Cluster Number 1 Aborted-----------------------------
+Subject Type: 	http://dbpedia.org/ontology/Non-ProfitOrganisation	 	 	Object Type: 	http://dbpedia.org/ontology/Organisation
+#Negative examples: 	2	 	 	#Positive examples: 	4
+---------------------------------End----------------------------------------------
+ 
+ 
+-----------------------Cluster Number 2 Aborted-----------------------------
+Subject Type: 	http://dbpedia.org/ontology/Non-ProfitOrganisation	 	 	Object Type: 	http://dbpedia.org/ontology/Place
+#Negative examples: 	500	 	 	#Positive examples: 	69
+---------------------------------End----------------------------------------------
+ 
+ 
+-----------------------Cluster Number 3 Aborted-----------------------------
+Subject Type: 	http://dbpedia.org/ontology/Non-ProfitOrganisation	 	 	Object Type: 	http://dbpedia.org/ontology/MusicalArtist
+#Negative examples: 	0	 	 	#Positive examples: 	0
+---------------------------------End----------------------------------------------
+ 
+ 
+-----------------------Cluster Number 4 Aborted-----------------------------
+Subject Type: 	http://dbpedia.org/ontology/Non-ProfitOrganisation	 	 	Object Type: 	http://dbpedia.org/ontology/Location
+#Negative examples: 	496	 	 	#Positive examples: 	67
+---------------------------------End----------------------------------------------
+ 
+ 
+-----------------------Cluster Number 5 Aborted-----------------------------
+Subject Type: 	http://dbpedia.org/ontology/Non-ProfitOrganisation	 	 	Object Type: 	http://dbpedia.org/ontology/Scientist
+#Negative examples: 	0	 	 	#Positive examples: 	0
+---------------------------------End----------------------------------------------
+ 
+ 
+-----------------------Cluster Number 6 Aborted-----------------------------
+Subject Type: 	http://dbpedia.org/ontology/Non-ProfitOrganisation	 	 	Object Type: 	http://dbpedia.org/ontology/Person
+#Negative examples: 	19	 	 	#Positive examples: 	38
+---------------------------------End----------------------------------------------
+ 
+ 
+-----------------------Cluster Number 7 Aborted-----------------------------
+Subject Type: 	http://dbpedia.org/ontology/Non-ProfitOrganisation	 	 	Object Type: 	http://dbpedia.org/ontology/Artist
+#Negative examples: 	0	 	 	#Positive examples: 	0
+---------------------------------End----------------------------------------------
+ 
+ 
+-----------------------Cluster Number 8 Aborted-----------------------------
+Subject Type: 	http://dbpedia.org/ontology/Non-ProfitOrganisation	 	 	Object Type: 	http://dbpedia.org/ontology/Company
+#Negative examples: 	0	 	 	#Positive examples: 	0
+---------------------------------End----------------------------------------------
+ 
+ 
+-----------------------Cluster Number 9 Aborted-----------------------------
+Subject Type: 	http://dbpedia.org/ontology/Non-ProfitOrganisation	 	 	Object Type: 	http://dbpedia.org/ontology/PopulatedPlace
+#Negative examples: 	500	 	 	#Positive examples: 	69
+---------------------------------End----------------------------------------------
+ 
+ 
+-----------------------Cluster Number 10 Aborted-----------------------------
+Subject Type: 	http://dbpedia.org/ontology/Non-ProfitOrganisation	 	 	Object Type: 	http://dbpedia.org/ontology/OfficeHolder
+#Negative examples: 	3	 	 	#Positive examples: 	6
+---------------------------------End----------------------------------------------
+ 
+ 
+-----------------------Cluster Number 11-----------------------------
+Subject Type: 	http://dbpedia.org/ontology/Organisation	 	 	Object Type: 	http://dbpedia.org/ontology/Organisation
+#Negative examples: 	499	 	 	#Positive examples: 	600
+----------------------------Negative output rules----------------------------
+http://dbpedia.org/ontology/parentCompany(subject,object) & http://dbpedia.org/ontology/foundedBy(object,v0) & http://dbpedia.org/ontology/board(v0,object)	 	0.08
+http://dbpedia.org/ontology/location(subject,v0) & http://dbpedia.org/ontology/country(v1,v0) & http://dbpedia.org/ontology/producer(v1,object)	 	0.02127659574468085
+http://dbpedia.org/ontology/foundedBy(subject,v0) & http://dbpedia.org/ontology/residence(v0,v1) & http://dbpedia.org/ontology/location(object,v1)	 	0.041666666666666664
+http://dbpedia.org/ontology/distributingLabel(subject,v0) & http://dbpedia.org/ontology/successor(http://dbpedia.org/resource/Zonophone,v0) & http://dbpedia.org/ontology/owner(http://dbpedia.org/resource/Zonophone,object)	 	null
+http://dbpedia.org/ontology/revenue(subject,v0) & >(v0,v1) & http://dbpedia.org/ontology/numberOfEmployees(object,v1)	 	0.0
+http://dbpedia.org/ontology/owner(object,v0) & http://dbpedia.org/ontology/locationCity(v0,v1) & http://dbpedia.org/ontology/location(subject,v1)	 	0.14814814814814814
+http://dbpedia.org/ontology/type(subject,v0) & http://dbpedia.org/ontology/type(v1,v0) & http://dbpedia.org/ontology/foundationPlace(v1,object)	 	0.041666666666666664
+http://dbpedia.org/ontology/foundationPlace(subject,v0) & http://dbpedia.org/ontology/stateOfOrigin(v1,v0) & http://dbpedia.org/ontology/foundedBy(object,v1)	 	0.08
+http://dbpedia.org/ontology/foundingYear(object,v0) & >=(v0,v0) & http://dbpedia.org/ontology/extinctionYear(subject,v0)	 	0.041666666666666664
+http://dbpedia.org/ontology/owningCompany(subject,object) & http://dbpedia.org/ontology/company(v0,object) & http://dbpedia.org/ontology/starring(v0,v0)	 	0.041666666666666664
+http://dbpedia.org/ontology/internationally(subject,1^^http://www.w3.org/2001/XMLSchema#integer) & <(1^^http://www.w3.org/2001/XMLSchema#integer,v1) & http://dbpedia.org/ontology/revenue(object,v1)	 	null
+http://dbpedia.org/ontology/foundationPlace(object,v0) & http://dbpedia.org/ontology/birthPlace(v1,v0) & http://dbpedia.org/ontology/foundedBy(subject,v1)	 	0.041666666666666664
+http://dbpedia.org/ontology/parentCompany(subject,object) & http://dbpedia.org/ontology/parentCompany(object,v0) & http://dbpedia.org/ontology/owner(subject,v0)	 	0.5576923076923077
+http://dbpedia.org/ontology/parentCompany(v0,object) & http://dbpedia.org/ontology/subsidiary(v0,v1) & http://dbpedia.org/ontology/parentCompany(subject,v1)	 	0.1686746987951807
+http://dbpedia.org/ontology/location(subject,v0) & http://dbpedia.org/ontology/hometown(v1,v0) & http://dbpedia.org/ontology/employer(v1,object)	 	0.17857142857142858
+http://dbpedia.org/ontology/foundedBy(subject,v0) & http://dbpedia.org/ontology/keyPerson(subject,v0) & http://dbpedia.org/ontology/parentCompany(subject,object)	 	0.8904761904761904
+http://dbpedia.org/ontology/owningCompany(v0,subject) & http://dbpedia.org/ontology/headquarter(v0,v1) & http://dbpedia.org/ontology/location(object,v1)	 	0.02127659574468085
+http://dbpedia.org/ontology/parentCompany(object,v0) & http://dbpedia.org/ontology/owningCompany(v0,v1) & http://dbpedia.org/ontology/owner(subject,v1)	 	0.8380281690140845
+http://dbpedia.org/ontology/country(subject,v0) & http://dbpedia.org/ontology/birthPlace(v1,v0) & http://dbpedia.org/ontology/foundedBy(object,v1)	 	0.014285714285714285
+http://dbpedia.org/ontology/numberOfEmployees(subject,v0) & <(v0,v1) & http://dbpedia.org/ontology/assets(object,v1)	 	0.0
+http://dbpedia.org/ontology/foundedBy(subject,v0) & http://dbpedia.org/ontology/keyPerson(v1,v0) & http://dbpedia.org/ontology/successor(v1,object)	 	0.9290123456790124
+http://dbpedia.org/ontology/parentCompany(v0,subject) & http://dbpedia.org/ontology/distributingCompany(v0,v1) & http://dbpedia.org/ontology/parentCompany(v1,object)	 	0.425
+http://dbpedia.org/ontology/manufacturer(v0,object) & http://dbpedia.org/ontology/variantOf(v0,v1) & http://dbpedia.org/ontology/manufacturer(v1,subject)	 	0.6567164179104478
+http://dbpedia.org/ontology/foundedBy(subject,v0) & http://dbpedia.org/ontology/associatedMusicalArtist(v1,v0) & http://dbpedia.org/ontology/recordLabel(v1,object)	 	0.6051502145922747
+http://dbpedia.org/ontology/industry(subject,v0) & http://dbpedia.org/ontology/product(subject,v0) & http://dbpedia.org/ontology/owner(subject,object)	 	0.6166666666666667
+http://dbpedia.org/ontology/owner(subject,object) & http://dbpedia.org/ontology/owner(v0,object) & http://dbpedia.org/ontology/owner(subject,v0)	 	0.3333333333333333
+http://dbpedia.org/ontology/parentCompany(v0,object) & http://dbpedia.org/ontology/knownFor(v1,v0) & http://dbpedia.org/ontology/foundedBy(subject,v1)	 	0.8424657534246576
+http://dbpedia.org/ontology/owningCompany(subject,object) & http://dbpedia.org/ontology/owner(v0,object) & http://dbpedia.org/ontology/product(object,v0)	 	0.08
+http://dbpedia.org/ontology/owner(v0,object) & http://dbpedia.org/ontology/owningCompany(v0,object) & http://dbpedia.org/ontology/type(subject,object)	 	0.3783783783783784
+http://dbpedia.org/ontology/revenue(object,v0) & >(v0,v1) & http://dbpedia.org/ontology/numberOfEmployees(subject,v1)	 	0.0
+http://dbpedia.org/ontology/country(subject,v0) & http://dbpedia.org/ontology/locationCity(http://dbpedia.org/resource/Sony_Music_Entertainment,v0) & http://dbpedia.org/ontology/parentCompany(object,http://dbpedia.org/resource/Sony_Music_Entertainment)	 	null
+http://dbpedia.org/ontology/parentCompany(subject,object) & http://dbpedia.org/ontology/parentCompany(v0,object) & http://dbpedia.org/ontology/distributingLabel(subject,v0)	 	0.08
+http://dbpedia.org/ontology/location(object,v0) & http://dbpedia.org/ontology/location(v0,http://dbpedia.org/resource/Merseyside) & http://dbpedia.org/ontology/county(subject,http://dbpedia.org/resource/Merseyside)	 	null
+http://dbpedia.org/ontology/subsidiary(v0,object) & http://dbpedia.org/ontology/locationCountry(v0,v1) & http://dbpedia.org/ontology/location(subject,v1)	 	0.041666666666666664
+http://dbpedia.org/ontology/foundedBy(subject,v0) & http://dbpedia.org/ontology/relative(v1,v0) & http://dbpedia.org/ontology/occupation(v1,object)	 	0.603448275862069
+http://dbpedia.org/ontology/country(object,v0) & http://dbpedia.org/ontology/birthPlace(v1,v0) & http://dbpedia.org/ontology/foundedBy(subject,v1)	 	0.014285714285714285
+http://dbpedia.org/ontology/foundedBy(subject,v0) & http://dbpedia.org/ontology/birthPlace(v0,v1) & http://dbpedia.org/ontology/locationCity(object,v1)	 	0.041666666666666664
+http://dbpedia.org/ontology/product(object,v0) & http://dbpedia.org/ontology/product(v1,v0) & http://dbpedia.org/ontology/owner(v1,subject)	 	0.041666666666666664
+http://dbpedia.org/ontology/owner(subject,object) & http://dbpedia.org/ontology/manufacturer(v0,object) & http://dbpedia.org/ontology/relatedMeanOfTransportation(v0,v0)	 	0.041666666666666664
+----------------------------Positive output rules----------------------------
+http://dbpedia.org/ontology/foundationPlace(object,v0) & http://dbpedia.org/ontology/location(v1,v0) & http://dbpedia.org/ontology/foundedBy(subject,v1)	 	0.0032891458187979668
+http://dbpedia.org/ontology/assets(object,v0) & >(v0,v1) & http://dbpedia.org/ontology/numberOfEmployees(subject,v1)	 	NaN
+http://dbpedia.org/ontology/recordLabel(v0,subject) & http://dbpedia.org/ontology/artist(v0,object)	 	0.007247096197756379
+http://dbpedia.org/ontology/revenue(subject,v0) & >(v0,v1) & http://dbpedia.org/ontology/numberOfEmployees(object,v1)	 	NaN
+http://dbpedia.org/ontology/numberOfEmployees(subject,v0) & <(v0,v1) & http://dbpedia.org/ontology/revenue(object,v1)	 	NaN
+http://dbpedia.org/ontology/foundedBy(object,subject)	 	0.40784313725490196
+http://dbpedia.org/ontology/internationally(subject,v0) & <(v0,v1) & http://dbpedia.org/ontology/revenue(object,v1)	 	NaN
+http://dbpedia.org/ontology/foundedBy(subject,v0) & http://dbpedia.org/ontology/almaMater(v1,v0) & http://dbpedia.org/ontology/almaMater(v1,object)	 	0.013463241806908768
+http://dbpedia.org/ontology/employer(v0,object) & http://dbpedia.org/ontology/employer(v0,v1) & http://dbpedia.org/ontology/foundedBy(subject,v1)	 	0.14858260019550343
+http://dbpedia.org/ontology/city(subject,v0) & http://dbpedia.org/ontology/city(v1,v0) & http://dbpedia.org/ontology/foundedBy(v1,object)	 	0.027435731259451285
+http://dbpedia.org/ontology/foundedBy(subject,v0) & http://dbpedia.org/ontology/foundationPlace(v0,v1) & http://dbpedia.org/ontology/locationCountry(object,v1)	 	0.0030904196989333067
+http://dbpedia.org/ontology/producer(v0,object) & http://dbpedia.org/ontology/artist(v0,v1) & http://dbpedia.org/ontology/recordLabel(v1,subject)	 	0.006655408761299295
+http://dbpedia.org/ontology/numberOfStudents(subject,v0) & http://dbpedia.org/ontology/numberOfStudents(v1,v0) & http://dbpedia.org/ontology/foundedBy(v1,object)	 	0.008919722497522299
+http://dbpedia.org/ontology/associatedMusicalArtist(v0,object) & http://dbpedia.org/ontology/hometown(v0,v1) & http://dbpedia.org/ontology/country(subject,v1)	 	0.007542675664946407
+---------------------------------End----------------------------------------------
+ 
+ 
+-----------------------Cluster Number 12-----------------------------
+Subject Type: 	http://dbpedia.org/ontology/Organisation	 	 	Object Type: 	http://dbpedia.org/ontology/Place
+#Negative examples: 	500	 	 	#Positive examples: 	203
+----------------------------Negative output rules----------------------------
+http://dbpedia.org/ontology/isPartOf(v0,object) & http://dbpedia.org/ontology/birthPlace(v1,v0) & http://dbpedia.org/ontology/foundedBy(subject,v1)	 	0.9659763313609467
+http://dbpedia.org/ontology/foundedBy(subject,v0) & http://dbpedia.org/ontology/associatedMusicalArtist(v0,v1) & http://dbpedia.org/ontology/hometown(v1,object)	 	0.9653614457831325
+http://dbpedia.org/ontology/locationCity(subject,v0) & http://dbpedia.org/ontology/location(v1,v0) & http://dbpedia.org/ontology/foundedBy(v1,object)	 	0.041666666666666664
+http://dbpedia.org/ontology/foundedBy(subject,v0) & http://dbpedia.org/ontology/relation(v1,v0) & http://dbpedia.org/ontology/birthPlace(v1,object)	 	0.8935185185185185
+http://dbpedia.org/ontology/country(subject,object) & http://dbpedia.org/ontology/country(v0,object) & http://dbpedia.org/ontology/foundedBy(v0,v0)	 	0.041666666666666664
+http://dbpedia.org/ontology/PopulatedPlace/areaTotal(object,v0) & >(v0,v1) & http://dbpedia.org/ontology/numberOfEmployees(subject,v1)	 	0.041666666666666664
+http://dbpedia.org/ontology/locationCountry(subject,object) & http://dbpedia.org/ontology/country(v0,object) & http://dbpedia.org/ontology/foundedBy(v0,v0)	 	0.041666666666666664
+http://dbpedia.org/ontology/country(subject,object) & http://dbpedia.org/ontology/nationality(v0,object) & http://dbpedia.org/ontology/otherParty(v0,v0)	 	0.041666666666666664
+http://dbpedia.org/ontology/location(subject,v0) & http://dbpedia.org/ontology/isPartOf(v0,object) & http://dbpedia.org/ontology/largestCity(object,v0)	 	0.5208333333333334
+http://dbpedia.org/ontology/locationCity(subject,v0) & http://dbpedia.org/ontology/headquarter(v1,v0) & http://dbpedia.org/ontology/locationCountry(v1,object)	 	0.3783783783783784
+http://dbpedia.org/ontology/country(subject,v0) & http://dbpedia.org/ontology/country(v1,v0) & http://dbpedia.org/ontology/hometown(v1,object)	 	0.8345323741007195
+http://dbpedia.org/ontology/foundedBy(subject,v0) & http://dbpedia.org/ontology/hometown(v0,v1) & http://dbpedia.org/ontology/country(v1,object)	 	0.17857142857142858
+http://dbpedia.org/ontology/foundedBy(subject,v0) & http://dbpedia.org/ontology/deathPlace(v0,object)	 	0.9685362517099864
+http://dbpedia.org/ontology/foundedBy(subject,v0) & http://dbpedia.org/ontology/producer(v1,v0) & http://dbpedia.org/ontology/recordedIn(v1,object)	 	0.956766917293233
+http://dbpedia.org/ontology/country(object,v0) & http://dbpedia.org/ontology/largestCity(v0,object) & http://dbpedia.org/ontology/locationCity(subject,object)	 	0.041666666666666664
+http://dbpedia.org/ontology/foundedBy(subject,v0) & http://dbpedia.org/ontology/nationality(v0,v1) & http://dbpedia.org/ontology/country(object,v1)	 	0.041666666666666664
+http://dbpedia.org/ontology/PopulatedPlace/areaTotal(object,v0) & <(v0,v1) & http://dbpedia.org/ontology/assets(subject,v1)	 	0.30303030303030304
+http://dbpedia.org/ontology/owner(v0,object) & http://dbpedia.org/ontology/country(v0,v1) & http://dbpedia.org/ontology/country(subject,v1)	 	0.041666666666666664
+http://dbpedia.org/ontology/parentCompany(subject,v0) & http://dbpedia.org/ontology/recordLabel(v1,v0) & http://dbpedia.org/ontology/birthPlace(v1,object)	 	0.041666666666666664
+http://dbpedia.org/ontology/country(subject,object) & http://dbpedia.org/ontology/regionServed(http://dbpedia.org/resource/7digital,object) & http://dbpedia.org/ontology/regionServed(http://dbpedia.org/resource/7digital,http://dbpedia.org/resource/7digital)	 	null
+http://dbpedia.org/ontology/location(v0,object) & http://dbpedia.org/ontology/subsidiary(v1,v0) & http://dbpedia.org/ontology/foundedBy(subject,v1)	 	0.5
+----------------------------Positive output rules----------------------------
+http://dbpedia.org/ontology/country(v0,object) & http://dbpedia.org/ontology/isPartOf(v0,v0) & http://dbpedia.org/ontology/location(subject,v0)	 	0.0
+http://dbpedia.org/ontology/PopulatedPlace/areaTotal(object,v0) & >(v0,v1) & http://dbpedia.org/ontology/numberOfEmployees(subject,v1)	 	NaN
+http://dbpedia.org/ontology/foundedBy(subject,v0) & http://dbpedia.org/ontology/location(v1,v0) & http://dbpedia.org/ontology/location(v1,object)	 	0.015263417035942885
+http://dbpedia.org/ontology/foundedBy(subject,v0) & http://dbpedia.org/ontology/leaderTitle(v0,v1) & http://dbpedia.org/ontology/leaderTitle(object,v1)	 	0.012248123271434215
+---------------------------------End----------------------------------------------
+ 
+ 
+-----------------------Cluster Number 13 Aborted-----------------------------
+Subject Type: 	http://dbpedia.org/ontology/Organisation	 	 	Object Type: 	http://dbpedia.org/ontology/MusicalArtist
+#Negative examples: 	8	 	 	#Positive examples: 	16
+---------------------------------End----------------------------------------------
+ 
+ 
+-----------------------Cluster Number 14-----------------------------
+Subject Type: 	http://dbpedia.org/ontology/Organisation	 	 	Object Type: 	http://dbpedia.org/ontology/Location
+#Negative examples: 	500	 	 	#Positive examples: 	190
+----------------------------Negative output rules----------------------------
+http://dbpedia.org/ontology/foundedBy(subject,v0) & http://dbpedia.org/ontology/associatedMusicalArtist(v0,v1) & http://dbpedia.org/ontology/hometown(v1,object)	 	0.9659763313609467
+http://dbpedia.org/ontology/foundedBy(subject,v0) & http://dbpedia.org/ontology/relation(v1,v0) & http://dbpedia.org/ontology/birthPlace(v1,object)	 	0.8888888888888888
+http://dbpedia.org/ontology/locationCountry(subject,object) & http://dbpedia.org/ontology/twinCountry(http://dbpedia.org/resource/Toronto,object) & http://dbpedia.org/ontology/twinCountry(http://dbpedia.org/resource/Toronto,http://dbpedia.org/resource/Toronto)	 	null
+http://dbpedia.org/ontology/locationCity(subject,v0) & http://dbpedia.org/ontology/country(v1,v0) & http://dbpedia.org/ontology/location(v1,object)	 	0.8662790697674418
+http://dbpedia.org/ontology/country(subject,object) & http://dbpedia.org/ontology/locationCountry(v0,object) & http://dbpedia.org/ontology/foundedBy(v0,v0)	 	0.041666666666666664
+http://dbpedia.org/ontology/PopulatedPlace/areaTotal(object,v0) & >(v0,v1) & http://dbpedia.org/ontology/numberOfEmployees(subject,v1)	 	0.041666666666666664
+http://dbpedia.org/ontology/locationCity(subject,v0) & http://dbpedia.org/ontology/headquarter(v1,v0) & http://dbpedia.org/ontology/locationCountry(v1,object)	 	0.3611111111111111
+http://dbpedia.org/ontology/location(v0,object) & http://dbpedia.org/ontology/recordLabel(v1,v0) & http://dbpedia.org/ontology/foundedBy(subject,v1)	 	0.8424657534246576
+http://dbpedia.org/ontology/foundedBy(subject,v0) & http://dbpedia.org/ontology/deathPlace(v0,object)	 	0.9679218967921897
+http://dbpedia.org/ontology/foundedBy(subject,v0) & http://dbpedia.org/ontology/producer(v1,v0) & http://dbpedia.org/ontology/recordedIn(v1,object)	 	0.9582577132486388
+http://dbpedia.org/ontology/locationCity(subject,object) & http://dbpedia.org/ontology/headquarter(v0,object) & http://dbpedia.org/ontology/sisterStation(v0,v0)	 	0.041666666666666664
+http://dbpedia.org/ontology/country(subject,v0) & http://dbpedia.org/ontology/occupation(v1,v0) & http://dbpedia.org/ontology/deathPlace(v1,object)	 	0.5306122448979592
+http://dbpedia.org/ontology/foundedBy(subject,v0) & http://dbpedia.org/ontology/nationality(v0,v1) & http://dbpedia.org/ontology/country(object,v1)	 	0.041666666666666664
+http://dbpedia.org/ontology/owner(v0,object) & http://dbpedia.org/ontology/country(v0,v1) & http://dbpedia.org/ontology/country(subject,v1)	 	0.041666666666666664
+http://dbpedia.org/ontology/capital(object,v0) & http://dbpedia.org/ontology/locationCity(v1,v0) & http://dbpedia.org/ontology/foundedBy(subject,v1)	 	0.6567164179104478
+http://dbpedia.org/ontology/parentCompany(subject,v0) & http://dbpedia.org/ontology/recordLabel(v1,v0) & http://dbpedia.org/ontology/birthPlace(v1,object)	 	0.041666666666666664
+http://dbpedia.org/ontology/country(subject,object) & http://dbpedia.org/ontology/regionServed(http://dbpedia.org/resource/7digital,object) & http://dbpedia.org/ontology/regionServed(http://dbpedia.org/resource/7digital,http://dbpedia.org/resource/7digital)	 	null
+----------------------------Positive output rules----------------------------
+http://dbpedia.org/ontology/country(v0,object) & http://dbpedia.org/ontology/leader(http://dbpedia.org/resource/Ukraine,v0) & http://dbpedia.org/ontology/locationCountry(subject,http://dbpedia.org/resource/Ukraine)	 	null
+http://dbpedia.org/ontology/country(v0,object) & http://dbpedia.org/ontology/isPartOf(v0,v0) & http://dbpedia.org/ontology/location(subject,v0)	 	0.0
+http://dbpedia.org/ontology/PopulatedPlace/areaTotal(object,v0) & >(v0,v1) & http://dbpedia.org/ontology/numberOfEmployees(subject,v1)	 	NaN
+http://dbpedia.org/ontology/foundedBy(subject,v0) & http://dbpedia.org/ontology/location(v1,v0) & http://dbpedia.org/ontology/location(v1,object)	 	0.014778325123152709
+http://dbpedia.org/ontology/foundedBy(subject,v0) & http://dbpedia.org/ontology/leaderTitle(v0,v1) & http://dbpedia.org/ontology/leaderTitle(object,v1)	 	0.011857707509881422
+---------------------------------End----------------------------------------------
+ 
+ 
+-----------------------Cluster Number 15 Aborted-----------------------------
+Subject Type: 	http://dbpedia.org/ontology/Organisation	 	 	Object Type: 	http://dbpedia.org/ontology/Scientist
+#Negative examples: 	2	 	 	#Positive examples: 	4
+---------------------------------End----------------------------------------------
+ 
+ 
+-----------------------Cluster Number 16-----------------------------
+Subject Type: 	http://dbpedia.org/ontology/Organisation	 	 	Object Type: 	http://dbpedia.org/ontology/Person
+#Negative examples: 	214	 	 	#Positive examples: 	428
+----------------------------Negative output rules----------------------------
+http://dbpedia.org/ontology/networth(object,v0) & >(v0,v1) & http://dbpedia.org/ontology/numberOfEmployees(subject,v1)	 	0.0
+http://dbpedia.org/ontology/knownFor(v0,subject) & http://dbpedia.org/ontology/employer(v0,subject) & http://dbpedia.org/ontology/keyPerson(subject,object)	 	0.019189765458422176
+http://dbpedia.org/ontology/owner(v0,object) & http://dbpedia.org/ontology/locationCity(v0,v1) & http://dbpedia.org/ontology/location(subject,v1)	 	0.005763688760806916
+http://dbpedia.org/ontology/parentCompany(v0,subject) & http://dbpedia.org/ontology/owner(v0,subject) & http://dbpedia.org/ontology/keyPerson(subject,object)	 	0.06184210526315789
+http://dbpedia.org/ontology/keyPerson(subject,object) & http://dbpedia.org/ontology/keyPerson(v0,object) & http://dbpedia.org/ontology/owningCompany(subject,v0)	 	0.1111111111111111
+http://dbpedia.org/ontology/foundedBy(v0,object) & http://dbpedia.org/ontology/occupation(object,v0) & http://dbpedia.org/ontology/owner(subject,object)	 	0.018666666666666668
+http://dbpedia.org/ontology/birthDate(object,v0) & >(v0,v1) & http://dbpedia.org/ontology/foundingYear(subject,v1)	 	4.8828125E-4
+http://dbpedia.org/ontology/industry(subject,v0) & http://dbpedia.org/ontology/format(v1,v0) & http://dbpedia.org/ontology/producer(v1,object)	 	0.6773547094188377
+http://dbpedia.org/ontology/keyPerson(v0,object) & http://dbpedia.org/ontology/locationCountry(v0,v1) & http://dbpedia.org/ontology/regionServed(subject,v1)	 	0.005806451612903226
+http://dbpedia.org/ontology/nationality(object,v0) & http://dbpedia.org/ontology/deathPlace(v1,v0) & http://dbpedia.org/ontology/foundedBy(subject,v1)	 	3.1269543464665416E-4
+http://dbpedia.org/ontology/occupation(v0,subject) & http://dbpedia.org/ontology/residence(v0,v1) & http://dbpedia.org/ontology/birthPlace(object,v1)	 	4.723665564478035E-4
+http://dbpedia.org/ontology/foundedBy(subject,v0) & http://dbpedia.org/ontology/location(v0,v1) & http://dbpedia.org/ontology/birthPlace(object,v1)	 	0.006172839506172839
+http://dbpedia.org/ontology/locationCity(subject,v0) & http://dbpedia.org/ontology/foundationPlace(subject,v0) & http://dbpedia.org/ontology/keyPerson(subject,object)	 	0.03142677561282212
+----------------------------Positive output rules----------------------------
+http://dbpedia.org/ontology/networth(object,v0) & >(v0,v1) & http://dbpedia.org/ontology/numberOfEmployees(subject,v1)	 	NaN
+http://dbpedia.org/ontology/foundedBy(v0,object) & http://dbpedia.org/ontology/location(v0,v1) & http://dbpedia.org/ontology/country(subject,v1)	 	0.015263417035942885
+http://dbpedia.org/ontology/location(subject,v0) & http://dbpedia.org/ontology/recordedIn(v1,v0) & http://dbpedia.org/ontology/producer(v1,object)	 	0.022291748142354323
+http://dbpedia.org/ontology/foundedBy(v0,object) & http://dbpedia.org/ontology/recordLabel(v1,v0) & http://dbpedia.org/ontology/recordLabel(v1,subject)	 	0.14595610214365018
+http://dbpedia.org/ontology/deathPlace(object,v0) & http://dbpedia.org/ontology/capital(v1,v0) & http://dbpedia.org/ontology/location(subject,v1)	 	0.0068527162578210345
+http://dbpedia.org/ontology/recordLabel(v0,subject) & http://dbpedia.org/ontology/producer(v0,object)	 	0.05979691613388492
+http://dbpedia.org/ontology/foundedBy(v0,object) & http://dbpedia.org/ontology/owner(v1,v0) & http://dbpedia.org/ontology/owningCompany(v1,subject)	 	0.30635188308038225
+http://dbpedia.org/ontology/producer(v0,object) & http://dbpedia.org/ontology/country(v0,http://dbpedia.org/resource/United_States) & http://dbpedia.org/ontology/foundationPlace(subject,http://dbpedia.org/resource/United_States)	 	null
+http://dbpedia.org/ontology/foundedBy(subject,v0) & http://dbpedia.org/ontology/child(v1,v0) & http://dbpedia.org/ontology/child(v1,object)	 	0.4796954314720812
+http://dbpedia.org/ontology/foundedBy(subject,v0) & http://dbpedia.org/ontology/associatedBand(v0,v1) & http://dbpedia.org/ontology/associatedBand(object,v1)	 	0.0796981409902448
+http://dbpedia.org/ontology/recordLabel(object,v0) & http://dbpedia.org/ontology/recordLabel(v1,v0) & http://dbpedia.org/ontology/foundedBy(subject,v1)	 	0.08466819221967964
+http://dbpedia.org/ontology/foundedBy(subject,v0) & http://dbpedia.org/ontology/hometown(v0,v1) & http://dbpedia.org/ontology/birthPlace(object,v1)	 	0.042053836574384516
+http://dbpedia.org/ontology/foundedBy(v0,object) & http://dbpedia.org/ontology/service(v0,v1) & http://dbpedia.org/ontology/service(subject,v1)	 	0.04970065570654756
+http://dbpedia.org/ontology/owningCompany(subject,v0) & http://dbpedia.org/ontology/locationCity(v0,v1) & http://dbpedia.org/ontology/deathPlace(object,v1)	 	0.002593257530420906
+http://dbpedia.org/ontology/distributor(v0,subject) & http://dbpedia.org/ontology/distributor(v0,v1) & http://dbpedia.org/ontology/foundedBy(v1,object)	 	0.11045751633986928
+http://dbpedia.org/ontology/occupation(object,v0) & http://dbpedia.org/ontology/instrument(v1,v0) & http://dbpedia.org/ontology/genre(subject,v1)	 	0.016232169208066895
+---------------------------------End----------------------------------------------
+ 
+ 
+-----------------------Cluster Number 17 Aborted-----------------------------
+Subject Type: 	http://dbpedia.org/ontology/Organisation	 	 	Object Type: 	http://dbpedia.org/ontology/Artist
+#Negative examples: 	14	 	 	#Positive examples: 	28
+---------------------------------End----------------------------------------------
+ 
+ 
+-----------------------Cluster Number 18-----------------------------
+Subject Type: 	http://dbpedia.org/ontology/Organisation	 	 	Object Type: 	http://dbpedia.org/ontology/Company
+#Negative examples: 	499	 	 	#Positive examples: 	451
+----------------------------Negative output rules----------------------------
+http://dbpedia.org/ontology/parentCompany(subject,object) & http://dbpedia.org/ontology/foundedBy(object,v0) & http://dbpedia.org/ontology/board(v0,object)	 	0.08
+http://dbpedia.org/ontology/foundedBy(subject,v0) & http://dbpedia.org/ontology/recordLabel(v0,subject) & http://dbpedia.org/ontology/parentCompany(subject,object)	 	0.5106382978723404
+http://dbpedia.org/ontology/country(subject,v0) & !=(v0,v1) & http://dbpedia.org/ontology/country(object,v1)	 	0.9664723032069971
+http://dbpedia.org/ontology/foundedBy(subject,v0) & http://dbpedia.org/ontology/residence(v0,v1) & http://dbpedia.org/ontology/location(object,v1)	 	0.041666666666666664
+http://dbpedia.org/ontology/keyPerson(object,v0) & http://dbpedia.org/ontology/occupation(v0,object) & http://dbpedia.org/ontology/type(subject,object)	 	0.3611111111111111
+http://dbpedia.org/ontology/revenue(subject,v0) & >(v0,v1) & http://dbpedia.org/ontology/numberOfEmployees(object,v1)	 	0.0
+http://dbpedia.org/ontology/revenue(object,v0) & >(v0,v1) & http://dbpedia.org/ontology/numberOfLocations(subject,v1)	 	0.0
+http://dbpedia.org/ontology/owner(object,v0) & http://dbpedia.org/ontology/locationCity(v0,v1) & http://dbpedia.org/ontology/location(subject,v1)	 	0.640625
+http://dbpedia.org/ontology/type(subject,v0) & http://dbpedia.org/ontology/type(v1,v0) & http://dbpedia.org/ontology/foundationPlace(v1,object)	 	0.041666666666666664
+http://dbpedia.org/ontology/foundingYear(object,v0) & >=(v0,v0) & http://dbpedia.org/ontology/extinctionYear(subject,v0)	 	0.11538461538461539
+http://dbpedia.org/ontology/internationally(subject,1^^http://www.w3.org/2001/XMLSchema#integer) & <(1^^http://www.w3.org/2001/XMLSchema#integer,v1) & http://dbpedia.org/ontology/revenue(object,v1)	 	null
+http://dbpedia.org/ontology/foundationPlace(object,v0) & http://dbpedia.org/ontology/birthPlace(v1,v0) & http://dbpedia.org/ontology/foundedBy(subject,v1)	 	0.041666666666666664
+http://dbpedia.org/ontology/parentCompany(subject,object) & http://dbpedia.org/ontology/recordLabel(v0,object) & http://dbpedia.org/ontology/musicalArtist(v0,v0)	 	0.041666666666666664
+http://dbpedia.org/ontology/foundedBy(subject,v0) & http://dbpedia.org/ontology/recordLabel(v0,subject) & http://dbpedia.org/ontology/distributingLabel(subject,object)	 	0.823076923076923
+http://dbpedia.org/ontology/foundedBy(subject,v0) & http://dbpedia.org/ontology/deathPlace(v0,v1) & http://dbpedia.org/ontology/locationCountry(object,v1)	 	0.041666666666666664
+http://dbpedia.org/ontology/foundedBy(subject,v0) & http://dbpedia.org/ontology/keyPerson(subject,v0) & http://dbpedia.org/ontology/parentCompany(subject,object)	 	0.882051282051282
+http://dbpedia.org/ontology/owner(subject,object) & http://dbpedia.org/ontology/parentCompany(v0,object) & http://dbpedia.org/ontology/subsidiary(v0,subject)	 	0.39473684210526316
+http://dbpedia.org/ontology/country(subject,v0) & http://dbpedia.org/ontology/hometown(v1,v0) & http://dbpedia.org/ontology/employer(v1,object)	 	0.041666666666666664
+http://dbpedia.org/ontology/parentCompany(object,v0) & http://dbpedia.org/ontology/owningCompany(v0,v1) & http://dbpedia.org/ontology/owner(subject,v1)	 	0.8368794326241135
+http://dbpedia.org/ontology/division(object,v0) & http://dbpedia.org/ontology/locationCity(v0,v1) & http://dbpedia.org/ontology/location(subject,v1)	 	0.08
+http://dbpedia.org/ontology/locationCountry(subject,v0) & http://dbpedia.org/ontology/citizenship(v1,v0) & http://dbpedia.org/ontology/board(v1,object)	 	0.041666666666666664
+http://dbpedia.org/ontology/numberOfEmployees(subject,v0) & <(v0,v1) & http://dbpedia.org/ontology/assets(object,v1)	 	0.0
+http://dbpedia.org/ontology/foundedBy(subject,v0) & http://dbpedia.org/ontology/keyPerson(v1,v0) & http://dbpedia.org/ontology/successor(v1,object)	 	0.9115384615384615
+http://dbpedia.org/ontology/owningCompany(v0,object) & http://dbpedia.org/ontology/successor(v0,object) & http://dbpedia.org/ontology/owningCompany(subject,object)	 	0.041666666666666664
+http://dbpedia.org/ontology/manufacturer(v0,object) & http://dbpedia.org/ontology/variantOf(v0,v1) & http://dbpedia.org/ontology/manufacturer(v1,subject)	 	0.6617647058823529
+http://dbpedia.org/ontology/locationCity(subject,v0) & http://dbpedia.org/ontology/residence(v1,v0) & http://dbpedia.org/ontology/occupation(v1,object)	 	0.9340974212034384
+http://dbpedia.org/ontology/owningCompany(subject,object) & http://dbpedia.org/ontology/owningCompany(v0,object) & http://dbpedia.org/ontology/product(object,v0)	 	0.11538461538461539
+http://dbpedia.org/ontology/subsidiary(v0,object) & http://dbpedia.org/ontology/locationCity(v0,v1) & http://dbpedia.org/ontology/location(subject,v1)	 	0.14814814814814814
+http://dbpedia.org/ontology/revenue(object,v0) & >(v0,v1) & http://dbpedia.org/ontology/numberOfEmployees(subject,v1)	 	0.0
+http://dbpedia.org/ontology/division(object,v0) & http://dbpedia.org/ontology/owningCompany(subject,v0)	 	0.14814814814814814
+http://dbpedia.org/ontology/parentCompany(subject,object) & http://dbpedia.org/ontology/parentCompany(v0,object) & http://dbpedia.org/ontology/distributingLabel(subject,v0)	 	0.041666666666666664
+http://dbpedia.org/ontology/foundedBy(subject,v0) & http://dbpedia.org/ontology/relative(v1,v0) & http://dbpedia.org/ontology/occupation(v1,object)	 	0.3783783783783784
+http://dbpedia.org/ontology/foundationPlace(subject,v0) & http://dbpedia.org/ontology/headquarter(v1,v0) & http://dbpedia.org/ontology/owner(v1,object)	 	0.25806451612903225
+http://dbpedia.org/ontology/foundedBy(subject,v0) & http://dbpedia.org/ontology/birthPlace(v0,v1) & http://dbpedia.org/ontology/locationCity(object,v1)	 	0.08
+http://dbpedia.org/ontology/parentCompany(v0,object) & http://dbpedia.org/ontology/recordLabel(v1,v0) & http://dbpedia.org/ontology/foundedBy(subject,v1)	 	0.5576923076923077
+http://dbpedia.org/ontology/product(object,v0) & http://dbpedia.org/ontology/product(v1,v0) & http://dbpedia.org/ontology/owner(v1,subject)	 	0.041666666666666664
+http://dbpedia.org/ontology/owner(subject,object) & http://dbpedia.org/ontology/manufacturer(v0,object) & http://dbpedia.org/ontology/relatedMeanOfTransportation(v0,v0)	 	0.041666666666666664
+http://dbpedia.org/ontology/location(subject,v0) & http://dbpedia.org/ontology/recordLabel(v1,v0) & http://dbpedia.org/ontology/recordLabel(v1,object)	 	0.8654970760233918
+----------------------------Positive output rules----------------------------
+http://dbpedia.org/ontology/assets(object,v0) & >(v0,v1) & http://dbpedia.org/ontology/numberOfEmployees(subject,v1)	 	NaN
+http://dbpedia.org/ontology/foundedBy(subject,v0) & http://dbpedia.org/ontology/company(v1,v0) & http://dbpedia.org/ontology/company(v1,object)	 	0.08771929824561403
+http://dbpedia.org/ontology/revenue(subject,v0) & >(v0,v1) & http://dbpedia.org/ontology/numberOfEmployees(object,v1)	 	NaN
+http://dbpedia.org/ontology/revenue(object,v0) & >(v0,v1) & http://dbpedia.org/ontology/numberOfLocations(subject,v1)	 	NaN
+http://dbpedia.org/ontology/employer(v0,object) & http://dbpedia.org/ontology/employer(v0,v1) & http://dbpedia.org/ontology/foundedBy(subject,v1)	 	0.2037037037037037
+http://dbpedia.org/ontology/foundedBy(object,subject)	 	0.5138121546961326
+http://dbpedia.org/ontology/internationally(subject,v0) & <(v0,v1) & http://dbpedia.org/ontology/revenue(object,v1)	 	NaN
+http://dbpedia.org/ontology/revenue(object,v0) & >(v0,v1) & http://dbpedia.org/ontology/numberOfEmployees(subject,v1)	 	NaN
+http://dbpedia.org/ontology/foundedBy(subject,v0) & http://dbpedia.org/ontology/foundedBy(object,v0) & http://dbpedia.org/ontology/foundedBy(object,object)	 	0.6233766233766234
+http://dbpedia.org/ontology/foundedBy(subject,v0) & http://dbpedia.org/ontology/foundationPlace(v0,v1) & http://dbpedia.org/ontology/locationCountry(object,v1)	 	0.0028916143184764182
+http://dbpedia.org/ontology/parentCompany(object,v0) & http://dbpedia.org/ontology/location(v0,v1) & http://dbpedia.org/ontology/locationCountry(subject,v1)	 	8.9919072834449E-4
+http://dbpedia.org/ontology/foundedBy(subject,v0) & http://dbpedia.org/ontology/foundationPlace(v0,v1) & http://dbpedia.org/ontology/location(object,v1)	 	0.003686360466274783
+---------------------------------End----------------------------------------------
+ 
+ 
+-----------------------Cluster Number 19-----------------------------
+Subject Type: 	http://dbpedia.org/ontology/Organisation	 	 	Object Type: 	http://dbpedia.org/ontology/PopulatedPlace
+#Negative examples: 	500	 	 	#Positive examples: 	176
+----------------------------Negative output rules----------------------------
+http://dbpedia.org/ontology/foundedBy(subject,v0) & http://dbpedia.org/ontology/associatedMusicalArtist(v0,v1) & http://dbpedia.org/ontology/hometown(v1,object)	 	0.9655172413793104
+http://dbpedia.org/ontology/foundedBy(subject,v0) & http://dbpedia.org/ontology/relation(v1,v0) & http://dbpedia.org/ontology/birthPlace(v1,object)	 	0.8925233644859814
+http://dbpedia.org/ontology/country(subject,v0) & http://dbpedia.org/ontology/location(http://dbpedia.org/resource/London_Assembly,v0) & http://dbpedia.org/ontology/leaderName(object,http://dbpedia.org/resource/London_Assembly)	 	null
+http://dbpedia.org/ontology/foundedBy(subject,v0) & http://dbpedia.org/ontology/hometown(v0,v1) & http://dbpedia.org/ontology/capital(object,v1)	 	0.9184397163120568
+http://dbpedia.org/ontology/PopulatedPlace/areaTotal(object,v0) & >(v0,v1) & http://dbpedia.org/ontology/numberOfEmployees(subject,v1)	 	0.041666666666666664
+http://dbpedia.org/ontology/locationCountry(subject,object) & http://dbpedia.org/ontology/country(v0,object) & http://dbpedia.org/ontology/foundedBy(v0,v0)	 	0.041666666666666664
+http://dbpedia.org/ontology/country(subject,object) & http://dbpedia.org/ontology/nationality(v0,object) & http://dbpedia.org/ontology/otherParty(v0,v0)	 	0.041666666666666664
+http://dbpedia.org/ontology/location(subject,v0) & http://dbpedia.org/ontology/isPartOf(v0,object) & http://dbpedia.org/ontology/largestCity(object,v0)	 	0.5208333333333334
+http://dbpedia.org/ontology/locationCity(subject,v0) & http://dbpedia.org/ontology/headquarter(v1,v0) & http://dbpedia.org/ontology/locationCountry(v1,object)	 	0.3783783783783784
+http://dbpedia.org/ontology/country(subject,v0) & http://dbpedia.org/ontology/country(v1,v0) & http://dbpedia.org/ontology/hometown(v1,object)	 	0.8345323741007195
+http://dbpedia.org/ontology/recordLabel(v0,subject) & http://dbpedia.org/ontology/birthPlace(v0,v1) & http://dbpedia.org/ontology/country(v1,object)	 	0.3783783783783784
+http://dbpedia.org/ontology/foundedBy(subject,v0) & http://dbpedia.org/ontology/producer(v1,v0) & http://dbpedia.org/ontology/recordedIn(v1,object)	 	0.9557692307692308
+http://dbpedia.org/ontology/country(object,v0) & http://dbpedia.org/ontology/largestCity(v0,object) & http://dbpedia.org/ontology/locationCity(subject,object)	 	0.041666666666666664
+http://dbpedia.org/ontology/foundedBy(subject,v0) & http://dbpedia.org/ontology/nationality(v0,v1) & http://dbpedia.org/ontology/country(object,v1)	 	0.041666666666666664
+http://dbpedia.org/ontology/PopulatedPlace/areaTotal(object,v0) & <(v0,v1) & http://dbpedia.org/ontology/assets(subject,v1)	 	0.30303030303030304
+http://dbpedia.org/ontology/parentCompany(subject,v0) & http://dbpedia.org/ontology/recordLabel(v1,v0) & http://dbpedia.org/ontology/birthPlace(v1,object)	 	0.041666666666666664
+http://dbpedia.org/ontology/foundedBy(subject,v0) & http://dbpedia.org/ontology/deathPlace(v0,v1) & http://dbpedia.org/ontology/isPartOf(v1,object)	 	0.9233333333333333
+http://dbpedia.org/ontology/country(subject,object) & http://dbpedia.org/ontology/regionServed(http://dbpedia.org/resource/7digital,object) & http://dbpedia.org/ontology/regionServed(http://dbpedia.org/resource/7digital,http://dbpedia.org/resource/7digital)	 	null
+http://dbpedia.org/ontology/location(v0,object) & http://dbpedia.org/ontology/subsidiary(v1,v0) & http://dbpedia.org/ontology/foundedBy(subject,v1)	 	0.5106382978723404
+----------------------------Positive output rules----------------------------
+http://dbpedia.org/ontology/country(v0,object) & http://dbpedia.org/ontology/isPartOf(v0,v0) & http://dbpedia.org/ontology/location(subject,v0)	 	0.0
+http://dbpedia.org/ontology/PopulatedPlace/areaTotal(object,v0) & >(v0,v1) & http://dbpedia.org/ontology/numberOfEmployees(subject,v1)	 	NaN
+http://dbpedia.org/ontology/foundedBy(subject,v0) & http://dbpedia.org/ontology/location(v1,v0) & http://dbpedia.org/ontology/location(v1,object)	 	0.015069437604648872
+http://dbpedia.org/ontology/foundedBy(subject,v0) & http://dbpedia.org/ontology/leaderTitle(v0,v1) & http://dbpedia.org/ontology/leaderTitle(object,v1)	 	0.012248123271434215
+---------------------------------End----------------------------------------------
+ 
+ 
+-----------------------Cluster Number 20 Aborted-----------------------------
+Subject Type: 	http://dbpedia.org/ontology/Organisation	 	 	Object Type: 	http://dbpedia.org/ontology/OfficeHolder
+#Negative examples: 	9	 	 	#Positive examples: 	18
+---------------------------------End----------------------------------------------
+ 
+ 
+-----------------------Cluster Number 21 Aborted-----------------------------
+Subject Type: 	http://dbpedia.org/ontology/PeriodicalLiterature	 	 	Object Type: 	http://dbpedia.org/ontology/Organisation
+#Negative examples: 	3	 	 	#Positive examples: 	6
+---------------------------------End----------------------------------------------
+ 
+ 
+-----------------------Cluster Number 22 Aborted-----------------------------
+Subject Type: 	http://dbpedia.org/ontology/PeriodicalLiterature	 	 	Object Type: 	http://dbpedia.org/ontology/Place
+#Negative examples: 	96	 	 	#Positive examples: 	1
+---------------------------------End----------------------------------------------
+ 
+ 
+-----------------------Cluster Number 23 Aborted-----------------------------
+Subject Type: 	http://dbpedia.org/ontology/PeriodicalLiterature	 	 	Object Type: 	http://dbpedia.org/ontology/MusicalArtist
+#Negative examples: 	0	 	 	#Positive examples: 	0
+---------------------------------End----------------------------------------------
+ 
+ 
+-----------------------Cluster Number 24 Aborted-----------------------------
+Subject Type: 	http://dbpedia.org/ontology/PeriodicalLiterature	 	 	Object Type: 	http://dbpedia.org/ontology/Location
+#Negative examples: 	92	 	 	#Positive examples: 	1
+---------------------------------End----------------------------------------------
+ 
+ 
+-----------------------Cluster Number 25 Aborted-----------------------------
+Subject Type: 	http://dbpedia.org/ontology/PeriodicalLiterature	 	 	Object Type: 	http://dbpedia.org/ontology/Scientist
+#Negative examples: 	0	 	 	#Positive examples: 	0
+---------------------------------End----------------------------------------------
+ 
+ 
+-----------------------Cluster Number 26 Aborted-----------------------------
+Subject Type: 	http://dbpedia.org/ontology/PeriodicalLiterature	 	 	Object Type: 	http://dbpedia.org/ontology/Person
+#Negative examples: 	9	 	 	#Positive examples: 	18
+---------------------------------End----------------------------------------------
+ 
+ 
+-----------------------Cluster Number 27 Aborted-----------------------------
+Subject Type: 	http://dbpedia.org/ontology/PeriodicalLiterature	 	 	Object Type: 	http://dbpedia.org/ontology/Artist
+#Negative examples: 	0	 	 	#Positive examples: 	0
+---------------------------------End----------------------------------------------
+ 
+ 
+-----------------------Cluster Number 28 Aborted-----------------------------
+Subject Type: 	http://dbpedia.org/ontology/PeriodicalLiterature	 	 	Object Type: 	http://dbpedia.org/ontology/Company
+#Negative examples: 	2	 	 	#Positive examples: 	3
+---------------------------------End----------------------------------------------
+ 
+ 
+-----------------------Cluster Number 29 Aborted-----------------------------
+Subject Type: 	http://dbpedia.org/ontology/PeriodicalLiterature	 	 	Object Type: 	http://dbpedia.org/ontology/PopulatedPlace
+#Negative examples: 	96	 	 	#Positive examples: 	1
+---------------------------------End----------------------------------------------
+ 
+ 
+-----------------------Cluster Number 30 Aborted-----------------------------
+Subject Type: 	http://dbpedia.org/ontology/PeriodicalLiterature	 	 	Object Type: 	http://dbpedia.org/ontology/OfficeHolder
+#Negative examples: 	0	 	 	#Positive examples: 	0
+---------------------------------End----------------------------------------------
+ 
+ 
+-----------------------Cluster Number 31-----------------------------
+Subject Type: 	http://dbpedia.org/ontology/RecordLabel	 	 	Object Type: 	http://dbpedia.org/ontology/Organisation
+#Negative examples: 	212	 	 	#Positive examples: 	141
+----------------------------Negative output rules----------------------------
+http://dbpedia.org/ontology/location(subject,v0) & http://dbpedia.org/ontology/location(http://dbpedia.org/resource/Windham_Hill_Records,v0) & http://dbpedia.org/ontology/type(http://dbpedia.org/resource/Windham_Hill_Records,object)	 	null
+http://dbpedia.org/ontology/country(subject,v0) & http://dbpedia.org/ontology/capital(v0,http://dbpedia.org/resource/London) & http://dbpedia.org/ontology/location(object,http://dbpedia.org/resource/London)	 	null
+http://dbpedia.org/ontology/owningCompany(v0,object) & http://dbpedia.org/ontology/locationCity(v0,v1) & http://dbpedia.org/ontology/location(subject,v1)	 	0.6933333333333334
+http://dbpedia.org/ontology/parentCompany(subject,object) & http://dbpedia.org/ontology/parentCompany(v0,object) & http://dbpedia.org/ontology/distributingLabel(subject,v0)	 	0.041666666666666664
+http://dbpedia.org/ontology/country(subject,v0) & http://dbpedia.org/ontology/recordLabel(v1,v0) & http://dbpedia.org/ontology/recordLabel(v1,object)	 	0.2620320855614973
+http://dbpedia.org/ontology/distributingLabel(subject,object) & http://dbpedia.org/ontology/foundedBy(v0,object) & http://dbpedia.org/ontology/parentCompany(v0,object)	 	0.041666666666666664
+http://dbpedia.org/ontology/distributingCompany(subject,v0) & http://dbpedia.org/ontology/distributingCompany(v1,v0) & http://dbpedia.org/ontology/distributingCompany(object,v1)	 	0.7325581395348837
+http://dbpedia.org/ontology/parentCompany(subject,object) & http://dbpedia.org/ontology/recordLabel(v0,object) & http://dbpedia.org/ontology/musicalArtist(v0,v0)	 	0.041666666666666664
+http://dbpedia.org/ontology/locationCountry(object,v0) & !=(v1,v0) & http://dbpedia.org/ontology/country(subject,v1)	 	0.9473684210526315
+----------------------------Positive output rules----------------------------
+http://dbpedia.org/ontology/country(subject,v0) & http://dbpedia.org/ontology/country(object,v0) & http://dbpedia.org/ontology/foundedBy(object,object)	 	0.0018963968459926141
+http://dbpedia.org/ontology/recordLabel(v0,subject) & http://dbpedia.org/ontology/artist(v0,object)	 	0.006754072308303536
+http://dbpedia.org/ontology/genre(subject,v0) & http://dbpedia.org/ontology/genre(v1,v0) & http://dbpedia.org/ontology/foundedBy(v1,object)	 	0.009802950787206654
+http://dbpedia.org/ontology/producer(v0,object) & http://dbpedia.org/ontology/musicalBand(v0,v1) & http://dbpedia.org/ontology/recordLabel(v1,subject)	 	0.007290400972053463
+http://dbpedia.org/ontology/associatedBand(v0,object) & http://dbpedia.org/ontology/associatedMusicalArtist(v0,v1) & http://dbpedia.org/ontology/recordLabel(v1,subject)	 	0.007739630879142687
+http://dbpedia.org/ontology/associatedMusicalArtist(v0,object) & http://dbpedia.org/ontology/hometown(v0,v1) & http://dbpedia.org/ontology/country(subject,v1)	 	0.0065567256109676135
+---------------------------------End----------------------------------------------
+ 
+ 
+-----------------------Cluster Number 32 Aborted-----------------------------
+Subject Type: 	http://dbpedia.org/ontology/RecordLabel	 	 	Object Type: 	http://dbpedia.org/ontology/Place
+#Negative examples: 	500	 	 	#Positive examples: 	1
+---------------------------------End----------------------------------------------
+ 
+ 
+-----------------------Cluster Number 33 Aborted-----------------------------
+Subject Type: 	http://dbpedia.org/ontology/RecordLabel	 	 	Object Type: 	http://dbpedia.org/ontology/MusicalArtist
+#Negative examples: 	0	 	 	#Positive examples: 	0
+---------------------------------End----------------------------------------------
+ 
+ 
+-----------------------Cluster Number 34 Aborted-----------------------------
+Subject Type: 	http://dbpedia.org/ontology/RecordLabel	 	 	Object Type: 	http://dbpedia.org/ontology/Location
+#Negative examples: 	500	 	 	#Positive examples: 	1
+---------------------------------End----------------------------------------------
+ 
+ 
+-----------------------Cluster Number 35 Aborted-----------------------------
+Subject Type: 	http://dbpedia.org/ontology/RecordLabel	 	 	Object Type: 	http://dbpedia.org/ontology/Scientist
+#Negative examples: 	0	 	 	#Positive examples: 	0
+---------------------------------End----------------------------------------------
+ 
+ 
+-----------------------Cluster Number 36 Aborted-----------------------------
+Subject Type: 	http://dbpedia.org/ontology/RecordLabel	 	 	Object Type: 	http://dbpedia.org/ontology/Person
+#Negative examples: 	1	 	 	#Positive examples: 	2
+---------------------------------End----------------------------------------------
+ 
+ 
+-----------------------Cluster Number 37 Aborted-----------------------------
+Subject Type: 	http://dbpedia.org/ontology/RecordLabel	 	 	Object Type: 	http://dbpedia.org/ontology/Artist
+#Negative examples: 	0	 	 	#Positive examples: 	0
+---------------------------------End----------------------------------------------
+ 
+ 
+-----------------------Cluster Number 38 Aborted-----------------------------
+Subject Type: 	http://dbpedia.org/ontology/RecordLabel	 	 	Object Type: 	http://dbpedia.org/ontology/Company
+#Negative examples: 	211	 	 	#Positive examples: 	37
+---------------------------------End----------------------------------------------
+ 
+ 
+-----------------------Cluster Number 39 Aborted-----------------------------
+Subject Type: 	http://dbpedia.org/ontology/RecordLabel	 	 	Object Type: 	http://dbpedia.org/ontology/PopulatedPlace
+#Negative examples: 	500	 	 	#Positive examples: 	0
+---------------------------------End----------------------------------------------
+ 
+ 
+-----------------------Cluster Number 40 Aborted-----------------------------
+Subject Type: 	http://dbpedia.org/ontology/RecordLabel	 	 	Object Type: 	http://dbpedia.org/ontology/OfficeHolder
+#Negative examples: 	0	 	 	#Positive examples: 	0
+---------------------------------End----------------------------------------------
+ 
+ 
+-----------------------Cluster Number 41 Aborted-----------------------------
+Subject Type: 	http://dbpedia.org/ontology/EducationalInstitution	 	 	Object Type: 	http://dbpedia.org/ontology/Organisation
+#Negative examples: 	42	 	 	#Positive examples: 	84
+---------------------------------End----------------------------------------------
+ 
+ 
+-----------------------Cluster Number 42 Aborted-----------------------------
+Subject Type: 	http://dbpedia.org/ontology/EducationalInstitution	 	 	Object Type: 	http://dbpedia.org/ontology/Place
+#Negative examples: 	500	 	 	#Positive examples: 	44
+---------------------------------End----------------------------------------------
+ 
+ 
+-----------------------Cluster Number 43 Aborted-----------------------------
+Subject Type: 	http://dbpedia.org/ontology/EducationalInstitution	 	 	Object Type: 	http://dbpedia.org/ontology/MusicalArtist
+#Negative examples: 	0	 	 	#Positive examples: 	0
+---------------------------------End----------------------------------------------
+ 
+ 
+-----------------------Cluster Number 44 Aborted-----------------------------
+Subject Type: 	http://dbpedia.org/ontology/EducationalInstitution	 	 	Object Type: 	http://dbpedia.org/ontology/Location
+#Negative examples: 	500	 	 	#Positive examples: 	41
+---------------------------------End----------------------------------------------
+ 
+ 
+-----------------------Cluster Number 45 Aborted-----------------------------
+Subject Type: 	http://dbpedia.org/ontology/EducationalInstitution	 	 	Object Type: 	http://dbpedia.org/ontology/Scientist
+#Negative examples: 	0	 	 	#Positive examples: 	0
+---------------------------------End----------------------------------------------
+ 
+ 
+-----------------------Cluster Number 46 Aborted-----------------------------
+Subject Type: 	http://dbpedia.org/ontology/EducationalInstitution	 	 	Object Type: 	http://dbpedia.org/ontology/Person
+#Negative examples: 	9	 	 	#Positive examples: 	18
+---------------------------------End----------------------------------------------
+ 
+ 
+-----------------------Cluster Number 47 Aborted-----------------------------
+Subject Type: 	http://dbpedia.org/ontology/EducationalInstitution	 	 	Object Type: 	http://dbpedia.org/ontology/Artist
+#Negative examples: 	0	 	 	#Positive examples: 	0
+---------------------------------End----------------------------------------------
+ 
+ 
+-----------------------Cluster Number 48 Aborted-----------------------------
+Subject Type: 	http://dbpedia.org/ontology/EducationalInstitution	 	 	Object Type: 	http://dbpedia.org/ontology/Company
+#Negative examples: 	0	 	 	#Positive examples: 	0
+---------------------------------End----------------------------------------------
+ 
+ 
+-----------------------Cluster Number 49 Aborted-----------------------------
+Subject Type: 	http://dbpedia.org/ontology/EducationalInstitution	 	 	Object Type: 	http://dbpedia.org/ontology/PopulatedPlace
+#Negative examples: 	500	 	 	#Positive examples: 	33
+---------------------------------End----------------------------------------------
+ 
+ 
+-----------------------Cluster Number 50 Aborted-----------------------------
+Subject Type: 	http://dbpedia.org/ontology/EducationalInstitution	 	 	Object Type: 	http://dbpedia.org/ontology/OfficeHolder
+#Negative examples: 	3	 	 	#Positive examples: 	6
+---------------------------------End----------------------------------------------
+ 
+ 
+-----------------------Cluster Number 51 Aborted-----------------------------
+Subject Type: 	http://dbpedia.org/ontology/School	 	 	Object Type: 	http://dbpedia.org/ontology/Organisation
+#Negative examples: 	34	 	 	#Positive examples: 	68
+---------------------------------End----------------------------------------------
+ 
+ 
+-----------------------Cluster Number 52 Aborted-----------------------------
+Subject Type: 	http://dbpedia.org/ontology/School	 	 	Object Type: 	http://dbpedia.org/ontology/Place
+#Negative examples: 	500	 	 	#Positive examples: 	35
+---------------------------------End----------------------------------------------
+ 
+ 
+-----------------------Cluster Number 53 Aborted-----------------------------
+Subject Type: 	http://dbpedia.org/ontology/School	 	 	Object Type: 	http://dbpedia.org/ontology/MusicalArtist
+#Negative examples: 	0	 	 	#Positive examples: 	0
+---------------------------------End----------------------------------------------
+ 
+ 
+-----------------------Cluster Number 54 Aborted-----------------------------
+Subject Type: 	http://dbpedia.org/ontology/School	 	 	Object Type: 	http://dbpedia.org/ontology/Location
+#Negative examples: 	500	 	 	#Positive examples: 	32
+---------------------------------End----------------------------------------------
+ 
+ 
+-----------------------Cluster Number 55 Aborted-----------------------------
+Subject Type: 	http://dbpedia.org/ontology/School	 	 	Object Type: 	http://dbpedia.org/ontology/Scientist
+#Negative examples: 	0	 	 	#Positive examples: 	0
+---------------------------------End----------------------------------------------
+ 
+ 
+-----------------------Cluster Number 56 Aborted-----------------------------
+Subject Type: 	http://dbpedia.org/ontology/School	 	 	Object Type: 	http://dbpedia.org/ontology/Person
+#Negative examples: 	7	 	 	#Positive examples: 	14
+---------------------------------End----------------------------------------------
+ 
+ 
+-----------------------Cluster Number 57 Aborted-----------------------------
+Subject Type: 	http://dbpedia.org/ontology/School	 	 	Object Type: 	http://dbpedia.org/ontology/Artist
+#Negative examples: 	0	 	 	#Positive examples: 	0
+---------------------------------End----------------------------------------------
+ 
+ 
+-----------------------Cluster Number 58 Aborted-----------------------------
+Subject Type: 	http://dbpedia.org/ontology/School	 	 	Object Type: 	http://dbpedia.org/ontology/Company
+#Negative examples: 	0	 	 	#Positive examples: 	0
+---------------------------------End----------------------------------------------
+ 
+ 
+-----------------------Cluster Number 59 Aborted-----------------------------
+Subject Type: 	http://dbpedia.org/ontology/School	 	 	Object Type: 	http://dbpedia.org/ontology/PopulatedPlace
+#Negative examples: 	500	 	 	#Positive examples: 	26
+---------------------------------End----------------------------------------------
+ 
+ 
+-----------------------Cluster Number 60 Aborted-----------------------------
+Subject Type: 	http://dbpedia.org/ontology/School	 	 	Object Type: 	http://dbpedia.org/ontology/OfficeHolder
+#Negative examples: 	2	 	 	#Positive examples: 	4
+---------------------------------End----------------------------------------------
+ 
+ 
+-----------------------Cluster Number 61 Aborted-----------------------------
+Subject Type: 	http://dbpedia.org/ontology/WrittenWork	 	 	Object Type: 	http://dbpedia.org/ontology/Organisation
+#Negative examples: 	3	 	 	#Positive examples: 	6
+---------------------------------End----------------------------------------------
+ 
+ 
+-----------------------Cluster Number 62 Aborted-----------------------------
+Subject Type: 	http://dbpedia.org/ontology/WrittenWork	 	 	Object Type: 	http://dbpedia.org/ontology/Place
+#Negative examples: 	96	 	 	#Positive examples: 	1
+---------------------------------End----------------------------------------------
+ 
+ 
+-----------------------Cluster Number 63 Aborted-----------------------------
+Subject Type: 	http://dbpedia.org/ontology/WrittenWork	 	 	Object Type: 	http://dbpedia.org/ontology/MusicalArtist
+#Negative examples: 	0	 	 	#Positive examples: 	0
+---------------------------------End----------------------------------------------
+ 
+ 
+-----------------------Cluster Number 64 Aborted-----------------------------
+Subject Type: 	http://dbpedia.org/ontology/WrittenWork	 	 	Object Type: 	http://dbpedia.org/ontology/Location
+#Negative examples: 	92	 	 	#Positive examples: 	1
+---------------------------------End----------------------------------------------
+ 
+ 
+-----------------------Cluster Number 65 Aborted-----------------------------
+Subject Type: 	http://dbpedia.org/ontology/WrittenWork	 	 	Object Type: 	http://dbpedia.org/ontology/Scientist
+#Negative examples: 	0	 	 	#Positive examples: 	0
+---------------------------------End----------------------------------------------
+ 
+ 
+-----------------------Cluster Number 66 Aborted-----------------------------
+Subject Type: 	http://dbpedia.org/ontology/WrittenWork	 	 	Object Type: 	http://dbpedia.org/ontology/Person
+#Negative examples: 	9	 	 	#Positive examples: 	18
+---------------------------------End----------------------------------------------
+ 
+ 
+-----------------------Cluster Number 67 Aborted-----------------------------
+Subject Type: 	http://dbpedia.org/ontology/WrittenWork	 	 	Object Type: 	http://dbpedia.org/ontology/Artist
+#Negative examples: 	0	 	 	#Positive examples: 	0
+---------------------------------End----------------------------------------------
+ 
+ 
+-----------------------Cluster Number 68 Aborted-----------------------------
+Subject Type: 	http://dbpedia.org/ontology/WrittenWork	 	 	Object Type: 	http://dbpedia.org/ontology/Company
+#Negative examples: 	2	 	 	#Positive examples: 	3
+---------------------------------End----------------------------------------------
+ 
+ 
+-----------------------Cluster Number 69 Aborted-----------------------------
+Subject Type: 	http://dbpedia.org/ontology/WrittenWork	 	 	Object Type: 	http://dbpedia.org/ontology/PopulatedPlace
+#Negative examples: 	96	 	 	#Positive examples: 	1
+---------------------------------End----------------------------------------------
+ 
+ 
+-----------------------Cluster Number 70 Aborted-----------------------------
+Subject Type: 	http://dbpedia.org/ontology/WrittenWork	 	 	Object Type: 	http://dbpedia.org/ontology/OfficeHolder
+#Negative examples: 	0	 	 	#Positive examples: 	0
+---------------------------------End----------------------------------------------
+ 
+ 
+-----------------------Cluster Number 71 Aborted-----------------------------
+Subject Type: 	http://dbpedia.org/ontology/Broadcaster	 	 	Object Type: 	http://dbpedia.org/ontology/Organisation
+#Negative examples: 	22	 	 	#Positive examples: 	44
+---------------------------------End----------------------------------------------
+ 
+ 
+-----------------------Cluster Number 72 Aborted-----------------------------
+Subject Type: 	http://dbpedia.org/ontology/Broadcaster	 	 	Object Type: 	http://dbpedia.org/ontology/Place
+#Negative examples: 	217	 	 	#Positive examples: 	11
+---------------------------------End----------------------------------------------
+ 
+ 
+-----------------------Cluster Number 73 Aborted-----------------------------
+Subject Type: 	http://dbpedia.org/ontology/Broadcaster	 	 	Object Type: 	http://dbpedia.org/ontology/MusicalArtist
+#Negative examples: 	0	 	 	#Positive examples: 	0
+---------------------------------End----------------------------------------------
+ 
+ 
+-----------------------Cluster Number 74 Aborted-----------------------------
+Subject Type: 	http://dbpedia.org/ontology/Broadcaster	 	 	Object Type: 	http://dbpedia.org/ontology/Location
+#Negative examples: 	217	 	 	#Positive examples: 	9
+---------------------------------End----------------------------------------------
+ 
+ 
+-----------------------Cluster Number 75 Aborted-----------------------------
+Subject Type: 	http://dbpedia.org/ontology/Broadcaster	 	 	Object Type: 	http://dbpedia.org/ontology/Scientist
+#Negative examples: 	0	 	 	#Positive examples: 	0
+---------------------------------End----------------------------------------------
+ 
+ 
+-----------------------Cluster Number 76 Aborted-----------------------------
+Subject Type: 	http://dbpedia.org/ontology/Broadcaster	 	 	Object Type: 	http://dbpedia.org/ontology/Person
+#Negative examples: 	9	 	 	#Positive examples: 	18
+---------------------------------End----------------------------------------------
+ 
+ 
+-----------------------Cluster Number 77 Aborted-----------------------------
+Subject Type: 	http://dbpedia.org/ontology/Broadcaster	 	 	Object Type: 	http://dbpedia.org/ontology/Artist
+#Negative examples: 	0	 	 	#Positive examples: 	0
+---------------------------------End----------------------------------------------
+ 
+ 
+-----------------------Cluster Number 78 Aborted-----------------------------
+Subject Type: 	http://dbpedia.org/ontology/Broadcaster	 	 	Object Type: 	http://dbpedia.org/ontology/Company
+#Negative examples: 	19	 	 	#Positive examples: 	19
+---------------------------------End----------------------------------------------
+ 
+ 
+-----------------------Cluster Number 79 Aborted-----------------------------
+Subject Type: 	http://dbpedia.org/ontology/Broadcaster	 	 	Object Type: 	http://dbpedia.org/ontology/PopulatedPlace
+#Negative examples: 	217	 	 	#Positive examples: 	9
+---------------------------------End----------------------------------------------
+ 
+ 
+-----------------------Cluster Number 80 Aborted-----------------------------
+Subject Type: 	http://dbpedia.org/ontology/Broadcaster	 	 	Object Type: 	http://dbpedia.org/ontology/OfficeHolder
+#Negative examples: 	0	 	 	#Positive examples: 	0
+---------------------------------End----------------------------------------------
+ 
+ 
+-----------------------Cluster Number 81 Aborted-----------------------------
+Subject Type: 	http://dbpedia.org/ontology/Work	 	 	Object Type: 	http://dbpedia.org/ontology/Organisation
+#Negative examples: 	4	 	 	#Positive examples: 	8
+---------------------------------End----------------------------------------------
+ 
+ 
+-----------------------Cluster Number 82 Aborted-----------------------------
+Subject Type: 	http://dbpedia.org/ontology/Work	 	 	Object Type: 	http://dbpedia.org/ontology/Place
+#Negative examples: 	131	 	 	#Positive examples: 	1
+---------------------------------End----------------------------------------------
+ 
+ 
+-----------------------Cluster Number 83 Aborted-----------------------------
+Subject Type: 	http://dbpedia.org/ontology/Work	 	 	Object Type: 	http://dbpedia.org/ontology/MusicalArtist
+#Negative examples: 	0	 	 	#Positive examples: 	0
+---------------------------------End----------------------------------------------
+ 
+ 
+-----------------------Cluster Number 84 Aborted-----------------------------
+Subject Type: 	http://dbpedia.org/ontology/Work	 	 	Object Type: 	http://dbpedia.org/ontology/Location
+#Negative examples: 	127	 	 	#Positive examples: 	1
+---------------------------------End----------------------------------------------
+ 
+ 
+-----------------------Cluster Number 85 Aborted-----------------------------
+Subject Type: 	http://dbpedia.org/ontology/Work	 	 	Object Type: 	http://dbpedia.org/ontology/Scientist
+#Negative examples: 	0	 	 	#Positive examples: 	0
+---------------------------------End----------------------------------------------
+ 
+ 
+-----------------------Cluster Number 86 Aborted-----------------------------
+Subject Type: 	http://dbpedia.org/ontology/Work	 	 	Object Type: 	http://dbpedia.org/ontology/Person
+#Negative examples: 	11	 	 	#Positive examples: 	22
+---------------------------------End----------------------------------------------
+ 
+ 
+-----------------------Cluster Number 87 Aborted-----------------------------
+Subject Type: 	http://dbpedia.org/ontology/Work	 	 	Object Type: 	http://dbpedia.org/ontology/Artist
+#Negative examples: 	0	 	 	#Positive examples: 	0
+---------------------------------End----------------------------------------------
+ 
+ 
+-----------------------Cluster Number 88 Aborted-----------------------------
+Subject Type: 	http://dbpedia.org/ontology/Work	 	 	Object Type: 	http://dbpedia.org/ontology/Company
+#Negative examples: 	3	 	 	#Positive examples: 	3
+---------------------------------End----------------------------------------------
+ 
+ 
+-----------------------Cluster Number 89 Aborted-----------------------------
+Subject Type: 	http://dbpedia.org/ontology/Work	 	 	Object Type: 	http://dbpedia.org/ontology/PopulatedPlace
+#Negative examples: 	131	 	 	#Positive examples: 	1
+---------------------------------End----------------------------------------------
+ 
+ 
+-----------------------Cluster Number 90 Aborted-----------------------------
+Subject Type: 	http://dbpedia.org/ontology/Work	 	 	Object Type: 	http://dbpedia.org/ontology/OfficeHolder
+#Negative examples: 	0	 	 	#Positive examples: 	0
+---------------------------------End----------------------------------------------
+ 
+ 
+-----------------------Cluster Number 91-----------------------------
+Subject Type: 	http://dbpedia.org/ontology/Company	 	 	Object Type: 	http://dbpedia.org/ontology/Organisation
+#Negative examples: 	499	 	 	#Positive examples: 	533
+----------------------------Negative output rules----------------------------
+http://dbpedia.org/ontology/parentCompany(subject,object) & http://dbpedia.org/ontology/foundedBy(object,v0) & http://dbpedia.org/ontology/board(v0,object)	 	0.08
+http://dbpedia.org/ontology/employer(v0,object) & http://dbpedia.org/ontology/stateOfOrigin(v0,v1) & http://dbpedia.org/ontology/country(subject,v1)	 	0.08
+http://dbpedia.org/ontology/revenue(subject,v0) & >(v0,v1) & http://dbpedia.org/ontology/numberOfEmployees(object,v1)	 	0.0
+http://dbpedia.org/ontology/owner(object,v0) & http://dbpedia.org/ontology/locationCity(v0,v1) & http://dbpedia.org/ontology/location(subject,v1)	 	0.14814814814814814
+http://dbpedia.org/ontology/type(subject,v0) & http://dbpedia.org/ontology/type(v1,v0) & http://dbpedia.org/ontology/foundationPlace(v1,object)	 	0.041666666666666664
+http://dbpedia.org/ontology/parentCompany(subject,v0) & http://dbpedia.org/ontology/developer(v1,v0) & http://dbpedia.org/ontology/distributor(v1,object)	 	0.603448275862069
+http://dbpedia.org/ontology/distributingCompany(subject,v0) & http://dbpedia.org/ontology/distributingCompany(v1,v0) & http://dbpedia.org/ontology/distributingCompany(object,v1)	 	0.823076923076923
+http://dbpedia.org/ontology/foundingYear(object,v0) & >=(v0,v0) & http://dbpedia.org/ontology/extinctionYear(subject,v0)	 	0.041666666666666664
+http://dbpedia.org/ontology/internationally(subject,1^^http://www.w3.org/2001/XMLSchema#integer) & <(1^^http://www.w3.org/2001/XMLSchema#integer,v1) & http://dbpedia.org/ontology/revenue(object,v1)	 	null
+http://dbpedia.org/ontology/genre(subject,v0) & http://dbpedia.org/ontology/occupation(v1,v0) & http://dbpedia.org/ontology/recordLabel(v1,object)	 	0.77
+http://dbpedia.org/ontology/recordLabel(v0,subject) & http://dbpedia.org/ontology/previousWork(v0,v0) & http://dbpedia.org/ontology/recordLabel(v0,object)	 	0.5490196078431373
+http://dbpedia.org/ontology/foundingYear(subject,v0) & http://dbpedia.org/ontology/deathYear(v1,v0) & http://dbpedia.org/ontology/recordLabel(v1,object)	 	0.23333333333333334
+http://dbpedia.org/ontology/parentCompany(subject,object) & http://dbpedia.org/ontology/recordLabel(v0,object) & http://dbpedia.org/ontology/musicalArtist(v0,v0)	 	0.041666666666666664
+http://dbpedia.org/ontology/foundationPlace(object,v0) & http://dbpedia.org/ontology/birthPlace(v1,v0) & http://dbpedia.org/ontology/foundedBy(subject,v1)	 	0.041666666666666664
+http://dbpedia.org/ontology/distributingLabel(v0,object) & http://dbpedia.org/ontology/recordLabel(v1,v0) & http://dbpedia.org/ontology/foundedBy(subject,v1)	 	0.7870370370370371
+http://dbpedia.org/ontology/parentCompany(subject,v0) & http://dbpedia.org/ontology/distributingCompany(v0,v1) & http://dbpedia.org/ontology/parentCompany(v1,object)	 	0.25806451612903225
+http://dbpedia.org/ontology/parentCompany(subject,v0) & http://dbpedia.org/ontology/type(v1,v0) & http://dbpedia.org/ontology/owningCompany(v1,object)	 	0.7982456140350878
+http://dbpedia.org/ontology/foundedBy(subject,v0) & http://dbpedia.org/ontology/deathPlace(v0,v1) & http://dbpedia.org/ontology/locationCountry(object,v1)	 	0.041666666666666664
+http://dbpedia.org/ontology/keyPerson(subject,v0) & http://dbpedia.org/ontology/occupation(v0,v1) & http://dbpedia.org/ontology/owningCompany(v1,object)	 	0.6805555555555556
+http://dbpedia.org/ontology/foundedBy(subject,v0) & http://dbpedia.org/ontology/keyPerson(subject,v0) & http://dbpedia.org/ontology/parentCompany(subject,object)	 	0.8700564971751412
+http://dbpedia.org/ontology/division(object,v0) & http://dbpedia.org/ontology/locationCity(v0,v1) & http://dbpedia.org/ontology/location(subject,v1)	 	0.17857142857142858
+http://dbpedia.org/ontology/foundedBy(subject,v0) & http://dbpedia.org/ontology/foundedBy(v1,v0) & http://dbpedia.org/ontology/successor(v1,object)	 	0.9068825910931174
+http://dbpedia.org/ontology/owningCompany(v0,object) & http://dbpedia.org/ontology/successor(v0,object) & http://dbpedia.org/ontology/owningCompany(subject,object)	 	0.11538461538461539
+http://dbpedia.org/ontology/manufacturer(v0,object) & http://dbpedia.org/ontology/variantOf(v0,v1) & http://dbpedia.org/ontology/manufacturer(v1,subject)	 	0.6349206349206349
+http://dbpedia.org/ontology/assets(object,v0) & >(v0,v1) & http://dbpedia.org/ontology/numberOfEmployees(subject,v1)	 	0.0
+http://dbpedia.org/ontology/knownFor(v0,object) & http://dbpedia.org/ontology/deathPlace(v0,v1) & http://dbpedia.org/ontology/location(subject,v1)	 	0.8083333333333333
+http://dbpedia.org/ontology/subsidiary(v0,object) & http://dbpedia.org/ontology/locationCity(v0,v1) & http://dbpedia.org/ontology/location(subject,v1)	 	0.3783783783783784
+http://dbpedia.org/ontology/revenue(object,v0) & >(v0,v1) & http://dbpedia.org/ontology/numberOfEmployees(subject,v1)	 	0.0
+http://dbpedia.org/ontology/numberOfEmployees(subject,v0) & <(v0,v1) & http://dbpedia.org/ontology/netIncome(object,v1)	 	0.0
+http://dbpedia.org/ontology/product(subject,v0) & http://dbpedia.org/ontology/service(v1,v0) & http://dbpedia.org/ontology/owningCompany(v1,object)	 	0.3235294117647059
+http://dbpedia.org/ontology/parentCompany(subject,object) & http://dbpedia.org/ontology/parentCompany(v0,object) & http://dbpedia.org/ontology/distributingLabel(subject,v0)	 	0.08
+http://dbpedia.org/ontology/location(object,v0) & http://dbpedia.org/ontology/country(v1,v0) & http://dbpedia.org/ontology/distributingLabel(subject,v1)	 	0.041666666666666664
+http://dbpedia.org/ontology/parentCompany(object,v0) & http://dbpedia.org/ontology/owningCompany(v0,v1) & http://dbpedia.org/ontology/owningCompany(subject,v1)	 	0.8622754491017964
+http://dbpedia.org/ontology/foundedBy(subject,v0) & http://dbpedia.org/ontology/relative(v1,v0) & http://dbpedia.org/ontology/occupation(v1,object)	 	0.46511627906976744
+http://dbpedia.org/ontology/foundationPlace(subject,v0) & http://dbpedia.org/ontology/headquarter(v1,v0) & http://dbpedia.org/ontology/owner(v1,object)	 	0.41025641025641024
+http://dbpedia.org/ontology/foundedBy(subject,v0) & http://dbpedia.org/ontology/birthPlace(v0,v1) & http://dbpedia.org/ontology/locationCity(object,v1)	 	0.041666666666666664
+http://dbpedia.org/ontology/owner(subject,object) & http://dbpedia.org/ontology/manufacturer(v0,object) & http://dbpedia.org/ontology/relatedMeanOfTransportation(v0,v0)	 	0.041666666666666664
+http://dbpedia.org/ontology/location(subject,v0) & http://dbpedia.org/ontology/recordLabel(v1,v0) & http://dbpedia.org/ontology/recordLabel(v1,object)	 	0.8516129032258064
+----------------------------Positive output rules----------------------------
+http://dbpedia.org/ontology/recordLabel(v0,subject) & http://dbpedia.org/ontology/artist(v0,object)	 	0.007247096197756379
+http://dbpedia.org/ontology/foundedBy(v0,object) & http://dbpedia.org/ontology/genre(v0,v1) & http://dbpedia.org/ontology/genre(subject,v1)	 	0.01438990735265129
+http://dbpedia.org/ontology/producer(v0,object) & http://dbpedia.org/ontology/subsequentWork(v0,v1) & http://dbpedia.org/ontology/recordLabel(v1,subject)	 	0.008695652173913044
+http://dbpedia.org/ontology/foundedBy(object,subject)	 	0.465
+http://dbpedia.org/ontology/type(object,v0) & http://dbpedia.org/ontology/type(v1,v0) & http://dbpedia.org/ontology/foundedBy(subject,v1)	 	0.0264797507788162
+http://dbpedia.org/ontology/revenue(object,v0) & >(v0,v1) & http://dbpedia.org/ontology/numberOfEmployees(subject,v1)	 	NaN
+http://dbpedia.org/ontology/channel(v0,object) & http://dbpedia.org/ontology/location(v0,http://dbpedia.org/resource/London) & http://dbpedia.org/ontology/locationCity(subject,http://dbpedia.org/resource/London)	 	null
+http://dbpedia.org/ontology/location(subject,v0) & http://dbpedia.org/ontology/birthPlace(v1,v0) & http://dbpedia.org/ontology/associatedMusicalArtist(v1,object)	 	0.0023942537909018356
+http://dbpedia.org/ontology/foundedBy(subject,v0) & http://dbpedia.org/ontology/knownFor(v1,v0) & http://dbpedia.org/ontology/knownFor(v1,object)	 	0.045779685264663805
+http://dbpedia.org/ontology/keyPerson(object,http://dbpedia.org/resource/MP_BHRT)	 	null
+http://dbpedia.org/ontology/employer(v0,object) & http://dbpedia.org/ontology/employer(v0,v1) & http://dbpedia.org/ontology/foundedBy(subject,v1)	 	0.13973063973063973
+http://dbpedia.org/ontology/associatedBand(v0,object) & http://dbpedia.org/ontology/associatedMusicalArtist(v0,v1) & http://dbpedia.org/ontology/recordLabel(v1,subject)	 	0.008723235527359239
+http://dbpedia.org/ontology/foundedBy(subject,v0) & http://dbpedia.org/ontology/foundedBy(object,v0) & http://dbpedia.org/ontology/foundedBy(object,object)	 	0.6857142857142857
+http://dbpedia.org/ontology/foundedBy(subject,v0) & http://dbpedia.org/ontology/foundationPlace(v0,v1) & http://dbpedia.org/ontology/locationCountry(object,v1)	 	0.002294722139080116
+http://dbpedia.org/ontology/associatedMusicalArtist(v0,object) & http://dbpedia.org/ontology/hometown(v0,v1) & http://dbpedia.org/ontology/country(subject,v1)	 	0.007542675664946407
+---------------------------------End----------------------------------------------
+ 
+ 
+-----------------------Cluster Number 92 Aborted-----------------------------
+Subject Type: 	http://dbpedia.org/ontology/Company	 	 	Object Type: 	http://dbpedia.org/ontology/Place
+#Negative examples: 	500	 	 	#Positive examples: 	65
+---------------------------------End----------------------------------------------
+ 
+ 
+-----------------------Cluster Number 93 Aborted-----------------------------
+Subject Type: 	http://dbpedia.org/ontology/Company	 	 	Object Type: 	http://dbpedia.org/ontology/MusicalArtist
+#Negative examples: 	7	 	 	#Positive examples: 	14
+---------------------------------End----------------------------------------------
+ 
+ 
+-----------------------Cluster Number 94 Aborted-----------------------------
+Subject Type: 	http://dbpedia.org/ontology/Company	 	 	Object Type: 	http://dbpedia.org/ontology/Location
+#Negative examples: 	500	 	 	#Positive examples: 	59
+---------------------------------End----------------------------------------------
+ 
+ 
+-----------------------Cluster Number 95 Aborted-----------------------------
+Subject Type: 	http://dbpedia.org/ontology/Company	 	 	Object Type: 	http://dbpedia.org/ontology/Scientist
+#Negative examples: 	2	 	 	#Positive examples: 	4
+---------------------------------End----------------------------------------------
+ 
+ 
+-----------------------Cluster Number 96-----------------------------
+Subject Type: 	http://dbpedia.org/ontology/Company	 	 	Object Type: 	http://dbpedia.org/ontology/Person
+#Negative examples: 	137	 	 	#Positive examples: 	274
+----------------------------Negative output rules----------------------------
+http://dbpedia.org/ontology/birthDate(object,v0) & >(v0,v1) & http://dbpedia.org/ontology/foundingYear(subject,v1)	 	7.621951219512195E-4
+http://dbpedia.org/ontology/parentCompany(v0,subject) & http://dbpedia.org/ontology/locationCountry(v0,v1) & http://dbpedia.org/ontology/birthPlace(object,v1)	 	5.571030640668524E-4
+http://dbpedia.org/ontology/location(subject,v0) & http://dbpedia.org/ontology/regionServed(v1,v0) & http://dbpedia.org/ontology/foundedBy(v1,object)	 	4.302925989672978E-4
+http://dbpedia.org/ontology/locationCity(subject,v0) & http://dbpedia.org/ontology/regionServed(v1,v0) & http://dbpedia.org/ontology/foundedBy(v1,object)	 	0.0873015873015873
+http://dbpedia.org/ontology/owner(v0,object) & http://dbpedia.org/ontology/locationCity(v0,v1) & http://dbpedia.org/ontology/location(subject,v1)	 	0.019672131147540985
+http://dbpedia.org/ontology/nationality(object,v0) & http://dbpedia.org/ontology/deathPlace(v1,v0) & http://dbpedia.org/ontology/foundedBy(subject,v1)	 	4.938271604938272E-4
+http://dbpedia.org/ontology/parentCompany(subject,v0) & http://dbpedia.org/ontology/distributor(v1,v0) & http://dbpedia.org/ontology/producer(v1,object)	 	0.0038498556304138597
+http://dbpedia.org/ontology/parentCompany(subject,v0) & http://dbpedia.org/ontology/owner(v0,object)	 	0.055441478439425054
+http://dbpedia.org/ontology/occupation(object,v0) & http://dbpedia.org/ontology/parentCompany(subject,v0)	 	0.2545739675901725
+http://dbpedia.org/ontology/birthPlace(object,v0) & http://dbpedia.org/ontology/isPartOf(v0,v1) & http://dbpedia.org/ontology/locationCity(subject,v1)	 	3.3433634236041456E-4
+http://dbpedia.org/ontology/occupation(object,subject) & http://dbpedia.org/ontology/birthPlace(object,v0) & http://dbpedia.org/ontology/location(subject,v0)	 	0.04887218045112782
+----------------------------Positive output rules----------------------------
+http://dbpedia.org/ontology/location(subject,v0) & http://dbpedia.org/ontology/recordedIn(v1,v0) & http://dbpedia.org/ontology/producer(v1,object)	 	0.022004889975550123
+http://dbpedia.org/ontology/foundedBy(v0,object) & http://dbpedia.org/ontology/recordLabel(v1,v0) & http://dbpedia.org/ontology/recordLabel(v1,subject)	 	0.14185188363511542
+http://dbpedia.org/ontology/parentCompany(subject,v0) & http://dbpedia.org/ontology/recordLabel(v1,v0) & http://dbpedia.org/ontology/producer(v1,object)	 	0.012930609021814234
+http://dbpedia.org/ontology/genre(object,v0) & http://dbpedia.org/ontology/derivative(v1,v0) & http://dbpedia.org/ontology/genre(subject,v1)	 	0.018356729164621576
+http://dbpedia.org/ontology/foundationPlace(subject,v0) & http://dbpedia.org/ontology/recordedIn(v1,v0) & http://dbpedia.org/ontology/producer(v1,object)	 	4.997501249375312E-4
+http://dbpedia.org/ontology/recordLabel(object,subject)	 	0.06323185011709602
+http://dbpedia.org/ontology/foundedBy(subject,v0) & http://dbpedia.org/ontology/associatedBand(v0,v1) & http://dbpedia.org/ontology/associatedBand(object,v1)	 	0.0750161872167237
+http://dbpedia.org/ontology/occupation(object,v0) & http://dbpedia.org/ontology/instrument(v1,v0) & http://dbpedia.org/ontology/genre(subject,v1)	 	0.016232169208066895
+http://dbpedia.org/ontology/associatedMusicalArtist(v0,object) & http://dbpedia.org/ontology/activeYearsStartYear(v0,v1) & http://dbpedia.org/ontology/foundingYear(subject,v1)	 	0.021526418786692758
+http://dbpedia.org/ontology/foundedBy(subject,v0) & http://dbpedia.org/ontology/hometown(v0,v1) & http://dbpedia.org/ontology/birthPlace(object,v1)	 	0.03697996918335902
+---------------------------------End----------------------------------------------
+ 
+ 
+-----------------------Cluster Number 97 Aborted-----------------------------
+Subject Type: 	http://dbpedia.org/ontology/Company	 	 	Object Type: 	http://dbpedia.org/ontology/Artist
+#Negative examples: 	11	 	 	#Positive examples: 	22
+---------------------------------End----------------------------------------------
+ 
+ 
+-----------------------Cluster Number 98-----------------------------
+Subject Type: 	http://dbpedia.org/ontology/Company	 	 	Object Type: 	http://dbpedia.org/ontology/Company
+#Negative examples: 	499	 	 	#Positive examples: 	353
+----------------------------Negative output rules----------------------------
+http://dbpedia.org/ontology/parentCompany(subject,object) & http://dbpedia.org/ontology/foundedBy(object,v0) & http://dbpedia.org/ontology/board(v0,object)	 	0.08
+http://dbpedia.org/ontology/country(subject,v0) & !=(v0,v1) & http://dbpedia.org/ontology/country(object,v1)	 	0.9832483612527313
+http://dbpedia.org/ontology/revenue(subject,v0) & >(v0,v1) & http://dbpedia.org/ontology/numberOfEmployees(object,v1)	 	0.0
+http://dbpedia.org/ontology/type(subject,v0) & http://dbpedia.org/ontology/type(v1,v0) & http://dbpedia.org/ontology/foundationPlace(v1,object)	 	0.041666666666666664
+http://dbpedia.org/ontology/foundingYear(object,v0) & >=(v0,v0) & http://dbpedia.org/ontology/extinctionYear(subject,v0)	 	0.08
+http://dbpedia.org/ontology/keyPerson(object,v0) & http://dbpedia.org/ontology/relative(v0,v1) & http://dbpedia.org/ontology/foundedBy(subject,v1)	 	0.6290322580645161
+http://dbpedia.org/ontology/parentCompany(subject,object) & http://dbpedia.org/ontology/recordLabel(v0,object) & http://dbpedia.org/ontology/musicalArtist(v0,v0)	 	0.041666666666666664
+http://dbpedia.org/ontology/foundationPlace(object,v0) & http://dbpedia.org/ontology/birthPlace(v1,v0) & http://dbpedia.org/ontology/foundedBy(subject,v1)	 	0.041666666666666664
+http://dbpedia.org/ontology/foundedBy(subject,v0) & http://dbpedia.org/ontology/recordLabel(v0,subject) & http://dbpedia.org/ontology/distributingLabel(subject,object)	 	0.823076923076923
+http://dbpedia.org/ontology/parentCompany(subject,v0) & http://dbpedia.org/ontology/type(v1,v0) & http://dbpedia.org/ontology/owningCompany(v1,object)	 	0.7472527472527473
+http://dbpedia.org/ontology/foundedBy(subject,v0) & http://dbpedia.org/ontology/deathPlace(v0,v1) & http://dbpedia.org/ontology/locationCountry(object,v1)	 	0.041666666666666664
+http://dbpedia.org/ontology/foundedBy(subject,v0) & http://dbpedia.org/ontology/keyPerson(subject,v0) & http://dbpedia.org/ontology/parentCompany(subject,object)	 	0.8630952380952381
+http://dbpedia.org/ontology/division(object,v0) & http://dbpedia.org/ontology/locationCity(v0,v1) & http://dbpedia.org/ontology/location(subject,v1)	 	0.17857142857142858
+http://dbpedia.org/ontology/parentCompany(v0,subject) & http://dbpedia.org/ontology/distributingCompany(v0,v1) & http://dbpedia.org/ontology/parentCompany(v1,object)	 	0.3783783783783784
+http://dbpedia.org/ontology/genre(subject,v0) & http://dbpedia.org/ontology/associatedBand(v1,v0) & http://dbpedia.org/ontology/recordLabel(v1,object)	 	0.11538461538461539
+http://dbpedia.org/ontology/owningCompany(v0,object) & http://dbpedia.org/ontology/successor(v0,object) & http://dbpedia.org/ontology/owningCompany(subject,object)	 	0.11538461538461539
+http://dbpedia.org/ontology/location(subject,v0) & http://dbpedia.org/ontology/foundationPlace(v1,v0) & http://dbpedia.org/ontology/successor(object,v1)	 	0.9029535864978903
+http://dbpedia.org/ontology/manufacturer(v0,object) & http://dbpedia.org/ontology/variantOf(v0,v1) & http://dbpedia.org/ontology/manufacturer(v1,subject)	 	0.640625
+http://dbpedia.org/ontology/owner(v0,object) & http://dbpedia.org/ontology/foundingYear(v0,v1) & http://dbpedia.org/ontology/extinctionYear(subject,v1)	 	0.9340974212034384
+http://dbpedia.org/ontology/knownFor(v0,object) & http://dbpedia.org/ontology/deathPlace(v0,v1) & http://dbpedia.org/ontology/location(subject,v1)	 	0.9053497942386831
+http://dbpedia.org/ontology/location(subject,v0) & http://dbpedia.org/ontology/regionServed(v1,v0) & http://dbpedia.org/ontology/owner(v1,object)	 	0.08
+http://dbpedia.org/ontology/revenue(object,v0) & >(v0,v1) & http://dbpedia.org/ontology/numberOfEmployees(subject,v1)	 	0.0
+http://dbpedia.org/ontology/numberOfEmployees(subject,v0) & <(v0,v1) & http://dbpedia.org/ontology/netIncome(object,v1)	 	0.0
+http://dbpedia.org/ontology/parentCompany(subject,object) & http://dbpedia.org/ontology/parentCompany(v0,object) & http://dbpedia.org/ontology/distributingLabel(subject,v0)	 	0.041666666666666664
+http://dbpedia.org/ontology/occupation(v0,object) & http://dbpedia.org/ontology/birthPlace(v0,v1) & http://dbpedia.org/ontology/country(subject,v1)	 	0.5
+http://dbpedia.org/ontology/owner(v0,object) & http://dbpedia.org/ontology/service(v0,v1) & http://dbpedia.org/ontology/product(subject,v1)	 	0.25806451612903225
+http://dbpedia.org/ontology/parentCompany(object,v0) & http://dbpedia.org/ontology/owningCompany(v0,v1) & http://dbpedia.org/ontology/owningCompany(subject,v1)	 	0.9115384615384615
+http://dbpedia.org/ontology/foundedBy(subject,v0) & http://dbpedia.org/ontology/birthPlace(v0,v1) & http://dbpedia.org/ontology/locationCity(object,v1)	 	0.08
+http://dbpedia.org/ontology/parentCompany(v0,object) & http://dbpedia.org/ontology/recordLabel(v1,v0) & http://dbpedia.org/ontology/foundedBy(subject,v1)	 	0.5660377358490566
+http://dbpedia.org/ontology/owner(subject,object) & http://dbpedia.org/ontology/manufacturer(v0,object) & http://dbpedia.org/ontology/relatedMeanOfTransportation(v0,v0)	 	0.041666666666666664
+----------------------------Positive output rules----------------------------
+http://dbpedia.org/ontology/country(subject,v0) & http://dbpedia.org/ontology/country(object,v0) & http://dbpedia.org/ontology/foundedBy(object,object)	 	0.0018963968459926141
+http://dbpedia.org/ontology/foundedBy(object,subject)	 	0.5284090909090909
+http://dbpedia.org/ontology/type(object,v0) & http://dbpedia.org/ontology/type(v1,v0) & http://dbpedia.org/ontology/foundedBy(subject,v1)	 	0.024295053175919602
+http://dbpedia.org/ontology/owner(v0,object) & http://dbpedia.org/ontology/openingYear(v0,v1) & http://dbpedia.org/ontology/foundingYear(subject,v1)	 	4.997501249375312E-4
+http://dbpedia.org/ontology/revenue(object,v0) & >(v0,v1) & http://dbpedia.org/ontology/numberOfEmployees(subject,v1)	 	NaN
+http://dbpedia.org/ontology/foundedBy(subject,v0) & http://dbpedia.org/ontology/foundedBy(object,v0) & http://dbpedia.org/ontology/foundedBy(object,object)	 	0.6857142857142857
+http://dbpedia.org/ontology/foundedBy(subject,v0) & http://dbpedia.org/ontology/foundationPlace(v0,v1) & http://dbpedia.org/ontology/locationCountry(object,v1)	 	0.0020955992415926552
+http://dbpedia.org/ontology/parentCompany(object,v0) & http://dbpedia.org/ontology/location(v0,v1) & http://dbpedia.org/ontology/locationCountry(subject,v1)	 	5.996402158704777E-4
+---------------------------------End----------------------------------------------
+ 
+ 
+-----------------------Cluster Number 99 Aborted-----------------------------
+Subject Type: 	http://dbpedia.org/ontology/Company	 	 	Object Type: 	http://dbpedia.org/ontology/PopulatedPlace
+#Negative examples: 	500	 	 	#Positive examples: 	54
+---------------------------------End----------------------------------------------
+ 
+ 
+-----------------------Cluster Number 100 Aborted-----------------------------
+Subject Type: 	http://dbpedia.org/ontology/Company	 	 	Object Type: 	http://dbpedia.org/ontology/OfficeHolder
+#Negative examples: 	2	 	 	#Positive examples: 	4
+---------------------------------End----------------------------------------------
+ 
+ 

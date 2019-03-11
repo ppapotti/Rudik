@@ -37,7 +37,7 @@
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-		<mainClass>asu.edu.rule_mine.rudik.Rudik2_simpleClustering</mainClass>
+		<mainClass>asu.edu.rule_mine.rudik.App_2</mainClass>
 	</properties>
 
 
@@ -279,8 +279,7 @@
 			                <transformers>
 			                    <transformer implementation="org.apache.maven.plugins.shade.resource.ServicesResourceTransformer"/>
 			                    <transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
-			                        <mainClass>asu.edu.rule_miner.rudik.Rudik2_simpleClustering
-</mainClass>
+			                        <mainClass>asu.edu.rule_miner.rudik.App_2</mainClass>
 			                    </transformer>
 			                </transformers>
 			            </configuration>

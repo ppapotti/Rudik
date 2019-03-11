@@ -3,6 +3,8 @@ package asu.edu.rule_miner.rudik;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
@@ -12,6 +14,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import org.apache.jena.ext.com.google.common.collect.Sets;
+import org.apache.jena.sparql.pfunction.library.concat;
 import org.apache.commons.lang3.tuple.Pair;
 
 import asu.edu.rule_miner.rudik.model.horn_rule.HornRule;
@@ -78,24 +81,53 @@ public class Rudik2_simpleClustering
 	    String [] rels = relations.iterator().next().split("/");
 	    String name = rels[rels.length-1];
     
+	    
    		PrintWriter writer = new PrintWriter("simpleClustering_" + name + ".txt", "UTF-8");
    		writer.write("relation: \t" + relations.toString() + "\n");
    		writer.write("Main types for Subjects: \t" + currentTypes_sub + "\n");
    		writer.write("Main types for Objects: \t" + currentTypes_obj+ "\n");
-
+   		List<String> visited_relations = new ArrayList<>();
+   		String visited;
+   		
 	    for (String subject: sub_types)
 	    	for (String object: obj_types) {
-	    		positiveExamples = naive.generatePositiveExamples(relations, subject, object, 500);
-	    		negativeExamples= naive.generateNegativeExamples(relations, subject, object, 900);
+	    		visited = subject + ","+ object;
+	    		if (visited_relations.contains(visited))
+	    			continue;
+	    		visited_relations.add(visited);
+	    		cluster +=1;
+
+
 	    		
+	    		negativeExamples= naive.generateNegativeExamples(relations, subject, object, 500);
+	    		
+	    		int pos = negativeExamples.size();
+	    		if (pos>300) {
+	    			pos = 300;
+	    		}
+
+	    		positiveExamples = naive.generatePositiveExamples(relations, subject, object, pos);
+	    		
+	    		if (positiveExamples.size()< 100  || negativeExamples.size() < 100) {
+
+	    			writer.write("-----------------------Cluster Number " + cluster + " Aborted" + "-----------------------------\n");
+		       		writer.write("Subject Type: \t" + subject + "\t \t \t" + "Object Type: \t" + object + "\n");
+		       		writer.write("#Negative examples: \t" + negativeExamples.size() + "\t \t \t"+ "#Positive examples: \t" + positiveExamples.size()+ "\n");
+		       		writer.write("---------------------------------End----------------------------------------------" + "\n \n \n");
+		       		writer.flush();
+
+	    			continue;
+	    		}
+
 	    		Map<HornRule,Double> outputRules_negative =  naive.discoverNegativeHornRules(negativeExamples, positiveExamples, relations, subject, object);
 	    		Map<HornRule,Double> outputRules_positive = naive.discoverPositiveHornRules(negativeExamples, positiveExamples, relations, subject, object);
-	    		cluster +=1;
 	    		
-	       		// write results to a txt file
+
+	    		LOGGER.info("----------------------CLUSTER {} is FINISHED!-------------------",cluster);
+	    		// write results to a txt file
 	    		writer.write("-----------------------Cluster Number " + cluster + "-----------------------------\n");
-	       		writer.write("Subject Type: \t" + subject + "\n");
-	       		writer.write("Object Type: \t" + object + "\n");
+	       		writer.write("Subject Type: \t" + subject + "\t \t \t" + "Object Type: \t" + object + "\n");
+	       		writer.write("#Negative examples: \t" + negativeExamples.size() + "\t \t \t"+ "#Positive examples: \t" + positiveExamples.size()+ "\n");
 	    	        
 	       		writer.write("----------------------------Negative output rules----------------------------" + "\n");
 
@@ -108,9 +140,9 @@ public class Rudik2_simpleClustering
 	       			writer.write(oneRule1.toString() + "\t \t" + outputRules_positive.get(oneRule1) + "\n");
 	    	        
 	       		writer.write("---------------------------------End----------------------------------------------" + "\n \n \n");
+	       		writer.flush();
 
 	    	}
-
 	    writer.close();
 	    
 	            	
@@ -118,7 +150,4 @@ public class Rudik2_simpleClustering
 		    
 	
 }
-		
-
-
 

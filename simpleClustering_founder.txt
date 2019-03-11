@@ -1,0 +1,27 @@
+relation: 	[http://dbpedia.org/ontology/founder]
+Main types for Subjects: 	[http://dbpedia.org/ontology/Organisation, http://dbpedia.org/ontology/Company]
+Main types for Objects: 	[http://dbpedia.org/ontology/Person, http://dbpedia.org/ontology/Artist]
+-----------------------Cluster Number 1 Aborted-----------------------------
+Subject Type: 	http://dbpedia.org/ontology/Organisation	 	 	Object Type: 	http://dbpedia.org/ontology/Person
+#Negative examples: 	2	 	 	#Positive examples: 	20
+---------------------------------End----------------------------------------------
+ 
+ 
+-----------------------Cluster Number 2 Aborted-----------------------------
+Subject Type: 	http://dbpedia.org/ontology/Organisation	 	 	Object Type: 	http://dbpedia.org/ontology/Artist
+#Negative examples: 	1	 	 	#Positive examples: 	20
+---------------------------------End----------------------------------------------
+ 
+ 
+-----------------------Cluster Number 3 Aborted-----------------------------
+Subject Type: 	http://dbpedia.org/ontology/Company	 	 	Object Type: 	http://dbpedia.org/ontology/Person
+#Negative examples: 	2	 	 	#Positive examples: 	20
+---------------------------------End----------------------------------------------
+ 
+ 
+-----------------------Cluster Number 4 Aborted-----------------------------
+Subject Type: 	http://dbpedia.org/ontology/Company	 	 	Object Type: 	http://dbpedia.org/ontology/Artist
+#Negative examples: 	1	 	 	#Positive examples: 	20
+---------------------------------End----------------------------------------------
+ 
+ 

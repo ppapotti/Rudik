@@ -508,18 +508,22 @@ public abstract class QueryJenaLibrary extends SparqlExecutor {
 		  query += "FROM <http://dbpedia.org> ";
 		  query += "Where{" + "?subject <" + relation + "> ?object. ";
 		  query += "?subject rdf:type ?type. ";
-		  query += "FILTER (contains(STR(?type),\"http://dbpedia.org\"))} "; 
+		  query += "FILTER (contains(STR(?type),\"http://dbpedia.org\")). ";
+		  query += "FILTER (!contains(STR(?type), \"http://dbpedia.org/ontology/Agent\") ) }"; 
+		  		
 		  query += "GROUP BY ?type ";
-		  query += "ORDER BY DESC(COUNT(?type)) LIMIT 2";
+		  query += "ORDER BY DESC(COUNT(?type)) LIMIT 10";
 	  }
 	  else {
 		  query += "SELECT ?type ";
 		  query += "FROM <http://dbpedia.org> ";
 		  query += "Where{" + "?subject <" + relation + "> ?object. ";
 		  query += "?object rdf:type ?type. ";
-		  query += "FILTER (contains(STR(?type),\"http://dbpedia.org\"))} "; 
+		  query += "FILTER (contains(STR(?type),\"http://dbpedia.org\")). ";
+		  query += "FILTER (!contains(STR(?type), \"http://dbpedia.org/ontology/Agent\")  ) }"; 
+
 		  query += "GROUP BY ?type ";
-		  query += "ORDER BY DESC(COUNT(?type)) LIMIT 2";
+		  query += "ORDER BY DESC(COUNT(?type)) LIMIT 10";
 	  }
 
 	  		

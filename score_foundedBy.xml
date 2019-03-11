@@ -1,0 +1,543 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<foundedBy>
+	<Execution>
+		<Subject_Types>
+			<type>http://dbpedia.org/ontology/Organisation</type>
+		</Subject_Types>
+		<Object_Types>
+			<type>http://dbpedia.org/ontology/Person</type>
+		</Object_Types>
+		<Positive_Rules>
+			<rule>
+				<atoms>http://dbpedia.org/ontology/location(subject,v0) &amp; http://dbpedia.org/ontology/recordedIn(v1,v0) &amp; http://dbpedia.org/ontology/producer(v1,object)</atoms>
+				<confidence>1.2110197072002273E-4</confidence>
+			</rule>
+			<rule>
+				<atoms>http://dbpedia.org/ontology/foundingYear(subject,v0) &amp; http://dbpedia.org/ontology/activeYearsStartYear(object,v0)</atoms>
+				<confidence>1.2586916472459445E-4</confidence>
+			</rule>
+			<rule>
+				<atoms>http://dbpedia.org/ontology/producer(v0,object) &amp; http://dbpedia.org/ontology/subsequentWork(v0,v1) &amp; http://dbpedia.org/ontology/recordLabel(v1,subject)</atoms>
+				<confidence>0.01610988638290656</confidence>
+			</rule>
+			<rule>
+				<atoms>http://dbpedia.org/ontology/genre(subject,v0) &amp; http://dbpedia.org/ontology/genre(v1,v0) &amp; http://dbpedia.org/ontology/foundedBy(v1,object)</atoms>
+				<confidence>9.803688054077486E-4</confidence>
+			</rule>
+			<rule>
+				<atoms>http://dbpedia.org/ontology/foundedBy(v0,object) &amp; http://dbpedia.org/ontology/foundedBy(v0,v1) &amp; http://dbpedia.org/ontology/foundedBy(subject,v1)</atoms>
+				<confidence>0.8728893691746589</confidence>
+			</rule>
+			<rule>
+				<atoms>http://dbpedia.org/ontology/foundedBy(v0,object) &amp; http://dbpedia.org/ontology/foundedBy(v0,v1) &amp; http://dbpedia.org/ontology/foundedBy(subject,v1) &amp; http://www.w3.org/1999/02/22-rdf-syntax-ns#type(subject,http://dbpedia.org/ontology/Organisation) &amp; http://www.w3.org/1999/02/22-rdf-syntax-ns#type(object,http://dbpedia.org/ontology/Person)</atoms>
+				<confidence>0.8732436030173051</confidence>
+			</rule>
+			<rule>
+				<atoms>http://dbpedia.org/ontology/occupation(object,v0) &amp; http://dbpedia.org/ontology/occupation(v1,v0) &amp; http://dbpedia.org/ontology/foundedBy(subject,v1)</atoms>
+				<confidence>0.0035019828730704643</confidence>
+			</rule>
+			<rule>
+				<atoms>http://dbpedia.org/ontology/recordLabel(v0,subject) &amp; http://dbpedia.org/ontology/birthPlace(v0,v1) &amp; http://dbpedia.org/ontology/birthPlace(object,v1)</atoms>
+				<confidence>5.004284620832504E-4</confidence>
+			</rule>
+			<rule>
+				<atoms>http://dbpedia.org/ontology/foundedBy(subject,v0) &amp; http://dbpedia.org/ontology/activeYearsStartYear(v0,v1) &amp; http://dbpedia.org/ontology/activeYearsStartYear(object,v1)</atoms>
+				<confidence>0.0016613968491537348</confidence>
+			</rule>
+			<rule>
+				<atoms>http://dbpedia.org/ontology/birthPlace(object,v0) &amp; http://dbpedia.org/ontology/hometown(v1,v0) &amp; http://dbpedia.org/ontology/foundedBy(subject,v1)</atoms>
+				<confidence>1.9165180014435863E-4</confidence>
+			</rule>
+		</Positive_Rules>
+		<Negative_Rules>
+			<rule>
+				<atoms>http://dbpedia.org/ontology/recordLabel(v0,subject) &amp; http://dbpedia.org/ontology/associatedMusicalArtist(v1,v0) &amp; http://dbpedia.org/ontology/recordLabel(v1,object)</atoms>
+				<confidence>0.8687963491158015</confidence>
+			</rule>
+			<rule>
+				<atoms>http://dbpedia.org/ontology/location(subject,v0) &amp; http://dbpedia.org/ontology/locationCountry(v1,v0) &amp; http://dbpedia.org/ontology/foundedBy(v1,object)</atoms>
+				<confidence>0.2040072859744991</confidence>
+			</rule>
+		</Negative_Rules>
+	</Execution>
+	<Execution>
+		<Subject_Types>
+			<type>http://dbpedia.org/ontology/Organisation</type>
+		</Subject_Types>
+		<Object_Types>
+			<type>http://dbpedia.org/ontology/Organisation</type>
+		</Object_Types>
+		<Positive_Rules>
+			<rule>
+				<atoms>http://dbpedia.org/ontology/numberOfEmployees(subject,v0) &amp; &gt;(v0,v1) &amp; http://dbpedia.org/ontology/foundingYear(object,v1)</atoms>
+				<confidence>NaN</confidence>
+			</rule>
+			<rule>
+				<atoms>http://dbpedia.org/ontology/parentCompany(subject,v0) &amp; http://dbpedia.org/ontology/parentCompany(object,v0)</atoms>
+				<confidence>2.4551927326295114E-4</confidence>
+			</rule>
+			<rule>
+				<atoms>http://dbpedia.org/ontology/revenue(object,v0) &amp; &lt;(v0,v1) &amp; http://dbpedia.org/ontology/foundingYear(subject,v1)</atoms>
+				<confidence>NaN</confidence>
+			</rule>
+			<rule>
+				<atoms>http://dbpedia.org/ontology/foundedBy(v0,object) &amp; http://dbpedia.org/ontology/parentCompany(v0,v1) &amp; http://dbpedia.org/ontology/foundedBy(subject,v1)</atoms>
+				<confidence>0.18771331058020477</confidence>
+			</rule>
+			<rule>
+				<atoms>http://dbpedia.org/ontology/numberOfEmployees(object,v0) &amp; &gt;(v0,v1) &amp; http://dbpedia.org/ontology/foundingYear(subject,v1)</atoms>
+				<confidence>NaN</confidence>
+			</rule>
+			<rule>
+				<atoms>http://dbpedia.org/ontology/foundedBy(v0,object) &amp; http://dbpedia.org/ontology/parentCompany(v0,subject)</atoms>
+				<confidence>0.08949416342412451</confidence>
+			</rule>
+			<rule>
+				<atoms>http://dbpedia.org/ontology/owningCompany(v0,object) &amp; http://dbpedia.org/ontology/country(v0,v1) &amp; http://dbpedia.org/ontology/location(subject,v1)</atoms>
+				<confidence>2.3085700716975905E-5</confidence>
+			</rule>
+			<rule>
+				<atoms>http://dbpedia.org/ontology/country(subject,v0) &amp; http://dbpedia.org/ontology/locationCountry(v1,v0) &amp; http://dbpedia.org/ontology/owningCompany(object,v1)</atoms>
+				<confidence>4.962557503635073E-6</confidence>
+			</rule>
+			<rule>
+				<atoms>http://dbpedia.org/ontology/locationCountry(object,v0) &amp; http://dbpedia.org/ontology/foundationPlace(v1,v0) &amp; http://dbpedia.org/ontology/foundedBy(subject,v1)</atoms>
+				<confidence>1.6304790891056821E-4</confidence>
+			</rule>
+			<rule>
+				<atoms>http://dbpedia.org/ontology/foundedBy(v0,object) &amp; http://dbpedia.org/ontology/service(v0,v1) &amp; http://dbpedia.org/ontology/service(subject,v1)</atoms>
+				<confidence>0.044455544455544456</confidence>
+			</rule>
+			<rule>
+				<atoms>http://dbpedia.org/ontology/numberOfEmployees(subject,v0) &amp; &gt;(v0,v1) &amp; http://dbpedia.org/ontology/birthYear(object,v1)</atoms>
+				<confidence>NaN</confidence>
+			</rule>
+			<rule>
+				<atoms>http://dbpedia.org/ontology/birthPlace(object,v0) &amp; http://dbpedia.org/ontology/location(v1,v0) &amp; http://dbpedia.org/ontology/company(v1,subject)</atoms>
+				<confidence>2.3841289489519847E-5</confidence>
+			</rule>
+			<rule>
+				<atoms>http://dbpedia.org/ontology/location(object,v0) &amp; http://dbpedia.org/ontology/foundationPlace(v1,v0) &amp; http://dbpedia.org/ontology/foundedBy(subject,v1)</atoms>
+				<confidence>1.0934937124111536E-4</confidence>
+			</rule>
+			<rule>
+				<atoms>http://dbpedia.org/ontology/owner(v0,object) &amp; http://dbpedia.org/ontology/builder(v0,v1) &amp; http://dbpedia.org/ontology/regionServed(subject,v1)</atoms>
+				<confidence>5.44069640914037E-4</confidence>
+			</rule>
+			<rule>
+				<atoms>http://dbpedia.org/ontology/locationCountry(subject,v0) &amp; http://dbpedia.org/ontology/locationCountry(v1,v0) &amp; http://dbpedia.org/ontology/broadcastNetwork(v1,object)</atoms>
+				<confidence>2.9196440953847725E-5</confidence>
+			</rule>
+		</Positive_Rules>
+		<Negative_Rules>
+			<rule>
+				<atoms>http://dbpedia.org/ontology/numberOfEmployees(subject,v0) &amp; &gt;(v0,v1) &amp; http://dbpedia.org/ontology/foundingYear(object,v1)</atoms>
+				<confidence>0.9647239263803681</confidence>
+			</rule>
+			<rule>
+				<atoms>http://dbpedia.org/ontology/owningCompany(subject,object) &amp; http://dbpedia.org/ontology/owner(v0,object) &amp; http://dbpedia.org/ontology/author(v0,object)</atoms>
+				<confidence>0.041666666666666664</confidence>
+			</rule>
+			<rule>
+				<atoms>http://dbpedia.org/ontology/parentCompany(v0,object) &amp; http://dbpedia.org/ontology/parentCompany(subject,v0)</atoms>
+				<confidence>0.4</confidence>
+			</rule>
+			<rule>
+				<atoms>http://dbpedia.org/ontology/owningCompany(v0,object) &amp; http://dbpedia.org/ontology/parentCompany(v0,v1) &amp; http://dbpedia.org/ontology/parentCompany(subject,v1)</atoms>
+				<confidence>0.05994550408719346</confidence>
+			</rule>
+			<rule>
+				<atoms>http://dbpedia.org/ontology/revenue(object,v0) &amp; &lt;(v0,v1) &amp; http://dbpedia.org/ontology/foundingYear(subject,v1)</atoms>
+				<confidence>0.8776595744680851</confidence>
+			</rule>
+			<rule>
+				<atoms>http://dbpedia.org/ontology/foundationPlace(subject,v0) &amp; http://dbpedia.org/ontology/locationCity(v1,v0) &amp; http://dbpedia.org/ontology/parentCompany(v1,object)</atoms>
+				<confidence>0.6574468085106383</confidence>
+			</rule>
+			<rule>
+				<atoms>http://dbpedia.org/ontology/location(object,v0) &amp; http://dbpedia.org/ontology/deathPlace(v1,v0) &amp; http://dbpedia.org/ontology/foundedBy(subject,v1)</atoms>
+				<confidence>0.5779816513761468</confidence>
+			</rule>
+			<rule>
+				<atoms>http://dbpedia.org/ontology/location(subject,v0) &amp; http://dbpedia.org/ontology/deathPlace(v1,v0) &amp; http://dbpedia.org/ontology/knownFor(v1,object)</atoms>
+				<confidence>0.676056338028169</confidence>
+			</rule>
+			<rule>
+				<atoms>http://dbpedia.org/ontology/foundedBy(v0,object) &amp; http://dbpedia.org/ontology/location(v0,v1) &amp; http://dbpedia.org/ontology/locationCountry(subject,v1)</atoms>
+				<confidence>0.09081196581196581</confidence>
+			</rule>
+			<rule>
+				<atoms>http://dbpedia.org/ontology/numberOfEmployees(object,v0) &amp; &gt;(v0,v1) &amp; http://dbpedia.org/ontology/foundingYear(subject,v1)</atoms>
+				<confidence>0.9647239263803681</confidence>
+			</rule>
+			<rule>
+				<atoms>http://dbpedia.org/ontology/publisher(v0,object) &amp; http://dbpedia.org/ontology/developer(v0,object) &amp; http://dbpedia.org/ontology/owningCompany(subject,object)</atoms>
+				<confidence>0.14814814814814814</confidence>
+			</rule>
+		</Negative_Rules>
+	</Execution>
+	<Execution>
+		<Subject_Types>
+			<type>http://dbpedia.org/ontology/Organisation</type>
+		</Subject_Types>
+		<Object_Types>
+			<type>http://dbpedia.org/ontology/Person</type>
+		</Object_Types>
+		<Positive_Rules>
+			<rule>
+				<atoms>http://dbpedia.org/ontology/foundationPlace(subject,v0) &amp; http://dbpedia.org/ontology/country(v1,v0) &amp; http://dbpedia.org/ontology/keyPerson(v1,object)</atoms>
+				<confidence>1.7024174327545113E-4</confidence>
+			</rule>
+			<rule>
+				<atoms>http://dbpedia.org/ontology/foundedBy(v0,object) &amp; http://dbpedia.org/ontology/recordLabel(v1,v0) &amp; http://dbpedia.org/ontology/recordLabel(v1,subject)</atoms>
+				<confidence>0.04135782223679895</confidence>
+			</rule>
+			<rule>
+				<atoms>http://dbpedia.org/ontology/director(v0,object) &amp; http://dbpedia.org/ontology/distributor(v0,subject)</atoms>
+				<confidence>0.008461047254150703</confidence>
+			</rule>
+			<rule>
+				<atoms>http://dbpedia.org/ontology/birthPlace(object,v0) &amp; http://dbpedia.org/ontology/country(v0,v1) &amp; http://dbpedia.org/ontology/locationCity(subject,v1)</atoms>
+				<confidence>3.81455175202362E-5</confidence>
+			</rule>
+			<rule>
+				<atoms>http://dbpedia.org/ontology/knownFor(object,v0) &amp; http://dbpedia.org/ontology/industry(v0,v1) &amp; http://dbpedia.org/ontology/industry(subject,v1)</atoms>
+				<confidence>0.0018501228641963994</confidence>
+			</rule>
+			<rule>
+				<atoms>http://dbpedia.org/ontology/starring(v0,object) &amp; http://dbpedia.org/ontology/director(v0,v1) &amp; http://dbpedia.org/ontology/foundedBy(subject,v1)</atoms>
+				<confidence>0.013798390187811422</confidence>
+			</rule>
+			<rule>
+				<atoms>http://dbpedia.org/ontology/foundedBy(subject,v0) &amp; http://dbpedia.org/ontology/director(v1,v0) &amp; http://dbpedia.org/ontology/writer(v1,object)</atoms>
+				<confidence>0.19117647058823528</confidence>
+			</rule>
+			<rule>
+				<atoms>http://dbpedia.org/ontology/company(v0,subject) &amp; http://dbpedia.org/ontology/knownFor(object,v0)</atoms>
+				<confidence>0.015810276679841896</confidence>
+			</rule>
+			<rule>
+				<atoms>http://dbpedia.org/ontology/foundedBy(subject,v0) &amp; http://dbpedia.org/ontology/starring(v1,v0) &amp; http://dbpedia.org/ontology/producer(v1,object)</atoms>
+				<confidence>0.05354993983152828</confidence>
+			</rule>
+			<rule>
+				<atoms>http://dbpedia.org/ontology/deathPlace(object,v0) &amp; http://dbpedia.org/ontology/locationCountry(subject,v0)</atoms>
+				<confidence>8.296278213305896E-5</confidence>
+			</rule>
+			<rule>
+				<atoms>http://dbpedia.org/ontology/company(v0,subject) &amp; http://dbpedia.org/ontology/previousWork(v0,v1) &amp; http://dbpedia.org/ontology/starring(v1,object)</atoms>
+				<confidence>0.008308157099697885</confidence>
+			</rule>
+			<rule>
+				<atoms>http://dbpedia.org/ontology/occupation(object,subject) &amp; http://dbpedia.org/ontology/occupation(object,v0) &amp; http://dbpedia.org/ontology/foundedBy(v0,object)</atoms>
+				<confidence>0.891588785046729</confidence>
+			</rule>
+			<rule>
+				<atoms>http://dbpedia.org/ontology/occupation(object,subject) &amp; http://dbpedia.org/ontology/occupation(object,v0) &amp; http://dbpedia.org/ontology/foundedBy(v0,object) &amp; http://www.w3.org/1999/02/22-rdf-syntax-ns#type(subject,http://dbpedia.org/ontology/Organisation) &amp; http://www.w3.org/1999/02/22-rdf-syntax-ns#type(object,http://dbpedia.org/ontology/Person)</atoms>
+				<confidence>0.8932584269662921</confidence>
+			</rule>
+			<rule>
+				<atoms>http://dbpedia.org/ontology/company(v0,subject) &amp; http://dbpedia.org/ontology/related(v0,v1) &amp; http://dbpedia.org/ontology/creator(v1,object)</atoms>
+				<confidence>0.07471264367816093</confidence>
+			</rule>
+			<rule>
+				<atoms>http://dbpedia.org/ontology/keyPerson(subject,v0) &amp; http://dbpedia.org/ontology/foundedBy(subject,v0) &amp; http://dbpedia.org/ontology/owner(subject,object)</atoms>
+				<confidence>0.5714285714285714</confidence>
+			</rule>
+			<rule>
+				<atoms>http://dbpedia.org/ontology/keyPerson(subject,v0) &amp; http://dbpedia.org/ontology/foundedBy(subject,v0) &amp; http://dbpedia.org/ontology/owner(subject,object) &amp; http://www.w3.org/1999/02/22-rdf-syntax-ns#type(subject,http://dbpedia.org/ontology/Organisation) &amp; http://www.w3.org/1999/02/22-rdf-syntax-ns#type(object,http://dbpedia.org/ontology/Person)</atoms>
+				<confidence>0.9595959595959596</confidence>
+			</rule>
+			<rule>
+				<atoms>http://dbpedia.org/ontology/foundedBy(v0,object) &amp; http://dbpedia.org/ontology/subsidiary(subject,v0)</atoms>
+				<confidence>0.14804469273743018</confidence>
+			</rule>
+			<rule>
+				<atoms>http://dbpedia.org/ontology/foundedBy(subject,v0) &amp; http://dbpedia.org/ontology/producer(v1,v0) &amp; http://dbpedia.org/ontology/executiveProducer(v1,object)</atoms>
+				<confidence>0.22115384615384615</confidence>
+			</rule>
+			<rule>
+				<atoms>http://dbpedia.org/ontology/location(subject,v0) &amp; http://dbpedia.org/ontology/birthPlace(v1,v0) &amp; http://dbpedia.org/ontology/spouse(object,v1)</atoms>
+				<confidence>3.1470262032845416E-5</confidence>
+			</rule>
+			<rule>
+				<atoms>http://dbpedia.org/ontology/producer(v0,object) &amp; http://dbpedia.org/ontology/related(v0,v1) &amp; http://dbpedia.org/ontology/company(v1,subject)</atoms>
+				<confidence>0.055865921787709494</confidence>
+			</rule>
+			<rule>
+				<atoms>http://dbpedia.org/ontology/numberOfEmployees(subject,v0) &amp; &gt;(v0,v1) &amp; http://dbpedia.org/ontology/birthYear(object,v1)</atoms>
+				<confidence>NaN</confidence>
+			</rule>
+			<rule>
+				<atoms>http://dbpedia.org/ontology/foundedBy(subject,v0) &amp; http://dbpedia.org/ontology/developer(v1,v0) &amp; http://dbpedia.org/ontology/developer(v1,object)</atoms>
+				<confidence>0.45425867507886436</confidence>
+			</rule>
+			<rule>
+				<atoms>http://dbpedia.org/ontology/foundedBy(subject,v0) &amp; http://dbpedia.org/ontology/developer(v1,v0) &amp; http://dbpedia.org/ontology/developer(v1,object) &amp; http://www.w3.org/1999/02/22-rdf-syntax-ns#type(subject,http://dbpedia.org/ontology/Organisation) &amp; http://www.w3.org/1999/02/22-rdf-syntax-ns#type(object,http://dbpedia.org/ontology/Person)</atoms>
+				<confidence>0.6462585034013606</confidence>
+			</rule>
+			<rule>
+				<atoms>http://dbpedia.org/ontology/creator(v0,object) &amp; http://dbpedia.org/ontology/company(v0,v1) &amp; http://dbpedia.org/ontology/owningCompany(subject,v1)</atoms>
+				<confidence>0.00516795865633075</confidence>
+			</rule>
+			<rule>
+				<atoms>http://dbpedia.org/ontology/foundedBy(v0,object) &amp; http://dbpedia.org/ontology/industry(v0,v1) &amp; http://dbpedia.org/ontology/product(subject,v1)</atoms>
+				<confidence>8.533472739014115E-4</confidence>
+			</rule>
+		</Positive_Rules>
+		<Negative_Rules>
+			<rule>
+				<atoms>http://dbpedia.org/ontology/keyPerson(subject,object) &amp; http://dbpedia.org/ontology/keyPerson(v0,object) &amp; http://dbpedia.org/ontology/parentCompany(subject,v0)</atoms>
+				<confidence>0.10450819672131148</confidence>
+			</rule>
+			<rule>
+				<atoms>http://dbpedia.org/ontology/producer(v0,object) &amp; http://dbpedia.org/ontology/subsequentWork(v1,v0) &amp; http://dbpedia.org/ontology/recordLabel(v1,subject)</atoms>
+				<confidence>0.025470126160437992</confidence>
+			</rule>
+			<rule>
+				<atoms>http://dbpedia.org/ontology/keyPerson(v0,object) &amp; http://dbpedia.org/ontology/owner(subject,v0)</atoms>
+				<confidence>0.25116279069767444</confidence>
+			</rule>
+			<rule>
+				<atoms>http://dbpedia.org/ontology/occupation(object,v0) &amp; http://dbpedia.org/ontology/parentCompany(v1,v0) &amp; http://dbpedia.org/ontology/parentCompany(subject,v1)</atoms>
+				<confidence>0.5157894736842106</confidence>
+			</rule>
+			<rule>
+				<atoms>http://dbpedia.org/ontology/locationCountry(subject,v0) &amp; http://dbpedia.org/ontology/location(v1,v0) &amp; http://dbpedia.org/ontology/keyPerson(v1,object)</atoms>
+				<confidence>0.2566943674976916</confidence>
+			</rule>
+			<rule>
+				<atoms>http://dbpedia.org/ontology/keyPerson(v0,object) &amp; http://dbpedia.org/ontology/regionServed(v0,v1) &amp; http://dbpedia.org/ontology/location(subject,v1)</atoms>
+				<confidence>0.023166023166023165</confidence>
+			</rule>
+			<rule>
+				<atoms>http://dbpedia.org/ontology/foundedBy(subject,v0) &amp; http://dbpedia.org/ontology/spouse(v1,v0) &amp; http://dbpedia.org/ontology/child(v1,object)</atoms>
+				<confidence>0.7142857142857143</confidence>
+			</rule>
+			<rule>
+				<atoms>http://dbpedia.org/ontology/occupation(object,v0) &amp; http://dbpedia.org/ontology/owner(subject,v0)</atoms>
+				<confidence>0.4938101788170564</confidence>
+			</rule>
+			<rule>
+				<atoms>http://dbpedia.org/ontology/voice(v0,object) &amp; http://dbpedia.org/ontology/previousWork(v0,v1) &amp; http://dbpedia.org/ontology/company(v1,subject)</atoms>
+				<confidence>0.17857142857142858</confidence>
+			</rule>
+			<rule>
+				<atoms>http://dbpedia.org/ontology/numberOfEmployees(subject,v0) &amp; &gt;(v0,v1) &amp; http://dbpedia.org/ontology/birthYear(object,v1)</atoms>
+				<confidence>0.041666666666666664</confidence>
+			</rule>
+			<rule>
+				<atoms>http://dbpedia.org/ontology/keyPerson(subject,v0) &amp; http://dbpedia.org/ontology/relative(v0,object)</atoms>
+				<confidence>0.13136288998357964</confidence>
+			</rule>
+			<rule>
+				<atoms>http://dbpedia.org/ontology/keyPerson(subject,object) &amp; http://dbpedia.org/ontology/keyPerson(v0,object) &amp; http://dbpedia.org/ontology/subsidiary(subject,v0)</atoms>
+				<confidence>0.0845771144278607</confidence>
+			</rule>
+		</Negative_Rules>
+	</Execution>
+	<Execution>
+		<Subject_Types>
+			<type>http://dbpedia.org/ontology/Organisation</type>
+		</Subject_Types>
+		<Object_Types>
+			<type>http://dbpedia.org/ontology/Person</type>
+		</Object_Types>
+		<Positive_Rules>
+			<rule>
+				<atoms>http://dbpedia.org/ontology/deathPlace(object,v0) &amp; http://dbpedia.org/ontology/foundationPlace(subject,v0)</atoms>
+				<confidence>1.0107925948953066E-4</confidence>
+			</rule>
+			<rule>
+				<atoms>http://dbpedia.org/ontology/almaMater(object,v0) &amp; http://dbpedia.org/ontology/state(v0,v1) &amp; http://dbpedia.org/ontology/location(subject,v1)</atoms>
+				<confidence>3.1470262032845416E-5</confidence>
+			</rule>
+			<rule>
+				<atoms>http://dbpedia.org/ontology/foundedBy(subject,v0) &amp; http://dbpedia.org/ontology/spouse(v0,object)</atoms>
+				<confidence>0.12079510703363915</confidence>
+			</rule>
+			<rule>
+				<atoms>http://dbpedia.org/ontology/occupation(object,v0) &amp; http://dbpedia.org/ontology/industry(subject,v0)</atoms>
+				<confidence>3.43756365858627E-4</confidence>
+			</rule>
+			<rule>
+				<atoms>http://dbpedia.org/ontology/affiliation(v0,object) &amp; http://dbpedia.org/ontology/affiliation(v0,v1) &amp; http://dbpedia.org/ontology/affiliation(subject,v1)</atoms>
+				<confidence>0.0030716723549488053</confidence>
+			</rule>
+			<rule>
+				<atoms>http://dbpedia.org/ontology/numberOfEmployees(subject,v0) &amp; &gt;(v0,v1) &amp; http://dbpedia.org/ontology/birthYear(object,v1)</atoms>
+				<confidence>NaN</confidence>
+			</rule>
+			<rule>
+				<atoms>http://dbpedia.org/ontology/location(subject,v0) &amp; http://dbpedia.org/ontology/residence(object,v0)</atoms>
+				<confidence>1.2777602959826835E-4</confidence>
+			</rule>
+			<rule>
+				<atoms>http://dbpedia.org/ontology/residence(object,v0) &amp; http://dbpedia.org/ontology/birthPlace(v1,v0) &amp; http://dbpedia.org/ontology/keyPerson(subject,v1)</atoms>
+				<confidence>1.0120783930967936E-4</confidence>
+			</rule>
+			<rule>
+				<atoms>http://dbpedia.org/ontology/locationCity(subject,v0) &amp; http://dbpedia.org/ontology/locationCity(v1,v0) &amp; http://dbpedia.org/ontology/foundedBy(v1,object)</atoms>
+				<confidence>0.006729827070257674</confidence>
+			</rule>
+		</Positive_Rules>
+		<Negative_Rules>
+			<rule>
+				<atoms>http://dbpedia.org/ontology/state(subject,v0) &amp; http://dbpedia.org/ontology/state(v1,v0) &amp; http://dbpedia.org/ontology/type(v1,object)</atoms>
+				<confidence>0.041666666666666664</confidence>
+			</rule>
+			<rule>
+				<atoms>http://dbpedia.org/ontology/numberOfEmployees(subject,v0) &amp; &gt;(v0,v1) &amp; http://dbpedia.org/ontology/birthYear(object,v1)</atoms>
+				<confidence>0.041666666666666664</confidence>
+			</rule>
+			<rule>
+				<atoms>http://dbpedia.org/ontology/type(subject,v0) &amp; http://dbpedia.org/ontology/type(v1,v0) &amp; http://dbpedia.org/ontology/head(v1,object)</atoms>
+				<confidence>0.006644518272425249</confidence>
+			</rule>
+			<rule>
+				<atoms>http://dbpedia.org/ontology/state(subject,v0) &amp; http://dbpedia.org/ontology/region(v1,v0) &amp; http://dbpedia.org/ontology/religion(v1,object)</atoms>
+				<confidence>0.041666666666666664</confidence>
+			</rule>
+			<rule>
+				<atoms>http://dbpedia.org/ontology/president(v0,object) &amp; http://dbpedia.org/ontology/country(v0,v1) &amp; http://dbpedia.org/ontology/country(subject,v1)</atoms>
+				<confidence>0.041666666666666664</confidence>
+			</rule>
+			<rule>
+				<atoms>http://dbpedia.org/ontology/religion(subject,object)</atoms>
+				<confidence>0.03361344537815126</confidence>
+			</rule>
+			<rule>
+				<atoms>http://dbpedia.org/ontology/formationYear(object,v0) &amp; &lt;(v0,v1) &amp; http://dbpedia.org/ontology/numberOfStudents(subject,v1)</atoms>
+				<confidence>0.041666666666666664</confidence>
+			</rule>
+		</Negative_Rules>
+	</Execution>
+	<Execution>
+		<Subject_Types>
+			<type>http://dbpedia.org/ontology/Agent</type>
+		</Subject_Types>
+		<Object_Types>
+			<type>http://dbpedia.org/ontology/Agent</type>
+		</Object_Types>
+		<Positive_Rules>
+			<rule>
+				<atoms>http://dbpedia.org/ontology/affiliation(subject,v0) &amp; http://dbpedia.org/ontology/affiliation(v1,v0) &amp; http://dbpedia.org/ontology/foundedBy(v1,object)</atoms>
+				<confidence>0.024104683195592287</confidence>
+			</rule>
+			<rule>
+				<atoms>http://dbpedia.org/ontology/award(v0,object) &amp; !=(v0,v1) &amp; http://dbpedia.org/ontology/keyPerson(subject,v1)</atoms>
+				<confidence>3.198976327575176E-4</confidence>
+			</rule>
+			<rule>
+				<atoms>http://dbpedia.org/ontology/locationCountry(subject,v0) &amp; http://dbpedia.org/ontology/country(v1,v0) &amp; http://dbpedia.org/ontology/affiliation(v1,object)</atoms>
+				<confidence>8.641523673454104E-6</confidence>
+			</rule>
+			<rule>
+				<atoms>http://dbpedia.org/ontology/type(object,v0) &amp; http://dbpedia.org/ontology/type(v1,v0) &amp; http://dbpedia.org/ontology/foundedBy(subject,v1)</atoms>
+				<confidence>5.19756522944363E-4</confidence>
+			</rule>
+			<rule>
+				<atoms>http://dbpedia.org/ontology/foundedBy(v0,object) &amp; http://dbpedia.org/ontology/locationCountry(v0,v1) &amp; http://dbpedia.org/ontology/country(subject,v1)</atoms>
+				<confidence>9.440484420816746E-5</confidence>
+			</rule>
+			<rule>
+				<atoms>http://dbpedia.org/ontology/keyPerson(subject,v0) &amp; http://dbpedia.org/ontology/spouse(object,v0)</atoms>
+				<confidence>0.06643952299829642</confidence>
+			</rule>
+			<rule>
+				<atoms>http://dbpedia.org/ontology/locationCity(subject,v0) &amp; http://dbpedia.org/ontology/locationCity(v1,v0) &amp; http://dbpedia.org/ontology/parentCompany(v1,object)</atoms>
+				<confidence>3.022061045633122E-4</confidence>
+			</rule>
+			<rule>
+				<atoms>http://dbpedia.org/ontology/location(subject,v0) &amp; http://dbpedia.org/ontology/location(v1,v0) &amp; http://dbpedia.org/ontology/owner(v1,object)</atoms>
+				<confidence>1.2555727754342503E-4</confidence>
+			</rule>
+			<rule>
+				<atoms>http://dbpedia.org/ontology/almaMater(v0,object) &amp; http://dbpedia.org/ontology/birthPlace(v0,v1) &amp; http://dbpedia.org/ontology/country(subject,v1)</atoms>
+				<confidence>7.629336324033172E-6</confidence>
+			</rule>
+			<rule>
+				<atoms>http://dbpedia.org/ontology/occupation(object,v0) &amp; http://dbpedia.org/ontology/subsidiary(v0,subject)</atoms>
+				<confidence>0.049707602339181284</confidence>
+			</rule>
+			<rule>
+				<atoms>http://dbpedia.org/ontology/county(subject,v0) &amp; http://dbpedia.org/ontology/county(v1,v0) &amp; http://dbpedia.org/ontology/foundedBy(v1,object)</atoms>
+				<confidence>0.013897622940510628</confidence>
+			</rule>
+			<rule>
+				<atoms>http://dbpedia.org/ontology/country(subject,v0) &amp; http://dbpedia.org/ontology/country(v1,v0) &amp; http://dbpedia.org/ontology/location(object,v1)</atoms>
+				<confidence>1.9073122537183053E-5</confidence>
+			</rule>
+			<rule>
+				<atoms>http://dbpedia.org/ontology/producer(v0,object) &amp; http://dbpedia.org/ontology/producer(v0,v1) &amp; http://dbpedia.org/ontology/foundedBy(subject,v1)</atoms>
+				<confidence>0.06974000635237533</confidence>
+			</rule>
+			<rule>
+				<atoms>http://dbpedia.org/ontology/numberOfEmployees(subject,v0) &amp; &gt;(v0,v1) &amp; http://dbpedia.org/ontology/birthYear(object,v1)</atoms>
+				<confidence>NaN</confidence>
+			</rule>
+			<rule>
+				<atoms>http://dbpedia.org/ontology/keyPerson(subject,v0) &amp; http://dbpedia.org/ontology/writer(v1,v0) &amp; http://dbpedia.org/ontology/producer(v1,object)</atoms>
+				<confidence>0.10290237467018469</confidence>
+			</rule>
+			<rule>
+				<atoms>http://dbpedia.org/ontology/foundingYear(subject,v0) &amp; &gt;(v0,v1) &amp; http://dbpedia.org/ontology/activeYearsStartYear(object,v1)</atoms>
+				<confidence>0.024390243902439025</confidence>
+			</rule>
+			<rule>
+				<atoms>http://dbpedia.org/ontology/School/campusSize(subject,v0) &amp; &lt;(v0,v1) &amp; http://dbpedia.org/ontology/formationYear(object,v1)</atoms>
+				<confidence>NaN</confidence>
+			</rule>
+			<rule>
+				<atoms>http://dbpedia.org/ontology/formationYear(object,v0) &amp; &lt;(v0,v1) &amp; http://dbpedia.org/ontology/numberOfStudents(subject,v1)</atoms>
+				<confidence>0.0</confidence>
+			</rule>
+		</Positive_Rules>
+		<Negative_Rules>
+			<rule>
+				<atoms>http://dbpedia.org/ontology/state(subject,v0) &amp; http://dbpedia.org/ontology/state(v1,v0) &amp; http://dbpedia.org/ontology/type(v1,object)</atoms>
+				<confidence>0.041666666666666664</confidence>
+			</rule>
+			<rule>
+				<atoms>http://dbpedia.org/ontology/foundingYear(subject,v0) &amp; &lt;(v0,v1) &amp; http://dbpedia.org/ontology/birthYear(object,v1)</atoms>
+				<confidence>0.0019723865877712033</confidence>
+			</rule>
+			<rule>
+				<atoms>http://dbpedia.org/ontology/numberOfEmployees(subject,v0) &amp; &gt;(v0,v1) &amp; http://dbpedia.org/ontology/birthYear(object,v1)</atoms>
+				<confidence>0.041666666666666664</confidence>
+			</rule>
+			<rule>
+				<atoms>http://dbpedia.org/ontology/affiliation(v0,object) &amp; http://dbpedia.org/ontology/country(v0,v1) &amp; http://dbpedia.org/ontology/location(subject,v1)</atoms>
+				<confidence>0.6714285714285714</confidence>
+			</rule>
+			<rule>
+				<atoms>http://dbpedia.org/ontology/religion(v0,object) &amp; http://dbpedia.org/ontology/birthYear(v0,v1) &amp; http://dbpedia.org/ontology/foundingYear(subject,v1)</atoms>
+				<confidence>0.041666666666666664</confidence>
+			</rule>
+			<rule>
+				<atoms>http://dbpedia.org/ontology/location(subject,v0) &amp; http://dbpedia.org/ontology/location(v1,v0) &amp; http://dbpedia.org/ontology/jurisdiction(v1,object)</atoms>
+				<confidence>0.08</confidence>
+			</rule>
+			<rule>
+				<atoms>http://dbpedia.org/ontology/affiliation(v0,object) &amp; http://dbpedia.org/ontology/location(v0,v1) &amp; http://dbpedia.org/ontology/country(subject,v1)</atoms>
+				<confidence>0.08</confidence>
+			</rule>
+			<rule>
+				<atoms>http://dbpedia.org/ontology/religion(v0,object) &amp; http://dbpedia.org/ontology/numberOfStudents(v0,v1) &amp; http://dbpedia.org/ontology/numberOfStudents(subject,v1)</atoms>
+				<confidence>0.007194244604316547</confidence>
+			</rule>
+			<rule>
+				<atoms>http://dbpedia.org/ontology/religion(subject,object)</atoms>
+				<confidence>0.03361344537815126</confidence>
+			</rule>
+			<rule>
+				<atoms>http://dbpedia.org/ontology/foundedBy(subject,v0) &amp; http://dbpedia.org/ontology/religion(v1,v0) &amp; http://dbpedia.org/ontology/type(v1,object)</atoms>
+				<confidence>0.0</confidence>
+			</rule>
+			<rule>
+				<atoms>http://dbpedia.org/ontology/formationYear(object,v0) &amp; &lt;(v0,v1) &amp; http://dbpedia.org/ontology/numberOfStudents(subject,v1)</atoms>
+				<confidence>0.041666666666666664</confidence>
+			</rule>
+		</Negative_Rules>
+	</Execution>
+</foundedBy>
