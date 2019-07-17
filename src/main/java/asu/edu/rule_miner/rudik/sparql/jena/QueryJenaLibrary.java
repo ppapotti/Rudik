@@ -36,140 +36,110 @@ public abstract class QueryJenaLibrary extends SparqlExecutor {
 
   private final static Logger LOGGER = LoggerFactory.getLogger(QuerySparqlRemoteEndpoint.class.getName());
 
-
   @Override
-  public void executeQuery(final String entity, final Graph<String> graph,
-                           final Map<String, Set<String>> entity2types) {
-	  ResultSet results = null;
-	  long startTime;
-    // different query if the entity is a literal
-    if (graph.isLiteral(entity)) {
-    	return;
-
-/*    	//System.out.println("entity =========  " +  entity);
-    	//System.out.println("lexical =========  " +  graph.getLexicalForm(entity));
-
-    	String lx = "\"" + graph.getLexicalForm(entity) + "\"" + "^^xsd:date";
-    	//System.out.println("lx =========  " +  lx);
-
-    	String sparqlQuery = "PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>";
-    	sparqlQuery += " SELECT DISTINCT ?sub ?rel ?ob" ;
-        if ((this.graphIri != null) && (this.graphIri.length() > 0)) {
-        	sparqlQuery += " FROM " + this.graphIri;
-          }
-         sparqlQuery += " WHERE {"  + "?sub ?rel ?ob." ;
-         sparqlQuery += " FILTER (datatype(?ob) =xsd:date)";
-         sparqlQuery += " FILTER (?ob = " + lx + ")}";
-         startTime = System.currentTimeMillis();
-         if (this.openResource != null) {
-        	 this.openResource.close();
-            }
-         try {
-            results = this.executeQuery(sparqlQuery);
-         }catch (Exception e) {}
-            if (!results.hasNext()) {
-              LOGGER.debug("Query '{}' returned an empty result.", sparqlQuery);
-            }
-            final long totalTime = System.currentTimeMillis() - startTime;
-            final String logMessage = "Query '{}' took {} seconds to complete.";
-            if (totalTime > MAX_QUERY_RUN_TIME) {
-              LOGGER.warn(logMessage, sparqlQuery, totalTime / 1000.);
-            }
-*/            
+  public void executeQuery(final String entity, 
+      final Graph<String> graph, final Map<String,Set<String>> entity2types) {
+    //different query if the entity is a literal
+    if(graph.isLiteral(entity)){
+      //this.compareLiterals(entity, graph);
+      //if it's a literal do not return any neighbours because they might change based on the graph
+      return;
     }
-    else {
-    	String sparqlQuery = "SELECT DISTINCT ?sub ?rel ?obj";
-        if ((this.graphIri != null) && (this.graphIri.length() > 0)) {
-          sparqlQuery += " FROM " + this.graphIri;
-        }
-        sparqlQuery += " WHERE {" + "{<" + entity + "> ?rel ?obj.} " + "UNION " + "{?sub ?rel <" + entity + ">.}}";
 
-        startTime = System.currentTimeMillis();
+    String sparqlQuery = "SELECT DISTINCT ?sub ?rel ?obj";
+    if(this.graphIri!=null&&this.graphIri.length()>0)
+      sparqlQuery+=" FROM "+this.graphIri;
+    sparqlQuery+= " WHERE {" +
+        "{<"+entity+"> ?rel ?obj.} " +
+        "UNION " +
+        "{?sub ?rel <"+entity+">.}}";
 
-        if (this.openResource != null) {
-          this.openResource.close();
-        }
-        results = this.executeQuery(sparqlQuery);
+    long startTime = System.currentTimeMillis();
 
-        if (!results.hasNext()) {
-          LOGGER.debug("Query '{}' returned an empty result.", sparqlQuery);
-        }
+    if(this.openResource!=null)
+      this.openResource.close();
+    final ResultSet results = this.executeQuery(sparqlQuery);
 
-   	
-    }
+
+    if(!results.hasNext())
+      LOGGER.debug("Query '{}' returned an empty result!",sparqlQuery);
+
+
+    final long totalTime = System.currentTimeMillis() - startTime;
+    if(totalTime>50000)
+      LOGGER.debug("Query '{}' took {} seconds to complete.",sparqlQuery, totalTime/1000.);
 
     final TripleFilterFunctional tripFil = new TripleFilterFunctional();
 
-    // TO DO: read from config file
+    //TO DO: read from config file
     final String sub = "sub", rel = "rel", obj = "obj";
 
-    final ArrayList<QuerySolution> resultTriples = tripFil.doFilter(results, sub, rel, obj, entity, this.subjectLimit,
-            this.objectLimit);
+    final ArrayList<QuerySolution> resultTriples = tripFil.doFilter(results, sub, rel, obj, entity, this.subjectLimit, 
+        this.objectLimit);
 
     final Set<String> currentTypes = Sets.newHashSet();
     entity2types.put(entity, currentTypes);
-    for (final QuerySolution oneResult : resultTriples) {
+    for(final QuerySolution oneResult:resultTriples){
+
       final String relation = oneResult.get("rel").toString();
-      // check the relation is a type relation
-      if (relation.equals(this.typePrefix) && (oneResult.get("obj") != null)) {
+
+      //check the relation is a type relation
+      if(relation.equals(this.typePrefix)&&
+          oneResult.get("obj")!=null){
         graph.addType(entity, oneResult.get("obj").toString());
       }
-      if ((this.relationToAvoid != null) && this.relationToAvoid.contains(relation)) {
+
+      if(this.relationToAvoid!=null&&this.relationToAvoid.contains(relation))
         continue;
-      }
 
       boolean isTargetRelation = this.targetPrefix == null;
-      if (this.targetPrefix != null) {
-        for (final String targetRelation : this.targetPrefix) {
-          if (relation.startsWith(targetRelation)) {
+      if(this.targetPrefix!=null){
+        for(final String targetRelation:this.targetPrefix)
+          if(relation.startsWith(targetRelation)){
             isTargetRelation = true;
             break;
           }
-        }
       }
-      if (!isTargetRelation) {
+      if(!isTargetRelation)
         continue;
-      }
+
       String nodeToAdd = null;
       Edge<String> edgeToAdd = null;
       String lexicalForm = null;
 
       final RDFNode subject = oneResult.get("sub");
-      if (subject != null) {
+      if(subject!=null){
         nodeToAdd = subject.toString();
-        edgeToAdd = new Edge<String>(nodeToAdd, entity, relation);
-        if (subject.isLiteral()) {
+        edgeToAdd = new Edge<String>(nodeToAdd, entity,relation);
+        if(subject.isLiteral())
           lexicalForm = subject.asLiteral().getLexicalForm();
-        }
-      } else {
+      }
+      else{
         final RDFNode object = oneResult.get("obj");
-        if (object != null) {
+        if(object != null){
           nodeToAdd = object.toString();
-          edgeToAdd = new Edge<String>(entity, nodeToAdd, relation);
-          if (object.isLiteral()) {
-            if ((object.asLiteral() == null) || (object.asLiteral().getLexicalForm() == null)) {
+          edgeToAdd = new Edge<String>(entity, nodeToAdd,relation);
+          if(object.isLiteral()){
+            if(object.asLiteral()==null||object.asLiteral().getLexicalForm()==null)
               lexicalForm = object.toString();
-            } else {
+            else
               lexicalForm = object.asLiteral().getLexicalForm();
-            }
           }
         }
       }
 
-      if (lexicalForm == null) {
+      if(lexicalForm == null)
         graph.addNode(nodeToAdd);
-      } else {
-        if (includeLiterals) {
+      else{
+        if(includeLiterals)
           graph.addLiteralNode(nodeToAdd, lexicalForm);
-        } else {
+        else
           continue;
-        }
       }
 
       final boolean addEdge = graph.addEdge(edgeToAdd, true);
-      if (!addEdge) {
-        LOGGER.warn("Not able to insert the edge '{}' in the graph '{}'.", edgeToAdd, graph);
-      }
+      if(!addEdge)
+        LOGGER.warn("Not able to insert the edge '{}' in the graph '{}'.",edgeToAdd,graph);
 
     }
 
@@ -178,13 +148,6 @@ public abstract class QueryJenaLibrary extends SparqlExecutor {
     this.closeResources();
   }
 
-  
-  
-
-  
-  
-  
-  
   @Override
   public Set<Pair<String, String>> generateUnionNegativeExamples(
       final Set<String> relations, final String typeSubject, final String typeObject, final boolean subjectFunction, final boolean objectFunction) {
@@ -380,8 +343,10 @@ public abstract class QueryJenaLibrary extends SparqlExecutor {
       }
       catch(final Exception e){
         counter_supp = 0;
-      }       
-      return (1.0*counter_supp/((1+supp)*23.0+counter_supp));
+      }
+      //return (1.0*counter_supp/((1+supp)+counter_supp));
+     
+      return (1.0*counter_supp/((1+supp)*25.0+counter_supp));
     }
     // return executeSubjectObjectQuery_v2(positiveExamplesCountQuery,positiveExamples);
 
@@ -496,55 +461,6 @@ public abstract class QueryJenaLibrary extends SparqlExecutor {
       
       return setTypes;
   }
-  
-  @Override
-  public Set<String> get_rel_types(final String relation, boolean sub) {
-	  String query ;
-      ResultSet results = null; 
-      query = "PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> "; 
-
-	  if (sub) {
-		  query += "SELECT ?type ";
-		  query += "FROM <http://dbpedia.org> ";
-		  query += "Where{" + "?subject <" + relation + "> ?object. ";
-		  query += "?subject rdf:type ?type. ";
-		  query += "FILTER (contains(STR(?type),\"http://dbpedia.org\")). ";
-		  query += "FILTER (!contains(STR(?type), \"http://dbpedia.org/ontology/Agent\") ) }"; 
-		  		
-		  query += "GROUP BY ?type ";
-		  query += "ORDER BY DESC(COUNT(?type)) LIMIT 10";
-	  }
-	  else {
-		  query += "SELECT ?type ";
-		  query += "FROM <http://dbpedia.org> ";
-		  query += "Where{" + "?subject <" + relation + "> ?object. ";
-		  query += "?object rdf:type ?type. ";
-		  query += "FILTER (contains(STR(?type),\"http://dbpedia.org\")). ";
-		  query += "FILTER (!contains(STR(?type), \"http://dbpedia.org/ontology/Agent\")  ) }"; 
-
-		  query += "GROUP BY ?type ";
-		  query += "ORDER BY DESC(COUNT(?type)) LIMIT 10";
-	  }
-
-	  		
-	  results = this.executeQuery(query);;
-	  
-      Set<String> types = Sets.newHashSet();
-      
-      while (results.hasNext()) {
-          QuerySolution qs = results.next();
-          
-          Iterator<String> itVars = qs.varNames();
-
-          while (itVars.hasNext()) {
-              String szVar = itVars.next().toString();
-              String szVal = qs.get(szVar).toString();
-              types.add(szVal);
-          } 
-      }
-	return types;
-}
-  
 
   private Set<Pair<String,String>> executeSubjectObjectQuery(final String query, final Set<Pair<String,String>> examples){
     final Set<Pair<String,String>> matchingPositiveExamples = Sets.newHashSet();
@@ -661,6 +577,10 @@ public abstract class QueryJenaLibrary extends SparqlExecutor {
        results = this.executeQuery(query);
     }
     catch(final Exception e){
+    	int countL = 0;
+    	int countR = 0;
+    	
+    	
       String left_query = this.generateOneSideRulesCounterPositiveExampleCountQuery(rules, relations, typeSubject, typeObject, "subject");
       String right_query = this.generateOneSideRulesCounterPositiveExampleCountQuery(rules, relations, typeSubject, typeObject, "object");
       LOGGER.debug("Executing sparql rule query '{}' on Sparql Endpoint...",left_query);
@@ -669,6 +589,7 @@ public abstract class QueryJenaLibrary extends SparqlExecutor {
       Set<String> subjectSet = new HashSet<>();    
       LOGGER.debug("Query executed in {} seconds.",(System.currentTimeMillis()-startTime)/1000.0);
       while(left_result.hasNext()){
+    	  countL += 1;
         final QuerySolution oneResult = left_result.next();
         final String subject = oneResult.get("subject").toString();
         subjectSet.add(subject);
@@ -678,6 +599,7 @@ public abstract class QueryJenaLibrary extends SparqlExecutor {
       Set<String> objectSet = new HashSet<>();
       LOGGER.debug("Query executed in {} seconds.",(System.currentTimeMillis()-startTime)/1000.0);
       while(right_result.hasNext()){
+    	  countR += 1;
         final QuerySolution oneResult = right_result.next();
         final String object = oneResult.get("object").toString();
         objectSet.add(object);
@@ -685,6 +607,8 @@ public abstract class QueryJenaLibrary extends SparqlExecutor {
       this.closeResources();
       System.out.println(subjectSet.size());
       System.out.println(objectSet.size());
+      //return Math.max(countL, countR);
+      //return (subjectSet.size() + objectSet.size())/2;
       return (1+Math.min(subjectSet.size(), objectSet.size())*Math.min(subjectSet.size(), objectSet.size())/Math.max(subjectSet.size(), objectSet.size()));
 
     } 
@@ -705,7 +629,10 @@ public abstract class QueryJenaLibrary extends SparqlExecutor {
     // System.out.println(subjectSet.size());
     // System.out.println(objectSet.size());
 
-    return (1+Math.min(subjectSet.size(), objectSet.size())*Math.min(subjectSet.size(), objectSet.size())/Math.max(subjectSet.size(), objectSet.size()));
+    //return count;
+    //return (subjectSet.size() + objectSet.size())/2;
+    return (1+Math.min(subjectSet.size(), objectSet.size()));
+    //return (1+Math.min(subjectSet.size(), objectSet.size())*Math.min(subjectSet.size(), objectSet.size())/Math.max(subjectSet.size(), objectSet.size()));
 
   }
 

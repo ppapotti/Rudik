@@ -26,7 +26,10 @@
 <!-- 			</parameters> -->
 			<class>asu.edu.neg_rule_miner.sparql.jena.remote.QuerySparqlRemoteEndpoint</class>
 			<parameters>
-				<sparql_endpoint>http://localhost:8890/sparql</sparql_endpoint>
+				<sparql_endpoint>http://dbpedia.org/sparql</sparql_endpoint>
+				<!--  <sparql_endpoint>http://dbpedia.org/sparql</sparql_endpoint> -->
+
+
 			</parameters>
 <!-- 			<class>asu.edu.neg_rule_miner.sparql.jena.tbd.QueryJenaRDFAPI</class> -->
 <!-- 			<parameters> -->
@@ -56,12 +59,6 @@
 					<name>dbo</name>
 					<uri>http://dbpedia.org/ontology/</uri>
 				</prefix>
-				<prefix>
-					<name>xsd</name>
-					<uri>http://www.w3.org/2001/XMLSchema#</uri>
-				</prefix>				
-		
-				
 			</relation_prefix>
 			<!-- target relation prefix. Only relations starting with prefixes specified here will be induced in rules -->
 			<relation_target_prefix>

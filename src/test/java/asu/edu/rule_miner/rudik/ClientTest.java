@@ -30,7 +30,7 @@ public class ClientTest
         generatePositiveExamples(relationNames, subjectType, objectType);
 
     //compute outputs
-    final List<HornRule> outputRules = (List<HornRule>) rudik.
+    final List<HornRule> outputRules = rudik.
         discoverNegativeHornRules(negativeExamples, positiveExamples, relationNames, subjectType, objectType);
     
     final Instant endTime = Instant.now();

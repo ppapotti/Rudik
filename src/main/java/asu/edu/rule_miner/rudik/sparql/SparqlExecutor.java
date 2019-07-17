@@ -188,65 +188,54 @@ public abstract class SparqlExecutor {
    * 			if set to false, the output will not include the pair <a,b> if the output already contains the pair <b,a>
    * @return
    */
-
-  
-  public abstract Set<String> get_rel_types(final String relation, boolean sub);
-  
-
   public abstract Set<Pair<String,String>> getKBExamples(String query,String subject,String object,boolean includeInverted);
 
   public String generatePositiveExampleQuery(final Set<String> relations,final String typeSubject,final String typeObject, final boolean includeLimitation){
 
-	    if ((relations == null) || (relations.size() == 0)) {
-	        return null;
-	      }
+    if(relations==null||relations.size()==0)
+      return null;
 
-	      // create the RDF
-	      final StringBuilder query = new StringBuilder();
+    //create the RDF 
+    final StringBuilder query = new StringBuilder();
 
-	      final Iterator<String> relationIterator = relations.iterator();
-	      final StringBuilder filterRelation = new StringBuilder();
-	      while (relationIterator.hasNext()) {
-	        final String currentRelation = relationIterator.next();
-	        filterRelation.append("?targetRelation = <" + currentRelation + ">");
-	        if (relationIterator.hasNext()) {
-	          filterRelation.append(" || ");
-	        }
-	      }
+    final Iterator<String> relationIterator = relations.iterator();
+    final StringBuilder filterRelation = new StringBuilder();
+    while(relationIterator.hasNext()){
+      final String currentRelation = relationIterator.next();
+      filterRelation.append("?targetRelation = <"+currentRelation+">");
+      if(relationIterator.hasNext()){
+        filterRelation.append(" || ");
+      }
+    }
 
-	      if ((this.prefixQuery != null) && (this.prefixQuery.size() > 0)) {
-	        for (final String prefix : this.prefixQuery) {
-	          query.append(prefix + " ");
-	        }
-	      }
-	      query.append("SELECT DISTINCT ?subject ?object");
+    if(this.prefixQuery!=null&&this.prefixQuery.size()>0){
+      for(final String prefix:this.prefixQuery){
+        query.append(prefix+" ");
+      }
+    }
+    query.append("SELECT DISTINCT ?subject ?object");
 
-	      if ((this.graphIri != null) && (graphIri.length() > 0)) {
-	        query.append(" FROM " + this.graphIri);
-	      }
 
-	      query.append(" WHERE {");
+    if(this.graphIri!=null&&graphIri.length()>0)
+      query.append(" FROM "+this.graphIri);
 
-	      if (typeObject != null ) {
-	      	query.append("  ?object <" + typePrefix + "> <" + typeObject + ">.");
-	      }
-	      if (typeSubject != null) {
-	        query.append("  ?subject <" + typePrefix + "> <" + typeSubject + ">.");
-	      }
-	      query.append("  ?subject ?targetRelation ?object. " + "  FILTER (" + filterRelation.toString() + ").");
+    query.append(" WHERE {");
 
-	      query.append("}");
-	      
-	      
-	      if (includeLimitation) {
-	        if (this.positiveExampleLimit >= 0) {
-//	          query.append(" ORDER BY RAND() LIMIT " + this.positiveExampleLimit*2);
-	          query.append(" LIMIT " + this.positiveExampleLimit*2);
+    if(typeObject!=null)
+      query.append("  ?object <"+typePrefix+"> <" + typeObject + ">.");
+    if(typeSubject!=null)
+      query.append("  ?subject <"+typePrefix+"> <"+ typeSubject + ">.");
+    query.append("  ?subject ?targetRelation ?object. " +
+        "  FILTER (" + filterRelation.toString() + ")  }");
 
-	        }
-	      }
+  
 
-	      return query.toString();
+    if(includeLimitation){
+      if(this.positiveExampleLimit >= 0)
+        query.append(" ORDER BY RAND() LIMIT "+this.positiveExampleLimit);
+    }
+
+    return query.toString();
   }
 
 
@@ -578,80 +567,87 @@ public abstract class SparqlExecutor {
 
   public String generateNegativeExampleUnionQuery_old(final Set<String> relations, final String typeSubject, final String typeObject, 
       final boolean subjectFunction, final boolean objectFunction, final boolean includeLimit){
-	    if ((relations == null) || (relations.size() == 0)) {
-	        return null;
-	      }
+    if(relations==null||relations.size()==0)
+      return null;
 
-	      // create the RDF
-	      final StringBuilder filterRelation = new StringBuilder();
-	      final StringBuilder filterNotRelation = new StringBuilder();
-	      final StringBuilder differentRelation = new StringBuilder();
-	      final Iterator<String> relationIterator = relations.iterator();
+    //create the RDF 
+    final StringBuilder filterRelation = new StringBuilder();
+    final StringBuilder filterNotRelation = new StringBuilder();
+    final StringBuilder differentRelation = new StringBuilder();
+    final Iterator<String> relationIterator = relations.iterator();
 
-	      while (relationIterator.hasNext()) {
-	        final String currentRelation = relationIterator.next();
-	        filterRelation.append("?targetRelation = <" + currentRelation + ">");
-	        filterNotRelation.append("?otherRelation != <" + currentRelation + ">");
-	        if (relationIterator.hasNext()) {
-	          filterRelation.append(" || ");
-	          filterNotRelation.append(" && ");
-	        }
-	        differentRelation.append("  FILTER NOT EXISTS {?subject <" + currentRelation + "> ?object.} ");
-	      }
+    while(relationIterator.hasNext()){
+      final String currentRelation = relationIterator.next();
+      filterRelation.append("?targetRelation = <"+currentRelation+">");
+      filterNotRelation.append("?otherRelation != <"+currentRelation+">");
+      if(relationIterator.hasNext()){
+        filterRelation.append(" || ");
+        filterNotRelation.append(" && ");
+      }
+      differentRelation.append("  FILTER NOT EXISTS {?subject <"+currentRelation+"> ?object.} ");
+    }
 
-	      String negativeCandidateQuery = "";
-	      if ((this.prefixQuery != null) && (this.prefixQuery.size() > 0)) {
-	        for (final String prefix : this.prefixQuery) {
-	          negativeCandidateQuery += prefix + " ";
-	        }
-	      }
+    String negativeCandidateQuery = "";
+    if(this.prefixQuery!=null&&this.prefixQuery.size()>0){
+      for(final String prefix:this.prefixQuery){
+        negativeCandidateQuery+=prefix+" ";
+      }
+    }
 
-	      negativeCandidateQuery += "SELECT DISTINCT ?subject ?object ";
-	      if ((this.graphIri != null) && (graphIri.length() > 0)) {
-	        negativeCandidateQuery += " FROM " + this.graphIri;
-	      }
+    negativeCandidateQuery +=
+        "SELECT DISTINCT ?subject ?object ";
+    if(this.graphIri!=null&&graphIri.length()>0)
+      negativeCandidateQuery+=" FROM "+this.graphIri;
 
-	      negativeCandidateQuery += " WHERE {";
-	      if (typeObject != null) {
-	        negativeCandidateQuery += " ?object <" + typePrefix + "> <" + typeObject + ">.";
-	      }
-	      if (typeSubject != null) {
-	        negativeCandidateQuery += "  ?subject <" + typePrefix + "> <" + typeSubject + ">.";
-	      }
+    negativeCandidateQuery+=" WHERE {";
+    if(typeObject!=null)
+      negativeCandidateQuery+=" ?object <"+typePrefix+"> <" + typeObject + ">.";
 
-	      // if both true or false, include both
-	      if ((subjectFunction == false) && (objectFunction == false)) {
-	        negativeCandidateQuery += " {{?subject ?targetRelation ?realObject.} UNION "
-	                + " {?realSubject ?targetRelation ?object.}} ";
-	      } else {
-	        if (subjectFunction) {
-	          negativeCandidateQuery += " ?subject ?targetRelation ?realObject. ";
-	        }
-	        if (objectFunction) {
-	          negativeCandidateQuery += " ?realSubject ?targetRelation ?object. ";
-	        }
-	      }
+    if(typeSubject!=null)
+      negativeCandidateQuery+="  ?subject <"+typePrefix+"> <"+ typeSubject + ">.";
 
-	      if (typeObject==null) {
-	          negativeCandidateQuery += "?otherRelation <http://www.w3.org/2000/01/rdf-schema#range> ?data_type1. " + 
-	            " ?targetRelation <http://www.w3.org/2000/01/rdf-schema#range> ?data_type1. ";
-	        }
-	          
-	      negativeCandidateQuery += "  ?subject ?otherRelation ?object. " + "  FILTER (" + filterRelation.toString() + ") "
-	              + "  FILTER (" + filterNotRelation.toString() + ") " + differentRelation.toString();
+    //if both true or false, include both
 
-	      negativeCandidateQuery += "}";
+    if(subjectFunction == false && objectFunction == false){
+      negativeCandidateQuery+=" {{?subject ?targetRelation ?realObject.} UNION " +
+          " {?realSubject ?targetRelation ?object.}} ";
+    }
+    else{
+      if(subjectFunction)
+        negativeCandidateQuery+=" ?subject ?targetRelation ?realObject. ";
+      if(objectFunction)
+        negativeCandidateQuery+=" ?realSubject ?targetRelation ?object. ";
+    }
 
-	      if (includeLimit) {
-	        if (this.negativeExampleLimit >= 0) {
-	         //negativeCandidateQuery += " ORDER BY RAND()" ;
-	      	 negativeCandidateQuery += " LIMIT " + this.negativeExampleLimit;
 
-	        }
-	      }
+    negativeCandidateQuery+="  ?subject ?otherRelation ?object. " +
+        "  FILTER (" + filterRelation.toString() + ") " +
+        "  FILTER (" + filterNotRelation.toString() + ") " +
+        differentRelation.toString();
 
-	      return negativeCandidateQuery;
-	    }
+    if (typeObject==null) {
+      negativeCandidateQuery += "?otherRelation <http://www.w3.org/2000/01/rdf-schema#range> ?data_type1. " + 
+        " ?targetRelation <http://www.w3.org/2000/01/rdf-schema#range> ?data_type1. ";
+    }
+
+    if (typeSubject==null) {
+      negativeCandidateQuery += "?otherRelation <http://www.w3.org/2000/01/rdf-schema#domain> ?data_type2. " + 
+        " ?targetRelation <http://www.w3.org/2000/01/rdf-schema#domain> ?data_type2. ";
+    }
+    // negativeCandidateQuery+= "  FILTER (" + filterRelation.toString() + ") " +
+    //     // "  FILTER (" + filterNotRelation.toString() + ") " +
+    //      differentRelation.toString();
+
+    negativeCandidateQuery+="} ORDER BY RAND()";
+
+    if(includeLimit){
+      if(this.negativeExampleLimit>=0)
+        // negativeCandidateQuery+=" ORDER BY RAND() LIMIT "+this.negativeExampleLimit;
+        negativeCandidateQuery+="  LIMIT "+ this.negativeExampleLimit;
+    }
+
+    return negativeCandidateQuery;
+  }
 
   public String generateNegativeExampleUnionQuery(final Set<String> relations, final String typeSubject, final String typeObject, 
       final boolean subjectFunction, final boolean objectFunction, final boolean includeLimit){
@@ -835,8 +831,15 @@ public abstract class SparqlExecutor {
     negativeCandidateQuery+=" WHERE {";
     if(type!=null)
       negativeCandidateQuery+=" ?" + side +" <"+typePrefix+"> <" + type + ">.";
- 
-    negativeCandidateQuery+=" ?" + side + " ?targetRelation ?realObject. ";
+
+    if (side == "subject") {
+        negativeCandidateQuery+=" ?" + side + " ?targetRelation ?realObject. ";
+    	
+    }else {
+        negativeCandidateQuery+= "?realSubject" + " ?targetRelation" +  " ?" + side;
+    	
+    	
+    }
     negativeCandidateQuery+= "  FILTER (" + filterRelation.toString() + ") ";
     negativeCandidateQuery+="}";
 
@@ -1143,60 +1146,33 @@ public abstract class SparqlExecutor {
     //compare them as date
     final DateTimeFormatter formatter = DateTimeFormatter.ISO_DATE;
     final DateTimeFormatter formatterTime = DateTimeFormatter.ISO_DATE_TIME;
-    
     LocalDate firstDate = null;
-    try {
+    try{
       firstDate = LocalDate.parse(stringLiteralOne, formatter);
-    } catch (final Exception e) {
+    }
+    catch(final Exception e){
       try {
         firstDate = LocalDate.parse(stringLiteralOne, formatterTime);
       } catch (final Exception e1) {
-    	  try {
-  		    String newLiteralone = "";
-  		    String [] parts = stringLiteralOne.split("-");
-  		    for (String s : parts ) {
-  		    	if (s.length()<2) 
-  		    		newLiteralone += '0' + s + '-';
-  		    	else
-  		    		newLiteralone += s + '-';
-  		    }
-  		    newLiteralone = newLiteralone.substring(0, newLiteralone.length()-1);
-  		    firstDate = LocalDate.parse(newLiteralone,formatter);
-    	  }catch (Exception e2) {
-		}
-      } 
+        //just continue
+      }
     }
     LocalDate secondDate = null;
-    try {
+    try{
       secondDate = LocalDate.parse(stringLiteralTwo, formatter);
-      if (firstDate == null) 
+      if(firstDate==null)
         return null;
-      
-    } catch (final Exception e) {
+    }
+    catch(final Exception e){
       try {
         secondDate = LocalDate.parse(stringLiteralTwo, formatterTime);
-        if (firstDate == null) 
+        if(firstDate==null)
           return null;
-        
-      } catch (final Exception e1) {
-    	  try {
-    		    String newLiteraltwo = "";
-    		    String [] parts = stringLiteralTwo.split("-");
-    		    for (String s : parts ) {
-    		    	if (s.length()<2) 
-    		    		newLiteraltwo += '0' + s + '-';
-    		    	else
-    		    		newLiteraltwo += s + '-';
-    		    }
-    		    newLiteraltwo = newLiteraltwo.substring(0, newLiteraltwo.length()-1);
-    		    secondDate = LocalDate.parse(newLiteraltwo,formatter);
-    		  if (firstDate == null) 
-    			  return null;
-    	  }catch (Exception e2) {
-    		  if (firstDate != null) 
-    			  return null;
-		}
-      }
+      } 
+      catch (final Exception e1) {
+        if(firstDate!=null)
+          return null;
+      }	
     }
     if(firstDate!=null&&secondDate!=null){
       if(firstDate.compareTo(secondDate)==0){

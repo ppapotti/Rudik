@@ -20,7 +20,7 @@ public interface HornRuleDiscoveryInterface {
    * @param typeObject
    * @return
    */
-  public Map<HornRule, Double> discoverPositiveHornRules(Set<Pair<String,String>> negativeExamples, Set<Pair<String,String>> positiveExamples,
+  public List<HornRule> discoverPositiveHornRules(Set<Pair<String,String>> negativeExamples, Set<Pair<String,String>> positiveExamples,
       Set<String> relations, String typeSubject, String typeObject);
 
   /**
@@ -50,7 +50,7 @@ public interface HornRuleDiscoveryInterface {
    * @param typeObject
    * @return
    */
-  public abstract Map<HornRule, Double> discoverNegativeHornRules(Set<Pair<String,String>> negativeExamples, Set<Pair<String,String>> positiveExamples,
+  public abstract List<HornRule> discoverNegativeHornRules(Set<Pair<String,String>> negativeExamples, Set<Pair<String,String>> positiveExamples,
       Set<String> relations, String typeSubject, String typeObject);
 
   /**

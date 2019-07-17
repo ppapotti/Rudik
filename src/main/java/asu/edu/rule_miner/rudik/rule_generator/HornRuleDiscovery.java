@@ -79,13 +79,13 @@ public abstract class HornRuleDiscovery implements HornRuleDiscoveryInterface{
 
 	}
 
-	public abstract Map<HornRule, Double> discoverPositiveHornRules(Set<Pair<String,String>> negativeExamples, Set<Pair<String,String>> positiveExamples,
+	public abstract List<HornRule> discoverPositiveHornRules(Set<Pair<String,String>> negativeExamples, Set<Pair<String,String>> positiveExamples,
 			Set<String> relations, String typeSubject, String typeObject);
 
 	public abstract List<HornRule> discoverPositiveHornRules(Set<Pair<String,String>> negativeExamples, Set<Pair<String,String>> positiveExamples,
 			Set<String> relations, String typeSubject, String typeObject,boolean subjectFunction, boolean objectFunction);
 
-	public abstract Map<HornRule, Double> discoverNegativeHornRules(Set<Pair<String,String>> negativeExamples, Set<Pair<String,String>> positiveExamples,
+	public abstract List<HornRule> discoverNegativeHornRules(Set<Pair<String,String>> negativeExamples, Set<Pair<String,String>> positiveExamples,
 			Set<String> relations, String typeSubject, String typeObject);
 
 
@@ -212,13 +212,6 @@ public abstract class HornRuleDiscovery implements HornRuleDiscoveryInterface{
 	public Set<String> get_type(String entity) {
 		return this.getSparqlExecutor().get_type(entity);
 	}
-	
-	
-	
-	public Set<String> get_rel_types(String relation, boolean sub){
-		return this.getSparqlExecutor().get_rel_types(relation, sub);
-	}
-
 
 	/**
 	 * Generate limited negative examples

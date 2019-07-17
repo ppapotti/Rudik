@@ -40,24 +40,24 @@ public class DynamicPruningRuleDiscovery extends HornRuleDiscovery{
   }
 
   @Override
-  public Map<HornRule,Double> discoverPositiveHornRules(final Set<Pair<String,String>> negativeExamples, final Set<Pair<String,String>> positiveExamples,
+  public List<HornRule> discoverPositiveHornRules(final Set<Pair<String,String>> negativeExamples, final Set<Pair<String,String>> positiveExamples,
       final Set<String> relations, final String typeSubject, final String typeObject){
     //switch positive and negative examples
     final DynamicScoreComputation score = new DynamicScoreComputation(positiveExamples.size(), 
         negativeExamples.size(), this.getSparqlExecutor(), relations, typeSubject, typeObject, negativeExamples,false);
     score.setMinePositive(true,false,false);
     final Map<HornRule,Double> rule2score = this.discoverHornRules(positiveExamples, negativeExamples, relations, score,-1);
-    return rule2score ;
+    return rule2score != null ? Lists.newArrayList(rule2score.keySet()) : null;
 
   }
 
   @Override
-  public Map<HornRule,Double> discoverNegativeHornRules(final Set<Pair<String,String>> negativeExamples, final Set<Pair<String,String>> positiveExamples,
+  public List<HornRule> discoverNegativeHornRules(final Set<Pair<String,String>> negativeExamples, final Set<Pair<String,String>> positiveExamples,
       final Set<String> relations, final String typeSubject, final String typeObject){
     final DynamicScoreComputation score = new DynamicScoreComputation(negativeExamples.size(), 
         positiveExamples.size(), this.getSparqlExecutor(), relations, typeSubject, typeObject, positiveExamples,false);
     final Map<HornRule,Double> rule2score = this.discoverHornRules(negativeExamples, positiveExamples, relations, score,-1);
-    return rule2score;
+    return rule2score != null ? Lists.newArrayList(rule2score.keySet()) : null;
 
   }
   
@@ -198,7 +198,7 @@ public class DynamicPruningRuleDiscovery extends HornRuleDiscovery{
         LOGGER.debug("Computing next rules for current best rule...");
         //compute next plausible negative rules
         final Set<MultipleGraphHornRule<String>> newPlausibleRules = 
-            currBestRule.nextPlausibleRules(super.maxRuleLen, negativeCoverageThreshold,relations.toArray()[0].toString());
+            currBestRule.nextPlausibleRules(super.maxRuleLen, negativeCoverageThreshold);
 
         //destroy the materialised resources for the rule
         currBestRule.dematerialiseRule();
@@ -269,6 +269,7 @@ public class DynamicPruningRuleDiscovery extends HornRuleDiscovery{
 
           
           // update relation to validation examples
+          /*
           final Set<String> currentExampleRelation = Sets.newHashSet();
           currentExampleRelation.add(Constant.EQUAL_REL);
           currentExampleRelation.add(Constant.LESS_EQUAL_REL);
@@ -299,7 +300,9 @@ public class DynamicPruningRuleDiscovery extends HornRuleDiscovery{
             }
             
 
-          } 
+          }
+          */
+
         }
         else{
           //expand graph only if nodes has not been expanded before

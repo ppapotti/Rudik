@@ -1,17 +1,25 @@
 package asu.edu.rule_miner.rudik;
 
+import java.time.Instant;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.Collections;
 
+import java.util.HashSet;
 import java.io.FileNotFoundException;
+import java.util.Scanner; 
 import java.util.Iterator;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.io.FileInputStream;
+
+import java.io.BufferedWriter;
+import java.io.FileWriter;
 
 import java.util.HashMap;
  import java.util.Map.Entry;
@@ -22,16 +30,23 @@ import java.util.LinkedHashMap;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import com.google.common.collect.Maps;
 import org.apache.jena.ext.com.google.common.collect.Sets;
 import org.apache.commons.lang3.tuple.Pair;
 import org.apache.jena.ext.com.google.common.collect.Lists;
 
+import asu.edu.rule_miner.rudik.configuration.ConfigurationFacility;
 import asu.edu.rule_miner.rudik.model.horn_rule.HornRule;
+import asu.edu.rule_miner.rudik.model.statistic.StatisticsContainer;
 import asu.edu.rule_miner.rudik.rule_generator.DynamicPruningRuleDiscovery;
 
 //import org.apache.logging.log4j.LogManager;
 //import org.apache.logging.log4j.Logger;
+import asu.edu.rule_miner.rudik.Triple;
+import asu.edu.rule_miner.rudik.model.horn_rule.HornRule;
+import asu.edu.rule_miner.rudik.model.horn_rule.MultipleGraphHornRule;
 import asu.edu.rule_miner.rudik.model.horn_rule.RuleAtom;
+import asu.edu.rule_miner.rudik.rule_generator.score.DynamicScoreComputation;
 
 import org.apache.jena.query.QueryExecution;
 import org.apache.jena.query.QueryExecutionFactory;
@@ -50,13 +65,14 @@ import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
 import javax.xml.transform.OutputKeys;
 import org.xml.sax.SAXException;
+import org.w3c.dom.Attr;
 import org.w3c.dom.Document;
 import org.w3c.dom.Node;
 import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
 
 
-public class Rudik2_App
+public class App_2
 {
 
 
@@ -77,13 +93,13 @@ public class Rudik2_App
 	public static final String organisation_type = "http://dbpedia.org/ontology/Organisation";
 	public static final String person_type = "http://dbpedia.org/ontology/Person";
 
- 	public static final Set<String> relations = Sets.newHashSet("http://dbpedia.org/ontology/foundedBy");
-	public static final String typeSubject = "http://dbpedia.org/ontology/Agent";
-	public static final String typeObject = "http://dbpedia.org/ontology/Agent";
+ 	public static final Set<String> relations = Sets.newHashSet("http://dbpedia.org/ontology/almaMater");
+	public static final String typeSubject = "http://dbpedia.org/ontology/Person";
+	public static final String typeObject = "http://dbpedia.org/ontology/University";
 
-  	//public static final Set<String> relations = Sets.newHashSet("http://dbpedia.org/ontology/spouse");
-	//public static final String typeSubject = "http://dbpedia.org/ontology/Person";
-	//public static final String typeObject = "http://dbpedia.org/ontology/Person";
+ // 	public static final Set<String> relations = Sets.newHashSet("http://dbpedia.org/ontology/spouse");
+	// public static final String typeSubject = "http://dbpedia.org/ontology/Person";
+	// public static final String typeObject = "http://dbpedia.org/ontology/Person";
 
 
  // 	public static final Set<String> relations = Sets.newHashSet("http://dbpedia.org/ontology/vicePresident");
@@ -550,142 +566,62 @@ public class Rudik2_App
 	public static void main( String[] args ) throws IOException
 	{
 
-		String sparqlQuery = "";
-
-	    String path_file = "";
-
    		DynamicPruningRuleDiscovery naive = new DynamicPruningRuleDiscovery();
 	
 	   	Set<Pair<String,String>> negativeExamples = Sets.newHashSet();
 	    Set<Pair<String,String>> positiveExamples = Sets.newHashSet();
 
-	    Map<String, Integer> entity2types_sub = new HashMap<String, Integer>();
-	    Map<String, Integer> entity2types_obj = new HashMap<String, Integer>();
-
-	    if (args.length > 0) {
-	        path_file = args[0];
-		    File file = new File(path_file); 
-		    try {
-		        BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream(file),"UTF-8"));
-		        // BufferedWriter wr_1 = new BufferedWriter(new FileWriter("founder_manual.tsv"));
-		        // List<String> manual_pairs = new ArrayList<String>();
-		        // BufferedWriter wr_2 = new BufferedWriter(new FileWriter("founder_2.tsv"));
-		        String tmp = br.readLine();
-		        // String tmp = "";
-		        while ((tmp = br.readLine()) != null) {
-		            String[] sample = tmp.split("\t"); 
-		            // String[] sample = tmp.split(","); 
-		            final Pair<String,String> pair = Pair.of(toDbpedia_resource(sample[0]), toDbpedia_resource(sample[1]));
-		            // final Pair<String,String> pair = Pair.of(toDbpedia_resource(sample[1].replaceAll("[<>]","")), toDbpedia_resource(sample[3].replaceAll("[<>]","")));
-	                Set<String> currentTypes_sub = naive.get_type(toDbpedia_resource(sample[0]));
-	                Set<String> currentTypes_obj = naive.get_type(toDbpedia_resource(sample[1]));
-	                // Set<String> currentTypes_sub = naive.get_type(toDbpedia_resource(sample[1].replaceAll("[<>]","")));
-	                // Set<String> currentTypes_obj = naive.get_type(toDbpedia_resource(sample[3].replaceAll("[<>]","")));
-
-	                if (currentTypes_sub.size() == 0 || currentTypes_obj.size() ==0) {
-	                    System.out.println("Sample " + sample[0] + "-" + sample[1] + " has no types --> Ignored " );
-	                    // System.out.println("Sample " + sample[1] + "-" + sample[3] + " has no types --> Ignored " );
-
-	                }
-	                else {
-			            if (sample[3].equals("1")) {
-	                	// if (sample[4].equals("1")) {
-	                	// if (true) {
-			            	if (double_check(pair.getLeft(), pair.getRight(),relations.iterator().next(), true)) {
-			                	positiveExamples.add(pair);
-			                	// if (currentTypes_sub.contains(organisation_type) && (currentTypes_obj.contains(organisation_type) || currentTypes_obj.contains(person_type)))
-			                		// manual_pairs.add(tmp + "\n");
-			                	// 	wr_1.write(tmp + "\n");
-			                	// if (currentTypes_sub.contains(organisation_type) && currentTypes_obj.contains(person_type))
-			                	// 	wr_2.write(tmp + "\n");			                	
-			                	for (final String type_ : currentTypes_sub) 
-		                			if (type_.contains(ontology_prefix) && !type_.contains(agent_type) && !type_.contains(typeSubject) && !type_.contains(person_type)) 
-		                    			entity2types_sub.put(type_, entity2types_sub.getOrDefault(type_, 0) + 1);
-				                for (final String type_ : currentTypes_obj) 
-			    	            	if (type_.contains(ontology_prefix) && !type_.contains(agent_type) && !type_.contains(typeObject) && !type_.contains(person_type)) 
-		            		        	entity2types_obj.put(type_, entity2types_obj.getOrDefault(type_, 0) + 1);
-			            	}
-			            }
-			            else {
-			            	if (double_check(pair.getLeft(), pair.getRight(),relations.iterator().next(), false)) {
-			                	negativeExamples.add(pair);
-			                	// if (currentTypes_sub.contains(organisation_type) && currentTypes_obj.contains(organisation_type))
-			                	// 	wr_1.write(tmp + "\n");
-			                	// if (currentTypes_sub.contains(organisation_type) && currentTypes_obj.contains(person_type))
-			                	// 	wr_2.write(tmp + "\n");	
-			                	
-			                	for (final String type_ : currentTypes_sub) 
-		                			if (type_.contains(ontology_prefix) && !type_.contains(agent_type) && !type_.contains(typeSubject) && !type_.contains(person_type)) 
-		                    			entity2types_sub.put(type_, entity2types_sub.getOrDefault(type_, 0) + 1);
-				                for (final String type_ : currentTypes_obj) 
-			    	            	if (type_.contains(ontology_prefix) && !type_.contains(agent_type) && !type_.contains(typeObject) && !type_.contains(person_type)) 
-		            		        	entity2types_obj.put(type_, entity2types_obj.getOrDefault(type_, 0) + 1);
-		            		    
-			            	}
-			            }
-	            	}
-	            
-		        }
-		        br.close();
-		        // wr_1.close();
-		        // wr_2.close();
-		        // Collections.shuffle(manual_pairs);
-		        // for (int i = 0; i < 800; i++) {
-		        	// wr_1.write(manual_pairs.get(i));
-		        // }
-		        System.out.println(" Length Positive Set : " + positiveExamples.size() );
-		        System.out.println(" Length Negative Set : " + negativeExamples.size() );  
 
 
-				entity2types_sub = 
-				     entity2types_sub.entrySet().stream()
-				    .sorted(Entry.<String, Integer>comparingByValue().reversed())
-				    .collect(Collectors.toMap(Entry::getKey, Entry::getValue,
-				                              (e1, e2) -> e1, LinkedHashMap::new));
-				entity2types_obj = 
-				     entity2types_obj.entrySet().stream()
-				    .sorted(Entry.<String, Integer>comparingByValue().reversed())
-				    .collect(Collectors.toMap(Entry::getKey, Entry::getValue,
-				                              (e1, e2) -> e1, LinkedHashMap::new));
-
-		        System.out.println(" Subject Types : " + entity2types_sub);
-				System.out.println(" Object Types : " + entity2types_obj);			
-
-				// System.exit(1);
-					    	
-		    } 
-	    	catch (FileNotFoundException e) {
-	        	System.out.println(" File not found !!");
-	        	System.exit(1);
-	    	}
-
-
-	    }
-	    else {
 	        System.out.println("No dataset specified...Try to generate it using rudik");
 	    	
 	        System.out.println(" Generate Positive Examples ");
-			positiveExamples = naive.generatePositiveExamples(relations, typeSubject, typeObject, 500);
-			
-			for (final  Pair<String,String> example  :positiveExamples) {
-				System.out.println("Positive example: " + example.getLeft() + " --- " + example.getRight());
-			}
-			
+			positiveExamples = naive.generatePositiveExamples(relations, typeSubject, typeObject, 400);
+			System.out.println("POSITIVES:" + positiveExamples.size());
+
+		/*
+		 * for (final Pair<String,String> example :positiveExamples) {
+		 * System.out.println("Positive example: " + example.getLeft() + " --- " +
+		 * example.getRight()); }
+		 */			
 	        System.out.println(" Generate Negative Examples ");
-			negativeExamples= naive.generateNegativeExamples(relations, typeSubject, typeObject, 500);
-			
-			for (final  Pair<String,String> example  :negativeExamples) {
-				System.out.println("Negative example: " + example.getLeft() + " --- " + example.getRight());
-			}
-			
-	    }
+			negativeExamples = naive.generateNegativeExamples(relations, typeSubject, typeObject, 400);
+
+			System.out.println("NEGATIVES:" + negativeExamples.size());
+
+		/*
+		 * for (final Pair<String,String> example :negativeExamples) {
+			negativeAgentExamples= naive.generateNegativeExamples(relations, typeSubject, typeObject, 200);
+		 * System.out.println("Negative example: " + example.getLeft() + " --- " +
+		 * example.getRight()); }
+		 */			
 	    
-	    Map<HornRule,Double> outputRules_negative = naive.discoverNegativeHornRules(negativeExamples, positiveExamples, relations, typeSubject, typeObject);
 
-	    Map<HornRule,Double> outputRules_positive = naive.discoverPositiveHornRules(negativeExamples, positiveExamples, relations, typeSubject, typeObject);
+	
+  
+	    final Map<HornRule, Double> outputRules_negative = naive.discoverAllNegativeHornRules(negativeExamples, positiveExamples, relations, typeSubject, typeObject, -1);
 
-		extend_and_write_xml("foundedBy", "score_foundedBy1.xml", entity2types_sub, entity2types_obj, outputRules_positive, outputRules_negative, naive);
-		//write_xml("foundedBy", "foundedBy_cluster.xml", outputRules_positive, outputRules_negative);
+	    final Map<HornRule, Double> outputRules_positive = naive.discoverAllPositiveHornRules(negativeExamples, positiveExamples, relations, typeSubject, typeObject, -1);
+
+		List<HornRule> rule_positive = (outputRules_positive != null) ? Lists.newArrayList(outputRules_positive.keySet()) : null;
+		List<HornRule> rule_negative = (outputRules_negative!= null) ? Lists.newArrayList(outputRules_negative.keySet()) : null;
+		
+	    
+		for(final HornRule rule:rule_positive){
+			double new_conf = naive.getRuleConfidence(rule.getRules(), relations, typeSubject, typeObject, true);
+			System.out.println(rule + "\t\t " + new_conf + "pos");
+		}
+
+		for(final HornRule rule:rule_negative){
+			double new_conf = naive.getRuleConfidence(rule.getRules(), relations, typeSubject, typeObject, false);
+			System.out.println(rule + "\t\t " + new_conf + "neg");
+
+			
+		}
+
+	    
+		 //extend_and_write_xml("deathPlace", "score_deathPlace.xml", entity2types_sub, entity2types_obj, outputRules_positive, outputRules_negative, naive);
+		write_xml("death", "deathPlace.xml", outputRules_positive, outputRules_negative);
 
 		// load_rules_from_xml("score_foundedBy.xml");
 
