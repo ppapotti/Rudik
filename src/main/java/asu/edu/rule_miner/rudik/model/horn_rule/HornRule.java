@@ -294,14 +294,5 @@ public class HornRule {
 	    }
 	    return horn_rule;
 	}
-	
-	public Set<Pair<String, String>> getCoveredExamples() {
-	    return null;
-	}
-	
-	public Set<Pair<String, String>> getValidationCoveredExamples() {
-	    return null;
-	}
-
 
 }

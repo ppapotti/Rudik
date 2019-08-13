@@ -68,12 +68,4 @@ public class HornRuleResult {
     this.sorroundingGraph = sorroundingGraph;
   }
 
-  public Set<Pair<String, String>> getGenerationExamples() {
-    return this.outputRule.getCoveredExamples();
-  }
-
-  public Set<Pair<String, String>> getValidationExamples() {
-    return this.outputRule.getValidationCoveredExamples();
-  }
-
 }
