@@ -13,6 +13,7 @@ import com.google.common.collect.Lists;
 import com.google.common.collect.Sets;
 
 import asu.edu.rule_miner.rudik.model.rdf.graph.Graph;
+import asu.edu.rule_miner.rudik.api.model.HornRuleInstantiation;
 import asu.edu.rule_miner.rudik.api.model.HornRuleResult;
 import asu.edu.rule_miner.rudik.api.model.HornRuleResult.RuleType;
 import asu.edu.rule_miner.rudik.api.model.RudikResult;
@@ -173,7 +174,7 @@ public class RudikApi {
             outputRules = ruleDiscovery.discoverNegativeHornRules(negativeEx, positiveEx, relations, typeSubject,
                     typeObject);
         }
-        return buildResult(outputRules.keySet(), targetPredicate, type, typeSubject, typeObject, isInstantiation);
+        return buildResult(outputRules.keySet(), targetPredicate, type, typeSubject, typeObject, isInstantiation, maxInstantiationNumber);
     }
 
     /**
@@ -185,24 +186,24 @@ public class RudikApi {
      * @return
      */
 //add isInstantiation to choose whether to retrieve or not the instantiations
-    public RudikResult instantiateSingleRule(HornRule rule, String targetPredicate, RuleType type) {
+    public RudikResult instantiateSingleRule(HornRule rule, String targetPredicate, RuleType type, int numInstances) {
         //to build the instantiations and surrounding graph in buikdIndividualresult()
         final boolean isInstantiation = true;
         final Pair<String, String> subjectObjectType = kbAnalysis.getPredicateTypes(targetPredicate);
         final String typeSubject = subjectObjectType.getLeft();
         final String typeObject = subjectObjectType.getRight();
-        return buildResult(Lists.newArrayList(rule), targetPredicate, type, typeSubject, typeObject, isInstantiation);
+        return buildResult(Lists.newArrayList(rule), targetPredicate, type, typeSubject, typeObject, isInstantiation, numInstances);
     }
 
     private RudikResult buildResult(Collection<HornRule> allRules, String targetPredicate, RuleType type, String subType,
-                                    String objType, boolean isInstantiation) {
+                                    String objType, boolean isInstantiation, int numInstances) {
         final RudikResult result = new RudikResult();
-        allRules.forEach(rule -> result.addResult(buildIndividualResult(rule, targetPredicate, type, subType, objType, isInstantiation)));
+        allRules.forEach(rule -> result.addResult(buildIndividualResult(rule, targetPredicate, type, subType, objType, isInstantiation, numInstances)));
         return result;
     }
 
     private HornRuleResult buildIndividualResult(HornRule oneRule, String targetPredicate, RuleType type, String subjType,
-                                                 String objType, boolean isInstantiation) {
+                                                 String objType, boolean isInstantiation, int numInstances) {
         final HornRuleResult result = new HornRuleResult();
         result.setOutputRule(oneRule);
         result.setTargetPredicate(targetPredicate);
@@ -211,10 +212,27 @@ public class RudikApi {
             result.setAllInstantiations(
                     ruleInstantiation.instantiateRule(targetPredicate, oneRule, subjType, objType, type, maxInstantiationNumber));
             final Set<String> targetEntities = Sets.newHashSet();
-            result.getAllInstantiations().forEach(r -> {
-                targetEntities.add(r.getRuleSubject());
-                targetEntities.add(r.getRuleObject());
-            });
+            List<HornRuleInstantiation> randomInst = new ArrayList<HornRuleInstantiation>();
+            List<HornRuleInstantiation> allInst = result.getAllInstantiations();
+            if(numInstances < maxInstantiationNumber && numInstances < allInst.size()) {
+            	// get random
+            	Random rand = new Random();
+            	for (int j = 0; j < numInstances; j++) {
+                    int randomIndex = rand.nextInt(allInst.size());
+                    randomInst.add(allInst.get(randomIndex));
+                    allInst.remove(randomIndex);
+            	}
+            	randomInst.forEach(r -> {
+                    targetEntities.add(r.getRuleSubject());
+                    targetEntities.add(r.getRuleObject());
+                });
+            	result.setAllInstantiations(randomInst);
+            } else {
+            	allInst.forEach(r -> {
+                    targetEntities.add(r.getRuleSubject());
+                    targetEntities.add(r.getRuleObject());
+                });
+            }
             result.setSorroundingGraph(graphGeneration.generateSorroundingGraph(targetEntities));
         }
         return result;
@@ -231,6 +249,5 @@ public class RudikApi {
     public void setMaxInstantiationNumber(int number) {
         this.maxInstantiationNumber = number;
     }
-    
 
 }

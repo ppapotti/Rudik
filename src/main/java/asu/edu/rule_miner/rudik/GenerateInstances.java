@@ -57,7 +57,7 @@ public class GenerateInstances {
                 true,
                 max_instances);
 
-        final RudikResult result = API.instantiateSingleRule(horn_rule, predicate, type);
+        final RudikResult result = API.instantiateSingleRule(horn_rule, predicate, type, 5);
         if (result != null) {
             for (final HornRuleResult oneResult : result.getResults()) {
 
