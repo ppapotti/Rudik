@@ -6,6 +6,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
@@ -59,6 +60,8 @@ public abstract class SparqlExecutor {
   protected int positiveExampleLimit = -1;
 
   protected boolean includeLiterals = true;
+  
+  protected final static String CONSTANT_SUBSTITUTION_VARIABLE = "constantVariable_";
 
   @SuppressWarnings("unchecked")
   public SparqlExecutor(final Configuration config){
@@ -1378,5 +1381,96 @@ public abstract class SparqlExecutor {
   public void setNegExamplesLimit(final int limit){
     this.negativeExampleLimit = limit;
   }
+  
+  public void setGenericTypes(final Collection<String> types) {
+	  this.genericTypes = Sets.newHashSet(types);
+  }
+  
+  public abstract List<List<Pair<String, String>>> instantiateHornRule(Set<String> targetPredicates,
+	                                                                       Set<RuleAtom> rules, String subjType, String objType, boolean positive, int maxInstantiationNumber);
+  
+  public String generateHornRuleQueryInstantiation(final Set<String> targetPredicates, final Set<RuleAtom> rules,
+          final String typeSubject, final String typeObject, boolean selectAll, boolean positive,
+          int maxInstantiationNumber) {
+	if (!(rules.size() > 0)) {
+	return null;
+	}
+	// create the RDF
+	final StringBuilder query = new StringBuilder();
+	
+	if ((this.prefixQuery != null) && (this.prefixQuery.size() > 0)) {
+	for (final String prefix : this.prefixQuery) {
+	query.append(prefix + " ");
+	}
+	}
+	
+	final String subject = typeSubject != null ? "?subject" : "";
+	final String object = typeObject != null ? "?object" : "";
+	if (selectAll) {
+	query.append("SELECT DISTINCT *");
+	} else {
+	query.append("SELECT DISTINCT " + subject + " " + object);
+	}
+	
+	/**
+	* Jena does not work with count and nested query with from
+	*/
+	if ((this.graphIri != null) && (graphIri.length() > 0)) {
+	query.append(" FROM " + this.graphIri);
+	}
+	
+	query.append(" WHERE {");
+	if ((subject.length() > 0) && (typePrefix != null)) {
+	query.append(subject + " <" + typePrefix + "> <" + typeSubject + ">. ");
+	}
+	if ((object.length() > 0) && (typePrefix != null)) {
+	query.append(object + " <" + typePrefix + "> <" + typeObject + ">. ");
+	}
+	
+	// check if the query contains an inequality
+	
+	query.append(this.getHornRuleAtomQuery(rules));
+	
+	// attach target predicates
+	if (targetPredicates != null) {
+	if (positive) {
+	query.append(" FILTER NOT EXISTS {");
+	query.append(appendMultiTargetPredicate(targetPredicates, "subject", "object"));
+	query.append("}");
+	
+	} else {
+	if (targetPredicates.size() > 1) {
+	query.append("{");
+	}
+	query.append(appendMultiTargetPredicate(targetPredicates, "subject", "object"));
+	if (targetPredicates.size() > 1) {
+	query.append("}");
+	}
+	}
+	}
+	query.append("}");
+	// check if there is a limit to set
+	if (maxInstantiationNumber > 0) {
+	query.append(" LIMIT ").append(maxInstantiationNumber);
+	}
+	return query.toString();
+  }
+  
+  private String appendMultiTargetPredicate(final Collection<String> predicates, String subject, String object) {
+	    final StringBuilder queryBuilder = new StringBuilder();
+	    if (predicates.size() == 1) {
+	      queryBuilder.append(StringUtils.join("?", subject, " <", predicates.iterator().next(), "> ?", object, "."));
+	    } else {
+	      queryBuilder.append(StringUtils.join("{?", subject, " <", predicates.iterator().next(), "> ?", object, ".}"));
+	      final Iterator<String> predicatesIt = predicates.iterator();
+	      predicatesIt.next();
+	      while (predicatesIt.hasNext()) {
+	        queryBuilder.append(StringUtils.join(" UNION {?", subject, " <", predicatesIt.next(), "> ?", object, ".}"));
+	      }
+	    }
+	    return queryBuilder.toString();
+
+  }
+
 
 }
