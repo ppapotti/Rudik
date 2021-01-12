@@ -19,6 +19,7 @@ import asu.edu.rule_miner.rudik.api.model.HornRuleResult.RuleType;
 import asu.edu.rule_miner.rudik.api.model.RudikResult;
 import asu.edu.rule_miner.rudik.configuration.ConfigurationFacility;
 import asu.edu.rule_miner.rudik.model.horn_rule.HornRule;
+import asu.edu.rule_miner.rudik.model.horn_rule.RuleAtom;
 import asu.edu.rule_miner.rudik.predicate.analysis.KBPredicateSelector;
 import asu.edu.rule_miner.rudik.predicate.analysis.SparqlKBPredicateSelector;
 import asu.edu.rule_miner.rudik.rule_generator.DynamicPruningRuleDiscovery;
@@ -248,6 +249,27 @@ public class RudikApi {
 
     public void setMaxInstantiationNumber(int number) {
         this.maxInstantiationNumber = number;
+    }
+    
+    public Double getRuleConfidence(String premise, String targetPredicate, Boolean type) throws Exception {
+	  	Pair<String, String> subjectObjectType = this.kbAnalysis.getPredicateTypes(targetPredicate);
+	  	String typeSubject = subjectObjectType.getLeft();
+	    String typeObject = subjectObjectType.getRight();
+	  	Set<String> set_relations = Sets.newHashSet(targetPredicate);
+	  	DynamicPruningRuleDiscovery miner = (DynamicPruningRuleDiscovery)this.ruleDiscovery;
+	    Double score = miner.getRuleConfidence(HornRule.readHornRule(premise), set_relations, typeSubject, typeObject, type);
+	    return score;
+    }
+    
+    public String getSparqlQuery(String premise, String targetPredicate, Boolean type) {
+    	Pair<String, String> subjectObjectType = this.kbAnalysis.getPredicateTypes(targetPredicate);
+	  	String typeSubject = subjectObjectType.getLeft();
+	    String typeObject = subjectObjectType.getRight();
+	  	Set<String> set_relations = Sets.newHashSet(targetPredicate);
+	  	DynamicPruningRuleDiscovery miner = (DynamicPruningRuleDiscovery)this.ruleDiscovery;
+	    String query = miner.getSparqlExecutor().generateHornRuleQueryInstantiation(set_relations, HornRule.readHornRule(premise), typeSubject, typeObject, true, type, 10);
+		
+	    return query;
     }
 
 }
