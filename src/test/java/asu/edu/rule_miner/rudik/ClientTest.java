@@ -1,6 +1,7 @@
 package asu.edu.rule_miner.rudik;
 
 import java.time.Instant;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -30,8 +31,10 @@ public class ClientTest
         generatePositiveExamples(relationNames, subjectType, objectType);
 
     //compute outputs
-    final List<HornRule> outputRules = rudik.
+    final Map<HornRule, Double> outputRules_with_score = rudik.
         discoverNegativeHornRules(negativeExamples, positiveExamples, relationNames, subjectType, objectType);
+    
+    final List<HornRule> outputRules = new ArrayList<HornRule>(outputRules_with_score.keySet());
     
     final Instant endTime = Instant.now();
     LOGGER.info("----------------------------COMPUTATION ENDED----------------------------");

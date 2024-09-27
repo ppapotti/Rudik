@@ -3,7 +3,9 @@ package asu.edu.rule_miner.rudik.model.horn_rule;
 import java.util.List;
 import java.util.Set;
 
+import org.apache.commons.lang3.tuple.Pair;
 import org.apache.jena.ext.com.google.common.collect.Lists;
+import org.bson.Document;
 
 import com.google.common.collect.Sets;
 
@@ -267,6 +269,30 @@ public class HornRule {
 		}
 
 		return hornRule;
+	}
+	
+	public static HornRule createHornRule(String ruleString) {
+	    final Set<RuleAtom> allAtoms = readHornRule(ruleString);
+	    final HornRule rule = new HornRule();
+	    allAtoms.forEach(a -> rule.addRuleAtom(a));
+	    return rule;
+	  }
+
+    /**
+     * Create a HornRule from a bson.Document
+     * @param rule - the bson.Document representing the rule
+     * @return the constructed HornRule object
+     */
+	public static HornRule createHornRule(Document rule) {
+	    List<Document> premise_atoms = (List<Document>) rule.get("premise_triples");
+	    final HornRule horn_rule = new HornRule();
+	    for(Document d : premise_atoms){
+	        RuleAtom atom = new RuleAtom((String) d.get("subject"),
+	                (String) d.get("predicate"),
+	                (String) d.get("object"));
+	        horn_rule.addRuleAtom(atom);
+	    }
+	    return horn_rule;
 	}
 
 }

@@ -79,13 +79,13 @@ public abstract class HornRuleDiscovery implements HornRuleDiscoveryInterface{
 
 	}
 
-	public abstract List<HornRule> discoverPositiveHornRules(Set<Pair<String,String>> negativeExamples, Set<Pair<String,String>> positiveExamples,
+	public abstract Map<HornRule, Double> discoverPositiveHornRules(Set<Pair<String,String>> negativeExamples, Set<Pair<String,String>> positiveExamples,
 			Set<String> relations, String typeSubject, String typeObject);
 
-	public abstract List<HornRule> discoverPositiveHornRules(Set<Pair<String,String>> negativeExamples, Set<Pair<String,String>> positiveExamples,
+	public abstract Map<HornRule, Double> discoverPositiveHornRules(Set<Pair<String,String>> negativeExamples, Set<Pair<String,String>> positiveExamples,
 			Set<String> relations, String typeSubject, String typeObject,boolean subjectFunction, boolean objectFunction);
 
-	public abstract List<HornRule> discoverNegativeHornRules(Set<Pair<String,String>> negativeExamples, Set<Pair<String,String>> positiveExamples,
+	public abstract Map<HornRule, Double> discoverNegativeHornRules(Set<Pair<String,String>> negativeExamples, Set<Pair<String,String>> positiveExamples,
 			Set<String> relations, String typeSubject, String typeObject);
 
 
@@ -251,7 +251,8 @@ public abstract class HornRuleDiscovery implements HornRuleDiscoveryInterface{
 	 * Read the sparql executor from configuration file and instantiate it
 	 * @return
 	 */
-	protected SparqlExecutor getSparqlExecutor(){
+	@Override
+	public SparqlExecutor getSparqlExecutor(){
 
 		if(!ConfigurationFacility.getConfiguration().containsKey(Constant.CONF_SPARQL_ENGINE))
 			throw new RuleMinerException("Sparql engine parameters not found in the configuration file.", 

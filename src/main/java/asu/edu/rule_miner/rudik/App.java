@@ -466,8 +466,9 @@ public class App
 
 				Set<Pair<String,String>> positiveExamples = naive.generatePositiveExamples(currentRelations, typeSubject, typeObject);
 
-				List<HornRule> output = 
+				Map<HornRule, Double> output_with_score = 
 						naive.discoverPositiveHornRules(negativeExamples, positiveExamples, currentRelations, typeSubject, typeObject, false, false);
+				List<HornRule> output = new ArrayList<HornRule>(output_with_score.keySet());
 
 				relation2runningTime.put(relation, (System.currentTimeMillis()-startTime));
 				relation2output.put(relation, output);
